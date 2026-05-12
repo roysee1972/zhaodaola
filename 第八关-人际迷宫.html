@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="人际迷宫关卡：复杂的人际关系中，帮你找到那条属于自己的路。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第八关 · 人际迷宫 — 找到啦</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #9a7a4a;
+    --text-light: #b89a6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 8px;
+    border: 1.5px solid var(--border);
+    pointer-events: none; z-index: 0;
+  }
+  .page {
+    display: none;
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    animation: fadeIn 0.6s ease;
+  }
+  .page.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .gold-line {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 24px;
+  }
+  .card {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px var(--shadow); }
+  .btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+  }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--text-mid);
+    box-shadow: none;
+  }
+  .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+  .center { text-align: center; }
+  .text-mid { color: var(--text-mid); font-size: 14px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-40 { margin-top: 40px; }
+  .mb-8 { margin-bottom: 8px; }
+  .progress-bar-wrap {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 3px;
+    background: rgba(201,168,76,0.15);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 6px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .hero-divider {
+    width: 180px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+  }
+  .deco-ring {
+    width: 160px; height: 160px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    margin: 0 auto 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .deco-ring::before {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+  }
+  .deco-ring-inner {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(201,168,76,0.3);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+    50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
+  }
+  .dilemma-card {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .dilemma-card:hover {
+    background: rgba(255,252,240,0.9);
+    border-color: var(--gold);
+  }
+  .dilemma-card.selected {
+    background: rgba(201,168,76,0.12);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,168,76,0.2);
+  }
+  .dilemma-card.selected::after {
+    content: '';
+    position: absolute;
+    right: 16px; top: 50%;
+    transform: translateY(-50%);
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%235a3e1b' d='M16.7 5.3L7 15l-4.7-4.7 1.4-1.4 3.3 3.3 9.4-9.3z'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .dilemma-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .dilemma-text {
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .dilemma-hint {
+    font-size: 12px;
+    color: var(--text-mid);
+    text-align: right;
+    margin-top: 16px;
+  }
+  .adventure-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px 0;
+  }
+  .flip-card {
+    width: 320px; height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+  .flip-card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute; inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .flip-card-front {
+    background: linear-gradient(145deg, #f0e0b0, #e8d090);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .flip-card-front-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+  }
+  .flip-card-front-hint {
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 3px;
+  }
+  .flip-card-back {
+    background: linear-gradient(145deg, var(--bg), var(--bg2));
+    border: 1.5px solid var(--gold);
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 20px var(--shadow);
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card-quote {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.9;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .flip-card-tap-hint {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-top: 16px;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  .question-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .question-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+  .question-progress {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 6px;
+  }
+  .option-card {
+    background: rgba(255,252,240,0.5);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .option-card:hover {
+    background: rgba(255,252,240,0.85);
+    border-color: rgba(201,168,76,0.5);
+  }
+  .option-card.selected {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+  .option-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .option-card.selected .option-text { font-weight: 500; }
+  .option-check {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .option-card.selected .option-check {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .option-card.selected .option-check::after {
+    content: '';
+    width: 8px; height: 5px;
+    border-left: 1.5px solid var(--text-dark);
+    border-bottom: 1.5px solid var(--text-dark);
+    transform: rotate(-45deg) translate(1px,-1px);
+  }
+  .nav-btn-wrap {
+    display: flex; gap: 12px; justify-content: center;
+    margin-top: 28px;
+  }
+  .result-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .result-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .result-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+  }
+  .result-summary {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    padding: 16px 0 24px;
+    font-style: italic;
+  }
+  .result-card {
+    background: rgba(255,252,240,0.65);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .result-card-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .result-card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .result-card-pct {
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+  .result-bar-bg {
+    height: 6px;
+    background: rgba(139,90,43,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .result-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
+  .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+  .advice-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .advice-intro {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-card {
+    background: rgba(255,252,240,0.6);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .advice-card-label {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .advice-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .advice-card-num {
+    background: var(--gold);
+    color: var(--text-dark);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .advice-card-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .advice-card-action {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    padding: 8px 14px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .advice-card-action::before {
+    content: '→ ';
+  }
+  .hidden-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .hidden-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .hidden-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .step-card {
+    background: rgba(255,252,240,0.55);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .step-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .step-input {
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--text-dark);
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.7;
+    transition: border-color 0.2s;
+  }
+  .step-input:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .step-input::placeholder { color: var(--text-light); }
+  .generate-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(201,168,76,0.3);
+    transition: all 0.2s;
+  }
+  .generate-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(201,168,76,0.4);
+  }
+  .card-preview {
+    display: none;
+    background: linear-gradient(145deg, #f7edd5, #eed9a4);
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-preview.show { display: block; animation: fadeIn 0.5s ease; }
+  .card-preview::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .card-preview-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .card-preview-sub {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+  }
+  .card-preview-content {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 2;
+    white-space: pre-wrap;
+  }
+  .card-preview-response {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+    font-size: 13px;
+    color: var(--text-mid);
+    font-style: italic;
+    line-height: 1.8;
+  }
+  .card-preview-action {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .download-btn {
+    margin-top: 14px;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .download-btn:hover { background: rgba(201,168,76,0.1); }
+  .easter-egg {
+    display: none;
+    background: rgba(90,50,20,0.95);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 520px;
+    text-align: center;
+    color: #f5e6c8;
+    position: relative;
+  }
+  .easter-egg.show { display: block; animation: fadeIn 0.8s ease; }
+  .easter-egg-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(201,168,76,0.7);
+    margin-bottom: 10px;
+  }
+  .easter-egg-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .easter-egg-text {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(245,230,200,0.9);
+  }
+  .easter-egg-close {
+    position: absolute; top: 10px; right: 14px;
+    background: none; border: none;
+    color: rgba(201,168,76,0.5);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .hidden-trigger {
+    display: block;
+    width: 200px;
+    margin: 32px auto 0;
+    padding: 10px 20px;
+    background: none;
+    border: 1px dashed var(--border);
+    border-radius: 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .hidden-trigger:hover {
+    border-color: var(--gold);
+    color: var(--text-mid);
+  }
+  .page-end-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-top: 20px;
+  }
+  .complete-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+  .back-home-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: rgba(245,230,200,0.88);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px var(--shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .back-home-btn:hover {
+    background: rgba(245,230,200,0.98);
+    border-color: var(--gold);
+    color: var(--text-dark);
+    box-shadow: 0 3px 12px var(--shadow);
+    transform: translateY(-1px);
+  }
+  .back-home-btn .arrow {
+    font-size: 14px;
+    line-height: 1;
+    color: var(--gold);
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; letter-spacing: 4px; }
+    .flip-card { width: 280px; height: 180px; }
+    .flip-card-quote { font-size: 14px; }
+    .advice-card-action { font-size: 12px; }
+    .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="progressBar"></div>
+</div>
+
+<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+  <span class="arrow">←</span>
+  <span>返回主页</span>
+</button>
+
+<!-- ==================== P1: 入口页 ==================== -->
+<div class="page active" id="page-entry">
+  <div class="center" style="padding-top: 60px;">
+    <div class="level-badge">第八关 · 找到啦</div>
+    <div class="deco-ring">
+      <div class="deco-ring-inner">人际</div>
+    </div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h1 class="hero-title">人际迷宫</h1>
+    <p class="hero-sub">
+      不是教你怎么赚钱。<br>
+      是帮你看见：你和钱之间，隔着什么。
+    </p>
+    <div class="hero-divider"></div>
+    <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
+      你觉得谈钱很俗，但每天都在为它纠结。<br>
+      你想多赚一点，但觉得「谈钱伤感情」。<br>
+      你不敢为劳动要合理的报酬，因为怕被说功利。<br>
+      你花了钱会有负罪感，好像享受是一种罪过。
+    </p>
+    <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
+      金钱不是目的。<br>
+      但它是一面镜子——<br>
+      照得见你的自我价值感，照得见你对他人的信任，<br>
+      也照得见你对自己到底有多认可。
+    </p>
+    <div class="gold-line" style="margin: 28px auto;"></div>
+    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
+  </div>
+</div>
+
+<!-- ==================== P2: 困境选择页 ==================== -->
+<div class="page" id="page-dilemma">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 class="hero-title" style="font-size: 26px;">在哪件事上，你在关系里最委屈？</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">选择 1-3 条，最贴近你现在的感受。多选也无妨。</p>
+    </div>
+    <div style="margin-top: 24px;" id="dilemmaList"></div>
+    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P3: 冒险卡页 ==================== -->
+<div class="page" id="page-adventure">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+    </div>
+    <div class="adventure-wrap">
+      <div class="flip-card" id="flipCard" onclick="flipCard()">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-card-front-icon">✦</div>
+            <div class="flip-card-front-hint">点击翻开</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="flip-card-quote" id="flipQuote">"你和钱的关系，就是你和自己的关系。"</div>
+            <div class="flip-card-tap-hint">— 冒险卡</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P4: 诊断测试页 ==================== -->
+<div class="page" id="page-question">
+  <div style="padding-top: 20px;">
+    <div class="question-header">
+      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-text" id="qText">关于钱，你最近感受到的是？</div>
+      <div class="question-progress" id="qProgress">1 / 6</div>
+    </div>
+    <div id="optionList"></div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P5: 诊断结果页 ==================== -->
+<div class="page" id="page-result">
+  <div style="padding-top: 20px;">
+    <div class="result-header">
+      <div class="level-badge">诊断完成</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="result-title">你的认知卡点画像</div>
+      <div class="result-sub">人际迷宫 · 第八关</div>
+      <div class="result-summary" id="resultSummary"></div>
+    </div>
+    <div id="resultList"></div>
+
+    <div class="easter-egg" id="easterEgg">
+      <button class="easter-egg-close" onclick="closeEgg()">×</button>
+      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-title" id="eggTitle"></div>
+      <div class="easter-egg-text" id="eggText"></div>
+    </div>
+
+    <div class="nav-btn-wrap">
+      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P6: 通关建议页 ==================== -->
+<div class="page" id="page-advice">
+  <div style="padding-top: 20px;">
+    <div class="advice-header">
+      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="advice-title">通关建议</div>
+      <div class="advice-intro">
+        金钱不是目的，<br>
+        但它是一面镜子，照得见你对自己的真实看法。
+      </div>
+    </div>
+    <div id="adviceList"></div>
+
+    <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
+      以上不是你想说的？打开你的隐藏关卡 →
+    </div>
+    <div class="page-end-text">— 第八关 · 人际迷宫 · 完 —</div>
+  </div>
+</div>
+
+<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<div class="page" id="page-hidden">
+  <div style="padding-top: 20px;">
+    <div class="hidden-header">
+      <div class="level-badge">隐藏关卡</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="hidden-title">你的专属关卡</div>
+      <div class="hidden-sub">
+        这里是你的空间，写下你和金钱之间真正卡住的事。<br>
+        不用修饰，不用在意文采。真实就好。
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第一步</div>
+      <div class="step-label">我和钱之间，卡在哪里？</div>
+      <textarea class="step-input" id="hidden1" placeholder="最近一次让我为钱纠结的事是："></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第二步</div>
+      <div class="step-label">这种感觉最早出现在什么时候？</div>
+      <textarea class="step-input" id="hidden2" placeholder="最早是在……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第三步</div>
+      <div class="step-label">如果可以改变一件事，我希望是？</div>
+      <textarea class="step-input" id="hidden3" placeholder="我希望自己可以……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第四步</div>
+      <div class="step-label">我愿意为此付出什么？</div>
+      <textarea class="step-input" id="hidden4" placeholder="为了改变，我愿意……"></textarea>
+    </div>
+    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
+    <div class="card-preview" id="cardPreview">
+      <div class="card-preview-title">我的隐藏关卡</div>
+      <div class="card-preview-sub">第八关 · 人际迷宫 · 找到啦</div>
+      <div class="card-preview-content" id="cardContent"></div>
+      <div class="card-preview-response" id="cardResponse"></div>
+      <div class="card-preview-action" id="cardAction"></div>
+      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 完成页 ==================== -->
+<div class="page" id="page-complete">
+  <div class="center" style="padding-top: 80px;">
+    <div class="complete-icon">✦</div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
+      看清自己和钱之间的卡点，<br>
+      本身就是改变的开始。<br>
+      接下来的路，在你脚下。
+    </p>
+    <div class="gold-line" style="margin: 0 auto 28px;"></div>
+    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   数据
+   ============================================================ */
+
+// 困境（12条）
+const dilemmas = [
+  { id: 1, text: "别人找我帮忙，我不愿意但还是答应了，事后又后悔。" },
+  { id: 2, text: "我总是那个主动联系别人的人，不联系就怕关系淡了。" },
+  { id: 3, text: "我不知道怎么拒绝别人，哪怕这件事已经让我很不舒服。" },
+  { id: 4, text: "我在关系里付出很多，但对方好像没怎么回应我。" },
+  { id: 5, text: "我很怕被人讨厌，所以一直在表演一个「好脾气」的自己。" },
+  { id: 6, text: "我不敢表达真实的想法，怕说了之后对方不高兴。" },
+  { id: 7, text: "我对别人有期待，但对方没做到，我不敢说，只是自己生闷气。" },
+  { id: 8, text: "我总是在意别人的评价，哪怕那个人其实没那么重要。" },
+  { id: 9, text: "我付出了很多，但对方好像觉得理所当然，我心里不平衡。" },
+  { id: 10, text: "我想结束一段消耗我的关系，但不知道怎么开口，怕伤害对方。" },
+  { id: 11, text: "我在关系里总是猜对方的心情，却很少问自己舒不舒服。" },
+  { id: 12, text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。" }
+];
+
+// 冒险卡（12张）
+const adventureCards = [
+  "所有让你消耗的关系，都在偷偷问你要一样东西：你自己。",
+  "边界不是墙，是门——你决定谁可以进来。",
+  "你不是在维护关系，你是在用委屈换认可。",
+  "不敢拒绝，是因为你怕对方不喜欢「说不了」的你。",
+  "你在关系里弄丢的自己，比对方重要得多。",
+  "期待别人改变，是你给自己找的最大的借口。",
+  "你不是不会说话，你是不敢说真话。",
+  "一段需要你一直表演的关系，本来就不适合你。",
+  "你总是在替别人着想，谁在你难过的时候替你着想？",
+  "有些关系，结束比维持更勇敢。",
+  "你在关系里受的委屈，对方往往根本不知道。",
+  "真正的亲密，是两个人都不需要表演。"
+];
+
+// 诊断题（6题×5选项）
+const questions = [
+  {
+    q: "在关系里，你最常感受到的是？",
+    options: [
+      { text: "我总是在付出，但对方好像没怎么回应我。", key: "01付出失衡" },
+      { text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。", key: "02冲突回避" },
+      { text: "我不敢表达真实想法，怕说了之后对方不高兴。", key: "03真实恐惧" },
+      { text: "我总是在意别人的评价，哪怕那人其实没那么重要。", key: "04评价焦虑" },
+      { text: "我不知道怎么拒绝别人，哪怕这件事已经让我很不舒服。", key: "05边界模糊" }
+    ]
+  },
+  {
+    q: "关于「拒绝」，你最接近的感受是？",
+    options: [
+      { text: "我不知道怎么拒绝，怕拒绝了对方会不高兴。", key: "05边界模糊" },
+      { text: "我拒绝了别人之后，会一直想：我是不是太过分了？", key: "06内疚惯性" },
+      { text: "我不敢说不，因为我怕对方从此就不联系我了。", key: "07被弃恐惧" },
+      { text: "我总是在别人找我帮忙时先答应，事后又后悔。", key: "05边界模糊" },
+      { text: "我怕拒绝别人会显得我很冷漠、不近人情。", key: "08形象维护" }
+    ]
+  },
+  {
+    q: "关于期待和失望，你最接近的感受是？",
+    options: [
+      { text: "我对别人有期待，但对方没做到，我不敢说，只是自己生闷气。", key: "09期待压抑" },
+      { text: "我总是希望对方主动来理解我，但他往往没有。", key: "10被动等待" },
+      { text: "我付出了很多，但对方觉得理所当然，我心里不平衡。", key: "01付出失衡" },
+      { text: "我在关系里总是在猜对方的心情，却很少问自己舒不舒服。", key: "11自我忽视" },
+      { text: "我发现我对别人的期待，往往高过对方实际愿意给的。", key: "09期待压抑" }
+    ]
+  },
+  {
+    q: "关于冲突，你最接近的感受是？",
+    options: [
+      { text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。", key: "02冲突回避" },
+      { text: "我不敢表达不同意见，怕说了之后关系就坏了。", key: "03真实恐惧" },
+      { text: "我觉得有冲突的关系都是不好的，所以我一直在避免冲突。", key: "02冲突回避" },
+      { text: "我在冲突的时候会大脑空白，不知道说什么，事后又很后悔。", key: "12冲突无助" },
+      { text: "我很怕对方生气，所以我会先妥协、先道歉。", key: "13讨好惯性" }
+    ]
+  },
+  {
+    q: "关于自我和关系，你最接近的状态是？",
+    options: [
+      { text: "我在关系里弄丢了自己，不知道哪个是真正的我。", key: "11自我忽视" },
+      { text: "我总是在表演一个「好脾气」的自己，很累。", key: "14表演疲惫" },
+      { text: "我怕别人不喜欢真正的我，所以一直在扮演别人喜欢的样子。", key: "14表演疲惫" },
+      { text: "我没有在关系里真正放松过，总是在想：我这样说行不行。", key: "04评价焦虑" },
+      { text: "我想结束一段消耗我的关系，但不知道怎么开口。", key: "15结束恐惧" }
+    ]
+  },
+  {
+    q: "以下哪句话，最接近你内心对关系的真实看法？",
+    options: [
+      { text: "我配被好好对待，但我不太敢相信这件事会发生。", key: "16值得怀疑" },
+      { text: "我在关系里受的委屈，对方往往根本不知道。", key: "11自我忽视" },
+      { text: "我总是在替别人着想，谁在我难过的时候替我着想？", key: "11自我忽视" },
+      { text: "我怕冲突，但我更怕一直在委屈里待着。", key: "02冲突回避" },
+      { text: "我开始觉得：有些关系，结束比维持更勇敢。", key: "15结束恐惧" }
+    ]
+  }
+];
+
+// 卡点完整数据（30个维度）
+const cardPoints = {
+  "01付出失衡":    { name: "付出失衡",    desc: "你在关系里付出很多，但对方好像没怎么回应你。你不是善良，你是在用付出来换安全感。", advice: "这周，在一段关系里，做一次「不主动付出」的实验：对方不找你，你就不找对方。看看天会不会塌下来。", color: "var(--gold)" },
+  "02冲突回避":    { name: "冲突回避",    desc: "你很怕冲突，宁愿自己忍一忍，也不想让场面变差。但你忍的每一件事，都在暗暗记账。", advice: "下次有不同意见的时候，试着说一句：「我跟你想的有点不一样。」——就这一句，不用吵起来。", color: "#b89a6a" },
+  "03真实恐惧":    { name: "真实恐惧",    desc: "你不敢表达真实的想法，怕说了之后对方不高兴。但你没说出口的那些话，会变成心里的一根刺。", advice: "找一个你信任的人，说一件你真实想说但一直没说的事。你会发现：说开了，关系往往更好，不是更差。", color: "var(--gold)" },
+  "04评价焦虑":    { name: "评价焦虑",    desc: "你总是在意别人的评价，哪怕那个人其实没那么重要。你把别人的眼光，活成了自己的牢笼。", advice: "今天，做一件「别人可能会怎么想但实际上我挺想做」的小事。做完之后你会发现：没人那么在意。", color: "#c0784a" },
+  "05边界模糊":    { name: "边界模糊",    desc: "你不知道怎么拒绝别人，哪怕这件事已经让你很不舒服。你怕拒绝了就显得你不好，但你忘了：你的舒服也很重要。", advice: "这周，练习说一次「不好意思，这个我可能帮不上」。不用解释，不用道歉，就这一句话。", color: "var(--gold)" },
+  "06内疚惯性":    { name: "内疚惯性",    desc: "你拒绝了别人之后，会一直想：我是不是太过分了？你把「拒绝」当成了一种罪，但你忘了：对方也可以说不了。", advice: "下一次拒绝之后，对自己说三遍：「我有权利说不了。」——说出口，内疚感会轻一点。", color: "#a88040" },
+  "07被弃恐惧":    { name: "被弃恐惧",    desc: "你不敢说不，因为你怕对方从此就不联系你了。但你用委屈换来的联系，本来就不牢靠。", advice: "想一想：如果有一个人因为你说了「不」就不再理你，这段关系你真的可惜吗？", color: "#8a6040" },
+  "08形象维护":    { name: "形象维护",    desc: "你怕拒绝别人会显得你很冷漠、不近人情。但你一直在维护的那个「好人形象」，其实压得你喘不过气。", advice: "找一个你信任的朋友，跟TA说一句：「其实我有时候不想那么热心。」——你会发现，TA并不会因此不喜欢你。", color: "#b08a5a" },
+  "09期待压抑":    { name: "期待压抑",    desc: "你对别人有期待，但对方没做到，你不敢说，只是自己生闷气。但你不说，对方永远不会知道你在期待什么。", advice: "下次有期待的时候，试着说出来。比如：「这周末，我希望我们可以一起做点什么。」——说出口，才有机会被满足。", color: "var(--gold)" },
+  "10被动等待":    { name: "被动等待",    desc: "你总是希望对方主动来理解你，但他往往没有。但你没开口，对方可能根本不知道你需要被理解。", advice: "这周，主动说一次：「我最近有点……你可以陪我说说话吗？」——不用觉得很丢脸，这需要勇气，也很值得。", color: "#9a7060" },
+  "11自我忽视":    { name: "自我忽视",    desc: "你在关系里总是在猜对方的心情，却很少问自己舒不舒服。你把别人放在第一位，把自己排在了最后面。", advice: "今天，做一件「先顾及自己感受」的小事——不用很大，就是先问自己一次：我现在舒服吗？", color: "#c09060" },
+  "12冲突无助":    { name: "冲突无助",    desc: "你在冲突的时候会大脑空白，不知道说什么，事后又很后悔。你不是不会说话，你是在冲突里太紧张了。", advice: "预先准备一句话，下次冲突的时候先说：「我现在有点情绪，能不能先停一下，等会儿再聊？」——这会给你缓冲的时间。", color: "#a07850" },
+  "13讨好惯性":    { name: "讨好惯性",    desc: "你很怕对方生气，所以你会先妥协、先道歉。但你妥协的每一件事，都在告诉对方：你的感受不重要。", advice: "下次对方生气的时候，先别急着道歉。等三分钟，问问自己：这件事，真的是我的错吗？", color: "#b07050" },
+  "14表演疲惫":    { name: "表演疲惫",    desc: "你总是在表演一个「好脾气」的自己，很累。但你表演的那个版本，不是真正的你，对方喜欢的也不是真正的你。", advice: "找一个安全的人，在他面前尝试做一次「不表演」的自己——说一句你真实想说的、有点「不太乖」的话。", color: "var(--gold)" },
+  "15结束恐惧":    { name: "结束恐惧",    desc: "你想结束一段消耗你的关系，但不知道怎么开口，怕伤害对方。但你一直在消耗里待着，对自己才是最大的伤害。", advice: "写一封信（不用寄出去），把你想对那段关系说的话全写下来。写完了，你会清楚很多。", color: "#8a6040" },
+  "16值得怀疑":    { name: "值得怀疑",    desc: "你配被好好对待，但你不太敢相信这件事会发生。你潜意识里觉得自己不配，所以一直在接受低于你值得的关系。", advice: "写下来三件你值得被好好对待的理由。不用给别人看，就是写给自己看。你会发现自己比以为的更值得。", color: "var(--gold)" },
+  "17信任创伤":    { name: "信任创伤",    desc: "你曾经在关系里被辜负过，从那以后就很难再完全信任一个人。你不是不会信任，是你还没修复那个伤口。", advice: "找一个你信任的、很小的事（比如「我可以相信他会准时来」），练习把信任先放在这件小事上。", color: "#c0784a" },
+  "18比较消耗":    { name: "比较消耗",    desc: "你看到别人关系很好，就开始怀疑自己：为什么我的人际关系这么累？但每个人的关系里，都有你看不到的那一面。", advice: "下次想比较的时候，把注意力拉回来：在我现有的关系里，哪一段是让我舒服的？先把这一段经营好。", color: "#b89a6a" },
+  "19完美压力":    { name: "完美压力",    desc: "你觉得自己在关系里必须表现得很完美，不能出错、不能让人失望。但你又不是产品，为什么不许自己偶尔让人失望？", advice: "这周，故意在一件小事上「让人失望」一次——比如约好了但临时改时间。你会发现：对方往往没那么介意。", color: "#a88040" },
+  "20沉默成本":     { name: "沉默成本",    desc: "你知道这段关系在消耗你，但你已经投入了太多时间和情感，不舍得放手。但你越不舍，陷得越深。", advice: "问自己一个问题：「如果今天才认识这个人，我还会愿意和TA做朋友吗？」——答案会告诉你该不该继续。", color: "#9a7060" },
+  "21控制欲望":     { name: "控制欲望",    desc: "你总是想改变对方，觉得改了你们的关系就会变好。但你改变不了任何人，你只能改变自己应对的方式。", advice: "下次想改变对方的时候，把注意力转回自己：「我怎么能让自己在这段关系里更舒服？」", color: "#b08a5a" },
+  "22孤独恐惧":     { name: "孤独恐惧",    desc: "你怕一个人待着，所以宁愿在糟糕的关系里待着，也不愿一个人。但你先要能跟自己相处，才能跟别人相处得好。", advice: "这周，安排一个晚上，完全一个人待着，不刷手机、不找人聊天。你会发现：一个人，其实没那么可怕。", color: "#c09060" },
+  "23道歉惯性":     { name: "道歉惯性",    desc: "你总是先道歉，哪怕不是你的错。你用道歉来换关系的和平，但对方会慢慢觉得：反正你都会道歉。", advice: "这周，忍住一次「对不起」。如果一件事不是你的错，就不要说对不起。——忍住了，你会发现天不会塌。", color: "#a07850" },
+  "24羡慕回避":     { name: "羡慕回避",    desc: "你看到别人关系很好，心里会有点酸，但你不会承认，只是自己默默难受。你不是小气，是你也有权利渴望被好好对待。", advice: "下次心里酸的时候，对自己说一句：「我也值得被这样对待。」——承认这个渴望，它才会推动你去改变。", color: "#8a6040" },
+  "25共情过度":     { name: "共情过度",    desc: "你总是能感受到别人的情绪，但你会把别人的情绪当成自己的责任。你可以有同理心，但你不需要为别人的情绪买单。", advice: "下次感受到别人的负面情绪时，在心里说一句：「这是他的情绪，不是我的。」——划清这条线，你会轻松很多。", color: "var(--gold)" },
+  "26回馈压力":     { name: "回馈压力",    desc: "别人对你好，你一定要还回去，不然心里不踏实。但你把关系活成了交易，少了那份自然而然的流动。", advice: "下次有人对你好，试着只说「谢谢」，不要马上想着怎么还。有些好，收下就好。", color: "#b89a6a" },
+  "27防御过度":     { name: "防御过度",    desc: "你因为曾经被伤害过，所以现在对所有人都有防备。但你用防备保护了自己的同时，也把真正想靠近你的人挡在外面了。", advice: "找一个你觉得安全的人，试着多说一点关于自己的事。不用一下全说出来，就是多说一句。", color: "#c0784a" },
+  "28表达障碍":     { name: "表达障碍",    desc: "你有话想说，但话到嘴边又咽回去了，不知道怎么开口。你不是不会表达，是你还没找到属于你的表达方式。", advice: "这周，用文字代替口头表达一次——发一条消息，把你想说的写下来。文字会给你更多时间和勇气。", color: "var(--gold)" },
+  "29亲密恐惧":     { name: "亲密恐惧",    desc: "你渴望被理解，但你又怕被人看透。你一直在渴望和害怕之间拉扯，所以关系总是停在表面。", advice: "找一个你信任的人，跟TA说一件你从来没有跟别人说过的、关于你的小事。你会发现：被看透了，也没那么可怕。", color: "#a88040" },
+  "30和解障碍":     { name: "和解障碍",    desc: "你和一个人闹翻了，心里其实想和解，但不知道怎么开口，怕先开口就显得自己输了。但你不放过对方，其实是在不放过自己。", advice: "如果有一段关系你想和解，这周，发一条简单的消息：「最近还好吗？」——不用解释，不用道歉，就是先开口。", color: "#9a7060" }
+};
+
+// 彩蛋（4个，围绕金钱与价值主题）
+const easterEggs = [
+  { title: "《智囊》· 管仲与鲍叔牙", text: "管仲曰：「生我者父母，知我者鲍子也。」——真正的朋友，不是数量多，是有一个人，懂得你不为人知的那一面。" },
+  { title: "《智囊》· 王旦", text: "王旦为相，有人骂他，他装作没听见。——不是软弱，是知道自己要做什么，不把精力浪费在每一句噪音上。" },
+  { title: "王凤仪· 化性", text: "王凤仪说：「人要是能把脾气化去，自然就好了。」——你在关系里受的委屈，往往跟你没化完的性子有关。化性，不是改别人，是改自己。" },
+  { title: "反脆弱", text: "塔勒布说：反脆弱的系统，会从波动中受益。——你和人的关系也是，经历过低谷、冲突、误解，关系才会真正结实起来。没有冲突的关系，往往很脆弱。" }
+];
+
+/* ============================================================
+   状态
+   ============================================================ */
+let currentPage = 'entry';
+let selectedDilemmas = [];
+let currentQuestion = 0;
+let answers = {};
+let cardScores = {};
+
+/* ============================================================
+   页面导航
+   ============================================================ */
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + name);
+  if (el) el.classList.add('active');
+  currentPage = name;
+  updateProgress(name);
+  if (name === 'dilemma') renderDilemma();
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display = 'block'; }
+  if (name === 'question') renderQuestion();
+  if (name === 'result') showResult();
+  if (name === 'advice') showAdvice();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress(name) {
+  const progressMap = { entry: 5, dilemma: 15, adventure: 25, question: 35, result: 80, advice: 90, hidden: 95, complete: 100 };
+  const p = progressMap[name] || 0;
+  document.getElementById('progressBar').style.width = p + '%';
+}
+
+/* ============================================================
+   困境选择
+   ============================================================ */
+function renderDilemma() {
+  const list = document.getElementById('dilemmaList');
+  list.innerHTML = dilemmas.map(d => `
+    <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
+      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-text">${d.text}</div>
+    </div>
+  `).join('');
+  updateDilemmaBtn();
+}
+
+function toggleDilemma(id) {
+  const idx = selectedDilemmas.indexOf(id);
+  if (idx === -1) {
+    if (selectedDilemmas.length < 3) selectedDilemmas.push(id);
+  } else {
+    selectedDilemmas.splice(idx, 1);
+  }
+  renderDilemma();
+}
+
+function updateDilemmaBtn() {
+  const count = selectedDilemmas.length;
+  document.getElementById('dilemmaCount').textContent = count;
+  document.getElementById('dilemmaNextBtn').disabled = count === 0;
+}
+
+function goDilemma() {
+  if (selectedDilemmas.length === 0) return;
+  goPage('adventure');
+}
+
+/* ============================================================
+   冒险卡
+   ============================================================ */
+let currentCardIndex = 0;
+
+function selectRandomCard() {
+  currentCardIndex = Math.floor(Math.random() * adventureCards.length);
+  document.getElementById('flipQuote').textContent = '"' + adventureCards[currentCardIndex] + '"';
+  const fc = document.getElementById('flipCard');
+  fc.classList.remove('flipped');
+  document.getElementById('adventureNextBtn').style.display = 'none';
+  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+}
+
+function flipCard() {
+  const fc = document.getElementById('flipCard');
+  fc.classList.add('flipped');
+  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('adventureNextBtn').style.display = 'inline-block';
+}
+
+function goQuestion() {
+  goPage('question');
+}
+
+/* ============================================================
+   诊断题
+   ============================================================ */
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  const total = questions.length;
+  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
+
+  const optList = document.getElementById('optionList');
+  const saved = answers[currentQuestion] || [];
+  optList.innerHTML = q.options.map((opt, i) => `
+    <div class="option-card${saved.includes(i) ? ' selected' : ''}" onclick="toggleOption(${i})">
+      <div class="option-text">${opt.text}</div>
+      <div class="option-check"></div>
+    </div>
+  `).join('');
+
+  document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
+}
+
+function toggleOption(i) {
+  if (!answers[currentQuestion]) answers[currentQuestion] = [];
+  const idx = answers[currentQuestion].indexOf(i);
+  if (idx === -1) {
+    answers[currentQuestion].push(i);
+  } else {
+    answers[currentQuestion].splice(idx, 1);
+  }
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if ((answers[currentQuestion] || []).length === 0) return;
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  } else {
+    goPage('result');
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+/* ============================================================
+   诊断结果
+   ============================================================ */
+function computeScores() {
+  cardScores = {};
+  questions.forEach((q, qi) => {
+    const selected = answers[qi] || [];
+    selected.forEach(i => {
+      const key = q.options[i].key;
+      cardScores[key] = (cardScores[key] || 0) + 1;
+    });
+  });
+}
+
+function showResult() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+
+  const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
+  const summaryTexts = [
+    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
+    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
+    `人和钱的关系，说到底是人和自己的关系。看清卡在哪里，就已经是改变的开始。`
+  ];
+  document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
+
+  const resultList = document.getElementById('resultList');
+  resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
+    const cp = cardPoints[key];
+    if (!cp) return '';
+    const pct = Math.min(100, score * 40);
+    const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
+    return `
+      <div class="result-card">
+        <div class="result-card-top">
+          <span class="result-card-name">${cp.name}</span>
+          <span class="result-card-pct">命中 ${score} 次</span>
+        </div>
+        <div class="result-bar-bg">
+          <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  setTimeout(() => {
+    document.querySelectorAll('.result-bar-fill').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width') + '%';
+    });
+  }, 200);
+
+  if (Math.random() < 0.2) {
+    const egg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+    document.getElementById('eggTitle').textContent = egg.title;
+    document.getElementById('eggText').textContent = egg.text;
+    document.getElementById('easterEgg').classList.add('show');
+  }
+}
+
+function closeEgg() {
+  document.getElementById('easterEgg').classList.remove('show');
+}
+
+function goAdvice() {
+  goPage('advice');
+}
+
+/* ============================================================
+   通关建议
+   ============================================================ */
+function showAdvice() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+  const topCards = sorted.slice(0, 5);
+
+  const adviceList = document.getElementById('adviceList');
+  adviceList.innerHTML = topCards.map(([key, score], i) => {
+    const cp = cardPoints[key];
+    if (!cp) return '';
+    return `
+      <div class="advice-card">
+        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-title">
+          <span class="advice-card-num">${i+1}</span>
+          ${cp.name}
+        </div>
+        <div class="advice-card-desc">${cp.desc}</div>
+        <div class="advice-card-action">${cp.advice}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function goHidden() {
+  goPage('hidden');
+}
+
+/* ============================================================
+   隐藏关卡
+   ============================================================ */
+function generateCard() {
+  const h1 = document.getElementById('hidden1').value.trim();
+  const h2 = document.getElementById('hidden2').value.trim();
+  const h3 = document.getElementById('hidden3').value.trim();
+  const h4 = document.getElementById('hidden4').value.trim();
+
+  if (!h1 && !h2 && !h3 && !h4) {
+    alert('先写点什么吧，至少说一件你卡住的事。');
+    return;
+  }
+
+  const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
+    `第${['一','二','三','四'][i]}步：${t}`
+  ).join('\n\n');
+
+  document.getElementById('cardContent').textContent = content;
+
+  const responses = [
+    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
+    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
+    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
+    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+  ];
+  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+
+  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：把这件事再想一遍，比今天多想清楚一点。';
+  document.getElementById('cardAction').textContent = firstAction;
+
+  document.getElementById('cardPreview').classList.add('show');
+}
+
+function downloadCard() {
+  const preview = document.getElementById('cardPreview');
+  const canvas = document.createElement('canvas');
+  canvas.width = 600; canvas.height = 800;
+  const ctx = canvas.getContext('2d');
+
+  const grad = ctx.createLinearGradient(0, 0, 600, 800);
+  grad.addColorStop(0, '#f7edd5');
+  grad.addColorStop(1, '#eed9a4');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 600, 800);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.fillRect(0, 0, 600, 4);
+
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = 'bold 28px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的隐藏关卡', 300, 80);
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = '12px serif';
+  ctx.fillText('第八关 · 人际迷宫 · 找到啦', 300, 108);
+
+  ctx.strokeStyle = 'rgba(139,90,43,0.3)';
+  ctx.beginPath();
+  ctx.moveTo(100, 130); ctx.lineTo(500, 130);
+  ctx.stroke();
+
+  const content = document.getElementById('cardContent').textContent;
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = '14px serif';
+  ctx.textAlign = 'left';
+  const lines = content.split('\n\n');
+  let y = 170;
+  lines.forEach(para => {
+    ctx.fillText(para, 50, y);
+    y += 26 + 20;
+  });
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = 'italic 13px serif';
+  const resp = document.getElementById('cardResponse').textContent;
+  ctx.fillText(resp, 50, y + 20);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.font = 'bold 13px serif';
+  const act = document.getElementById('cardAction').textContent;
+  ctx.fillText(act, 50, y + 50);
+
+  ctx.fillStyle = '#b89a6a';
+  ctx.font = '11px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('— 第八关 · 人际迷宫 · 找到啦 —', 300, 750);
+
+  const link = document.createElement('a');
+  link.download = '我的隐藏关卡.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function restart() {
+  selectedDilemmas = [];
+  currentQuestion = 0;
+  answers = {};
+  cardScores = {};
+  document.getElementById('easterEgg').classList.remove('show');
+  document.getElementById('cardPreview').classList.remove('show');
+  ['hidden1','hidden2','hidden3','hidden4'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  goPage('entry');
+}
+
+function goBackHome() {
+  if (document.referrer && document.referrer !== window.location.href) {
+    history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+
+/* ============================================================
+   启动
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderDilemma();
+});
+</script>
+
+</body>
+</html>

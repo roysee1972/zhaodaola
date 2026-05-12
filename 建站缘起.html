@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+    <meta name="description" content="建站缘起 — 一位54岁文科生用AI搭建心理健康公益网站的故事。找到啦，生命游戏的十二个关卡。">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>建站缘起 — 找到啦</title>
+<style>
+:root {
+  --bg: #f5e6c8;
+  --bg2: #eed9a4;
+  --text-dark: #5a3e1b;
+  --text-mid: #9a7a4a;
+  --text-light: #b89a6a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --border: rgba(139,90,43,0.18);
+  --shadow: rgba(90,60,20,0.12);
+  --radius: 8px;
+  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+body::after {
+  content: '';
+  position: fixed; inset: 8px;
+  border: 1.5px solid var(--border);
+  pointer-events: none; z-index: 0;
+}
+.back-home-btn {
+  position: fixed; top: 16px; left: 16px; z-index: 200;
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 16px;
+  background: rgba(245,230,200,0.88);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: var(--font); font-size: 12px;
+  color: var(--text-mid); letter-spacing: 2px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.back-home-btn:hover {
+  background: rgba(245,230,200,0.98);
+  border-color: var(--gold);
+  color: var(--text-dark);
+}
+.container {
+  position: relative; z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+.gold-line {
+  width: 120px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 36px;
+}
+h1 {
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+.story-block {
+  background: rgba(255,252,240,0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.story-block h2 {
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+.story-block p {
+  font-size: 15px;
+  color: #6a4e28;
+  line-height: 2.1;
+  margin-bottom: 14px;
+  text-indent: 2em;
+}
+.story-block p:last-child { margin-bottom: 0; }
+.story-block .no-indent { text-indent: 0; }
+.story-block .highlight {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+.story-block .quote {
+  text-align: center;
+  font-size: 16px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 20px 0;
+  text-indent: 0;
+}
+.footer-link {
+  text-align: center;
+  margin-top: 36px;
+}
+.footer-link a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.footer-link a:hover {
+  color: var(--text-dark);
+  border-color: var(--gold);
+}
+@media (max-width: 600px) {
+  .container { padding: 50px 16px 60px; }
+  h1 { font-size: 22px; letter-spacing: 4px; }
+  .story-block { padding: 20px 18px; }
+  .story-block p { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<button class="back-home-btn" onclick="window.location.href='index.html'" title="返回主页">
+  <span style="color:var(--gold);">←</span> <span>返回主页</span>
+</button>
+
+<div class="container">
+  <h1>建站缘起</h1>
+  <div class="subtitle">找到啦 · 生命游戏</div>
+  <div class="gold-line"></div>
+
+  <div class="story-block">
+    <h2>一个54岁文科生的AI实验</h2>
+    <p>我今年54岁，文科出身。退休后有了大把的空闲时间，身边不少同龄人选择了用体力换取收入的方式度过这段时光，而我做了一个不同的决定——把大量时间投入到学习和使用AI上，试着用它来解决实际问题。</p>
+    <p>这个过程让我深深体会到：AI不再是科幻小说里的概念，它已经是可以被普通人驾驭的工具。一个不懂代码的文科生，借助AI，也能从零搭建一个完整的网站。你正在看到的这个"找到啦"，就是这样诞生的。</p>
+  </div>
+
+  <div class="story-block">
+    <h2>为什么做"找到啦"</h2>
+    <p>在学习AI的过程中，我一直在思考一个问题：<span class="highlight">什么才是值得长期投入的事业？</span></p>
+    <p>答案渐渐清晰——现代人的心理健康，将是一个长期的系统工程。几乎每个人都会在生命的某个阶段遇到心理上的障碍和难关，在认知上，也多少存在自己的误区和盲点。这些看不清的东西，往往比外在的困难更让人痛苦。</p>
+    <p>于是我进一步想：如果我们把人生看作一场游戏呢？</p>
+    <p>我们每个人都是这场"生命游戏"的玩家。有些关卡主要是天注定的，比如你出生在什么样的家庭、什么样的社会背景；有些更多靠自我的意志和判断，比如组建自己的家庭、打拼自己的事业；还有些是复杂的互动——你在影响别人，别人也在影响你。</p>
+    <p>基于这个想法，我设计了<span class="highlight">"人生十二关卡"</span>的小游戏。通过玩这些小游戏，人们可以在轻松、愉快的氛围中，快速发现自己在认知上的障碍——也就是我所说的通关"卡点"。</p>
+  </div>
+
+  <div class="story-block">
+    <h2>困境不一定要消除，盲区可以立即看见</h2>
+    <p>我必须坦诚地说：人生的很多问题，哪怕你认知通透，也不一定能立刻解决。因为社会是一个极其复杂的系统——除了冥冥之中人类难以完全理解的"天命"，还有诸多复杂的制度设计，让社会成为一台巨大的噪音发生器，一张巨大的人际关系之网，一片让无数英雄好汉望洋兴叹的沼泽地。多少人苦苦追求幸福与成功，最终却不可得。</p>
+    <p>但另一方面，社会也提供了一面复杂的多棱镜，一套价值传播和放大的杠杆，几乎无限的需求点，以及很多关于未来的可能性。</p>
+    <p class="quote">困境是社会环境造成的，不一定能立即解脱；<br>但认知的盲区，可以立即消除。</p>
+    <p>看见更多的真相，问题就不再那么困扰你。这是我做"找到啦"的核心信念。</p>
+  </div>
+
+  <div class="story-block">
+    <h2>我自己的故事</h2>
+    <p>我经历过悲观的思辨时期，最终选择了积极心理学作为方向；我经历过消极厌世，最终选择拥抱和直面真实的人生。我接纳了自己，也接纳了自己的家人。</p>
+    <p>这一年多来，我花了大量时间陪伴孩子，帮助她走过青春期的迷惑与困惑，走出心理障碍。如今我越来越欣赏我的孩子，有如我欣赏和接纳我自己。</p>
+    <p>我的故事还有很多。随着网站后续的建设，你会看到我更多的文章，了解我更多的人生感悟。</p>
+  </div>
+
+  <div class="story-block">
+    <h2>一点小小的请求</h2>
+    <p>"找到啦"是一个公益性质的网站。但维护它确实需要付出一定的成本——服务器、域名、时间，还有持续的内容更新。</p>
+    <p>如果你觉得这些内容对你有所启发，或者产生了些许共鸣，我接受打赏。<span class="highlight">买一个馒头的钱（1元）</span>，就是对我最大的鼓励，支持我更长期地从事这件心理抚慰的小事。</p>
+    <p class="no-indent" style="text-align:center; margin-top: 20px;">
+      <a href="联系我们.html" style="display:inline-block; padding: 10px 28px; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); border-radius: 24px; color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 3px; transition: all 0.3s;">支持我 →</a>
+    </p>
+  </div>
+
+  <div class="footer-link">
+    <a href="index.html">← 返回首页</a>
+  </div>
+</div>
+
+</body>
+</html>

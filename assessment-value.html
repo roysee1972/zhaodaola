@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="社会价值评估：你为这个世界创造了多少价值？发现你独特的价值创造方式。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社会价值创造评估 · 找到啦</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5e6c8;
+  --bg2: #eed9a4;
+  --text-dark: #5a3e1b;
+  --text-mid: #9a7a4a;
+  --text-light: #b89a6a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --border: rgba(139,90,43,0.18);
+  --shadow: rgba(90,60,20,0.12);
+  --radius: 8px;
+  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 8px;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.5s ease;
+  z-index: 10000;
+}
+
+.back-home-btn {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  z-index: 10001;
+  background: rgba(255,252,240,0.85);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(4px);
+}
+.back-home-btn:hover {
+  color: var(--text-dark);
+  border-color: var(--gold);
+  background: rgba(255,252,240,0.95);
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+}
+
+.card {
+  background: rgba(255,252,240,0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* P1 Entry */
+.entry-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff;
+  font-size: 13px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.entry-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.entry-subtitle {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.ring-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+}
+.ring {
+  width: 120px;
+  height: 120px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--gold);
+  font-weight: 700;
+  position: relative;
+  animation: ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.3); }
+  50% { box-shadow: 0 0 0 16px rgba(201,168,76,0); }
+}
+
+.btn-gold {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 24px;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,168,76,0.4);
+}
+.btn-gold:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  padding: 12px 32px;
+  border-radius: 24px;
+  font-family: var(--font);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-outline:hover {
+  background: rgba(201,168,76,0.08);
+}
+
+/* P2 Questions */
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.question-num {
+  font-size: 14px;
+  color: var(--text-light);
+}
+.question-dots {
+  display: flex;
+  gap: 6px;
+}
+.question-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.3s;
+}
+.question-dots span.active {
+  background: var(--gold);
+}
+.question-dots span.done {
+  background: var(--text-light);
+}
+
+.question-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.option-item {
+  background: rgba(255,252,240,0.5);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 15px;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.25s;
+  line-height: 1.5;
+}
+.option-item:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.06);
+}
+.option-item.selected {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.12);
+  color: var(--text-dark);
+}
+
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* P3 Results */
+.result-score {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.result-score-num {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.result-score-label {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-top: 6px;
+}
+.result-level {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+.result-desc {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-mid);
+  margin-bottom: 32px;
+}
+
+.dimension {
+  margin-bottom: 18px;
+}
+.dimension-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.dimension-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.dimension-score {
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 600;
+}
+.dimension-bar {
+  height: 8px;
+  background: rgba(139,90,43,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.dimension-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 4px;
+  transition: width 1s ease;
+  width: 0;
+}
+
+/* P4 Advice */
+.advice-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+.advice-dim {
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.advice-text {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.advice-list {
+  margin-bottom: 24px;
+}
+.advice-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+.advice-num {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.easter-egg {
+  background: rgba(201,168,76,0.08);
+  border-left: 3px solid var(--gold);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 24px;
+}
+.easter-egg p {
+  font-size: 15px;
+  color: var(--text-dark);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.end-text {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.hidden { display: none !important; }
+
+/* P4 buttons */
+.result-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 50px 14px 30px; }
+  .card { padding: 24px 18px; }
+  .entry-title { font-size: 22px; }
+  .question-text { font-size: 17px; }
+  .result-score-num { font-size: 48px; }
+  .ring { width: 90px; height: 90px; font-size: 24px; }
+  .btn-gold { padding: 12px 28px; font-size: 15px; }
+  .back-home-btn { top: 16px; left: 16px; padding: 5px 12px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<button class="back-home-btn" onclick="window.location.href='index.html'">← 返回主页</button>
+
+<!-- ===== P1: Entry ===== -->
+<div class="container page fade-in" id="page1">
+  <div class="card" style="text-align:center; padding:40px 28px;">
+    <span class="entry-badge">社会价值评估 · 找到啦</span>
+    <h1 class="entry-title" style="margin-top:20px;">你为这个世界，<br>创造了多少价值？</h1>
+    <p class="entry-subtitle">价值不是你赚了多少钱，而是因为你，这个世界少了什么问题、多了什么美好。<br>这个评估帮你看看，你创造的价值在哪里。</p>
+    <div class="ring-wrap">
+      <div class="ring">价值</div>
+    </div>
+    <button class="btn-gold" onclick="goPage(2)">开始评估（约5分钟）</button>
+  </div>
+</div>
+
+<!-- ===== P2: Questions ===== -->
+<div class="container page hidden" id="page2">
+  <div class="card">
+    <div class="question-header">
+      <span class="question-num" id="qNum">1 / 10</span>
+      <div class="question-dots" id="qDots"></div>
+    </div>
+    <div class="question-text" id="qText"></div>
+    <div class="option-list" id="qOptions"></div>
+    <div class="question-nav">
+      <button class="btn-outline" id="btnPrev" onclick="prevQ()">上一题</button>
+      <button class="btn-gold" id="btnNext" onclick="nextQ()" disabled>下一题</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P3: Results ===== -->
+<div class="container page hidden" id="page3">
+  <div class="card fade-in">
+    <div class="result-score">
+      <div class="result-score-num" id="totalScore">0</div>
+      <div class="result-score-label">/ 50 · 总价值指数</div>
+    </div>
+    <div class="result-level" id="rLevel"></div>
+    <div class="result-desc" id="rDesc"></div>
+    <div id="dimensions"></div>
+  </div>
+  <div style="text-align:center; margin-top:20px;">
+    <button class="btn-gold" onclick="goPage(4)">查看建议 →</button>
+  </div>
+</div>
+
+<!-- ===== P4: Advice ===== -->
+<div class="container page hidden" id="page4">
+  <div class="card fade-in">
+    <div class="advice-title" id="adviceTitle"></div>
+    <div class="advice-dim" id="adviceDim"></div>
+    <p class="advice-text" id="adviceText"></p>
+    <div class="advice-list" id="adviceList"></div>
+    <div class="easter-egg hidden" id="easterEgg">
+      <p id="eggQuote"></p>
+    </div>
+    <p class="end-text">价值不需要宏大。你认真过好每一天，本身就是对世界的贡献。</p>
+    <div class="result-btns">
+      <button class="btn-outline" onclick="restart()">重新评估</button>
+      <button class="btn-gold" onclick="window.location.href='index.html'">返回主页</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const questions = [
+  {
+    text: "你的工作（或你日常做的事）能帮别人解决实际问题吗？",
+    options: [
+      { text: "经常能，我的工作就是帮人解决问题的", score: 5 },
+      { text: "有时候能，偶尔会帮到别人", score: 4 },
+      { text: "不太确定，可能间接有帮助", score: 3 },
+      { text: "很少，我做的事主要和自己有关", score: 2 },
+      { text: "几乎没有", score: 1 }
+    ]
+  },
+  {
+    text: "你有没有创造过什么东西，让别人从中受益？",
+    options: [
+      { text: "有，而且经常在创造", score: 5 },
+      { text: "有过一些，效果还不错", score: 4 },
+      { text: "偶尔会做一些有用的东西", score: 3 },
+      { text: "很少，但想过要做", score: 2 },
+      { text: "暂时还没有", score: 1 }
+    ]
+  },
+  {
+    text: "你会用自己的技能去帮助身边的人或社区吗？",
+    options: [
+      { text: "会，这是我很自然的习惯", score: 5 },
+      { text: "会，但需要别人先来找我", score: 4 },
+      { text: "偶尔会帮忙", score: 3 },
+      { text: "很少，但不是不愿意", score: 2 },
+      { text: "没有这样做过", score: 1 }
+    ]
+  },
+  {
+    text: "你有没有帮助过某个人成长或变得更好？",
+    options: [
+      { text: "有，而且我能明显看到他们的变化", score: 5 },
+      { text: "有一些，他们后来发展得不错", score: 4 },
+      { text: "可能有，但我不确定影响多大", score: 3 },
+      { text: "很少主动这样做", score: 2 },
+      { text: "没有特别留意过", score: 1 }
+    ]
+  },
+  {
+    text: "在日常生活中，你有没有让别人的生活变得更轻松？",
+    options: [
+      { text: "有，经常有人因此感谢我", score: 5 },
+      { text: "有时候会", score: 4 },
+      { text: "偶尔，看情况", score: 3 },
+      { text: "很少", score: 2 },
+      { text: "不太确定", score: 1 }
+    ]
+  },
+  {
+    text: "你会主动和别人分享你知道的知识或经验吗？",
+    options: [
+      { text: "会，这是我很喜欢做的事", score: 5 },
+      { text: "会，只要有人问我就分享", score: 4 },
+      { text: "偶尔会分享", score: 3 },
+      { text: "很少，觉得别人可能不需要", score: 2 },
+      { text: "没有特别分享过", score: 1 }
+    ]
+  },
+  {
+    text: "你会不会通过自己的行动，创造美好或意义感？",
+    options: [
+      { text: "会，我经常有意识地这样做", score: 5 },
+      { text: "有时候会", score: 4 },
+      { text: "偶尔，在某些时刻", score: 3 },
+      { text: "很少，但很向往", score: 2 },
+      { text: "没有特别想过", score: 1 }
+    ]
+  },
+  {
+    text: "当你看到不公平的事情时，你会站出来说话或行动吗？",
+    options: [
+      { text: "会，我觉得这很重要", score: 5 },
+      { text: "在重要的事情上会", score: 4 },
+      { text: "看情况，有时候会", score: 3 },
+      { text: "很少，但内心会在意", score: 2 },
+      { text: "一般不会", score: 1 }
+    ]
+  },
+  {
+    text: "你离开一个地方（工作、团队、社区）时，它会变得更好吗？",
+    options: [
+      { text: "会，我通常会留下积极的影响", score: 5 },
+      { text: "可能会，我有在注意这点", score: 4 },
+      { text: "不确定", score: 3 },
+      { text: "可能差不多", score: 2 },
+      { text: "没有想过这个问题", score: 1 }
+    ]
+  },
+  {
+    text: "如果世界上没有你的贡献，会有明显的不同吗？",
+    options: [
+      { text: "会，某些人或事会很不一样", score: 5 },
+      { text: "可能会有一些不同", score: 4 },
+      { text: "不确定", score: 3 },
+      { text: "可能不会太明显", score: 2 },
+      { text: "觉得没什么不同", score: 1 }
+    ]
+  }
+];
+
+// Dimension mapping: index -> dimension key
+// 创造价值: questions 2,6,7 (indices 1,5,6)
+// 服务价值: questions 1,3,5 (indices 0,2,4)
+// 成长价值: questions 4,10 (indices 3,9)
+// 正义价值: questions 8,9 (indices 7,8)
+const dimMap = {
+  creation:  { name: '创造价值', icon: '✦', indices: [1,5,6], max: 15 },
+  service:   { name: '服务价值', icon: '✦', indices: [0,2,4], max: 15 },
+  growth:    { name: '成长价值', icon: '✦', indices: [3,9], max: 10 },
+  justice:   { name: '正义价值', icon: '✦', indices: [7,8], max: 10 }
+};
+
+const levels = [
+  { min: 40, max: 50, title: '价值创造者', desc: '你正在用自己的方式让世界变好，这种力量是真实的。' },
+  { min: 30, max: 39, title: '价值在积累', desc: '你已经在创造价值了，只是可能还没意识到自己有多重要。' },
+  { min: 20, max: 29, title: '价值待释放', desc: '你有创造价值的能力，但还没有完全发挥出来。' },
+  { min: 10, max: 19, title: '价值萌芽期', desc: '每个人都有独特的价值，你还在寻找自己的方式，这很正常。' }
+];
+
+const adviceData = {
+  creation: {
+    title: '你可以尝试更多"创造"',
+    dim: '创造价值',
+    text: '你目前在"创造"这个维度上还有很大的空间。创造不一定是发明什么了不起的东西——它可以是一篇文章、一个解决方案、一件手工作品，甚至是一句让人记住的话。',
+    tips: [
+      '每天花10分钟写下或记录一个想法，不求完美，只求开始',
+      '把你擅长的事情做成一个可以分享的小作品（文章、视频、教程）',
+      '下次遇到问题时，试着自己动手解决而不是绕过去'
+    ]
+  },
+  service: {
+    title: '试试"为别人做点什么"',
+    dim: '服务价值',
+    text: '你在"服务"这个维度上还有成长空间。服务不是牺牲自己，而是用你有的东西去帮到需要的人。哪怕很小的事，也是在创造价值。',
+    tips: [
+      '留意身边谁需要帮助，主动问一句"需要我帮忙吗"',
+      '用你的专业技能帮一个朋友或陌生人解决一个小问题',
+      '参与一次社区活动或志愿者服务，体验一下付出的感觉'
+    ]
+  },
+  growth: {
+    title: '"托举他人"会给你带来意想不到的回报',
+    dim: '成长价值',
+    text: '你在"成长"这个维度上还有空间。帮助别人成长是最持久的价值之一——你传递出去的东西，会在别人的生命里继续生长。',
+    tips: [
+      '如果你有经验，试着带一个新人或后辈，分享你的经历',
+      '鼓励一个正在迷茫的朋友，不需要给答案，只需要陪伴',
+      '教别人一个你会的技能，哪怕很基础的也行'
+    ]
+  },
+  justice: {
+    title: '你的声音比你想象的更重要',
+    dim: '正义价值',
+    text: '你在"正义"这个维度上还有空间。正义不一定是站在聚光灯下——它可以是在小事上坚持公平，可以是让一个被忽略的声音被听到。',
+    tips: [
+      '下次看到不公平的事，在你能力范围内说一句公道话',
+      '在团队或群体中，注意那些被忽视的人，给他们发言的机会',
+      '在自己的生活中，坚持你认为对的事情，即使没人看到'
+    ]
+  }
+};
+
+const easterEggs = [
+  '「一个人的价值，在于他贡献了什么，而不在于他获得了什么。」——爱因斯坦',
+  '「真正的价值不在于你拥有什么，而在于你给予什么。」',
+  '「世界上最富有的人，是给予最多的人。」',
+  '「你不需要做伟大的事，只需要用伟大的爱做小事。」——特蕾莎修女',
+  '「你的生命只有一次，但如果你做对了，一次就够了。」——梅·韦斯特'
+];
+
+// ===== STATE =====
+let currentQ = 0;
+let answers = new Array(10).fill(null);
+
+// ===== NAVIGATION =====
+function goPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+  const el = document.getElementById('page' + n);
+  el.classList.remove('hidden');
+  el.classList.remove('fade-in');
+  void el.offsetWidth;
+  el.classList.add('fade-in');
+  updateProgress(n);
+  if (n === 2) renderQuestion();
+  if (n === 3) renderResults();
+  if (n === 4) renderAdvice();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress(n) {
+  const pct = { 1: 5, 2: 10 + (currentQ / 10) * 70, 3: 85, 4: 100 };
+  document.getElementById('progressBar').style.width = (pct[n] || 0) + '%';
+}
+
+// ===== QUESTIONS =====
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('qNum').textContent = (currentQ + 1) + ' / 10';
+  document.getElementById('qText').textContent = q.text;
+
+  // dots
+  let dotsHtml = '';
+  for (let i = 0; i < 10; i++) {
+    let cls = i === currentQ ? 'active' : (answers[i] !== null ? 'done' : '');
+    dotsHtml += '<span class="' + cls + '"></span>';
+  }
+  document.getElementById('qDots').innerHTML = dotsHtml;
+
+  // options
+  let optHtml = '';
+  q.options.forEach((opt, idx) => {
+    let sel = answers[currentQ] === idx ? ' selected' : '';
+    optHtml += '<div class="option-item' + sel + '" onclick="selectOption(' + idx + ')">' + opt.text + '</div>';
+  });
+  document.getElementById('qOptions').innerHTML = optHtml;
+
+  // buttons
+  document.getElementById('btnPrev').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+  const btnNext = document.getElementById('btnNext');
+  btnNext.disabled = answers[currentQ] === null;
+  btnNext.textContent = currentQ === 9 ? '查看结果' : '下一题';
+
+  updateProgress(2);
+}
+
+function selectOption(idx) {
+  answers[currentQ] = idx;
+  renderQuestion();
+}
+
+function prevQ() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function nextQ() {
+  if (answers[currentQ] === null) return;
+  if (currentQ < 9) { currentQ++; renderQuestion(); }
+  else { goPage(3); }
+}
+
+// ===== RESULTS =====
+function renderResults() {
+  const total = answers.reduce((sum, a, i) => sum + (a !== null ? questions[i].options[a].score : 0), 0);
+  document.getElementById('totalScore').textContent = total;
+
+  // level
+  const level = levels.find(l => total >= l.min && total <= l.max);
+  document.getElementById('rLevel').textContent = level ? level.title : '';
+  document.getElementById('rDesc').textContent = level ? level.desc : '';
+
+  // dimensions
+  let dimHtml = '';
+  for (const [key, dim] of Object.entries(dimMap)) {
+    const score = dim.indices.reduce((s, i) => s + (answers[i] !== null ? questions[i].options[answers[i]].score : 0), 0);
+    const pct = Math.round((score / dim.max) * 100);
+    dimHtml += '<div class="dimension"><div class="dimension-head"><span class="dimension-name">' + dim.name + '</span><span class="dimension-score">' + score + ' / ' + dim.max + '</span></div><div class="dimension-bar"><div class="dimension-fill" id="dfill-' + key + '" data-pct="' + pct + '"></div></div></div>';
+  }
+  document.getElementById('dimensions').innerHTML = dimHtml;
+
+  // animate bars
+  setTimeout(() => {
+    for (const key of Object.keys(dimMap)) {
+      const el = document.getElementById('dfill-' + key);
+      if (el) el.style.width = el.dataset.pct + '%';
+    }
+  }, 200);
+
+  // store for advice page
+  window._dims = {};
+  for (const [key, dim] of Object.entries(dimMap)) {
+    const score = dim.indices.reduce((s, i) => s + (answers[i] !== null ? questions[i].options[answers[i]].score : 0), 0);
+    window._dims[key] = score / dim.max;
+  }
+
+  document.getElementById('progressBar').style.width = '85%';
+}
+
+// ===== ADVICE =====
+function renderAdvice() {
+  // find lowest dimension
+  let minKey = 'creation', minVal = 1;
+  for (const [k, v] of Object.entries(window._dims)) {
+    if (v < minVal) { minVal = v; minKey = k; }
+  }
+  const adv = adviceData[minKey];
+  document.getElementById('adviceTitle').textContent = adv.title;
+  document.getElementById('adviceDim').textContent = '需要提升的维度：' + adv.dim;
+  document.getElementById('adviceText').textContent = adv.text;
+
+  let listHtml = '';
+  adv.tips.forEach((t, i) => {
+    listHtml += '<div class="advice-item"><span class="advice-num">' + (i+1) + '</span><span>' + t + '</span></div>';
+  });
+  document.getElementById('adviceList').innerHTML = listHtml;
+
+  // easter egg (20% chance)
+  if (Math.random() < 0.2) {
+    document.getElementById('easterEgg').classList.remove('hidden');
+    document.getElementById('eggQuote').textContent = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+  } else {
+    document.getElementById('easterEgg').classList.add('hidden');
+  }
+
+  document.getElementById('progressBar').style.width = '100%';
+}
+
+function restart() {
+  currentQ = 0;
+  answers = new Array(10).fill(null);
+  goPage(1);
+}
+
+// init dots
+(function initDots() {
+  let h = '';
+  for (let i = 0; i < 10; i++) h += '<span></span>';
+  document.getElementById('qDots').innerHTML = h;
+})();
+</script>
+</body>
+</html>

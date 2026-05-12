@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="健康与衰老关卡：与身体和解，与时间和解。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十一关 · 健康与衰老 — 找到啦</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #9a7a4a;
+    --text-light: #b89a6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 8px;
+    border: 1.5px solid var(--border);
+    pointer-events: none; z-index: 0;
+  }
+  .page {
+    display: none;
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    animation: fadeIn 0.6s ease;
+  }
+  .page.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .gold-line {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 24px;
+  }
+  .card {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px var(--shadow); }
+  .btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+  }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--text-mid);
+    box-shadow: none;
+  }
+  .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+  .center { text-align: center; }
+  .text-mid { color: var(--text-mid); font-size: 14px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-40 { margin-top: 40px; }
+  .mb-8 { margin-bottom: 8px; }
+  .progress-bar-wrap {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 3px;
+    background: rgba(201,168,76,0.15);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 6px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .hero-divider {
+    width: 180px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+  }
+  .deco-ring {
+    width: 160px; height: 160px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    margin: 0 auto 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .deco-ring::before {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+  }
+  .deco-ring-inner {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(201,168,76,0.3);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+    50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
+  }
+  .dilemma-card {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .dilemma-card:hover {
+    background: rgba(255,252,240,0.9);
+    border-color: var(--gold);
+  }
+  .dilemma-card.selected {
+    background: rgba(201,168,76,0.12);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,168,76,0.2);
+  }
+  .dilemma-card.selected::after {
+    content: '';
+    position: absolute;
+    right: 16px; top: 50%;
+    transform: translateY(-50%);
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%235a3e1b' d='M16.7 5.3L7 15l-4.7-4.7 1.4-1.4 3.3 3.3 9.4-9.3z'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .dilemma-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .dilemma-text {
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .dilemma-hint {
+    font-size: 12px;
+    color: var(--text-mid);
+    text-align: right;
+    margin-top: 16px;
+  }
+  .adventure-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px 0;
+  }
+  .flip-card {
+    width: 320px; height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+  .flip-card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute; inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .flip-card-front {
+    background: linear-gradient(145deg, #f0e0b0, #e8d090);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .flip-card-front-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+  }
+  .flip-card-front-hint {
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 3px;
+  }
+  .flip-card-back {
+    background: linear-gradient(145deg, var(--bg), var(--bg2));
+    border: 1.5px solid var(--gold);
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 20px var(--shadow);
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card-quote {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.9;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .flip-card-tap-hint {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-top: 16px;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  .question-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .question-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+  .question-progress {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 6px;
+  }
+  .option-card {
+    background: rgba(255,252,240,0.5);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .option-card:hover {
+    background: rgba(255,252,240,0.85);
+    border-color: rgba(201,168,76,0.5);
+  }
+  .option-card.selected {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+  .option-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .option-card.selected .option-text { font-weight: 500; }
+  .option-check {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .option-card.selected .option-check {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .option-card.selected .option-check::after {
+    content: '';
+    width: 8px; height: 5px;
+    border-left: 1.5px solid var(--text-dark);
+    border-bottom: 1.5px solid var(--text-dark);
+    transform: rotate(-45deg) translate(1px,-1px);
+  }
+  .nav-btn-wrap {
+    display: flex; gap: 12px; justify-content: center;
+    margin-top: 28px;
+  }
+  .result-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .result-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .result-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+  }
+  .result-summary {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    padding: 16px 0 24px;
+    font-style: italic;
+  }
+  .result-card {
+    background: rgba(255,252,240,0.65);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .result-card-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .result-card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .result-card-pct {
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+  .result-bar-bg {
+    height: 6px;
+    background: rgba(139,90,43,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .result-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
+  .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+  .advice-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .advice-intro {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-card {
+    background: rgba(255,252,240,0.6);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .advice-card-label {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .advice-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .advice-card-num {
+    background: var(--gold);
+    color: var(--text-dark);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .advice-card-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .advice-card-action {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    padding: 8px 14px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .advice-card-action::before {
+    content: '→ ';
+  }
+  .hidden-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .hidden-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .hidden-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .step-card {
+    background: rgba(255,252,240,0.55);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .step-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .step-input {
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--text-dark);
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.7;
+    transition: border-color 0.2s;
+  }
+  .step-input:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .step-input::placeholder { color: var(--text-light); }
+  .generate-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(201,168,76,0.3);
+    transition: all 0.2s;
+  }
+  .generate-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(201,168,76,0.4);
+  }
+  .card-preview {
+    display: none;
+    background: linear-gradient(145deg, #f7edd5, #eed9a4);
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-preview.show { display: block; animation: fadeIn 0.5s ease; }
+  .card-preview::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .card-preview-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .card-preview-sub {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+  }
+  .card-preview-content {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 2;
+    white-space: pre-wrap;
+  }
+  .card-preview-response {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+    font-size: 13px;
+    color: var(--text-mid);
+    font-style: italic;
+    line-height: 1.8;
+  }
+  .card-preview-action {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .download-btn {
+    margin-top: 14px;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .download-btn:hover { background: rgba(201,168,76,0.1); }
+  .easter-egg {
+    display: none;
+    background: rgba(90,50,20,0.95);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 520px;
+    text-align: center;
+    color: #f5e6c8;
+    position: relative;
+  }
+  .easter-egg.show { display: block; animation: fadeIn 0.8s ease; }
+  .easter-egg-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(201,168,76,0.7);
+    margin-bottom: 10px;
+  }
+  .easter-egg-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .easter-egg-text {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(245,230,200,0.9);
+  }
+  .easter-egg-close {
+    position: absolute; top: 10px; right: 14px;
+    background: none; border: none;
+    color: rgba(201,168,76,0.5);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .hidden-trigger {
+    display: block;
+    width: 200px;
+    margin: 32px auto 0;
+    padding: 10px 20px;
+    background: none;
+    border: 1px dashed var(--border);
+    border-radius: 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .hidden-trigger:hover {
+    border-color: var(--gold);
+    color: var(--text-mid);
+  }
+  .page-end-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-top: 20px;
+  }
+  .complete-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+  .back-home-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: rgba(245,230,200,0.88);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px var(--shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .back-home-btn:hover {
+    background: rgba(245,230,200,0.98);
+    border-color: var(--gold);
+    color: var(--text-dark);
+    box-shadow: 0 3px 12px var(--shadow);
+    transform: translateY(-1px);
+  }
+  .back-home-btn .arrow {
+    font-size: 14px;
+    line-height: 1;
+    color: var(--gold);
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; letter-spacing: 4px; }
+    .flip-card { width: 280px; height: 180px; }
+    .flip-card-quote { font-size: 14px; }
+    .advice-card-action { font-size: 12px; }
+    .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="progressBar"></div>
+</div>
+
+<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+  <span class="arrow">←</span>
+  <span>返回主页</span>
+</button>
+
+<!-- ==================== P1: 入口页 ==================== -->
+<div class="page active" id="page-entry">
+  <div class="center" style="padding-top: 60px;">
+    <div class="level-badge">第十一关 · 找到啦</div>
+    <div class="deco-ring">
+      <div class="deco-ring-inner">精气神</div>
+    </div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h1 class="hero-title">健康与衰老</h1>
+    <p class="hero-sub">
+      身体是一本连续写了几十年的日记<br>
+      翻开来，全是线索<br>
+      这一关不教你养生，帮你看见
+    </p>
+    <div class="hero-divider"></div>
+    <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
+      你有没有觉得：<br>
+      精力不如从前了？<br>
+      身体在发出一些信号，但还没太当回事？<br>
+      或者，已经开始担心某种「可能性」？
+    </p>
+    <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
+      健康不是没有病，衰老不是只有坏消息。<br>
+      这一关，帮你读懂身体写给你的日记——<br>
+      精气神，到底在哪一层？
+    </p>
+    <div class="gold-line" style="margin: 28px auto;"></div>
+    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
+  </div>
+</div>
+
+<!-- ==================== P2: 困境选择页 ==================== -->
+<div class="page" id="page-dilemma">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第十一关 · 健康与衰老</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 class="hero-title" style="font-size: 26px;">在哪件事上，你最困惑？</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">选择 1-3 条，最贴近你真实的状态。多选也无妨。</p>
+    </div>
+    <div style="margin-top: 24px;" id="dilemmaList"></div>
+    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P3: 冒险卡页 ==================== -->
+<div class="page" id="page-adventure">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第十一关 · 健康与衰老</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+    </div>
+    <div class="adventure-wrap">
+      <div class="flip-card" id="flipCard" onclick="flipCard()">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-card-front-icon">✦</div>
+            <div class="flip-card-front-hint">点击翻开</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="flip-card-quote" id="flipQuote">"身体是一本连续写了几十年的日记，翻开来，全是线索。"</div>
+            <div class="flip-card-tap-hint">— 冒险卡</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P4: 诊断测试页 ==================== -->
+<div class="page" id="page-question">
+  <div style="padding-top: 20px;">
+    <div class="question-header">
+      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-text" id="qText">你最近的身体状态，你给自己的评分是？</div>
+      <div class="question-progress" id="qProgress">1 / 6</div>
+    </div>
+    <div id="optionList"></div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P5: 诊断结果页 ==================== -->
+<div class="page" id="page-result">
+  <div style="padding-top: 20px;">
+    <div class="result-header">
+      <div class="level-badge">诊断完成</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="result-title">你的精气神画像</div>
+      <div class="result-sub">健康与衰老 · 第十一关</div>
+      <div class="result-summary" id="resultSummary"></div>
+    </div>
+    <div id="resultList"></div>
+
+    <div class="easter-egg" id="easterEgg">
+      <button class="easter-egg-close" onclick="closeEgg()">×</button>
+      <div class="easter-egg-label">你发现了一个身体的小秘密</div>
+      <div class="easter-egg-title" id="eggTitle"></div>
+      <div class="easter-egg-text" id="eggText"></div>
+    </div>
+
+    <div class="nav-btn-wrap">
+      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P6: 通关建议页 ==================== -->
+<div class="page" id="page-advice">
+  <div style="padding-top: 20px;">
+    <div class="advice-header">
+      <div class="level-badge">第十一关 · 健康与衰老</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="advice-title">通关建议</div>
+      <div class="advice-intro">
+        精气神，是自己的事。<br>
+        别人的养生经，听听就好。<br>
+        这一关，帮你读懂自己的「身体日记」。
+      </div>
+    </div>
+    <div id="adviceList"></div>
+
+    <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
+      以上不是你想说的？打开你的隐藏关卡 →
+    </div>
+    <div class="page-end-text">— 第十一关 · 健康与衰老 · 完 —</div>
+  </div>
+</div>
+
+<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<div class="page" id="page-hidden">
+  <div style="padding-top: 20px;">
+    <div class="hidden-header">
+      <div class="level-badge">隐藏关卡</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="hidden-title">你的专属关卡</div>
+      <div class="hidden-sub">
+        这里是你的空间，写下你和身体之间真正卡住的事。<br>
+        不用修饰，不用在意文采。真实就好。
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第一步</div>
+      <div class="step-label">我的身体最近在跟我说什么？</div>
+      <textarea class="step-input" id="hidden1" placeholder="最近身体给我的信号是……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第二步</div>
+      <div class="step-label">我最害怕的健康问题是什么？</div>
+      <textarea class="step-input" id="hidden2" placeholder="最担心自己的身体出什么问题……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第三步</div>
+      <div class="step-label">我希望以什么状态老去？</div>
+      <textarea class="step-input" id="hidden3" placeholder="我希望自己老了以后……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第四步</div>
+      <div class="step-label">为了「善终」，我现在愿意做什么？</div>
+      <textarea class="step-input" id="hidden4" placeholder="为了活得有质量，我现在愿意……"></textarea>
+    </div>
+    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
+    <div class="card-preview" id="cardPreview">
+      <div class="card-preview-title">我的精气神地图</div>
+      <div class="card-preview-sub">第十一关 · 健康与衰老 · 找到啦</div>
+      <div class="card-preview-content" id="cardContent"></div>
+      <div class="card-preview-response" id="cardResponse"></div>
+      <div class="card-preview-action" id="cardAction"></div>
+      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 完成页 ==================== -->
+<div class="page" id="page-complete">
+  <div class="center" style="padding-top: 80px;">
+    <div class="complete-icon">✦</div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
+      身体是陪伴你最久的朋友，<br>
+      读懂它的信号，比任何养生经都重要。<br>
+      善待它，它会回报你。
+    </p>
+    <div class="gold-line" style="margin: 0 auto 28px;"></div>
+    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   数据
+   ============================================================ */
+
+// 困境（12条）
+const dilemmas = [
+  { id: 1, text: "最近总是觉得累，睡再多也缓不过来。" },
+  { id: 2, text: "看到镜子里自己的脸，会愣一下：这是我吗？" },
+  { id: 3, text: "对很多事失去兴趣，不是不想，是没力气。" },
+  { id: 4, text: "开始担心某种病会遗传到我身上。" },
+  { id: 5, text: "经常腰酸背痛，但觉得还不到看医生的程度。" },
+  { id: 6, text: "睡眠质量变差了，半夜容易醒。" },
+  { id: 7, text: "有时候会觉得：活着没意思（但不常有）。" },
+  { id: 8, text: "精力不如从前，但上有老下有小，不敢停下来。" },
+  { id: 9, text: "身体发出过好几次警告了，但总是忙，拖着没管。" },
+  { id: 10, text: "开始认真考虑：老了以后怎么办？" },
+  { id: 11, text: "知道运动重要，但就是迈不开腿。" },
+  { id: 12, text: "身体一直很好，但最近开始怕死了。" }
+];
+
+// 冒险卡（12张）
+const adventureCards = [
+  "大脑是可塑的。你现在的每一个念头，都在重塑你的大脑。",
+  "最好的抗衰老药，是『有意义的关系』和『值得投入的事』——哈佛75年研究证明。",
+  "衰老不是病，是时间的礼物——如果你懂得拆。",
+  "精足不思淫，气足不思食，神足不思眠。你的精气神，现在在哪一层？",
+  "身体是陪伴你最久的朋友，善待它，它会回报你。",
+  "焦虑是对未来的恐惧，抑郁是对过去的绝望——都在消耗你的『神』。",
+  "久坐是最温柔的慢性自杀，每小时站起来走5分钟，比吃任何补品都管用。",
+  "最好的养生，不是买贵的保健品，是睡好、吃对、动起来、想得开。",
+  "衰老不可避免，但『老而不衰』是一种选择。",
+  "身体的问题，往往是心理问题的变形。腰疼有时是压力，失眠有时是焦虑。",
+  "死亡不是失败，是完成了使命。你想以什么状态完成你的使命？",
+  "『精满不思淫，气满不思食，神满不思睡』——老祖宗的智慧，也是现代医学的方向。"
+];
+
+// 诊断题（6题×5选项）
+const questions = [
+  {
+    q: "你最近的身体状态，你给自己的评分是？",
+    options: [
+      { text: "精力充沛，状态很好。", key: "01精力充沛" },
+      { text: "还行，比上不足比下有余。", key: "02基本正常" },
+      { text: "有点累，但还能撑。", key: "03轻度疲劳" },
+      { text: "明显感觉精力不如从前了。", key: "04中度疲劳" },
+      { text: "经常觉得累，缓不过来。", key: "05严重疲劳" }
+    ]
+  },
+  {
+    q: "你对『衰老』这件事的第一感受是？",
+    options: [
+      { text: "正常现象，没什么好怕的。", key: "06接纳衰老" },
+      { text: "有点担心，但觉得船到桥头自然直。", key: "07轻度担忧" },
+      { text: "开始认真考虑养生了。", key: "08主动应对" },
+      { text: "挺害怕的，不敢想。", key: "09回避恐惧" },
+      { text: "已经开始了，身体已经在走下坡。", key: "10现实接受" }
+    ]
+  },
+  {
+    q: "你现在的睡眠质量怎么样？",
+    options: [
+      { text: "睡得不错，醒来精神好。", key: "11睡眠优质" },
+      { text: "基本还行，偶尔会醒。", key: "12睡眠尚可" },
+      { text: "经常睡不好，第二天精神差。", key: "13睡眠问题" },
+      { text: "严重失眠，已经影响生活。", key: "14严重失眠" },
+      { text: "靠药物才能睡着。", key: "15药物依赖" }
+    ]
+  },
+  {
+    q: "关于运动，你现在的状态是？",
+    options: [
+      { text: "经常运动，习惯了。", key: "16规律运动" },
+      { text: "偶尔运动，但知道应该多做。", key: "17意识清醒" },
+      { text: "知道运动重要，但就是不动。", key: "18知行不一" },
+      { text: "身体状况不允许运动。", key: "19客观限制" },
+      { text: "完全不运动，也不打算运动。", key: "20无动意愿" }
+    ]
+  },
+  {
+    q: "你对自己健康最大的担心是？",
+    options: [
+      { text: "没什么特别担心的。", key: "21心态乐观" },
+      { text: "慢性病（血压、血糖等）。", key: "22慢性病风险" },
+      { text: "重大疾病（癌症、心脑血管等）。", key: "23重病恐惧" },
+      { text: "老了没人照顾。", key: "24老年焦虑" },
+      { text: "脑子不行了（老年痴呆）。", key: "25认知衰退" }
+    ]
+  },
+  {
+    q: "你现在的精神状态，最接近哪一种？",
+    options: [
+      { text: "充实、有奔头。", key: "26精神充实" },
+      { text: "平淡，但还算安稳。", key: "27基本安定" },
+      { text: "有点迷茫，没什么特别想做的。", key: "28精神平淡" },
+      { text: "疲惫，但不知道为什么。", key: "29身心疲惫" },
+      { text: "经常觉得活着没意思。", key: "30存在空虚" }
+    ]
+  }
+];
+
+// 卡点完整数据（30个维度）
+const cardPoints = {
+  "01精力充沛":    { name: "精力充沛",    desc: "你的精力状态不错，这是很大的资本。别仗着年轻糟蹋它——精力是守得住的财富。", advice: "继续保持。每周保持3次以上运动，这是最划算的投资。", color: "var(--gold)" },
+  "02基本正常":    { name: "基本正常",    desc: "你的身体状态基本在线，不需要过度担心，但也不适合继续透支。", advice: "每年做一次体检，别等出问题了才去。预防永远比治疗划算。", color: "#b89a6a" },
+  "03轻度疲劳":    { name: "轻度疲劳",    desc: "身体已经在提醒你了：累了，需要休息。别忽视这个信号。", advice: "这周，至少有两天在晚上11点前上床。你欠自己的睡眠，迟早要还。", color: "#9a7a4a" },
+  "04中度疲劳":    { name: "中度疲劳",    desc: "精力不如从前，这不是你的错——但忽视它，是你的责任。", advice: "先排查一下：贫血？甲状腺？睡眠呼吸暂停？做个基础检查，排除器质性问题。", color: "#a88040" },
+  "05严重疲劳":    { name: "严重疲劳",    desc: "身体已经在报警了。你一直在撑，但撑是有极限的。", advice: "必须认真对待了。去做全面体检，同时检查一下自己的压力来源——有些疲惫，不是身体的问题，是心理的。", color: "#c0784a" },
+  "06接纳衰老":    { name: "接纳衰老",    desc: "你对衰老有平常心，这是成熟的表现。衰老不可怕，怕的是抗拒。", advice: "继续保持这份接纳，同时关注一下：有没有在用健康的生活方式滋养自己？接纳之外，还需要行动。", color: "var(--gold)" },
+  "07轻度担忧":    { name: "轻度担忧",    desc: "你对衰老有些担心，但还没有被恐惧支配。这种担忧是有益的——它提醒你做点什么。", advice: "把担忧转化为行动：开始关注自己的饮食、睡眠和运动。担心本身不解决问题，行动才解决。", color: "#b89a6a" },
+  "08主动应对":    { name: "主动应对",    desc: "你已经开始认真对待养生了，这是很好的开始。方向比努力重要。", advice: "给自己建立一个可持续的健康习惯：每天走6000步，每周3次运动，少吃精加工食品。——习惯要小，才能坚持。", color: "var(--gold)" },
+  "09回避恐惧":    { name: "回避恐惧",    desc: "你对衰老有恐惧，而且选择了回避。恐惧本身是正常的，但回避会让你错过预防的机会。", advice: "每年体检，是给未来买保险。恐惧不可怕，可怕的是因为恐惧而逃避检查。", color: "#c0784a" },
+  "10现实接受":    { name: "现实接受",    desc: "你的身体已经开始走下坡路了。这不是失败，是每个人都要面对的现实。", advice: "把注意力放在『如何让下坡路走得更稳』上。控制好血压血糖，定期复查，这是你现在能做的最重要的事。", color: "#9a7a4a" },
+  "11睡眠优质":    { name: "睡眠优质",    desc: "你能睡个好觉，这是很大的福气。睡眠是最好的抗衰老药，也是最好的补药。", advice: "继续保持。注意睡前不要看手机，蓝光是睡眠最大的敌人。", color: "var(--gold)" },
+  "12睡眠尚可":    { name: "睡眠尚可",    desc: "你的睡眠基本还行，但还有提升空间。偶尔的失眠，是身体在提醒你：需要调整了。", advice: "睡前2小时避免咖啡、浓茶和剧烈运动。给自己建立一个『睡眠仪式』：洗漱、关灯、听一段轻音乐。", color: "#b89a6a" },
+  "13睡眠问题":    { name: "睡眠问题",    desc: "你的睡眠已经出问题了。睡眠不好，会影响一切：情绪、记忆、免疫力、甚至寿命。", advice: "先排查原因：压力？咖啡？手机？还是身体问题？找到原因再对症下药。必要时看睡眠科医生。", color: "#a88040" },
+  "14严重失眠":    { name: "严重失眠",    desc: "失眠已经成为你生活的一部分了。这不只是睡眠问题，是身心在求救。", advice: "失眠往往是心理问题的身体表达。找专业医生看看，药物短期用是合理的，别硬撑。", color: "#c0784a" },
+  "15药物依赖":    { name: "药物依赖",    desc: "你已经开始靠药物才能睡着。药物可以帮助你度过难关，但不能成为长期解决方案。", advice: "找专业医生，调整用药方案，同时从根本上解决睡眠问题：压力管理、生活方式、认知行为疗法。", color: "#c0784a" },
+  "16规律运动":    { name: "规律运动",    desc: "你有运动的习惯，这很好。运动是逆龄最好的方法，没有之一。", advice: "保持。但也要注意运动的多样性：有氧、力量、柔韧，三个都要。过度运动也是一种伤害。", color: "var(--gold)" },
+  "17意识清醒":    { name: "意识清醒",    desc: "你知道运动重要，但还没真正动起来。知识和行动之间，隔着一道鸿沟。", advice: "从最小的行动开始：每天走6000步。不需要去健身房，不需要买装备，就是走路。坚持一个月，你会看到变化。", color: "#9a7a4a" },
+  "18知行不一":    { name: "知行不一",    desc: "你懂得健康知识，但就是做不到。这是现代人最常见的困境。", advice: "不是『知道』就能『做到』。找一个人陪你一起运动，或者找一个目标——有人陪、有目标，才能坚持。", color: "#b89a6a" },
+  "19客观限制":    { name: "客观限制",    desc: "你的身体状况确实限制了你运动的能力。这不是你的问题，接受它，然后找到适合你的方式。", advice: "即使不能剧烈运动，也可以做柔和的运动：散步、太极、拉伸、游泳。关键是动起来，不是动得多猛。", color: "#9a7a4a" },
+  "20无动意愿":    { name: "无动意愿",    desc: "你完全没有运动的意愿。这背后可能有原因：抑郁？疲惫？还是单纯的习惯？", advice: "先搞清楚原因。如果是因为疲惫，先解决睡眠问题；如果是因为抑郁，需要寻求专业帮助。如果单纯是习惯，那就从最简单的开始：站起来，走两步。", color: "#c0784a" },
+  "21心态乐观":    { name: "心态乐观",    desc: "你对健康没有特别的担忧，这是好事。但乐观不应该变成大意。", advice: "每年体检一次，这是给未来最好的保险。别仗着没症状就忽略检查。", color: "var(--gold)" },
+  "22慢性病风险":  { name: "慢性病风险",  desc: "你担心慢性病（血压、血糖等）。这是最常见的健康威胁，也是最可控的。", advice: "慢性病管理，靠的是生活习惯，不是靠感觉。控制饮食、增加运动、遵医嘱吃药，三管齐下，可以和慢性病和平共处。", color: "#b89a6a" },
+  "23重病恐惧":    { name: "重病恐惧",    desc: "你对重大疾病有恐惧。这个恐惧是合理的——但过度恐惧会影响生活质量。", advice: "恐惧解决不了问题，行动才能。把恐惧转化为定期筛查：肠镜、胃镜、肺CT，根据年龄做该做的检查。早期发现，是对抗癌症最好的武器。", color: "#a88040" },
+  "24老年焦虑":    { name: "老年焦虑",    desc: "你担心老了没人照顾。这是很多人不敢说出口的恐惧。", advice: "提前规划：经济上准备、社交上维护、健康上投资。有钱、有伴、有健康，老年才有保障。", color: "#9a7a4a" },
+  "25认知衰退":    { name: "认知衰退",    desc: "你担心脑子不行了（老年痴呆）。这个恐惧越来越普遍——因为我们都看到了身边人的例子。", advice: "大脑是可以锻炼的：读书、学习新技能、社交、锻炼、控制血压血糖——这些都是保护大脑的方法。开始得越早，效果越好。", color: "#b89a6a" },
+  "26精神充实":    { name: "精神充实",    desc: "你的精神状态很好，有奔头。这是最难得的——很多人有钱有闲，但没有奔头。", advice: "继续保持。同时注意身体：精神充实的人容易透支身体，觉得自己还行。别忘了，你不是铁打的。", color: "var(--gold)" },
+  "27基本安定":    { name: "基本安定",    desc: "你的精神状态基本安稳，不算充实但也不迷茫。这是最常见的状态。", advice: "平淡是福，但平淡久了容易滑向空虚。偶尔给自己一点挑战：学一样新东西，去一个没去过的地方，见一个好久没见的人。", color: "#b89a6a" },
+  "28精神平淡":    { name: "精神平淡",    desc: "你有点迷茫，没什么特别想做的。这种平淡，是很多中年人的真实写照。", advice: "平淡的反面不是轰轰烈烈，是『意义感』。找一个你能帮到的人、做一件你觉得有价值的小事——意义感，会慢慢回来的。", color: "#9a7a4a" },
+  "29身心疲惫":    { name: "身心疲惫",    desc: "你经常觉得累，不只是身体累，是心累。这种疲惫，是身体和心理的双重警报。", advice: "先停下来。不是等有时间了再休息，是现在就休息。哪怕每天15分钟的放空，也比硬撑强。你的身体在求救。", color: "#c0784a" },
+  "30存在空虚":    { name: "存在空虚",    desc: "你经常觉得活着没意思。这不是小问题——如果这个感觉持续超过两周，需要认真对待。", advice: "先排除抑郁症的可能。如果是抑郁症，寻求专业帮助；如果不是，那意味着你的生活需要调整——加意义，减消耗，增联结。", color: "#8b3a2a" }
+};
+
+// 彩蛋（4个，围绕健康与衰老主题）
+const easterEggs = [
+  { title: "《黄帝内经》· 上古天真", text: "黄帝问歧伯：为什么上古之人能活百岁而动作不衰？歧伯答：『食饮有节，起居有常，不妄作劳。』——两千年前的养生经，今天依然管用。" },
+  { title: "哈佛75年研究", text: "哈佛大学追踪了724人75年，结论是：决定一个人健康和幸福的，不是财富、不是成就，而是——良好的人际关系。孤独，是健康最大的杀手。" },
+  { title: "神经可塑性", text: "大脑在你的一生中都在改变。每一次学习、每一次思考、每一次运动，都在重塑你的神经网络。60岁学画、70岁学琴，不晚——你的大脑还在等你给它惊喜。" },
+  { title: "端粒效应", text: "诺贝尔奖得主布莱克本发现：决定你衰老速度的，是端粒的长度。而保护端粒最好的方法，是：减少慢性压力、保持乐观、适度运动、良好睡眠。" }
+];
+
+/* ============================================================
+   状态
+   ============================================================ */
+let currentPage = 'entry';
+let selectedDilemmas = [];
+let currentQuestion = 0;
+let answers = {};
+let cardScores = {};
+
+/* ============================================================
+   页面导航
+   ============================================================ */
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + name);
+  if (el) el.classList.add('active');
+  currentPage = name;
+  updateProgress(name);
+  if (name === 'dilemma') renderDilemma();
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display = 'block'; }
+  if (name === 'question') renderQuestion();
+  if (name === 'result') showResult();
+  if (name === 'advice') showAdvice();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress(name) {
+  const progressMap = { entry: 5, dilemma: 15, adventure: 25, question: 35, result: 80, advice: 90, hidden: 95, complete: 100 };
+  const p = progressMap[name] || 0;
+  document.getElementById('progressBar').style.width = p + '%';
+}
+
+/* ============================================================
+   困境选择
+   ============================================================ */
+function renderDilemma() {
+  const list = document.getElementById('dilemmaList');
+  list.innerHTML = dilemmas.map(d => `
+    <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
+      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-text">${d.text}</div>
+    </div>
+  `).join('');
+  updateDilemmaBtn();
+}
+
+function toggleDilemma(id) {
+  const idx = selectedDilemmas.indexOf(id);
+  if (idx === -1) {
+    if (selectedDilemmas.length < 3) selectedDilemmas.push(id);
+  } else {
+    selectedDilemmas.splice(idx, 1);
+  }
+  renderDilemma();
+}
+
+function updateDilemmaBtn() {
+  const count = selectedDilemmas.length;
+  document.getElementById('dilemmaCount').textContent = count;
+  document.getElementById('dilemmaNextBtn').disabled = count === 0;
+}
+
+function goDilemma() {
+  if (selectedDilemmas.length === 0) return;
+  goPage('adventure');
+}
+
+/* ============================================================
+   冒险卡
+   ============================================================ */
+let currentCardIndex = 0;
+
+function selectRandomCard() {
+  currentCardIndex = Math.floor(Math.random() * adventureCards.length);
+  document.getElementById('flipQuote').textContent = '"' + adventureCards[currentCardIndex] + '"';
+  const fc = document.getElementById('flipCard');
+  fc.classList.remove('flipped');
+  document.getElementById('adventureNextBtn').style.display = 'none';
+  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+}
+
+function flipCard() {
+  const fc = document.getElementById('flipCard');
+  fc.classList.add('flipped');
+  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('adventureNextBtn').style.display = 'inline-block';
+}
+
+function goQuestion() {
+  goPage('question');
+}
+
+/* ============================================================
+   诊断题
+   ============================================================ */
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  const total = questions.length;
+  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
+
+  const optList = document.getElementById('optionList');
+  const saved = answers[currentQuestion] || [];
+  optList.innerHTML = q.options.map((opt, i) => `
+    <div class="option-card${saved.includes(i) ? ' selected' : ''}" onclick="toggleOption(${i})">
+      <div class="option-text">${opt.text}</div>
+      <div class="option-check"></div>
+    </div>
+  `).join('');
+
+  document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
+}
+
+function toggleOption(i) {
+  if (!answers[currentQuestion]) answers[currentQuestion] = [];
+  const idx = answers[currentQuestion].indexOf(i);
+  if (idx === -1) {
+    answers[currentQuestion].push(i);
+  } else {
+    answers[currentQuestion].splice(idx, 1);
+  }
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if ((answers[currentQuestion] || []).length === 0) return;
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  } else {
+    goPage('result');
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+/* ============================================================
+   诊断结果
+   ============================================================ */
+function computeScores() {
+  cardScores = {};
+  questions.forEach((q, qi) => {
+    const selected = answers[qi] || [];
+    selected.forEach(i => {
+      const key = q.options[i].key;
+      cardScores[key] = (cardScores[key] || 0) + 1;
+    });
+  });
+}
+
+function showResult() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+
+  const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
+  const summaryTexts = [
+    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
+    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
+    `身体是一本连续写了几十年的日记，读懂它，比任何养生经都重要。`
+  ];
+  document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
+
+  const resultList = document.getElementById('resultList');
+  resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
+    const cp = cardPoints[key];
+    if (!cp) return '';
+    const pct = Math.min(100, score * 40);
+    const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
+    return `
+      <div class="result-card">
+        <div class="result-card-top">
+          <span class="result-card-name">${cp.name}</span>
+          <span class="result-card-pct">命中 ${score} 次</span>
+        </div>
+        <div class="result-bar-bg">
+          <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  setTimeout(() => {
+    document.querySelectorAll('.result-bar-fill').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width') + '%';
+    });
+  }, 200);
+
+  if (Math.random() < 0.2) {
+    const egg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+    document.getElementById('eggTitle').textContent = egg.title;
+    document.getElementById('eggText').textContent = egg.text;
+    document.getElementById('easterEgg').classList.add('show');
+  }
+}
+
+function closeEgg() {
+  document.getElementById('easterEgg').classList.remove('show');
+}
+
+function goAdvice() {
+  goPage('advice');
+}
+
+/* ============================================================
+   通关建议
+   ============================================================ */
+function showAdvice() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+  const topCards = sorted.slice(0, 5);
+
+  const adviceList = document.getElementById('adviceList');
+  adviceList.innerHTML = topCards.map(([key, score], i) => {
+    const cp = cardPoints[key];
+    if (!cp) return '';
+    return `
+      <div class="advice-card">
+        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-title">
+          <span class="advice-card-num">${i+1}</span>
+          ${cp.name}
+        </div>
+        <div class="advice-card-desc">${cp.desc}</div>
+        <div class="advice-card-action">${cp.advice}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function goHidden() {
+  goPage('hidden');
+}
+
+/* ============================================================
+   隐藏关卡
+   ============================================================ */
+function generateCard() {
+  const h1 = document.getElementById('hidden1').value.trim();
+  const h2 = document.getElementById('hidden2').value.trim();
+  const h3 = document.getElementById('hidden3').value.trim();
+  const h4 = document.getElementById('hidden4').value.trim();
+
+  if (!h1 && !h2 && !h3 && !h4) {
+    alert('先写点什么吧，至少说一件你卡住的事。');
+    return;
+  }
+
+  const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
+    `第${['一','二','三','四'][i]}步：${t}`
+  ).join('\n\n');
+
+  document.getElementById('cardContent').textContent = content;
+
+  const responses = [
+    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
+    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
+    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
+    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+  ];
+  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+
+  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：给你的身体一个信号——我听到你了。';
+  document.getElementById('cardAction').textContent = firstAction;
+
+  document.getElementById('cardPreview').classList.add('show');
+}
+
+function downloadCard() {
+  const preview = document.getElementById('cardPreview');
+  const canvas = document.createElement('canvas');
+  canvas.width = 600; canvas.height = 800;
+  const ctx = canvas.getContext('2d');
+
+  const grad = ctx.createLinearGradient(0, 0, 600, 800);
+  grad.addColorStop(0, '#f7edd5');
+  grad.addColorStop(1, '#eed9a4');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 600, 800);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.fillRect(0, 0, 600, 4);
+
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = 'bold 28px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的隐藏关卡', 300, 80);
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = '12px serif';
+  ctx.fillText('第十一关 · 健康与衰老 · 找到啦', 300, 108);
+
+  ctx.strokeStyle = 'rgba(139,90,43,0.3)';
+  ctx.beginPath();
+  ctx.moveTo(100, 130); ctx.lineTo(500, 130);
+  ctx.stroke();
+
+  const content = document.getElementById('cardContent').textContent;
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = '14px serif';
+  ctx.textAlign = 'left';
+  const lines = content.split('\n\n');
+  let y = 170;
+  lines.forEach(para => {
+    ctx.fillText(para, 50, y);
+    y += 26 + 20;
+  });
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = 'italic 13px serif';
+  const resp = document.getElementById('cardResponse').textContent;
+  ctx.fillText(resp, 50, y + 20);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.font = 'bold 13px serif';
+  const act = document.getElementById('cardAction').textContent;
+  ctx.fillText(act, 50, y + 50);
+
+  ctx.fillStyle = '#b89a6a';
+  ctx.font = '11px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('— 第十一关 · 健康与衰老 · 找到啦 —', 300, 750);
+
+  const link = document.createElement('a');
+  link.download = '我的隐藏关卡.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function restart() {
+  selectedDilemmas = [];
+  currentQuestion = 0;
+  answers = {};
+  cardScores = {};
+  document.getElementById('easterEgg').classList.remove('show');
+  document.getElementById('cardPreview').classList.remove('show');
+  ['hidden1','hidden2','hidden3','hidden4'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  goPage('entry');
+}
+
+function goBackHome() {
+  if (document.referrer && document.referrer !== window.location.href) {
+    history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+
+/* ============================================================
+   启动
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderDilemma();
+});
+</script>
+
+</body>
+</html>

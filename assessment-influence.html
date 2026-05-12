@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="社会影响力评估：你对这个世界有多少影响力？四维度帮你看见自己的影响力。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社会影响力评估 · 找到啦</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5e6c8;
+  --bg2: #eed9a4;
+  --text-dark: #5a3e1b;
+  --text-mid: #9a7a4a;
+  --text-light: #b89a6a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --border: rgba(139,90,43,0.18);
+  --shadow: rgba(90,60,20,0.12);
+  --radius: 8px;
+  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+body::after {
+  content:'';
+  position:fixed;
+  inset:8px;
+  border:1.5px solid var(--gold);
+  border-radius:6px;
+  pointer-events:none;
+  z-index:9999;
+  opacity:0.35;
+}
+.progress-bar {
+  position:fixed; top:0; left:0; height:3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index:10000; transition: width 0.5s ease;
+}
+.back-home-btn {
+  position:fixed; top:20px; left:20px; z-index:100;
+  background:rgba(255,252,240,0.85); border:1px solid var(--border);
+  border-radius:var(--radius); padding:8px 16px;
+  font-family:var(--font); font-size:14px; color:var(--text-mid);
+  cursor:pointer; transition:all 0.3s;
+  box-shadow:0 2px 8px var(--shadow);
+}
+.back-home-btn:hover { background:rgba(255,252,240,1); color:var(--text-dark); }
+.container {
+  max-width:780px; margin:0 auto; padding:60px 24px 40px;
+}
+.page { display:none; animation: fadeIn 0.6s ease; }
+.page.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.card {
+  background:rgba(255,252,240,0.7);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px;
+  margin-bottom:24px;
+  box-shadow:0 4px 16px var(--shadow);
+}
+.badge {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  color:#fff; font-size:13px; padding:4px 14px;
+  border-radius:20px; margin-bottom:20px;
+}
+h1 { font-size:28px; line-height:1.5; margin-bottom:16px; }
+h2 { font-size:22px; margin-bottom:16px; }
+.subtitle { color:var(--text-mid); font-size:16px; line-height:1.8; margin-bottom:28px; }
+.ring {
+  width:140px; height:140px; border-radius:50%;
+  border:3px solid var(--gold); display:flex;
+  align-items:center; justify-content:center;
+  margin:24px auto; position:relative;
+  background: radial-gradient(circle, rgba(232,200,112,0.15), transparent);
+}
+.ring span {
+  font-size:32px; font-weight:700;
+  background:linear-gradient(135deg, var(--gold), #d4a03c);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.btn {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  color:#fff; font-family:var(--font); font-size:16px;
+  padding:14px 36px; border:none; border-radius:var(--radius);
+  cursor:pointer; transition:all 0.3s; box-shadow:0 4px 12px rgba(201,168,76,0.3);
+}
+.btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(201,168,76,0.4); }
+.btn-outline {
+  background:transparent; border:1.5px solid var(--gold); color:var(--gold);
+  padding:10px 24px; font-size:14px; box-shadow:none;
+}
+.btn-outline:hover { background:rgba(201,168,76,0.1); }
+.question-card { text-align:center; }
+.q-number { color:var(--text-light); font-size:13px; margin-bottom:8px; }
+.q-text { font-size:19px; line-height:1.7; margin-bottom:28px; font-weight:600; }
+.option {
+  display:block; width:100%; text-align:left;
+  background:rgba(255,252,240,0.6); border:1px solid var(--border);
+  border-radius:var(--radius); padding:14px 18px;
+  margin-bottom:10px; cursor:pointer;
+  font-family:var(--font); font-size:15px; color:var(--text-dark);
+  transition:all 0.25s;
+}
+.option:hover { border-color:var(--gold); background:rgba(232,200,112,0.15); }
+.option.selected { border-color:var(--gold); background:rgba(232,200,112,0.2); box-shadow:0 0 0 1px var(--gold); }
+.q-nav { display:flex; justify-content:space-between; margin-top:24px; }
+.dim-card {
+  background:rgba(255,252,240,0.5); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px; margin-bottom:16px;
+}
+.dim-title { font-size:16px; font-weight:600; margin-bottom:10px; }
+.dim-bar-bg {
+  height:10px; background:rgba(139,90,43,0.1); border-radius:5px; overflow:hidden;
+}
+.dim-bar {
+  height:100%; border-radius:5px; width:0; transition: width 1s ease;
+}
+.bar-high { background:linear-gradient(90deg, #6abf69, #4caf50); }
+.bar-mid { background:linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.bar-low { background:linear-gradient(90deg, #e57373, #ef5350); }
+.dim-score { float:right; font-size:14px; color:var(--text-mid); }
+.result-level { font-size:26px; font-weight:700; margin:16px 0 8px; }
+.result-desc { color:var(--text-mid); font-size:16px; line-height:1.7; }
+.total-score {
+  font-size:48px; font-weight:700; text-align:center;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  margin:16px 0;
+}
+.advice-item {
+  background:rgba(255,252,240,0.5); border-left:3px solid var(--gold);
+  padding:16px 20px; margin-bottom:14px; border-radius:0 var(--radius) var(--radius) 0;
+  line-height:1.7;
+}
+.advice-item strong { color:var(--gold); }
+.easter-egg {
+  background:linear-gradient(135deg, rgba(232,200,112,0.1), rgba(201,168,76,0.15));
+  border:1px dashed var(--gold); border-radius:var(--radius);
+  padding:24px; margin:24px 0; text-align:center;
+  font-style:italic; color:var(--text-mid); line-height:1.8;
+}
+.footer-note {
+  text-align:center; color:var(--text-light); font-size:14px;
+  margin-top:32px; line-height:1.8;
+}
+@media(max-width:600px) {
+  .container { padding:50px 14px 30px; }
+  h1 { font-size:22px; }
+  .card { padding:20px 16px; }
+  .ring { width:110px; height:110px; }
+  .ring span { font-size:26px; }
+  .total-score { font-size:38px; }
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<button class="back-home-btn" onclick="window.location.href='index.html'">← 返回主页</button>
+<div class="container">
+
+<!-- PAGE 1: ENTRY -->
+<div class="page active" id="page-entry">
+  <div class="card" style="text-align:center;">
+    <div class="badge">社会影响力评估 · 找到啦</div>
+    <h1>你对这个世界，有多少影响力？</h1>
+    <p class="subtitle">影响力不是权力，不是名气。<br>是你身边的人，因为你的存在，过得更好了一点点。<br>这个评估帮你看看，你的影响力辐射到了哪里。</p>
+    <div class="ring"><span>影响</span></div>
+    <br>
+    <button class="btn" onclick="goPage('questions')">开始评估 · 约5分钟</button>
+  </div>
+</div>
+
+<!-- PAGE 2: QUESTIONS -->
+<div class="page" id="page-questions">
+  <div class="card question-card" id="q-card">
+    <div class="q-number" id="q-number"></div>
+    <div class="q-text" id="q-text"></div>
+    <div id="q-options"></div>
+    <div class="q-nav">
+      <button class="btn btn-outline" id="btn-prev" onclick="prevQ()">← 上一题</button>
+      <button class="btn" id="btn-next" onclick="nextQ()">下一题 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: RESULT -->
+<div class="page" id="page-result">
+  <div class="card" style="text-align:center;">
+    <div class="badge">评估结果</div>
+    <h2>你的社会影响力画像</h2>
+    <div class="total-score" id="total-score"></div>
+    <div class="result-level" id="result-level"></div>
+    <div class="result-desc" id="result-desc"></div>
+  </div>
+  <div class="card" id="dims-card">
+    <h2 style="margin-bottom:20px;">四维影响力分布</h2>
+    <div id="dims"></div>
+  </div>
+  <div style="text-align:center;">
+    <button class="btn" onclick="goPage('advice')">查看个性化建议 →</button>
+  </div>
+</div>
+
+<!-- PAGE 4: ADVICE -->
+<div class="page" id="page-advice">
+  <div class="card">
+    <div class="badge">给你的建议</div>
+    <h2 id="advice-title"></h2>
+    <div id="advice-content" style="margin-top:20px;"></div>
+  </div>
+  <div id="easter-egg-container"></div>
+  <div class="card">
+    <p class="footer-note">影响力不需要舞台。<br>你日常的一言一行，就是你的舞台。</p>
+    <div style="text-align:center; margin-top:24px;">
+      <button class="btn" onclick="window.location.href='index.html'">返回主页</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    text: "遇到难题时，身边的人会来找你商量吗？",
+    dim: "interpersonal",
+    options: [
+      { text: "经常，他们说跟我聊完会清晰很多", score: 5 },
+      { text: "有时候会，看是什么事", score: 4 },
+      { text: "偶尔吧，不太常", score: 3 },
+      { text: "很少，我好像不是那种被想到的人", score: 2 },
+      { text: "从来不会，我不觉得别人需要我", score: 1 }
+    ]
+  },
+  {
+    text: "你走进一个房间，能感觉到氛围的变化吗？",
+    dim: "interpersonal",
+    options: [
+      { text: "能，我经常能带动气氛", score: 5 },
+      { text: "有时候可以，看状态", score: 4 },
+      { text: "不太确定", score: 3 },
+      { text: "我一般不引人注意", score: 2 },
+      { text: "我尽量不被人注意到", score: 1 }
+    ]
+  },
+  {
+    text: "看到有人被不公平对待，你通常会怎么做？",
+    dim: "contribution",
+    options: [
+      { text: "站出来说话，哪怕有风险", score: 5 },
+      { text: "私下支持被欺负的人", score: 4 },
+      { text: "心里不舒服，但不太敢做什么", score: 3 },
+      { text: "假装没看到", score: 2 },
+      { text: "觉得那不关我的事", score: 1 }
+    ]
+  },
+  {
+    text: "你有没有认真教过或带过一个人？",
+    dim: "contribution",
+    options: [
+      { text: "有，看到他们成长是我最开心的事", score: 5 },
+      { text: "有过，虽然花了不少精力", score: 4 },
+      { text: "偶尔指点过，但不算正式", score: 3 },
+      { text: "没有，觉得自己还不够格", score: 2 },
+      { text: "不擅长，也不想", score: 1 }
+    ]
+  },
+  {
+    text: "你说的话，能影响别人的决定吗？",
+    dim: "leadership",
+    options: [
+      { text: "经常，我的建议别人会认真考虑", score: 5 },
+      { text: "有时候会", score: 4 },
+      { text: "不太确定", score: 3 },
+      { text: "很少，我说什么好像不重要", score: 2 },
+      { text: "从不，我不觉得自己有话语权", score: 1 }
+    ]
+  },
+  {
+    text: "你为身边的社区或群体做过什么贡献？",
+    dim: "contribution",
+    options: [
+      { text: "经常参与，我觉得这是应该的", score: 5 },
+      { text: "偶尔参加一些活动", score: 4 },
+      { text: "很少，但有想过", score: 3 },
+      { text: "基本没有，自己都忙不过来", score: 2 },
+      { text: "没想过，跟我没关系", score: 1 }
+    ]
+  },
+  {
+    text: "两个人闹矛盾时，你能帮他们缓和吗？",
+    dim: "leadership",
+    options: [
+      { text: "通常可以，我能看到双方的立场", score: 5 },
+      { text: "有时候能帮上忙", score: 4 },
+      { text: "不确定，要看情况", score: 3 },
+      { text: "我不太会处理这种事", score: 2 },
+      { text: "我尽量避免卷入", score: 1 }
+    ]
+  },
+  {
+    text: "你觉得别人会记得你做过的好事吗？",
+    dim: "interpersonal",
+    options: [
+      { text: "会的，有人跟我说过", score: 5 },
+      { text: "可能吧，不太确定", score: 4 },
+      { text: "希望如此", score: 3 },
+      { text: "应该不会", score: 2 },
+      { text: "我不觉得自己做过什么值得记住的事", score: 1 }
+    ]
+  },
+  {
+    text: "你有没有影响过某个人的人生方向？",
+    dim: "rolemodel",
+    options: [
+      { text: "有，他们后来告诉我了", score: 5 },
+      { text: "也许有，但我没确认过", score: 4 },
+      { text: "不确定", score: 3 },
+      { text: "应该没有", score: 2 },
+      { text: "我不觉得自己能影响任何人", score: 1 }
+    ]
+  },
+  {
+    text: '你是不是那种"先做再说"的人？',
+    dim: "leadership",
+    options: [
+      { text: "是的，我相信行动比语言有力", score: 5 },
+      { text: "大部分时候是", score: 4 },
+      { text: "看情况", score: 3 },
+      { text: "我更喜欢等别人先做", score: 2 },
+      { text: "我很少主动行动", score: 1 }
+    ]
+  }
+];
+
+let answers = new Array(10).fill(null);
+let curQ = 0;
+
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById('page-' + name);
+  pg.classList.add('active');
+  pg.style.animation = 'none';
+  pg.offsetHeight;
+  pg.style.animation = '';
+  let pct = 10;
+  if (name === 'questions') pct = 20 + Math.round((curQ / 10) * 50);
+  else if (name === 'result') pct = 85;
+  else if (name === 'advice') pct = 100;
+  document.getElementById('progress').style.width = pct + '%';
+  if (name === 'questions') renderQ();
+  if (name === 'result') renderResult();
+  if (name === 'advice') renderAdvice();
+}
+
+function renderQ() {
+  const q = questions[curQ];
+  document.getElementById('q-number').textContent = '第 ' + (curQ+1) + ' / 10 题';
+  document.getElementById('q-text').textContent = q.text;
+  const box = document.getElementById('q-options');
+  box.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option' + (answers[curQ] === i ? ' selected' : '');
+    btn.textContent = o.text;
+    btn.onclick = () => { answers[curQ] = i; renderQ(); };
+    box.appendChild(btn);
+  });
+  document.getElementById('btn-prev').style.visibility = curQ === 0 ? 'hidden' : 'visible';
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = curQ === 9 ? '查看结果 →' : '下一题 →';
+  document.getElementById('progress').style.width = (20 + Math.round((curQ/10)*50)) + '%';
+}
+
+function prevQ() { if (curQ > 0) { curQ--; renderQ(); } }
+function nextQ() {
+  if (answers[curQ] === null) { alert('请先选择一个选项'); return; }
+  if (curQ < 9) { curQ++; renderQ(); }
+  else goPage('result');
+}
+
+function renderResult() {
+  let total = 0;
+  const dims = { interpersonal: { sum:0, cnt:0 }, leadership: { sum:0, cnt:0 }, contribution: { sum:0, cnt:0 }, rolemodel: { sum:0, cnt:0 } };
+  questions.forEach((q, i) => {
+    const s = q.options[answers[i]].score;
+    total += s;
+    dims[q.dim].sum += s;
+    dims[q.dim].cnt++;
+  });
+  document.getElementById('total-score').textContent = total + ' / 50';
+  let level, desc;
+  if (total >= 40) { level = '🌟 影响力深远'; desc = '你是很多人生命中的一盏灯。你的存在本身，就在照亮别人的路。'; }
+  else if (total >= 30) { level = '✨ 影响力正在生长'; desc = '你已经在照亮一些人了。继续做你正在做的事，影响力会自然扩展。'; }
+  else if (total >= 20) { level = '🌱 影响力沉睡中'; desc = '你有潜力，只是还没有完全释放。也许你不知道，你比你以为的更重要。'; }
+  else { level = '💤 影响力待觉醒'; desc = '你可能低估了自己。每个人都有影响力，关键是你愿不愿意把它用出来。'; }
+  document.getElementById('result-level').textContent = level;
+  document.getElementById('result-desc').textContent = desc;
+
+  const dimNames = { interpersonal:'人际影响', leadership:'领导力', contribution:'贡献力', rolemodel:'示范力' };
+  const dimEmoji = { interpersonal:'🤝', leadership:'🧭', contribution:'🎁', rolemodel:'🔥' };
+  const dimsDiv = document.getElementById('dims');
+  dimsDiv.innerHTML = '';
+  Object.keys(dims).forEach(key => {
+    const d = dims[key];
+    const avg = d.sum / d.cnt;
+    const pct = Math.round((avg / 5) * 100);
+    const cls = pct >= 70 ? 'bar-high' : pct >= 40 ? 'bar-mid' : 'bar-low';
+    dimsDiv.innerHTML += `
+      <div class="dim-card">
+        <div class="dim-title">${dimEmoji[key]} ${dimNames[key]} <span class="dim-score">${pct}%</span></div>
+        <div class="dim-bar-bg"><div class="dim-bar ${cls}" data-pct="${pct}"></div></div>
+      </div>`;
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.dim-bar').forEach(b => { b.style.width = b.dataset.pct + '%'; });
+  }, 200);
+  document.getElementById('progress').style.width = '85%';
+  window._dims = dims;
+}
+
+function renderAdvice() {
+  const dims = window._dims;
+  const dimNames = { interpersonal:'人际影响', leadership:'领导力', contribution:'贡献力', rolemodel:'示范力' };
+  let lowest = null, lowestAvg = 6;
+  Object.keys(dims).forEach(k => {
+    const avg = dims[k].sum / dims[k].cnt;
+    if (avg < lowestAvg) { lowestAvg = avg; lowest = k; }
+  });
+
+  const adviceMap = {
+    interpersonal: {
+      title: '💡 你的影响力从"被信任"开始',
+      items: [
+        '<strong>先听再说：</strong>下次有人找你聊天，先别急着给建议。认真听完，问一句"你感觉怎么样？"——被听见的感觉，比任何建议都有力。',
+        '<strong>记住小事：</strong>记住别人说过的小事——他家猫的名字、她喜欢的咖啡口味。这些细节让人觉得"被重视"。',
+        '<strong>主动问候：</strong>不用等大事才联系。发一条简单的"最近怎么样？"——你不知道，这条消息可能刚好出现在对方最需要的时候。'
+      ]
+    },
+    leadership: {
+      title: '💡 你的影响力从"敢站出来"开始',
+      items: [
+        '<strong>先做一步：</strong>不用等到万事俱备。看到问题，先动手做第一步——别人会跟上来的。',
+        '<strong>说出你的看法：</strong>开会时第一个发言，哪怕只是提一个问题。沉默的人永远没有影响力。',
+        '<strong>承担"不受欢迎"的决定：</strong>真正的领导力，是敢于做对但不讨好的事。这需要勇气，但也会赢得真正的尊重。'
+      ]
+    },
+    contribution: {
+      title: '💡 你的影响力从"给予"开始',
+      items: [
+        '<strong>教一个人一件事：</strong>你擅长的任何事——做菜、修电脑、写简历——找一个人认真教他。知识被传递的那一刻，影响力就发生了。',
+        '<strong>每周做一件"不求回报"的事：</strong>帮邻居拿快递、给同事带杯咖啡、在网上认真回答一个求助帖。小事不小。',
+        '<strong>加入一个社区：</strong>志愿者、读书会、业主群——找到一个你能贡献的地方。贡献不需要宏大，持续就够了。'
+      ]
+    },
+    rolemodel: {
+      title: '💡 你的影响力从"做自己"开始',
+      items: [
+        '<strong>活出一致性：</strong>你说的和你做的，是不是一样的？影响力最大的来源，是"言行一致"。',
+        '<strong>分享你的失败：</strong>不要只展示成功。告诉别人你搞砸过什么、学到了什么——真实比完美更有力量。',
+        '<strong>坚持一件小事：</strong>每天跑步、每周写一篇文章、每月做一次公益——持续做一件事本身，就是最好的示范。'
+      ]
+    }
+  };
+
+  const adv = adviceMap[lowest];
+  document.getElementById('advice-title').textContent = adv.title;
+  const box = document.getElementById('advice-content');
+  adv.items.forEach(item => {
+    box.innerHTML += '<div class="advice-item">' + item + '</div>';
+  });
+
+  // Easter egg (20% chance)
+  const eegg = document.getElementById('easter-egg-container');
+  if (Math.random() < 0.2) {
+    const quotes = [
+      '🌿 "一个人可以改变整个房间的温度。你不需要很大，只需要真实。" ——布芮尼·布朗',
+      '🌊 "不要小看你在一个普通日子里对一个普通人的善意。那可能改变一切。" ——南丁格尔',
+      '🌻 "真正的领导力不是关于控制，而是关于照顾那些在你管辖之下的人。" ——西蒙·斯涅克',
+      '🕊️ "你能为别人做的最好的事，不是给他们你的财富，而是让他们看到自己的财富。" ——亚当·格兰特',
+      '🔥 "影响力不是你做了什么，而是别人因为你而做了什么。"'
+    ];
+    eegg.innerHTML = '<div class="easter-egg">' + quotes[Math.floor(Math.random()*quotes.length)] + '</div>';
+  }
+  document.getElementById('progress').style.width = '100%';
+}
+
+// Init
+document.getElementById('progress').style.width = '10%';
+</script>
+</body>
+</html>

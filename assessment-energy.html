@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="生命能量状态评估：测测你的生命能量还剩多少，四维度诊断你的身心状态。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生命能量状态评估 · 找到啦</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5e6c8;
+  --bg2: #eed9a4;
+  --text-dark: #5a3e1b;
+  --text-mid: #9a7a4a;
+  --text-light: #b89a6a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --border: rgba(139,90,43,0.18);
+  --shadow: rgba(90,60,20,0.12);
+  --radius: 8px;
+  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+body::after {
+  content:'';
+  position:fixed;
+  inset:8px;
+  border:1.5px solid var(--gold);
+  border-radius:6px;
+  pointer-events:none;
+  z-index:9999;
+  opacity:0.35;
+}
+.progress-bar {
+  position:fixed; top:0; left:0; height:3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index:10000; transition: width 0.5s ease;
+}
+.back-home-btn {
+  position:fixed; top:20px; left:20px; z-index:100;
+  background:rgba(255,252,240,0.85); border:1px solid var(--border);
+  border-radius:var(--radius); padding:8px 16px;
+  font-family:var(--font); font-size:14px; color:var(--text-mid);
+  cursor:pointer; transition:all 0.3s;
+  box-shadow:0 2px 8px var(--shadow);
+}
+.back-home-btn:hover { background:rgba(255,252,240,1); color:var(--text-dark); }
+.container {
+  max-width:780px; margin:0 auto; padding:60px 24px 40px;
+}
+.page { display:none; animation: fadeIn 0.6s ease; }
+.page.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.card {
+  background:rgba(255,252,240,0.7);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px;
+  margin-bottom:24px;
+  box-shadow:0 4px 16px var(--shadow);
+}
+.badge {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  color:#fff; font-size:13px; padding:4px 14px;
+  border-radius:20px; margin-bottom:20px;
+}
+h1 { font-size:28px; line-height:1.5; margin-bottom:16px; }
+h2 { font-size:22px; margin-bottom:16px; }
+.subtitle { color:var(--text-mid); font-size:16px; line-height:1.8; margin-bottom:28px; }
+.ring {
+  width:140px; height:140px; border-radius:50%;
+  border:3px solid var(--gold); display:flex;
+  align-items:center; justify-content:center;
+  margin:24px auto; position:relative;
+  background: radial-gradient(circle, rgba(232,200,112,0.15), transparent);
+}
+.ring span {
+  font-size:32px; font-weight:700;
+  background:linear-gradient(135deg, var(--gold), #d4a03c);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.btn {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  color:#fff; font-family:var(--font); font-size:16px;
+  padding:14px 36px; border:none; border-radius:var(--radius);
+  cursor:pointer; transition:all 0.3s; box-shadow:0 4px 12px rgba(201,168,76,0.3);
+}
+.btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(201,168,76,0.4); }
+.btn-outline {
+  background:transparent; border:1.5px solid var(--gold); color:var(--gold);
+  padding:10px 24px; font-size:14px; box-shadow:none;
+}
+.btn-outline:hover { background:rgba(201,168,76,0.1); }
+.question-card { text-align:center; }
+.q-number { color:var(--text-light); font-size:13px; margin-bottom:8px; }
+.q-text { font-size:19px; line-height:1.7; margin-bottom:28px; font-weight:600; }
+.option {
+  display:block; width:100%; text-align:left;
+  background:rgba(255,252,240,0.6); border:1px solid var(--border);
+  border-radius:var(--radius); padding:14px 18px;
+  margin-bottom:10px; cursor:pointer;
+  font-family:var(--font); font-size:15px; color:var(--text-dark);
+  transition:all 0.25s;
+}
+.option:hover { border-color:var(--gold); background:rgba(232,200,112,0.15); }
+.option.selected { border-color:var(--gold); background:rgba(232,200,112,0.2); box-shadow:0 0 0 1px var(--gold); }
+.q-nav { display:flex; justify-content:space-between; margin-top:24px; }
+.dim-card {
+  background:rgba(255,252,240,0.5); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px; margin-bottom:16px;
+}
+.dim-title { font-size:16px; font-weight:600; margin-bottom:10px; }
+.dim-bar-bg {
+  height:10px; background:rgba(139,90,43,0.1); border-radius:5px; overflow:hidden;
+}
+.dim-bar {
+  height:100%; border-radius:5px; width:0; transition: width 1s ease;
+}
+.bar-high { background:linear-gradient(90deg, #6abf69, #4caf50); }
+.bar-mid { background:linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.bar-low { background:linear-gradient(90deg, #e57373, #ef5350); }
+.dim-score { float:right; font-size:14px; color:var(--text-mid); }
+.result-level { font-size:26px; font-weight:700; margin:16px 0 8px; }
+.result-desc { color:var(--text-mid); font-size:16px; line-height:1.7; }
+.total-score {
+  font-size:48px; font-weight:700; text-align:center;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  margin:16px 0;
+}
+.advice-item {
+  background:rgba(255,252,240,0.5); border-left:3px solid var(--gold);
+  padding:16px 20px; margin-bottom:14px; border-radius:0 var(--radius) var(--radius) 0;
+  line-height:1.7;
+}
+.advice-item strong { color:var(--gold); }
+.easter-egg {
+  background:linear-gradient(135deg, rgba(232,200,112,0.1), rgba(201,168,76,0.15));
+  border:1px dashed var(--gold); border-radius:var(--radius);
+  padding:24px; margin:24px 0; text-align:center;
+  font-style:italic; color:var(--text-mid); line-height:1.8;
+}
+.footer-note {
+  text-align:center; color:var(--text-light); font-size:14px;
+  margin-top:32px; line-height:1.8;
+}
+@media(max-width:600px) {
+  .container { padding:50px 14px 30px; }
+  h1 { font-size:22px; }
+  .card { padding:20px 16px; }
+  .ring { width:110px; height:110px; }
+  .ring span { font-size:26px; }
+  .total-score { font-size:38px; }
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<button class="back-home-btn" onclick="window.location.href='index.html'">← 返回主页</button>
+<div class="container">
+
+<!-- PAGE 1: ENTRY -->
+<div class="page active" id="page-entry">
+  <div class="card" style="text-align:center;">
+    <div class="badge">生命能量评估 · 找到啦</div>
+    <h1>你的生命能量，还好吗？</h1>
+    <p class="subtitle">有时候你觉得累，不是因为事情太多，而是因为内心的火在变小。<br>这个评估帮你看看，你的生命能量现在处于什么状态。</p>
+    <div class="ring"><span>能量</span></div>
+    <br>
+    <button class="btn" onclick="goPage('questions')">开始评估 · 约5分钟</button>
+  </div>
+</div>
+
+<!-- PAGE 2: QUESTIONS -->
+<div class="page" id="page-questions">
+  <div class="card question-card" id="q-card">
+    <div class="q-number" id="q-number"></div>
+    <div class="q-text" id="q-text"></div>
+    <div id="q-options"></div>
+    <div class="q-nav">
+      <button class="btn btn-outline" id="btn-prev" onclick="prevQ()">← 上一题</button>
+      <button class="btn" id="btn-next" onclick="nextQ()">下一题 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: RESULT -->
+<div class="page" id="page-result">
+  <div class="card" style="text-align:center;">
+    <div class="badge">评估结果</div>
+    <h2>你的生命能量状态</h2>
+    <div class="total-score" id="total-score"></div>
+    <div class="result-level" id="result-level"></div>
+    <div class="result-desc" id="result-desc"></div>
+  </div>
+  <div class="card" id="dims-card">
+    <h2 style="margin-bottom:20px;">四维能量分布</h2>
+    <div id="dims"></div>
+  </div>
+  <div style="text-align:center;">
+    <button class="btn" onclick="goPage('advice')">查看个性化建议 →</button>
+  </div>
+</div>
+
+<!-- PAGE 4: ADVICE -->
+<div class="page" id="page-advice">
+  <div class="card">
+    <div class="badge">给你的建议</div>
+    <h2 id="advice-title"></h2>
+    <div id="advice-content" style="margin-top:20px;"></div>
+  </div>
+  <div id="easter-egg-container"></div>
+  <div class="card">
+    <p class="footer-note">这个评估只是一个起点。<br>看见自己的状态，本身就是改变的开始。</p>
+    <div style="text-align:center; margin-top:24px;">
+      <button class="btn" onclick="window.location.href='index.html'">返回主页</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    text: "每天早上醒来，你对起床这件事是什么感觉？",
+    dim: "physical",
+    options: [
+      { text: "迫不及待想开始新的一天", score: 5 },
+      { text: "还好，能正常起床", score: 4 },
+      { text: "有点挣扎，但能起来", score: 3 },
+      { text: "很不想起，能拖就拖", score: 2 },
+      { text: "根本不想面对这一天", score: 1 }
+    ]
+  },
+  {
+    text: "遇到挫折或不顺心的事，你通常会怎样？",
+    dim: "emotional",
+    options: [
+      { text: "很快就能调整过来，继续往前走", score: 5 },
+      { text: "需要一点时间，但能恢复", score: 4 },
+      { text: "会难过一阵子，影响其他事情", score: 3 },
+      { text: "很难走出来，反复想", score: 2 },
+      { text: "感觉自己被压垮了", score: 1 }
+    ]
+  },
+  {
+    text: "你的身体现在给你什么样的感觉？",
+    dim: "physical",
+    options: [
+      { text: "精力充沛，身体很舒服", score: 5 },
+      { text: "还行，偶尔有点累", score: 4 },
+      { text: "经常觉得疲惫", score: 3 },
+      { text: "总是这里疼那里不舒服", score: 2 },
+      { text: "感觉身体快撑不住了", score: 1 }
+    ]
+  },
+  {
+    text: "你觉得自己的生活有方向感吗？",
+    dim: "purpose",
+    options: [
+      { text: "很清楚自己要什么，正在路上", score: 5 },
+      { text: "大概知道方向", score: 4 },
+      { text: "有点迷茫，但还能凑合过", score: 3 },
+      { text: "不知道自己到底想要什么", score: 2 },
+      { text: "感觉一切都没有意义", score: 1 }
+    ]
+  },
+  {
+    text: "和别人相处之后，你通常是什么状态？",
+    dim: "mental",
+    options: [
+      { text: "很充实，被充电了", score: 5 },
+      { text: "还好，没什么特别", score: 4 },
+      { text: "有点累，需要独处", score: 3 },
+      { text: "很疲惫，不想再社交", score: 2 },
+      { text: "感觉被掏空了", score: 1 }
+    ]
+  },
+  {
+    text: "你最近对新鲜事物还有好奇心吗？",
+    dim: "mental",
+    options: [
+      { text: "经常想尝试新东西", score: 5 },
+      { text: "偶尔会感兴趣", score: 4 },
+      { text: "不太有兴致，但还行", score: 3 },
+      { text: "对什么都提不起兴趣", score: 2 },
+      { text: "感觉自己完全麻木了", score: 1 }
+    ]
+  },
+  {
+    text: "面对压力的时候，你有什么办法？",
+    dim: "purpose",
+    options: [
+      { text: "有成熟的方式应对，能稳住自己", score: 5 },
+      { text: "有一些方法，大部分时候管用", score: 4 },
+      { text: "勉强撑着，但内心很乱", score: 3 },
+      { text: "经常被压力淹没", score: 2 },
+      { text: "已经不知道怎么面对了", score: 1 }
+    ]
+  },
+  {
+    text: "日常生活中，你还经常感到快乐吗？",
+    dim: "emotional",
+    options: [
+      { text: "经常！小事情也能让我开心", score: 5 },
+      { text: "有时候会", score: 4 },
+      { text: "偶尔吧", score: 3 },
+      { text: "很少了", score: 2 },
+      { text: "已经很久不知道快乐是什么感觉", score: 1 }
+    ]
+  },
+  {
+    text: "想到未来，你心里是什么感觉？",
+    dim: "purpose",
+    options: [
+      { text: "充满期待", score: 5 },
+      { text: "比较乐观", score: 4 },
+      { text: "不确定，走一步看一步", score: 3 },
+      { text: "有点担心和焦虑", score: 2 },
+      { text: "恐惧，不敢想", score: 1 }
+    ]
+  },
+  {
+    text: "你最近在照顾自己这件事上做得怎么样？",
+    dim: "physical",
+    options: [
+      { text: "吃得香、睡得好、有运动", score: 5 },
+      { text: "大部分时候还不错", score: 4 },
+      { text: "凑合，不太规律", score: 3 },
+      { text: "经常忘记或不想照顾自己", score: 2 },
+      { text: "几乎没有在管自己的身体", score: 1 }
+    ]
+  }
+];
+
+let answers = new Array(10).fill(null);
+let curQ = 0;
+
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById('page-' + name);
+  pg.classList.add('active');
+  pg.style.animation = 'none';
+  pg.offsetHeight;
+  pg.style.animation = '';
+  let pct = 10;
+  if (name === 'questions') pct = 20 + Math.round((curQ / 10) * 50);
+  else if (name === 'result') pct = 85;
+  else if (name === 'advice') pct = 100;
+  document.getElementById('progress').style.width = pct + '%';
+  if (name === 'questions') renderQ();
+  if (name === 'result') renderResult();
+  if (name === 'advice') renderAdvice();
+}
+
+function renderQ() {
+  const q = questions[curQ];
+  document.getElementById('q-number').textContent = '第 ' + (curQ+1) + ' / 10 题';
+  document.getElementById('q-text').textContent = q.text;
+  const box = document.getElementById('q-options');
+  box.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option' + (answers[curQ] === i ? ' selected' : '');
+    btn.textContent = o.text;
+    btn.onclick = () => { answers[curQ] = i; renderQ(); };
+    box.appendChild(btn);
+  });
+  document.getElementById('btn-prev').style.visibility = curQ === 0 ? 'hidden' : 'visible';
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = curQ === 9 ? '查看结果 →' : '下一题 →';
+  document.getElementById('progress').style.width = (20 + Math.round((curQ/10)*50)) + '%';
+}
+
+function prevQ() { if (curQ > 0) { curQ--; renderQ(); } }
+function nextQ() {
+  if (answers[curQ] === null) { alert('请先选择一个选项'); return; }
+  if (curQ < 9) { curQ++; renderQ(); }
+  else goPage('result');
+}
+
+function renderResult() {
+  let total = 0;
+  const dims = { physical: { sum:0, cnt:0 }, emotional: { sum:0, cnt:0 }, mental: { sum:0, cnt:0 }, purpose: { sum:0, cnt:0 } };
+  questions.forEach((q, i) => {
+    const s = q.options[answers[i]].score;
+    total += s;
+    dims[q.dim].sum += s;
+    dims[q.dim].cnt++;
+  });
+  document.getElementById('total-score').textContent = total + ' / 50';
+  let level, desc;
+  if (total >= 40) { level = '🔥 能量充沛'; desc = '你的生命之火正在旺盛燃烧。保持这份节奏，同时记得也要给自己留白休息。'; }
+  else if (total >= 30) { level = '✨ 能量尚可'; desc = '你还有余力，但需要注意补充。别等到油灯枯竭才想起来加油。'; }
+  else if (total >= 20) { level = '🕯️ 能量偏低'; desc = '你的火在变小，是时候停下来加油了。这不是软弱，而是对自己的负责。'; }
+  else { level = '⚠️ 能量告急'; desc = '你正在透支，现在最需要的是照顾自己。请允许自己停下来，哪怕只是一小会儿。'; }
+  document.getElementById('result-level').textContent = level;
+  document.getElementById('result-desc').textContent = desc;
+
+  const dimNames = { physical:'身体能量', emotional:'情绪能量', mental:'心智能量', purpose:'意义能量' };
+  const dimEmoji = { physical:'💪', emotional:'💗', mental:'🧠', purpose:'🌟' };
+  const dimsDiv = document.getElementById('dims');
+  dimsDiv.innerHTML = '';
+  Object.keys(dims).forEach(key => {
+    const d = dims[key];
+    const avg = d.sum / d.cnt;
+    const pct = Math.round((avg / 5) * 100);
+    const cls = pct >= 70 ? 'bar-high' : pct >= 40 ? 'bar-mid' : 'bar-low';
+    dimsDiv.innerHTML += `
+      <div class="dim-card">
+        <div class="dim-title">${dimEmoji[key]} ${dimNames[key]} <span class="dim-score">${pct}%</span></div>
+        <div class="dim-bar-bg"><div class="dim-bar ${cls}" data-pct="${pct}"></div></div>
+      </div>`;
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.dim-bar').forEach(b => { b.style.width = b.dataset.pct + '%'; });
+  }, 200);
+  document.getElementById('progress').style.width = '85%';
+  window._dims = dims;
+}
+
+function renderAdvice() {
+  const dims = window._dims;
+  const dimNames = { physical:'身体能量', emotional:'情绪能量', mental:'心智能量', purpose:'意义能量' };
+  let lowest = null, lowestAvg = 6;
+  Object.keys(dims).forEach(k => {
+    const avg = dims[k].sum / dims[k].cnt;
+    if (avg < lowestAvg) { lowestAvg = avg; lowest = k; }
+  });
+
+  const adviceMap = {
+    physical: {
+      title: '💡 你的身体在喊"救命"',
+      items: [
+        '<strong>先睡好：</strong>试着连续一周在固定时间睡觉和起床，哪怕周末也不赖床。睡眠是能量的地基。',
+        '<strong>动起来：</strong>不用去健身房，每天散步20分钟就够了。关键是让身体重新记起来"动"的感觉。',
+        '<strong>认真吃饭：</strong>慢慢吃，感受食物的味道。不要边刷手机边吃，让吃饭变成一种善待自己的仪式。'
+      ]
+    },
+    emotional: {
+      title: '💡 你的情绪需要被看见',
+      items: [
+        '<strong>允许自己不OK：</strong>不需要每时每刻都表现得很坚强。找一个安全的地方，让自己真实地难过一会儿。',
+        '<strong>学会说"不"：</strong>你的善良不需要以消耗自己为代价。练习对不合理的要求温和而坚定地拒绝。',
+        '<strong>写情绪日记：</strong>每天花5分钟写下今天的感受，不需要文采，只需要真实。写着写着，你会更了解自己。'
+      ]
+    },
+    mental: {
+      title: '💡 你的内心需要安静',
+      items: [
+        '<strong>数字排毒：</strong>每天给自己一小时不看手机。你会惊讶于，世界并没有因为你的"消失"而崩塌。',
+        '<strong>回到自然：</strong>去看看树、听听鸟叫、感受风。大自然有最好的"充电"功能。',
+        '<strong>做无用的事：</strong>不是所有时间都需要"有用"。发呆、涂鸦、散步……这些"浪费"的时间，恰恰是给心灵的养分。'
+      ]
+    },
+    purpose: {
+      title: '💡 你正在寻找意义',
+      items: [
+        '<strong>重新连接价值观：</strong>问问自己：什么事情让你觉得"这就对了"？从最小的事情开始。',
+        '<strong>做小实验：</strong>不用一步到位找到人生使命。每周尝试一件小小的新鲜事，看看什么让你眼里有光。',
+        '<strong>和不同的人聊天：</strong>听听别人的故事，有时候别人的经历会照亮你自己的路。'
+      ]
+    }
+  };
+
+  const adv = adviceMap[lowest];
+  document.getElementById('advice-title').textContent = adv.title;
+  const box = document.getElementById('advice-content');
+  adv.items.forEach(item => {
+    box.innerHTML += '<div class="advice-item">' + item + '</div>';
+  });
+
+  // Easter egg (20% chance)
+  const eegg = document.getElementById('easter-egg-container');
+  if (Math.random() < 0.2) {
+    const quotes = [
+      '🌸 "你不需要看到整段楼梯，只要迈出第一步。" ——马丁·路德·金',
+      '🌿 "在冬天的深处，我终于发现，我心中有一个不可战胜的夏天。" ——加缪',
+      '🌻 "不是因为看到了希望才坚持，而是因为坚持了才看到希望。"',
+      '🕊️ "允许自己慢下来，不是放弃，是另一种前进。"',
+      '🌊 "你今天有好好呼吸，这就是一种了不起的胜利。"'
+    ];
+    eegg.innerHTML = '<div class="easter-egg">' + quotes[Math.floor(Math.random()*quotes.length)] + '</div>';
+  }
+  document.getElementById('progress').style.width = '100%';
+}
+
+// Init
+document.getElementById('progress').style.width = '10%';
+</script>
+</body>
+</html>

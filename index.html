@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+    <meta name="description" content="找到啦 — 生命游戏的十二个关卡。帮你看见自己真正卡在哪，然后迈出那一步。人生困境的自我认知工具。">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>找到啦 · 生命游戏</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #f5e6c8;
+    font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #f7edd5 0%, #eed9a4 35%, #e8d090 65%, #f0e2b8 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .container::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .container::after {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1.5px solid rgba(139,90,43,0.18);
+    pointer-events: none; z-index: 0;
+  }
+  .content { position: relative; z-index: 1; }
+
+  /* ===== 标题区 ===== */
+  .title-area {
+    text-align: center;
+    padding: 28px 20px 12px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    z-index: 5;
+  }
+  .title {
+    font-size: 52px;
+    color: #5a3e1b;
+    letter-spacing: 16px;
+    font-weight: 700;
+    text-shadow: 0 2px 12px rgba(139,90,43,0.12);
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #9a7a4a;
+    letter-spacing: 7px;
+    margin-top: 4px;
+  }
+  .divider {
+    width: 180px; height: 1.5px;
+    background: linear-gradient(to right, transparent, rgba(139,90,43,0.3), transparent);
+    margin: 8px auto 0;
+  }
+
+  /* ===== 3D球体容器 ===== */
+  .sphere-container {
+    width: 100%;
+    height: 65vh;
+    min-height: 500px;
+    position: relative;
+    cursor: grab;
+  }
+  .sphere-container:active { cursor: grabbing; }
+  #sphereCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* 结点标签浮动提示 */
+  .node-tooltip {
+    position: absolute;
+    background: rgba(90,62,27,0.92);
+    color: #f5e6c8;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+    z-index: 100;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .node-tooltip.show { opacity: 1; }
+
+  /* ===== 模块二 ===== */
+  .module-intro {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 20px 30px 44px;
+    text-align: center;
+  }
+  .intro-text {
+    font-size: 17px;
+    color: #5a3e1b;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+  .intro-text .hl { color: #8a5a20; font-weight: 700; }
+  .questions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .question-item {
+    background: rgba(139,90,43,0.08);
+    border: 1px solid rgba(139,90,43,0.2);
+    padding: 9px 20px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    color: #7a5a28;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+  }
+  .question-item:hover {
+    background: rgba(139,90,43,0.16);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139,90,43,0.12);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 16px 20px 36px;
+    color: #9a7a4a;
+    font-size: 12.5px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== 手机端 ===== */
+  @media (max-width: 768px) {
+    .title { font-size: 34px; letter-spacing: 8px; }
+    .subtitle { font-size: 12px; letter-spacing: 4px; }
+    .sphere-container { height: 55vh; min-height: 380px; }
+    .module-intro { padding: 20px 20px 36px; }
+    .intro-text { font-size: 15px; }
+  }
+  @media (max-width: 480px) {
+    .title { font-size: 26px; letter-spacing: 5px; }
+    .subtitle { font-size: 11px; letter-spacing: 2px; }
+    .title-area { padding: 20px 15px 8px; }
+    .sphere-container { height: 50vh; min-height: 320px; }
+    .intro-text { font-size: 14px; line-height: 1.8; }
+    .question-item { font-size: 12px; padding: 8px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="content">
+
+  <!-- 标题 -->
+  <div class="title-area" onclick="handleTitleClick()">
+    <div class="title">找到啦</div>
+    <div class="subtitle">生命游戏的十二关卡 · 拖动旋转球体</div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- 3D球体 -->
+  <div class="sphere-container" id="sphereWrap">
+    <canvas id="sphereCanvas"></canvas>
+    <div class="node-tooltip" id="tooltip"></div>
+  </div>
+
+  <!-- 模块二：文字介绍 -->
+  <div class="module-intro">
+    <div class="intro-text">
+      人生是一场<span class="hl">生命游戏</span>，12个关卡分布在生命的球体上。<br>
+      拖动旋转，点击关卡，<span class="hl">认领</span>自己的处境。
+    </div>
+    <div class="questions">
+      <div class="question-item" onclick="startAssessment('energy')">我的生命能量状态如何？</div>
+      <div class="question-item" onclick="startAssessment('influence')">我的社会影响力如何？</div>
+      <div class="question-item" onclick="startAssessment('value')">我创造的社会价值有多少？</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div style="margin-bottom: 12px;">
+      <a href="心灵小屋/index.html" style="color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid rgba(139,90,43,0.2); padding-bottom: 2px; transition: all 0.2s;">🏡 心灵小屋</a>
+    </div>
+    找到啦 · 帮你看见自己真正卡在哪——然后迈出那一步
+    <div style="margin-top: 12px;">
+      <a href="建站缘起.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">建站缘起</a>
+      <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
+      <a href="联系我们.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">联系我们</a>
+      <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
+      <a href="disclaimer.html" style="color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; opacity: 0.7; transition: all 0.2s;">用户隐私与免责声明</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- Three.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// ===== 12关卡数据 =====
+const levels = [
+  { id:1,  name:'原生家庭', color:0x9a6832 },
+  { id:2,  name:'求知求学', color:0xa07838 },
+  { id:3,  name:'初入人海', color:0xb08840 },
+  { id:4,  name:'独立谋生', color:0xc09850 },
+  { id:5,  name:'婚恋家庭', color:0xa06040 },
+  { id:6,  name:'人到中年', color:0x78983a },
+  { id:7,  name:'金钱关系', color:0xb06838 },
+  { id:8,  name:'人际迷宫', color:0x4878a0 },
+  { id:9,  name:'兴趣爱好', color:0x7858a0 },
+  { id:10, name:'心灵信仰', color:0xa04040 },
+  { id:11, name:'健康衰老', color:0x388058 },
+  { id:12, name:'终篇传承', color:0x886030 }
+];
+
+// ===== Three.js 场景 =====
+const wrap = document.getElementById('sphereWrap');
+const canvas = document.getElementById('sphereCanvas');
+const tooltip = document.getElementById('tooltip');
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, wrap.clientWidth / wrap.clientHeight, 0.1, 1000);
+camera.position.z = 5.2;
+
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+renderer.setClearColor(0x000000, 0);
+
+// ===== 灯光 =====
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+dirLight.position.set(5, 5, 5);
+scene.add(dirLight);
+
+// ===== 空心球线框 =====
+const wireGeo = new THREE.SphereGeometry(2.0, 36, 36);
+const wireMat = new THREE.MeshBasicMaterial({
+  color: 0x5a3e1b,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.10
+});
+const wireSphere = new THREE.Mesh(wireGeo, wireMat);
+scene.add(wireSphere);
+
+// ===== 经纬线（更精致的参考线）=====
+// 赤道
+const eqGeo = new THREE.RingGeometry(1.98, 2.02, 64);
+const eqMat = new THREE.MeshBasicMaterial({
+  color: 0x5a3e1b, transparent: true, opacity: 0.13, side: THREE.DoubleSide
+});
+const eqRing = new THREE.Mesh(eqGeo, eqMat);
+eqRing.rotation.x = Math.PI / 2;
+scene.add(eqRing);
+
+// 经线（纵向）
+for (let i = 0; i < 6; i++) {
+  const lngGeo = new THREE.TorusGeometry(2.0, 0.015, 8, 64);
+  const lngMat = new THREE.MeshBasicMaterial({
+    color: 0x5a3e1b, transparent: true, opacity: 0.09
+  });
+  const lngLine = new THREE.Mesh(lngGeo, lngMat);
+  lngLine.rotation.x = Math.PI / 2;
+  lngLine.rotation.z = (Math.PI / 6) * i;
+  scene.add(lngLine);
+}
+
+// ===== 在球面上均匀分布12个点（黄金螺旋/Fibonacci）=====
+function fibSphere(i, n, radius) {
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // ~2.39996
+  const y = 1 - (i / (n - 1)) * 2; // -1 → 1
+  const r = Math.sqrt(1 - y * y) * radius;
+  const theta = goldenAngle * i;
+  return {
+    x: Math.cos(theta) * r,
+    y: y * radius,
+    z: Math.sin(theta) * r
+  };
+}
+
+// ===== 创建12个结点 =====
+const nodes = [];
+const nodeGroup = new THREE.Group();
+
+levels.forEach((lv, i) => {
+  const pos = fibSphere(i, 12, 2.0);
+
+  // 结点发光效果（外层光晕）
+  const glowGeo = new THREE.SphereGeometry(0.22, 24, 24);
+  const glowMat = new THREE.MeshBasicMaterial({
+    color: lv.color,
+    transparent: true,
+    opacity: 0.25
+  });
+  const glow = new THREE.Mesh(glowGeo, glowMat);
+  glow.position.set(pos.x, pos.y, pos.z);
+  nodeGroup.add(glow);
+
+  // 结点核心
+  const coreGeo = new THREE.SphereGeometry(0.14, 24, 24);
+  const coreMat = new THREE.MeshPhongMaterial({
+    color: lv.color,
+    emissive: lv.color,
+    emissiveIntensity: 0.4,
+    shininess: 80
+  });
+  const core = new THREE.Mesh(coreGeo, coreMat);
+  core.position.set(pos.x, pos.y, pos.z);
+  core.userData = { levelId: lv.id, name: lv.name, color: lv.color, baseScale: 1 };
+  nodeGroup.add(core);
+  nodes.push({ mesh: core, glow: glow, data: lv, pos: pos });
+});
+
+scene.add(nodeGroup);
+
+// ===== 结点之间的连线（相邻关卡连线）=====
+const lineMat = new THREE.LineBasicMaterial({
+  color: 0x5a3e1b,
+  transparent: true,
+  opacity: 0.18
+});
+
+// 按ID顺序连接（1-2-3...12-1 形成闭环）
+for (let i = 0; i < 12; i++) {
+  const a = nodes[i].pos;
+  const b = nodes[(i + 1) % 12].pos;
+  const lineGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(a.x * 1.02, a.y * 1.02, a.z * 1.02),
+    new THREE.Vector3(b.x * 1.02, b.y * 1.02, b.z * 1.02)
+  ]);
+  const line = new THREE.Line(lineGeo, lineMat);
+  nodeGroup.add(line);
+}
+
+// ===== 鼠标拖动旋转 =====
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let rotVelocity = { x: 0, y: 0 };
+let autoRotate = true;
+
+canvas.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  autoRotate = false;
+  prevMouse = { x: e.clientX, y: e.clientY };
+  rotVelocity = { x: 0, y: 0 };
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const dx = e.clientX - prevMouse.x;
+    const dy = e.clientY - prevMouse.y;
+    nodeGroup.rotation.y += dx * 0.008;
+    nodeGroup.rotation.x += dy * 0.008;
+    rotVelocity = { x: dx * 0.005, y: dy * 0.005 };
+    prevMouse = { x: e.clientX, y: e.clientY };
+  }
+  // 悬停检测
+  checkHover(e);
+});
+
+canvas.addEventListener('mouseup', () => {
+  isDragging = false;
+  autoRotate = false; // 停止自动旋转，保持惯性
+});
+
+canvas.addEventListener('mouseleave', () => {
+  isDragging = false;
+  tooltip.classList.remove('show');
+});
+
+// 触摸支持
+canvas.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  autoRotate = false;
+  prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  rotVelocity = { x: 0, y: 0 };
+});
+canvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  if (isDragging) {
+    const dx = e.touches[0].clientX - prevMouse.x;
+    const dy = e.touches[0].clientY - prevMouse.y;
+    nodeGroup.rotation.y += dx * 0.008;
+    nodeGroup.rotation.x += dy * 0.008;
+    rotVelocity = { x: dx * 0.005, y: dy * 0.005 };
+    prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  checkHoverTouch(e);
+});
+
+// ===== 悬停检测（Raycaster）=====
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let hoveredNode = null;
+
+function checkHover(e) {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(nodes.map(n => n.mesh));
+
+  if (intersects.length > 0) {
+    const obj = intersects[0].object;
+    if (hoveredNode !== obj) {
+      hoveredNode = obj;
+      // 动画：放大
+      animateNodeScale(obj, 1.6);
+      // 显示提示
+      tooltip.textContent = obj.userData.name;
+      tooltip.style.left = (e.clientX - rect.left + 16) + 'px';
+      tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+      tooltip.classList.add('show');
+      canvas.style.cursor = 'pointer';
+    } else {
+      tooltip.style.left = (e.clientX - rect.left + 16) + 'px';
+      tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+    }
+  } else {
+    if (hoveredNode) {
+      animateNodeScale(hoveredNode, 1.0);
+      hoveredNode = null;
+    }
+    tooltip.classList.remove('show');
+    canvas.style.cursor = isDragging ? 'grabbing' : 'grab';
+  }
+}
+
+function checkHoverTouch(e) {
+  if (e.touches.length === 0) return;
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches[0];
+  mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(nodes.map(n => n.mesh));
+  if (intersects.length > 0) {
+    const obj = intersects[0].object;
+    tooltip.textContent = obj.userData.name;
+    tooltip.style.left = (touch.clientX - rect.left + 16) + 'px';
+    tooltip.style.top = (touch.clientY - rect.top - 10) + 'px';
+    tooltip.classList.add('show');
+  } else {
+    tooltip.classList.remove('show');
+  }
+}
+
+// ===== 结点点击 =====
+canvas.addEventListener('click', (e) => {
+  if (Math.abs(rotVelocity.x) > 0.5 || Math.abs(rotVelocity.y) > 0.5) return; // 拖动中不触发点击
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(nodes.map(n => n.mesh));
+  if (intersects.length > 0) {
+    const id = intersects[0].object.userData.levelId;
+    goToLevel(id);
+  }
+});
+
+// ===== 结点缩放动画 =====
+function animateNodeScale(obj, target) {
+  const start = obj.scale.x;
+  const t0 = performance.now();
+  function step() {
+    const p = Math.min((performance.now() - t0) / 200, 1);
+    const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
+    const s = start + (target - start) * ease;
+    obj.scale.set(s, s, s);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  step();
+}
+
+// ===== 动画循环 =====
+function animate() {
+  requestAnimationFrame(animate);
+
+  // 自动旋转 or 惯性
+  if (autoRotate) {
+    nodeGroup.rotation.y += 0.003;
+  } else if (!isDragging) {
+    // 惯性衰减
+    nodeGroup.rotation.y += rotVelocity.x;
+    nodeGroup.rotation.x += rotVelocity.y;
+    rotVelocity.x *= 0.95;
+    rotVelocity.y *= 0.95;
+    if (Math.abs(rotVelocity.x) < 0.0001 && Math.abs(rotVelocity.y) < 0.0001) {
+      rotVelocity = { x: 0, y: 0 };
+    }
+  }
+
+  // 结点呼吸动画
+  const t = performance.now() * 0.001;
+  nodes.forEach((n, i) => {
+    const s = 1 + Math.sin(t * 2 + i) * 0.08;
+    if (hoveredNode !== n.mesh) {
+      n.mesh.scale.set(s, s, s);
+      n.glow.material.opacity = 0.2 + Math.sin(t * 2 + i) * 0.08;
+    }
+  });
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// ===== 窗口大小变化 =====
+window.addEventListener('resize', () => {
+  const w = wrap.clientWidth;
+  const h = wrap.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+// ===== 标题点击彩蛋 =====
+var titleClickCount = 0, titleClickTimer = null;
+function handleTitleClick() {
+  titleClickCount++;
+  if (titleClickCount >= 3) {
+    titleClickCount = 0;
+    alert('🎉 隐藏关卡已解锁！（待实现）');
+  }
+  if (titleClickTimer) clearTimeout(titleClickTimer);
+  titleClickTimer = setTimeout(function(){ titleClickCount = 0; }, 2000);
+}
+
+function goToLevel(n) {
+  // 12个关卡全部就绪
+  const levelFiles = {
+    1: '第一关-原生家庭.html',
+    2: '第二关-求知求学.html',
+    3: '第三关-初入人海.html',
+    4: '第四关-独立谋生.html',
+    5: '第五关-婚恋家庭.html',
+    6: '第六关-人到中年.html',
+    7: '第七关-金钱关系.html',
+    8: '第八关-人际迷宫.html',
+    9: '第九关-兴趣爱好.html',
+    10: '第十关-心灵信仰.html',
+    11: '第十一关-健康与衰老.html',
+    12: '第十二关-终篇传承.html'
+  };
+  if (levelFiles[n]) {
+    window.location.href = levelFiles[n];
+  } else {
+    alert('「第' + n + '关」即将开放，敬请期待 ✦');
+  }
+}
+function startAssessment(type) {
+  var p = { energy:'assessment-energy.html', influence:'assessment-influence.html', value:'assessment-value.html' };
+  if (p[type]) window.location.href = p[type];
+}
+</script>
+</body>
+</html>

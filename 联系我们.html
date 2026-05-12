@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+    <meta name="description" content="联系我们 — 找到啦站长的联系方式与打赏支持。">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>联系我们 — 找到啦</title>
+<style>
+:root {
+  --bg: #f5e6c8;
+  --bg2: #eed9a4;
+  --text-dark: #5a3e1b;
+  --text-mid: #9a7a4a;
+  --text-light: #b89a6a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --border: rgba(139,90,43,0.18);
+  --shadow: rgba(90,60,20,0.12);
+  --radius: 8px;
+  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+body::after {
+  content: '';
+  position: fixed; inset: 8px;
+  border: 1.5px solid var(--border);
+  pointer-events: none; z-index: 0;
+}
+.back-home-btn {
+  position: fixed; top: 16px; left: 16px; z-index: 200;
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 16px;
+  background: rgba(245,230,200,0.88);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: var(--font); font-size: 12px;
+  color: var(--text-mid); letter-spacing: 2px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.back-home-btn:hover {
+  background: rgba(245,230,200,0.98);
+  border-color: var(--gold);
+  color: var(--text-dark);
+}
+.container {
+  position: relative; z-index: 1;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+.gold-line {
+  width: 120px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 36px;
+}
+h1 {
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+.contact-card {
+  background: rgba(255,252,240,0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px var(--shadow);
+  text-align: center;
+}
+.contact-card h2 {
+  font-size: 17px;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 0;
+  font-size: 15px;
+  color: #6a4e28;
+  border-bottom: 1px dashed rgba(139,90,43,0.12);
+}
+.contact-item:last-of-type { border-bottom: none; }
+.contact-item .label {
+  color: var(--text-mid);
+  font-size: 13px;
+  letter-spacing: 2px;
+  min-width: 60px;
+}
+.contact-item .value {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  user-select: all;
+}
+.contact-item .note {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+.prefer-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+.qr-section {
+  text-align: center;
+  padding: 20px 0 8px;
+}
+.qr-section p {
+  font-size: 13px;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.qr-img-wrap {
+  display: inline-block;
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.qr-img-wrap img {
+  width: 220px;
+  height: 220px;
+  display: block;
+}
+.qr-note {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+.warm-words {
+  background: rgba(255,252,240,0.5);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.warm-words p {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 2;
+  letter-spacing: 1px;
+}
+.footer-link {
+  text-align: center;
+  margin-top: 36px;
+}
+.footer-link a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.footer-link a:hover {
+  color: var(--text-dark);
+  border-color: var(--gold);
+}
+@media (max-width: 600px) {
+  .container { padding: 50px 16px 60px; }
+  h1 { font-size: 22px; letter-spacing: 4px; }
+  .contact-card { padding: 20px 18px; }
+  .qr-img-wrap img { width: 180px; height: 180px; }
+}
+</style>
+</head>
+<body>
+
+<button class="back-home-btn" onclick="window.location.href='index.html'" title="返回主页">
+  <span style="color:var(--gold);">←</span> <span>返回主页</span>
+</button>
+
+<div class="container">
+  <h1>联系我们</h1>
+  <div class="subtitle">找到啦 · 生命游戏</div>
+  <div class="gold-line"></div>
+
+  <div class="contact-card">
+    <h2>站长联系方式</h2>
+    <div class="contact-item">
+      <span class="label">微信号</span>
+      <span class="value">liren1972</span>
+      <span class="prefer-badge">推荐</span>
+    </div>
+    <div class="contact-item" style="flex-direction: column; align-items: center;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="label">电话</span>
+        <span class="value">13908178760</span>
+      </div>
+      <div class="note">（设有防骚扰拦截，建议优先加微信私聊）</div>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <h2>打赏支持</h2>
+    <div class="qr-section">
+      <p>如果您觉得这些内容对您有所启发<br>买一个馒头的钱（1元），就是最大的鼓励</p>
+      <div class="qr-img-wrap">
+        <!-- 收款码图片：请将您的收款码图片命名为 收款码.png 放在与此页面同目录下 -->
+        <!-- 建议每7天更换一次 -->
+        <img src="收款码.png" alt="扫码打赏" onerror="this.parentElement.innerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;color:#b89a6a;font-size:13px;text-align:center;line-height:1.8;\'>收款码<br>即将上线</div>'">
+      </div>
+      <div class="qr-note">收款码定期更新 · 长按或截图扫码即可</div>
+    </div>
+  </div>
+
+  <div class="warm-words">
+    <p>感谢每一份关注与善意 ✦</p>
+    <p style="font-size: 13px; color: var(--text-light);">愿你在这场生命游戏中，找到属于自己的通关之路</p>
+  </div>
+
+  <div class="footer-link">
+    <a href="建站缘起.html">← 了解建站故事</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="index.html">返回首页</a>
+  </div>
+</div>
+
+</body>
+</html>

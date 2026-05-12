@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="求知求学关卡：用世界名著场景诊断你的学习卡点，找到属于自己的学习之路。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二关 · 求知求学 — 找到啦</title>
+<style>
+  /* ==================== 基础变量 ==================== */
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --bg3: #e8d898;
+    --text-dark: #5a3e1b;
+    --text-mid: #9a7a4a;
+    --text-light: #b89a6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  }
+
+  /* ==================== 全局 ==================== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 8px;
+    border: 1.5px solid var(--border);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ==================== 页面容器 ==================== */
+  .page {
+    display: none;
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    animation: fadeIn 0.6s ease;
+  }
+  .page.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ==================== 通用组件 ==================== */
+  .gold-line {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 24px;
+  }
+  .card {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px var(--shadow); }
+  .btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--text-mid);
+    box-shadow: none;
+  }
+  .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+  .center { text-align: center; }
+  .text-mid { color: var(--text-mid); font-size: 14px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-40 { margin-top: 40px; }
+  .mb-8 { margin-bottom: 8px; }
+
+  /* ==================== 进度条 ==================== */
+  .progress-bar-wrap {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 3px;
+    background: rgba(201,168,76,0.15);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  /* ==================== P1: 入口页 ==================== */
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 6px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero-title em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .hero-divider {
+    width: 180px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+  }
+  .deco-ring {
+    width: 160px; height: 160px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    margin: 0 auto 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .deco-ring::before {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+  }
+  .deco-ring-inner {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(201,168,76,0.3);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+    50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
+  }
+
+  /* ==================== P2: 名著场景卡选择页 ==================== */
+  .scene-layer-title {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .scene-card {
+    background: rgba(255,252,240,0.55);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .scene-card:hover {
+    background: rgba(255,252,240,0.88);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .scene-card.selected {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,168,76,0.2);
+  }
+  .scene-card.selected::after {
+    content: '';
+    position: absolute;
+    right: 14px; top: 14px;
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%235a3e1b' d='M16.7 5.3L7 15l-4.7-4.7 1.4-1.4 3.3 3.3 9.4-9.3z'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .scene-book {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .scene-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .scene-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .scene-prompt {
+    font-size: 11px;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+  .dilemma-hint {
+    font-size: 12px;
+    color: var(--text-mid);
+    text-align: right;
+    margin-top: 16px;
+  }
+
+  /* ==================== P3: 冒险卡 ==================== */
+  .adventure-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px 0;
+  }
+  .flip-card {
+    width: 320px; height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+  .flip-card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-card-front, .flip-card-back {
+    position: absolute; inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .flip-card-front {
+    background: linear-gradient(145deg, #f0e0b0, #e8d090);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .flip-card-front-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .flip-card-front-hint { font-size: 13px; color: var(--text-mid); letter-spacing: 3px; }
+  .flip-card-back {
+    background: linear-gradient(145deg, var(--bg), var(--bg2));
+    border: 1.5px solid var(--gold);
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 20px var(--shadow);
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card-quote {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.9;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .flip-card-tap-hint {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-top: 16px;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ==================== P4: 诊断测试 ==================== */
+  .question-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .question-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+  .question-progress {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 6px;
+  }
+  .option-card {
+    background: rgba(255,252,240,0.5);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .option-card:hover {
+    background: rgba(255,252,240,0.85);
+    border-color: rgba(201,168,76,0.5);
+  }
+  .option-card.selected {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+  .option-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .option-card.selected .option-text { font-weight: 500; }
+  .option-check {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .option-card.selected .option-check {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .option-card.selected .option-check::after {
+    content: '';
+    width: 8px; height: 5px;
+    border-left: 1.5px solid var(--text-dark);
+    border-bottom: 1.5px solid var(--text-dark);
+    transform: rotate(-45deg) translate(1px,-1px);
+  }
+  .nav-btn-wrap {
+    display: flex; gap: 12px; justify-content: center;
+    margin-top: 28px;
+  }
+
+  /* ==================== P5: 诊断结果 ==================== */
+  .result-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .result-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .result-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+  }
+  .result-summary {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    padding: 16px 0 24px;
+    font-style: italic;
+  }
+  .result-card {
+    background: rgba(255,252,240,0.65);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .result-card-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .result-card-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+  .result-card-pct { font-size: 12px; color: var(--text-mid); }
+  .result-bar-bg {
+    height: 6px;
+    background: rgba(139,90,43,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .result-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
+  .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+
+  /* ==================== P6: 通关建议 ==================== */
+  .advice-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .advice-intro {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-card {
+    background: rgba(255,252,240,0.6);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .advice-card-label {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .advice-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .advice-card-num {
+    background: var(--gold);
+    color: var(--text-dark);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .advice-card-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .advice-card-action {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    padding: 8px 14px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .advice-card-action::before { content: '→ '; }
+
+  /* ==================== P7: 隐藏关卡 ==================== */
+  .hidden-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .hidden-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .hidden-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .step-card {
+    background: rgba(255,252,240,0.55);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .step-num { font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 6px; }
+  .step-label { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; }
+  .step-input {
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--text-dark);
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.7;
+    transition: border-color 0.2s;
+  }
+  .step-input:focus { outline: none; border-color: var(--gold); }
+  .step-input::placeholder { color: var(--text-light); }
+  .generate-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(201,168,76,0.3);
+    transition: all 0.2s;
+  }
+  .generate-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(201,168,76,0.4); }
+  .card-preview {
+    display: none;
+    background: linear-gradient(145deg, #f7edd5, #eed9a4);
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-preview.show { display: block; animation: fadeIn 0.5s ease; }
+  .card-preview::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .card-preview-title {
+    font-size: 18px; font-weight: 700; color: var(--text-dark);
+    letter-spacing: 3px; margin-bottom: 4px;
+  }
+  .card-preview-sub {
+    font-size: 11px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 18px;
+  }
+  .card-preview-content {
+    font-size: 14px; color: var(--text-dark); line-height: 2; white-space: pre-wrap;
+  }
+  .card-preview-response {
+    margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border);
+    font-size: 13px; color: var(--text-mid); font-style: italic; line-height: 1.8;
+  }
+  .card-preview-action {
+    margin-top: 12px; font-size: 12px; color: var(--gold); font-weight: 600;
+  }
+  .download-btn {
+    margin-top: 14px; width: 100%; padding: 10px; background: transparent;
+    border: 1px solid var(--gold); border-radius: var(--radius);
+    font-family: var(--font); font-size: 13px; color: var(--text-mid);
+    letter-spacing: 3px; cursor: pointer; transition: all 0.2s;
+  }
+  .download-btn:hover { background: rgba(201,168,76,0.1); }
+
+  /* ==================== 彩蛋 ==================== */
+  .easter-egg {
+    display: none;
+    background: rgba(90,50,20,0.95);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 520px;
+    text-align: center;
+    color: #f5e6c8;
+    position: relative;
+  }
+  .easter-egg.show { display: block; animation: fadeIn 0.8s ease; }
+  .easter-egg-label {
+    font-size: 10px; letter-spacing: 4px; color: rgba(201,168,76,0.7); margin-bottom: 10px;
+  }
+  .easter-egg-title {
+    font-size: 16px; font-weight: 600; color: var(--gold-light); margin-bottom: 12px;
+  }
+  .easter-egg-text {
+    font-size: 14px; line-height: 1.9; color: rgba(245,230,200,0.9);
+  }
+  .easter-egg-close {
+    position: absolute; top: 10px; right: 14px;
+    background: none; border: none;
+    color: rgba(201,168,76,0.5); font-size: 18px; cursor: pointer; line-height: 1;
+  }
+
+  /* ==================== 隐藏关卡入口 ==================== */
+  .hidden-trigger {
+    display: block; width: 200px; margin: 32px auto 0; padding: 10px 20px;
+    background: none; border: 1px dashed var(--border); border-radius: 20px;
+    font-family: var(--font); font-size: 12px; color: var(--text-light);
+    letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
+  }
+  .hidden-trigger:hover { border-color: var(--gold); color: var(--text-mid); }
+  .page-end-text {
+    text-align: center; font-size: 12px; color: var(--text-light);
+    letter-spacing: 2px; margin-top: 20px;
+  }
+
+  /* ==================== 完成页 ==================== */
+  .complete-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
+
+  /* ==================== 返回主页按钮 ==================== */
+  .back-home-btn {
+    position: fixed; top: 16px; left: 16px; z-index: 200;
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 16px;
+    background: rgba(245,230,200,0.88);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: var(--font); font-size: 12px; color: var(--text-mid);
+    letter-spacing: 2px; cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px var(--shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .back-home-btn:hover {
+    background: rgba(245,230,200,0.98);
+    border-color: var(--gold);
+    color: var(--text-dark);
+    box-shadow: 0 3px 12px var(--shadow);
+    transform: translateY(-1px);
+  }
+  .back-home-btn .arrow { font-size: 14px; line-height: 1; color: var(--gold); }
+
+  /* ==================== 响应式 ==================== */
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; letter-spacing: 4px; }
+    .flip-card { width: 280px; height: 180px; }
+    .flip-card-quote { font-size: 14px; }
+    .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 进度条 -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="progressBar"></div>
+</div>
+
+<!-- 返回主页按钮 -->
+<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+  <span class="arrow">←</span>
+  <span>返回主页</span>
+</button>
+
+<!-- ==================== P1: 入口页 ==================== -->
+<div class="page active" id="page-entry">
+  <div class="center" style="padding-top: 60px;">
+    <div class="level-badge">第二关 · 找到啦</div>
+    <div class="deco-ring">
+      <div class="deco-ring-inner">求学</div>
+    </div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h1 class="hero-title">求知求学</h1>
+    <p class="hero-sub">
+      你曾经恨过那些怎么也学不会的东西吗？<br>
+      还是……恨的是那个被困住的自己？
+    </p>
+    <div class="hero-divider"></div>
+    <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
+      学习，是人类最古老的问题之一。<br>
+      有人学得轻松，有人学得痛苦。<br>
+      有人靠它改变命运，有人被它困在原地。
+    </p>
+    <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
+      这一关，不是测试你知道多少，<br>
+      而是测试：你用什么心态，面对学习这件事。
+    </p>
+    <div class="gold-line" style="margin: 28px auto;"></div>
+    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 6 分钟</p>
+  </div>
+</div>
+
+<!-- ==================== P2: 名著场景卡选择页 ==================== -->
+<div class="page" id="page-dilemma">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第二关 · 求知求学</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先选一个你最有感觉的场景</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">它是12部世界名著里的一个人生切片——<br>选 1-3 个你最想进入的，诊断会从这里开始。</p>
+    </div>
+
+    <div class="scene-layer-title">— 第一层：被困住 —</div>
+    <div id="sceneLayer1"></div>
+
+    <div class="scene-layer-title">— 第二层：觉醒时刻 —</div>
+    <div id="sceneLayer2"></div>
+
+    <div class="scene-layer-title">— 第三层：转化突破 —</div>
+    <div id="sceneLayer3"></div>
+
+    <div class="dilemma-hint">已选择 <span id="dilemmaCount">0</span> 个场景</div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P3: 冒险卡页 ==================== -->
+<div class="page" id="page-adventure">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第二关 · 求知求学</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">抽一张冒险卡</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+    </div>
+    <div class="adventure-wrap">
+      <div class="flip-card" id="flipCard" onclick="flipCard()">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-card-front-icon">✦</div>
+            <div class="flip-card-front-hint">点击翻开</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="flip-card-quote" id="flipQuote">"书是逃避，也是出口。你终会找到属于自己的那本书。"</div>
+            <div class="flip-card-tap-hint">— 冒险卡</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P4: 诊断测试页 ==================== -->
+<div class="page" id="page-question">
+  <div style="padding-top: 20px;">
+    <div class="question-header">
+      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-text" id="qText">关于"学习"这件事，你最真实的想法是？</div>
+      <div class="question-progress" id="qProgress">1 / 6</div>
+    </div>
+    <div id="optionList"></div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P5: 诊断结果页 ==================== -->
+<div class="page" id="page-result">
+  <div style="padding-top: 20px;">
+    <div class="result-header">
+      <div class="level-badge">诊断完成</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="result-title">你的学习卡点画像</div>
+      <div class="result-sub">求知求学 · 第二关</div>
+      <div class="result-summary" id="resultSummary"></div>
+    </div>
+    <div id="resultList"></div>
+
+    <!-- 彩蛋区域 -->
+    <div class="easter-egg" id="easterEgg">
+      <button class="easter-egg-close" onclick="closeEgg()">×</button>
+      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-title" id="eggTitle"></div>
+      <div class="easter-egg-text" id="eggText"></div>
+    </div>
+
+    <div class="nav-btn-wrap">
+      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P6: 通关建议页 ==================== -->
+<div class="page" id="page-advice">
+  <div style="padding-top: 20px;">
+    <div class="advice-header">
+      <div class="level-badge">第二关 · 求知求学</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="advice-title">通关建议</div>
+      <div class="advice-intro">
+        学习不是天赋的竞赛，<br>
+        是每个人都可以走的一条路。
+      </div>
+    </div>
+    <div id="adviceList"></div>
+
+    <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
+      以上不是你想说的？打开你的隐藏关卡 →
+    </div>
+    <div class="page-end-text">— 第二关 · 求知求学 · 完 —</div>
+  </div>
+</div>
+
+<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<div class="page" id="page-hidden">
+  <div style="padding-top: 20px;">
+    <div class="hidden-header">
+      <div class="level-badge">隐藏关卡</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="hidden-title">你的学习觉醒故事</div>
+      <div class="hidden-sub">
+        这里是你的空间，写下你自己的学习故事。<br>
+        不是为了记录，是为了看见。
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第一步</div>
+      <div class="step-label">我曾经卡在学习上的那件事是什么？</div>
+      <textarea class="step-input" id="hidden1" placeholder="我最学不会 / 最害怕面对的那件事是："></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第二步</div>
+      <div class="step-label">这种感觉最早出现在什么时候？</div>
+      <textarea class="step-input" id="hidden2" placeholder="最早是在……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第三步</div>
+      <div class="step-label">那之后，我是怎么撑过来的？</div>
+      <textarea class="step-input" id="hidden3" placeholder="支撑我继续学习的，有一件事/一句话/一个人："></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第四步</div>
+      <div class="step-label">如果能回到过去，我想告诉当时的自己？</div>
+      <textarea class="step-input" id="hidden4" placeholder=""></textarea>
+    </div>
+    <button class="generate-btn" onclick="generateCard()">生成我的觉醒故事卡片</button>
+    <div class="card-preview" id="cardPreview">
+      <div class="card-preview-title">我的学习觉醒</div>
+      <div class="card-preview-sub">第二关 · 求知求学 · 找到啦</div>
+      <div class="card-preview-content" id="cardContent"></div>
+      <div class="card-preview-response" id="cardResponse"></div>
+      <div class="card-preview-action" id="cardAction"></div>
+      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P7b: 完成页 ==================== -->
+<div class="page" id="page-complete">
+  <div class="center" style="padding-top: 80px;">
+    <div class="complete-icon">✦</div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
+      知道得越多，不知道的边界就越大。<br>
+      这是学习的诅咒，也是它的荣耀。
+    </p>
+    <div class="gold-line" style="margin: 0 auto 28px;"></div>
+    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   数据
+   ============================================================ */
+
+// 名著场景卡（3层结构）
+const sceneCards = [
+  // 第一层：被困住
+  {
+    id: 1, layer: 1,
+    book: "《简·爱》",
+    title: "洛伍德慈善学校",
+    desc: "简·爱在阴冷的教室里饿着肚子背圣经，监壁炉的火光映在她冻红的指尖。她明明厌恶这一切，但又隐隐感觉到——书里的世界，也许是另一条路。",
+    prompt: "你就是简·爱。你会怎么做？"
+  },
+  {
+    id: 2, layer: 1,
+    book: "《哈利·波特》",
+    title: "麻瓜家的碗柜",
+    desc: "哈利蜷缩在碗柜里，达力的电视声从门缝透进来。他从没被允许做任何事——生日时被关禁闭，作业被撕掉。「我是不是注定什么都不是？」",
+    prompt: "你就是哈利。你会怎么做？"
+  },
+  {
+    id: 3, layer: 1,
+    book: "《杀死一只知更鸟》",
+    title: "怪人阿瑟的门廊",
+    desc: "斯库特到了该上学的年纪，却发现自己在家学的东西和学校教的不一样。老师说「别再念书了」，父亲说「你还不够懂事，但你会懂的」。她不知道该听谁的。",
+    prompt: "你就是斯库特。你会怎么做？"
+  },
+  {
+    id: 4, layer: 1,
+    book: "《夏洛特的网》",
+    title: "谷仓的蜘蛛网",
+    desc: "小猪威尔伯在肥料堆旁拱食，感觉这辈子就这样了——吃、睡、等死。谷仓里谁都不觉得他有什么出息，包括他自己。夏洛特在角落里结网，不知道自己织的字能不能改变什么。",
+    prompt: "你就是威尔伯。你会怎么做？"
+  },
+  // 第二层：觉醒时刻
+  {
+    id: 5, layer: 2,
+    book: "《骆驼祥子》",
+    title: "曹家书房的夜晚",
+    desc: "祥子给曹先生家拉包月，曹家的小书斋深夜还亮着灯。他在外面擦车，看见里面的人在灯下读书——那是他第一次觉得，车以外的世界上，也许还有别的东西。",
+    prompt: "你就是祥子。你会怎么做？"
+  },
+  {
+    id: 6, layer: 2,
+    book: "《窗边的小豆豆》",
+    title: "巴学园的树下午餐",
+    desc: "小豆豆在转学之前被所有学校退回，老师说她是「问题学生」。她站在巴学园的校园里，看着电车改装的教室，不知道世界上还有这样的学校。她第一次觉得——上学也许不是噩梦。",
+    prompt: "你就是小豆豆。你会怎么做？"
+  },
+  {
+    id: 7, layer: 2,
+    book: "《射雕英雄传》",
+    title: "悬崖下的山洞",
+    desc: "郭靖在悬崖下被周伯通困住，无聊中翻开那本《九阴真经》。他从小被说是「笨孩子」，江南七怪教他武功，怎么也学不会。但他想起母亲说的：「笨人，有笨人的路。」",
+    prompt: "你就是郭靖。你会怎么做？"
+  },
+  {
+    id: 8, layer: 2,
+    book: "《你当像鸟飞往你的山》",
+    title: "废料场的起重机旁",
+    desc: "塔拉在废料场帮父亲拆解废铁，起重机的钢爪悬在半空。她偷了哥哥泰勒的吉他，在深夜自学基础乐理。「我应该和他们一样，一辈子在这里干活。」她对自己说。但书里的世界像光一样刺痛她。",
+    prompt: "你就是塔拉。你会怎么做？"
+  },
+  // 第三层：转化突破
+  {
+    id: 9, layer: 3,
+    book: "《牧羊少年奇幻之旅》",
+    title: "水晶店的等待",
+    desc: "圣地亚哥在水晶店打工，攒够了去埃及的钱，却迟迟不出发。「万一金字塔什么都没有呢？」他站在沙漠边缘，店里安逸的生活像一条毯子裹着他。知识和勇气，有时候隔着一层窗户纸。",
+    prompt: "你就是圣地亚哥。你会怎么做？"
+  },
+  {
+    id: 10, layer: 3,
+    book: "《你不知道的超级英雄》",
+    title: "宇宙知识竞赛",
+    desc: "米娅从小被告知「女孩不擅长科学」。但她在网上找到一门免费的MIT公开课，看得入迷——那些公式像音乐一样美。可周围的人说：「看那么多有什么用？」",
+    prompt: "你就是米娅。你会怎么做？"
+  },
+  {
+    id: 11, layer: 3,
+    book: "《偷书贼》",
+    title: "被轰炸的地下室",
+    desc: "莉泽尔在慕尼黑地下室借着烛光读书，外面是战火和废墟。她不认字，是死神教她阅读——也教她在最黑暗的时刻，用文字抵抗恐惧。「书是我的武器。」",
+    prompt: "你就是莉泽尔。你会怎么做？"
+  },
+  {
+    id: 12, layer: 3,
+    book: "《苏菲的世界》",
+    title: "那封奇怪的信",
+    desc: "苏菲收到一封没有署名的信：「你是谁？」她的人生被一个问题撬开了——从那以后，世界在她眼里不再一样了。每个新的问题，都像一把钥匙。",
+    prompt: "你就是苏菲。你会怎么做？"
+  }
+];
+
+// 冒险卡（学习与觉醒）
+const adventureCards = [
+  "书是逃避，也是出口。你终会找到属于自己的那本书。",
+  "我以为我在学知识，其实我在学如何面对不知道。",
+  "所有的觉醒，都始于不满足。",
+  "有些书是火柴，点燃你；有些书是冷水，浇灭你。你得自己挑。",
+  "大海没有教你游泳，但它让你知道世界很大。",
+  "读别人的故事，是为了看清自己的处境。",
+  "四十岁才读懂一本书，不算晚。那本书等了四十年，就是为了等你。",
+  "忽然有一天，你看世界的眼睛变了——那就是学习。",
+  "知识是地图，但走路还得你自己来。",
+  "种子破土前，要在黑暗里待很久。学习也是这样。",
+  "你读过的书，最后长成了你的骨头和血。",
+  "知道得越多，不知道的边界就越大。这是学习的诅咒，也是它的荣耀。"
+];
+
+// 诊断题
+const questions = [
+  {
+    q: "关于「学习」这件事，你最真实的想法是？",
+    options: [
+      { text: "我试过了，真的不是学数学/英语/……的料。", key: "01学不会就放弃" },
+      { text: "我每天都在学习，这样可以逃避真正要面对的事。", key: "02读书是为了逃避" },
+      { text: "我背下来了，但不太明白是什么意思。", key: "03死记硬背派" },
+      { text: "不知道从哪天开始，我发现自己真的喜欢上了这件事。", key: "10某天突然开窍了" },
+      { text: "每个人的方法都不一样，我不知道哪种适合我。", key: "12不知道怎么学" }
+    ]
+  },
+  {
+    q: "当你坐在书桌前开始学习时，你内心的真实状态是？",
+    options: [
+      { text: "我坐在书桌前一整天，但效率其实很低。", key: "05假装很努力" },
+      { text: "肯定有更高效的方法，只是我还没找到。", key: "07总想找捷径" },
+      { text: "我每天都在学习，所以没时间想那些烦心事。", key: "02读书是为了逃避" },
+      { text: "我已经很努力了，但还是突破不了。", key: "11怎么努力都卡在那里" },
+      { text: "道理我都懂，但就是做不到。", key: "08知道但做不到" }
+    ]
+  },
+  {
+    q: "你学习的动力主要来自哪里？",
+    options: [
+      { text: "我妈觉得……所以我学了。", key: "04为了别人的期待" },
+      { text: "GRE还没过，哪有资格谈兴趣。", key: "09考好了才说明学会了" },
+      { text: "周围的人都不支持我，我怎么可能坚持下去？", key: "06环境不允许" },
+      { text: "不知道从哪天开始，我发现自己真的喜欢上了。", key: "10某天突然开窍了" },
+      { text: "学习不是为了什么，它已经是我生活的一部分。", key: "13学习已经成为习惯" }
+    ]
+  },
+  {
+    q: "你用什么方式判断自己「学会了」？",
+    options: [
+      { text: "考试能过就行了，为什么要真正理解。", key: "03死记硬背派" },
+      { text: "我已经很努力了，但还是突破不了。", key: "11怎么努力都卡在那里" },
+      { text: "道理我都懂，但就是做不到。", key: "08知道但做不到" },
+      { text: "GRE还没过，哪有资格谈兴趣。", key: "09考好了才说明学会了" },
+      { text: "每天不学点什么，反而觉得少了点什么。", key: "13学习已经成为习惯" }
+    ]
+  },
+  {
+    q: "如果学习遇到瓶颈，你通常怎么归因？",
+    options: [
+      { text: "我们家的条件不允许我想学什么就学什么。", key: "06环境不允许" },
+      { text: "肯定有更高效的方法，只是我还没找到。", key: "07总想找捷径" },
+      { text: "是不是我天生就不是这块料？", key: "01学不会就放弃" },
+      { text: "试了很多方法，都是三分钟热度。", key: "12不知道怎么学" },
+      { text: "那次之后，我不再是为了考试而学习了。", key: "10某天突然开窍了" }
+    ]
+  },
+  {
+    q: "如果可以改变一件事，你最想改变的是？",
+    options: [
+      { text: "我希望我也能像某些人一样，轻轻松松就能学会。", key: "01学不会就放弃" },
+      { text: "我希望学习不是为了考试，而是真的想要。", key: "04为了别人的期待" },
+      { text: "我希望知道的知识，真的能在生活中用出来。", key: "08知道但做不到" },
+      { text: "我希望有人能告诉我，到底该怎么学。", key: "12不知道怎么学" },
+      { text: "我希望有一天，学习不再是一件痛苦的事。", key: "10某天突然开窍了" }
+    ]
+  }
+];
+
+// 卡点完整数据
+const cardPoints = {
+  "01学不会就放弃": {
+    name: "学不会就放弃",
+    desc: "「我不是学数学的料」——这句话你已经对自己说了无数遍。这是习得性无助：一次失败让你相信「努力没有用」，于是放弃了所有尝试。但真相是：学习能力不是天生的，它是练出来的。",
+    advice: "把「学不会」换成「还没学会」。这个世界上绝大多数技能，不需要天赋，只需要正确的方法和足够的练习。先承认自己只是暂时不会，不是永远不会。",
+    color: "#8a6040"
+  },
+  "02读书是为了逃避": {
+    name: "读书是为了逃避",
+    desc: "你用学习填满了时间，假装自己在进步。但夜深人静的时候，你心里清楚：这些书、这些课，没有真正改变什么。学习成了逃避真正问题的工具。",
+    advice: "学习是好的，但用它来逃避不行。先问自己：我在逃避什么？承认逃避，比假装努力更诚实。只有面对了真正的问题，学习才有用。",
+    color: "#7a5030"
+  },
+  "03死记硬背派": {
+    name: "死记硬背派",
+    desc: "你把「记住」当成「学会」。考试能过，笔记做好，但问你「能用在哪」，你哑口无言。这是浅层学习——你在收集信息，但没有构建理解。",
+    advice: "下次学完一章，试着不看书讲给别人听。如果讲不清楚，说明还没真正懂。理解是记忆的基础，不是记忆的结果。",
+    color: "#9a7840"
+  },
+  "04为了别人的期待": {
+    name: "为了别人的期待",
+    desc: "你学的是别人认为你应该学的东西。会计、法律、医学——这些选择背后是父母的期待、社会的标准。但你不是他们，你的人生不是他们的延续。",
+    advice: "拿出一张纸，左边写「别人期待我学的」，右边写「我自己真正想学的」。如果右边的答案让你感到陌生，那恰恰是答案所在。",
+    color: "#a07850"
+  },
+  "05假装很努力": {
+    name: "假装很努力",
+    desc: "你在书桌前坐了八个小时，但有效学习时间可能不到两小时。你用「我在学习」来安慰自己，来向别人证明你在努力。但你心里知道：这是表演，不是真的投入。",
+    advice: "效率比时间重要。宁可每天高效学习两小时，也不要低效耗八小时。真正的努力，不需要表演给自己看。",
+    color: "#907050"
+  },
+  "06环境不允许": {
+    name: "环境不允许",
+    desc: "「我们家的条件不允许」、「周围的人都不支持」——你把学习的困难归咎于环境。但真正热爱学习的人，在任何环境里都能找到路。",
+    advice: "把「环境不允许」换成「环境不完美，但我在尽力」。这个替换，是改变的开始。",
+    color: "#8a7050"
+  },
+  "07总想找捷径": {
+    name: "总想找捷径",
+    desc: "你相信一定有更高效的方法，只是你还没找到。所以你花大量时间刷「学习方法」，却始终没有真正开始学习那件事本身。捷径心态，是另一种拖延。",
+    advice: "好消息是：最快的捷径，就是开始行动。在学习的过程中，方法自然会浮现。先动起来，比想清楚再动，更有效。",
+    color: "#a08060"
+  },
+  "08知道但做不到": {
+    name: "知道但做不到",
+    desc: "你是个「知道分子」：读了很多书，听了很多课，道理一套一套的。但一回到现实生活，你还是老样子。知和行之间，隔着一道鸿沟。",
+    advice: "知识只有在被使用的时候，才真正属于你。下次学到一个道理，找一个具体的场景去用。哪怕用得很笨拙，也比停在「知道」强十倍。",
+    color: "#9a7050"
+  },
+  "09考好了才说明学会了": {
+    name: "考好了才说明学会了",
+    desc: "你把学习等价于考试和证书。没有通过某某考试，你就觉得自己「还没资格」谈兴趣。分数和证书成了衡量学习的唯一标准。",
+    advice: "证书是结果，不是目的。问自己：假设不需要考试，我会学这个吗？如果答案是「不会」，那你可能并不真的想学这个东西。",
+    color: "#a07060"
+  },
+  "10某天突然开窍了": {
+    name: "某天突然开窍了",
+    desc: "你曾经是个被动学习者，但某一天，某个时刻，一切都变了。也许是一本书、一个人、一段经历——从那以后，你不再是为了考试而学，你是真的想要。",
+    advice: "记住那个「开窍」的感觉。它告诉你：学习的内驱力，是可以培养的。找到让你兴奋的那个点，围绕它扩展。",
+    color: "#b09060"
+  },
+  "11怎么努力都卡在那里": {
+    name: "怎么努力都卡在那里",
+    desc: "你已经付出了很多，但就是突破不了。这个「瓶颈」，像一堵透明的墙，看得见另一边，但跨不过去。你开始怀疑自己是不是真的没有天赋。",
+    advice: "换一种方式，而不是放弃。同样的方法反复用，只会得到同样的结果。找老师、换教材、换个领域切入——有时候，瓶颈是「方法不对」。",
+    color: "#8a6040"
+  },
+  "12不知道怎么学": {
+    name: "不知道怎么学",
+    desc: "你试了很多方法：番茄钟、费曼技巧、思维导图——每个听起来都有道理，但试了都效果平平。你开始觉得自己就是笨。",
+    advice: "方法不是找出来的，是试出来的。与其花时间研究「最好的方法」，不如挑一个不讨厌的先开始。在学习过程中，感受什么让你高效。",
+    color: "#9a8060"
+  },
+  "13学习已经成为习惯": {
+    name: "学习已经成为习惯",
+    desc: "你不再需要「坚持学习」，因为学习本身就是你生活的一部分。你不是为了什么而学，它就是你的日常，像吃饭睡觉一样自然。",
+    advice: "保持好奇，保持饥渴。你已经证明了学习是可以培养的。现在，把这份能力传递给身边的人。这是学习的更高形态。",
+    color: "#c0a070"
+  }
+};
+
+// 彩蛋
+const easterEggs = [
+  {
+    title: "《苏菲的世界》· 艾伯特",
+    text: "艾伯特说：「大多数人都忙于日常琐事，对此他们总是焦虑不安，对世界万物漠不关心。」学习，是让你从这种生活中抬起头来的方式之一。"
+  },
+  {
+    title: "《牧羊少年奇幻之旅》· 水晶店老板",
+    text: "水晶店老板存够了去麦加的钱，却从未出发——因为他需要「梦想」作为活下去的理由。有些学习，是为了让梦想活下去，而不是为了抵达。"
+  },
+  {
+    title: "《你当像鸟飞往你的山》· 塔拉",
+    text: "塔拉说：「教育意味着获得不同视角，理解不同的人、经历和历史。」但最重要的教育，是让你有能力离开你以为属于你的世界。"
+  },
+  {
+    title: "《窗边的小豆豆》· 小林校长",
+    text: "小林校长听小豆豆说了四个小时的话，一句也没有打断。「蹲下来认真听孩子说话」，是教育最美的样子——也是你曾经渴望被对待的方式。"
+  }
+];
+
+/* ============================================================
+   状态
+   ============================================================ */
+let currentPage = 'entry';
+let selectedScenes = [];
+let currentQuestion = 0;
+let answers = {};
+let cardScores = {};
+
+/* ============================================================
+   页面导航
+   ============================================================ */
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + name);
+  if (el) el.classList.add('active');
+  currentPage = name;
+  updateProgress(name);
+  if (name === 'dilemma') renderScenes();
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display='block'; }
+  if (name === 'question') renderQuestion();
+  if (name === 'result') showResult();
+  if (name === 'advice') showAdvice();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress(name) {
+  const progressMap = { entry: 5, dilemma: 15, adventure: 25, question: 35, result: 80, advice: 90, hidden: 95, complete: 100 };
+  const p = progressMap[name] || 0;
+  document.getElementById('progressBar').style.width = p + '%';
+}
+
+/* ============================================================
+   名著场景卡选择
+   ============================================================ */
+function renderScenes() {
+  const layer1 = document.getElementById('sceneLayer1');
+  const layer2 = document.getElementById('sceneLayer2');
+  const layer3 = document.getElementById('sceneLayer3');
+
+  layer1.innerHTML = sceneCards.filter(s => s.layer === 1).map(s => makeSceneCard(s)).join('');
+  layer2.innerHTML = sceneCards.filter(s => s.layer === 2).map(s => makeSceneCard(s)).join('');
+  layer3.innerHTML = sceneCards.filter(s => s.layer === 3).map(s => makeSceneCard(s)).join('');
+}
+
+function makeSceneCard(s) {
+  const sel = selectedScenes.includes(s.id);
+  return `
+    <div class="scene-card${sel ? ' selected' : ''}" onclick="toggleScene(${s.id})">
+      <div class="scene-book">${s.book}</div>
+      <div class="scene-title">${s.title}</div>
+      <div class="scene-desc">${s.desc}</div>
+      <div class="scene-prompt">${s.prompt}</div>
+    </div>
+  `;
+}
+
+function toggleScene(id) {
+  const idx = selectedScenes.indexOf(id);
+  if (idx === -1) {
+    if (selectedScenes.length < 3) selectedScenes.push(id);
+  } else {
+    selectedScenes.splice(idx, 1);
+  }
+  renderScenes();
+  document.getElementById('dilemmaCount').textContent = selectedScenes.length;
+  document.getElementById('dilemmaNextBtn').disabled = selectedScenes.length === 0;
+}
+
+function goDilemma() {
+  if (selectedScenes.length === 0) return;
+  goPage('adventure');
+}
+
+/* ============================================================
+   冒险卡
+   ============================================================ */
+let currentCardIndex = 0;
+
+function selectRandomCard() {
+  currentCardIndex = Math.floor(Math.random() * adventureCards.length);
+  document.getElementById('flipQuote').textContent = '"' + adventureCards[currentCardIndex] + '"';
+  const fc = document.getElementById('flipCard');
+  fc.classList.remove('flipped');
+  document.getElementById('adventureNextBtn').style.display = 'none';
+  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+}
+
+function flipCard() {
+  const fc = document.getElementById('flipCard');
+  fc.classList.add('flipped');
+  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('adventureNextBtn').style.display = 'inline-block';
+}
+
+function goQuestion() {
+  goPage('question');
+}
+
+/* ============================================================
+   诊断题
+   ============================================================ */
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  const total = questions.length;
+  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
+
+  const optList = document.getElementById('optionList');
+  const saved = answers[currentQuestion] || [];
+  optList.innerHTML = q.options.map((opt, i) => `
+    <div class="option-card${saved.includes(i) ? ' selected' : ''}" onclick="toggleOption(${i})">
+      <div class="option-text">${opt.text}</div>
+      <div class="option-check"></div>
+    </div>
+  `).join('');
+
+  document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
+}
+
+function toggleOption(i) {
+  if (!answers[currentQuestion]) answers[currentQuestion] = [];
+  const idx = answers[currentQuestion].indexOf(i);
+  if (idx === -1) {
+    answers[currentQuestion].push(i);
+  } else {
+    answers[currentQuestion].splice(idx, 1);
+  }
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if ((answers[currentQuestion] || []).length === 0) return;
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  } else {
+    goPage('result');
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+/* ============================================================
+   诊断结果
+   ============================================================ */
+function computeScores() {
+  cardScores = {};
+  questions.forEach((q, qi) => {
+    const selected = answers[qi] || [];
+    selected.forEach(i => {
+      const key = q.options[i].key;
+      cardScores[key] = (cardScores[key] || 0) + 1;
+    });
+  });
+}
+
+function showResult() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+
+  const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
+  const summaryTexts = [
+    `你最核心的学习卡点是「${topKey ? topKey.name : ''}」。看见它，已经是改变的第一步。`,
+    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们相互影响，共同塑造了你面对学习的方式。`,
+    "学习不是天赋的竞赛，是每个人都可以走的一条路。你已经在这里了。"
+  ];
+  document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
+
+  const resultList = document.getElementById('resultList');
+  resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
+    const cp = cardPoints[key];
+    const pct = Math.min(100, score * 40);
+    const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
+    return `
+      <div class="result-card">
+        <div class="result-card-top">
+          <span class="result-card-name">${cp.name}</span>
+          <span class="result-card-pct">命中 ${score} 次</span>
+        </div>
+        <div class="result-bar-bg">
+          <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  setTimeout(() => {
+    document.querySelectorAll('.result-bar-fill').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width') + '%';
+    });
+  }, 200);
+
+  if (Math.random() < 0.2) {
+    const egg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+    document.getElementById('eggTitle').textContent = egg.title;
+    document.getElementById('eggText').textContent = egg.text;
+    document.getElementById('easterEgg').classList.add('show');
+  }
+}
+
+function closeEgg() {
+  document.getElementById('easterEgg').classList.remove('show');
+}
+
+function goAdvice() {
+  goPage('advice');
+}
+
+/* ============================================================
+   通关建议
+   ============================================================ */
+function showAdvice() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+  const topCards = sorted.slice(0, 5);
+
+  const adviceList = document.getElementById('adviceList');
+  adviceList.innerHTML = topCards.map(([key, score], i) => {
+    const cp = cardPoints[key];
+    return `
+      <div class="advice-card">
+        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-title">
+          <span class="advice-card-num">${i+1}</span>
+          ${cp.name}
+        </div>
+        <div class="advice-card-desc">${cp.desc}</div>
+        <div class="advice-card-action">${cp.advice}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function goHidden() {
+  goPage('hidden');
+}
+
+/* ============================================================
+   隐藏关卡
+   ============================================================ */
+function generateCard() {
+  const h1 = document.getElementById('hidden1').value.trim();
+  const h2 = document.getElementById('hidden2').value.trim();
+  const h3 = document.getElementById('hidden3').value.trim();
+  const h4 = document.getElementById('hidden4').value.trim();
+
+  if (!h1 && !h2 && !h3 && !h4) {
+    alert('先写点什么吧，至少说一件你卡住的事。');
+    return;
+  }
+
+  const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
+    `第${['一','二','三','四'][i]}步：${t}`
+  ).join('\n\n');
+
+  document.getElementById('cardContent').textContent = content;
+
+  const responses = [
+    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
+    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
+    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
+    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+  ];
+  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+
+  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：把这件事再想一遍，比今天多想清楚一点。';
+  document.getElementById('cardAction').textContent = firstAction;
+
+  document.getElementById('cardPreview').classList.add('show');
+}
+
+function downloadCard() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 600; canvas.height = 800;
+  const ctx = canvas.getContext('2d');
+
+  const grad = ctx.createLinearGradient(0, 0, 600, 800);
+  grad.addColorStop(0, '#f7edd5');
+  grad.addColorStop(1, '#eed9a4');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 600, 800);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.fillRect(0, 0, 600, 4);
+
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = 'bold 28px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的学习觉醒', 300, 80);
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = '12px serif';
+  ctx.fillText('第二关 · 求知求学 · 找到啦', 300, 108);
+
+  ctx.strokeStyle = 'rgba(139,90,43,0.3)';
+  ctx.beginPath();
+  ctx.moveTo(100, 130); ctx.lineTo(500, 130);
+  ctx.stroke();
+
+  const content = document.getElementById('cardContent').textContent;
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = '14px serif';
+  ctx.textAlign = 'left';
+  const lines = content.split('\n\n');
+  let y = 170;
+  lines.forEach(para => {
+    ctx.fillText(para, 50, y);
+    y += para.split('\n').length * 26 + 20;
+  });
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = 'italic 13px serif';
+  const resp = document.getElementById('cardResponse').textContent;
+  ctx.fillText(resp, 50, y + 20);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.font = 'bold 13px serif';
+  const act = document.getElementById('cardAction').textContent;
+  ctx.fillText(act, 50, y + 50);
+
+  ctx.fillStyle = '#b89a6a';
+  ctx.font = '11px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('— 第二关 · 求知求学 · 完 —', 300, 750);
+
+  const link = document.createElement('a');
+  link.download = '我的学习觉醒.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function restart() {
+  selectedScenes = [];
+  currentQuestion = 0;
+  answers = {};
+  cardScores = {};
+  document.getElementById('easterEgg').classList.remove('show');
+  document.getElementById('cardPreview').classList.remove('show');
+  ['hidden1','hidden2','hidden3','hidden4'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  goPage('entry');
+}
+
+function goBackHome() {
+  if (document.referrer && document.referrer !== window.location.href) {
+    history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+
+/* ============================================================
+   启动
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderScenes();
+});
+</script>
+
+</body>
+</html>

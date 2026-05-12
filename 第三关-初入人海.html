@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="初入人海关卡：面对社会的第一步，识别你在人际关系和自我认知上的盲区。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三关 · 初入人海 — 找到啦</title>
+<style>
+  /* ==================== 基础变量（与一二关保持一致）==================== */
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --bg3: #e8d898;
+    --text-dark: #5a3e1b;
+    --text-mid: #9a7a4a;
+    --text-light: #b89a6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  }
+
+  /* ==================== 全局 ==================== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 8px;
+    border: 1.5px solid var(--border);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ==================== 页面容器 ==================== */
+  .page {
+    display: none;
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    animation: fadeIn 0.6s ease;
+  }
+  .page.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ==================== 通用组件 ==================== */
+  .gold-line {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 24px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+  }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--text-mid);
+    box-shadow: none;
+  }
+  .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .center { text-align: center; }
+  .text-mid { color: var(--text-mid); font-size: 14px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-40 { margin-top: 40px; }
+  .mb-8 { margin-bottom: 8px; }
+
+  /* ==================== 进度条 ==================== */
+  .progress-bar-wrap {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 3px;
+    background: rgba(201,168,76,0.15);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  /* ==================== P1: 入口页 ==================== */
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 6px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero-title em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .hero-divider {
+    width: 180px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+  }
+
+  /* 装饰圆环（第三关：清冷晨雾感） */
+  .deco-ring {
+    width: 160px; height: 160px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    margin: 0 auto 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    /* 雾气效果 */
+    box-shadow:
+      0 0 30px rgba(180,160,120,0.15),
+      inset 0 0 30px rgba(180,160,120,0.08);
+  }
+  .deco-ring::before {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
+  }
+  .deco-ring-inner {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(201,168,76,0.3);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+    50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
+  }
+
+  /* 雾气粒子装饰 */
+  .fog-particle {
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,185,150,0.25), transparent);
+    pointer-events: none;
+    z-index: 0;
+    animation: fogFloat 8s ease-in-out infinite;
+  }
+  @keyframes fogFloat {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-20px) translateX(15px); opacity: 0.6; }
+  }
+
+  /* ==================== P2: 社交瞬间选择页 ==================== */
+  .moment-layer-title {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .moment-card {
+    background: rgba(255,252,240,0.55);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .moment-card:hover {
+    background: rgba(255,252,240,0.88);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .moment-card.selected {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,168,76,0.2);
+  }
+  .moment-card.selected::after {
+    content: '';
+    position: absolute;
+    right: 14px; top: 14px;
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%235a3e1b' d='M16.7 5.3L7 15l-4.7-4.7 1.4-1.4 3.3 3.3 9.4-9.3z'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .moment-icon {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .moment-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .moment-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .moment-hint {
+    font-size: 11px;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+  .dilemma-hint {
+    font-size: 12px;
+    color: var(--text-mid);
+    text-align: right;
+    margin-top: 16px;
+  }
+
+  /* ==================== P3: 冒险卡 ==================== */
+  .adventure-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px 0;
+  }
+  .flip-card {
+    width: 320px; height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+  .flip-card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-card-front, .flip-card-back {
+    position: absolute; inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .flip-card-front {
+    background: linear-gradient(145deg, #f0e0b0, #e8d090);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .flip-card-front-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .flip-card-front-hint { font-size: 13px; color: var(--text-mid); letter-spacing: 3px; }
+  .flip-card-back {
+    background: linear-gradient(145deg, var(--bg), var(--bg2));
+    border: 1.5px solid var(--gold);
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 20px var(--shadow);
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card-quote {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.9;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .flip-card-tap-hint {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-top: 16px;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ==================== P4: 诊断测试 ==================== */
+  .question-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .question-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+  .question-progress {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 6px;
+  }
+  .option-card {
+    background: rgba(255,252,240,0.5);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+  }
+  .option-card:hover {
+    background: rgba(255,252,240,0.85);
+    border-color: rgba(201,168,76,0.5);
+  }
+  .option-card.selected {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+  .option-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding-right: 30px;
+  }
+  .option-card.selected .option-text { font-weight: 500; }
+  .option-check {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .option-card.selected .option-check {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .option-card.selected .option-check::after {
+    content: '';
+    width: 8px; height: 5px;
+    border-left: 1.5px solid var(--text-dark);
+    border-bottom: 1.5px solid var(--text-dark);
+    transform: rotate(-45deg) translate(1px,-1px);
+  }
+  .nav-btn-wrap {
+    display: flex; gap: 12px; justify-content: center;
+    margin-top: 28px;
+  }
+
+  /* ==================== P5: 诊断结果 ==================== */
+  .result-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .result-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .result-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+  }
+  .result-summary {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    padding: 16px 0 24px;
+    font-style: italic;
+  }
+  .result-card {
+    background: rgba(255,252,240,0.65);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .result-card-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .result-card-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+  .result-card-pct { font-size: 12px; color: var(--text-mid); }
+  .result-bar-bg {
+    height: 6px;
+    background: rgba(139,90,43,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .result-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
+  .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+
+  /* ==================== P6: 通关建议 ==================== */
+  .advice-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .advice-intro {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .advice-card {
+    background: rgba(255,252,240,0.6);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .advice-card-label {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .advice-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .advice-card-num {
+    background: var(--gold);
+    color: var(--text-dark);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .advice-card-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .advice-card-action {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    padding: 8px 14px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .advice-card-action::before { content: '→ '; }
+
+  /* ==================== P7: 隐藏关卡 ==================== */
+  .hidden-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .hidden-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+  .hidden-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .step-card {
+    background: rgba(255,252,240,0.55);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .step-num { font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 6px; }
+  .step-label { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; }
+  .step-input {
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--text-dark);
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.7;
+    transition: border-color 0.2s;
+  }
+  .step-input:focus { outline: none; border-color: var(--gold); }
+  .step-input::placeholder { color: var(--text-light); }
+  .generate-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(201,168,76,0.3);
+    transition: all 0.2s;
+  }
+  .generate-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(201,168,76,0.4); }
+  .card-preview {
+    display: none;
+    background: linear-gradient(145deg, #f7edd5, #eed9a4);
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-preview.show { display: block; animation: fadeIn 0.5s ease; }
+  .card-preview::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .card-preview-title {
+    font-size: 18px; font-weight: 700; color: var(--text-dark);
+    letter-spacing: 3px; margin-bottom: 4px;
+  }
+  .card-preview-sub {
+    font-size: 11px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 18px;
+  }
+  .card-preview-content {
+    font-size: 14px; color: var(--text-dark); line-height: 2; white-space: pre-wrap;
+  }
+  .card-preview-response {
+    margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border);
+    font-size: 13px; color: var(--text-mid); font-style: italic; line-height: 1.8;
+  }
+  .card-preview-action {
+    margin-top: 12px; font-size: 12px; color: var(--gold); font-weight: 600;
+  }
+  .download-btn {
+    margin-top: 14px; width: 100%; padding: 10px; background: transparent;
+    border: 1px solid var(--gold); border-radius: var(--radius);
+    font-family: var(--font); font-size: 13px; color: var(--text-mid);
+    letter-spacing: 3px; cursor: pointer; transition: all 0.2s;
+  }
+  .download-btn:hover { background: rgba(201,168,76,0.1); }
+
+  /* ==================== 彩蛋 ==================== */
+  .easter-egg {
+    display: none;
+    background: rgba(90,50,20,0.95);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 520px;
+    text-align: center;
+    color: #f5e6c8;
+    position: relative;
+  }
+  .easter-egg.show { display: block; animation: fadeIn 0.8s ease; }
+  .easter-egg-label {
+    font-size: 10px; letter-spacing: 4px; color: rgba(201,168,76,0.7); margin-bottom: 10px;
+  }
+  .easter-egg-title {
+    font-size: 16px; font-weight: 600; color: var(--gold-light); margin-bottom: 12px;
+  }
+  .easter-egg-text {
+    font-size: 14px; line-height: 1.9; color: rgba(245,230,200,0.9);
+  }
+  .easter-egg-close {
+    position: absolute; top: 10px; right: 14px;
+    background: none; border: none;
+    color: rgba(201,168,76,0.5); font-size: 18px;
+    cursor: pointer; line-height: 1;
+  }
+
+  /* ==================== 隐藏关卡入口 ==================== */
+  .hidden-trigger {
+    display: block; width: 200px; margin: 32px auto 0; padding: 10px 20px;
+    background: none; border: 1px dashed var(--border); border-radius: 20px;
+    font-family: var(--font); font-size: 12px; color: var(--text-light);
+    letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
+  }
+  .hidden-trigger:hover { border-color: var(--gold); color: var(--text-mid); }
+  .page-end-text {
+    text-align: center; font-size: 12px; color: var(--text-light);
+    letter-spacing: 2px; margin-top: 20px;
+  }
+
+  /* ==================== 完成页 ==================== */
+  .complete-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
+
+  /* ==================== 返回主页按钮 ==================== */
+  .back-home-btn {
+    position: fixed; top: 16px; left: 16px; z-index: 200;
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 16px;
+    background: rgba(245,230,200,0.88);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: var(--font); font-size: 12px; color: var(--text-mid);
+    letter-spacing: 2px; cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px var(--shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .back-home-btn:hover {
+    background: rgba(245,230,200,0.98);
+    border-color: var(--gold);
+    color: var(--text-dark);
+    box-shadow: 0 3px 12px var(--shadow);
+    transform: translateY(-1px);
+  }
+  .back-home-btn .arrow { font-size: 14px; line-height: 1; color: var(--gold); }
+
+  /* ==================== 响应式 ==================== */
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; letter-spacing: 4px; }
+    .flip-card { width: 280px; height: 180px; }
+    .flip-card-quote { font-size: 14px; }
+    .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 雾气粒子装饰 -->
+<div class="fog-particle" style="width:200px;height:200px;top:10%;left:-50px;animation-delay:0s;"></div>
+<div class="fog-particle" style="width:150px;height:150px;top:40%;right:-30px;animation-delay:2s;"></div>
+<div class="fog-particle" style="width:180px;height:180px;bottom:15%;left:10%;animation-delay:4s;"></div>
+
+<!-- 进度条 -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="progressBar"></div>
+</div>
+
+<!-- 返回主页按钮 -->
+<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+  <span class="arrow">←</span>
+  <span>返回主页</span>
+</button>
+
+<!-- ==================== P1: 入口页 ==================== -->
+<div class="page active" id="page-entry">
+  <div class="center" style="padding-top: 60px;">
+    <div class="level-badge">第三关 · 找到啦</div>
+    <div class="deco-ring">
+      <div class="deco-ring-inner">初涉</div>
+    </div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h1 class="hero-title">初入人海</h1>
+    <p class="hero-sub">
+      你第一次发现：<br>
+      别人不是爸妈。
+    </p>
+    <div class="hero-divider"></div>
+    <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
+      走出家门的那一刻，<br>
+      世界不再围着你转。<br>
+      有人对你笑，有人不理你，<br>
+      有人你以为是朋友，其实不是。
+    </p>
+    <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
+      这一关，不讲社交技巧，<br>
+      只是让你看见：<br>
+      你是怎么「进入人群」的。
+    </p>
+    <div class="gold-line" style="margin: 28px auto;"></div>
+    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 6 分钟</p>
+  </div>
+</div>
+
+<!-- ==================== P2: 社交瞬间选择页 ==================== -->
+<div class="page" id="page-dilemma">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第三关 · 初入人海</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">哪个瞬间，你最记得？</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 个你最有感觉的社交瞬间。<br>不用想，凭第一感觉选。</p>
+    </div>
+
+    <div class="moment-layer-title">— 幼儿园 · 小学 —</div>
+    <div id="momentLayer1"></div>
+
+    <div class="moment-layer-title">— 中学 · 同龄人 —</div>
+    <div id="momentLayer2"></div>
+
+    <div class="moment-layer-title">— 初入社会 · 第一份工 —</div>
+    <div id="momentLayer3"></div>
+
+    <div class="dilemma-hint">已选择 <span id="dilemmaCount">0</span> 个瞬间</div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P3: 冒险卡页 ==================== -->
+<div class="page" id="page-adventure">
+  <div style="padding-top: 20px;">
+    <div class="center">
+      <div class="level-badge">第三关 · 初入人海</div>
+      <div class="gold-line" style="margin-bottom: 16px;"></div>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">抽一张冒险卡</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+    </div>
+    <div class="adventure-wrap">
+      <div class="flip-card" id="flipCard" onclick="flipCard()">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-card-front-icon">✦</div>
+            <div class="flip-card-front-hint">点击翻开</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="flip-card-quote" id="flipQuote">"你以为你在看别人，其实别人也在看你。"</div>
+            <div class="flip-card-tap-hint">— 冒险卡</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P4: 诊断测试页 ==================== -->
+<div class="page" id="page-question">
+  <div style="padding-top: 20px;">
+    <div class="question-header">
+      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-text" id="qText">你第一次注意到「别人不喜欢我」，是在什么时候？</div>
+      <div class="question-progress" id="qProgress">1 / 6</div>
+    </div>
+    <div id="optionList"></div>
+    <div class="nav-btn-wrap" style="margin-top: 20px;">
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P5: 诊断结果页 ==================== -->
+<div class="page" id="page-result">
+  <div style="padding-top: 20px;">
+    <div class="result-header">
+      <div class="level-badge">诊断完成</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="result-title">你的社交卡点画像</div>
+      <div class="result-sub">初入人海 · 第三关</div>
+      <div class="result-summary" id="resultSummary"></div>
+    </div>
+    <div id="resultList"></div>
+
+    <!-- 彩蛋区域 -->
+    <div class="easter-egg" id="easterEgg">
+      <button class="easter-egg-close" onclick="closeEgg()">×</button>
+      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-title" id="eggTitle"></div>
+      <div class="easter-egg-text" id="eggText"></div>
+    </div>
+
+    <div class="nav-btn-wrap">
+      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== P6: 通关建议页 ==================== -->
+<div class="page" id="page-advice">
+  <div style="padding-top: 20px;">
+    <div class="advice-header">
+      <div class="level-badge">第三关 · 初入人海</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="advice-title">通关建议</div>
+      <div class="advice-intro">
+        人群不可怕。<br>
+        可怕的是，你以为人群在看你。
+      </div>
+    </div>
+    <div id="adviceList"></div>
+
+    <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
+      以上不是你想说的？打开你的隐藏关卡 →
+    </div>
+    <div class="page-end-text">— 第三关 · 初入人海 · 完 —</div>
+  </div>
+</div>
+
+<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<div class="page" id="page-hidden">
+  <div style="padding-top: 20px;">
+    <div class="hidden-header">
+      <div class="level-badge">隐藏关卡</div>
+      <div class="gold-line" style="margin-bottom: 14px;"></div>
+      <div class="hidden-title">你的社交初体验</div>
+      <div class="hidden-sub">
+        这里是你的空间，写下你第一次「进入人群」的故事。<br>
+        不用修饰，真实就好。
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第一步</div>
+      <div class="step-label">我第一次觉得「别人不喜欢我」，是在什么时候？</div>
+      <textarea class="step-input" id="hidden1" placeholder="我记得……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第二步</div>
+      <div class="step-label">当时我怎么反应的？我现在怎么看那个反应？</div>
+      <textarea class="step-input" id="hidden2" placeholder="我当时……现在回想起来……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第三步</div>
+      <div class="step-label">如果可以回到那一刻，我想对当时的自己说什么？</div>
+      <textarea class="step-input" id="hidden3" placeholder="我想对当时的自己说……"></textarea>
+    </div>
+    <div class="step-card">
+      <div class="step-num">第四步</div>
+      <div class="step-label">今天，我可以做一件什么事，来松动这个卡点？</div>
+      <textarea class="step-input" id="hidden4" placeholder="今天，我可以做……"></textarea>
+    </div>
+    <button class="generate-btn" onclick="generateCard()">生成我的社交觉醒卡片</button>
+    <div class="card-preview" id="cardPreview">
+      <div class="card-preview-title">我的社交初体验</div>
+      <div class="card-preview-sub">第三关 · 初入人海 · 找到啦</div>
+      <div class="card-preview-content" id="cardContent"></div>
+      <div class="card-preview-response" id="cardResponse"></div>
+      <div class="card-preview-action" id="cardAction"></div>
+      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 完成页 ==================== -->
+<div class="page" id="page-complete">
+  <div class="center" style="padding-top: 80px;">
+    <div class="complete-icon">✦</div>
+    <div class="gold-line" style="margin-bottom: 20px;"></div>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
+      看见自己的社交卡点，<br>
+      是走出人群焦虑的第一步。
+    </p>
+    <div class="gold-line" style="margin: 0 auto 28px;"></div>
+    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   数据：第三关 · 初入人海
+   ============================================================ */
+
+// 社交瞬间卡（3层：幼儿园小学 / 中学同龄人 / 初入社会）
+const moments = [
+  // 第一层：幼儿园 · 小学
+  {
+    id: 1, layer: 1,
+    icon: "🏫",
+    title: "第一次被同学孤立",
+    desc: "你不记得具体原因，只记得那种感觉——围墙上有人在看你，但没人叫你一起玩。你假装不在乎，但其实很在乎。",
+    hint: "你就是那个小孩。你当时怎么做的？"
+  },
+  {
+    id: 2, layer: 1,
+    icon: "✋",
+    title: "老师当众批评你",
+    desc: "全班安静，所有人的眼睛都看向你。老师说的话你已经不记得，但那种「被所有人看着」的感觉，你还记得。",
+    hint: "你就是那个被批评的小孩。"
+  },
+  {
+    id: 3, layer: 1,
+    icon: "🎒",
+    title: "最好的朋友忽然不理你",
+    desc: "昨天还在分享秘密，今天就不跟你说话了。你不知道为什么，也不敢问。从此你学会了一件事：关系可能随时消失。",
+    hint: "你就是那个被冷落的小孩。"
+  },
+  {
+    id: 4, layer: 1,
+    icon: "🏠",
+    title: "邻居小孩「借」了你的玩具，没有还",
+    desc: "你站在他家门口，不敢敲门。妈妈在后面说：「算了，大方一点。」但你心里不是「大方」——是委屈。",
+    hint: "你就是那个站在门口的小孩。"
+  },
+
+  // 第二层：中学 · 同龄人
+  {
+    id: 5, layer: 2,
+    icon: "📱",
+    title: "群里聊天，没有人回你的消息",
+    desc: "其他人都在热聊，你的消息发出去，像石沉大海。你删了又发，发了又删。最后你不发了，假装自己没发过。",
+    hint: "你就是那个盯著手机等回复的人。"
+  },
+  {
+    id: 6, layer: 2,
+    icon: "🎭",
+    title: "为了在人群中不被排挤，你变成了另一个人",
+    desc: "你说著自己不喜欢的话题，笑著自己不觉得好笑的笑话。回到家，你有点不认识自己了。但为了「被接纳」，你觉得值得。",
+    hint: "你就是那个戴著面具的人。"
+  },
+  {
+    id: 7, layer: 2,
+    icon: "💬",
+    title: "你鼓起勇气说了真话，结果冷场了",
+    desc: "大家沉默了三秒，然后有人换了个话题。你说的话没有错，但那一刻你觉得：也许不说才是聪明的做法。",
+    hint: "你就是那个说真话的人。"
+  },
+  {
+    id: 8, layer: 2,
+    icon: "🌙",
+    title: "深夜你反复回想白天说过的某句话",
+    desc: "「我是不是说错了？」「他们是不是在笑我？」你翻来覆去，觉得自己把某件事搞砸了。但第二天，发现根本没人在意。",
+    hint: "你就是那个深夜反刍的人。"
+  },
+
+  // 第三层：初入社会 · 第一份工
+  {
+    id: 9, layer: 3,
+    icon: "👔",
+    title: "第一次上班，不知道「规矩」是什么",
+    desc: "别人都懂，只有你不懂。你笑得有点多，问得有点少，怕显得自己「不够成熟」。那段时间，你每天都在消耗。",
+    hint: "你就是那个新人。"
+  },
+  {
+    id: 10, layer: 3,
+    icon: "🍻",
+    title: "同事聚餐，你不知道该坐哪里",
+    desc: "推门进去，已经坐满了。你端着盘子站在那里，三秒钟像三分钟。最后你坐到了一个角落，整场饭你都在想怎么说话才不显得尴尬。"
+  },
+  {
+    id: 11, layer: 3,
+    icon: "🧊",
+    title: "你是那个「不太合群」的人",
+    desc: "别人三三两两聊得火热，你一个人站在旁边。你有点失落，但更多是困惑：为什么他们那么容易就能聊起来？你做不到。",
+    hint: "你就是那个站在旁边的人。"
+  },
+  {
+    id: 12, layer: 3,
+    icon: "🤝",
+    title: "你主动伸出了手，对方没有接",
+    desc: "你鼓起勇气说了一句「我们做朋友吧」，对方笑了笑，走了。你站在原地，觉得自己像个傻子。从此你决定：再也不主动了。",
+    hint: "你就是那个伸出手的人。"
+  }
+];
+
+// 冒险卡（初入人海）
+const adventureCards = [
+  "你以为你在看别人，其实别人也在看你。",
+  "人群里最怕的，不是别人不喜欢你，是你自己不喜欢自己。",
+  "你不是不会社交，你是忘了一件事：你也是人群的一部分。",
+  "被拒绝一次不等于被否定一生。那个人只是那一刻不想理你而已。",
+  "你在人群里的样子，其实是你和父母关系的样子。",
+  "沉默不等于没有价值。有些人的安静，是留给懂得人的。",
+  "你不需要让所有人都喜欢你。那是做不到的事，也是没有意义的事。",
+  "人群中，你最该在意的那个人，是你自己。",
+  "第一次见面被冷落，不一定是你的问题。也可能是对方那天刚好心情不好。",
+  "关系的建立需要时间。你不需要第一次就「搞定」所有人。",
+  "你小时候在人际关系里受的伤，可能现在还在影响你。只是你不知道。",
+  "社交不是表演，做自己才能吸引对的人。"
+];
+
+// 诊断题
+const questions = [
+  {
+    q: "你第一次注意到「别人不喜欢我」，是在什么时候？",
+    options: [
+      { text: "我不记得具体是哪次，但那种感觉从很早就有了。", key: "01很久以前就怕人" },
+      { text: "被同学孤立，或者被老师当着全班的面批评。", key: "02公开被否定" },
+      { text: "我不知道为什么，就是感觉融不进去。", key: "03总是融不进去" },
+      { text: "我记得有人对我说过一句很伤人的话。", key: "04被语言刺伤过" },
+      { text: "我觉得是自己不够好，所以别人不喜欢我。", key: "05因为我不够好" }
+    ]
+  },
+  {
+    q: "当你在一个陌生场合（聚餐、会议等），你通常会怎么做？",
+    options: [
+      { text: "我会主动找一个人搭话，不然太尴尬了。", key: "06主动打破尴尬" },
+      { text: "我站在旁边观察，等别人来跟我说话。", key: "07等人来找我" },
+      { text: "我假装在看手机，其实心里很紧张。", key: "08假装不在乎" },
+      { text: "我会想理由早点离开，太难受了。", key: "09想早点离开" },
+      { text: "我尽量让自己看起来正常，但不知道该说什么。", key: "10不知道该说什么" }
+    ]
+  },
+  {
+    q: "你身边有那种「特别会来事」的朋友吗？你怎么看他们？",
+    options: [
+      { text: "我很羡慕他们，觉得他们拥有的我没有。", key: "11羡慕别人的社交" },
+      { text: "我知道他们不一定真心的，但我还是想要那种感觉。", key: "12想要热闹的假象" },
+      { text: "我觉得他们有点假，不喜欢那样。", key: "13觉得那样很假" },
+      { text: "我做不到那样，但我也不羡慕。", key: "14我不羡慕也不模仿" },
+      { text: "我就是那种人，所以我不太理解为什么有人社恐。", key: "15我就是社牛" }
+    ]
+  },
+  {
+    q: "当有人说了一句让你不舒服的话，你会怎么处理？",
+    options: [
+      { text: "我会忍着，不说出来，但心里一直记着。", key: "16忍着但记着" },
+      { text: "我会当场怼回去，不让自己吃亏。", key: "17当场怼回去" },
+      { text: "我会事后反复回想那句话，越想越气。", key: "18事后反刍" },
+      { text: "我会试着沟通，但通常说完对方也不觉得自己有问题。", key: "19沟通但不抱希望" },
+      { text: "我会直接说：我觉得你这样说有点不合适。", key: "20直接设立边界" }
+    ]
+  },
+  {
+    q: "你觉得自己在社交中最大的卡点是什么？",
+    options: [
+      { text: "我怕自己说错话，得罪人。", key: "21怕说错话" },
+      { text: "我总是不知道该说什么，怕冷场。", key: "10不知道该说什么" },
+      { text: "我觉得别人都比我强，我说什么都没人想听。", key: "22觉得自己不够好" },
+      { text: "我不知道怎么维护关系，总是越走越远。", key: "23关系越走越远" },
+      { text: "我怕被拒绝，所以干脆不主动。", key: "24怕被拒绝所以不主动" }
+    ]
+  },
+  {
+    q: "如果可以改变一件事，你最想改变的是？",
+    options: [
+      { text: "我希望我能不在乎别人怎么看我。", key: "25想不在乎别人眼光" },
+      { text: "我希望我能轻松地和人聊天，不那么累。", key: "26想轻松聊天不累" },
+      { text: "我希望我能勇敢地设立边界，不委屈自己。", key: "27想设立边界不委屈" },
+      { text: "我希望我能放下过去那些被伤害的记忆。", key: "28想放下过去" },
+      { text: "我希望我知道怎么分辨谁是真朋友。", key: "29想学会分辨真朋友" }
+    ]
+  }
+];
+
+// 卡点完整数据
+const cardPoints = {
+  "01很久以前就怕人": {
+    name: "很久以前就怕人",
+    desc: "你很早就对「人」这件事有了警惕。也许是某次被伤害，也许是成长环境中「人」总是意味着冲突和压力。从那时起，你在人群中就带着一层防护罩——不是不渴望关系，是不敢。",
+    advice: "你的恐惧是真实的，不是「想太多」。但防护罩也在保护你的同时，挡住了真正想靠近你的人。试着在安全的关系里，慢慢卸下一点。",
+    color: "#8a6040"
+  },
+  "02公开被否定": {
+    name: "公开被否定",
+    desc: "那次当众被批评、被嘲笑、被孤立——你还记得那堂课、那个教室、那些人的脸。这种公开的否定，在你心里留下了很深的印记。从此你特别在意「别人在看」这件事。",
+    advice: "那次否定是真的被否定，但不是对「你这个人」的全面否定。你把它当成了全部评价，才让它变得那么重。",
+    color: "#7a5030"
+  },
+  "03总是融不进去": {
+    name: "总是融不进去",
+    desc: "你看着别人三三两两很自然地聊起来，而你总是那个站在旁边的人。你不是不想融进去，是不知道怎么融。好像有一道透明的墙，把你和人群隔开了。",
+    advice: "融不进去，有时不是你的问题，是「群」本身不是你的群。但如果你在大多数群里都融不进去，那可能是你的社交模式需要调整——不是改变你这个人，而是调整一点方式。",
+    color: "#9a6840"
+  },
+  "04被语言刺伤过": {
+    name: "被语言刺伤过",
+    desc: "某个人说的某句话，像一根刺扎在你心里。你试过忘记，但它总是在某些时刻冒出来。那句话可能是：「你就是那种人」「没人会喜欢你」「你太差了」。你不知道说这话的人是无心还是有意，但你记住了。",
+    advice: "那句话不是你的人生判决书。说那句话的人，可能早就忘了，但你没有。你用别人的一句无心之语，关了自己很多年。值得吗？",
+    color: "#8a5040"
+  },
+  "05因为我不够好": {
+    name: "因为我不够好",
+    desc: "每次社交受挫，你都会回到这个结论：「是我不够好」。不够好看，不够有趣，不够会说话，不够聪明——总之是「我」的问题。这个结论让你很自卑，也让你在社交中更加紧绷。",
+    advice: "把「我不够好所以别人不喜欢我」换成「别人不喜欢我，有时是因为我不是他们的类型，有时跟我也有关，但不是因为我「不够好」。」不够好是一个伪命题。",
+    color: "#a07050"
+  },
+  "06主动打破尴尬": {
+    name: "主动打破尴尬",
+    desc: "你是那种宁愿先开口也不愿意干坐着的人。你主动找话题，主动搭话，主动化解尴尬。表面看起来很自信，但内心是恐惧：万一没人理我怎么办？",
+    advice: "主动是好的，但你需要知道：不是每次主动都会得到回应。主动一次没回应，不代表你有问题，只是那个人那一刻没有想说话。",
+    color: "#9a8050"
+  },
+  "07等人来找我": {
+    name: "等人来找我",
+    desc: "你不喜欢主动，你觉得主动是「掉价」。你在等，等有人发现你，等有人主动来找你。但通常等不到，你就会觉得「果然没人想理我」。",
+    advice: "等人的心态是：我值不值得被看见，由别人决定。这是一种被动的人际策略，也是对自己价值的不确定。主动不等于掉价，主动是「我愿意连接」。",
+    color: "#8a7060"
+  },
+  "08假装不在乎": {
+    name: "假装不在乎",
+    desc: "你学会了假装不在乎。别人聚会你不参加，别人聊天你不插嘴，你用「我不在乎」来保护自己。但内心深处，你很在乎。",
+    advice: "假装不在乎，是最累的社交方式。你花了一半的精力在掩饰，另一半在假装。这比真正不在乎（无论是放下还是接受）消耗大得多。",
+    color: "#907050"
+  },
+  "09想早点离开": {
+    name: "想早点离开",
+    desc: "每次社交场合，你都在想怎么离开。何时告辞、什么理由、怎么不显得突兀——这些想法占据了你大部分注意力，让你根本无法享受当下。",
+    advice: "下次去之前，先给自己定一个「离开的明确时间」。比如：最多待够一个半小时。有了边界，反而更容易放松。",
+    color: "#8a6850"
+  },
+  "10不知道该说什么": {
+    name: "不知道该说什么",
+    desc: "你总是在想「该说什么」。想出来的那些话，说出来之后又觉得不合适。越想越紧张，越紧张越不知道该说什么。你觉得自己是个无趣的人。",
+    advice: "最好的对话不是「设计」出来的，是「发生」的。试着少想多听，听对方说什么，然后顺着说下去。真实的连接，比「得体的话」更重要。",
+    color: "#9a7860"
+  },
+  "11羡慕别人的社交": {
+    name: "羡慕别人的社交",
+    desc: "看着别人轻松地呼朋唤友、谈笑风生，你心里有说不出的羡慕。你觉得自己做不到，你觉得自己的社交能力是天生的缺陷。",
+    advice: "社交能力是技能，技能是可以练的。那些看起来轻松的人，有些是练过的，有些是天生的，但都不是你。找到适合你自己的方式，而不是模仿别人。",
+    color: "#a08060"
+  },
+  "12想要热闹的假象": {
+    name: "想要热闹的假象",
+    desc: "你知道那些热闹可能不是真心的——觥筹交错之后，各自散去，谁也不认识谁。但你还是想要那种感觉。那种「被包围」的感觉，哪怕只是幻觉。",
+    advice: "热闹是热闹，连接是连接。热闹可以让你暂时不孤独，但不解决根本问题。找到一个真正的连接，比一百个热闹的假象更有价值。",
+    color: "#9a7050"
+  },
+  "13觉得那样很假": {
+    name: "觉得那样很假",
+    desc: "你很难接受那种「见面熟」的人。你觉得他们在表演，不真诚。你宁愿一个人，也不愿意变成那样。但有时候你也会想：是不是我自己太别扭了？",
+    advice: "真诚和社交技巧不矛盾。你可以真诚，同时也有技巧。不必为了真诚放弃技巧，也不必为了技巧放弃真诚。",
+    color: "#a09070"
+  },
+  "14我不羡慕也不模仿": {
+    name: "我不羡慕也不模仿",
+    desc: "你接受了自己「不太会社交」这件事。你不去凑热闹，不假装熟络。你有自己的小世界，那里的人不多，但都是你真正想要的连接。",
+    advice: "这是很好的状态——自我接纳，同时也有自己的边界。你不需要改变，只需要确认：这是否是你真正想要的，还是你用来保护自己的借口？",
+    color: "#b0a070"
+  },
+  "15我就是社牛": {
+    name: "我就是社牛",
+    desc: "你是那种天生「人来疯」的人，走到哪里都能热场。但有时候你会想：我这么能聊，是不是因为害怕冷场？我是不是需要用热闹来证明自己？",
+    advice: "社牛也可能是另一种恐惧——害怕被忽视、被遗忘。用社交来填满自己，和用忙碌填满自己，本质是一样的。试着在安静中，感受一下自己。",
+    color: "#a08858"
+  },
+  "16忍着但记着": {
+    name: "忍着但记着",
+    desc: "你不说，但你不忘。那句让你不舒服的话，那个让你受伤的瞬间，你都记着。记着不是为了报仇，是记着那种痛。你不知道该怎么处理，只能记着。",
+    advice: "忍着是压抑，记着是积累。积累多了，不是爆发就是内伤。下次试着说出来，哪怕对方不认，至少你表达了。表达本身就是疗愈。",
+    color: "#8a5840"
+  },
+  "17当场怼回去": {
+    name: "当场怼回去",
+    desc: "你不让自己吃亏。你当场怼回去，怼得对方下不来台。事后你会有点心虚：我是不是太过分了？但下次你还是忍不住。",
+    advice: "怼回去有时是必要的，但不是所有情况都需要。试着分辨：这次是真的需要保护自己，还是只是咽不下那口气？两者都是合理的，但需要不同的处理方式。",
+    color: "#9a6848"
+  },
+  "18事后反刍": {
+    name: "事后反刍",
+    desc: "事情早就过去了，但那句话还在你脑子里转。转了一天，转了一周，转了一个月。每次想起，都像是重新被刺了一次。你知道这不理性，但你控制不住。",
+    advice: "反刍是焦虑的一种形式——你反复「重新经历」那次伤害，试图找到更好的回应，但现实是：时光不能倒流。试着在反刍开始时，用别的事情打断它。",
+    color: "#907858"
+  },
+  "19沟通但不抱希望": {
+    name: "沟通但不抱希望",
+    desc: "你试过沟通，但通常对方不觉得自己有问题，或者敷衍了事。你开始觉得沟通没有意义，说了也是白说。",
+    advice: "沟通不是为了改变对方，是为了表达你自己。对方改不改变是他的事，你说不说是你的事。表达本身，就有价值。",
+    color: "#9a7868"
+  },
+  "20直接设立边界": {
+    name: "直接设立边界",
+    desc: "你能直接说「我不喜欢这样」「你这样说我不舒服」。这需要勇气，你做到了。但这有时也会让你在人际关系中显得有点「硬」。",
+    advice: "设立边界是对的。但设立边界的方式可以柔软一点：「我不喜欢这样」，比「你凭什么这样」更不容易引发对抗。边界要清晰，口气可以不硬。",
+    color: "#a08858"
+  },
+  "21怕说错话": {
+    name: "怕说错话",
+    desc: "你每次开口都在想：这句话会不会说错了？会不会得罪人？会不会显得我很蠢？这种预演式的焦虑，让你说话越来越谨慎也越来越慢，慢到别人已经换了话题。",
+    advice: "没有人会因为你说错一句话就否定你整个人。除非你说的是真正伤害人的话。说错了就纠正，道歉就好，没有人会记你一辈子的。",
+    color: "#8a7060"
+  },
+  "22觉得自己不够好": {
+    name: "觉得自己不够好",
+    desc: "你觉得别人都比你强，比你会说话，比你会来事。你觉得自己说什么都没人在意，没人会想听。这种自我否定，让你在社交中越来越退缩。",
+    advice: "你在用自己的「内在评价」来预测「外在反应」。但这两者往往不一样。你觉得你说的没人在意，但别人可能觉得挺有意思。先相信别人愿意听，再去验证。",
+    color: "#9a7860"
+  },
+  "23关系越走越远": {
+    name: "关系越走越远",
+    desc: "你发现关系总是在淡。不是你不想维护，是不知道怎么维护。发消息不知道怎么开头，聚会不知道怎么参加，慢慢地就不联系了。然后你发现，你们已经不是朋友了。",
+    advice: "维护关系不需要很多精力。一个生日问候，一句「最近怎么样」，就够了。关系是「维持」的，不是「随时燃烧」的。哪怕一句话，关系就在。",
+    color: "#8a6858"
+  },
+  "24怕被拒绝所以不主动": {
+    name: "怕被拒绝所以不主动",
+    desc: "你怕主动了之后对方不回应，那太尴尬了。不主动，至少还有「如果我主动了」的幻想——我可以想：我不是做不到，只是不想做。",
+    advice: "不主动是一种自我保护，但也是一种自我限制。被拒绝确实不好受，但被拒绝一次，你才知道对方的态度。不主动，永远不知道答案。",
+    color: "#9a7858"
+  },
+  "25想不在乎别人眼光": {
+    name: "想不在乎别人眼光",
+    desc: "你特别在意别人怎么看。你穿什么、说什么、做什么，都在想着「别人会怎么看」。这种在意让你很累，也让你越来越不自由。",
+    advice: "完全不在乎别人眼光是不可能的，也没必要。人是社会动物，在意是正常的。问题是：你在意的比例太高了。试着把「别人怎么想」的权重，从80%降到50%。",
+    color: "#a08060"
+  },
+  "26想轻松聊天不累": {
+    name: "想轻松聊天不累",
+    desc: "你觉得每次社交都像打仗，要消耗大量能量。聊完之后，你需要独处很久才能恢复。你羡慕那些把社交当充电宝的人，而你好像是个耗电大户。",
+    advice: "内向和外向是真实存在的差异。如果你确实是内向型，不需要强迫自己变成外向。找到适合你的社交方式：少量但深入，比大量但表面，更适合你。",
+    color: "#9a8068"
+  },
+  "27想设立边界不委屈": {
+    name: "想设立边界不委屈",
+    desc: "你经常在「设立边界」和「怕关系破裂」之间纠结。你想说不，但说不之后又后悔，担心对方会不会觉得你小气、不合群。于是你忍着，忍着忍着就委屈了。",
+    advice: "设立边界不是为了让别人喜欢你，是为了让你自己舒服。不设立边界换来的「关系」，往往是不平等的关系。真正的朋友，会尊重你的边界。",
+    color: "#a08870"
+  },
+  "28想放下过去": {
+    name: "想放下过去",
+    desc: "过去那些被孤立、被嘲笑、被冷落的记忆，像一块块石头压在你心上。你知道应该放下，但你不知道该怎么放。每当类似的情景出现，那些旧的情绪就会涌上来。",
+    advice: "放下不是忘记，是「带着走但不被压垮」。那些记忆会一直在，但你可以决定它们对你的影响程度。如果影响太大，考虑找专业帮助，这不是软弱，是对自己负责。",
+    color: "#907860"
+  },
+  "29想学会分辨真朋友": {
+    name: "想学会分辨真朋友",
+    desc: "你曾经把某人当朋友，但对方只是利用你。或者你把某段关系当真心，但发现对方并不是那么在意。这种被辜负的感觉，让你现在很难相信任何人。",
+    advice: "分辨真朋友需要时间和经历，没有完美的判断标准。但有一个简单的参考：看对方在你低谷时的态度。愿意陪你走低谷的，通常是真的。锦上添花容易，雪中送炭难得。",
+    color: "#a09070"
+  }
+};
+
+// 彩蛋
+const easterEggs = [
+  {
+    title: "心理学研究：聚光灯效应",
+    text: "心理学发现：人们会高估别人对自己外表和行为的关注程度。事实上，大多数人根本没有那么在意你——他们也在想着自己。"
+  },
+  {
+    title: "《智囊》· 丙吉",
+    text: "丙吉在朝中从不主动得罪人，也不刻意讨好。有人问他为何如此淡然，他说：「人各有长短，何必强求一律？」这句话送给总觉得自己「不合群」的你。"
+  },
+  {
+    title: "心理学研究：安全的依恋关系",
+    text: "依恋理论发现：我们在第一段关系（与父母）中学会的社交模式，会影响我们一生的关系。意识到这个模式的存在，是改变它的第一步。"
+  },
+  {
+    title: "《被讨厌的勇气》",
+    text: "阿德勒说：「人的一切烦恼，都来自人际关系；人的一切幸福，也来自人际关系。」关键不是有没有关系，而是你如何面对关系中的自己。"
+  }
+];
+
+/* ============================================================
+   状态
+   ============================================================ */
+let currentPage = 'entry';
+let selectedMoments = [];
+let currentQuestion = 0;
+let answers = {};
+let cardScores = {};
+
+/* ============================================================
+   页面导航
+   ============================================================ */
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + name);
+  if (el) el.classList.add('active');
+  currentPage = name;
+  updateProgress(name);
+  if (name === 'dilemma') renderMoments();
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display='block'; }
+  if (name === 'question') renderQuestion();
+  if (name === 'result') showResult();
+  if (name === 'advice') showAdvice();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress(name) {
+  const progressMap = { entry: 5, dilemma: 15, adventure: 25, question: 35, result: 80, advice: 90, hidden: 95, complete: 100 };
+  const p = progressMap[name] || 0;
+  document.getElementById('progressBar').style.width = p + '%';
+}
+
+/* ============================================================
+   社交瞬间选择
+   ============================================================ */
+function renderMoments() {
+  const layer1 = document.getElementById('momentLayer1');
+  const layer2 = document.getElementById('momentLayer2');
+  const layer3 = document.getElementById('momentLayer3');
+
+  layer1.innerHTML = moments.filter(m => m.layer === 1).map(m => makeMomentCard(m)).join('');
+  layer2.innerHTML = moments.filter(m => m.layer === 2).map(m => makeMomentCard(m)).join('');
+  layer3.innerHTML = moments.filter(m => m.layer === 3).map(m => makeMomentCard(m)).join('');
+}
+
+function makeMomentCard(m) {
+  const sel = selectedMoments.includes(m.id);
+  return `
+    <div class="moment-card${sel ? ' selected' : ''}" onclick="toggleMoment(${m.id})">
+      <div class="moment-icon">${m.icon}</div>
+      <div class="moment-title">${m.title}</div>
+      <div class="moment-desc">${m.desc}</div>
+      <div class="moment-hint">${m.hint}</div>
+    </div>
+  `;
+}
+
+function toggleMoment(id) {
+  const idx = selectedMoments.indexOf(id);
+  if (idx === -1) {
+    if (selectedMoments.length < 3) selectedMoments.push(id);
+  } else {
+    selectedMoments.splice(idx, 1);
+  }
+  renderMoments();
+  document.getElementById('dilemmaCount').textContent = selectedMoments.length;
+  document.getElementById('dilemmaNextBtn').disabled = selectedMoments.length === 0;
+}
+
+function goDilemma() {
+  if (selectedMoments.length === 0) return;
+  goPage('adventure');
+}
+
+/* ============================================================
+   冒险卡
+   ============================================================ */
+let currentCardIndex = 0;
+
+function selectRandomCard() {
+  currentCardIndex = Math.floor(Math.random() * adventureCards.length);
+  document.getElementById('flipQuote').textContent = '"' + adventureCards[currentCardIndex] + '"';
+  const fc = document.getElementById('flipCard');
+  fc.classList.remove('flipped');
+  document.getElementById('adventureNextBtn').style.display = 'none';
+  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+}
+
+function flipCard() {
+  const fc = document.getElementById('flipCard');
+  fc.classList.add('flipped');
+  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('adventureNextBtn').style.display = 'inline-block';
+}
+
+function goQuestion() {
+  goPage('question');
+}
+
+/* ============================================================
+   诊断题
+   ============================================================ */
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  const total = questions.length;
+  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
+
+  const optList = document.getElementById('optionList');
+  const saved = answers[currentQuestion] || [];
+  optList.innerHTML = q.options.map((opt, i) => `
+    <div class="option-card${saved.includes(i) ? ' selected' : ''}" onclick="toggleOption(${i})">
+      <div class="option-text">${opt.text}</div>
+      <div class="option-check"></div>
+    </div>
+  `).join('');
+
+  document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
+}
+
+function toggleOption(i) {
+  if (!answers[currentQuestion]) answers[currentQuestion] = [];
+  const idx = answers[currentQuestion].indexOf(i);
+  if (idx === -1) {
+    answers[currentQuestion].push(i);
+  } else {
+    answers[currentQuestion].splice(idx, 1);
+  }
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if ((answers[currentQuestion] || []).length === 0) return;
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  } else {
+    goPage('result');
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+/* ============================================================
+   诊断结果
+   ============================================================ */
+function computeScores() {
+  cardScores = {};
+  questions.forEach((q, qi) => {
+    const selected = answers[qi] || [];
+    selected.forEach(i => {
+      const key = q.options[i].key;
+      cardScores[key] = (cardScores[key] || 0) + 1;
+    });
+  });
+}
+
+function showResult() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+
+  const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
+  const summaryTexts = [
+    `你最核心的社交卡点是「${topKey ? topKey.name : ''}」。看见它，已经是改变的第一步。`,
+    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们相互影响，共同塑造了你面对人群的方式。`,
+    "人群不可怕。看见自己在人群里的样子，才是真正的出口。"
+  ];
+  document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
+
+  const resultList = document.getElementById('resultList');
+  resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
+    const cp = cardPoints[key];
+    const pct = Math.min(100, score * 40);
+    const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
+    return `
+      <div class="result-card">
+        <div class="result-card-top">
+          <span class="result-card-name">${cp.name}</span>
+          <span class="result-card-pct">命中 ${score} 次</span>
+        </div>
+        <div class="result-bar-bg">
+          <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  setTimeout(() => {
+    document.querySelectorAll('.result-bar-fill').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width') + '%';
+    });
+  }, 200);
+
+  if (Math.random() < 0.2) {
+    const egg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+    document.getElementById('eggTitle').textContent = egg.title;
+    document.getElementById('eggText').textContent = egg.text;
+    document.getElementById('easterEgg').classList.add('show');
+  }
+}
+
+function closeEgg() {
+  document.getElementById('easterEgg').classList.remove('show');
+}
+
+function goAdvice() {
+  goPage('advice');
+}
+
+/* ============================================================
+   通关建议
+   ============================================================ */
+function showAdvice() {
+  computeScores();
+  const sorted = Object.entries(cardScores).sort((a, b) => b[1] - a[1]);
+  const topCards = sorted.slice(0, 5);
+
+  const adviceList = document.getElementById('adviceList');
+  adviceList.innerHTML = topCards.map(([key, score], i) => {
+    const cp = cardPoints[key];
+    return `
+      <div class="advice-card">
+        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-title">
+          <span class="advice-card-num">${i+1}</span>
+          ${cp.name}
+        </div>
+        <div class="advice-card-desc">${cp.desc}</div>
+        <div class="advice-card-action">${cp.advice}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function goHidden() {
+  goPage('hidden');
+}
+
+/* ============================================================
+   隐藏关卡
+   ============================================================ */
+function generateCard() {
+  const h1 = document.getElementById('hidden1').value.trim();
+  const h2 = document.getElementById('hidden2').value.trim();
+  const h3 = document.getElementById('hidden3').value.trim();
+  const h4 = document.getElementById('hidden4').value.trim();
+
+  if (!h1 && !h2 && !h3 && !h4) {
+    alert('先写点什么吧，至少说一件你记得的社交瞬间。');
+    return;
+  }
+
+  const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
+    `第${['一','二','三','四'][i]}步：${t}`
+  ).join('\n\n');
+
+  document.getElementById('cardContent').textContent = content;
+
+  const responses = [
+    "你写的这些，是很多人不愿意面对的。你做了，这本身就是勇气。",
+    "那个小孩一直在你心里。看见他，已经是和解的开始。",
+    "有些卡点不是你一个人有的。你愿意把它说出来，本身就是治愈。",
+    "不是所有人都会在人际关系里受伤。但受过伤的人，需要被看见。"
+  ];
+  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+
+  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：下次在人多的场合，先看看自己的感受，而不是只看别人。';
+  document.getElementById('cardAction').textContent = firstAction;
+
+  document.getElementById('cardPreview').classList.add('show');
+}
+
+function downloadCard() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 600; canvas.height = 800;
+  const ctx = canvas.getContext('2d');
+
+  const grad = ctx.createLinearGradient(0, 0, 600, 800);
+  grad.addColorStop(0, '#f7edd5');
+  grad.addColorStop(1, '#eed9a4');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 600, 800);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.fillRect(0, 0, 600, 4);
+
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = 'bold 28px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的社交初体验', 300, 80);
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = '12px serif';
+  ctx.fillText('第三关 · 初入人海 · 找到啦', 300, 108);
+
+  ctx.strokeStyle = 'rgba(139,90,43,0.3)';
+  ctx.beginPath();
+  ctx.moveTo(100, 130); ctx.lineTo(500, 130);
+  ctx.stroke();
+
+  const content = document.getElementById('cardContent').textContent;
+  ctx.fillStyle = '#5a3e1b';
+  ctx.font = '14px serif';
+  ctx.textAlign = 'left';
+  const lines = content.split('\n\n');
+  let y = 170;
+  lines.forEach(para => {
+    ctx.fillText(para, 50, y);
+    y += para.split('\n').length * 26 + 20;
+  });
+
+  ctx.fillStyle = '#9a7a4a';
+  ctx.font = 'italic 13px serif';
+  const resp = document.getElementById('cardResponse').textContent;
+  ctx.fillText(resp, 50, y + 20);
+
+  ctx.fillStyle = '#c9a84c';
+  ctx.font = 'bold 13px serif';
+  const act = document.getElementById('cardAction').textContent;
+  ctx.fillText(act, 50, y + 50);
+
+  ctx.fillStyle = '#b89a6a';
+  ctx.font = '11px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('— 第三关 · 初入人海 · 完 —', 300, 750);
+
+  const link = document.createElement('a');
+  link.download = '我的社交初体验.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function restart() {
+  selectedMoments = [];
+  currentQuestion = 0;
+  answers = {};
+  cardScores = {};
+  document.getElementById('easterEgg').classList.remove('show');
+  document.getElementById('cardPreview').classList.remove('show');
+  ['hidden1','hidden2','hidden3','hidden4'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  goPage('entry');
+}
+
+function goBackHome() {
+  if (document.referrer && document.referrer !== window.location.href) {
+    history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+
+/* ============================================================
+   启动
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderMoments();
+});
+</script>
+
+</body>
+</html>

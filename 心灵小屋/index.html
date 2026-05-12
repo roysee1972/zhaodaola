@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+    <meta name="description" content="心灵小屋：15位心灵辅导朋友，随时倾听你的心声。">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心灵小屋 · 我的心理辅导朋友们</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5e6c8;
+      --bg2: #eed9a4;
+      --text-dark: #5a3e1b;
+      --text-mid: #9a7a4a;
+      --text-light: #b89a6a;
+      --gold: #c9a84c;
+      --gold-light: #e8c870;
+      --border: rgba(139,90,43,0.18);
+      --shadow: rgba(90,60,20,0.12);
+      --radius: 8px;
+      --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 8px;
+      border: 1.5px solid var(--border);
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* === 头部横幅 === */
+    header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 18px;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+      font-weight: 400;
+      font-family: var(--font);
+    }
+
+    header h1 {
+      font-family: var(--font);
+      font-size: clamp(32px, 6vw, 58px);
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .header-sub {
+      font-size: 16px;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+    }
+
+    .header-stars {
+      font-size: 24px;
+      letter-spacing: 6px;
+    }
+
+    /* === 区块标题 === */
+    .section-title {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      margin: 50px 0 30px;
+      padding: 0 20px;
+    }
+
+    .section-title h2 {
+      font-family: var(--font);
+      font-size: clamp(22px, 4vw, 32px);
+      color: var(--text-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-pill {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .pill-real {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .pill-cartoon {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: var(--text-mid);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+
+    /* === 卡片网格 === */
+    .cards-grid {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 28px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 20px;
+    }
+
+    /* === 角色卡片 === */
+    .card {
+      background: rgba(255,252,240,0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 20px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px var(--shadow);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    /* 头像容器 */
+    .avatar-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar-wrap img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,252,240,0.9);
+      box-shadow: 0 2px 12px var(--shadow);
+      display: block;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      animation: spin-ring 8s linear infinite;
+    }
+
+    @keyframes spin-ring {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .avatar-badge {
+      position: absolute;
+      bottom: 2px; right: 2px;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 2px 8px var(--shadow);
+      border: 2px solid var(--gold);
+    }
+
+    /* 卡片文字 */
+    .card-name {
+      font-family: var(--font);
+      font-size: 20px;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--text-mid);
+    }
+
+    /* 恐怖角色特效 - 简化 */
+    .card.spooky {
+      /* no special animation */
+    }
+
+    .card.spooky:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    /* 在线指示器 */
+    .online-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: inline-block;
+      margin-right: 5px;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.8); }
+    }
+
+    .card-status {
+      font-size: 11px;
+      color: var(--gold);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* === 底部 === */
+    footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 50px 20px 60px;
+      color: var(--text-light);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    footer .footer-logo {
+      font-family: var(--font);
+      font-size: 22px;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    /* 角色颜色方案 - 统一金色调 */
+    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14, .c15 {
+      /* all cards use the same gold theme via CSS vars */
+    }
+
+    /* tag颜色 */
+    .tag-real { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .tag-cartoon { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .tag-spooky { background: transparent; color: var(--text-mid); border: 1px solid var(--border); }
+
+    /* 分割线 */
+    .divider {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 900px;
+      margin: 10px auto 0;
+      padding: 0 24px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .divider-icon {
+      font-size: 20px;
+    }
+
+    /* 返回主页按钮 */
+    .back-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 100;
+      background: rgba(255,252,240,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 16px;
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--text-dark);
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--shadow);
+      transition: background 0.2s;
+    }
+
+    .back-btn:hover {
+      background: var(--bg2);
+    }
+  </style>
+</head>
+<body>
+
+<button class="back-btn" onclick="window.location.href='../index.html'">← 返回主页</button>
+
+<!-- 顶部横幅 -->
+<header>
+  <div class="header-badge">心灵小屋 · 我们都在这里陪你</div>
+  <h1>我的心理辅导朋友们</h1>
+  <p class="header-sub">这里住着15位特别的朋友，他们懂你、爱你、陪伴你<br>无论快乐还是委屈，随时来敲门</p>
+  <div class="header-stars">✦ ✧ ✦ ✧ ✦</div>
+</header>
+
+<!-- ====== 第一区：真实风格 ====== -->
+<div class="section-title">
+  <h2>
+    <span class="section-pill pill-real">真实伙伴</span>
+    他们就在你身边
+  </h2>
+  <p class="section-desc">有生活经验、学识渊博的大朋友，随时准备倾听你的心声</p>
+</div>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-icon">🌿</span>
+  <div class="divider-line"></div>
+</div>
+
+<div class="cards-grid">
+
+  <!-- 01 白鹤先生 -->
+  <div class="card c1">
+    <div class="avatar-wrap">
+      <img src="avatar_01.png" alt="白鹤先生">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🎓</div>
+    </div>
+    <div class="card-name">白鹤先生</div>
+    <span class="card-tag tag-real">智慧长者</span>
+    <p class="card-desc">执教四十年、温文尔雅的老教授，专研儿童心理半个世纪，见过你所有的小烦恼，还有更多的小妙招。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 02 暖芸阿姨 -->
+  <div class="card c2">
+    <div class="avatar-wrap">
+      <img src="avatar_02.png" alt="暖芸阿姨">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🤗</div>
+    </div>
+    <div class="card-name">暖芸阿姨</div>
+    <span class="card-tag tag-real">心灵港湾</span>
+    <p class="card-desc">像妈妈又像好朋友，用她那双温柔的眼睛就能让你放松下来，擅长把所有委屈变成一个大大的拥抱。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 03 光远哥哥 -->
+  <div class="card c3">
+    <div class="avatar-wrap">
+      <img src="avatar_03.png" alt="光远哥哥">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">💪</div>
+    </div>
+    <div class="card-name">光远哥哥</div>
+    <span class="card-tag tag-real">勇气加油站</span>
+    <p class="card-desc">阳光帅气的心理咨询师，最擅长把"我做不到"变成"我可以试试"，和他聊完你会觉得浑身是劲！</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 04 晴霞姐姐 -->
+  <div class="card c4">
+    <div class="avatar-wrap">
+      <img src="avatar_04.png" alt="晴霞姐姐">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🌸</div>
+    </div>
+    <div class="card-name">晴霞姐姐</div>
+    <span class="card-tag tag-real">情绪魔法师</span>
+    <p class="card-desc">笑起来像春天开花一样美，专门研究情绪管理，能帮你找到藏在心底那颗快乐的小种子。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 05 明旭同学 -->
+  <div class="card c5">
+    <div class="avatar-wrap">
+      <img src="avatar_05.png" alt="明旭同学">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🌤️</div>
+    </div>
+    <div class="card-name">明旭同学</div>
+    <span class="card-tag tag-real">成长好伙伴</span>
+    <p class="card-desc">刚大学毕业、活力十足的学长，曾经也是普通小学生，他懂得所有考试前的紧张和交朋友的难。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 06 云霜教授 -->
+  <div class="card c6">
+    <div class="avatar-wrap">
+      <img src="avatar_06.png" alt="云霜教授">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">📚</div>
+    </div>
+    <div class="card-name">云霜教授</div>
+    <span class="card-tag tag-real">学识女神</span>
+    <p class="card-desc">气质优雅、学问渊博，最厉害的是她能用最简单的话解释最难懂的心理问题，听她说话是一种享受。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 07 福寿奶奶 -->
+  <div class="card c7">
+    <div class="avatar-wrap">
+      <img src="avatar_07.png" alt="福寿奶奶">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🌺</div>
+    </div>
+    <div class="card-name">福寿奶奶</div>
+    <span class="card-tag tag-real">故事王国</span>
+    <p class="card-desc">满头白发、笑声朗朗，走过了七十年风风雨雨，肚子里装着一千个温暖故事，专治各种小心事。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 08 石磊叔叔 -->
+  <div class="card c8">
+    <div class="avatar-wrap">
+      <img src="avatar_08.png" alt="石磊叔叔">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🏔️</div>
+    </div>
+    <div class="card-name">石磊叔叔</div>
+    <span class="card-tag tag-real">坚强导师</span>
+    <p class="card-desc">像山一样可靠的大叔，经历过很多挫折，每一道皱纹都是勋章，告诉你：跌倒了爬起来，才是真英雄。</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 09 柠萌老师 -->
+  <div class="card c9">
+    <div class="avatar-wrap">
+      <img src="avatar_09.png" alt="柠萌老师">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🎨</div>
+    </div>
+    <div class="card-name">柠萌老师</div>
+    <span class="card-tag tag-real">快乐大使</span>
+    <p class="card-desc">活泼开朗的年轻老师，用游戏和画画帮助孩子表达情绪，见过她的孩子没有不笑的，快乐是会传染的！</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 10 厚德伯伯 -->
+  <div class="card c10">
+    <div class="avatar-wrap">
+      <img src="avatar_10.png" alt="厚德伯伯">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🧡</div>
+    </div>
+    <div class="card-name">厚德伯伯</div>
+    <span class="card-tag tag-real">暖心导师</span>
+    <p class="card-desc">戴着圆框眼镜、总爱笑眯眯的伯伯，专门研究如何让孩子更有自信，他说："每个孩子都是天才！"</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+</div><!-- end cards-grid -->
+
+
+<!-- ====== 第二区：卡通风格 ====== -->
+<div class="section-title" style="margin-top:70px">
+  <h2>
+    <span class="section-pill pill-cartoon">卡通朋友</span>
+    来自神奇魔法世界
+  </h2>
+  <p class="section-desc">从彩虹王国来的神奇精灵们，带给你无限欢乐和魔法力量～</p>
+</div>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-icon">🎪</span>
+  <div class="divider-line"></div>
+</div>
+
+<div class="cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));">
+
+  <!-- 11 暖宝宝 -->
+  <div class="card c11">
+    <div class="avatar-wrap">
+      <img src="avatar_11.png" alt="暖宝宝">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🧸</div>
+    </div>
+    <div class="card-name">暖宝宝</div>
+    <span class="card-tag tag-cartoon">治愈小熊</span>
+    <p class="card-desc">来自彩虹山的毛茸茸小熊，专门收集世界上所有的拥抱，随时愿意给你一个大大的熊抱！</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 12 星语精灵 -->
+  <div class="card c12">
+    <div class="avatar-wrap">
+      <img src="avatar_12.png" alt="星语精灵">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">✨</div>
+    </div>
+    <div class="card-name">星语精灵</div>
+    <span class="card-tag tag-cartoon">愿望守护者</span>
+    <p class="card-desc">会说星星语言的小精灵，每天晚上收集孩子们的心愿，用魔法棒把烦恼变成流星，许个愿吧！</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 13 云朵博士 -->
+  <div class="card c13">
+    <div class="avatar-wrap">
+      <img src="avatar_13.png" alt="云朵博士">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">🎓</div>
+    </div>
+    <div class="card-name">云朵博士</div>
+    <span class="card-tag tag-cartoon">鼓励专家</span>
+    <p class="card-desc">飘在天上的胖乎乎云朵，拿了个心理学博士学位，说话像棉花糖一样软乎乎，专门发放勇气彩虹！</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+  <!-- 14 嗷嗷怪 ⚡特殊恐怖角色 -->
+  <div class="card c14 spooky" onclick="playBoo(this)">
+    <div class="avatar-wrap">
+      <img src="avatar_14.png" alt="嗷嗷怪">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">💜</div>
+    </div>
+    <div class="card-name">嗷嗷怪</div>
+    <span class="card-tag tag-spooky">勇气测试官</span>
+    <p class="card-desc">专门喜欢突然跳出来吓小朋友的调皮小怪，你的每一声尖叫都能让他更开心，叫出声就赢了哦！</p>
+    <div class="card-status" style="color:var(--text-mid)"><span class="online-dot" style="background:var(--text-mid)"></span>点我！敢不敢？</div>
+  </div>
+
+  <!-- 15 暖阳宝 -->
+  <div class="card c15">
+    <div class="avatar-wrap">
+      <img src="avatar_15.png" alt="暖阳宝">
+      <div class="avatar-ring"></div>
+      <div class="avatar-badge">☀️</div>
+    </div>
+    <div class="card-name">暖阳宝</div>
+    <span class="card-tag tag-cartoon">能量充电站</span>
+    <p class="card-desc">每天早上给世界充电的阳光宝宝，当你觉得能量不足时来找他，保证让你瞬间充满正能量！</p>
+    <div class="card-status"><span class="online-dot"></span>随时在线，等你来聊</div>
+  </div>
+
+</div><!-- end cards-grid -->
+
+<!-- 底部 -->
+<footer>
+  <div class="footer-logo">心灵小屋</div>
+  <p>我们15位朋友，永远在这里等着你</p>
+  <p style="margin-top:6px">有秘密、有烦恼、有委屈，都可以来说说话</p>
+  <p style="margin-top:20px;opacity:0.6;font-size:12px">— 小学心理辅导中心 —</p>
+</footer>
+
+<!-- 嗷嗷怪触发声效弹窗 -->
+<div id="boo-overlay" style="
+  display:none;
+  position:fixed; inset:0;
+  background:rgba(90,62,27,0.92);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  cursor:pointer;
+" onclick="closeBoo()">
+  <div style="font-size:clamp(80px,15vw,160px); animation: boo-pop 0.3s cubic-bezier(0.34,1.56,0.64,1);">👻</div>
+  <div style="color:var(--gold-light); font-size:clamp(28px,6vw,56px); font-family:var(--font); margin-top:20px;">嗷嗷！BOO！</div>
+  <div style="color:var(--gold); font-size:clamp(14px,2.5vw,20px); margin-top:16px;">你尖叫了吗？哈哈哈～叫出来才勇敢！</div>
+  <div style="color:var(--text-light); font-size:13px; margin-top:40px;">点击任意位置关闭</div>
+</div>
+
+<style>
+@keyframes boo-pop {
+  0% { transform: scale(0.3) rotate(-15deg); opacity:0; }
+  100% { transform: scale(1) rotate(0deg); opacity:1; }
+}
+</style>
+
+<script>
+  // 嗷嗷怪点击
+  function playBoo(card) {
+    const overlay = document.getElementById('boo-overlay');
+    overlay.style.display = 'flex';
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+  }
+
+  function closeBoo() {
+    document.getElementById('boo-overlay').style.display = 'none';
+  }
+
+  // 键盘 ESC 关闭
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeBoo();
+  });
+</script>
+</body>
+</html>

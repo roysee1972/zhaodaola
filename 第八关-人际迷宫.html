@@ -768,21 +768,21 @@
     <div class="gold-line" style="margin-bottom: 20px;"></div>
     <h1 class="hero-title">人际迷宫</h1>
     <p class="hero-sub">
-      不是教你怎么赚钱。<br>
-      是帮你看见：你和钱之间，隔着什么。
+      不是教你社交技巧。<br>
+      是帮你看见：你在关系里，弄丢了什么。
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      你觉得谈钱很俗，但每天都在为它纠结。<br>
-      你想多赚一点，但觉得「谈钱伤感情」。<br>
-      你不敢为劳动要合理的报酬，因为怕被说功利。<br>
-      你花了钱会有负罪感，好像享受是一种罪过。
+      你总是在付出，但对方好像没怎么回应你。<br>
+      你不知道怎么拒绝，哪怕已经很不舒服了。<br>
+      你不敢表达真实想法，怕说了之后对方不高兴。<br>
+      你在关系里表演一个「好脾气」的自己，很累。
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      金钱不是目的。<br>
+      关系不是目的。<br>
       但它是一面镜子——<br>
-      照得见你的自我价值感，照得见你对他人的信任，<br>
-      也照得见你对自己到底有多认可。
+      照得见你的边界感，照得见你对自己的尊重，<br>
+      也照得见你到底有没有在关系里做自己。
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
     <button class="btn" onclick="goPage('dilemma')">开始探索</button>
@@ -824,7 +824,7 @@
             <div class="flip-card-front-hint">点击翻开</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"你和钱的关系，就是你和自己的关系。"</div>
+            <div class="flip-card-quote" id="flipQuote">"你在关系里弄丢的自己，比对方重要得多。"</div>
             <div class="flip-card-tap-hint">— 冒险卡</div>
           </div>
         </div>
@@ -840,7 +840,7 @@
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">第一题</div>
-      <div class="question-text" id="qText">关于钱，你最近感受到的是？</div>
+      <div class="question-text" id="qText">在关系里，你最近感受到的是？</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
@@ -884,8 +884,8 @@
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="advice-title">通关建议</div>
       <div class="advice-intro">
-        金钱不是目的，<br>
-        但它是一面镜子，照得见你对自己的真实看法。
+        关系不是目的，<br>
+        但它是一面镜子，照得见你在关系里有没有做自己。
       </div>
     </div>
     <div id="adviceList"></div>
@@ -905,14 +905,14 @@
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="hidden-title">你的专属关卡</div>
       <div class="hidden-sub">
-        这里是你的空间，写下你和金钱之间真正卡住的事。<br>
+        这里是你的空间，写下你在人际关系里真正卡住的事。<br>
         不用修饰，不用在意文采。真实就好。
       </div>
     </div>
     <div class="step-card">
       <div class="step-num">第一步</div>
-      <div class="step-label">我和钱之间，卡在哪里？</div>
-      <textarea class="step-input" id="hidden1" placeholder="最近一次让我为钱纠结的事是："></textarea>
+      <div class="step-label">我在关系里，卡在哪里？</div>
+      <textarea class="step-input" id="hidden1" placeholder="最近一次让我在关系里委屈的事是："></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">第二步</div>
@@ -948,7 +948,7 @@
     <div class="gold-line" style="margin-bottom: 20px;"></div>
     <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      看清自己和钱之间的卡点，<br>
+      看清自己在关系里的卡点，<br>
       本身就是改变的开始。<br>
       接下来的路，在你脚下。
     </p>
@@ -1092,7 +1092,7 @@ const cardPoints = {
   "30和解障碍":     { name: "和解障碍",    desc: "你和一个人闹翻了，心里其实想和解，但不知道怎么开口，怕先开口就显得自己输了。但你不放过对方，其实是在不放过自己。", advice: "如果有一段关系你想和解，这周，发一条简单的消息：「最近还好吗？」——不用解释，不用道歉，就是先开口。", color: "#9a7060" }
 };
 
-// 彩蛋（4个，围绕金钱与价值主题）
+// 彩蛋（4个，围绕人际关系与自我成长主题）
 const easterEggs = [
   { title: "《智囊》· 管仲与鲍叔牙", text: "管仲曰：「生我者父母，知我者鲍子也。」——真正的朋友，不是数量多，是有一个人，懂得你不为人知的那一面。" },
   { title: "《智囊》· 王旦", text: "王旦为相，有人骂他，他装作没听见。——不是软弱，是知道自己要做什么，不把精力浪费在每一句噪音上。" },
@@ -1269,7 +1269,7 @@ function showResult() {
   const summaryTexts = [
     `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
     `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `人和钱的关系，说到底是人和自己的关系。看清卡在哪里，就已经是改变的开始。`
+    `人和人的关系，说到底是人和自己的关系。看清卡在哪里，就已经是改变的开始。`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 

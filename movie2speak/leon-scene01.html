@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>看电影学英语 · Leon · 场景01</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5e6c8;--text-dark:#5a3e1b;--text-mid:#9a7a4a;
+  --gold:#c9a84c;--accent:#8b4513;--card-bg:rgba(255,252,240,0.92);
+  --card-active:rgba(201,168,76,0.22);
+  --progress:linear-gradient(90deg,#c9a84c,#e8c870);
+}
+body{
+  font-family:'Noto Serif SC','STSong',serif;
+  background:var(--bg);color:var(--text-dark);line-height:1.8;
+  min-height:100vh;-webkit-tap-highlight-color:transparent;
+  padding-top:56px;/* space for fixed bar */
+}
+
+/* ===== Fixed Top Bar ===== */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(245,230,200,0.97);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--gold);
+  padding:8px 16px 6px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.topbar-title{
+  font-size:13px;color:var(--accent);font-weight:700;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.topbar-title .time{font-size:12px;color:var(--text-mid);font-weight:400;}
+.progress-track{
+  width:100%;height:4px;background:rgba(0,0,0,0.1);
+  border-radius:2px;margin-top:4px;overflow:hidden;
+}
+.progress-track .fill{
+  height:100%;background:var(--progress);
+  border-radius:2px;transition:width 0.3s ease;width:0%;
+}
+.topbar-row2{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:4px;
+}
+.progress-text{font-size:11px;color:var(--text-mid);}
+
+/* Toggle switch */
+.toggle-wrap{display:flex;align-items:center;gap:6px;}
+.toggle-label{font-size:11px;color:var(--text-mid);}
+.toggle{
+  position:relative;width:36px;height:20px;cursor:pointer;
+}
+.toggle input{display:none;}
+.toggle .slider{
+  position:absolute;inset:0;background:#ccc;border-radius:20px;
+  transition:0.3s;
+}
+.toggle .slider::before{
+  content:'';position:absolute;width:16px;height:16px;
+  left:2px;bottom:2px;background:#fff;border-radius:50%;
+  transition:0.3s;
+}
+.toggle input:checked+.slider{background:var(--gold);}
+.toggle input:checked+.slider::before{transform:translateX(16px);}
+
+/* ===== Container ===== */
+.container{max-width:480px;margin:0 auto;padding:12px 16px;}
+
+/* ===== Hint ===== */
+.hint{
+  font-size:12px;color:var(--text-mid);text-align:center;
+  margin:8px 0 14px;font-style:italic;
+}
+
+/* ===== Cards ===== */
+.cards{display:flex;flex-direction:column;gap:8px;padding-bottom:40px;}
+.card{
+  background:var(--card-bg);border-radius:8px;
+  padding:14px 16px;border-left:4px solid var(--gold);
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  transition:all 0.2s ease;cursor:pointer;
+}
+.card:active{transform:scale(0.98);}
+.card.active{
+  background:var(--card-active);
+  border-left-color:var(--accent);
+  transform:translateX(3px);
+  box-shadow:0 2px 10px rgba(0,0,0,0.12);
+}
+.card.paused{
+  border-left-color:#cc3333;
+  background:rgba(204,51,51,0.08);
+}
+.card-num{font-size:11px;color:var(--text-mid);margin-bottom:4px;}
+.card-en{
+  font-size:15px;color:var(--text-dark);font-weight:700;
+  line-height:1.6;margin-bottom:6px;
+}
+.card-zh{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;padding:20px 0 30px;
+  border-top:1px solid rgba(0,0,0,0.1);
+  margin-top:10px;
+}
+footer p{font-size:13px;color:var(--text-mid);}
+</style>
+</head>
+<body>
+
+<!-- Fixed Top Bar -->
+<div class="topbar">
+  <div class="topbar-title">
+    <span>🎬 Leon · 场景01 · 开场</span>
+    <span class="time" id="timeDisplay">00:00 / 13:00</span>
+  </div>
+  <div class="progress-track"><div class="fill" id="progressFill"></div></div>
+  <div class="topbar-row2">
+    <div class="progress-text" id="progressText">0/100</div>
+    <div class="toggle-wrap">
+      <span class="toggle-label">手动</span>
+      <label class="toggle">
+        <input type="checkbox" id="autoToggle">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">自动</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="hint">👆 点句子暂停/继续 · 开启"自动"则播完一句自动跳下一句</div>
+  <section class="cards" id="cardList">
+  </section>
+  <footer><p>听到不懂的句子，点一下暂停，跟读一遍</p></footer>
+</div>
+
+<audio id="audio" preload="auto">
+  <source src="scenes/scene01.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+var subtitles=[{num:1,time:0.0,dur:2.3,en:'Allora, come stai, Leon? (So how are you, Leon?)',zh:'（意大利语）Leon，你好吗？'},
+{num:2,time:3.5,dur:1.5,en:'Bene. (Well.)',zh:'（意大利语）很好。'},
+{num:3,time:8.5,dur:1.2,en:'Okay.',zh:'好了。'},
+{num:4,time:11.3,dur:1.8,en:'Let\'s talk business.',zh:'我们谈正事。'},
+{num:5,time:13.9,dur:3.5,en:'This fat bastard is trying to move in on Maurizio\'s business.',zh:'这个肥猪想抢Maurizio的生意。'},
+{num:6,time:17.4,dur:2.7,en:'Now, you know Maurizio is a reasonable guy.',zh:'你知道Maurizio是个讲道理的人。'},
+{num:7,time:20.2,dur:3.2,en:'He just wants a little conversation.',zh:'他只想跟他谈谈。'},
+{num:8,time:23.9,dur:3.1,en:'But this guy, he don\'t want to hear about it.',zh:'但这家伙根本不想听。'},
+{num:9,time:27.1,dur:1.6,en:'Maybe he\'ll listen to you.',zh:'也许他会听你的。'},
+{num:10,time:28.7,dur:3.4,en:'He comes to town every Tuesday. Are you free Tuesday?',zh:'他每周二进城。你周二有空吗？'},
+{num:11,time:34.9,dur:1.9,en:'Yeah, I\'m free Tuesday.',zh:'有，我周二有空。'},
+{num:12,time:53.2,dur:2.4,en:'Nice to see you again, Mr. Jones.',zh:'很高兴再见到你，Jones先生。'},
+{num:13,time:69.9,dur:3.2,en:'Remember, neatness counts. You got one half hour.',zh:'记住，要干净利落。你有半小时。'},
+{num:14,time:82.0,dur:1.3,en:'One hour.',zh:'一小时。'},
+{num:15,time:95.6,dur:1.3,en:'Yeah, what?',zh:'什么事？'},
+{num:16,time:97.0,dur:4.9,en:'It\'s Tonto, downstairs. There\'s a guy who wants to talk to you.',zh:'是我，Tonto，楼下。有个人想找你。'},
+{num:17,time:104.4,dur:1.8,en:'What\'s he look like?',zh:'他长什么样？'},
+{num:18,time:108.1,dur:1.2,en:'Serious.',zh:'很严肃。'},
+{num:19,time:109.8,dur:2.9,en:'- Tell him I\'m coming up. - He\'s coming up.',zh:'- 告诉他我上来。- 他上来了。'},
+{num:20,time:115.8,dur:3.2,en:'Somebody\'s coming up. Somebody serious.',zh:'有人来了。一个严肃的人。'},
+{num:21,time:123.8,dur:2.7,en:'Mickey, open your eyes. We got company.',zh:'Mickey，睁开眼。有客人来了。'},
+{num:22,time:129.3,dur:1.6,en:'We got company.',zh:'有客人来了。'},
+{num:23,time:143.6,dur:1.2,en:'Come on.',zh:'快走。'},
+{num:24,time:153.9,dur:1.7,en:'Stop, stop, man!',zh:'停，停，哥们！'},
+{num:25,time:162.5,dur:1.2,en:'Tonto.',zh:'Tonto。'},
+{num:26,time:166.0,dur:3.5,en:'Tell the driver to wait for us out back, and hurry up.',zh:'让司机在后门等我们，快点。'},
+{num:27,time:215.9,dur:3.0,en:'- Hey, sweetie, what\'s going on? - Don\'t worry, baby.',zh:'- 嘿，亲爱的，怎么了？- 别担心，宝贝。'},
+{num:28,time:219.0,dur:2.0,en:'It\'s cool. Take a nap.',zh:'没事的。睡一会儿吧。'},
+{num:29,time:239.3,dur:1.4,en:'Oh, my God.',zh:'天哪。'},
+{num:30,time:242.2,dur:1.6,en:'Those fuckers blocked both the exits.',zh:'那帮混蛋把两个出口都堵了。'},
+{num:31,time:249.0,dur:1.7,en:'Check the terrace!',zh:'检查阳台！'},
+{num:32,time:264.8,dur:2.2,en:'Hey! Yo!',zh:'嘿！喂！'},
+{num:33,time:323.5,dur:2.2,en:'- 911, Emergency. - I need help.',zh:'- 911，紧急服务。- 我需要帮助。'},
+{num:34,time:325.9,dur:2.7,en:'- Somebody\'s trying to kill me. - All right. Just stay on the line.',zh:'- 有人要杀我。- 好的，别挂电话。'},
+{num:35,time:328.7,dur:2.0,en:'I\'ll just be off a moment.',zh:'我马上就好。'},
+{num:36,time:331.2,dur:2.2,en:'Sir, I\'m gonna connect you with an officer.',zh:'先生，我帮您转接警官。'},
+{num:37,time:333.4,dur:0.8,en:'Okay.',zh:'好的。'},
+{num:38,time:352.1,dur:2.5,en:'Detective Jefferson. May I help you?',zh:'Jefferson探员，有什么可以帮您？'},
+{num:39,time:355.1,dur:1.8,en:'I\'ll call you back.',zh:'我待会再打给你。'},
+{num:40,time:360.7,dur:4.5,en:'Hey, relax, man. I got half of Bolivia sitting in them suitcases over here.',zh:'嘿，放轻松，兄弟。那边箱子里装着半个玻利维亚的货。'},
+{num:41,time:365.4,dur:3.2,en:'Ain\'t even cut yet. Go ahead, take it. It\'s yours.',zh:'还没切过呢。拿去吧，都给你。'},
+{num:42,time:373.7,dur:1.7,en:'Dial this number.',zh:'拨这个号码。'},
+{num:43,time:388.8,dur:2.7,en:'I\'ll talk to you later, sweetie, okay?',zh:'亲爱的，我待会再打给你，好吗？'},
+{num:44,time:392.9,dur:1.1,en:'Bye.',zh:'再见。'},
+{num:45,time:398.7,dur:2.5,en:'- Hello? - It\'s Maurizio. Remember me?',zh:'- 喂？- 是Maurizio。还记得我吗？'},
+{num:46,time:401.8,dur:3.7,en:'- I see you\'re back in town. - Yeah. I mean, no.',zh:'- 我看你回城里了。- 对。呃，不是。'},
+{num:47,time:406.5,dur:1.5,en:'Just for today.',zh:'就今天回来一下。'},
+{num:48,time:408.5,dur:2.8,en:'So it\'s safe to say today\'s your last day in town',zh:'那可以说今天是你在城里最后一天了，'},
+{num:49,time:411.3,dur:2.8,en:'and we\'ll never see your fat fucking face again.',zh:'我们再也不会看到你那张肥猪脸了。'},
+{num:50,time:414.2,dur:1.8,en:'Yeah. Right.',zh:'是，没错。'},
+{num:51,time:416.8,dur:2.5,en:'Let me speak to our mutual friend.',zh:'让我跟咱们共同的朋友说句话。'},
+{num:52,time:421.5,dur:2.0,en:'He wants to talk to you.',zh:'他想跟你说话。'},
+{num:53,time:428.5,dur:2.3,en:'- Yes? - Make sure he understands,',zh:'- 喂？- 让他搞清楚状况，'},
+{num:54,time:431.2,dur:1.5,en:'then let him go.',zh:'然后放他走。'},
+{num:55,time:441.5,dur:1.7,en:'Do you understand?',zh:'你听明白了吗？'},
+{num:56,time:445.5,dur:2.1,en:'- So say it. - I understand.',zh:'- 说啊。- 我明白了。'},
+{num:57,time:450.2,dur:1.1,en:'Good.',zh:'很好。'},
+{num:58,time:477.7,dur:1.2,en:'Jesus.',zh:'天哪。'},
+{num:59,time:489.7,dur:1.7,en:'Two milk as usual?',zh:'两瓶牛奶，老样子？'},
+{num:60,time:557.2,dur:1.0,en:'Hi.',zh:'嗨。'},
+{num:61,time:562.2,dur:2.3,en:'Why did you hide the cigarette?',zh:'你为什么把烟藏起来？'},
+{num:62,time:565.0,dur:2.2,en:'This building\'s full of rats.',zh:'这楼里到处都是告密的。'},
+{num:63,time:567.3,dur:3.7,en:'I didn\'t want my old man to find out. Got enough problems.',zh:'我不想让我爸发现。麻烦够多了。'},
+{num:64,time:581.5,dur:1.5,en:'What happened?',zh:'怎么了？'},
+{num:65,time:583.7,dur:1.8,en:'I fell off my bike.',zh:'我从自行车上摔下来了。'},
+{num:66,time:596.1,dur:1.1,en:'Hey.',zh:'嘿。'},
+{num:67,time:599.0,dur:3.0,en:'Don\'t tell my dad about the cigarette, okay?',zh:'别告诉我爸我抽烟的事，好吗？'},
+{num:68,time:614.3,dur:2.8,en:'- ...why you\'re doing this to us. - I don\'t know...',zh:'- ……你为什么这样对我们。- 我不知道……'},
+{num:69,time:617.1,dur:2.9,en:'Funny how people got memory problems these days. I mean, it must be the sun.',zh:'奇怪，最近大家记性都不好了。肯定是太阳晒的。'},
+{num:70,time:620.0,dur:2.1,en:'You know, a man should know when to come out of the sun.',zh:'一个人该知道什么时候从阳光下走出来。'},
+{num:71,time:622.1,dur:2.0,en:'I don\'t know how it happened. I mean, what\'s my job?',zh:'我也不知道怎么回事。我的工作是什么？'},
+{num:72,time:624.2,dur:0.9,en:'I\'m just a holder.',zh:'我只是个保管的。'},
+{num:73,time:625.0,dur:1.7,en:'I hold the stuff just like you give it to me.',zh:'你给我什么我就保管什么。'},
+{num:74,time:626.7,dur:2.7,en:'I don\'t look at it, I don\'t touch it. I don\'t even know how to cut it.',zh:'我不看，不碰。我甚至不知道怎么切割。'},
+{num:75,time:629.4,dur:2.3,en:'Try and follow me, all right? In June, we gave you the dope.',zh:'你跟上我的思路，好吗？六月份我们给你货。'},
+{num:76,time:631.7,dur:3.3,en:'It tests 100% pure. Now it\'s July, we pick up the dope,',zh:'检测出来100%纯。现在七月份，我们来取货，'},
+{num:77,time:635.0,dur:1.5,en:'and it tests 90% pure.',zh:'检测出来只有90%纯。'},
+{num:78,time:636.6,dur:3.3,en:'Now, somewhere between June and July, 10% turned to cut!',zh:'六月到七月之间，有10%变成了掺料！'},
+{num:79,time:639.9,dur:2.2,en:'I don\'t know. It\'s none of my business. I\'m just a holder.',zh:'我不知道。不关我的事。我只是保管的。'},
+{num:80,time:642.1,dur:2.3,en:'You give me the stuff, I hold the stuff. That\'s all I know.',zh:'你给我货，我保管货。我只知道这些。'},
+{num:81,time:644.4,dur:2.4,en:'Hey, look, you know, I\'m trying to help you out here,',zh:'嘿，听着，我是在帮你，'},
+{num:82,time:647.0,dur:2.8,en:'but, you know, if you\'re gonna be a hard-ass about it...',zh:'但如果你要硬扛的话……'},
+{num:83,time:649.9,dur:1.8,en:'I gotta disturb him.',zh:'我得去打扰他了。'},
+{num:84,time:652.2,dur:4.4,en:'Now, let me tell you, when he\'s into his music, he hates being disturbed.',zh:'他听音乐的时候最讨厌被打扰。'},
+{num:85,time:657.5,dur:2.0,en:'I\'m telling you the truth.',zh:'我说的是实话。'},
+{num:86,time:659.8,dur:3.7,en:'I hope so, because he\'s got a talent for sniffing out a lie.',zh:'希望如此，因为他有天赋嗅出谎言。'},
+{num:87,time:664.1,dur:1.4,en:'It\'s scary.',zh:'很吓人的。'},
+{num:88,time:666.2,dur:2.3,en:'It\'s almost like a sixth sense.',zh:'简直像第六感一样。'},
+{num:89,time:669.3,dur:3.5,en:'Are you gonna change your tune or I got to bust into his?',zh:'你是要改口呢，还是让我去打断他的音乐？'},
+{num:90,time:675.8,dur:2.1,en:'I\'m telling you the truth.',zh:'我说的是实话。'},
+{num:91,time:685.4,dur:1.3,en:'All right.',zh:'好吧。'},
+{num:92,time:688.8,dur:1.7,en:'Stan. Stan.',zh:'Stan。Stan。'},
+{num:93,time:694.6,dur:3.1,en:'I\'m sorry. See, he said he didn\'t cut the dope.',zh:'抱歉。他说他没掺货。'},
+{num:94,time:706.8,dur:10.0,en:'FarangSiam thanks you. Enjoy!',zh:'FarangSiam感谢您。请慢用！'},
+{num:95,time:739.4,dur:1.8,en:'Of course he didn\'t.',zh:'他当然没掺。'},
+{num:96,time:751.0,dur:4.2,en:'Just do me a favor. Find out who did by tomorrow.',zh:'帮我个忙。明天之前查出来是谁干的。'},
+{num:97,time:756.1,dur:1.1,en:'Noon.',zh:'中午。'},
+{num:98,time:769.0,dur:1.6,en:'Malky, hey, wait.',zh:'Malky，嘿，等等。'},
+{num:99,time:771.7,dur:2.1,en:'Hey, I didn\'t cut your shit.',zh:'嘿，我没掺你们的货。'},
+{num:100,time:774.6,dur:1.7,en:'Find out yourself!',zh:'你自己去查！'}];
+
+var audio=document.getElementById('audio');
+var autoToggle=document.getElementById('autoToggle');
+var progressFill=document.getElementById('progressFill');
+var progressText=document.getElementById('progressText');
+var timeDisplay=document.getElementById('timeDisplay');
+var cardList=document.getElementById('cardList');
+var currentNum=0;
+var isPaused=false;
+
+/* Build cards */
+subtitles.forEach(function(s){
+  var d=document.createElement('div');
+  d.className='card';d.id='card'+s.num;d.dataset.time=s.time;
+  d.innerHTML='<div class="card-num">#'+(s.num<100?'0':'')+(s.num<10?'0':'')+s.num+' · '+fmtTime(s.time)+'</div>'
+    +'<div class="card-en">'+s.en+'</div>'
+    +'<div class="card-zh">'+s.zh+'</div>';
+  d.addEventListener('click',function(){onCardClick(s.num);});
+  cardList.appendChild(d);
+});
+
+/* Click card */
+function onCardClick(num){
+  var s=subtitles.find(function(x){return x.num===num;});
+  if(!s)return;
+  if(audio.paused){
+    audio.currentTime=s.time;
+    audio.play();
+    isPaused=false;
+  }else{
+    var active=document.querySelector('.card.active');
+    if(active && active.id==='card'+num){
+      audio.pause();
+      isPaused=true;
+    }else{
+      audio.currentTime=s.time;
+    }
+  }
+}
+
+/* Timeupdate */
+audio.addEventListener('timeupdate',function(){
+  var t=audio.currentTime,d=audio.duration||780;
+  timeDisplay.textContent=fmtTime(t)+' / '+fmtTime(d);
+  progressFill.style.width=(t/d*100)+'%';
+
+  for(var i=subtitles.length-1;i>=0;i--){
+    if(t>=subtitles[i].time){
+      if(currentNum!==subtitles[i].num){
+        highlightCard(subtitles[i].num);
+        currentNum=subtitles[i].num;
+        progressText.textContent=currentNum+'/'+subtitles.length;
+      }
+      break;
+    }
+  }
+});
+
+/* Auto-play: when a sentence ends, jump to next */
+audio.addEventListener('timeupdate',function(){
+  if(!autoToggle.checked)return;
+  var t=audio.currentTime;
+  for(var i=0;i<subtitles.length;i++){
+    if(subtitles[i].num===currentNum){
+      var endTime=subtitles[i].time+subtitles[i].dur;
+      if(t>=endTime-0.1 && i+1<subtitles.length){
+        audio.currentTime=subtitles[i+1].time;
+      }
+      break;
+    }
+  }
+});
+
+/* Pause visual */
+audio.addEventListener('pause',function(){
+  var a=document.querySelector('.card.active');
+  if(a)a.classList.add('paused');
+});
+audio.addEventListener('play',function(){
+  isPaused=false;
+  document.querySelectorAll('.card.paused').forEach(function(c){c.classList.remove('paused');});
+});
+
+function highlightCard(num){
+  document.querySelectorAll('.card').forEach(function(c){
+    c.classList.remove('active','paused');
+  });
+  var c=document.getElementById('card'+num);
+  if(c){
+    c.classList.add('active');
+    c.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+function fmtTime(s){
+  var m=Math.floor(s/60),sec=Math.floor(s%60);
+  return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;
+}
+
+/* Keyboard */
+document.addEventListener('keydown',function(e){
+  if(e.key===' '&&e.target===document.body){
+    e.preventDefault();
+    audio.paused?audio.play():audio.pause();
+  }
+});
+</script>
+</body>
+</html>

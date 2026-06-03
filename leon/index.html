@@ -2,17 +2,18 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>看电影学英语 · Leon · 场景01</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#9a7a4a;
   --gold:#c9a84c;--accent:#8b4513;--card-bg:rgba(255,252,240,0.92);
-  --card-active:rgba(201,168,76,0.15);--play-btn:#c9a84c;--record-btn:#a0522d;
+  --card-active:rgba(201,168,76,0.25);
   --progress:linear-gradient(90deg,#c9a84c,#e8c870);
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text-dark);line-height:1.8;min-height:100vh;}
+body{font-family:'Noto Serif SC','STSong',serif;background:var(--bg);color:var(--text-dark);line-height:1.8;min-height:100vh;-webkit-text-size-adjust:100%;}
 .container{max-width:480px;margin:0 auto;padding:16px;}
 header{text-align:center;padding:20px 0 12px;border-bottom:2px solid var(--gold);margin-bottom:16px;}
 header h1{font-size:18px;color:var(--accent);font-weight:700;}
@@ -25,27 +26,16 @@ header .scene-time{font-size:12px;color:var(--text-mid);margin-top:2px;}
 .audio-section audio{width:100%;margin:8px 0;}
 .audio-time{font-size:12px;color:var(--text-mid);text-align:center;}
 .cards{display:flex;flex-direction:column;gap:10px;}
-.card{background:var(--card-bg);border-radius:8px;padding:14px 16px;border-left:4px solid var(--gold);box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:all 0.25s ease;cursor:pointer;position:relative;}
-.card:hover,.card.active{background:var(--card-active);transform:translateX(2px);box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+.card{background:var(--card-bg);border-radius:8px;padding:14px 16px;border-left:4px solid var(--gold);box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:all 0.25s ease;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent;}
+.card:active{transform:scale(0.98);}
+.card.active{background:var(--card-active);border-left-color:#e8c870;box-shadow:0 2px 12px rgba(201,168,76,0.3);}
+.card.paused{border-left-color:#cc3333;background:rgba(204,51,51,0.08);}
 .card.completed{border-left-color:#6a9955;}
 .card.completed::after{content:'✓';position:absolute;top:8px;right:10px;color:#6a9955;font-size:14px;font-weight:bold;}
 .card-num{font-size:11px;color:var(--text-mid);margin-bottom:4px;}
-.card-en{font-size:15px;color:var(--text-dark);font-weight:700;line-height:1.6;margin-bottom:6px;}
-.card-zh{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:10px;}
-.card-controls{display:flex;gap:8px;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:none;border-radius:6px;font-size:13px;font-family:inherit;cursor:pointer;transition:all 0.2s ease;-webkit-tap-highlight-color:transparent;}
-.btn:active{transform:translateY(1px);}
-.btn-play{background:var(--play-btn);color:#fff;}
-.btn-play:hover{background:#b8973e;}
-.btn-record{background:var(--record-btn);color:#fff;}
-.btn-record:hover{background:#8b4413;}
-.btn-record.recording{background:#cc3333;animation:pulse 1s infinite;}
-.btn-replay{background:#6a7b8b;color:#fff;}
-.btn-replay:hover{background:#556b7a;}
-.btn-replay:disabled{background:#ccc;cursor:not-allowed;}
-.btn-done{background:#6a9955;color:#fff;}
-.btn-done:hover{background:#557744;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.6;}}
+.card-en{font-size:16px;color:var(--text-dark);font-weight:700;line-height:1.6;margin-bottom:6px;}
+.card-zh{font-size:14px;color:var(--text-mid);line-height:1.6;}
+.play-hint{font-size:11px;color:var(--gold);margin-top:6px;opacity:0.7;}
 footer{text-align:center;padding:24px 0;margin-top:20px;border-top:1px solid rgba(0,0,0,0.1);}
 .complete-msg{font-size:16px;color:var(--accent);font-weight:700;margin-bottom:12px;display:none;}
 </style>
@@ -67,165 +57,66 @@ footer{text-align:center;padding:24px 0;margin-top:20px;border-top:1px solid rgb
   <div class="audio-time" id="audioTime">00:00 / 13:00</div>
 </section>
 <section class="cards" id="cardList">
-<div class="card" id="card1" data-num="1" data-time="0.0" onclick="jumpTo(0.0,1)"><div class="card-num">#001 · 00:00</div><div class="card-en">Allora, come stai, Leon? (So how are you, Leon?)</div><div class="card-zh">（意大利语）Leon，你好吗？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(0.0,2.3)">▶ 听原音</button><button class="btn btn-record" id="rec1" onclick="event.stopPropagation();toggleRecord(1,2.3)">🎙 跟读</button><button class="btn btn-replay" id="rep1" onclick="event.stopPropagation();replayRecording(1)" disabled>🔁 回放</button><button class="btn btn-done" id="done1" onclick="event.stopPropagation();markDone(1)">✓ 会了</button></div></div>
-<div class="card" id="card2" data-num="2" data-time="3.5" onclick="jumpTo(3.5,2)"><div class="card-num">#002 · 00:03</div><div class="card-en">Bene. (Well.)</div><div class="card-zh">（意大利语）很好。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(3.5,1.5)">▶ 听原音</button><button class="btn btn-record" id="rec2" onclick="event.stopPropagation();toggleRecord(2,1.5)">🎙 跟读</button><button class="btn btn-replay" id="rep2" onclick="event.stopPropagation();replayRecording(2)" disabled>🔁 回放</button><button class="btn btn-done" id="done2" onclick="event.stopPropagation();markDone(2)">✓ 会了</button></div></div>
-<div class="card" id="card3" data-num="3" data-time="8.5" onclick="jumpTo(8.5,3)"><div class="card-num">#003 · 00:08</div><div class="card-en">Okay.</div><div class="card-zh">好了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(8.5,1.2)">▶ 听原音</button><button class="btn btn-record" id="rec3" onclick="event.stopPropagation();toggleRecord(3,1.2)">🎙 跟读</button><button class="btn btn-replay" id="rep3" onclick="event.stopPropagation();replayRecording(3)" disabled>🔁 回放</button><button class="btn btn-done" id="done3" onclick="event.stopPropagation();markDone(3)">✓ 会了</button></div></div>
-<div class="card" id="card4" data-num="4" data-time="11.3" onclick="jumpTo(11.3,4)"><div class="card-num">#004 · 00:11</div><div class="card-en">Let&#39;s talk business.</div><div class="card-zh">我们谈正事。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(11.3,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec4" onclick="event.stopPropagation();toggleRecord(4,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep4" onclick="event.stopPropagation();replayRecording(4)" disabled>🔁 回放</button><button class="btn btn-done" id="done4" onclick="event.stopPropagation();markDone(4)">✓ 会了</button></div></div>
-<div class="card" id="card5" data-num="5" data-time="13.9" onclick="jumpTo(13.9,5)"><div class="card-num">#005 · 00:13</div><div class="card-en">This fat bastard is trying to move in on Maurizio&#39;s business.</div><div class="card-zh">这个肥猪想抢Maurizio的生意。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(13.9,3.5)">▶ 听原音</button><button class="btn btn-record" id="rec5" onclick="event.stopPropagation();toggleRecord(5,3.5)">🎙 跟读</button><button class="btn btn-replay" id="rep5" onclick="event.stopPropagation();replayRecording(5)" disabled>🔁 回放</button><button class="btn btn-done" id="done5" onclick="event.stopPropagation();markDone(5)">✓ 会了</button></div></div>
-<div class="card" id="card6" data-num="6" data-time="17.4" onclick="jumpTo(17.4,6)"><div class="card-num">#006 · 00:17</div><div class="card-en">Now, you know Maurizio is a reasonable guy.</div><div class="card-zh">你知道Maurizio是个讲道理的人。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(17.4,2.7)">▶ 听原音</button><button class="btn btn-record" id="rec6" onclick="event.stopPropagation();toggleRecord(6,2.7)">🎙 跟读</button><button class="btn btn-replay" id="rep6" onclick="event.stopPropagation();replayRecording(6)" disabled>🔁 回放</button><button class="btn btn-done" id="done6" onclick="event.stopPropagation();markDone(6)">✓ 会了</button></div></div>
-<div class="card" id="card7" data-num="7" data-time="20.2" onclick="jumpTo(20.2,7)"><div class="card-num">#007 · 00:20</div><div class="card-en">He just wants a little conversation.</div><div class="card-zh">他只想跟他谈谈。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(20.2,3.2)">▶ 听原音</button><button class="btn btn-record" id="rec7" onclick="event.stopPropagation();toggleRecord(7,3.2)">🎙 跟读</button><button class="btn btn-replay" id="rep7" onclick="event.stopPropagation();replayRecording(7)" disabled>🔁 回放</button><button class="btn btn-done" id="done7" onclick="event.stopPropagation();markDone(7)">✓ 会了</button></div></div>
-<div class="card" id="card8" data-num="8" data-time="23.9" onclick="jumpTo(23.9,8)"><div class="card-num">#008 · 00:23</div><div class="card-en">But this guy, he don&#39;t want to hear about it.</div><div class="card-zh">但这家伙根本不想听。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(23.9,3.1)">▶ 听原音</button><button class="btn btn-record" id="rec8" onclick="event.stopPropagation();toggleRecord(8,3.1)">🎙 跟读</button><button class="btn btn-replay" id="rep8" onclick="event.stopPropagation();replayRecording(8)" disabled>🔁 回放</button><button class="btn btn-done" id="done8" onclick="event.stopPropagation();markDone(8)">✓ 会了</button></div></div>
-<div class="card" id="card9" data-num="9" data-time="27.1" onclick="jumpTo(27.1,9)"><div class="card-num">#009 · 00:27</div><div class="card-en">Maybe he&#39;ll listen to you.</div><div class="card-zh">也许他会听你的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(27.1,1.6)">▶ 听原音</button><button class="btn btn-record" id="rec9" onclick="event.stopPropagation();toggleRecord(9,1.6)">🎙 跟读</button><button class="btn btn-replay" id="rep9" onclick="event.stopPropagation();replayRecording(9)" disabled>🔁 回放</button><button class="btn btn-done" id="done9" onclick="event.stopPropagation();markDone(9)">✓ 会了</button></div></div>
-<div class="card" id="card10" data-num="10" data-time="28.7" onclick="jumpTo(28.7,10)"><div class="card-num">#010 · 00:28</div><div class="card-en">He comes to town every Tuesday. Are you free Tuesday?</div><div class="card-zh">他每周二进城。你周二有空吗？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(28.7,3.4)">▶ 听原音</button><button class="btn btn-record" id="rec10" onclick="event.stopPropagation();toggleRecord(10,3.4)">🎙 跟读</button><button class="btn btn-replay" id="rep10" onclick="event.stopPropagation();replayRecording(10)" disabled>🔁 回放</button><button class="btn btn-done" id="done10" onclick="event.stopPropagation();markDone(10)">✓ 会了</button></div></div>
-<div class="card" id="card11" data-num="11" data-time="34.9" onclick="jumpTo(34.9,11)"><div class="card-num">#011 · 00:34</div><div class="card-en">Yeah, I&#39;m free Tuesday.</div><div class="card-zh">有，我周二有空。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(34.9,1.9)">▶ 听原音</button><button class="btn btn-record" id="rec11" onclick="event.stopPropagation();toggleRecord(11,1.9)">🎙 跟读</button><button class="btn btn-replay" id="rep11" onclick="event.stopPropagation();replayRecording(11)" disabled>🔁 回放</button><button class="btn btn-done" id="done11" onclick="event.stopPropagation();markDone(11)">✓ 会了</button></div></div>
-<div class="card" id="card12" data-num="12" data-time="53.2" onclick="jumpTo(53.2,12)"><div class="card-num">#012 · 00:53</div><div class="card-en">Nice to see you again, Mr. Jones.</div><div class="card-zh">很高兴再见到你，Jones先生。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(53.2,2.4)">▶ 听原音</button><button class="btn btn-record" id="rec12" onclick="event.stopPropagation();toggleRecord(12,2.4)">🎙 跟读</button><button class="btn btn-replay" id="rep12" onclick="event.stopPropagation();replayRecording(12)" disabled>🔁 回放</button><button class="btn btn-done" id="done12" onclick="event.stopPropagation();markDone(12)">✓ 会了</button></div></div>
-<div class="card" id="card13" data-num="13" data-time="69.9" onclick="jumpTo(69.9,13)"><div class="card-num">#013 · 01:09</div><div class="card-en">Remember, neatness counts. You got one half hour.</div><div class="card-zh">记住，要干净利落。你有半小时。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(69.9,3.2)">▶ 听原音</button><button class="btn btn-record" id="rec13" onclick="event.stopPropagation();toggleRecord(13,3.2)">🎙 跟读</button><button class="btn btn-replay" id="rep13" onclick="event.stopPropagation();replayRecording(13)" disabled>🔁 回放</button><button class="btn btn-done" id="done13" onclick="event.stopPropagation();markDone(13)">✓ 会了</button></div></div>
-<div class="card" id="card14" data-num="14" data-time="82.0" onclick="jumpTo(82.0,14)"><div class="card-num">#014 · 01:21</div><div class="card-en">One hour.</div><div class="card-zh">一小时。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(82.0,1.3)">▶ 听原音</button><button class="btn btn-record" id="rec14" onclick="event.stopPropagation();toggleRecord(14,1.3)">🎙 跟读</button><button class="btn btn-replay" id="rep14" onclick="event.stopPropagation();replayRecording(14)" disabled>🔁 回放</button><button class="btn btn-done" id="done14" onclick="event.stopPropagation();markDone(14)">✓ 会了</button></div></div>
-<div class="card" id="card15" data-num="15" data-time="95.6" onclick="jumpTo(95.6,15)"><div class="card-num">#015 · 01:35</div><div class="card-en">Yeah, what?</div><div class="card-zh">什么事？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(95.6,1.3)">▶ 听原音</button><button class="btn btn-record" id="rec15" onclick="event.stopPropagation();toggleRecord(15,1.3)">🎙 跟读</button><button class="btn btn-replay" id="rep15" onclick="event.stopPropagation();replayRecording(15)" disabled>🔁 回放</button><button class="btn btn-done" id="done15" onclick="event.stopPropagation();markDone(15)">✓ 会了</button></div></div>
-<div class="card" id="card16" data-num="16" data-time="97.0" onclick="jumpTo(97.0,16)"><div class="card-num">#016 · 01:37</div><div class="card-en">It&#39;s Tonto, downstairs. There&#39;s a guy who wants to talk to you.</div><div class="card-zh">是我，Tonto，楼下。有个人想找你。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(97.0,4.9)">▶ 听原音</button><button class="btn btn-record" id="rec16" onclick="event.stopPropagation();toggleRecord(16,4.9)">🎙 跟读</button><button class="btn btn-replay" id="rep16" onclick="event.stopPropagation();replayRecording(16)" disabled>🔁 回放</button><button class="btn btn-done" id="done16" onclick="event.stopPropagation();markDone(16)">✓ 会了</button></div></div>
-<div class="card" id="card17" data-num="17" data-time="104.4" onclick="jumpTo(104.4,17)"><div class="card-num">#017 · 01:44</div><div class="card-en">What&#39;s he look like?</div><div class="card-zh">他长什么样？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(104.4,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec17" onclick="event.stopPropagation();toggleRecord(17,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep17" onclick="event.stopPropagation();replayRecording(17)" disabled>🔁 回放</button><button class="btn btn-done" id="done17" onclick="event.stopPropagation();markDone(17)">✓ 会了</button></div></div>
-<div class="card" id="card18" data-num="18" data-time="108.1" onclick="jumpTo(108.1,18)"><div class="card-num">#018 · 01:48</div><div class="card-en">Serious.</div><div class="card-zh">很严肃。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(108.1,1.2)">▶ 听原音</button><button class="btn btn-record" id="rec18" onclick="event.stopPropagation();toggleRecord(18,1.2)">🎙 跟读</button><button class="btn btn-replay" id="rep18" onclick="event.stopPropagation();replayRecording(18)" disabled>🔁 回放</button><button class="btn btn-done" id="done18" onclick="event.stopPropagation();markDone(18)">✓ 会了</button></div></div>
-<div class="card" id="card19" data-num="19" data-time="109.8" onclick="jumpTo(109.8,19)"><div class="card-num">#019 · 01:49</div><div class="card-en">- Tell him I&#39;m coming up. - He&#39;s coming up.</div><div class="card-zh">- 告诉他我上来。- 他上来了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(109.8,2.9)">▶ 听原音</button><button class="btn btn-record" id="rec19" onclick="event.stopPropagation();toggleRecord(19,2.9)">🎙 跟读</button><button class="btn btn-replay" id="rep19" onclick="event.stopPropagation();replayRecording(19)" disabled>🔁 回放</button><button class="btn btn-done" id="done19" onclick="event.stopPropagation();markDone(19)">✓ 会了</button></div></div>
-<div class="card" id="card20" data-num="20" data-time="115.8" onclick="jumpTo(115.8,20)"><div class="card-num">#020 · 01:55</div><div class="card-en">Somebody&#39;s coming up. Somebody serious.</div><div class="card-zh">有人来了。一个严肃的人。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(115.8,3.2)">▶ 听原音</button><button class="btn btn-record" id="rec20" onclick="event.stopPropagation();toggleRecord(20,3.2)">🎙 跟读</button><button class="btn btn-replay" id="rep20" onclick="event.stopPropagation();replayRecording(20)" disabled>🔁 回放</button><button class="btn btn-done" id="done20" onclick="event.stopPropagation();markDone(20)">✓ 会了</button></div></div>
-<div class="card" id="card21" data-num="21" data-time="123.8" onclick="jumpTo(123.8,21)"><div class="card-num">#021 · 02:03</div><div class="card-en">Mickey, open your eyes. We got company.</div><div class="card-zh">Mickey，睁开眼。有客人来了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(123.8,2.7)">▶ 听原音</button><button class="btn btn-record" id="rec21" onclick="event.stopPropagation();toggleRecord(21,2.7)">🎙 跟读</button><button class="btn btn-replay" id="rep21" onclick="event.stopPropagation();replayRecording(21)" disabled>🔁 回放</button><button class="btn btn-done" id="done21" onclick="event.stopPropagation();markDone(21)">✓ 会了</button></div></div>
-<div class="card" id="card22" data-num="22" data-time="129.3" onclick="jumpTo(129.3,22)"><div class="card-num">#022 · 02:09</div><div class="card-en">We got company.</div><div class="card-zh">有客人来了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(129.3,1.6)">▶ 听原音</button><button class="btn btn-record" id="rec22" onclick="event.stopPropagation();toggleRecord(22,1.6)">🎙 跟读</button><button class="btn btn-replay" id="rep22" onclick="event.stopPropagation();replayRecording(22)" disabled>🔁 回放</button><button class="btn btn-done" id="done22" onclick="event.stopPropagation();markDone(22)">✓ 会了</button></div></div>
-<div class="card" id="card23" data-num="23" data-time="143.6" onclick="jumpTo(143.6,23)"><div class="card-num">#023 · 02:23</div><div class="card-en">Come on.</div><div class="card-zh">快走。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(143.6,1.2)">▶ 听原音</button><button class="btn btn-record" id="rec23" onclick="event.stopPropagation();toggleRecord(23,1.2)">🎙 跟读</button><button class="btn btn-replay" id="rep23" onclick="event.stopPropagation();replayRecording(23)" disabled>🔁 回放</button><button class="btn btn-done" id="done23" onclick="event.stopPropagation();markDone(23)">✓ 会了</button></div></div>
-<div class="card" id="card24" data-num="24" data-time="153.9" onclick="jumpTo(153.9,24)"><div class="card-num">#024 · 02:33</div><div class="card-en">Stop, stop, man!</div><div class="card-zh">停，停，哥们！</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(153.9,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec24" onclick="event.stopPropagation();toggleRecord(24,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep24" onclick="event.stopPropagation();replayRecording(24)" disabled>🔁 回放</button><button class="btn btn-done" id="done24" onclick="event.stopPropagation();markDone(24)">✓ 会了</button></div></div>
-<div class="card" id="card25" data-num="25" data-time="162.5" onclick="jumpTo(162.5,25)"><div class="card-num">#025 · 02:42</div><div class="card-en">Tonto.</div><div class="card-zh">Tonto。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(162.5,1.2)">▶ 听原音</button><button class="btn btn-record" id="rec25" onclick="event.stopPropagation();toggleRecord(25,1.2)">🎙 跟读</button><button class="btn btn-replay" id="rep25" onclick="event.stopPropagation();replayRecording(25)" disabled>🔁 回放</button><button class="btn btn-done" id="done25" onclick="event.stopPropagation();markDone(25)">✓ 会了</button></div></div>
-<div class="card" id="card26" data-num="26" data-time="166.0" onclick="jumpTo(166.0,26)"><div class="card-num">#026 · 02:45</div><div class="card-en">Tell the driver to wait for us out back, and hurry up.</div><div class="card-zh">让司机在后门等我们，快点。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(166.0,3.5)">▶ 听原音</button><button class="btn btn-record" id="rec26" onclick="event.stopPropagation();toggleRecord(26,3.5)">🎙 跟读</button><button class="btn btn-replay" id="rep26" onclick="event.stopPropagation();replayRecording(26)" disabled>🔁 回放</button><button class="btn btn-done" id="done26" onclick="event.stopPropagation();markDone(26)">✓ 会了</button></div></div>
-<div class="card" id="card27" data-num="27" data-time="215.9" onclick="jumpTo(215.9,27)"><div class="card-num">#027 · 03:35</div><div class="card-en">- Hey, sweetie, what&#39;s going on? - Don&#39;t worry, baby.</div><div class="card-zh">- 嘿，亲爱的，怎么了？- 别担心，宝贝。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(215.9,3.0)">▶ 听原音</button><button class="btn btn-record" id="rec27" onclick="event.stopPropagation();toggleRecord(27,3.0)">🎙 跟读</button><button class="btn btn-replay" id="rep27" onclick="event.stopPropagation();replayRecording(27)" disabled>🔁 回放</button><button class="btn btn-done" id="done27" onclick="event.stopPropagation();markDone(27)">✓ 会了</button></div></div>
-<div class="card" id="card28" data-num="28" data-time="219.0" onclick="jumpTo(219.0,28)"><div class="card-num">#028 · 03:38</div><div class="card-en">It&#39;s cool. Take a nap.</div><div class="card-zh">没事的。睡一会儿吧。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(219.0,2.0)">▶ 听原音</button><button class="btn btn-record" id="rec28" onclick="event.stopPropagation();toggleRecord(28,2.0)">🎙 跟读</button><button class="btn btn-replay" id="rep28" onclick="event.stopPropagation();replayRecording(28)" disabled>🔁 回放</button><button class="btn btn-done" id="done28" onclick="event.stopPropagation();markDone(28)">✓ 会了</button></div></div>
-<div class="card" id="card29" data-num="29" data-time="239.3" onclick="jumpTo(239.3,29)"><div class="card-num">#029 · 03:59</div><div class="card-en">Oh, my God.</div><div class="card-zh">天哪。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(239.3,1.4)">▶ 听原音</button><button class="btn btn-record" id="rec29" onclick="event.stopPropagation();toggleRecord(29,1.4)">🎙 跟读</button><button class="btn btn-replay" id="rep29" onclick="event.stopPropagation();replayRecording(29)" disabled>🔁 回放</button><button class="btn btn-done" id="done29" onclick="event.stopPropagation();markDone(29)">✓ 会了</button></div></div>
-<div class="card" id="card30" data-num="30" data-time="242.2" onclick="jumpTo(242.2,30)"><div class="card-num">#030 · 04:02</div><div class="card-en">Those fuckers blocked both the exits.</div><div class="card-zh">那帮混蛋把两个出口都堵了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(242.2,1.6)">▶ 听原音</button><button class="btn btn-record" id="rec30" onclick="event.stopPropagation();toggleRecord(30,1.6)">🎙 跟读</button><button class="btn btn-replay" id="rep30" onclick="event.stopPropagation();replayRecording(30)" disabled>🔁 回放</button><button class="btn btn-done" id="done30" onclick="event.stopPropagation();markDone(30)">✓ 会了</button></div></div>
-<div class="card" id="card31" data-num="31" data-time="249.0" onclick="jumpTo(249.0,31)"><div class="card-num">#031 · 04:08</div><div class="card-en">Check the terrace!</div><div class="card-zh">检查阳台！</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(249.0,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec31" onclick="event.stopPropagation();toggleRecord(31,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep31" onclick="event.stopPropagation();replayRecording(31)" disabled>🔁 回放</button><button class="btn btn-done" id="done31" onclick="event.stopPropagation();markDone(31)">✓ 会了</button></div></div>
-<div class="card" id="card32" data-num="32" data-time="264.8" onclick="jumpTo(264.8,32)"><div class="card-num">#032 · 04:24</div><div class="card-en">Hey! Yo!</div><div class="card-zh">嘿！喂！</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(264.8,2.2)">▶ 听原音</button><button class="btn btn-record" id="rec32" onclick="event.stopPropagation();toggleRecord(32,2.2)">🎙 跟读</button><button class="btn btn-replay" id="rep32" onclick="event.stopPropagation();replayRecording(32)" disabled>🔁 回放</button><button class="btn btn-done" id="done32" onclick="event.stopPropagation();markDone(32)">✓ 会了</button></div></div>
-<div class="card" id="card33" data-num="33" data-time="323.5" onclick="jumpTo(323.5,33)"><div class="card-num">#033 · 05:23</div><div class="card-en">- 911, Emergency. - I need help.</div><div class="card-zh">- 911，紧急服务。- 我需要帮助。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(323.5,2.2)">▶ 听原音</button><button class="btn btn-record" id="rec33" onclick="event.stopPropagation();toggleRecord(33,2.2)">🎙 跟读</button><button class="btn btn-replay" id="rep33" onclick="event.stopPropagation();replayRecording(33)" disabled>🔁 回放</button><button class="btn btn-done" id="done33" onclick="event.stopPropagation();markDone(33)">✓ 会了</button></div></div>
-<div class="card" id="card34" data-num="34" data-time="325.9" onclick="jumpTo(325.9,34)"><div class="card-num">#034 · 05:25</div><div class="card-en">- Somebody&#39;s trying to kill me. - All right. Just stay on the line.</div><div class="card-zh">- 有人要杀我。- 好的，别挂电话。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(325.9,2.7)">▶ 听原音</button><button class="btn btn-record" id="rec34" onclick="event.stopPropagation();toggleRecord(34,2.7)">🎙 跟读</button><button class="btn btn-replay" id="rep34" onclick="event.stopPropagation();replayRecording(34)" disabled>🔁 回放</button><button class="btn btn-done" id="done34" onclick="event.stopPropagation();markDone(34)">✓ 会了</button></div></div>
-<div class="card" id="card35" data-num="35" data-time="328.7" onclick="jumpTo(328.7,35)"><div class="card-num">#035 · 05:28</div><div class="card-en">I&#39;ll just be off a moment.</div><div class="card-zh">我马上就好。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(328.7,2.0)">▶ 听原音</button><button class="btn btn-record" id="rec35" onclick="event.stopPropagation();toggleRecord(35,2.0)">🎙 跟读</button><button class="btn btn-replay" id="rep35" onclick="event.stopPropagation();replayRecording(35)" disabled>🔁 回放</button><button class="btn btn-done" id="done35" onclick="event.stopPropagation();markDone(35)">✓ 会了</button></div></div>
-<div class="card" id="card36" data-num="36" data-time="331.2" onclick="jumpTo(331.2,36)"><div class="card-num">#036 · 05:31</div><div class="card-en">Sir, I&#39;m gonna connect you with an officer.</div><div class="card-zh">先生，我帮您转接警官。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(331.2,2.2)">▶ 听原音</button><button class="btn btn-record" id="rec36" onclick="event.stopPropagation();toggleRecord(36,2.2)">🎙 跟读</button><button class="btn btn-replay" id="rep36" onclick="event.stopPropagation();replayRecording(36)" disabled>🔁 回放</button><button class="btn btn-done" id="done36" onclick="event.stopPropagation();markDone(36)">✓ 会了</button></div></div>
-<div class="card" id="card37" data-num="37" data-time="333.4" onclick="jumpTo(333.4,37)"><div class="card-num">#037 · 05:33</div><div class="card-en">Okay.</div><div class="card-zh">好的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(333.4,0.8)">▶ 听原音</button><button class="btn btn-record" id="rec37" onclick="event.stopPropagation();toggleRecord(37,0.8)">🎙 跟读</button><button class="btn btn-replay" id="rep37" onclick="event.stopPropagation();replayRecording(37)" disabled>🔁 回放</button><button class="btn btn-done" id="done37" onclick="event.stopPropagation();markDone(37)">✓ 会了</button></div></div>
-<div class="card" id="card38" data-num="38" data-time="352.1" onclick="jumpTo(352.1,38)"><div class="card-num">#038 · 05:52</div><div class="card-en">Detective Jefferson. May I help you?</div><div class="card-zh">Jefferson探员，有什么可以帮您？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(352.1,2.5)">▶ 听原音</button><button class="btn btn-record" id="rec38" onclick="event.stopPropagation();toggleRecord(38,2.5)">🎙 跟读</button><button class="btn btn-replay" id="rep38" onclick="event.stopPropagation();replayRecording(38)" disabled>🔁 回放</button><button class="btn btn-done" id="done38" onclick="event.stopPropagation();markDone(38)">✓ 会了</button></div></div>
-<div class="card" id="card39" data-num="39" data-time="355.1" onclick="jumpTo(355.1,39)"><div class="card-num">#039 · 05:55</div><div class="card-en">I&#39;ll call you back.</div><div class="card-zh">我待会再打给你。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(355.1,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec39" onclick="event.stopPropagation();toggleRecord(39,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep39" onclick="event.stopPropagation();replayRecording(39)" disabled>🔁 回放</button><button class="btn btn-done" id="done39" onclick="event.stopPropagation();markDone(39)">✓ 会了</button></div></div>
-<div class="card" id="card40" data-num="40" data-time="360.7" onclick="jumpTo(360.7,40)"><div class="card-num">#040 · 06:00</div><div class="card-en">Hey, relax, man. I got half of Bolivia sitting in them suitcases over here.</div><div class="card-zh">嘿，放轻松，兄弟。那边箱子里装着半个玻利维亚的货。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(360.7,4.5)">▶ 听原音</button><button class="btn btn-record" id="rec40" onclick="event.stopPropagation();toggleRecord(40,4.5)">🎙 跟读</button><button class="btn btn-replay" id="rep40" onclick="event.stopPropagation();replayRecording(40)" disabled>🔁 回放</button><button class="btn btn-done" id="done40" onclick="event.stopPropagation();markDone(40)">✓ 会了</button></div></div>
-<div class="card" id="card41" data-num="41" data-time="365.4" onclick="jumpTo(365.4,41)"><div class="card-num">#041 · 06:05</div><div class="card-en">Ain&#39;t even cut yet. Go ahead, take it. It&#39;s yours.</div><div class="card-zh">还没切过呢。拿去吧，都给你。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(365.4,3.2)">▶ 听原音</button><button class="btn btn-record" id="rec41" onclick="event.stopPropagation();toggleRecord(41,3.2)">🎙 跟读</button><button class="btn btn-replay" id="rep41" onclick="event.stopPropagation();replayRecording(41)" disabled>🔁 回放</button><button class="btn btn-done" id="done41" onclick="event.stopPropagation();markDone(41)">✓ 会了</button></div></div>
-<div class="card" id="card42" data-num="42" data-time="373.7" onclick="jumpTo(373.7,42)"><div class="card-num">#042 · 06:13</div><div class="card-en">Dial this number.</div><div class="card-zh">拨这个号码。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(373.7,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec42" onclick="event.stopPropagation();toggleRecord(42,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep42" onclick="event.stopPropagation();replayRecording(42)" disabled>🔁 回放</button><button class="btn btn-done" id="done42" onclick="event.stopPropagation();markDone(42)">✓ 会了</button></div></div>
-<div class="card" id="card43" data-num="43" data-time="388.8" onclick="jumpTo(388.8,43)"><div class="card-num">#043 · 06:28</div><div class="card-en">I&#39;ll talk to you later, sweetie, okay?</div><div class="card-zh">亲爱的，我待会再打给你，好吗？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(388.8,2.7)">▶ 听原音</button><button class="btn btn-record" id="rec43" onclick="event.stopPropagation();toggleRecord(43,2.7)">🎙 跟读</button><button class="btn btn-replay" id="rep43" onclick="event.stopPropagation();replayRecording(43)" disabled>🔁 回放</button><button class="btn btn-done" id="done43" onclick="event.stopPropagation();markDone(43)">✓ 会了</button></div></div>
-<div class="card" id="card44" data-num="44" data-time="392.9" onclick="jumpTo(392.9,44)"><div class="card-num">#044 · 06:32</div><div class="card-en">Bye.</div><div class="card-zh">再见。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(392.9,1.1)">▶ 听原音</button><button class="btn btn-record" id="rec44" onclick="event.stopPropagation();toggleRecord(44,1.1)">🎙 跟读</button><button class="btn btn-replay" id="rep44" onclick="event.stopPropagation();replayRecording(44)" disabled>🔁 回放</button><button class="btn btn-done" id="done44" onclick="event.stopPropagation();markDone(44)">✓ 会了</button></div></div>
-<div class="card" id="card45" data-num="45" data-time="398.7" onclick="jumpTo(398.7,45)"><div class="card-num">#045 · 06:38</div><div class="card-en">- Hello? - It&#39;s Maurizio. Remember me?</div><div class="card-zh">- 喂？- 是Maurizio。还记得我吗？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(398.7,2.5)">▶ 听原音</button><button class="btn btn-record" id="rec45" onclick="event.stopPropagation();toggleRecord(45,2.5)">🎙 跟读</button><button class="btn btn-replay" id="rep45" onclick="event.stopPropagation();replayRecording(45)" disabled>🔁 回放</button><button class="btn btn-done" id="done45" onclick="event.stopPropagation();markDone(45)">✓ 会了</button></div></div>
-<div class="card" id="card46" data-num="46" data-time="401.8" onclick="jumpTo(401.8,46)"><div class="card-num">#046 · 06:41</div><div class="card-en">- I see you&#39;re back in town. - Yeah. I mean, no.</div><div class="card-zh">- 我看你回城里了。- 对。呃，不是。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(401.8,3.7)">▶ 听原音</button><button class="btn btn-record" id="rec46" onclick="event.stopPropagation();toggleRecord(46,3.7)">🎙 跟读</button><button class="btn btn-replay" id="rep46" onclick="event.stopPropagation();replayRecording(46)" disabled>🔁 回放</button><button class="btn btn-done" id="done46" onclick="event.stopPropagation();markDone(46)">✓ 会了</button></div></div>
-<div class="card" id="card47" data-num="47" data-time="406.5" onclick="jumpTo(406.5,47)"><div class="card-num">#047 · 06:46</div><div class="card-en">Just for today.</div><div class="card-zh">就今天回来一下。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(406.5,1.5)">▶ 听原音</button><button class="btn btn-record" id="rec47" onclick="event.stopPropagation();toggleRecord(47,1.5)">🎙 跟读</button><button class="btn btn-replay" id="rep47" onclick="event.stopPropagation();replayRecording(47)" disabled>🔁 回放</button><button class="btn btn-done" id="done47" onclick="event.stopPropagation();markDone(47)">✓ 会了</button></div></div>
-<div class="card" id="card48" data-num="48" data-time="408.5" onclick="jumpTo(408.5,48)"><div class="card-num">#048 · 06:48</div><div class="card-en">So it&#39;s safe to say today&#39;s your last day in town</div><div class="card-zh">那可以说今天是你在城里最后一天了，</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(408.5,2.8)">▶ 听原音</button><button class="btn btn-record" id="rec48" onclick="event.stopPropagation();toggleRecord(48,2.8)">🎙 跟读</button><button class="btn btn-replay" id="rep48" onclick="event.stopPropagation();replayRecording(48)" disabled>🔁 回放</button><button class="btn btn-done" id="done48" onclick="event.stopPropagation();markDone(48)">✓ 会了</button></div></div>
-<div class="card" id="card49" data-num="49" data-time="411.3" onclick="jumpTo(411.3,49)"><div class="card-num">#049 · 06:51</div><div class="card-en">and we&#39;ll never see your fat fucking face again.</div><div class="card-zh">我们再也不会看到你那张肥猪脸了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(411.3,2.8)">▶ 听原音</button><button class="btn btn-record" id="rec49" onclick="event.stopPropagation();toggleRecord(49,2.8)">🎙 跟读</button><button class="btn btn-replay" id="rep49" onclick="event.stopPropagation();replayRecording(49)" disabled>🔁 回放</button><button class="btn btn-done" id="done49" onclick="event.stopPropagation();markDone(49)">✓ 会了</button></div></div>
-<div class="card" id="card50" data-num="50" data-time="414.2" onclick="jumpTo(414.2,50)"><div class="card-num">#050 · 06:54</div><div class="card-en">Yeah. Right.</div><div class="card-zh">是，没错。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(414.2,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec50" onclick="event.stopPropagation();toggleRecord(50,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep50" onclick="event.stopPropagation();replayRecording(50)" disabled>🔁 回放</button><button class="btn btn-done" id="done50" onclick="event.stopPropagation();markDone(50)">✓ 会了</button></div></div>
-<div class="card" id="card51" data-num="51" data-time="416.8" onclick="jumpTo(416.8,51)"><div class="card-num">#051 · 06:56</div><div class="card-en">Let me speak to our mutual friend.</div><div class="card-zh">让我跟咱们共同的朋友说句话。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(416.8,2.5)">▶ 听原音</button><button class="btn btn-record" id="rec51" onclick="event.stopPropagation();toggleRecord(51,2.5)">🎙 跟读</button><button class="btn btn-replay" id="rep51" onclick="event.stopPropagation();replayRecording(51)" disabled>🔁 回放</button><button class="btn btn-done" id="done51" onclick="event.stopPropagation();markDone(51)">✓ 会了</button></div></div>
-<div class="card" id="card52" data-num="52" data-time="421.5" onclick="jumpTo(421.5,52)"><div class="card-num">#052 · 07:01</div><div class="card-en">He wants to talk to you.</div><div class="card-zh">他想跟你说话。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(421.5,2.0)">▶ 听原音</button><button class="btn btn-record" id="rec52" onclick="event.stopPropagation();toggleRecord(52,2.0)">🎙 跟读</button><button class="btn btn-replay" id="rep52" onclick="event.stopPropagation();replayRecording(52)" disabled>🔁 回放</button><button class="btn btn-done" id="done52" onclick="event.stopPropagation();markDone(52)">✓ 会了</button></div></div>
-<div class="card" id="card53" data-num="53" data-time="428.5" onclick="jumpTo(428.5,53)"><div class="card-num">#053 · 07:08</div><div class="card-en">- Yes? - Make sure he understands,</div><div class="card-zh">- 喂？- 让他搞清楚状况，</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(428.5,2.3)">▶ 听原音</button><button class="btn btn-record" id="rec53" onclick="event.stopPropagation();toggleRecord(53,2.3)">🎙 跟读</button><button class="btn btn-replay" id="rep53" onclick="event.stopPropagation();replayRecording(53)" disabled>🔁 回放</button><button class="btn btn-done" id="done53" onclick="event.stopPropagation();markDone(53)">✓ 会了</button></div></div>
-<div class="card" id="card54" data-num="54" data-time="431.2" onclick="jumpTo(431.2,54)"><div class="card-num">#054 · 07:11</div><div class="card-en">then let him go.</div><div class="card-zh">然后放他走。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(431.2,1.5)">▶ 听原音</button><button class="btn btn-record" id="rec54" onclick="event.stopPropagation();toggleRecord(54,1.5)">🎙 跟读</button><button class="btn btn-replay" id="rep54" onclick="event.stopPropagation();replayRecording(54)" disabled>🔁 回放</button><button class="btn btn-done" id="done54" onclick="event.stopPropagation();markDone(54)">✓ 会了</button></div></div>
-<div class="card" id="card55" data-num="55" data-time="441.5" onclick="jumpTo(441.5,55)"><div class="card-num">#055 · 07:21</div><div class="card-en">Do you understand?</div><div class="card-zh">你听明白了吗？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(441.5,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec55" onclick="event.stopPropagation();toggleRecord(55,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep55" onclick="event.stopPropagation();replayRecording(55)" disabled>🔁 回放</button><button class="btn btn-done" id="done55" onclick="event.stopPropagation();markDone(55)">✓ 会了</button></div></div>
-<div class="card" id="card56" data-num="56" data-time="445.5" onclick="jumpTo(445.5,56)"><div class="card-num">#056 · 07:25</div><div class="card-en">- So say it. - I understand.</div><div class="card-zh">- 说啊。- 我明白了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(445.5,2.1)">▶ 听原音</button><button class="btn btn-record" id="rec56" onclick="event.stopPropagation();toggleRecord(56,2.1)">🎙 跟读</button><button class="btn btn-replay" id="rep56" onclick="event.stopPropagation();replayRecording(56)" disabled>🔁 回放</button><button class="btn btn-done" id="done56" onclick="event.stopPropagation();markDone(56)">✓ 会了</button></div></div>
-<div class="card" id="card57" data-num="57" data-time="450.2" onclick="jumpTo(450.2,57)"><div class="card-num">#057 · 07:30</div><div class="card-en">Good.</div><div class="card-zh">很好。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(450.2,1.1)">▶ 听原音</button><button class="btn btn-record" id="rec57" onclick="event.stopPropagation();toggleRecord(57,1.1)">🎙 跟读</button><button class="btn btn-replay" id="rep57" onclick="event.stopPropagation();replayRecording(57)" disabled>🔁 回放</button><button class="btn btn-done" id="done57" onclick="event.stopPropagation();markDone(57)">✓ 会了</button></div></div>
-<div class="card" id="card58" data-num="58" data-time="477.7" onclick="jumpTo(477.7,58)"><div class="card-num">#058 · 07:57</div><div class="card-en">Jesus.</div><div class="card-zh">天哪。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(477.7,1.2)">▶ 听原音</button><button class="btn btn-record" id="rec58" onclick="event.stopPropagation();toggleRecord(58,1.2)">🎙 跟读</button><button class="btn btn-replay" id="rep58" onclick="event.stopPropagation();replayRecording(58)" disabled>🔁 回放</button><button class="btn btn-done" id="done58" onclick="event.stopPropagation();markDone(58)">✓ 会了</button></div></div>
-<div class="card" id="card59" data-num="59" data-time="489.7" onclick="jumpTo(489.7,59)"><div class="card-num">#059 · 08:09</div><div class="card-en">Two milk as usual?</div><div class="card-zh">两瓶牛奶，老样子？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(489.7,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec59" onclick="event.stopPropagation();toggleRecord(59,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep59" onclick="event.stopPropagation();replayRecording(59)" disabled>🔁 回放</button><button class="btn btn-done" id="done59" onclick="event.stopPropagation();markDone(59)">✓ 会了</button></div></div>
-<div class="card" id="card60" data-num="60" data-time="557.2" onclick="jumpTo(557.2,60)"><div class="card-num">#060 · 09:17</div><div class="card-en">Hi.</div><div class="card-zh">嗨。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(557.2,1.0)">▶ 听原音</button><button class="btn btn-record" id="rec60" onclick="event.stopPropagation();toggleRecord(60,1.0)">🎙 跟读</button><button class="btn btn-replay" id="rep60" onclick="event.stopPropagation();replayRecording(60)" disabled>🔁 回放</button><button class="btn btn-done" id="done60" onclick="event.stopPropagation();markDone(60)">✓ 会了</button></div></div>
-<div class="card" id="card61" data-num="61" data-time="562.2" onclick="jumpTo(562.2,61)"><div class="card-num">#061 · 09:22</div><div class="card-en">Why did you hide the cigarette?</div><div class="card-zh">你为什么把烟藏起来？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(562.2,2.3)">▶ 听原音</button><button class="btn btn-record" id="rec61" onclick="event.stopPropagation();toggleRecord(61,2.3)">🎙 跟读</button><button class="btn btn-replay" id="rep61" onclick="event.stopPropagation();replayRecording(61)" disabled>🔁 回放</button><button class="btn btn-done" id="done61" onclick="event.stopPropagation();markDone(61)">✓ 会了</button></div></div>
-<div class="card" id="card62" data-num="62" data-time="565.0" onclick="jumpTo(565.0,62)"><div class="card-num">#062 · 09:25</div><div class="card-en">This building&#39;s full of rats.</div><div class="card-zh">这楼里到处都是告密的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(565.0,2.2)">▶ 听原音</button><button class="btn btn-record" id="rec62" onclick="event.stopPropagation();toggleRecord(62,2.2)">🎙 跟读</button><button class="btn btn-replay" id="rep62" onclick="event.stopPropagation();replayRecording(62)" disabled>🔁 回放</button><button class="btn btn-done" id="done62" onclick="event.stopPropagation();markDone(62)">✓ 会了</button></div></div>
-<div class="card" id="card63" data-num="63" data-time="567.3" onclick="jumpTo(567.3,63)"><div class="card-num">#063 · 09:27</div><div class="card-en">I didn&#39;t want my old man to find out. Got enough problems.</div><div class="card-zh">我不想让我爸发现。麻烦够多了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(567.3,3.7)">▶ 听原音</button><button class="btn btn-record" id="rec63" onclick="event.stopPropagation();toggleRecord(63,3.7)">🎙 跟读</button><button class="btn btn-replay" id="rep63" onclick="event.stopPropagation();replayRecording(63)" disabled>🔁 回放</button><button class="btn btn-done" id="done63" onclick="event.stopPropagation();markDone(63)">✓ 会了</button></div></div>
-<div class="card" id="card64" data-num="64" data-time="581.5" onclick="jumpTo(581.5,64)"><div class="card-num">#064 · 09:41</div><div class="card-en">What happened?</div><div class="card-zh">怎么了？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(581.5,1.5)">▶ 听原音</button><button class="btn btn-record" id="rec64" onclick="event.stopPropagation();toggleRecord(64,1.5)">🎙 跟读</button><button class="btn btn-replay" id="rep64" onclick="event.stopPropagation();replayRecording(64)" disabled>🔁 回放</button><button class="btn btn-done" id="done64" onclick="event.stopPropagation();markDone(64)">✓ 会了</button></div></div>
-<div class="card" id="card65" data-num="65" data-time="583.7" onclick="jumpTo(583.7,65)"><div class="card-num">#065 · 09:43</div><div class="card-en">I fell off my bike.</div><div class="card-zh">我从自行车上摔下来了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(583.7,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec65" onclick="event.stopPropagation();toggleRecord(65,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep65" onclick="event.stopPropagation();replayRecording(65)" disabled>🔁 回放</button><button class="btn btn-done" id="done65" onclick="event.stopPropagation();markDone(65)">✓ 会了</button></div></div>
-<div class="card" id="card66" data-num="66" data-time="596.1" onclick="jumpTo(596.1,66)"><div class="card-num">#066 · 09:56</div><div class="card-en">Hey.</div><div class="card-zh">嘿。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(596.1,1.1)">▶ 听原音</button><button class="btn btn-record" id="rec66" onclick="event.stopPropagation();toggleRecord(66,1.1)">🎙 跟读</button><button class="btn btn-replay" id="rep66" onclick="event.stopPropagation();replayRecording(66)" disabled>🔁 回放</button><button class="btn btn-done" id="done66" onclick="event.stopPropagation();markDone(66)">✓ 会了</button></div></div>
-<div class="card" id="card67" data-num="67" data-time="599.0" onclick="jumpTo(599.0,67)"><div class="card-num">#067 · 09:58</div><div class="card-en">Don&#39;t tell my dad about the cigarette, okay?</div><div class="card-zh">别告诉我爸我抽烟的事，好吗？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(599.0,3.0)">▶ 听原音</button><button class="btn btn-record" id="rec67" onclick="event.stopPropagation();toggleRecord(67,3.0)">🎙 跟读</button><button class="btn btn-replay" id="rep67" onclick="event.stopPropagation();replayRecording(67)" disabled>🔁 回放</button><button class="btn btn-done" id="done67" onclick="event.stopPropagation();markDone(67)">✓ 会了</button></div></div>
-<div class="card" id="card68" data-num="68" data-time="614.3" onclick="jumpTo(614.3,68)"><div class="card-num">#068 · 10:14</div><div class="card-en">- ...why you&#39;re doing this to us. - I don&#39;t know...</div><div class="card-zh">- ……你为什么这样对我们。- 我不知道……</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(614.3,2.8)">▶ 听原音</button><button class="btn btn-record" id="rec68" onclick="event.stopPropagation();toggleRecord(68,2.8)">🎙 跟读</button><button class="btn btn-replay" id="rep68" onclick="event.stopPropagation();replayRecording(68)" disabled>🔁 回放</button><button class="btn btn-done" id="done68" onclick="event.stopPropagation();markDone(68)">✓ 会了</button></div></div>
-<div class="card" id="card69" data-num="69" data-time="617.1" onclick="jumpTo(617.1,69)"><div class="card-num">#069 · 10:17</div><div class="card-en">Funny how people got memory problems these days. I mean, it must be the sun.</div><div class="card-zh">奇怪，最近大家记性都不好了。肯定是太阳晒的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(617.1,2.9)">▶ 听原音</button><button class="btn btn-record" id="rec69" onclick="event.stopPropagation();toggleRecord(69,2.9)">🎙 跟读</button><button class="btn btn-replay" id="rep69" onclick="event.stopPropagation();replayRecording(69)" disabled>🔁 回放</button><button class="btn btn-done" id="done69" onclick="event.stopPropagation();markDone(69)">✓ 会了</button></div></div>
-<div class="card" id="card70" data-num="70" data-time="620.0" onclick="jumpTo(620.0,70)"><div class="card-num">#070 · 10:20</div><div class="card-en">You know, a man should know when to come out of the sun.</div><div class="card-zh">一个人该知道什么时候从阳光下走出来。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(620.0,2.1)">▶ 听原音</button><button class="btn btn-record" id="rec70" onclick="event.stopPropagation();toggleRecord(70,2.1)">🎙 跟读</button><button class="btn btn-replay" id="rep70" onclick="event.stopPropagation();replayRecording(70)" disabled>🔁 回放</button><button class="btn btn-done" id="done70" onclick="event.stopPropagation();markDone(70)">✓ 会了</button></div></div>
-<div class="card" id="card71" data-num="71" data-time="622.1" onclick="jumpTo(622.1,71)"><div class="card-num">#071 · 10:22</div><div class="card-en">I don&#39;t know how it happened. I mean, what&#39;s my job?</div><div class="card-zh">我也不知道怎么回事。我的工作是什么？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(622.1,2.0)">▶ 听原音</button><button class="btn btn-record" id="rec71" onclick="event.stopPropagation();toggleRecord(71,2.0)">🎙 跟读</button><button class="btn btn-replay" id="rep71" onclick="event.stopPropagation();replayRecording(71)" disabled>🔁 回放</button><button class="btn btn-done" id="done71" onclick="event.stopPropagation();markDone(71)">✓ 会了</button></div></div>
-<div class="card" id="card72" data-num="72" data-time="624.2" onclick="jumpTo(624.2,72)"><div class="card-num">#072 · 10:24</div><div class="card-en">I&#39;m just a holder.</div><div class="card-zh">我只是个保管的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(624.2,0.9)">▶ 听原音</button><button class="btn btn-record" id="rec72" onclick="event.stopPropagation();toggleRecord(72,0.9)">🎙 跟读</button><button class="btn btn-replay" id="rep72" onclick="event.stopPropagation();replayRecording(72)" disabled>🔁 回放</button><button class="btn btn-done" id="done72" onclick="event.stopPropagation();markDone(72)">✓ 会了</button></div></div>
-<div class="card" id="card73" data-num="73" data-time="625.0" onclick="jumpTo(625.0,73)"><div class="card-num">#073 · 10:25</div><div class="card-en">I hold the stuff just like you give it to me.</div><div class="card-zh">你给我什么我就保管什么。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(625.0,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec73" onclick="event.stopPropagation();toggleRecord(73,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep73" onclick="event.stopPropagation();replayRecording(73)" disabled>🔁 回放</button><button class="btn btn-done" id="done73" onclick="event.stopPropagation();markDone(73)">✓ 会了</button></div></div>
-<div class="card" id="card74" data-num="74" data-time="626.7" onclick="jumpTo(626.7,74)"><div class="card-num">#074 · 10:26</div><div class="card-en">I don&#39;t look at it, I don&#39;t touch it. I don&#39;t even know how to cut it.</div><div class="card-zh">我不看，不碰。我甚至不知道怎么切割。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(626.7,2.7)">▶ 听原音</button><button class="btn btn-record" id="rec74" onclick="event.stopPropagation();toggleRecord(74,2.7)">🎙 跟读</button><button class="btn btn-replay" id="rep74" onclick="event.stopPropagation();replayRecording(74)" disabled>🔁 回放</button><button class="btn btn-done" id="done74" onclick="event.stopPropagation();markDone(74)">✓ 会了</button></div></div>
-<div class="card" id="card75" data-num="75" data-time="629.4" onclick="jumpTo(629.4,75)"><div class="card-num">#075 · 10:29</div><div class="card-en">Try and follow me, all right? In June, we gave you the dope.</div><div class="card-zh">你跟上我的思路，好吗？六月份我们给你货。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(629.4,2.3)">▶ 听原音</button><button class="btn btn-record" id="rec75" onclick="event.stopPropagation();toggleRecord(75,2.3)">🎙 跟读</button><button class="btn btn-replay" id="rep75" onclick="event.stopPropagation();replayRecording(75)" disabled>🔁 回放</button><button class="btn btn-done" id="done75" onclick="event.stopPropagation();markDone(75)">✓ 会了</button></div></div>
-<div class="card" id="card76" data-num="76" data-time="631.7" onclick="jumpTo(631.7,76)"><div class="card-num">#076 · 10:31</div><div class="card-en">It tests 100% pure. Now it&#39;s July, we pick up the dope,</div><div class="card-zh">检测出来100%纯。现在七月份，我们来取货，</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(631.7,3.3)">▶ 听原音</button><button class="btn btn-record" id="rec76" onclick="event.stopPropagation();toggleRecord(76,3.3)">🎙 跟读</button><button class="btn btn-replay" id="rep76" onclick="event.stopPropagation();replayRecording(76)" disabled>🔁 回放</button><button class="btn btn-done" id="done76" onclick="event.stopPropagation();markDone(76)">✓ 会了</button></div></div>
-<div class="card" id="card77" data-num="77" data-time="635.0" onclick="jumpTo(635.0,77)"><div class="card-num">#077 · 10:35</div><div class="card-en">and it tests 90% pure.</div><div class="card-zh">检测出来只有90%纯。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(635.0,1.5)">▶ 听原音</button><button class="btn btn-record" id="rec77" onclick="event.stopPropagation();toggleRecord(77,1.5)">🎙 跟读</button><button class="btn btn-replay" id="rep77" onclick="event.stopPropagation();replayRecording(77)" disabled>🔁 回放</button><button class="btn btn-done" id="done77" onclick="event.stopPropagation();markDone(77)">✓ 会了</button></div></div>
-<div class="card" id="card78" data-num="78" data-time="636.6" onclick="jumpTo(636.6,78)"><div class="card-num">#078 · 10:36</div><div class="card-en">Now, somewhere between June and July, 10% turned to cut!</div><div class="card-zh">六月到七月之间，有10%变成了掺料！</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(636.6,3.3)">▶ 听原音</button><button class="btn btn-record" id="rec78" onclick="event.stopPropagation();toggleRecord(78,3.3)">🎙 跟读</button><button class="btn btn-replay" id="rep78" onclick="event.stopPropagation();replayRecording(78)" disabled>🔁 回放</button><button class="btn btn-done" id="done78" onclick="event.stopPropagation();markDone(78)">✓ 会了</button></div></div>
-<div class="card" id="card79" data-num="79" data-time="639.9" onclick="jumpTo(639.9,79)"><div class="card-num">#079 · 10:39</div><div class="card-en">I don&#39;t know. It&#39;s none of my business. I&#39;m just a holder.</div><div class="card-zh">我不知道。不关我的事。我只是保管的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(639.9,2.2)">▶ 听原音</button><button class="btn btn-record" id="rec79" onclick="event.stopPropagation();toggleRecord(79,2.2)">🎙 跟读</button><button class="btn btn-replay" id="rep79" onclick="event.stopPropagation();replayRecording(79)" disabled>🔁 回放</button><button class="btn btn-done" id="done79" onclick="event.stopPropagation();markDone(79)">✓ 会了</button></div></div>
-<div class="card" id="card80" data-num="80" data-time="642.1" onclick="jumpTo(642.1,80)"><div class="card-num">#080 · 10:42</div><div class="card-en">You give me the stuff, I hold the stuff. That&#39;s all I know.</div><div class="card-zh">你给我货，我保管货。我只知道这些。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(642.1,2.3)">▶ 听原音</button><button class="btn btn-record" id="rec80" onclick="event.stopPropagation();toggleRecord(80,2.3)">🎙 跟读</button><button class="btn btn-replay" id="rep80" onclick="event.stopPropagation();replayRecording(80)" disabled>🔁 回放</button><button class="btn btn-done" id="done80" onclick="event.stopPropagation();markDone(80)">✓ 会了</button></div></div>
-<div class="card" id="card81" data-num="81" data-time="644.4" onclick="jumpTo(644.4,81)"><div class="card-num">#081 · 10:44</div><div class="card-en">Hey, look, you know, I&#39;m trying to help you out here,</div><div class="card-zh">嘿，听着，我是在帮你，</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(644.4,2.4)">▶ 听原音</button><button class="btn btn-record" id="rec81" onclick="event.stopPropagation();toggleRecord(81,2.4)">🎙 跟读</button><button class="btn btn-replay" id="rep81" onclick="event.stopPropagation();replayRecording(81)" disabled>🔁 回放</button><button class="btn btn-done" id="done81" onclick="event.stopPropagation();markDone(81)">✓ 会了</button></div></div>
-<div class="card" id="card82" data-num="82" data-time="647.0" onclick="jumpTo(647.0,82)"><div class="card-num">#082 · 10:47</div><div class="card-en">but, you know, if you&#39;re gonna be a hard-ass about it...</div><div class="card-zh">但如果你要硬扛的话……</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(647.0,2.8)">▶ 听原音</button><button class="btn btn-record" id="rec82" onclick="event.stopPropagation();toggleRecord(82,2.8)">🎙 跟读</button><button class="btn btn-replay" id="rep82" onclick="event.stopPropagation();replayRecording(82)" disabled>🔁 回放</button><button class="btn btn-done" id="done82" onclick="event.stopPropagation();markDone(82)">✓ 会了</button></div></div>
-<div class="card" id="card83" data-num="83" data-time="649.9" onclick="jumpTo(649.9,83)"><div class="card-num">#083 · 10:49</div><div class="card-en">I gotta disturb him.</div><div class="card-zh">我得去打扰他了。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(649.9,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec83" onclick="event.stopPropagation();toggleRecord(83,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep83" onclick="event.stopPropagation();replayRecording(83)" disabled>🔁 回放</button><button class="btn btn-done" id="done83" onclick="event.stopPropagation();markDone(83)">✓ 会了</button></div></div>
-<div class="card" id="card84" data-num="84" data-time="652.2" onclick="jumpTo(652.2,84)"><div class="card-num">#084 · 10:52</div><div class="card-en">Now, let me tell you, when he&#39;s into his music, he hates being disturbed.</div><div class="card-zh">他听音乐的时候最讨厌被打扰。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(652.2,4.4)">▶ 听原音</button><button class="btn btn-record" id="rec84" onclick="event.stopPropagation();toggleRecord(84,4.4)">🎙 跟读</button><button class="btn btn-replay" id="rep84" onclick="event.stopPropagation();replayRecording(84)" disabled>🔁 回放</button><button class="btn btn-done" id="done84" onclick="event.stopPropagation();markDone(84)">✓ 会了</button></div></div>
-<div class="card" id="card85" data-num="85" data-time="657.5" onclick="jumpTo(657.5,85)"><div class="card-num">#085 · 10:57</div><div class="card-en">I&#39;m telling you the truth.</div><div class="card-zh">我说的是实话。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(657.5,2.0)">▶ 听原音</button><button class="btn btn-record" id="rec85" onclick="event.stopPropagation();toggleRecord(85,2.0)">🎙 跟读</button><button class="btn btn-replay" id="rep85" onclick="event.stopPropagation();replayRecording(85)" disabled>🔁 回放</button><button class="btn btn-done" id="done85" onclick="event.stopPropagation();markDone(85)">✓ 会了</button></div></div>
-<div class="card" id="card86" data-num="86" data-time="659.8" onclick="jumpTo(659.8,86)"><div class="card-num">#086 · 10:59</div><div class="card-en">I hope so, because he&#39;s got a talent for sniffing out a lie.</div><div class="card-zh">希望如此，因为他有天赋嗅出谎言。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(659.8,3.7)">▶ 听原音</button><button class="btn btn-record" id="rec86" onclick="event.stopPropagation();toggleRecord(86,3.7)">🎙 跟读</button><button class="btn btn-replay" id="rep86" onclick="event.stopPropagation();replayRecording(86)" disabled>🔁 回放</button><button class="btn btn-done" id="done86" onclick="event.stopPropagation();markDone(86)">✓ 会了</button></div></div>
-<div class="card" id="card87" data-num="87" data-time="664.1" onclick="jumpTo(664.1,87)"><div class="card-num">#087 · 11:04</div><div class="card-en">It&#39;s scary.</div><div class="card-zh">很吓人的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(664.1,1.4)">▶ 听原音</button><button class="btn btn-record" id="rec87" onclick="event.stopPropagation();toggleRecord(87,1.4)">🎙 跟读</button><button class="btn btn-replay" id="rep87" onclick="event.stopPropagation();replayRecording(87)" disabled>🔁 回放</button><button class="btn btn-done" id="done87" onclick="event.stopPropagation();markDone(87)">✓ 会了</button></div></div>
-<div class="card" id="card88" data-num="88" data-time="666.2" onclick="jumpTo(666.2,88)"><div class="card-num">#088 · 11:06</div><div class="card-en">It&#39;s almost like a sixth sense.</div><div class="card-zh">简直像第六感一样。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(666.2,2.3)">▶ 听原音</button><button class="btn btn-record" id="rec88" onclick="event.stopPropagation();toggleRecord(88,2.3)">🎙 跟读</button><button class="btn btn-replay" id="rep88" onclick="event.stopPropagation();replayRecording(88)" disabled>🔁 回放</button><button class="btn btn-done" id="done88" onclick="event.stopPropagation();markDone(88)">✓ 会了</button></div></div>
-<div class="card" id="card89" data-num="89" data-time="669.3" onclick="jumpTo(669.3,89)"><div class="card-num">#089 · 11:09</div><div class="card-en">Are you gonna change your tune or I got to bust into his?</div><div class="card-zh">你是要改口呢，还是让我去打断他的音乐？</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(669.3,3.5)">▶ 听原音</button><button class="btn btn-record" id="rec89" onclick="event.stopPropagation();toggleRecord(89,3.5)">🎙 跟读</button><button class="btn btn-replay" id="rep89" onclick="event.stopPropagation();replayRecording(89)" disabled>🔁 回放</button><button class="btn btn-done" id="done89" onclick="event.stopPropagation();markDone(89)">✓ 会了</button></div></div>
-<div class="card" id="card90" data-num="90" data-time="675.8" onclick="jumpTo(675.8,90)"><div class="card-num">#090 · 11:15</div><div class="card-en">I&#39;m telling you the truth.</div><div class="card-zh">我说的是实话。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(675.8,2.1)">▶ 听原音</button><button class="btn btn-record" id="rec90" onclick="event.stopPropagation();toggleRecord(90,2.1)">🎙 跟读</button><button class="btn btn-replay" id="rep90" onclick="event.stopPropagation();replayRecording(90)" disabled>🔁 回放</button><button class="btn btn-done" id="done90" onclick="event.stopPropagation();markDone(90)">✓ 会了</button></div></div>
-<div class="card" id="card91" data-num="91" data-time="685.4" onclick="jumpTo(685.4,91)"><div class="card-num">#091 · 11:25</div><div class="card-en">All right.</div><div class="card-zh">好吧。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(685.4,1.3)">▶ 听原音</button><button class="btn btn-record" id="rec91" onclick="event.stopPropagation();toggleRecord(91,1.3)">🎙 跟读</button><button class="btn btn-replay" id="rep91" onclick="event.stopPropagation();replayRecording(91)" disabled>🔁 回放</button><button class="btn btn-done" id="done91" onclick="event.stopPropagation();markDone(91)">✓ 会了</button></div></div>
-<div class="card" id="card92" data-num="92" data-time="688.8" onclick="jumpTo(688.8,92)"><div class="card-num">#092 · 11:28</div><div class="card-en">Stan. Stan.</div><div class="card-zh">Stan。Stan。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(688.8,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec92" onclick="event.stopPropagation();toggleRecord(92,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep92" onclick="event.stopPropagation();replayRecording(92)" disabled>🔁 回放</button><button class="btn btn-done" id="done92" onclick="event.stopPropagation();markDone(92)">✓ 会了</button></div></div>
-<div class="card" id="card93" data-num="93" data-time="694.6" onclick="jumpTo(694.6,93)"><div class="card-num">#093 · 11:34</div><div class="card-en">I&#39;m sorry. See, he said he didn&#39;t cut the dope.</div><div class="card-zh">抱歉。他说他没掺货。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(694.6,3.1)">▶ 听原音</button><button class="btn btn-record" id="rec93" onclick="event.stopPropagation();toggleRecord(93,3.1)">🎙 跟读</button><button class="btn btn-replay" id="rep93" onclick="event.stopPropagation();replayRecording(93)" disabled>🔁 回放</button><button class="btn btn-done" id="done93" onclick="event.stopPropagation();markDone(93)">✓ 会了</button></div></div>
-<div class="card" id="card94" data-num="94" data-time="706.8" onclick="jumpTo(706.8,94)"><div class="card-num">#094 · 11:46</div><div class="card-en">FarangSiam thanks you. Enjoy!</div><div class="card-zh">FarangSiam感谢您。请慢用！</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(706.8,10.0)">▶ 听原音</button><button class="btn btn-record" id="rec94" onclick="event.stopPropagation();toggleRecord(94,10.0)">🎙 跟读</button><button class="btn btn-replay" id="rep94" onclick="event.stopPropagation();replayRecording(94)" disabled>🔁 回放</button><button class="btn btn-done" id="done94" onclick="event.stopPropagation();markDone(94)">✓ 会了</button></div></div>
-<div class="card" id="card95" data-num="95" data-time="739.4" onclick="jumpTo(739.4,95)"><div class="card-num">#095 · 12:19</div><div class="card-en">Of course he didn&#39;t.</div><div class="card-zh">他当然没掺。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(739.4,1.8)">▶ 听原音</button><button class="btn btn-record" id="rec95" onclick="event.stopPropagation();toggleRecord(95,1.8)">🎙 跟读</button><button class="btn btn-replay" id="rep95" onclick="event.stopPropagation();replayRecording(95)" disabled>🔁 回放</button><button class="btn btn-done" id="done95" onclick="event.stopPropagation();markDone(95)">✓ 会了</button></div></div>
-<div class="card" id="card96" data-num="96" data-time="751.0" onclick="jumpTo(751.0,96)"><div class="card-num">#096 · 12:30</div><div class="card-en">Just do me a favor. Find out who did by tomorrow.</div><div class="card-zh">帮我个忙。明天之前查出来是谁干的。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(751.0,4.2)">▶ 听原音</button><button class="btn btn-record" id="rec96" onclick="event.stopPropagation();toggleRecord(96,4.2)">🎙 跟读</button><button class="btn btn-replay" id="rep96" onclick="event.stopPropagation();replayRecording(96)" disabled>🔁 回放</button><button class="btn btn-done" id="done96" onclick="event.stopPropagation();markDone(96)">✓ 会了</button></div></div>
-<div class="card" id="card97" data-num="97" data-time="756.1" onclick="jumpTo(756.1,97)"><div class="card-num">#097 · 12:36</div><div class="card-en">Noon.</div><div class="card-zh">中午。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(756.1,1.1)">▶ 听原音</button><button class="btn btn-record" id="rec97" onclick="event.stopPropagation();toggleRecord(97,1.1)">🎙 跟读</button><button class="btn btn-replay" id="rep97" onclick="event.stopPropagation();replayRecording(97)" disabled>🔁 回放</button><button class="btn btn-done" id="done97" onclick="event.stopPropagation();markDone(97)">✓ 会了</button></div></div>
-<div class="card" id="card98" data-num="98" data-time="769.0" onclick="jumpTo(769.0,98)"><div class="card-num">#098 · 12:48</div><div class="card-en">Malky, hey, wait.</div><div class="card-zh">Malky，嘿，等等。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(769.0,1.6)">▶ 听原音</button><button class="btn btn-record" id="rec98" onclick="event.stopPropagation();toggleRecord(98,1.6)">🎙 跟读</button><button class="btn btn-replay" id="rep98" onclick="event.stopPropagation();replayRecording(98)" disabled>🔁 回放</button><button class="btn btn-done" id="done98" onclick="event.stopPropagation();markDone(98)">✓ 会了</button></div></div>
-<div class="card" id="card99" data-num="99" data-time="771.7" onclick="jumpTo(771.7,99)"><div class="card-num">#099 · 12:51</div><div class="card-en">Hey, I didn&#39;t cut your shit.</div><div class="card-zh">嘿，我没掺你们的货。</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(771.7,2.1)">▶ 听原音</button><button class="btn btn-record" id="rec99" onclick="event.stopPropagation();toggleRecord(99,2.1)">🎙 跟读</button><button class="btn btn-replay" id="rep99" onclick="event.stopPropagation();replayRecording(99)" disabled>🔁 回放</button><button class="btn btn-done" id="done99" onclick="event.stopPropagation();markDone(99)">✓ 会了</button></div></div>
-<div class="card" id="card100" data-num="100" data-time="774.6" onclick="jumpTo(774.6,100)"><div class="card-num">#100 · 12:54</div><div class="card-en">Find out yourself!</div><div class="card-zh">你自己去查！</div><div class="card-controls"><button class="btn btn-play" onclick="event.stopPropagation();playSentence(774.6,1.7)">▶ 听原音</button><button class="btn btn-record" id="rec100" onclick="event.stopPropagation();toggleRecord(100,1.7)">🎙 跟读</button><button class="btn btn-replay" id="rep100" onclick="event.stopPropagation();replayRecording(100)" disabled>🔁 回放</button><button class="btn btn-done" id="done100" onclick="event.stopPropagation();markDone(100)">✓ 会了</button></div></div>
 </section>
 <footer>
   <div class="complete-msg" id="completeMsg">🎉 恭喜完成场景01！</div>
-  <div style="font-size:13px;color:var(--text-mid);">点击卡片跳转播放 · 点"会了"标记已掌握</div>
+  <div style="font-size:13px;color:var(--text-mid);">点击句子播放 · 再点暂停 · 左滑标记会了</div>
 </footer>
 </div>
-<script>
 
+<script>
 const STORAGE_KEY='movie2speak_leon_scene01';
 const audio=document.getElementById('audioScene');
-const subtitles=[{num:1,time:0.0,dur:2.3,en:'Allora, come stai, Leon? (So how are you, Leon?)',zh:'（意大利语）Leon，你好吗？'},
+const subtitles=[
+{num:1,time:0.0,dur:2.3,en:'Allora, come stai, Leon? (So how are you, Leon?)',zh:'（意大利语）Leon，你好吗？'},
 {num:2,time:3.5,dur:1.5,en:'Bene. (Well.)',zh:'（意大利语）很好。'},
 {num:3,time:8.5,dur:1.2,en:'Okay.',zh:'好了。'},
-{num:4,time:11.3,dur:1.8,en:'Let\'s talk business.',zh:'我们谈正事。'},
-{num:5,time:13.9,dur:3.5,en:'This fat bastard is trying to move in on Maurizio\'s business.',zh:'这个肥猪想抢Maurizio的生意。'},
+{num:4,time:11.3,dur:1.8,en:"Let's talk business.",zh:'我们谈正事。'},
+{num:5,time:13.9,dur:3.5,en:"This fat bastard is trying to move in on Maurizio's business.",zh:'这个肥猪想抢Maurizio的生意。'},
 {num:6,time:17.4,dur:2.7,en:'Now, you know Maurizio is a reasonable guy.',zh:'你知道Maurizio是个讲道理的人。'},
 {num:7,time:20.2,dur:3.2,en:'He just wants a little conversation.',zh:'他只想跟他谈谈。'},
-{num:8,time:23.9,dur:3.1,en:'But this guy, he don\'t want to hear about it.',zh:'但这家伙根本不想听。'},
-{num:9,time:27.1,dur:1.6,en:'Maybe he\'ll listen to you.',zh:'也许他会听你的。'},
+{num:8,time:23.9,dur:3.1,en:"But this guy, he don't want to hear about it.",zh:'但这家伙根本不想听。'},
+{num:9,time:27.1,dur:1.6,en:"Maybe he'll listen to you.",zh:'也许他会听你的。'},
 {num:10,time:28.7,dur:3.4,en:'He comes to town every Tuesday. Are you free Tuesday?',zh:'他每周二进城。你周二有空吗？'},
-{num:11,time:34.9,dur:1.9,en:'Yeah, I\'m free Tuesday.',zh:'有，我周二有空。'},
+{num:11,time:34.9,dur:1.9,en:"Yeah, I'm free Tuesday.",zh:'有，我周二有空。'},
 {num:12,time:53.2,dur:2.4,en:'Nice to see you again, Mr. Jones.',zh:'很高兴再见到你，Jones先生。'},
 {num:13,time:69.9,dur:3.2,en:'Remember, neatness counts. You got one half hour.',zh:'记住，要干净利落。你有半小时。'},
 {num:14,time:82.0,dur:1.3,en:'One hour.',zh:'一小时。'},
 {num:15,time:95.6,dur:1.3,en:'Yeah, what?',zh:'什么事？'},
-{num:16,time:97.0,dur:4.9,en:'It\'s Tonto, downstairs. There\'s a guy who wants to talk to you.',zh:'是我，Tonto，楼下。有个人想找你。'},
-{num:17,time:104.4,dur:1.8,en:'What\'s he look like?',zh:'他长什么样？'},
+{num:16,time:97.0,dur:4.9,en:"It's Tonto, downstairs. There's a guy who wants to talk to you.",zh:'是我，Tonto，楼下。有个人想找你。'},
+{num:17,time:104.4,dur:1.8,en:"What's he look like?",zh:'他长什么样？'},
 {num:18,time:108.1,dur:1.2,en:'Serious.',zh:'很严肃。'},
-{num:19,time:109.8,dur:2.9,en:'- Tell him I\'m coming up. - He\'s coming up.',zh:'- 告诉他我上来。- 他上来了。'},
-{num:20,time:115.8,dur:3.2,en:'Somebody\'s coming up. Somebody serious.',zh:'有人来了。一个严肃的人。'},
+{num:19,time:109.8,dur:2.9,en:"- Tell him I'm coming up. - He's coming up.",zh:'- 告诉他我上来。- 他上来了。'},
+{num:20,time:115.8,dur:3.2,en:"Somebody's coming up. Somebody serious.",zh:'有人来了。一个严肃的人。'},
 {num:21,time:123.8,dur:2.7,en:'Mickey, open your eyes. We got company.',zh:'Mickey，睁开眼。有客人来了。'},
 {num:22,time:129.3,dur:1.6,en:'We got company.',zh:'有客人来了。'},
 {num:23,time:143.6,dur:1.2,en:'Come on.',zh:'快走。'},
 {num:24,time:153.9,dur:1.7,en:'Stop, stop, man!',zh:'停，停，哥们！'},
 {num:25,time:162.5,dur:1.2,en:'Tonto.',zh:'Tonto。'},
 {num:26,time:166.0,dur:3.5,en:'Tell the driver to wait for us out back, and hurry up.',zh:'让司机在后门等我们，快点。'},
-{num:27,time:215.9,dur:3.0,en:'- Hey, sweetie, what\'s going on? - Don\'t worry, baby.',zh:'- 嘿，亲爱的，怎么了？- 别担心，宝贝。'},
-{num:28,time:219.0,dur:2.0,en:'It\'s cool. Take a nap.',zh:'没事的。睡一会儿吧。'},
+{num:27,time:215.9,dur:3.0,en:"- Hey, sweetie, what's going on? - Don't worry, baby.",zh:'- 嘿，亲爱的，怎么了？- 别担心，宝贝。'},
+{num:28,time:219.0,dur:2.0,en:"It's cool. Take a nap.",zh:'没事的。睡一会儿吧。'},
 {num:29,time:239.3,dur:1.4,en:'Oh, my God.',zh:'天哪。'},
 {num:30,time:242.2,dur:1.6,en:'Those fuckers blocked both the exits.',zh:'那帮混蛋把两个出口都堵了。'},
 {num:31,time:249.0,dur:1.7,en:'Check the terrace!',zh:'检查阳台！'},
 {num:32,time:264.8,dur:2.2,en:'Hey! Yo!',zh:'嘿！喂！'},
 {num:33,time:323.5,dur:2.2,en:'- 911, Emergency. - I need help.',zh:'- 911，紧急服务。- 我需要帮助。'},
-{num:34,time:325.9,dur:2.7,en:'- Somebody\'s trying to kill me. - All right. Just stay on the line.',zh:'- 有人要杀我。- 好的，别挂电话。'},
-{num:35,time:328.7,dur:2.0,en:'I\'ll just be off a moment.',zh:'我马上就好。'},
-{num:36,time:331.2,dur:2.2,en:'Sir, I\'m gonna connect you with an officer.',zh:'先生，我帮您转接警官。'},
+{num:34,time:325.9,dur:2.7,en:"- Somebody's trying to kill me. - All right. Just stay on the line.",zh:'- 有人要杀我。- 好的，别挂电话。'},
+{num:35,time:328.7,dur:2.0,en:"I'll just be off a moment.",zh:'我马上就好。'},
+{num:36,time:331.2,dur:2.2,en:"Sir, I'm gonna connect you with an officer.",zh:'先生，我帮您转接警官。'},
 {num:37,time:333.4,dur:0.8,en:'Okay.',zh:'好的。'},
 {num:38,time:352.1,dur:2.5,en:'Detective Jefferson. May I help you?',zh:'Jefferson探员，有什么可以帮您？'},
-{num:39,time:355.1,dur:1.8,en:'I\'ll call you back.',zh:'我待会再打给你。'},
-{num:40,time:360.7,dur:4.5,en:'Hey, relax, man. I got half of Bolivia sitting in them suitcases over here.',zh:'嘿，放轻松，兄弟。那边箱子里装着半个玻利维亚的货。'},
-{num:41,time:365.4,dur:3.2,en:'Ain\'t even cut yet. Go ahead, take it. It\'s yours.',zh:'还没切过呢。拿去吧，都给你。'},
+{num:39,time:355.1,dur:1.8,en:"I'll call you back.",zh:'我待会再打给你。'},
+{num:40,time:360.7,dur:4.5,en:"Hey, relax, man. I got half of Bolivia sitting in them suitcases over here.",zh:'嘿，放轻松，兄弟。那边箱子里装着半个玻利维亚的货。'},
+{num:41,time:365.4,dur:3.2,en:"Ain't even cut yet. Go ahead, take it. It's yours.",zh:'还没切过呢。拿去吧，都给你。'},
 {num:42,time:373.7,dur:1.7,en:'Dial this number.',zh:'拨这个号码。'},
-{num:43,time:388.8,dur:2.7,en:'I\'ll talk to you later, sweetie, okay?',zh:'亲爱的，我待会再打给你，好吗？'},
+{num:43,time:388.8,dur:2.7,en:"I'll talk to you later, sweetie, okay?",zh:'亲爱的，我待会再打给你，好吗？'},
 {num:44,time:392.9,dur:1.1,en:'Bye.',zh:'再见。'},
-{num:45,time:398.7,dur:2.5,en:'- Hello? - It\'s Maurizio. Remember me?',zh:'- 喂？- 是Maurizio。还记得我吗？'},
-{num:46,time:401.8,dur:3.7,en:'- I see you\'re back in town. - Yeah. I mean, no.',zh:'- 我看你回城里了。- 对。呃，不是。'},
+{num:45,time:398.7,dur:2.5,en:"- Hello? - It's Maurizio. Remember me?",zh:'- 喂？- 是Maurizio。还记得我吗？'},
+{num:46,time:401.8,dur:3.7,en:"- I see you're back in town. - Yeah. I mean, no.",zh:'- 我看你回城里了。- 对。呃，不是。'},
 {num:47,time:406.5,dur:1.5,en:'Just for today.',zh:'就今天回来一下。'},
-{num:48,time:408.5,dur:2.8,en:'So it\'s safe to say today\'s your last day in town',zh:'那可以说今天是你在城里最后一天了，'},
-{num:49,time:411.3,dur:2.8,en:'and we\'ll never see your fat fucking face again.',zh:'我们再也不会看到你那张肥猪脸了。'},
+{num:48,time:408.5,dur:2.8,en:"So it's safe to say today's your last day in town",zh:'那可以说今天是你在城里最后一天了，'},
+{num:49,time:411.3,dur:2.8,en:"and we'll never see your fat fucking face again.",zh:'我们再也不会看到你那张肥猪脸了。'},
 {num:50,time:414.2,dur:1.8,en:'Yeah. Right.',zh:'是，没错。'},
 {num:51,time:416.8,dur:2.5,en:'Let me speak to our mutual friend.',zh:'让我跟咱们共同的朋友说句话。'},
 {num:52,time:421.5,dur:2.0,en:'He wants to talk to you.',zh:'他想跟你说话。'},
@@ -238,73 +129,208 @@ const subtitles=[{num:1,time:0.0,dur:2.3,en:'Allora, come stai, Leon? (So how ar
 {num:59,time:489.7,dur:1.7,en:'Two milk as usual?',zh:'两瓶牛奶，老样子？'},
 {num:60,time:557.2,dur:1.0,en:'Hi.',zh:'嗨。'},
 {num:61,time:562.2,dur:2.3,en:'Why did you hide the cigarette?',zh:'你为什么把烟藏起来？'},
-{num:62,time:565.0,dur:2.2,en:'This building\'s full of rats.',zh:'这楼里到处都是告密的。'},
-{num:63,time:567.3,dur:3.7,en:'I didn\'t want my old man to find out. Got enough problems.',zh:'我不想让我爸发现。麻烦够多了。'},
+{num:62,time:565.0,dur:2.2,en:"This building's full of rats.",zh:'这楼里到处都是告密的。'},
+{num:63,time:567.3,dur:3.7,en:"I didn't want my old man to find out. Got enough problems.",zh:'我不想让我爸发现。麻烦够多了。'},
 {num:64,time:581.5,dur:1.5,en:'What happened?',zh:'怎么了？'},
 {num:65,time:583.7,dur:1.8,en:'I fell off my bike.',zh:'我从自行车上摔下来了。'},
 {num:66,time:596.1,dur:1.1,en:'Hey.',zh:'嘿。'},
-{num:67,time:599.0,dur:3.0,en:'Don\'t tell my dad about the cigarette, okay?',zh:'别告诉我爸我抽烟的事，好吗？'},
-{num:68,time:614.3,dur:2.8,en:'- ...why you\'re doing this to us. - I don\'t know...',zh:'- ……你为什么这样对我们。- 我不知道……'},
-{num:69,time:617.1,dur:2.9,en:'Funny how people got memory problems these days. I mean, it must be the sun.',zh:'奇怪，最近大家记性都不好了。肯定是太阳晒的。'},
+{num:67,time:599.0,dur:3.0,en:"Don't tell my dad about the cigarette, okay?",zh:'别告诉我爸我抽烟的事，好吗？'},
+{num:68,time:614.3,dur:2.8,en:"- ...why you're doing this to us. - I don't know...",zh:'- ……你为什么这样对我们。- 我不知道……'},
+{num:69,time:617.1,dur:2.9,en:"Funny how people got memory problems these days. I mean, it must be the sun.",zh:'奇怪，最近大家记性都不好了。肯定是太阳晒的。'},
 {num:70,time:620.0,dur:2.1,en:'You know, a man should know when to come out of the sun.',zh:'一个人该知道什么时候从阳光下走出来。'},
-{num:71,time:622.1,dur:2.0,en:'I don\'t know how it happened. I mean, what\'s my job?',zh:'我也不知道怎么回事。我的工作是什么？'},
-{num:72,time:624.2,dur:0.9,en:'I\'m just a holder.',zh:'我只是个保管的。'},
+{num:71,time:622.1,dur:2.0,en:"I don't know how it happened. I mean, what's my job?",zh:'我也不知道怎么回事。我的工作是什么？'},
+{num:72,time:624.2,dur:0.9,en:"I'm just a holder.",zh:'我只是个保管的。'},
 {num:73,time:625.0,dur:1.7,en:'I hold the stuff just like you give it to me.',zh:'你给我什么我就保管什么。'},
-{num:74,time:626.7,dur:2.7,en:'I don\'t look at it, I don\'t touch it. I don\'t even know how to cut it.',zh:'我不看，不碰。我甚至不知道怎么切割。'},
-{num:75,time:629.4,dur:2.3,en:'Try and follow me, all right? In June, we gave you the dope.',zh:'你跟上我的思路，好吗？六月份我们给你货。'},
-{num:76,time:631.7,dur:3.3,en:'It tests 100% pure. Now it\'s July, we pick up the dope,',zh:'检测出来100%纯。现在七月份，我们来取货，'},
+{num:74,time:626.7,dur:2.7,en:"I don't look at it, I don't touch it. I don't even know how to cut it.",zh:'我不看，不碰。我甚至不知道怎么切割。'},
+{num:75,time:629.4,dur:2.3,en:"Try and follow me, all right? In June, we gave you the dope.",zh:'你跟上我的思路，好吗？六月份我们给你货。'},
+{num:76,time:631.7,dur:3.3,en:"It tests 100% pure. Now it's July, we pick up the dope,",zh:'检测出来100%纯。现在七月份，我们来取货，'},
 {num:77,time:635.0,dur:1.5,en:'and it tests 90% pure.',zh:'检测出来只有90%纯。'},
 {num:78,time:636.6,dur:3.3,en:'Now, somewhere between June and July, 10% turned to cut!',zh:'六月到七月之间，有10%变成了掺料！'},
-{num:79,time:639.9,dur:2.2,en:'I don\'t know. It\'s none of my business. I\'m just a holder.',zh:'我不知道。不关我的事。我只是保管的。'},
-{num:80,time:642.1,dur:2.3,en:'You give me the stuff, I hold the stuff. That\'s all I know.',zh:'你给我货，我保管货。我只知道这些。'},
-{num:81,time:644.4,dur:2.4,en:'Hey, look, you know, I\'m trying to help you out here,',zh:'嘿，听着，我是在帮你，'},
-{num:82,time:647.0,dur:2.8,en:'but, you know, if you\'re gonna be a hard-ass about it...',zh:'但如果你要硬扛的话……'},
+{num:79,time:639.9,dur:2.2,en:"I don't know. It's none of my business. I'm just a holder.",zh:'我不知道。不关我的事。我只是保管的。'},
+{num:80,time:642.1,dur:2.3,en:"You give me the stuff, I hold the stuff. That's all I know.",zh:'你给我货，我保管货。我只知道这些。'},
+{num:81,time:644.4,dur:2.4,en:"Hey, look, you know, I'm trying to help you out here,",zh:'嘿，听着，我是在帮你，'},
+{num:82,time:647.0,dur:2.8,en:"but, you know, if you're gonna be a hard-ass about it...",zh:'但如果你要硬扛的话……'},
 {num:83,time:649.9,dur:1.8,en:'I gotta disturb him.',zh:'我得去打扰他了。'},
-{num:84,time:652.2,dur:4.4,en:'Now, let me tell you, when he\'s into his music, he hates being disturbed.',zh:'他听音乐的时候最讨厌被打扰。'},
-{num:85,time:657.5,dur:2.0,en:'I\'m telling you the truth.',zh:'我说的是实话。'},
-{num:86,time:659.8,dur:3.7,en:'I hope so, because he\'s got a talent for sniffing out a lie.',zh:'希望如此，因为他有天赋嗅出谎言。'},
-{num:87,time:664.1,dur:1.4,en:'It\'s scary.',zh:'很吓人的。'},
-{num:88,time:666.2,dur:2.3,en:'It\'s almost like a sixth sense.',zh:'简直像第六感一样。'},
+{num:84,time:652.2,dur:4.4,en:"Now, let me tell you, when he's into his music, he hates being disturbed.",zh:'他听音乐的时候最讨厌被打扰。'},
+{num:85,time:657.5,dur:2.0,en:"I'm telling you the truth.",zh:'我说的是实话。'},
+{num:86,time:659.8,dur:3.7,en:"I hope so, because he's got a talent for sniffing out a lie.",zh:'希望如此，因为他有天赋嗅出谎言。'},
+{num:87,time:664.1,dur:1.4,en:"It's scary.",zh:'很吓人的。'},
+{num:88,time:666.2,dur:2.3,en:"It's almost like a sixth sense.",zh:'简直像第六感一样。'},
 {num:89,time:669.3,dur:3.5,en:'Are you gonna change your tune or I got to bust into his?',zh:'你是要改口呢，还是让我去打断他的音乐？'},
-{num:90,time:675.8,dur:2.1,en:'I\'m telling you the truth.',zh:'我说的是实话。'},
+{num:90,time:675.8,dur:2.1,en:"I'm telling you the truth.",zh:'我说的是实话。'},
 {num:91,time:685.4,dur:1.3,en:'All right.',zh:'好吧。'},
 {num:92,time:688.8,dur:1.7,en:'Stan. Stan.',zh:'Stan。Stan。'},
-{num:93,time:694.6,dur:3.1,en:'I\'m sorry. See, he said he didn\'t cut the dope.',zh:'抱歉。他说他没掺货。'},
+{num:93,time:694.6,dur:3.1,en:"I'm sorry. See, he said he didn't cut the dope.",zh:'抱歉。他说他没掺货。'},
 {num:94,time:706.8,dur:10.0,en:'FarangSiam thanks you. Enjoy!',zh:'FarangSiam感谢您。请慢用！'},
-{num:95,time:739.4,dur:1.8,en:'Of course he didn\'t.',zh:'他当然没掺。'},
+{num:95,time:739.4,dur:1.8,en:"Of course he didn't.",zh:'他当然没掺。'},
 {num:96,time:751.0,dur:4.2,en:'Just do me a favor. Find out who did by tomorrow.',zh:'帮我个忙。明天之前查出来是谁干的。'},
 {num:97,time:756.1,dur:1.1,en:'Noon.',zh:'中午。'},
 {num:98,time:769.0,dur:1.6,en:'Malky, hey, wait.',zh:'Malky，嘿，等等。'},
-{num:99,time:771.7,dur:2.1,en:'Hey, I didn\'t cut your shit.',zh:'嘿，我没掺你们的货。'},
-{num:100,time:774.6,dur:1.7,en:'Find out yourself!',zh:'你自己去查！'}];
-function loadProgress(){try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY));return d&&d.completed?d:{completed:[],lastCard:0};}catch(e){return{completed:[],lastCard:0};}}
-function saveProgress(d){d.timestamp=Date.now();localStorage.setItem(STORAGE_KEY,JSON.stringify(d));}
-function updateProgressUI(){const p=loadProgress();const n=p.completed.length;const t=subtitles.length;const pct=Math.round(n/t*100);
-document.getElementById('progressFill').style.width=pct+'%';
-document.getElementById('progressText').textContent='\u5df2\u5b66 '+n+'/'+t+' ('+pct+'%)';
-subtitles.forEach(function(s){const c=document.getElementById('card'+s.num);if(c){p.completed.includes(s.num)?c.classList.add('completed'):c.classList.remove('completed');}});
-if(n>=t)document.getElementById('completeMsg').style.display='block';}
-function markDone(n){const p=loadProgress();if(!p.completed.includes(n)){p.completed.push(n);p.lastCard=n;saveProgress(p);updateProgressUI();}}
-function jumpTo(t,n){audio.currentTime=t;audio.play();highlightCard(n);}
-function playSentence(t,d){audio.currentTime=t;audio.play();}
-function highlightCard(n){document.querySelectorAll('.card').forEach(function(c){c.classList.remove('active');});const c=document.getElementById('card'+n);if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'center'});}}
-audio.addEventListener('timeupdate',function(){const c=audio.currentTime;const d=audio.duration||780;const m=Math.floor(c/60),s=Math.floor(c%60);const m2=Math.floor(d/60),s2=Math.floor(d%60);
-document.getElementById('audioTime').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s+' / '+(m2<10?'0':'')+m2+':'+(s2<10?'0':'')+s2;
-for(var i=subtitles.length-1;i>=0;i--){if(c>=subtitles[i].time){highlightCard(subtitles[i].num);break;}}});
-var recordings={},mr=null,rn=null;
-async function toggleRecord(n,d){var b=document.getElementById('rec'+n);
-if(rn===n){if(mr&&mr.state==='recording')mr.stop();b.classList.remove('recording');b.textContent='\ud83c\udfa4 \u8ddf\u8bfb';rn=null;return;}
-if(mr&&mr.state==='recording'){mr.stop();document.getElementById('rec'+rn).classList.remove('recording');document.getElementById('rec'+rn).textContent='\ud83c\udfa4 \u8ddf\u8bfb';}
-try{var st=await navigator.mediaDevices.getUserMedia({audio:true});mr=new MediaRecorder(st);var ch=[];
-mr.ondataavailable=function(e){ch.push(e.data);};
-mr.onstop=function(){var bl=new Blob(ch,{type:'audio/webm'});recordings[n]=URL.createObjectURL(bl);document.getElementById('rep'+n).disabled=false;st.getTracks().forEach(function(t){t.stop();});};
-var sub=subtitles.find(function(s){return s.num===n;});if(sub){audio.currentTime=sub.time;audio.play();}
-mr.start();rn=n;b.classList.add('recording');b.textContent='\u23f9 \u505c\u6b62';
-setTimeout(function(){if(rn===n&&mr&&mr.state==='recording'){mr.stop();b.classList.remove('recording');b.textContent='\ud83c\udfa4 \u8ddf\u8bfb';rn=null;}},(d+2)*1000);
-}catch(e){alert('\u9700\u8981\u9ea5\u514b\u98a8\u6a29\u9650\u624d\u80fd\u8ddf\u8bfb\u9304\u97f3\u3002\u8acb\u5141\u8a31\u700f\u89bd\u5668\u8a2a\u554f\u9ea5\u514b\u98a8\u3002');}}
-function replayRecording(n){if(recordings[n]){var a=new Audio(recordings[n]);a.play();}}
+{num:99,time:771.7,dur:2.1,en:"Hey, I didn't cut your shit.",zh:'嘿，我没掺你们的货。'},
+{num:100,time:774.6,dur:1.7,en:'Find out yourself!',zh:'你自己去查！'}
+];
+
+// 当前正在播放的句子编号（用于判断暂停状态）
+var currentPlayingNum = 0;
+var isPausedOnCard = false;
+
+// 生成卡片
+function renderCards() {
+  var html = '';
+  subtitles.forEach(function(s) {
+    html += '<div class="card" id="card' + s.num + '" data-num="' + s.num + '" data-time="' + s.time + '">';
+    html += '<div class="card-num">#' + String(s.num).padStart(3,'0') + ' · ' + formatTime(s.time) + '</div>';
+    html += '<div class="card-en">' + s.en + '</div>';
+    html += '<div class="card-zh">' + s.zh + '</div>';
+    html += '<div class="play-hint">👆 点击播放 · 再点暂停</div>';
+    html += '</div>';
+  });
+  document.getElementById('cardList').innerHTML = html;
+}
+
+function formatTime(sec) {
+  var m = Math.floor(sec / 60);
+  var s = Math.floor(sec % 60);
+  return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+// 加载/保存进度
+function loadProgress() {
+  try { var d = JSON.parse(localStorage.getItem(STORAGE_KEY)); return d && d.completed ? d : {completed:[], lastCard:0}; }
+  catch(e) { return {completed:[], lastCard:0}; }
+}
+function saveProgress(d) {
+  d.timestamp = Date.now();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+}
+
+// 更新UI
+function updateProgressUI() {
+  var p = loadProgress();
+  var n = p.completed.length;
+  var t = subtitles.length;
+  var pct = Math.round(n / t * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = '已学 ' + n + '/' + t + ' (' + pct + '%)';
+  subtitles.forEach(function(s) {
+    var c = document.getElementById('card' + s.num);
+    if (c) { p.completed.includes(s.num) ? c.classList.add('completed') : c.classList.remove('completed'); }
+  });
+  if (n >= t) document.getElementById('completeMsg').style.display = 'block';
+}
+
+// 标记会了（长按或双击）
+function markDone(n) {
+  var p = loadProgress();
+  if (!p.completed.includes(n)) { p.completed.push(n); p.lastCard = n; saveProgress(p); updateProgressUI(); }
+}
+
+// 高亮当前卡片
+function highlightCard(n) {
+  document.querySelectorAll('.card').forEach(function(c) { c.classList.remove('active'); c.classList.remove('paused'); });
+  var c = document.getElementById('card' + n);
+  if (c) { c.classList.add('active'); c.scrollIntoView({behavior:'smooth', block:'center'}); }
+}
+
+// 标记暂停状态
+function markPaused(n) {
+  document.querySelectorAll('.card').forEach(function(c) { c.classList.remove('paused'); });
+  var c = document.getElementById('card' + n);
+  if (c) { c.classList.add('paused'); }
+}
+
+// 核心：点击卡片 → 播放或暂停
+function onCardClick(num) {
+  var sub = subtitles.find(function(s) { return s.num === num; });
+  if (!sub) return;
+
+  // 如果当前正在播放这句话，且处于暂停状态 → 继续播放
+  if (currentPlayingNum === num && isPausedOnCard) {
+    audio.play();
+    isPausedOnCard = false;
+    highlightCard(num);
+    return;
+  }
+
+  // 如果当前正在播放这句话，且正在播放 → 暂停
+  if (currentPlayingNum === num && !audio.paused) {
+    audio.pause();
+    isPausedOnCard = true;
+    markPaused(num);
+    return;
+  }
+
+  // 播放新的一句
+  audio.currentTime = sub.time;
+  audio.play();
+  currentPlayingNum = num;
+  isPausedOnCard = false;
+  highlightCard(num);
+}
+
+// 绑定卡片点击事件
+function bindCardEvents() {
+  subtitles.forEach(function(s) {
+    var card = document.getElementById('card' + s.num);
+    if (card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        onCardClick(s.num);
+      });
+      // 双击标记会了
+      card.addEventListener('dblclick', function(e) {
+        e.preventDefault();
+        markDone(s.num);
+      });
+      // 长按标记会了
+      var pressTimer;
+      card.addEventListener('touchstart', function(e) {
+        pressTimer = setTimeout(function() { markDone(s.num); }, 800);
+      });
+      card.addEventListener('touchend', function() { clearTimeout(pressTimer); });
+      card.addEventListener('touchmove', function() { clearTimeout(pressTimer); });
+    }
+  });
+}
+
+// 音频时间更新 → 高亮当前句子
+audio.addEventListener('timeupdate', function() {
+  var c = audio.currentTime;
+  var d = audio.duration || 780;
+  document.getElementById('audioTime').textContent = formatTime(c) + ' / ' + formatTime(d);
+
+  for (var i = subtitles.length - 1; i >= 0; i--) {
+    if (c >= subtitles[i].time) {
+      if (currentPlayingNum !== subtitles[i].num) {
+        currentPlayingNum = subtitles[i].num;
+        isPausedOnCard = false;
+        highlightCard(subtitles[i].num);
+      }
+      break;
+    }
+  }
+});
+
+// 播放结束 → 清除状态
+audio.addEventListener('ended', function() {
+  currentPlayingNum = 0;
+  isPausedOnCard = false;
+  document.querySelectorAll('.card').forEach(function(c) { c.classList.remove('active'); c.classList.remove('paused'); });
+});
+
+// 键盘空格键暂停/继续
+document.addEventListener('keydown', function(e) {
+  if (e.key === ' ' && e.target === document.body) {
+    e.preventDefault();
+    if (audio.paused) { audio.play(); isPausedOnCard = false; if (currentPlayingNum) highlightCard(currentPlayingNum); }
+    else { audio.pause(); isPausedOnCard = true; if (currentPlayingNum) markPaused(currentPlayingNum); }
+  }
+});
+
+// 初始化
+renderCards();
+bindCardEvents();
 updateProgressUI();
-document.addEventListener('keydown',function(e){if(e.key===' '&&e.target===document.body){e.preventDefault();audio.paused?audio.play():audio.pause();}});
 </script>
 </body>
 </html>

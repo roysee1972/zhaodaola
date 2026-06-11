@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI数字产品 - zhaodaola.top</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .product-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .product-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .product-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        .product-features li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .product-price {
+            font-size: 2rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .product-price span {
+            font-size: 1rem;
+            color: #999;
+        }
+        .buy-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .buy-btn:hover {
+            transform: scale(1.05);
+        }
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: white;
+        }
+        .contact-info h3 {
+            margin-bottom: 15px;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AI数字产品</h1>
+            <p>让AI成为你的超级助手，效率提升300%</p>
+        </header>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">📚</div>
+                <h2 class="product-title">AI指令包</h2>
+                <p class="product-desc">500+条精选AI指令，覆盖写作、营销、办公、学习等10+个场景，即买即用，效率翻倍！</p>
+                <ul class="product-features">
+                    <li>500+条精选指令</li>
+                    <li>覆盖10+个场景</li>
+                    <li>即买即用</li>
+                    <li>持续更新</li>
+                </ul>
+                <div class="product-price">¥19.9 <span>/标准版</span></div>
+                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">💼</div>
+                <h2 class="product-title">AI副业速成手册</h2>
+                <p class="product-desc">普通人用AI赚钱的7条路，从0到1的完整指南，包含真实案例和实操方法。</p>
+                <ul class="product-features">
+                    <li>7条赚钱路径</li>
+                    <li>真实案例解析</li>
+                    <li>实操步骤详解</li>
+                    <li>适合新手</li>
+                </ul>
+                <div class="product-price">¥29.9 <span>/完整版</span></div>
+                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🤖</div>
+                <h2 class="product-title">DeepSeek实操教程</h2>
+                <p class="product-desc">从入门到精通，手把手教你使用DeepSeek，包含100+个实用技巧和案例。</p>
+                <ul class="product-features">
+                    <li>100+个技巧</li>
+                    <li>图文并茂</li>
+                    <li>案例丰富</li>
+                    <li>适合新手</li>
+                </ul>
+                <div class="product-price">¥19.9 <span>/完整版</span></div>
+                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🏢</div>
+                <h2 class="product-title">一人公司AI创业指南</h2>
+                <p class="product-desc">如何用AI工具打造一人公司，从0到月入过万的完整路径。</p>
+                <ul class="product-features">
+                    <li>创业路径规划</li>
+                    <li>工具选择指南</li>
+                    <li>变现策略</li>
+                    <li>案例分析</li>
+                </ul>
+                <div class="product-price">¥39.9 <span>/完整版</span></div>
+                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">📊</div>
+                <h2 class="product-title">行业调研报告定制</h2>
+                <p class="product-desc">资深媒体人定制行业调研报告，包含市场分析、竞品分析、机会评估。</p>
+                <ul class="product-features">
+                    <li>定制化报告</li>
+                    <li>专业分析</li>
+                    <li>数据支撑</li>
+                    <li>一对一咨询</li>
+                </ul>
+                <div class="product-price">¥99 <span>/起</span></div>
+                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即咨询</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">📈</div>
+                <h2 class="product-title">银发经济行业调研</h2>
+                <p class="product-desc">深度分析银发经济市场，包含10+个细分领域机会评估。</p>
+                <ul class="product-features">
+                    <li>市场规模分析</li>
+                    <li>用户画像</li>
+                    <li>机会评估</li>
+                    <li>进入建议</li>
+                </ul>
+                <div class="product-price">¥79 <span>/报告</span></div>
+                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h3>📞 联系我们</h3>
+            <p>闲鱼ID：liren1972</p>
+            <p>响应时间：24小时内</p>
+            <p>定制服务：欢迎私聊咨询</p>
+        </div>
+
+        <footer>
+            <p>© 2026 zhaodaola.top - AI数字产品平台</p>
+            <p>让AI成为你的超级助手</p>
+        </footer>
+    </div>
+</body>
+</html>

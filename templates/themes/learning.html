@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-learning">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知行书院 · 精英研修班</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="../core/themes.css">
+  <style>
+    /* ===== Hero Background ===== */
+    .hero {
+      background: linear-gradient(135deg, #1A2E1A 0%, #2D5A3D 40%, #3D7A5D 100%);
+    }
+    .hero .float-shapes .shape {
+      opacity: 0.06;
+      background: #8B6914;
+    }
+    .hero .shape-1 { width: 100px; height: 130px; top: 12%; left: 8%; border-radius: 8px; transform: rotate(-8deg); }
+    .hero .shape-2 { width: 70px; height: 90px; top: 55%; right: 10%; border-radius: 8px; transform: rotate(5deg); }
+    .hero .shape-3 { width: 50px; height: 65px; top: 25%; right: 22%; border-radius: 8px; transform: rotate(-12deg); }
+    .hero .shape-4 { width: 160px; height: 160px; bottom: 15%; left: 20%; border-radius: 50%; opacity: 0.04; }
+    .hero .shape-5 { width: 35px; height: 45px; top: 40%; left: 35%; border-radius: 6px; transform: rotate(15deg); }
+
+    /* Bookmark ribbon */
+    .bookmark-ribbon {
+      position: absolute;
+      top: 0;
+      right: 15%;
+      width: 40px;
+      height: 120px;
+      background: #8B6914;
+      opacity: 0.15;
+      z-index: 1;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    }
+
+    /* About section */
+    .about-section {
+      background: var(--color-bg);
+    }
+    .about-section .section-lead {
+      max-width: 720px;
+      font-size: 1.05rem;
+      line-height: 2;
+    }
+
+    /* Feature cards with book style */
+    .feature-card {
+      border-top: 3px solid var(--color-accent);
+      text-align: left;
+    }
+
+    /* Timeline enhancements */
+    .timeline-content {
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Note cards torn-paper effect */
+    .note-card {
+      position: relative;
+      overflow: visible;
+    }
+    .note-card::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 4px;
+      right: 4px;
+      height: 6px;
+      background: var(--color-card-bg);
+      clip-path: polygon(
+        0% 0%, 4% 100%, 8% 20%, 12% 80%, 16% 10%, 20% 60%, 24% 30%, 28% 90%,
+        32% 15%, 36% 70%, 40% 5%, 44% 85%, 48% 25%, 52% 75%, 56% 10%, 60% 65%,
+        64% 20%, 68% 80%, 72% 0%, 76% 70%, 80% 15%, 84% 90%, 88% 5%, 92% 60%,
+        96% 30%, 100% 0%
+      );
+      opacity: 0.7;
+    }
+
+    /* Mentor cards */
+    .mentor-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-bottom: 3px solid var(--color-accent);
+    }
+    .mentor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .mentor-card .mentor-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2D5A3D, #8B6914);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    .mentor-card h4 { margin-bottom: 0.3rem; }
+    .mentor-card .mentor-title {
+      font-size: 0.85rem;
+      color: var(--color-accent);
+      margin-bottom: 0.8rem;
+    }
+    .mentor-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      margin: 0;
+    }
+    .mentor-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 700px) {
+      .mentor-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Gallery styling */
+    .gallery-item .img-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      background: linear-gradient(135deg, #2D5A3D 0%, #3D7A5D 60%, #8B6914 100%);
+      color: rgba(255,255,255,0.7);
+      border: 2px solid rgba(45,90,61,0.2);
+    }
+    .gallery-item.featured .img-frame {
+      min-height: 240px;
+    }
+    .gallery-item .img-frame .frame-icon {
+      opacity: 0.6;
+    }
+
+    /* Enrollment cards */
+    .enrollment-cta {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px dashed var(--color-accent);
+    }
+    .enrollment-cta p {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin: 0;
+    }
+
+    /* Grid overlay */
+    .section-academic {
+      position: relative;
+    }
+    .section-academic::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Reading progress decoration */
+    .reading-deco {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      margin: 1.5rem 0;
+    }
+    .reading-deco span {
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      opacity: 0.3;
+    }
+    .reading-deco span:nth-child(odd) { opacity: 0.6; }
+
+    /* Leaf decoration */
+    .leaf-deco {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.06;
+      font-size: 4rem;
+      color: var(--color-accent);
+    }
+  </style>
+</head>
+<body class="body-offset">
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">📚 知行书院</a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">首页</a></li>
+        <li><a href="#about">课程介绍</a></li>
+        <li><a href="#notes">学习笔记</a></li>
+        <li><a href="#mentors">导师团队</a></li>
+        <li><a href="#gallery">学习掠影</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-menu">
+    <ul>
+      <li><a href="#hero">首页</a></li>
+      <li><a href="#about">课程介绍</a></li>
+      <li><a href="#notes">学习笔记</a></li>
+      <li><a href="#mentors">导师团队</a></li>
+      <li><a href="#gallery">学习掠影</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="float-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+    <div class="bookmark-ribbon"></div>
+    <div class="hero-content fade-in">
+      <div class="hero-badge">第三期 · 精英研修</div>
+      <h1 class="hero-title">知行合一</h1>
+      <p class="hero-subtitle">传统文化与现代管理 · 深度研修班</p>
+      <p class="hero-date">2026年9月 — 12月</p>
+    </div>
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about-section section section-academic">
+    <div class="container">
+      <h2 class="section-title fade-in">关于本次研修</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">传统文化中蕴含着深邃的管理智慧。本研修班以"知行合一"为核心理念，精选四书五经中的管理哲学，结合现代企业实践，帮助管理者在快速变化的时代找到不变的智慧根基。</p>
+
+      <div class="reading-deco">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card fade-in delay-1">
+          <span class="feature-icon">📖</span>
+          <h4>经典研读</h4>
+          <p>精选《论语》《道德经》《孙子兵法》等经典，逐章精读，深度解读</p>
+        </div>
+        <div class="feature-card fade-in delay-2">
+          <span class="feature-icon">💼</span>
+          <h4>案例研讨</h4>
+          <p>每期精选3-5个企业案例，将古典智慧与现代管理实践对照分析</p>
+        </div>
+        <div class="feature-card fade-in delay-3">
+          <span class="feature-icon">🎯</span>
+          <h4>实践转化</h4>
+          <p>导师一对一辅导，将所学转化为个人管理方法论</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COURSE SCHEDULE ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">课程安排</h2>
+      <div class="section-divider"></div>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">第一月 · 经典导读</div>
+          <div class="timeline-content">
+            <h4>《论语》与管理之道</h4>
+            <p>以《论语》为核心，探讨"仁义礼智信"在现代管理中的应用。阅读书目：《论语译注》《管理的实践》</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">第二月 · 案例精析</div>
+          <div class="timeline-content">
+            <h4>古典智慧的现代映射</h4>
+            <p>深入分析华为、海底捞、胖东来等企业的管理哲学，寻找传统文化的影子。阅读书目：《以客户为中心》</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">第三月 · 实战工作坊</div>
+          <div class="timeline-content">
+            <h4>模拟经营决策</h4>
+            <p>分组模拟企业经营决策，运用所学古典智慧解决现代管理难题。每组提交实践报告。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">第四月 · 结业展示</div>
+          <div class="timeline-content">
+            <h4>成果展示与答辩</h4>
+            <p>学习成果展示与答辩，邀请企业家校友点评。颁发结业证书，加入校友会。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STUDY NOTES ===== -->
+  <section id="notes" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">学习笔记</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">经典中的每一句话，都可能成为管理的灯塔。</p>
+
+      <div class="note-cards">
+        <div class="note-card fade-in delay-1">
+          <h4>📝 学而不思则罔</h4>
+          <p>孔子强调学与思的结合。在管理中，这意味着不仅要执行，更要反思。每周留出"思考时间"，回顾决策过程。</p>
+        </div>
+        <div class="note-card fade-in delay-2">
+          <h4>💡 上善若水</h4>
+          <p>老子的水之哲学——利万物而不争。最好的领导者，是让团队感觉不到被管理，却自然而然地朝正确方向前进。</p>
+        </div>
+        <div class="note-card fade-in delay-1">
+          <h4>🎯 知己知彼</h4>
+          <p>孙子兵法的核心思想。在商业中，了解竞争对手固然重要，但更重要的是了解自己——自己的优势、盲区和底线。</p>
+        </div>
+        <div class="note-card fade-in delay-2">
+          <h4>📖 格物致知</h4>
+          <p>《大学》八条目的起点。对管理者而言，"格物"就是深入一线，"致知"就是获得真知。远离一线的决策往往是空中楼阁。</p>
+        </div>
+        <div class="note-card fade-in delay-3">
+          <h4>🌱 修身齐家</h4>
+          <p>管理自己是管理团队的前提。一个情绪不稳定的领导者，不可能带出稳定的团队。</p>
+        </div>
+        <div class="note-card fade-in delay-4">
+          <h4>⚡ 知行合一</h4>
+          <p>王阳明的核心主张。知道而不行动，等于不知道。研修的最终目的，是将知识转化为行动力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENTOR TEAM ===== -->
+  <section id="mentors" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">导师团队</h2>
+      <div class="section-divider"></div>
+
+      <div class="mentor-grid">
+        <div class="mentor-card fade-in delay-1">
+          <div class="mentor-avatar">👨‍🏫</div>
+          <h4>张教授</h4>
+          <div class="mentor-title">北京大学哲学系教授</div>
+          <p>研究传统文化与管理学20年，著有《古典智慧现代解》</p>
+        </div>
+        <div class="mentor-card fade-in delay-2">
+          <div class="mentor-avatar">👩‍💼</div>
+          <h4>李总</h4>
+          <div class="mentor-title">某上市公司CEO</div>
+          <p>将《论语》管理哲学融入企业实践，带领企业连续10年增长</p>
+        </div>
+        <div class="mentor-card fade-in delay-3">
+          <div class="mentor-avatar">🧘</div>
+          <h4>王老师</h4>
+          <div class="mentor-title">国学教育推广者</div>
+          <p>创办"知行书院"，十年来培养企业家学员超过3000人</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO GALLERY ===== -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">学习掠影</h2>
+      <div class="section-divider"></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item featured fade-in">
+          <div class="img-frame">
+            <span class="frame-icon">📚</span>
+            <span class="frame-label">课堂全景</span>
+          </div>
+          <div class="caption">课堂全景</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">💬</span>
+            <span class="frame-label">小组讨论</span>
+          </div>
+          <div class="caption">小组讨论</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">🌿</span>
+            <span class="frame-label">户外拓展</span>
+          </div>
+          <div class="caption">户外拓展</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">📖</span>
+            <span class="frame-label">读书分享</span>
+          </div>
+          <div class="caption">读书分享</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">🎓</span>
+            <span class="frame-label">结业典礼</span>
+          </div>
+          <div class="caption">结业典礼</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENROLLMENT INFO ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">报名信息</h2>
+      <div class="section-divider"></div>
+
+      <div class="info-cards">
+        <div class="info-card fade-in delay-1">
+          <div class="info-card-icon">📅</div>
+          <h4>开课时间</h4>
+          <p>2026年9月6日<br>每周六 9:00-17:00</p>
+        </div>
+        <div class="info-card fade-in delay-2">
+          <div class="info-card-icon">📍</div>
+          <h4>学习地点</h4>
+          <p>知行书院 · 国学馆<br>北京市海淀区中关村大街1号</p>
+        </div>
+        <div class="info-card fade-in delay-3">
+          <div class="info-card-icon">📞</div>
+          <h4>报名咨询</h4>
+          <p>电话：010-8888-6666<br>微信：zhixingshuyuan</p>
+        </div>
+      </div>
+
+      <div class="enrollment-cta fade-in">
+        <p>🎓 限额30名，额满即止</p>
+        <a href="#" class="btn btn-primary mt-2">立即报名</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">📚 知行书院</div>
+      <div class="footer-links">
+        <a href="#hero">首页</a>
+        <a href="#about">课程介绍</a>
+        <a href="#notes">学习笔记</a>
+        <a href="#mentors">导师团队</a>
+      </div>
+      <button class="btn btn-share">分享此页</button>
+      <p style="margin-top:1rem; font-size:0.85rem; opacity:0.6;">学而时习之，不亦说乎 · 2026</p>
+      <p class="footer-copy">© 2026 知行书院 · 保留所有权利</p>
+    </div>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" aria-label="关闭">✕</button>
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="../core/main.js"></script>
+  <script>
+    // Back-to-top visibility
+    window.addEventListener('scroll', function() {
+      document.querySelector('.back-to-top').classList.toggle('show', window.scrollY > 400);
+    });
+  </script>
+</body>
+</html>

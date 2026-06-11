@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-birthday">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福寿绵长 · 王老先生七十大寿</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="../core/themes.css">
+  <style>
+    /* ====== Birthday-specific decorative styles ====== */
+
+    /* Hero gradient background */
+    .hero {
+      background: linear-gradient(135deg, #8B1A1A 0%, #C41E3A 30%, #D4A843 70%, #B8860B 100%);
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(212,168,67,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(196,30,58,0.2) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    /* Floating decorative shapes animation */
+    .hero .float-shapes .shape {
+      opacity: 0.12;
+    }
+    .hero .float-shapes .shape:nth-child(1) {
+      width: 180px; height: 180px; top: -40px; left: -60px;
+      background: radial-gradient(circle, #D4A843, transparent 70%);
+      animation: floatSlow 8s ease-in-out infinite;
+    }
+    .hero .float-shapes .shape:nth-child(2) {
+      width: 120px; height: 120px; top: 30%; right: -30px;
+      background: radial-gradient(circle, #FFD700, transparent 70%);
+      animation: floatSlow 10s ease-in-out infinite reverse;
+    }
+    .hero .float-shapes .shape:nth-child(3) {
+      width: 200px; height: 200px; bottom: -60px; left: 20%;
+      background: radial-gradient(circle, #C41E3A, transparent 70%);
+      animation: floatSlow 12s ease-in-out infinite;
+    }
+    .hero .float-shapes .shape:nth-child(4) {
+      width: 90px; height: 90px; top: 15%; left: 60%;
+      background: radial-gradient(circle, #FFD700, transparent 60%);
+      animation: floatSlow 7s ease-in-out infinite reverse;
+    }
+    .hero .float-shapes .shape:nth-child(5) {
+      width: 60px; height: 60px; bottom: 25%; right: 15%;
+      background: radial-gradient(circle, #D4A843, transparent 60%);
+      animation: floatSlow 9s ease-in-out infinite;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(15px, -20px) rotate(5deg); }
+      66% { transform: translate(-10px, 15px) rotate(-3deg); }
+    }
+
+    /* Hero badge override */
+    .hero .hero-badge {
+      background: rgba(212,168,67,0.9);
+      color: #2C1810;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.5rem 1.8rem;
+      border: 2px solid rgba(255,215,0,0.5);
+      box-shadow: 0 0 20px rgba(212,168,67,0.3);
+    }
+
+    /* Hero ornamental border */
+    .hero-ornament {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-ornament-tl, .hero-ornament-tr,
+    .hero-ornament-bl, .hero-ornament-br {
+      width: 80px; height: 80px;
+    }
+    .hero-ornament-tl {
+      top: 60px; left: 20px;
+      border-top: 3px solid rgba(212,168,67,0.5);
+      border-left: 3px solid rgba(212,168,67,0.5);
+    }
+    .hero-ornament-tr {
+      top: 60px; right: 20px;
+      border-top: 3px solid rgba(212,168,67,0.5);
+      border-right: 3px solid rgba(212,168,67,0.5);
+    }
+    .hero-ornament-bl {
+      bottom: 60px; left: 20px;
+      border-bottom: 3px solid rgba(212,168,67,0.5);
+      border-left: 3px solid rgba(212,168,67,0.5);
+    }
+    .hero-ornament-br {
+      bottom: 60px; right: 20px;
+      border-bottom: 3px solid rgba(212,168,67,0.5);
+      border-right: 3px solid rgba(212,168,67,0.5);
+    }
+
+    /* Chinese cloud pattern on hero */
+    .cloud-pattern {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      z-index: 1;
+      opacity: 0.15;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 40px,
+        rgba(212,168,67,0.5) 40px,
+        rgba(212,168,67,0.5) 42px
+      );
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0,30 Q75,0 150,30 T300,30 T450,30 T600,30 T750,30 T900,30 T1050,30 T1200,30 V60 H0 Z' fill='%23000'/%3E%3C/svg%3E");
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0,30 Q75,0 150,30 T300,30 T450,30 T600,30 T750,30 T900,30 T1050,30 T1200,30 V60 H0 Z' fill='%23000'/%3E%3C/svg%3E");
+      mask-size: cover;
+      -webkit-mask-size: cover;
+    }
+
+    /* Countdown section with subtle pattern */
+    .countdown-section {
+      background: var(--color-bg-alt);
+      position: relative;
+    }
+    .countdown-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image:
+        radial-gradient(circle at 25% 25%, var(--color-accent) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--color-accent) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Section gold divider ornament */
+    .section-title::after {
+      content: '◆ ◆ ◆';
+      display: block;
+      font-size: 0.5rem;
+      color: #D4A843;
+      letter-spacing: 0.8em;
+      margin-top: 0.8rem;
+      opacity: 0.6;
+    }
+
+    /* Blessings wall card styling */
+    .blessing-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid #C41E3A;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .blessing-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(196,30,58,0.12);
+    }
+    .blessing-card::before {
+      content: '"';
+      position: absolute;
+      top: -5px;
+      right: 15px;
+      font-size: 3rem;
+      color: #D4A843;
+      opacity: 0.2;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .blessing-card .blessing-text {
+      font-size: 1rem;
+      color: var(--color-text);
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+    }
+    .blessing-card .blessing-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .blessing-card .blessing-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C41E3A, #D4A843);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .blessing-card .blessing-name {
+      font-weight: 600;
+      color: var(--color-heading);
+      font-size: 0.9rem;
+    }
+    .blessing-card .blessing-relation {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    .blessings-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 600px) {
+      .blessings-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Red lantern decorative element */
+    .lantern-decor {
+      display: inline-block;
+      font-size: 1.5rem;
+      animation: lanternSway 3s ease-in-out infinite;
+      transform-origin: top center;
+    }
+    @keyframes lanternSway {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    /* Nav logo birthday styling */
+    .nav-logo .logo-icon {
+      display: inline-block;
+      animation: lanternSway 4s ease-in-out infinite;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF8F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #C41E3A, #D4A843);
+      border-radius: 4px;
+    }
+
+    /* Gallery item hover effect */
+    .gallery-grid .gallery-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-grid .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(196,30,58,0.1), rgba(212,168,67,0.1));
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .gallery-grid .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Hero scroll arrow color */
+    .hero .hero-scroll svg {
+      stroke: rgba(255,215,0,0.8);
+    }
+
+    /* Polaroid decoration for birthday */
+    .img-polaroid {
+      background: #FFFEF8;
+      border: 1px solid rgba(212,168,67,0.2);
+    }
+
+    /* Footer golden accents */
+    .footer .footer-brand {
+      color: #D4A843;
+    }
+  </style>
+</head>
+<body class="body-offset">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><span class="logo-icon">🎂</span> 寿宴庆典</a>
+      <ul class="nav-links">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#story">寿星故事</a></li>
+        <li><a href="#gallery">精彩瞬间</a></li>
+        <li><a href="#info">宴会信息</a></li>
+        <li><a href="#blessings">送上祝福</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-menu">
+    <ul>
+      <li><a href="#home">首页</a></li>
+      <li><a href="#story">寿星故事</a></li>
+      <li><a href="#gallery">精彩瞬间</a></li>
+      <li><a href="#info">宴会信息</a></li>
+      <li><a href="#blessings">送上祝福</a></li>
+    </ul>
+  </div>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section id="home" class="hero">
+    <div class="float-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="hero-ornament hero-ornament-tl"></div>
+    <div class="hero-ornament hero-ornament-tr"></div>
+    <div class="hero-ornament hero-ornament-bl"></div>
+    <div class="hero-ornament hero-ornament-br"></div>
+    <div class="cloud-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-badge fade-in">七十华诞</div>
+      <h1 class="hero-title fade-in delay-1">福寿绵长</h1>
+      <p class="hero-subtitle fade-in delay-2">恭祝 王老先生 七十大寿</p>
+      <p class="hero-date fade-in delay-3">二〇二六年 · 八月十五日</p>
+    </div>
+    <a href="#countdown-section" class="hero-scroll" aria-label="向下滚动">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+  <!-- ====== COUNTDOWN ====== -->
+  <section id="countdown-section" class="section countdown-section text-center">
+    <div class="container">
+      <h2 class="section-title fade-in">距离寿宴</h2>
+      <div class="section-divider"></div>
+      <div id="countdown" class="countdown fade-in delay-1" data-target="2026-08-15T11:00:00"></div>
+    </div>
+  </section>
+
+  <!-- ====== LIFE STORY ====== -->
+  <section id="story" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">寿星故事</h2>
+      <div class="section-divider"></div>
+
+      <!-- Story Block 1 -->
+      <div class="story-block fade-in">
+        <div class="story-text">
+          <h3>岁月如歌 · 1956-2026</h3>
+          <p>七十年风雨兼程，从江南水乡的少年到如今儿孙满堂的长者。1956年出生于浙江温州，少年时家境清寒却勤奋好学。1978年考入大学，成为村里第一个大学生。</p>
+          <p>毕业后投身教育事业，三尺讲台耕耘三十载，桃李满天下。他常对学生说："读书不是为了离开家乡，而是为了让家乡变得更好。"这份朴素的信念，影响了一代又一代学子。</p>
+        </div>
+        <div class="story-image">
+          <div class="img-polaroid">
+            <div class="polaroid-inner">📷 1978年大学毕业照</div>
+            <p class="polaroid-caption">1978年大学毕业照</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Block 2 -->
+      <div class="story-block reverse fade-in">
+        <div class="story-text">
+          <h3>幸福家庭</h3>
+          <p>与妻子相识于校园，相濡以沫四十余载。育有二子一女，如今已是四世同堂。每逢佳节，儿孙绕膝，其乐融融。</p>
+          <p>老先生常言："人生最大的财富，不是金银，而是家人团圆。"退休后他迷上了书法和太极拳，每天清晨在公园里打一套拳，写几幅字，日子过得恬淡而充实。</p>
+        </div>
+        <div class="story-image">
+          <div class="img-polaroid">
+            <div class="polaroid-inner">👨‍👩‍👧‍👦 2024年全家福</div>
+            <p class="polaroid-caption">2024年全家福</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STATS ROW ====== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="stats-row fade-in">
+        <div class="stat-item">
+          <div class="stat-num">70</div>
+          <div class="stat-label">岁月年华</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">42</div>
+          <div class="stat-label">教龄春秋</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3000+</div>
+          <div class="stat-label">桃李学子</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">世同堂</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PHOTO GALLERY ====== -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">精彩瞬间</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">七十年光阴，每一张照片都是一段珍贵的记忆</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item featured fade-in">
+          <div class="img-frame" style="aspect-ratio:16/9;">
+            <span class="frame-icon">🎂</span>
+            <span class="frame-label">寿宴主照</span>
+          </div>
+          <div class="caption">🎂 寿宴主照</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">🎓</span>
+            <span class="frame-label">大学毕业</span>
+          </div>
+          <div class="caption">大学毕业典礼</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">💒</span>
+            <span class="frame-label">结婚纪念</span>
+          </div>
+          <div class="caption">结婚纪念照</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">📚</span>
+            <span class="frame-label">三尺讲台</span>
+          </div>
+          <div class="caption">课堂风采</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">🖌️</span>
+            <span class="frame-label">书法作品</span>
+          </div>
+          <div class="caption">书法作品</div>
+        </div>
+        <div class="gallery-item fade-in delay-3">
+          <div class="img-frame">
+            <span class="frame-icon">🌅</span>
+            <span class="frame-label">退休生活</span>
+          </div>
+          <div class="caption">退休后的悠闲时光</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BLESSINGS WALL ====== -->
+  <section id="blessings" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">亲友祝福</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">每一份祝福，都是最真挚的心意</p>
+
+      <div class="blessings-grid fade-in">
+        <div class="blessing-card">
+          <p class="blessing-text">祝爸爸生日快乐，身体健康！您是我们全家的骄傲，愿您每天都开开心心，享尽天伦之乐。</p>
+          <div class="blessing-author">
+            <div class="blessing-avatar">明</div>
+            <div>
+              <div class="blessing-name">王明</div>
+              <div class="blessing-relation">大儿子</div>
+            </div>
+          </div>
+        </div>
+        <div class="blessing-card">
+          <p class="blessing-text">爷爷生日快乐！我爱您！您是我最崇拜的人，长大了我也要像您一样当一个好老师！🎂</p>
+          <div class="blessing-author">
+            <div class="blessing-avatar">雨</div>
+            <div>
+              <div class="blessing-name">小雨</div>
+              <div class="blessing-relation">孙女</div>
+            </div>
+          </div>
+        </div>
+        <div class="blessing-card">
+          <p class="blessing-text">王老师，祝您福如东海，寿比南山！感谢您当年对我的谆谆教诲，没有您就没有我的今天。</p>
+          <div class="blessing-author">
+            <div class="blessing-avatar">李</div>
+            <div>
+              <div class="blessing-name">李建国</div>
+              <div class="blessing-relation">学生</div>
+            </div>
+          </div>
+        </div>
+        <div class="blessing-card">
+          <p class="blessing-text">老王啊，咱们认识五十年了，祝你越活越年轻！等你八十大寿，咱们再一起喝一杯！</p>
+          <div class="blessing-author">
+            <div class="blessing-avatar">张</div>
+            <div>
+              <div class="blessing-name">张志远</div>
+              <div class="blessing-relation">五十年老友</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guestbook form -->
+      <div class="container-narrow fade-in">
+        <div class="ornament-line"><span>✦</span></div>
+        <h3 class="text-center mb-3">写下您的祝福</h3>
+        <form id="guestbook-form" class="guestbook-form">
+          <input type="text" name="name" placeholder="您的姓名" required>
+          <textarea name="message" placeholder="写下您的祝福..." rows="4" required></textarea>
+          <button type="submit" class="btn btn-primary">💝 送上祝福</button>
+        </form>
+        <div id="messages-list" class="messages-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== EVENT INFO ====== -->
+  <section id="info" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">宴会信息</h2>
+      <div class="section-divider"></div>
+      <div class="info-cards fade-in">
+        <div class="info-card">
+          <div class="info-card-icon">🕐</div>
+          <h4>宴会时间</h4>
+          <p>二〇二六年八月十五日（星期六）<br>上午 11:00 开始</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <h4>宴会地点</h4>
+          <p>温州国际大酒店 · 三楼宴会厅<br>温州市鹿城区解放路88号</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📞</div>
+          <h4>联系方式</h4>
+          <p>王先生（长子）<br>电话：138-XXXX-8888</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LIGHTBOX ====== -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" aria-label="关闭">&times;</button>
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">🎂 寿宴庆典</div>
+      <div class="footer-links">
+        <a href="#" class="btn-share">📤 分享给亲友</a>
+      </div>
+      <div class="footer-copy">家有一老，如有一宝 · 2026</div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#home" class="back-to-top" aria-label="回到顶部">↑</a>
+
+  <script src="../core/main.js"></script>
+  <script>
+    // Back-to-top visibility toggle
+    (function() {
+      var btn = document.querySelector('.back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

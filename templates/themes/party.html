@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-party">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>毕业十周年 · 同学聚会</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="../core/themes.css">
+  <style>
+    /* ============================================================
+       派对时间 — 聚会派对 独有样式
+       缤纷 · 活泼 · 热闹 · 趣味
+       ============================================================ */
+
+    /* ---- Confetti animation ---- */
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.3;
+      }
+    }
+    @keyframes confettiFall2 {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) rotate(360deg) translateX(30px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg) translateX(-20px);
+        opacity: 0.2;
+      }
+    }
+    @keyframes confettiFall3 {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(-540deg);
+        opacity: 0.4;
+      }
+    }
+
+    .confetti-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -10px;
+      border-radius: 2px;
+    }
+
+    .c1  { left: 5%;  width: 10px; height: 14px; background: #E85D75; animation: confettiFall 4.5s linear infinite; animation-delay: 0s; }
+    .c2  { left: 12%; width: 8px;  height: 8px;  background: #5B8DEF; animation: confettiFall2 5.2s linear infinite; animation-delay: 0.5s; border-radius: 50%; }
+    .c3  { left: 20%; width: 12px; height: 8px;  background: #FFB347; animation: confettiFall3 4.8s linear infinite; animation-delay: 1s; }
+    .c4  { left: 28%; width: 6px;  height: 16px; background: #FFD700; animation: confettiFall 5.5s linear infinite; animation-delay: 0.3s; }
+    .c5  { left: 35%; width: 10px; height: 10px; background: #E85D75; animation: confettiFall2 4.2s linear infinite; animation-delay: 1.2s; border-radius: 50%; }
+    .c6  { left: 42%; width: 14px; height: 8px;  background: #5B8DEF; animation: confettiFall3 5.8s linear infinite; animation-delay: 0.7s; }
+    .c7  { left: 50%; width: 8px;  height: 12px; background: #FFB347; animation: confettiFall 4.6s linear infinite; animation-delay: 1.5s; }
+    .c8  { left: 58%; width: 10px; height: 10px; background: #FFD700; animation: confettiFall2 5.1s linear infinite; animation-delay: 0.2s; border-radius: 50%; }
+    .c9  { left: 65%; width: 6px;  height: 18px; background: #E85D75; animation: confettiFall3 4.9s linear infinite; animation-delay: 0.9s; }
+    .c10 { left: 72%; width: 12px; height: 8px;  background: #5B8DEF; animation: confettiFall 5.3s linear infinite; animation-delay: 1.8s; }
+    .c11 { left: 80%; width: 8px;  height: 8px;  background: #FFB347; animation: confettiFall2 4.4s linear infinite; animation-delay: 0.6s; border-radius: 50%; }
+    .c12 { left: 88%; width: 10px; height: 14px; background: #FFD700; animation: confettiFall3 5.6s linear infinite; animation-delay: 1.1s; }
+    .c13 { left: 95%; width: 8px;  height: 10px; background: #E85D75; animation: confettiFall 5s linear infinite; animation-delay: 0.4s; }
+    .c14 { left: 8%;  width: 14px; height: 6px;  background: #FFD700; animation: confettiFall2 5.7s linear infinite; animation-delay: 2s; }
+    .c15 { left: 55%; width: 8px;  height: 14px; background: #E85D75; animation: confettiFall 4.3s linear infinite; animation-delay: 1.3s; }
+    .c16 { left: 75%; width: 10px; height: 10px; background: #5B8DEF; animation: confettiFall3 5s linear infinite; animation-delay: 0.8s; border-radius: 50%; }
+    .c17 { left: 32%; width: 6px;  height: 12px; background: #FFB347; animation: confettiFall2 4.7s linear infinite; animation-delay: 1.6s; }
+    .c18 { left: 48%; width: 12px; height: 8px;  background: #FFD700; animation: confettiFall 5.4s linear infinite; animation-delay: 0.1s; }
+
+    /* ---- Balloon float animation ---- */
+    @keyframes balloonFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+    @keyframes balloonFloat2 {
+      0%, 100% { transform: translateY(0) rotate(2deg); }
+      50% { transform: translateY(-15px) rotate(-3deg); }
+    }
+
+    .balloon {
+      position: absolute;
+      border-radius: 50% 50% 50% 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      width: 1px;
+      height: 30px;
+      background: rgba(255,255,255,0.3);
+      transform: translateX(-50%);
+    }
+    .balloon-1 {
+      width: 60px; height: 70px;
+      background: rgba(232,93,117,0.3);
+      top: 15%; left: 8%;
+      animation: balloonFloat 6s ease-in-out infinite;
+    }
+    .balloon-2 {
+      width: 45px; height: 55px;
+      background: rgba(91,141,239,0.3);
+      top: 25%; right: 12%;
+      animation: balloonFloat2 7s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+    .balloon-3 {
+      width: 50px; height: 60px;
+      background: rgba(255,179,71,0.3);
+      bottom: 20%; left: 15%;
+      animation: balloonFloat 8s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+    .balloon-4 {
+      width: 40px; height: 48px;
+      background: rgba(255,215,0,0.25);
+      top: 40%; right: 5%;
+      animation: balloonFloat2 5s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    /* ---- Hero party style ---- */
+    .hero {
+      background: linear-gradient(135deg, #E85D75 0%, #5B8DEF 50%, #FFB347 100%);
+    }
+    .hero .hero-badge {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+    }
+    .hero-title {
+      text-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    }
+    .hero-subtitle {
+      font-weight: 400;
+    }
+
+    /* ---- Geometric decorative shapes ---- */
+    .geo-shape {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .geo-circle {
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.15);
+    }
+    .geo-square {
+      border: 3px solid rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+    }
+    .geo-1 { width: 80px; height: 80px; top: 10%; left: 5%; }
+    .geo-2 { width: 50px; height: 50px; bottom: 15%; right: 8%; }
+    .geo-3 { width: 30px; height: 30px; top: 50%; right: 15%; }
+    .geo-4 { width: 60px; height: 60px; bottom: 30%; left: 10%; }
+
+    /* ---- Countdown party style ---- */
+    .countdown-item {
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .countdown-item:nth-child(1) {
+      border-color: #E85D75;
+    }
+    .countdown-item:nth-child(1) .countdown-num { color: #E85D75; }
+    .countdown-item:nth-child(2) {
+      border-color: #5B8DEF;
+    }
+    .countdown-item:nth-child(2) .countdown-num { color: #5B8DEF; }
+    .countdown-item:nth-child(3) {
+      border-color: #FFB347;
+    }
+    .countdown-item:nth-child(3) .countdown-num { color: #FFB347; }
+    .countdown-item:nth-child(4) {
+      border-color: #FFD700;
+    }
+    .countdown-item:nth-child(4) .countdown-num { color: #FFD700; }
+
+    /* ---- Fun feature highlights ---- */
+    .fun-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .fun-highlight-item {
+      background: linear-gradient(135deg, var(--color-bg-alt), #fff);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-heading);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+      transition: transform 0.3s;
+    }
+    .fun-highlight-item:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
+
+    /* ---- Timeline party style ---- */
+    .timeline-item .timeline-dot {
+      width: 22px;
+      height: 22px;
+    }
+    .timeline-item:nth-child(1) .timeline-dot { background: #E85D75; box-shadow: 0 0 0 3px #E85D75; }
+    .timeline-item:nth-child(2) .timeline-dot { background: #5B8DEF; box-shadow: 0 0 0 3px #5B8DEF; }
+    .timeline-item:nth-child(3) .timeline-dot { background: #FFB347; box-shadow: 0 0 0 3px #FFB347; }
+    .timeline-item:nth-child(4) .timeline-dot { background: #FFD700; box-shadow: 0 0 0 3px #FFD700; }
+    .timeline-item:nth-child(5) .timeline-dot { background: #E85D75; box-shadow: 0 0 0 3px #E85D75; }
+
+    .timeline-content {
+      background: var(--color-card-bg);
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timeline-content:hover {
+      transform: translateY(-3px) rotate(-0.5deg);
+      box-shadow: var(--shadow);
+    }
+
+    /* ---- Info cards party style ---- */
+    .info-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #E85D75;
+    }
+    .info-card:nth-child(2) { border-top-color: #5B8DEF; }
+    .info-card:nth-child(3) { border-top-color: #FFB347; }
+    .info-card:hover {
+      transform: translateY(-5px) rotate(-1deg);
+    }
+
+    /* ---- Gallery party style ---- */
+    .gallery-grid .gallery-item {
+      border-radius: 16px;
+      transition: transform 0.3s;
+    }
+    .gallery-grid .gallery-item:hover {
+      transform: scale(1.03) rotate(-1deg);
+    }
+    .gallery-grid .img-frame {
+      border-radius: 16px;
+      background: linear-gradient(135deg, #FFF5F7, #FFF0E6, #F0F4FF);
+      min-height: 180px;
+    }
+    .gallery-grid .img-frame .frame-icon {
+      font-size: 3rem;
+    }
+
+    /* ---- Guestbook party style ---- */
+    .guestbook-form input,
+    .guestbook-form textarea {
+      border: 2px solid var(--color-border);
+      border-radius: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .guestbook-form input:focus,
+    .guestbook-form textarea:focus {
+      border-color: #E85D75;
+      box-shadow: 0 0 0 3px rgba(232,93,117,0.1);
+    }
+
+    .message-item {
+      border-left: 4px solid #E85D75;
+      transition: transform 0.3s;
+    }
+    .message-item:nth-child(even) {
+      border-left-color: #5B8DEF;
+    }
+    .message-item:hover {
+      transform: translateX(4px);
+    }
+
+    /* ---- Button party style ---- */
+    .btn-primary {
+      background: linear-gradient(135deg, #E85D75, #D04A62);
+      border-radius: 50px;
+      padding: 0.9rem 2.5rem;
+      font-size: 1.05rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(232,93,117,0.35);
+    }
+
+    /* ---- Gradient text for titles ---- */
+    .gradient-text {
+      background: linear-gradient(135deg, #E85D75, #5B8DEF, #FFB347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ---- Fun hover effect on cards ---- */
+    .feature-card {
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 0 12px 35px rgba(232,93,117,0.15);
+    }
+    .feature-card:nth-child(2):hover { transform: translateY(-6px) rotate(1deg); }
+    .feature-card:nth-child(3):hover { transform: translateY(-6px) rotate(-0.5deg); }
+
+    /* ---- Section title gradient underline ---- */
+    .section-divider {
+      background: linear-gradient(90deg, #E85D75, #5B8DEF, #FFB347);
+      height: 4px;
+      border-radius: 2px;
+    }
+
+    /* ---- Footer party style ---- */
+    .footer {
+      background: linear-gradient(135deg, #1A1A2E, #2D2D44);
+    }
+
+    /* ---- Back to top ---- */
+    .back-to-top {
+      background: #E85D75;
+      border-radius: 50%;
+    }
+
+    /* ---- Quote block party ---- */
+    .quote-block {
+      border-left: 4px solid #E85D75;
+      transition: transform 0.3s;
+    }
+    .quote-block:hover {
+      transform: translateX(5px);
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 767px) {
+      .balloon { display: none; }
+      .geo-shape { display: none; }
+    }
+  </style>
+</head>
+<body class="body-offset">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">🎉 派对时间</a>
+      <ul class="nav-links">
+        <li><a href="#hero">首页</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#schedule">流程</a></li>
+        <li><a href="#gallery">精彩瞬间</a></li>
+        <li><a href="#guestbook">留言板</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-menu">
+      <ul>
+        <li><a href="#hero">首页</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#schedule">流程</a></li>
+        <li><a href="#gallery">精彩瞬间</a></li>
+        <li><a href="#guestbook">留言板</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" style="background: linear-gradient(135deg, #E85D75 0%, #5B8DEF 50%, #FFB347 100%);"></div>
+
+    <!-- Confetti pieces -->
+    <div class="confetti-container">
+      <div class="confetti-piece c1"></div>
+      <div class="confetti-piece c2"></div>
+      <div class="confetti-piece c3"></div>
+      <div class="confetti-piece c4"></div>
+      <div class="confetti-piece c5"></div>
+      <div class="confetti-piece c6"></div>
+      <div class="confetti-piece c7"></div>
+      <div class="confetti-piece c8"></div>
+      <div class="confetti-piece c9"></div>
+      <div class="confetti-piece c10"></div>
+      <div class="confetti-piece c11"></div>
+      <div class="confetti-piece c12"></div>
+      <div class="confetti-piece c13"></div>
+      <div class="confetti-piece c14"></div>
+      <div class="confetti-piece c15"></div>
+      <div class="confetti-piece c16"></div>
+      <div class="confetti-piece c17"></div>
+      <div class="confetti-piece c18"></div>
+    </div>
+
+    <!-- Balloons -->
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+    <div class="balloon balloon-4"></div>
+
+    <!-- Geometric shapes -->
+    <div class="geo-shape geo-circle geo-1"></div>
+    <div class="geo-shape geo-square geo-2"></div>
+    <div class="geo-shape geo-circle geo-3"></div>
+    <div class="geo-shape geo-square geo-4"></div>
+
+    <!-- Hero content -->
+    <div class="hero-content" style="z-index: 2;">
+      <span class="hero-badge">🎊 邀请你来</span>
+      <h1 class="hero-title">一起来嗨！</h1>
+      <p class="hero-subtitle">毕业十周年 · 同学再聚首</p>
+      <p class="hero-date">2026年7月20日 · 晚上7:00</p>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===================== COUNTDOWN ===================== -->
+  <section class="section text-center" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <h2 class="section-title fade-in">距离派对</h2>
+      <div class="section-divider"></div>
+      <div id="countdown" class="countdown fade-in delay-1" data-target="2026-07-20T19:00:00"></div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="section" id="about">
+    <div class="container-narrow">
+      <h2 class="section-title fade-in">关于这次聚会</h2>
+      <div class="section-divider"></div>
+
+      <p class="fade-in delay-1" style="text-align: center; line-height: 2; color: var(--color-text-light); font-size: 1.05rem;">
+        好久不见，甚是想念！<br>
+        距离毕业已经十年了。十年间，有人结婚生子，有人创业打拼，有人环游世界，有人默默耕耘。<br>
+        但无论走多远，我们都有一个共同的身份——<strong style="color: var(--color-heading);">XX大学2016届XX班</strong>。<br>
+        这次聚会，让我们放下手机，面对面聊聊天，吃吃喝喝，回忆那些年的美好时光。
+      </p>
+
+      <div class="fun-highlights fade-in delay-2">
+        <span class="fun-highlight-item">🎮 有游戏</span>
+        <span class="fun-highlight-item">🍕 有美食</span>
+        <span class="fun-highlight-item">🎵 有音乐</span>
+        <span class="fun-highlight-item">📸 有回忆</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PARTY SCHEDULE ===================== -->
+  <section class="section section-alt" id="schedule">
+    <div class="container">
+      <h2 class="section-title fade-in">派对流程</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">精心策划的每一刻，都值得期待</p>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">🕖 19:00</div>
+          <div class="timeline-content">
+            <h4>签到入场</h4>
+            <p>领取专属名牌和"十年变化"问卷，找到当年的座位牌。先来杯饮料热热身，看看谁变化最大！</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">🎤 19:30</div>
+          <div class="timeline-content">
+            <h4>开场致辞</h4>
+            <p>班长致辞 + 回忆杀视频播放。十年间的照片轮播，准备好纸巾（笑哭的那种）。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">🎲 20:00</div>
+          <div class="timeline-content">
+            <h4>互动游戏</h4>
+            <p>真心话大冒险（升级版）、你画我猜（限定校园主题）、"你还记得吗"抢答赛。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">🍰 21:00</div>
+          <div class="timeline-content">
+            <h4>美食时光</h4>
+            <p>自助餐+定制蛋糕，边吃边聊。蛋糕上写着"XX班，好久不见"。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in delay-4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">📸 22:00</div>
+          <div class="timeline-content">
+            <h4>合影留念</h4>
+            <p>全体合影 + 各种小团体合影 + 搞怪合影。发朋友圈模板已准备好！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOCATION INFO ===================== -->
+  <section class="section" id="location">
+    <div class="container">
+      <h2 class="section-title fade-in">活动信息</h2>
+      <div class="section-divider"></div>
+
+      <div class="info-cards fade-in delay-1">
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <h4>地点</h4>
+          <p>星光餐厅 · 北京市朝阳区建国路88号<br>地铁1号线国贸站B出口步行5分钟</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🚗</div>
+          <h4>交通</h4>
+          <p>自驾：地下停车场B2层（用餐免费停车）<br>打车：导航"星光餐厅"</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">💰</div>
+          <h4>费用</h4>
+          <p>AA制，预计人均200元<br>含场地、餐饮、游戏道具、纪念品</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PHOTO GALLERY ===================== -->
+  <section class="section section-alt" id="gallery">
+    <div class="container">
+      <h2 class="section-title fade-in">那些年的我们</h2>
+      <div class="section-divider"></div>
+
+      <div class="gallery-grid fade-in delay-1">
+        <!-- Featured spanning 2 cols -->
+        <div class="gallery-item featured">
+          <div class="img-frame" style="min-height: 220px; aspect-ratio: 16/9;">
+            <span class="frame-icon">📸</span>
+            <span class="frame-label">毕业合影 (2016)</span>
+          </div>
+          <span class="caption">毕业合影 (2016)</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="min-height: 180px;">
+            <span class="frame-icon">🎖️</span>
+            <span class="frame-label">军训时光</span>
+          </div>
+          <span class="caption">军训时光</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="min-height: 180px;">
+            <span class="frame-icon">🎭</span>
+            <span class="frame-label">社团活动</span>
+          </div>
+          <span class="caption">社团活动</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="min-height: 180px;">
+            <span class="frame-icon">🏠</span>
+            <span class="frame-label">宿舍日常</span>
+          </div>
+          <span class="caption">宿舍日常</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="min-height: 180px;">
+            <span class="frame-icon">✈️</span>
+            <span class="frame-label">毕业旅行</span>
+          </div>
+          <span class="caption">毕业旅行</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="min-height: 180px;">
+            <span class="frame-icon">📚</span>
+            <span class="frame-label">教室掠影</span>
+          </div>
+          <span class="caption">教室掠影</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GUESTBOOK ===================== -->
+  <section class="section" id="guestbook">
+    <div class="container-narrow">
+      <h2 class="section-title fade-in">留言板</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">写下你想对大家说的话</p>
+
+      <form id="guestbook-form" class="guestbook-form fade-in delay-1">
+        <input type="text" name="name" placeholder="你的名字" required>
+        <textarea name="message" placeholder="写点什么吧..." rows="3" required></textarea>
+        <button type="submit" class="btn btn-primary">发布留言 🎉</button>
+      </form>
+
+      <div id="messages-list" class="messages-list fade-in delay-2">
+        <!-- Pre-filled example messages (rendered by JS or as static) -->
+        <div class="message-item">
+          <span class="message-author">小明</span>
+          <span class="message-time">2026-06-01</span>
+          <p class="message-text">必须到！十年了终于能见到大家了！</p>
+        </div>
+        <div class="message-item">
+          <span class="message-author">阿杰</span>
+          <span class="message-time">2026-06-02</span>
+          <p class="message-text">我从上海飞回来，谁都不许缺席！</p>
+        </div>
+        <div class="message-item">
+          <span class="message-author">小红</span>
+          <span class="message-time">2026-06-03</span>
+          <p class="message-text">期待ing～记得带上当年的校服！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close">×</button>
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">🎉 XX班 · 毕业十周年聚会</div>
+      <div class="footer-links">
+        <a href="#" class="btn-share">分享给同学</a>
+      </div>
+      <p class="footer-copy">有你更精彩 · 2026</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../core/main.js"></script>
+  <script>
+    // Back to top button
+    (function() {
+      var btn = document.querySelector('.back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

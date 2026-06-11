@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-wedding">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>永结同心 · 陈思远 & 林雨晴</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="../core/themes.css">
+  <style>
+    /* ====== Wedding-specific decorative styles ====== */
+
+    /* Hero romantic gradient */
+    .hero {
+      background: linear-gradient(135deg, #B76E79 0%, #D4A0A8 30%, #C9B8D8 60%, #8B7DB8 100%);
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(139,125,184,0.2) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    /* Floating hearts */
+    .hero .float-shapes .shape {
+      opacity: 0.1;
+      background: #fff;
+    }
+    .hero .float-shapes .shape:nth-child(1) {
+      width: 30px; height: 30px; top: 20%; left: 10%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      animation: floatHeart 6s ease-in-out infinite;
+    }
+    .hero .float-shapes .shape:nth-child(2) {
+      width: 20px; height: 20px; top: 40%; right: 15%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      animation: floatHeart 8s ease-in-out infinite reverse;
+    }
+    .hero .float-shapes .shape:nth-child(3) {
+      width: 25px; height: 25px; bottom: 30%; left: 25%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      animation: floatHeart 7s ease-in-out infinite;
+    }
+    .hero .float-shapes .shape:nth-child(4) {
+      width: 15px; height: 15px; top: 60%; right: 30%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      animation: floatHeart 9s ease-in-out infinite reverse;
+    }
+    .hero .float-shapes .shape:nth-child(5) {
+      width: 18px; height: 18px; top: 15%; right: 40%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      animation: floatHeart 10s ease-in-out infinite;
+    }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.1; }
+      25% { transform: rotate(-45deg) translate(10px, -20px); opacity: 0.15; }
+      50% { transform: rotate(-45deg) translate(-5px, -35px); opacity: 0.08; }
+      75% { transform: rotate(-45deg) translate(15px, -15px); opacity: 0.12; }
+    }
+
+    /* Hero badge - wedding */
+    .hero .hero-badge {
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      font-weight: 400;
+      font-size: 0.9rem;
+      padding: 0.5rem 2rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      letter-spacing: 0.15em;
+    }
+
+    /* Hero elegant ring animation */
+    .hero-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-ring::before {
+      content: '';
+      display: block;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+      animation: ringPulse 4s ease-in-out infinite;
+    }
+    .hero-ring::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+      animation: ringPulse 4s ease-in-out infinite reverse;
+    }
+    @keyframes ringPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    /* Floating petals animation */
+    .petals-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -20px;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #B76E79, #D4A0A8);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.25;
+      animation: petalFall linear infinite;
+    }
+    .petal:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; width: 10px; height: 10px; }
+    .petal:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; width: 14px; height: 14px; opacity: 0.15; }
+    .petal:nth-child(3) { left: 30%; animation-duration: 10s; animation-delay: 4s; }
+    .petal:nth-child(4) { left: 45%; animation-duration: 14s; animation-delay: 1s; width: 8px; height: 8px; }
+    .petal:nth-child(5) { left: 60%; animation-duration: 11s; animation-delay: 3s; opacity: 0.2; }
+    .petal:nth-child(6) { left: 75%; animation-duration: 13s; animation-delay: 5s; width: 11px; height: 11px; }
+    .petal:nth-child(7) { left: 88%; animation-duration: 16s; animation-delay: 2.5s; opacity: 0.18; }
+    .petal:nth-child(8) { left: 50%; animation-duration: 12s; animation-delay: 6s; width: 9px; height: 9px; }
+
+    @keyframes petalFall {
+      0% {
+        transform: translateY(-20px) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      10% { opacity: 0.25; }
+      90% { opacity: 0.15; }
+      100% {
+        transform: translateY(100vh) rotate(720deg) translateX(80px);
+        opacity: 0;
+      }
+    }
+
+    /* Hero scroll arrow */
+    .hero .hero-scroll svg {
+      stroke: rgba(255,255,255,0.7);
+    }
+
+    /* Section title floral ornament */
+    .section-title::after {
+      content: '❀';
+      display: block;
+      font-size: 1rem;
+      color: #B76E79;
+      margin-top: 0.5rem;
+      opacity: 0.4;
+    }
+
+    /* Countdown elegant card override */
+    .countdown .countdown-item {
+      border: 1px solid rgba(183,110,121,0.15);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    /* Timeline elegant styling for wedding */
+    .timeline::before {
+      background: linear-gradient(to bottom, transparent, #B76E79, #8B7DB8, transparent);
+      width: 2px;
+    }
+    .timeline-dot {
+      background: linear-gradient(135deg, #B76E79, #8B7DB8) !important;
+      box-shadow: 0 0 0 3px rgba(183,110,121,0.2), 0 0 12px rgba(183,110,121,0.15) !important;
+    }
+    .timeline-content {
+      background: var(--color-card-bg);
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(183,110,121,0.08);
+    }
+
+    /* Couple intro cards */
+    .couple-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border: 1px solid rgba(183,110,121,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .couple-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #B76E79, #D4A0A8, #8B7DB8);
+    }
+    .couple-card .couple-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(183,110,121,0.1), rgba(139,125,184,0.1));
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border: 3px solid rgba(183,110,121,0.15);
+    }
+    .couple-card h3 {
+      margin-bottom: 0.3rem;
+    }
+    .couple-card .couple-role {
+      color: var(--color-accent);
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+    .couple-card .couple-traits {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .couple-card .trait-tag {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
+      background: rgba(183,110,121,0.08);
+      color: var(--color-accent);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(183,110,121,0.15);
+    }
+
+    /* RSVP form elegant styling */
+    .rsvp-section {
+      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+    }
+    .guestbook-form input:focus,
+    .guestbook-form textarea:focus {
+      border-color: #B76E79;
+      box-shadow: 0 0 0 3px rgba(183,110,121,0.1);
+    }
+    .guestbook-form input,
+    .guestbook-form textarea {
+      border: 1px solid rgba(183,110,121,0.2);
+      border-radius: 12px;
+    }
+    .guestbook-form input::placeholder,
+    .guestbook-form textarea::placeholder {
+      color: var(--color-muted);
+    }
+
+    /* Wedding map placeholder */
+    .map-placeholder {
+      background: linear-gradient(135deg, rgba(183,110,121,0.05), rgba(139,125,184,0.05));
+      border: 2px dashed rgba(183,110,121,0.2);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--color-muted);
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(183,110,121,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183,110,121,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .map-placeholder .map-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.5;
+    }
+
+    /* Custom scrollbar for wedding */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF9F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #B76E79, #8B7DB8);
+      border-radius: 3px;
+    }
+
+    /* Gallery hover */
+    .gallery-grid .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(183,110,121,0.1), rgba(139,125,184,0.1));
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .gallery-grid .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Polaroid wedding override */
+    .img-polaroid {
+      background: #FFFCFA;
+      border: 1px solid rgba(183,110,121,0.1);
+    }
+
+    /* RSVP pre-filled messages style */
+    .rsvp-messages .message-item {
+      border-left: 3px solid rgba(183,110,121,0.3);
+    }
+
+    /* Footer wedding accents */
+    .footer .footer-brand {
+      color: #D4A0A8;
+    }
+
+    /* Wedding thin ornament lines */
+    .ornament-elegant {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .ornament-elegant::before,
+    .ornament-elegant::after {
+      content: '';
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    }
+    .ornament-elegant span {
+      color: var(--color-accent);
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    /* Nav logo wedding */
+    .nav-logo {
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body class="body-offset">
+
+  <!-- Falling petals -->
+  <div class="petals-container" aria-hidden="true">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">💍 永结同心</a>
+      <ul class="nav-links">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#story">我们的故事</a></li>
+        <li><a href="#gallery">甜蜜相册</a></li>
+        <li><a href="#info">婚礼信息</a></li>
+        <li><a href="#rsvp">出席确认</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-menu">
+    <ul>
+      <li><a href="#home">首页</a></li>
+      <li><a href="#story">我们的故事</a></li>
+      <li><a href="#gallery">甜蜜相册</a></li>
+      <li><a href="#info">婚礼信息</a></li>
+      <li><a href="#rsvp">出席确认</a></li>
+    </ul>
+  </div>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section id="home" class="hero">
+    <div class="float-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="hero-ring"></div>
+    <div class="hero-content">
+      <div class="hero-badge fade-in">我们结婚啦</div>
+      <h1 class="hero-title fade-in delay-1" style="letter-spacing:0.1em;">永结同心</h1>
+      <p class="hero-subtitle fade-in delay-2">陈思远 & 林雨晴</p>
+      <div class="ornament-elegant fade-in delay-2"><span>♡</span></div>
+      <p class="hero-date fade-in delay-3">二〇二六年 · 十月一日</p>
+    </div>
+    <a href="#countdown-section" class="hero-scroll" aria-label="向下滚动">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+  <!-- ====== COUNTDOWN ====== -->
+  <section id="countdown-section" class="section text-center">
+    <div class="container">
+      <h2 class="section-title fade-in">距离婚礼</h2>
+      <div class="section-divider"></div>
+      <div id="countdown" class="countdown fade-in delay-1" data-target="2026-10-01T10:00:00"></div>
+    </div>
+  </section>
+
+  <!-- ====== LOVE STORY TIMELINE ====== -->
+  <section id="story" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">我们的故事</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">从相遇到相知，每一步都是命中注定</p>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2019 · 初秋</div>
+          <div class="timeline-content">
+            <h4>初次相遇</h4>
+            <p>那年秋天，在朋友的聚会上，一个转身，四目相对，仿佛整个世界都安静了。后来他说，那一刻他就知道，她是他等的人。她笑着说他太会撩，但心里却悄悄记住了那个穿白衬衫的男生。</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2020 · 盛夏</div>
+          <div class="timeline-content">
+            <h4>确定心意</h4>
+            <p>经过一年的相处，从朋友到恋人，每一个平凡的日子都变得闪闪发光。那个夏天的傍晚，他鼓起勇气说出了那句"我喜欢你"。夕阳把她的脸染成了好看的粉色，她低着头说"我知道"。</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024 · 深秋</div>
+          <div class="timeline-content">
+            <h4>求婚时刻</h4>
+            <p>在她最爱的银杏树下，单膝跪地，掏出那枚藏了三个月的戒指。她说"好"的时候，金色的银杏叶正好飘落在她肩头。那一刻，整条街都在为他们祝福。</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026 · 金秋</div>
+          <div class="timeline-content">
+            <h4>永结同心</h4>
+            <p>诚邀您见证我们最重要的时刻，与我们共同开启人生新的篇章。愿所有的美好，都如约而至。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== COUPLE INTRO ====== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">关于我们</h2>
+      <div class="section-divider"></div>
+      <div class="info-cards fade-in" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="couple-card">
+          <div class="couple-photo">🤵</div>
+          <h3>陈思远</h3>
+          <div class="couple-role">新郎</div>
+          <p style="color:var(--color-text-light);font-size:0.9rem;">软件工程师，热爱摄影与旅行。性格温和内敛，却总能在关键时刻给她最坚定的依靠。最大的梦想是和她一起环游世界。</p>
+          <div class="couple-traits">
+            <span class="trait-tag">📸 摄影达人</span>
+            <span class="trait-tag">🌍 旅行爱好者</span>
+            <span class="trait-tag">☕ 咖啡控</span>
+          </div>
+        </div>
+        <div class="couple-card">
+          <div class="couple-photo">👰</div>
+          <h3>林雨晴</h3>
+          <div class="couple-role">新娘</div>
+          <p style="color:var(--color-text-light);font-size:0.9rem;">建筑设计师，喜欢画画和烘焙。开朗活泼，笑起来像阳光一样温暖。她说最浪漫的事，就是和他一起慢慢变老。</p>
+          <div class="couple-traits">
+            <span class="trait-tag">🎨 设计师</span>
+            <span class="trait-tag">🧁 烘焙达人</span>
+            <span class="trait-tag">🐱 猫奴</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PHOTO GALLERY ====== -->
+  <section id="gallery" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">甜蜜相册</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">每一帧画面，都是爱的见证</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item featured fade-in">
+          <div class="img-frame" style="aspect-ratio:16/9;">
+            <span class="frame-icon">💍</span>
+            <span class="frame-label">婚纱照</span>
+          </div>
+          <div class="caption">💍 婚纱照</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">💑</span>
+            <span class="frame-label">订婚纪念</span>
+          </div>
+          <div class="caption">订婚纪念</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">🗼</span>
+            <span class="frame-label">巴黎之旅</span>
+          </div>
+          <div class="caption">巴黎之旅</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">🌅</span>
+            <span class="frame-label">海边约会</span>
+          </div>
+          <div class="caption">海边约会</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">🎂</span>
+            <span class="frame-label">生日惊喜</span>
+          </div>
+          <div class="caption">生日惊喜</div>
+        </div>
+        <div class="gallery-item fade-in delay-3">
+          <div class="img-frame">
+            <span class="frame-icon">🐾</span>
+            <span class="frame-label">我们的猫</span>
+          </div>
+          <div class="caption">和我们的猫咪"团子"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WEDDING DETAILS ====== -->
+  <section id="info" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">婚礼信息</h2>
+      <div class="section-divider"></div>
+
+      <div class="info-cards fade-in">
+        <div class="info-card">
+          <div class="info-card-icon">⛪</div>
+          <h4>婚礼仪式</h4>
+          <p>圣安德烈教堂<br>上午 10:00<br>请提前15分钟入场</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🥂</div>
+          <h4>婚宴</h4>
+          <p>花园酒店 · 玫瑰厅<br>中午 12:00<br>杭州市西湖区南山路128号</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">👔</div>
+          <h4>着装建议</h4>
+          <p>正式 / 半正式<br>建议穿着浅色系服装<br>避免全黑或全白</p>
+        </div>
+      </div>
+
+      <!-- Map placeholder -->
+      <div class="map-placeholder fade-in">
+        <div class="map-icon">🗺️</div>
+        <p style="font-size:0.95rem;margin-bottom:0.3rem;">婚礼地图</p>
+        <p style="font-size:0.8rem;opacity:0.7;">杭州市西湖区南山路128号 · 花园酒店</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RSVP ====== -->
+  <section id="rsvp" class="section rsvp-section">
+    <div class="container">
+      <h2 class="section-title fade-in">出席确认</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">请在九月十五日前回复，以便我们安排座位</p>
+
+      <div class="container-narrow fade-in">
+        <!-- Pre-filled RSVP examples -->
+        <div class="messages-list rsvp-messages mb-4">
+          <div class="message-item">
+            <span class="message-author">张伟 & 王芳</span>
+            <span class="message-time">2026-08-20</span>
+            <p class="message-text">恭喜恭喜！我们夫妻俩一定到场，期待见证你们的幸福时刻！🎉</p>
+          </div>
+          <div class="message-item">
+            <span class="message-author">李晓晨</span>
+            <span class="message-time">2026-08-18</span>
+            <p class="message-text">雨晴姐！我带男朋友一起来，两个人~ 素食一份哦 🥗</p>
+          </div>
+          <div class="message-item">
+            <span class="message-author">陈爸陈妈</span>
+            <span class="message-time">2026-08-15</span>
+            <p class="message-text">儿子终于要结婚了！我们全家五口人都来！❤️</p>
+          </div>
+        </div>
+
+        <div class="ornament-elegant"><span>♡</span></div>
+
+        <form id="guestbook-form" class="guestbook-form">
+          <input type="text" name="name" placeholder="您的姓名" required>
+          <textarea name="message" placeholder="确认出席人数及特殊需求（如素食、过敏等）" rows="4" required></textarea>
+          <button type="submit" class="btn btn-primary">💌 确认出席</button>
+        </form>
+        <div id="messages-list" class="messages-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LIGHTBOX ====== -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" aria-label="关闭">&times;</button>
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">💍 陈思远 & 林雨晴</div>
+      <div class="footer-links">
+        <a href="#" class="btn-share">📤 分享喜讯</a>
+      </div>
+      <div class="footer-copy">执子之手，与子偕老 · 2026</div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#home" class="back-to-top" aria-label="回到顶部">↑</a>
+
+  <script src="../core/main.js"></script>
+  <script>
+    // Back-to-top visibility toggle
+    (function() {
+      var btn = document.querySelector('.back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

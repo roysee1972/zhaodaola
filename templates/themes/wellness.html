@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-wellness">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>归心 · 身心疗愈之旅</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="../core/themes.css">
+  <style>
+    /* ============================================================
+       归心 — 身心疗愈 独有样式
+       禅意 · 水墨 · 呼吸 · 宁静
+       ============================================================ */
+
+    /* ---- Custom scrollbar ---- */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--color-bg); }
+    ::-webkit-scrollbar-thumb { background: #5B7B6F; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4A6A5E; }
+
+    /* ---- Paper texture overlay on body ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.015;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ---- Breathing animation for enso ---- */
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.55; }
+      50% { transform: translate(-50%, -50%) scale(1.03); opacity: 0.75; }
+    }
+
+    /* ---- Floating leaves ---- */
+    @keyframes leafDrift1 {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.25; }
+      90% { opacity: 0.25; }
+      100% { transform: translate(-120px, 110vh) rotate(360deg); opacity: 0; }
+    }
+    @keyframes leafDrift2 {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.2; }
+      90% { opacity: 0.2; }
+      100% { transform: translate(80px, 110vh) rotate(-270deg); opacity: 0; }
+    }
+    @keyframes leafDrift3 {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.18; }
+      90% { opacity: 0.18; }
+      100% { transform: translate(-60px, 110vh) rotate(200deg); opacity: 0; }
+    }
+
+    /* ---- Water ripple ---- */
+    @keyframes ripple {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0.35; }
+      100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+    }
+
+    /* ---- Slow fade in for zen sections ---- */
+    @keyframes zenFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- Zen garden raked lines ---- */
+    .zen-garden-pattern {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 18px,
+        #5B7B6F 18px,
+        #5B7B6F 19px
+      );
+      mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: linear-gradient(160deg, #5B7B6F 0%, #4A6A5E 30%, #A0887D 100%);
+    }
+
+    .hero-content {
+      z-index: 2;
+    }
+
+    /* ---- Enso circle (禅圆) ---- */
+    .enso {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 280px;
+      height: 280px;
+      border: 6px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      animation: breathe 4s ease-in-out infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .enso::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      transform: rotate(3deg);
+    }
+    .enso::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 15%;
+      width: 30%;
+      height: 6px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 3px;
+      filter: blur(1px);
+      transform: rotate(-5deg);
+    }
+
+    /* Brush stroke texture on enso using box-shadow */
+    .enso-brush {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 290px;
+      height: 290px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      z-index: 1;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 0 3px rgba(255,255,255,0.12),
+        inset 3px -2px 6px rgba(255,255,255,0.08),
+        inset -4px 3px 8px rgba(0,0,0,0.06),
+        0 0 30px rgba(255,255,255,0.05);
+    }
+
+    /* ---- Floating hero shapes ---- */
+    .hero .shape-1 {
+      width: 350px; height: 350px;
+      top: -10%; right: -8%;
+      background: rgba(255,255,255,0.04);
+      animation: floatSlow1 20s ease-in-out infinite;
+    }
+    .hero .shape-2 {
+      width: 200px; height: 200px;
+      bottom: 10%; left: -5%;
+      background: rgba(160,136,125,0.1);
+      animation: floatSlow2 25s ease-in-out infinite;
+    }
+    .hero .shape-3 {
+      width: 120px; height: 120px;
+      top: 30%; left: 15%;
+      background: rgba(255,255,255,0.06);
+      animation: floatSlow3 18s ease-in-out infinite;
+    }
+
+    @keyframes floatSlow1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, 30px); }
+    }
+    @keyframes floatSlow2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(15px, -20px); }
+    }
+    @keyframes floatSlow3 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-10px, 15px); }
+    }
+
+    /* ---- Floating leaves in hero ---- */
+    .leaf {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+      font-size: 1.5rem;
+    }
+    .leaf-1 {
+      top: -5%;
+      left: 20%;
+      animation: leafDrift1 16s linear infinite;
+      animation-delay: 0s;
+    }
+    .leaf-2 {
+      top: -5%;
+      right: 25%;
+      font-size: 1.2rem;
+      animation: leafDrift2 22s linear infinite;
+      animation-delay: 4s;
+    }
+    .leaf-3 {
+      top: -5%;
+      left: 60%;
+      font-size: 1rem;
+      animation: leafDrift3 19s linear infinite;
+      animation-delay: 8s;
+    }
+
+    /* ---- Zen quote section ---- */
+    .zen-quote-section {
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .zen-quote-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(91,123,111,0.08);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .zen-quote-section::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 320px;
+      height: 320px;
+      border: 1px solid rgba(91,123,111,0.05);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .zen-quote-text {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      font-weight: 400;
+      color: var(--color-heading);
+      line-height: 2;
+      letter-spacing: 0.15em;
+    }
+
+    .zen-intro {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      color: var(--color-text-light);
+      font-size: 1rem;
+      line-height: 2;
+      text-align: center;
+    }
+
+    /* ---- Water ripple effect ---- */
+    .water-ripple {
+      position: relative;
+      display: inline-block;
+    }
+    .water-ripple::before,
+    .water-ripple::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(91,123,111,0.15);
+      border-radius: 50%;
+      animation: ripple 4s ease-out infinite;
+    }
+    .water-ripple::after {
+      animation-delay: 2s;
+    }
+
+    /* ---- Bamboo vertical lines ---- */
+    .bamboo-deco {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(91,123,111,0.08), transparent);
+      pointer-events: none;
+    }
+    .bamboo-left { left: 8%; }
+    .bamboo-right { right: 8%; }
+
+    /* ---- Journey section ---- */
+    .journey-section {
+      position: relative;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(91,123,111,0.08);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(91,123,111,0.1);
+    }
+
+    /* ---- Gallery zen style ---- */
+    .gallery-masonry .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .gallery-masonry .img-frame {
+      border-radius: 16px;
+      background: linear-gradient(135deg, #F0EDE8, #F8F6F3);
+      min-height: 180px;
+    }
+    .gallery-masonry .img-frame.tall {
+      min-height: 280px;
+    }
+
+    /* ---- Ink wash overlay on section ---- */
+    .ink-wash-bg {
+      position: relative;
+    }
+    .ink-wash-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(91,123,111,0.03) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(160,136,125,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ---- Registration cards ---- */
+    .info-card {
+      border: 1px solid rgba(91,123,111,0.08);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    /* ---- Section lead text ---- */
+    .section-lead {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    /* ---- Smooth transitions for zen feel ---- */
+    .fade-in {
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    .fade-in-left {
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    .fade-in-right {
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    /* ---- Hero badge override ---- */
+    .hero .hero-badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      letter-spacing: 0.15em;
+    }
+
+    /* ---- Nav zen style ---- */
+    .nav-logo {
+      letter-spacing: 0.15em;
+    }
+
+    /* ---- Quote block zen style ---- */
+    .quote-block {
+      border-left: 3px solid rgba(91,123,111,0.2);
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    /* ---- CTA button ---- */
+    .btn-primary {
+      border-radius: 50px;
+      padding: 0.9rem 2.5rem;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      transition: all 0.6s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(91,123,111,0.25);
+    }
+
+    /* ---- Decorative dots ---- */
+    .divider-dots {
+      color: #5B7B6F;
+    }
+
+    /* ---- Ornament line ---- */
+    .ornament-line span {
+      opacity: 0.5;
+    }
+
+    /* ---- Section padding override ---- */
+    .section {
+      padding: 5rem 0;
+    }
+    @media (min-width: 768px) {
+      .section {
+        padding: 6rem 0;
+      }
+    }
+
+    /* ---- Back to top ---- */
+    .back-to-top {
+      border-radius: 50%;
+      background: #5B7B6F;
+    }
+
+    /* ---- Responsive enso ---- */
+    @media (max-width: 767px) {
+      .enso {
+        width: 180px;
+        height: 180px;
+      }
+      .enso-brush {
+        width: 190px;
+        height: 190px;
+      }
+      .bamboo-deco { display: none; }
+    }
+
+    /* ---- Gallery image placeholder themed ---- */
+    .img-frame .frame-icon {
+      opacity: 0.3;
+    }
+    .img-frame .frame-label {
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body class="body-offset">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">🌿 归心</a>
+      <ul class="nav-links">
+        <li><a href="#hero">归心</a></li>
+        <li><a href="#zen-quote">缘起</a></li>
+        <li><a href="#journey">旅程</a></li>
+        <li><a href="#gallery">静观</a></li>
+        <li><a href="#sharing">心语</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-menu">
+      <ul>
+        <li><a href="#hero">归心</a></li>
+        <li><a href="#zen-quote">缘起</a></li>
+        <li><a href="#journey">旅程</a></li>
+        <li><a href="#gallery">静观</a></li>
+        <li><a href="#sharing">心语</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" style="background: linear-gradient(160deg, #5B7B6F 0%, #4A6A5E 30%, #A0887D 100%);"></div>
+
+    <!-- Zen garden raked lines -->
+    <div class="zen-garden-pattern"></div>
+
+    <!-- Floating shapes -->
+    <div class="float-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Floating leaves -->
+    <div class="leaf leaf-1">🍃</div>
+    <div class="leaf leaf-2">🌿</div>
+    <div class="leaf leaf-3">🍂</div>
+
+    <!-- Enso circle (禅圆) -->
+    <div class="enso"></div>
+    <div class="enso-brush"></div>
+
+    <!-- Hero content -->
+    <div class="hero-content">
+      <span class="hero-badge">身心疗愈 · 三天两夜</span>
+      <h1 class="hero-title">归于宁静</h1>
+      <p class="hero-subtitle">放下疲惫，聆听内心的声音</p>
+      <p class="hero-date">2026年10月15日 — 17日</p>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===================== ZEN QUOTE ===================== -->
+  <section class="section zen-quote-section" id="zen-quote">
+    <!-- Bamboo decorative lines -->
+    <div class="bamboo-deco bamboo-left"></div>
+    <div class="bamboo-deco bamboo-right"></div>
+
+    <div class="container-narrow text-center">
+      <div class="water-ripple">
+        <p class="zen-quote-text fade-in" style="margin-bottom: 2.5rem;">
+          心若不动，风又奈何。<br>
+          你若不伤，岁月无恙。
+        </p>
+      </div>
+
+      <div class="ornament-line" style="margin-bottom: 2.5rem;">
+        <span>·</span>
+      </div>
+
+      <p class="zen-intro fade-in delay-1">
+        在这个快节奏的时代，我们太需要停下来，给自己一段安静的时间。<br>
+        这次疗愈之旅，是一次向内探索的邀请。<br>
+        没有日程的压力，没有手机的打扰，只有自然、呼吸和自己。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== JOURNEY SCHEDULE ===================== -->
+  <section class="section section-alt journey-section ink-wash-bg" id="journey">
+    <div class="bamboo-deco bamboo-left"></div>
+    <div class="bamboo-deco bamboo-right"></div>
+
+    <div class="container">
+      <h2 class="section-title fade-in">旅程安排</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">三天两夜，与自然同呼吸，与内心共对话</p>
+
+      <div class="feature-grid">
+        <div class="feature-card fade-in delay-1">
+          <span class="feature-icon">🧘</span>
+          <h4>晨间冥想</h4>
+          <p>清晨6:30，在山间薄雾中开始一天的静坐冥想。由资深禅修导师引导，从呼吸觉知开始，逐步深入。</p>
+        </div>
+        <div class="feature-card fade-in delay-2">
+          <span class="feature-icon">🍵</span>
+          <h4>茶道静心</h4>
+          <p>午后时光，一壶清茶，品味当下。在茶香中学习"活在当下"的艺术，感受每一口茶的温度与滋味。</p>
+        </div>
+        <div class="feature-card fade-in delay-3">
+          <span class="feature-icon">🌳</span>
+          <h4>森林漫步</h4>
+          <p>赤脚走在林间小路，感受大地的温度。"森林浴"疗法，让身体的每一个细胞都与自然对话。</p>
+        </div>
+        <div class="feature-card fade-in delay-4">
+          <span class="feature-icon">📖</span>
+          <h4>晚间分享</h4>
+          <p>围坐灯下，分享今日的感悟与发现。没有评判，没有建议，只有倾听与陪伴。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NATURE GALLERY ===================== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 class="section-title fade-in">静观之美</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">用镜头记录自然的呼吸，用心灵感受每一刻的宁静</p>
+
+      <div class="gallery-masonry fade-in delay-1">
+        <!-- Featured tall -->
+        <div class="gallery-item featured" style="aspect-ratio: 3/4;">
+          <div class="img-frame tall" style="min-height: 280px; border-style: solid; border-color: rgba(91,123,111,0.1);">
+            <span class="frame-icon">🏔️</span>
+            <span class="frame-label">山间晨雾</span>
+          </div>
+          <span class="caption">山间晨雾</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="aspect-ratio: 4/3; min-height: 180px; border-style: solid; border-color: rgba(91,123,111,0.1);">
+            <span class="frame-icon">🧘</span>
+            <span class="frame-label">冥想时刻</span>
+          </div>
+          <span class="caption">冥想时刻</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="aspect-ratio: 1/1; min-height: 180px; border-style: solid; border-color: rgba(91,123,111,0.1);">
+            <span class="frame-icon">🍵</span>
+            <span class="frame-label">茶道</span>
+          </div>
+          <span class="caption">茶道</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="aspect-ratio: 16/9; min-height: 160px; border-style: solid; border-color: rgba(91,123,111,0.1);">
+            <span class="frame-icon">🌿</span>
+            <span class="frame-label">林间小径</span>
+          </div>
+          <span class="caption">林间小径</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="aspect-ratio: 4/3; min-height: 180px; border-style: solid; border-color: rgba(91,123,111,0.1);">
+            <span class="frame-icon">🏡</span>
+            <span class="frame-label">山居</span>
+          </div>
+          <span class="caption">山居</span>
+        </div>
+        <div class="gallery-item">
+          <div class="img-frame" style="aspect-ratio: 3/2; min-height: 180px; border-style: solid; border-color: rgba(91,123,111,0.1);">
+            <span class="frame-icon">✨</span>
+            <span class="frame-label">星空</span>
+          </div>
+          <span class="caption">星空</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PARTICIPANT SHARING ===================== -->
+  <section class="section section-alt ink-wash-bg" id="sharing">
+    <div class="container-narrow">
+      <h2 class="section-title fade-in">学员心语</h2>
+      <div class="section-divider"></div>
+
+      <div class="quote-block fade-in delay-1">
+        <p>在这里，我第一次真正停下来，听到了自己内心的声音。三天时间，像是给心灵做了一次深度SPA。</p>
+        <span class="quote-author">— 第二期学员 张女士</span>
+      </div>
+
+      <div class="quote-block fade-in delay-2">
+        <p>原来放下不需要理由，只需要一个安静的空间。感谢这次旅程，让我重新认识了自己。</p>
+        <span class="quote-author">— 第二期学员 李先生</span>
+      </div>
+
+      <div class="quote-block fade-in delay-3">
+        <p>山里的星空特别亮。那一刻我突然明白，我们需要的其实不多，只是常常忘了抬头看。</p>
+        <span class="quote-author">— 第二期学员 王女士</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REGISTRATION ===================== -->
+  <section class="section" id="register">
+    <div class="container">
+      <h2 class="section-title fade-in">报名信息</h2>
+      <div class="section-divider"></div>
+
+      <div class="info-cards fade-in delay-1">
+        <div class="info-card">
+          <div class="info-card-icon">🕐</div>
+          <h4>时间</h4>
+          <p>3天2晚<br>2026年10月15日 — 17日</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <h4>地点</h4>
+          <p>XX山居<br>隐于青山绿水之间</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">💬</div>
+          <h4>咨询</h4>
+          <p>电话：138-XXXX-XXXX<br>微信：guixin_retreat</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 fade-in delay-2">
+        <p class="section-lead" style="margin-bottom: 2rem;">
+          每期限额15人，小班制，确保每位参与者得到充分关注
+        </p>
+        <a href="#" class="btn btn-primary">预约下期</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close">×</button>
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">🌿 归心 · 身心疗愈之旅</div>
+      <div class="footer-links">
+        <a href="#" class="btn-share">分享给朋友</a>
+      </div>
+      <p class="footer-copy">静以修身，俭以养德 · 2026</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../core/main.js"></script>
+  <script>
+    // Back to top button
+    (function() {
+      var btn = document.querySelector('.back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

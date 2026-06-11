@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-business">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台湾慈济考察之旅 · 2018</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="../core/themes.css">
+  <style>
+    /* ===== Hero Background & Shapes ===== */
+    .hero {
+      background: linear-gradient(135deg, #0F2337 0%, #1B3A5C 40%, #2A5A7A 100%);
+    }
+    .hero .float-shapes .shape {
+      opacity: 0.06;
+      background: #C8963E;
+      border-radius: 0;
+    }
+    .hero .shape-1 { width: 120px; height: 120px; top: 10%; left: 5%; transform: rotate(45deg); }
+    .hero .shape-2 { width: 80px; height: 80px; top: 60%; right: 8%; transform: rotate(15deg); }
+    .hero .shape-3 { width: 60px; height: 60px; top: 20%; right: 20%; transform: rotate(30deg); }
+    .hero .shape-4 { width: 200px; height: 200px; bottom: 10%; left: 15%; border-radius: 50%; opacity: 0.04; }
+    .hero .shape-5 { width: 40px; height: 40px; top: 45%; left: 40%; transform: rotate(60deg); }
+
+    /* Route line SVG decoration */
+    .route-line {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .route-line svg { width: 500px; max-width: 90vw; height: auto; }
+
+    /* Grid overlay on sections */
+    .section-grid-overlay {
+      position: relative;
+    }
+    .section-grid-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--color-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* Stats enhancement */
+    .stats-row .stat-item {
+      padding: 1.5rem 0.5rem;
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Feature cards with left accent */
+    .feature-card {
+      border-left: 4px solid var(--color-accent);
+      text-align: left;
+      padding-left: 2rem;
+    }
+
+    /* Timeline enhancements */
+    .timeline-content {
+      background: var(--color-card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Gallery frame styling */
+    .gallery-item .img-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      background: linear-gradient(135deg, #1B3A5C 0%, #2A5A7A 60%, #C8963E 100%);
+      color: rgba(255,255,255,0.7);
+      border: 2px solid rgba(200,150,62,0.2);
+    }
+    .gallery-item.featured .img-frame {
+      min-height: 260px;
+    }
+    .gallery-item .img-frame .frame-icon {
+      opacity: 0.6;
+    }
+
+    /* Pin marker decoration */
+    .pin-marker {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: var(--color-accent);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Quote section styling */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .insights-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .insights-grid .quote-block {
+      margin: 0;
+    }
+    .insights-grid .quote-block h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: var(--color-accent);
+      font-style: normal;
+    }
+
+    /* Closing section */
+    .closing-section {
+      background: linear-gradient(135deg, #0F2337 0%, #1B3A5C 100%);
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      padding: 5rem 0;
+    }
+    .closing-section .closing-quote {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #C8963E;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+    .closing-section .closing-sub {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .closing-section .ornament-line::before,
+    .closing-section .ornament-line::after {
+      background: rgba(200,150,62,0.3);
+    }
+
+    /* Section lead */
+    .section-lead {
+      max-width: 680px;
+    }
+
+    /* Map dot decoration */
+    .map-dots {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.1;
+    }
+  </style>
+</head>
+<body class="body-offset">
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">🌏 考察之旅</a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">首页</a></li>
+        <li><a href="#overview">行程概览</a></li>
+        <li><a href="#diary">考察日记</a></li>
+        <li><a href="#gallery">影像记录</a></li>
+        <li><a href="#insights">思考总结</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-menu">
+    <ul>
+      <li><a href="#hero">首页</a></li>
+      <li><a href="#overview">行程概览</a></li>
+      <li><a href="#diary">考察日记</a></li>
+      <li><a href="#gallery">影像记录</a></li>
+      <li><a href="#insights">思考总结</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="float-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+    <div class="route-line">
+      <svg viewBox="0 0 500 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="30" r="6" fill="#C8963E" opacity="0.8"/>
+        <text x="40" y="52" text-anchor="middle" fill="#C8963E" font-size="10" opacity="0.7">台北</text>
+        <path d="M50 30 Q150 10 200 30 T350 30 T460 30" stroke="#C8963E" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+        <circle cx="460" cy="30" r="6" fill="#C8963E" opacity="0.8"/>
+        <text x="460" y="52" text-anchor="middle" fill="#C8963E" font-size="10" opacity="0.7">花莲</text>
+      </svg>
+    </div>
+    <div class="hero-content fade-in">
+      <div class="hero-badge">2018 · 深度考察</div>
+      <h1 class="hero-title">台湾慈济考察之旅</h1>
+      <p class="hero-subtitle">医疗 · 环保 · 人文 — 从台北到花莲的深度探访</p>
+      <p class="hero-date">2018年11月5日 — 11月10日</p>
+    </div>
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== TRIP OVERVIEW STATS ===== -->
+  <section id="overview" class="section section-grid-overlay">
+    <div class="container">
+      <h2 class="section-title fade-in">行程概览</h2>
+      <div class="section-divider"></div>
+      <div class="stats-row fade-in delay-1">
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">天行程</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">个考察点</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">12</div>
+          <div class="stat-label">位团员</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">场深度座谈</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ITINERARY OVERVIEW ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">考察主题</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">此次考察聚焦慈济三大核心事业：医疗、环保与人文，通过实地参访与座谈交流，深度了解慈济的运营理念与社会影响力。</p>
+      <div class="feature-grid">
+        <div class="feature-card fade-in delay-1">
+          <span class="feature-icon">🏥</span>
+          <h4>慈济医疗</h4>
+          <p>参访花莲慈济医院，深入了解"以人为本"的医疗服务理念与志愿者体系</p>
+        </div>
+        <div class="feature-card fade-in delay-2">
+          <span class="feature-icon">♻️</span>
+          <h4>环保事业</h4>
+          <p>走访台北、花莲多处环保回收站，体验"垃圾变黄金，黄金变爱心"的环保哲学</p>
+        </div>
+        <div class="feature-card fade-in delay-3">
+          <span class="feature-icon">🏔️</span>
+          <h4>花莲人文</h4>
+          <p>从台北到花莲，感受东海岸的自然之美与慈济人文精神的深度融合</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DAILY DIARY ===== -->
+  <section id="diary" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">考察日记</h2>
+      <div class="section-divider"></div>
+      <p class="section-lead fade-in">六天行程，每一天都是新的发现与感悟。</p>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day 1 · 台北</div>
+          <div class="timeline-content">
+            <h4>初识台湾</h4>
+            <p>抵达桃园机场，初识台湾。台北的街道干净有序，机车洪流中透着一种内化的秩序感。入住酒店后，夜访师大夜市，在喧嚣中感受这座城市的烟火气。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day 2 · 台北</div>
+          <div class="timeline-content">
+            <h4>慈济初心</h4>
+            <p>上午参访慈济台北分会，了解证严法师创办慈济的初心。下午参观慈济人文志业中心，被"静思语"文化深深打动——"口说好话、心想好意、身行好事"。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day 3 · 台北→花莲</div>
+          <div class="timeline-content">
+            <h4>太平洋之约</h4>
+            <p>乘普悠玛号列车前往花莲，沿途太平洋的壮阔让人心旷神怡。窗外是断崖与碧海的交替画卷，三个小时的车程转瞬即逝。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day 4 · 花莲</div>
+          <div class="timeline-content">
+            <h4>慈济医院</h4>
+            <p>走进花莲慈济医院。这不是一家普通的医院——大堂里有钢琴演奏，走廊上有志愿者的微笑，每一处细节都传递着对生命的尊重。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day 5 · 花莲</div>
+          <div class="timeline-content">
+            <h4>环保之行</h4>
+            <p>在慈济环保站，看到各年龄层的志愿者认真分拣回收物。一位八十多岁的老奶奶，弯着腰把塑料瓶分类，她说"做环保就是做功德"。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day 6 · 花莲→台北</div>
+          <div class="timeline-content">
+            <h4>满载而归</h4>
+            <p>带着满满的感悟踏上归途。此行最大的收获不是见闻，而是一种生活态度的启示——朴素、感恩、利他。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO GALLERY ===== -->
+  <section id="gallery" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">影像记录</h2>
+      <div class="section-divider"></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item featured fade-in">
+          <div class="img-frame">
+            <span class="frame-icon">🌏</span>
+            <span class="frame-label">考察全景</span>
+          </div>
+          <div class="caption">考察全景</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">🏥</span>
+            <span class="frame-label">慈济医院</span>
+          </div>
+          <div class="caption">慈济医院</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">♻️</span>
+            <span class="frame-label">环保站</span>
+          </div>
+          <div class="caption">环保站</div>
+        </div>
+        <div class="gallery-item fade-in delay-1">
+          <div class="img-frame">
+            <span class="frame-icon">🌊</span>
+            <span class="frame-label">花莲太平洋</span>
+          </div>
+          <div class="caption">花莲太平洋</div>
+        </div>
+        <div class="gallery-item fade-in delay-2">
+          <div class="img-frame">
+            <span class="frame-icon">🏙️</span>
+            <span class="frame-label">台北街景</span>
+          </div>
+          <div class="caption">台北街景</div>
+        </div>
+        <div class="gallery-item fade-in delay-3">
+          <div class="img-frame">
+            <span class="frame-icon">👥</span>
+            <span class="frame-label">团队合影</span>
+          </div>
+          <div class="caption">团队合影</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSIGHTS ===== -->
+  <section id="insights" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">思考总结</h2>
+      <div class="section-divider"></div>
+
+      <div class="insights-grid">
+        <div class="quote-block fade-in delay-1">
+          <h4>关于医疗</h4>
+          <p>慈济医院让我重新理解了"医疗"的含义。治病只是手段，对生命的敬畏与关怀才是目的。当医院的大堂响起钢琴声，当每一位医护人员对患者微笑问候，我们看到的是一种超越技术的人文医疗。</p>
+          <span class="quote-author">— 考察团成员手记</span>
+        </div>
+
+        <div class="quote-block fade-in delay-2">
+          <h4>关于环保</h4>
+          <p>在环保站，我看到了最朴素也最有力的环保实践。没有宏大的口号，只有弯腰分拣的身影。一位老奶奶告诉我："做环保就是做功德。"这句话比任何环保理论都更有说服力。</p>
+          <span class="quote-author">— 考察团成员手记</span>
+        </div>
+
+        <div class="quote-block fade-in delay-3">
+          <h4>关于人文</h4>
+          <p>台湾的人文气息让人印象深刻。从台北的诚品书店到花莲的乡间小路，处处可见对文化的尊重与传承。慈济将这种人文精神融入到每一个事业中，形成了一种独特的精神力量。</p>
+          <span class="quote-author">— 考察团成员手记</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING QUOTE ===== -->
+  <section class="closing-section">
+    <div class="container">
+      <div class="ornament-line"><span>✦</span></div>
+      <div class="closing-quote fade-in">行万里路，读万卷书</div>
+      <p class="closing-sub fade-in delay-1">此行所见所闻，皆化为心中前行的力量。</p>
+      <div class="ornament-line"><span>✦</span></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">🌏 台湾慈济考察之旅 · 2018</div>
+      <div class="footer-links">
+        <a href="#hero">首页</a>
+        <a href="#overview">行程概览</a>
+        <a href="#diary">考察日记</a>
+        <a href="#gallery">影像记录</a>
+      </div>
+      <button class="btn btn-share">分享此页</button>
+      <p style="margin-top:1rem; font-size:0.85rem; opacity:0.6;">实地考察 · 深度思考 · 知行合一</p>
+      <p class="footer-copy">© 2018 台湾慈济考察团 · 保留所有权利</p>
+    </div>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" aria-label="关闭">✕</button>
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="../core/main.js"></script>
+  <script>
+    // Back-to-top visibility
+    window.addEventListener('scroll', function() {
+      document.querySelector('.back-to-top').classList.toggle('show', window.scrollY > 400);
+    });
+  </script>
+</body>
+</html>

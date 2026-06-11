@@ -1,0 +1,179 @@
+/* ============================================================
+   活动网站模板系统 - 6套主题CSS变量
+   用法: 在 <html> 或 <body> 上加 class="theme-xxx" 即可切换
+   ============================================================ */
+
+/* ============================================================
+   A. 生日寿宴 — 温馨喜庆、红金搭配
+   ============================================================ */
+.theme-birthday {
+  --color-accent: #C41E3A;
+  --color-accent-hover: #A01830;
+  --color-heading: #2C1810;
+  --color-text: #3D2B1F;
+  --color-text-light: #5A4A3F;
+  --color-muted: #8B7B6B;
+  --color-bg: #FFF8F0;
+  --color-bg-alt: #FFF1E3;
+  --color-border: rgba(196, 30, 58, 0.12);
+  --color-card-bg: #FFFFFF;
+  --color-footer-bg: #2C1810;
+  --color-footer-text: rgba(255, 248, 240, 0.85);
+  --nav-bg: rgba(255, 248, 240, 0.95);
+  --hero-overlay: linear-gradient(135deg, rgba(196,30,58,0.4), rgba(212,168,67,0.3));
+  --hero-title-color: #fff;
+  --hero-subtitle-color: rgba(255,255,255,0.95);
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Georgia", serif;
+  --heading-weight: 700;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 20px rgba(196, 30, 58, 0.08);
+  --shadow-sm: 0 2px 8px rgba(196, 30, 58, 0.06);
+}
+
+/* ============================================================
+   B. 婚礼婚宴 — 浪漫精致、玫瑰金+薰衣草
+   ============================================================ */
+.theme-wedding {
+  --color-accent: #B76E79;
+  --color-accent-hover: #9E5A64;
+  --color-heading: #3D2B3A;
+  --color-text: #4A3F4A;
+  --color-text-light: #6B5F6B;
+  --color-muted: #9A8E9A;
+  --color-bg: #FFF9F5;
+  --color-bg-alt: #FFF3ED;
+  --color-border: rgba(183, 110, 121, 0.15);
+  --color-card-bg: #FFFFFF;
+  --color-footer-bg: #3D2B3A;
+  --color-footer-text: rgba(255, 249, 245, 0.85);
+  --nav-bg: rgba(255, 249, 245, 0.95);
+  --hero-overlay: linear-gradient(135deg, rgba(183,110,121,0.35), rgba(139,125,184,0.3));
+  --hero-title-color: #fff;
+  --hero-subtitle-color: rgba(255,255,255,0.95);
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: "Noto Serif SC", "Source Han Serif SC", "Georgia", serif;
+  --heading-weight: 400;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow: 0 4px 24px rgba(183, 110, 121, 0.1);
+  --shadow-sm: 0 2px 10px rgba(183, 110, 121, 0.06);
+}
+
+/* ============================================================
+   C. 商务考察 — 专业大气、深蓝+铜金
+   ============================================================ */
+.theme-business {
+  --color-accent: #C8963E;
+  --color-accent-hover: #B08430;
+  --color-heading: #0F2337;
+  --color-text: #2C3E50;
+  --color-text-light: #4A5D6E;
+  --color-muted: #7A8B9A;
+  --color-bg: #F5F7FA;
+  --color-bg-alt: #EDF0F5;
+  --color-border: rgba(27, 58, 92, 0.1);
+  --color-card-bg: #FFFFFF;
+  --color-footer-bg: #0F2337;
+  --color-footer-text: rgba(200, 150, 62, 0.9);
+  --nav-bg: rgba(245, 247, 250, 0.95);
+  --hero-overlay: linear-gradient(135deg, rgba(15,35,55,0.6), rgba(27,58,92,0.4));
+  --hero-title-color: #fff;
+  --hero-subtitle-color: rgba(255,255,255,0.85);
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --heading-weight: 700;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --shadow: 0 2px 16px rgba(15, 35, 55, 0.08);
+  --shadow-sm: 0 1px 6px rgba(15, 35, 55, 0.05);
+}
+
+/* ============================================================
+   D. 学习提升 — 清新知性、墨绿+深棕
+   ============================================================ */
+.theme-learning {
+  --color-accent: #2D5A3D;
+  --color-accent-hover: #1E4A2E;
+  --color-heading: #1A2E1A;
+  --color-text: #2C3E2C;
+  --color-text-light: #4A5D4A;
+  --color-muted: #7A8B7A;
+  --color-bg: #FAFAF5;
+  --color-bg-alt: #F0F2EB;
+  --color-border: rgba(45, 90, 61, 0.12);
+  --color-card-bg: #FFFFFF;
+  --color-footer-bg: #1A2E1A;
+  --color-footer-text: rgba(250, 250, 245, 0.8);
+  --nav-bg: rgba(250, 250, 245, 0.95);
+  --hero-overlay: linear-gradient(135deg, rgba(45,90,61,0.5), rgba(139,105,20,0.3));
+  --hero-title-color: #fff;
+  --hero-subtitle-color: rgba(255,255,255,0.9);
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: "Noto Serif SC", "Source Han Serif SC", "Georgia", serif;
+  --heading-weight: 600;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 3px 16px rgba(45, 90, 61, 0.08);
+  --shadow-sm: 0 1px 6px rgba(45, 90, 61, 0.05);
+}
+
+/* ============================================================
+   E. 身心疗愈 — 宁静素雅、青苔绿+水墨
+   ============================================================ */
+.theme-wellness {
+  --color-accent: #5B7B6F;
+  --color-accent-hover: #4A6A5E;
+  --color-heading: #2A3A32;
+  --color-text: #3A4A42;
+  --color-text-light: #5A6A62;
+  --color-muted: #8A9A92;
+  --color-bg: #F8F6F3;
+  --color-bg-alt: #F0EDE8;
+  --color-border: rgba(91, 123, 111, 0.12);
+  --color-card-bg: #FFFFFF;
+  --color-footer-bg: #2A3A32;
+  --color-footer-text: rgba(248, 246, 243, 0.8);
+  --nav-bg: rgba(248, 246, 243, 0.95);
+  --hero-overlay: linear-gradient(135deg, rgba(91,123,111,0.4), rgba(160,136,125,0.3));
+  --hero-title-color: #fff;
+  --hero-subtitle-color: rgba(255,255,255,0.9);
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: "Noto Serif SC", "Source Han Serif SC", "Georgia", serif;
+  --heading-weight: 400;
+  --radius: 24px;
+  --radius-sm: 16px;
+  --shadow: 0 4px 24px rgba(91, 123, 111, 0.06);
+  --shadow-sm: 0 2px 8px rgba(91, 123, 111, 0.04);
+  --section-padding: 5rem 0;
+}
+
+/* ============================================================
+   F. 聚会派对 — 活泼热闹、多彩珊瑚
+   ============================================================ */
+.theme-party {
+  --color-accent: #E85D75;
+  --color-accent-hover: #D04A62;
+  --color-heading: #1A1A2E;
+  --color-text: #2D2D44;
+  --color-text-light: #4A4A66;
+  --color-muted: #8888AA;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #FFF5F7;
+  --color-border: rgba(232, 93, 117, 0.12);
+  --color-card-bg: #FFFFFF;
+  --color-footer-bg: #1A1A2E;
+  --color-footer-text: rgba(255, 255, 255, 0.8);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --hero-overlay: linear-gradient(135deg, rgba(232,93,117,0.4), rgba(91,141,239,0.3), rgba(255,179,71,0.2));
+  --hero-title-color: #fff;
+  --hero-subtitle-color: rgba(255,255,255,0.95);
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-heading: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --heading-weight: 800;
+  --radius: 20px;
+  --radius-sm: 14px;
+  --shadow: 0 4px 20px rgba(232, 93, 117, 0.1);
+  --shadow-sm: 0 2px 8px rgba(232, 93, 117, 0.06);
+}

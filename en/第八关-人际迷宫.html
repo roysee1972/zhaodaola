@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="人际迷宫关卡：复杂的人际关系中，帮你找到那条属于自己的路。">
+<meta name="description" content="Interpersonal Maze: Finding your own path through complex relationships.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第八关 · 人际迷宫 — 找到啦</title>
+<title>Level 8 · Interpersonal Maze — Found It</title>
 <style>
   :root {
     --bg: #f5e6c8;
@@ -755,356 +755,356 @@
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
-  <span>返回主页</span>
+  <span>Back to Home</span>
 </button>
 
-<!-- ==================== P1: 入口页 ==================== -->
+<!-- ==================== P1: Entry Page ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第八关 · 找到啦</div>
+    <div class="level-badge">LEVEL 8 · FOUND IT</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">人际</div>
+      <div class="deco-ring-inner">Bonds</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">人际迷宫</h1>
+    <h1 class="hero-title">Interpersonal Maze</h1>
     <p class="hero-sub">
-      不是教你社交技巧。<br>
-      是帮你看见：你在关系里，弄丢了什么。
+      Not teaching you social skills.<br>
+      Helping you see what you've lost in your relationships.
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      你总是在付出，但对方好像没怎么回应你。<br>
-      你不知道怎么拒绝，哪怕已经很不舒服了。<br>
-      你不敢表达真实想法，怕说了之后对方不高兴。<br>
-      你在关系里表演一个「好脾气」的自己，很累。
+      You're always giving, but the other person barely responds.<br>
+      You don't know how to say no, even when you're deeply uncomfortable.<br>
+      You're afraid to express your real thoughts, worried they'll be upset.<br>
+      You perform a "good-tempered" version of yourself in relationships — and it's exhausting.
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      关系不是目的。<br>
-      但它是一面镜子——<br>
-      照得见你的边界感，照得见你对自己的尊重，<br>
-      也照得见你到底有没有在关系里做自己。
+      Relationships aren't the goal.<br>
+      But they are a mirror —<br>
+      one that reflects your sense of boundaries, your self-respect,<br>
+      and whether you're truly being yourself within them.
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
+    <button class="btn" onclick="goPage('dilemma')">Start Exploring</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 5 minutes</p>
   </div>
 </div>
 
-<!-- ==================== P2: 困境选择页 ==================== -->
+<!-- ==================== P2: Dilemma Selection Page ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="level-badge">LEVEL 8 · INTERPERSONAL MAZE</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">在哪件事上，你在关系里最委屈？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选择 1-3 条，最贴近你现在的感受。多选也无妨。</p>
+      <h2 class="hero-title" style="font-size: 26px;">Which issue makes you feel most wronged in relationships?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1–3 that match how you feel right now. Multiple selections are fine.</p>
     </div>
     <div style="margin-top: 24px;" id="dilemmaList"></div>
-    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
+    <div class="dilemma-hint" id="dilemmaHint">Selected <span id="dilemmaCount">0</span> items</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P3: 冒险卡页 ==================== -->
+<!-- ==================== P3: Adventure Card Page ==================== -->
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="level-badge">LEVEL 8 · INTERPERSONAL MAZE</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before we begin the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard" onclick="flipCard()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">点击翻开</div>
+            <div class="flip-card-front-hint">Tap to reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"你在关系里弄丢的自己，比对方重要得多。"</div>
-            <div class="flip-card-tap-hint">— 冒险卡</div>
+            <div class="flip-card-quote" id="flipQuote">"The self you've lost in relationships matters far more than the other person."</div>
+            <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
-      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P4: 诊断测试页 ==================== -->
+<!-- ==================== P4: Diagnostic Test Page ==================== -->
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">第一题</div>
-      <div class="question-text" id="qText">在关系里，你最近感受到的是？</div>
+      <div class="question-num" id="qNum">Question 1</div>
+      <div class="question-text" id="qText">What do you feel most often in relationships?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
-      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P5: 诊断结果页 ==================== -->
+<!-- ==================== P5: Diagnostic Results Page ==================== -->
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">诊断完成</div>
+      <div class="level-badge">DIAGNOSIS COMPLETE</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的认知卡点画像</div>
-      <div class="result-sub">人际迷宫 · 第八关</div>
+      <div class="result-title">Your Cognitive Blocker Profile</div>
+      <div class="result-sub">Interpersonal Maze · Level 8</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-label">You found a hidden thought</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+      <button class="btn" onclick="goAdvice()">View Advice</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P6: 通关建议页 ==================== -->
+<!-- ==================== P6: Advice Page ==================== -->
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="level-badge">LEVEL 8 · INTERPERSONAL MAZE</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">通关建议</div>
+      <div class="advice-title">Level Clear Advice</div>
       <div class="advice-intro">
-        关系不是目的，<br>
-        但它是一面镜子，照得见你在关系里有没有做自己。
+        Relationships aren't the goal,<br>
+        but they are a mirror that reflects whether you're truly being yourself.
       </div>
     </div>
     <div id="adviceList"></div>
 
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      以上不是你想说的？打开你的隐藏关卡 →
+      Not what you wanted to say? Open your Hidden Level →
     </div>
-    <div class="page-end-text">— 第八关 · 人际迷宫 · 完 —</div>
+    <div class="page-end-text">— Level 8 · Interpersonal Maze · Complete —</div>
   </div>
 </div>
 
-<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<!-- ==================== P7: Hidden Level Page ==================== -->
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">隐藏关卡</div>
+      <div class="level-badge">HIDDEN LEVEL</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的专属关卡</div>
+      <div class="hidden-title">Your Personal Level</div>
       <div class="hidden-sub">
-        这里是你的空间，写下你在人际关系里真正卡住的事。<br>
-        不用修饰，不用在意文采。真实就好。
+        This is your space. Write about what's truly blocking you in relationships.<br>
+        No need to polish it — just be real.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">第一步</div>
-      <div class="step-label">我在关系里，卡在哪里？</div>
-      <textarea class="step-input" id="hidden1" placeholder="最近一次让我在关系里委屈的事是："></textarea>
+      <div class="step-num">Step One</div>
+      <div class="step-label">Where am I stuck in relationships?</div>
+      <textarea class="step-input" id="hidden1" placeholder="The most recent time I felt wronged in a relationship was..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第二步</div>
-      <div class="step-label">这种感觉最早出现在什么时候？</div>
-      <textarea class="step-input" id="hidden2" placeholder="最早是在……"></textarea>
+      <div class="step-num">Step Two</div>
+      <div class="step-label">When did this feeling first appear?</div>
+      <textarea class="step-input" id="hidden2" placeholder="It started when..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第三步</div>
-      <div class="step-label">如果可以改变一件事，我希望是？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我希望自己可以……"></textarea>
+      <div class="step-num">Step Three</div>
+      <div class="step-label">If I could change one thing, what would it be?</div>
+      <textarea class="step-input" id="hidden3" placeholder="I wish I could..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第四步</div>
-      <div class="step-label">我愿意为此付出什么？</div>
-      <textarea class="step-input" id="hidden4" placeholder="为了改变，我愿意……"></textarea>
+      <div class="step-num">Step Four</div>
+      <div class="step-label">What am I willing to do for this change?</div>
+      <textarea class="step-input" id="hidden4" placeholder="To make this change, I am willing to..."></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
+    <button class="generate-btn" onclick="generateCard()">Generate My Hidden Level Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的隐藏关卡</div>
-      <div class="card-preview-sub">第八关 · 人际迷宫 · 找到啦</div>
+      <div class="card-preview-title">My Hidden Level</div>
+      <div class="card-preview-sub">Level 8 · Interpersonal Maze · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+      <button class="download-btn" onclick="downloadCard()">Download Card</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== 完成页 ==================== -->
+<!-- ==================== Completion Page ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      看清自己在关系里的卡点，<br>
-      本身就是改变的开始。<br>
-      接下来的路，在你脚下。
+      Seeing your blockers in relationships<br>
+      is itself the beginning of change.<br>
+      The road ahead is yours to walk.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+    <button class="btn btn-ghost" onclick="restart()">Start Over</button>
   </div>
 </div>
 
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据
+   Data
    ============================================================ */
 
-// 困境（12条）
+// Dilemmas (12)
 const dilemmas = [
-  { id: 1, text: "别人找我帮忙，我不愿意但还是答应了，事后又后悔。" },
-  { id: 2, text: "我总是那个主动联系别人的人，不联系就怕关系淡了。" },
-  { id: 3, text: "我不知道怎么拒绝别人，哪怕这件事已经让我很不舒服。" },
-  { id: 4, text: "我在关系里付出很多，但对方好像没怎么回应我。" },
-  { id: 5, text: "我很怕被人讨厌，所以一直在表演一个「好脾气」的自己。" },
-  { id: 6, text: "我不敢表达真实的想法，怕说了之后对方不高兴。" },
-  { id: 7, text: "我对别人有期待，但对方没做到，我不敢说，只是自己生闷气。" },
-  { id: 8, text: "我总是在意别人的评价，哪怕那个人其实没那么重要。" },
-  { id: 9, text: "我付出了很多，但对方好像觉得理所当然，我心里不平衡。" },
-  { id: 10, text: "我想结束一段消耗我的关系，但不知道怎么开口，怕伤害对方。" },
-  { id: 11, text: "我在关系里总是猜对方的心情，却很少问自己舒不舒服。" },
-  { id: 12, text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。" }
+  { id: 1, text: "Someone asks me for help. I don't want to, but I say yes anyway — and regret it later." },
+  { id: 2, text: "I'm always the one reaching out. If I don't, I'm afraid the relationship will fade." },
+  { id: 3, text: "I don't know how to say no, even when something makes me deeply uncomfortable." },
+  { id: 4, text: "I give a lot in relationships, but the other person barely responds." },
+  { id: 5, text: "I'm terrified of being disliked, so I keep performing a 'good-tempered' version of myself." },
+  { id: 6, text: "I'm afraid to express my real thoughts, worried the other person will be upset." },
+  { id: 7, text: "I have expectations of others, but when they fall short, I don't dare say anything — I just stew silently." },
+  { id: 8, text: "I always worry about what others think, even when that person doesn't really matter." },
+  { id: 9, text: "I've given a lot, but the other person takes it for granted. It feels unfair." },
+  { id: 10, text: "I want to end a draining relationship, but I don't know how to bring it up — I'm afraid of hurting them." },
+  { id: 11, text: "In relationships, I'm always guessing how the other person feels, but rarely ask myself if I'm okay." },
+  { id: 12, text: "I'm terrified of conflict. I'd rather swallow my feelings than make things uncomfortable." }
 ];
 
-// 冒险卡（12张）
+// Adventure Cards (12)
 const adventureCards = [
-  "所有让你消耗的关系，都在偷偷问你要一样东西：你自己。",
-  "边界不是墙，是门——你决定谁可以进来。",
-  "你不是在维护关系，你是在用委屈换认可。",
-  "不敢拒绝，是因为你怕对方不喜欢「说不了」的你。",
-  "你在关系里弄丢的自己，比对方重要得多。",
-  "期待别人改变，是你给自己找的最大的借口。",
-  "你不是不会说话，你是不敢说真话。",
-  "一段需要你一直表演的关系，本来就不适合你。",
-  "你总是在替别人着想，谁在你难过的时候替你着想？",
-  "有些关系，结束比维持更勇敢。",
-  "你在关系里受的委屈，对方往往根本不知道。",
-  "真正的亲密，是两个人都不需要表演。"
+  "Every draining relationship is secretly asking you for one thing: yourself.",
+  "Boundaries aren't walls — they're doors. You decide who gets to come in.",
+  "You're not maintaining a relationship. You're trading委屈 for approval.",
+  "You're afraid to say no because you fear they won't like the you who can't say yes.",
+  "The self you've lost in relationships matters far more than the other person.",
+  "Expecting others to change is the biggest excuse you give yourself.",
+  "It's not that you can't speak — it's that you don't dare tell the truth.",
+  "A relationship where you have to constantly perform was never right for you.",
+  "You're always thinking of others — who thinks of you when you're hurting?",
+  "Some relationships: ending them is braver than holding on.",
+  "The委屈 you suffer in relationships — the other person often has no idea.",
+  "True intimacy is when neither person needs to perform."
 ];
 
-// 诊断题（6题×5选项）
+// Diagnostic Questions (6 × 5 options)
 const questions = [
   {
-    q: "在关系里，你最常感受到的是？",
+    q: "What do you feel most often in relationships?",
     options: [
-      { text: "我总是在付出，但对方好像没怎么回应我。", key: "01付出失衡" },
-      { text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。", key: "02冲突回避" },
-      { text: "我不敢表达真实想法，怕说了之后对方不高兴。", key: "03真实恐惧" },
-      { text: "我总是在意别人的评价，哪怕那人其实没那么重要。", key: "04评价焦虑" },
-      { text: "我不知道怎么拒绝别人，哪怕这件事已经让我很不舒服。", key: "05边界模糊" }
+      { text: "I'm always giving, but the other person barely responds.", key: "Giving Imbalance" },
+      { text: "I'm terrified of conflict. I'd rather swallow my feelings than make things uncomfortable.", key: "Conflict Avoidance" },
+      { text: "I'm afraid to express my real thoughts, worried they'll be upset.", key: "Fear of Authenticity" },
+      { text: "I always worry about what others think, even when that person doesn't really matter.", key: "Evaluation Anxiety" },
+      { text: "I don't know how to say no, even when something makes me deeply uncomfortable.", key: "Blurry Boundaries" }
     ]
   },
   {
-    q: "关于「拒绝」，你最接近的感受是？",
+    q: "Regarding 'saying no,' what feeling is closest to yours?",
     options: [
-      { text: "我不知道怎么拒绝，怕拒绝了对方会不高兴。", key: "05边界模糊" },
-      { text: "我拒绝了别人之后，会一直想：我是不是太过分了？", key: "06内疚惯性" },
-      { text: "我不敢说不，因为我怕对方从此就不联系我了。", key: "07被弃恐惧" },
-      { text: "我总是在别人找我帮忙时先答应，事后又后悔。", key: "05边界模糊" },
-      { text: "我怕拒绝别人会显得我很冷漠、不近人情。", key: "08形象维护" }
+      { text: "I don't know how to refuse — I'm afraid they'll be upset if I say no.", key: "Blurry Boundaries" },
+      { text: "After I refuse someone, I keep thinking: was I too harsh?", key: "Guilt Inertia" },
+      { text: "I don't dare say no, because I'm afraid they'll stop contacting me.", key: "Fear of Abandonment" },
+      { text: "I always say yes when asked for help, then regret it afterward.", key: "Blurry Boundaries" },
+      { text: "I'm afraid refusing others will make me seem cold and heartless.", key: "Image Maintenance" }
     ]
   },
   {
-    q: "关于期待和失望，你最接近的感受是？",
+    q: "Regarding expectations and disappointment, what's closest to your experience?",
     options: [
-      { text: "我对别人有期待，但对方没做到，我不敢说，只是自己生闷气。", key: "09期待压抑" },
-      { text: "我总是希望对方主动来理解我，但他往往没有。", key: "10被动等待" },
-      { text: "我付出了很多，但对方觉得理所当然，我心里不平衡。", key: "01付出失衡" },
-      { text: "我在关系里总是在猜对方的心情，却很少问自己舒不舒服。", key: "11自我忽视" },
-      { text: "我发现我对别人的期待，往往高过对方实际愿意给的。", key: "09期待压抑" }
+      { text: "I have expectations of others, but when they fall short, I don't dare say anything — I just stew silently.", key: "Suppressed Expectations" },
+      { text: "I always hope the other person will take the initiative to understand me, but they usually don't.", key: "Passive Waiting" },
+      { text: "I've given a lot, but the other person takes it for granted. It feels unfair.", key: "Giving Imbalance" },
+      { text: "In relationships, I'm always guessing how the other person feels, but rarely ask myself if I'm okay.", key: "Self-Neglect" },
+      { text: "I realize my expectations of others often exceed what they're actually willing to give.", key: "Suppressed Expectations" }
     ]
   },
   {
-    q: "关于冲突，你最接近的感受是？",
+    q: "Regarding conflict, what's closest to how you feel?",
     options: [
-      { text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。", key: "02冲突回避" },
-      { text: "我不敢表达不同意见，怕说了之后关系就坏了。", key: "03真实恐惧" },
-      { text: "我觉得有冲突的关系都是不好的，所以我一直在避免冲突。", key: "02冲突回避" },
-      { text: "我在冲突的时候会大脑空白，不知道说什么，事后又很后悔。", key: "12冲突无助" },
-      { text: "我很怕对方生气，所以我会先妥协、先道歉。", key: "13讨好惯性" }
+      { text: "I'm terrified of conflict. I'd rather swallow my feelings than make things uncomfortable.", key: "Conflict Avoidance" },
+      { text: "I'm afraid to express a different opinion, worried it will ruin the relationship.", key: "Fear of Authenticity" },
+      { text: "I believe any relationship with conflict is bad, so I keep avoiding it.", key: "Conflict Avoidance" },
+      { text: "During conflict, my mind goes blank. I don't know what to say, and I regret it deeply afterward.", key: "Conflict Helplessness" },
+      { text: "I'm afraid of the other person getting angry, so I compromise first, apologize first.", key: "People-Pleasing Inertia" }
     ]
   },
   {
-    q: "关于自我和关系，你最接近的状态是？",
+    q: "Regarding yourself and relationships, what's your closest state?",
     options: [
-      { text: "我在关系里弄丢了自己，不知道哪个是真正的我。", key: "11自我忽视" },
-      { text: "我总是在表演一个「好脾气」的自己，很累。", key: "14表演疲惫" },
-      { text: "我怕别人不喜欢真正的我，所以一直在扮演别人喜欢的样子。", key: "14表演疲惫" },
-      { text: "我没有在关系里真正放松过，总是在想：我这样说行不行。", key: "04评价焦虑" },
-      { text: "我想结束一段消耗我的关系，但不知道怎么开口。", key: "15结束恐惧" }
+      { text: "I've lost myself in relationships. I don't know which version of me is the real one.", key: "Self-Neglect" },
+      { text: "I'm always performing a 'good-tempered' version of myself — it's exhausting.", key: "Performance Exhaustion" },
+      { text: "I'm afraid people won't like the real me, so I keep playing the version they prefer.", key: "Performance Exhaustion" },
+      { text: "I've never truly relaxed in a relationship. I'm always wondering: is it okay to say this?", key: "Evaluation Anxiety" },
+      { text: "I want to end a draining relationship, but I don't know how to bring it up.", key: "Fear of Ending" }
     ]
   },
   {
-    q: "以下哪句话，最接近你内心对关系的真实看法？",
+    q: "Which statement below is closest to your true view of relationships?",
     options: [
-      { text: "我配被好好对待，但我不太敢相信这件事会发生。", key: "16值得怀疑" },
-      { text: "我在关系里受的委屈，对方往往根本不知道。", key: "11自我忽视" },
-      { text: "我总是在替别人着想，谁在我难过的时候替我着想？", key: "11自我忽视" },
-      { text: "我怕冲突，但我更怕一直在委屈里待着。", key: "02冲突回避" },
-      { text: "我开始觉得：有些关系，结束比维持更勇敢。", key: "15结束恐惧" }
+      { text: "I deserve to be treated well, but I can't quite believe it will happen.", key: "Worthiness Doubt" },
+      { text: "The委屈 I suffer in relationships — the other person often has no idea.", key: "Self-Neglect" },
+      { text: "I'm always thinking of others — who thinks of me when I'm hurting?", key: "Self-Neglect" },
+      { text: "I'm afraid of conflict, but I'm even more afraid of staying in委屈 forever.", key: "Conflict Avoidance" },
+      { text: "I'm starting to think: some relationships — ending them is braver than holding on.", key: "Fear of Ending" }
     ]
   }
 ];
 
-// 卡点完整数据（30个维度）
+// Blocker data (30 dimensions)
 const cardPoints = {
-  "01付出失衡":    { name: "付出失衡",    desc: "你在关系里付出很多，但对方好像没怎么回应你。你不是善良，你是在用付出来换安全感。", advice: "这周，在一段关系里，做一次「不主动付出」的实验：对方不找你，你就不找对方。看看天会不会塌下来。", color: "var(--gold)" },
-  "02冲突回避":    { name: "冲突回避",    desc: "你很怕冲突，宁愿自己忍一忍，也不想让场面变差。但你忍的每一件事，都在暗暗记账。", advice: "下次有不同意见的时候，试着说一句：「我跟你想的有点不一样。」——就这一句，不用吵起来。", color: "#b89a6a" },
-  "03真实恐惧":    { name: "真实恐惧",    desc: "你不敢表达真实的想法，怕说了之后对方不高兴。但你没说出口的那些话，会变成心里的一根刺。", advice: "找一个你信任的人，说一件你真实想说但一直没说的事。你会发现：说开了，关系往往更好，不是更差。", color: "var(--gold)" },
-  "04评价焦虑":    { name: "评价焦虑",    desc: "你总是在意别人的评价，哪怕那个人其实没那么重要。你把别人的眼光，活成了自己的牢笼。", advice: "今天，做一件「别人可能会怎么想但实际上我挺想做」的小事。做完之后你会发现：没人那么在意。", color: "#c0784a" },
-  "05边界模糊":    { name: "边界模糊",    desc: "你不知道怎么拒绝别人，哪怕这件事已经让你很不舒服。你怕拒绝了就显得你不好，但你忘了：你的舒服也很重要。", advice: "这周，练习说一次「不好意思，这个我可能帮不上」。不用解释，不用道歉，就这一句话。", color: "var(--gold)" },
-  "06内疚惯性":    { name: "内疚惯性",    desc: "你拒绝了别人之后，会一直想：我是不是太过分了？你把「拒绝」当成了一种罪，但你忘了：对方也可以说不了。", advice: "下一次拒绝之后，对自己说三遍：「我有权利说不了。」——说出口，内疚感会轻一点。", color: "#a88040" },
-  "07被弃恐惧":    { name: "被弃恐惧",    desc: "你不敢说不，因为你怕对方从此就不联系你了。但你用委屈换来的联系，本来就不牢靠。", advice: "想一想：如果有一个人因为你说了「不」就不再理你，这段关系你真的可惜吗？", color: "#8a6040" },
-  "08形象维护":    { name: "形象维护",    desc: "你怕拒绝别人会显得你很冷漠、不近人情。但你一直在维护的那个「好人形象」，其实压得你喘不过气。", advice: "找一个你信任的朋友，跟TA说一句：「其实我有时候不想那么热心。」——你会发现，TA并不会因此不喜欢你。", color: "#b08a5a" },
-  "09期待压抑":    { name: "期待压抑",    desc: "你对别人有期待，但对方没做到，你不敢说，只是自己生闷气。但你不说，对方永远不会知道你在期待什么。", advice: "下次有期待的时候，试着说出来。比如：「这周末，我希望我们可以一起做点什么。」——说出口，才有机会被满足。", color: "var(--gold)" },
-  "10被动等待":    { name: "被动等待",    desc: "你总是希望对方主动来理解你，但他往往没有。但你没开口，对方可能根本不知道你需要被理解。", advice: "这周，主动说一次：「我最近有点……你可以陪我说说话吗？」——不用觉得很丢脸，这需要勇气，也很值得。", color: "#9a7060" },
-  "11自我忽视":    { name: "自我忽视",    desc: "你在关系里总是在猜对方的心情，却很少问自己舒不舒服。你把别人放在第一位，把自己排在了最后面。", advice: "今天，做一件「先顾及自己感受」的小事——不用很大，就是先问自己一次：我现在舒服吗？", color: "#c09060" },
-  "12冲突无助":    { name: "冲突无助",    desc: "你在冲突的时候会大脑空白，不知道说什么，事后又很后悔。你不是不会说话，你是在冲突里太紧张了。", advice: "预先准备一句话，下次冲突的时候先说：「我现在有点情绪，能不能先停一下，等会儿再聊？」——这会给你缓冲的时间。", color: "#a07850" },
-  "13讨好惯性":    { name: "讨好惯性",    desc: "你很怕对方生气，所以你会先妥协、先道歉。但你妥协的每一件事，都在告诉对方：你的感受不重要。", advice: "下次对方生气的时候，先别急着道歉。等三分钟，问问自己：这件事，真的是我的错吗？", color: "#b07050" },
-  "14表演疲惫":    { name: "表演疲惫",    desc: "你总是在表演一个「好脾气」的自己，很累。但你表演的那个版本，不是真正的你，对方喜欢的也不是真正的你。", advice: "找一个安全的人，在他面前尝试做一次「不表演」的自己——说一句你真实想说的、有点「不太乖」的话。", color: "var(--gold)" },
-  "15结束恐惧":    { name: "结束恐惧",    desc: "你想结束一段消耗你的关系，但不知道怎么开口，怕伤害对方。但你一直在消耗里待着，对自己才是最大的伤害。", advice: "写一封信（不用寄出去），把你想对那段关系说的话全写下来。写完了，你会清楚很多。", color: "#8a6040" },
-  "16值得怀疑":    { name: "值得怀疑",    desc: "你配被好好对待，但你不太敢相信这件事会发生。你潜意识里觉得自己不配，所以一直在接受低于你值得的关系。", advice: "写下来三件你值得被好好对待的理由。不用给别人看，就是写给自己看。你会发现自己比以为的更值得。", color: "var(--gold)" },
-  "17信任创伤":    { name: "信任创伤",    desc: "你曾经在关系里被辜负过，从那以后就很难再完全信任一个人。你不是不会信任，是你还没修复那个伤口。", advice: "找一个你信任的、很小的事（比如「我可以相信他会准时来」），练习把信任先放在这件小事上。", color: "#c0784a" },
-  "18比较消耗":    { name: "比较消耗",    desc: "你看到别人关系很好，就开始怀疑自己：为什么我的人际关系这么累？但每个人的关系里，都有你看不到的那一面。", advice: "下次想比较的时候，把注意力拉回来：在我现有的关系里，哪一段是让我舒服的？先把这一段经营好。", color: "#b89a6a" },
-  "19完美压力":    { name: "完美压力",    desc: "你觉得自己在关系里必须表现得很完美，不能出错、不能让人失望。但你又不是产品，为什么不许自己偶尔让人失望？", advice: "这周，故意在一件小事上「让人失望」一次——比如约好了但临时改时间。你会发现：对方往往没那么介意。", color: "#a88040" },
-  "20沉默成本":     { name: "沉默成本",    desc: "你知道这段关系在消耗你，但你已经投入了太多时间和情感，不舍得放手。但你越不舍，陷得越深。", advice: "问自己一个问题：「如果今天才认识这个人，我还会愿意和TA做朋友吗？」——答案会告诉你该不该继续。", color: "#9a7060" },
-  "21控制欲望":     { name: "控制欲望",    desc: "你总是想改变对方，觉得改了你们的关系就会变好。但你改变不了任何人，你只能改变自己应对的方式。", advice: "下次想改变对方的时候，把注意力转回自己：「我怎么能让自己在这段关系里更舒服？」", color: "#b08a5a" },
-  "22孤独恐惧":     { name: "孤独恐惧",    desc: "你怕一个人待着，所以宁愿在糟糕的关系里待着，也不愿一个人。但你先要能跟自己相处，才能跟别人相处得好。", advice: "这周，安排一个晚上，完全一个人待着，不刷手机、不找人聊天。你会发现：一个人，其实没那么可怕。", color: "#c09060" },
-  "23道歉惯性":     { name: "道歉惯性",    desc: "你总是先道歉，哪怕不是你的错。你用道歉来换关系的和平，但对方会慢慢觉得：反正你都会道歉。", advice: "这周，忍住一次「对不起」。如果一件事不是你的错，就不要说对不起。——忍住了，你会发现天不会塌。", color: "#a07850" },
-  "24羡慕回避":     { name: "羡慕回避",    desc: "你看到别人关系很好，心里会有点酸，但你不会承认，只是自己默默难受。你不是小气，是你也有权利渴望被好好对待。", advice: "下次心里酸的时候，对自己说一句：「我也值得被这样对待。」——承认这个渴望，它才会推动你去改变。", color: "#8a6040" },
-  "25共情过度":     { name: "共情过度",    desc: "你总是能感受到别人的情绪，但你会把别人的情绪当成自己的责任。你可以有同理心，但你不需要为别人的情绪买单。", advice: "下次感受到别人的负面情绪时，在心里说一句：「这是他的情绪，不是我的。」——划清这条线，你会轻松很多。", color: "var(--gold)" },
-  "26回馈压力":     { name: "回馈压力",    desc: "别人对你好，你一定要还回去，不然心里不踏实。但你把关系活成了交易，少了那份自然而然的流动。", advice: "下次有人对你好，试着只说「谢谢」，不要马上想着怎么还。有些好，收下就好。", color: "#b89a6a" },
-  "27防御过度":     { name: "防御过度",    desc: "你因为曾经被伤害过，所以现在对所有人都有防备。但你用防备保护了自己的同时，也把真正想靠近你的人挡在外面了。", advice: "找一个你觉得安全的人，试着多说一点关于自己的事。不用一下全说出来，就是多说一句。", color: "#c0784a" },
-  "28表达障碍":     { name: "表达障碍",    desc: "你有话想说，但话到嘴边又咽回去了，不知道怎么开口。你不是不会表达，是你还没找到属于你的表达方式。", advice: "这周，用文字代替口头表达一次——发一条消息，把你想说的写下来。文字会给你更多时间和勇气。", color: "var(--gold)" },
-  "29亲密恐惧":     { name: "亲密恐惧",    desc: "你渴望被理解，但你又怕被人看透。你一直在渴望和害怕之间拉扯，所以关系总是停在表面。", advice: "找一个你信任的人，跟TA说一件你从来没有跟别人说过的、关于你的小事。你会发现：被看透了，也没那么可怕。", color: "#a88040" },
-  "30和解障碍":     { name: "和解障碍",    desc: "你和一个人闹翻了，心里其实想和解，但不知道怎么开口，怕先开口就显得自己输了。但你不放过对方，其实是在不放过自己。", advice: "如果有一段关系你想和解，这周，发一条简单的消息：「最近还好吗？」——不用解释，不用道歉，就是先开口。", color: "#9a7060" }
+  "Giving Imbalance":    { name: "Giving Imbalance",    desc: "You give a lot in relationships, but the other person barely responds. You're not just being kind — you're trading giving for a sense of security.", advice: "This week, try an experiment in one relationship: don't initiate giving. If they don't reach out, neither do you. See if the sky falls.", color: "var(--gold)" },
+  "Conflict Avoidance":    { name: "Conflict Avoidance",    desc: "You're terrified of conflict. You'd rather swallow your feelings than make things uncomfortable. But every thing you swallow is being quietly tallied.", advice: "Next time you disagree, try saying: 'I see it a little differently.' — Just that one sentence. No argument needed.", color: "#b89a6a" },
+  "Fear of Authenticity":    { name: "Fear of Authenticity",    desc: "You're afraid to express your real thoughts, worried the other person will be upset. But the words you don't say become a thorn in your heart.", advice: "Find someone you trust and tell them one true thing you've been holding back. You'll find that speaking up often makes relationships better, not worse.", color: "var(--gold)" },
+  "Evaluation Anxiety":    { name: "Evaluation Anxiety",    desc: "You always worry about what others think, even when that person doesn't really matter. You've turned other people's gazes into your own prison.", advice: "Today, do one small thing that 'others might judge but I really want to do.' Afterward, you'll realize: nobody really cared that much.", color: "#c0784a" },
+  "Blurry Boundaries":    { name: "Blurry Boundaries",    desc: "You don't know how to say no, even when something makes you deeply uncomfortable. You're afraid that refusing makes you a bad person, but you forgot: your comfort matters too.", advice: "This week, practice saying once: 'Sorry, I might not be able to help with that.' No explanation needed, no apology — just that one sentence.", color: "var(--gold)" },
+  "Guilt Inertia":    { name: "Guilt Inertia",    desc: "After you refuse someone, you keep thinking: was I too harsh? You treat 'saying no' as a crime, but you forgot: the other person can say no too.", advice: "Next time you refuse something, say to yourself three times: 'I have the right to say no.' — Say it out loud, and the guilt will ease a little.", color: "#a88040" },
+  "Fear of Abandonment":    { name: "Fear of Abandonment",    desc: "You don't dare say no, because you're afraid they'll stop contacting you. But the connection you bought with委屈 was never solid to begin with.", advice: "Think about it: if someone stopped talking to you just because you said 'no,' would you really miss that relationship?", color: "#8a6040" },
+  "Image Maintenance":    { name: "Image Maintenance",    desc: "You're afraid refusing others will make you seem cold and heartless. But the 'nice person' image you've been maintaining is actually suffocating you.", advice: "Find a trusted friend and tell them: 'Honestly, sometimes I don't want to be so helpful.' — You'll find they won't like you any less for it.", color: "#b08a5a" },
+  "Suppressed Expectations":    { name: "Suppressed Expectations",    desc: "You have expectations of others, but when they fall short, you don't dare say anything — you just stew silently. But if you don't speak up, they'll never know what you expected.", advice: "Next time you have an expectation, try saying it out loud. For example: 'This weekend, I'd like us to do something together.' — Speaking it gives it a chance to be fulfilled.", color: "var(--gold)" },
+  "Passive Waiting":    { name: "Passive Waiting",    desc: "You always hope the other person will take the initiative to understand you, but they usually don't. But you haven't spoken up — they may not even know you need understanding.", advice: "This week, take the initiative once: 'I've been feeling a bit... could you talk with me?' — Don't feel embarrassed. It takes courage, and it's worth it.", color: "#9a7060" },
+  "Self-Neglect":    { name: "Self-Neglect",    desc: "In relationships, you're always guessing how the other person feels, but rarely ask yourself if you're okay. You put everyone else first and yourself last.", advice: "Today, do one small thing that puts your own feelings first — nothing huge, just ask yourself once: Am I okay right now?", color: "#c09060" },
+  "Conflict Helplessness":    { name: "Conflict Helplessness",    desc: "During conflict, your mind goes blank. You don't know what to say, and you regret it deeply afterward. It's not that you can't speak — you're just too tense during conflict.", advice: "Prepare one sentence in advance. Next time conflict arises, say: 'I'm feeling a bit emotional right now — can we pause and come back to this later?' — It gives you breathing room.", color: "#a07850" },
+  "People-Pleasing Inertia":    { name: "People-Pleasing Inertia",    desc: "You're afraid of the other person getting angry, so you compromise first, apologize first. But every compromise tells the other person: your feelings don't matter.", advice: "Next time the other person gets angry, don't rush to apologize. Wait three minutes and ask yourself: Is this really my fault?", color: "#b07050" },
+  "Performance Exhaustion":    { name: "Performance Exhaustion",    desc: "You're always performing a 'good-tempered' version of yourself — it's exhausting. But the version you perform isn't the real you, and the person they like isn't the real you either.", advice: "Find a safe person and try being 'unperformed' with them once — say something you've genuinely been wanting to say, something a little 'not so nice.'", color: "var(--gold)" },
+  "Fear of Ending":    { name: "Fear of Ending",    desc: "You want to end a draining relationship, but you don't know how to bring it up — you're afraid of hurting them. But staying in a draining situation is the biggest harm to yourself.", advice: "Write a letter (you don't have to send it). Put down everything you want to say about that relationship. Once it's written, you'll see much more clearly.", color: "#8a6040" },
+  "Worthiness Doubt":    { name: "Worthiness Doubt",    desc: "You deserve to be treated well, but you can't quite believe it will happen. Deep down, you feel unworthy, so you keep accepting relationships that are less than you deserve.", advice: "Write down three reasons you deserve to be treated well. Don't show anyone — just for yourself. You'll find you're more worthy than you think.", color: "var(--gold)" },
+  "Trust Trauma": { name: "Trust Trauma", desc: "You were once let down in a relationship, and since then it's been hard to fully trust anyone. It's not that you can't trust — it's that the wound hasn't healed yet.", advice: "Find something small and trustworthy (like 'I can trust him to be on time'), and practice placing your trust in that one small thing first.", color: "#c0784a" },
+  "Comparison Drain": { name: "Comparison Drain", desc: "You see others with great relationships and start doubting yourself: Why are my relationships so exhausting? But every relationship has a side you can't see.", advice: "Next time you catch yourself comparing, pull your attention back: Which of my current relationships feels comfortable? Start by nurturing that one.", color: "#b89a6a" },
+  "Perfection Pressure": { name: "Perfection Pressure", desc: "You feel you must be perfect in relationships — no mistakes, no letting anyone down. But you're not a product. Why not allow yourself to disappoint someone occasionally?", advice: "This week, deliberately 'disappoint' someone on one small thing — like changing plans last minute. You'll find: they usually don't mind as much as you think.", color: "#a88040" },
+  "Sunk Cost": { name: "Sunk Cost", desc: "You know this relationship is draining you, but you've invested too much time and emotion to let go. The more you hold on, the deeper you sink.", advice: "Ask yourself: 'If I met this person today, would I still want to be friends with them?' — The answer will tell you whether to continue.", color: "#9a7060" },
+  "Control Desire": { name: "Control Desire", desc: "You always want to change the other person, believing it would fix the relationship. But you can't change anyone — you can only change how you respond.", advice: "Next time you want to change them, redirect the focus to yourself: 'How can I make myself more comfortable in this relationship?'", color: "#b08a5a" },
+  "Fear of Loneliness": { name: "Fear of Loneliness", desc: "You're afraid of being alone, so you'd rather stay in a bad relationship than be by yourself. But you need to be comfortable with yourself before you can be comfortable with others.", advice: "This week, plan one evening alone — no phone, no chatting. You'll find: being alone isn't as scary as you thought.", color: "#c09060" },
+  "Apology Inertia": { name: "Apology Inertia", desc: "You always apologize first, even when it's not your fault. You use apologies to keep the peace, but the other person starts to think: they'll apologize anyway.", advice: "This week, hold back one 'sorry.' If something isn't your fault, don't apologize. — Hold back, and you'll find the sky doesn't fall.", color: "#a07850" },
+  "Envy Avoidance": { name: "Envy Avoidance", desc: "You see others with great relationships and feel a pang of envy, but you won't admit it. You just suffer quietly. It's not that you're petty — you have every right to want to be treated well.", advice: "Next time you feel that pang, tell yourself: 'I deserve to be treated that way too.' — Acknowledging that desire is what drives change.", color: "#8a6040" },
+  "Over-Empathy": { name: "Over-Empathy", desc: "You're always picking up on others' emotions, but you treat their feelings as your responsibility. You can have empathy without paying the price for their emotions.", advice: "Next time you sense someone's negative emotions, say to yourself: 'That's their emotion, not mine.' — Drawing that line will lighten your load enormously.", color: "var(--gold)" },
+  "Reciprocity Pressure": { name: "Reciprocity Pressure", desc: "When someone is kind to you, you feel you must return it immediately, or you feel uneasy. You've turned relationships into transactions, losing that natural flow.", advice: "Next time someone is kind, try just saying 'thank you' without immediately planning how to repay. Some kindness is meant to simply be received.", color: "#b89a6a" },
+  "Over-Defensiveness": { name: "Over-Defensiveness", desc: "Because you were hurt before, you're now guarded against everyone. But while your walls protect you, they also keep out the people who genuinely want to get close.", advice: "Find someone you feel safe with and try sharing a little more about yourself. You don't have to reveal everything — just one more sentence.", color: "#c0784a" },
+  "Expression Barrier": { name: "Expression Barrier", desc: "You have things to say, but the words get swallowed before they reach your lips. It's not that you can't express yourself — you just haven't found your way yet.", advice: "This week, try writing instead of speaking — send a message with what you want to say. Writing gives you more time and more courage.", color: "var(--gold)" },
+  "Fear of Intimacy": { name: "Fear of Intimacy", desc: "You long to be understood, but you're also afraid of being seen through. You're caught between longing and fear, so relationships stay on the surface.", advice: "Find someone you trust and tell them one small thing about yourself that you've never told anyone. You'll find: being seen through isn't so scary after all.", color: "#a88040" },
+  "Reconciliation Barrier": { name: "Reconciliation Barrier", desc: "You've had a falling-out with someone, and you actually want to reconcile, but you don't know how to start. You're afraid reaching out first means losing. But not forgiving them is really not forgiving yourself.", advice: "If there's a relationship you want to mend, this week send a simple message: 'How have you been?' — No explanation, no apology. Just take the first step.", color: "#9a7060" }
 };
 
-// 彩蛋（4个，围绕人际关系与自我成长主题）
+// Easter Eggs (4)
 const easterEggs = [
-  { title: "《智囊》· 管仲与鲍叔牙", text: "管仲曰：「生我者父母，知我者鲍子也。」——真正的朋友，不是数量多，是有一个人，懂得你不为人知的那一面。" },
-  { title: "《智囊》· 王旦", text: "王旦为相，有人骂他，他装作没听见。——不是软弱，是知道自己要做什么，不把精力浪费在每一句噪音上。" },
-  { title: "王凤仪· 化性", text: "王凤仪说：「人要是能把脾气化去，自然就好了。」——你在关系里受的委屈，往往跟你没化完的性子有关。化性，不是改别人，是改自己。" },
-  { title: "反脆弱", text: "塔勒布说：反脆弱的系统，会从波动中受益。——你和人的关系也是，经历过低谷、冲突、误解，关系才会真正结实起来。没有冲突的关系，往往很脆弱。" }
+  { title: "Historical Wisdom: Guan Zhong & Bao Shuya", text: "Guan Zhong said: 'My parents gave me life, but it is Bao Shuya who truly understands me.' — A true friend isn't about quantity. It's about having one person who sees the side of you that nobody else does." },
+  { title: "Historical Wisdom: Wang Dan", text: "Wang Dan, as prime minister, pretended not to hear when people insulted him. — It wasn't weakness. He knew what he was doing and refused to waste energy on every bit of noise." },
+  { title: "Wang Fengyi · Transforming Nature", text: "Wang Fengyi said: 'If a person can dissolve their temper, everything naturally improves.' — The委屈 you suffer in relationships often relates to temperaments you haven't yet transformed. Transforming yourself, not others, is the key." },
+  { title: "Antifragile", text: "Nassim Taleb says: antifragile systems benefit from volatility. — Your relationships are the same. They become truly resilient only after weathering lows, conflicts, and misunderstandings. Conflict-free relationships are often fragile." }
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedDilemmas = [];
@@ -1113,7 +1113,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航
+   Page Navigation
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1136,13 +1136,13 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境选择
+   Dilemma Selection
    ============================================================ */
 function renderDilemma() {
   const list = document.getElementById('dilemmaList');
   list.innerHTML = dilemmas.map(d => `
     <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
-      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-num">Dilemma ${String(d.id).padStart(2,'0')}</div>
       <div class="dilemma-text">${d.text}</div>
     </div>
   `).join('');
@@ -1171,7 +1171,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1181,13 +1181,13 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+  document.getElementById('flipHint').textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('flipHint').textContent = '— This card will guide your diagnosis —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1196,12 +1196,12 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1216,7 +1216,7 @@ function renderQuestion() {
 
   document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
   nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
 }
 
@@ -1251,7 +1251,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnostic Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1270,9 +1270,9 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
-    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `人和人的关系，说到底是人和自己的关系。看清卡在哪里，就已经是改变的开始。`
+    `Your core blocker is "${topKey ? topKey.name : ''}." The rest are extensions of it.`,
+    `You have ${sorted.filter(s => s[1] >= 2).length} deeper blockers — they're interconnected and reinforce each other.`,
+    `Relationships with others are ultimately relationships with yourself. Seeing where you're stuck is already the beginning of change.`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1286,7 +1286,7 @@ function showResult() {
       <div class="result-card">
         <div class="result-card-top">
           <span class="result-card-name">${cp.name}</span>
-          <span class="result-card-pct">命中 ${score} 次</span>
+          <span class="result-card-pct">Hit ${score} time${score > 1 ? 's' : ''}</span>
         </div>
         <div class="result-bar-bg">
           <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1318,7 +1318,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1331,7 +1331,7 @@ function showAdvice() {
     if (!cp) return '';
     return `
       <div class="advice-card">
-        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-label">Blocker ${String(i+1).padStart(2,'0')}</div>
         <div class="advice-card-title">
           <span class="advice-card-num">${i+1}</span>
           ${cp.name}
@@ -1348,7 +1348,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1357,25 +1357,25 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你卡住的事。');
+    alert('Write something first — at least one thing that\'s blocking you.');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${['One','Two','Three','Four'][i]}: ${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
-    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
-    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
-    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
-    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+    "What you wrote shows you're already facing it. Just putting it into words is the beginning of change.",
+    "These blocks didn't form in a day, and they don't need a day to untangle. You've already taken the first step.",
+    "What you said is what many people are afraid to face. Your courage is greater than you know.",
+    "Not everyone is willing to write these things down. You did. That alone is remarkable."
   ];
-  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+  document.getElementById('cardResponse').textContent = responses[Math.floor(Math.random() * responses.length)];
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：把这件事再想一遍，比今天多想清楚一点。';
+  const firstAction = h4 ? `Start with this today: ${h4.split('.')[0].split(',')[0]}` : 'Today, just do one thing: think about this issue one more time, and see it a little more clearly than yesterday.';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
@@ -1399,11 +1399,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的隐藏关卡', 300, 80);
+  ctx.fillText('My Hidden Level', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第八关 · 人际迷宫 · 找到啦', 300, 108);
+  ctx.fillText('Level 8 · Interpersonal Maze · Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1434,10 +1434,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第八关 · 人际迷宫 · 找到啦 —', 300, 750);
+  ctx.fillText('— Level 8 · Interpersonal Maze · Found It —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的隐藏关卡.png';
+  link.download = 'My Hidden Level.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1464,14 +1464,14 @@ function goBackHome() {
 }
 
 /* ============================================================
-   启动
+   Init
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderDilemma();
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1487,7 +1487,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){
@@ -1498,7 +1498,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 Visitor #<span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span></span>';}
 })();
 </script>
 <script src="lang-toggle.js"></script>

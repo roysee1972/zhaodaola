@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="初入人海关卡：面对社会的第一步，识别你在人际关系和自我认知上的盲区。">
+<meta name="description" content="Entering the Crowd: The first step into society — identify your blind spots in relationships and self-awareness.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第三关 · 初入人海 — 找到啦</title>
+<title>Level 3 · Entering the Crowd — Found It</title>
 <style>
-  /* ==================== 基础变量（与一二关保持一致）==================== */
+  /* ==================== Base Variables (consistent with Levels 1 & 2) ==================== */
   :root {
     --bg: #f5e6c8;
     --bg2: #eed9a4;
@@ -24,7 +24,7 @@
     --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
   }
 
-  /* ==================== 全局 ==================== */
+  /* ==================== Global ==================== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -47,7 +47,7 @@
     pointer-events: none; z-index: 0;
   }
 
-  /* ==================== 页面容器 ==================== */
+  /* ==================== Page Container ==================== */
   .page {
     display: none;
     position: relative; z-index: 1;
@@ -62,7 +62,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ==================== 通用组件 ==================== */
+  /* ==================== Common Components ==================== */
   .gold-line {
     width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
@@ -108,7 +108,7 @@
   .mt-40 { margin-top: 40px; }
   .mb-8 { margin-bottom: 8px; }
 
-  /* ==================== 进度条 ==================== */
+  /* ==================== Progress Bar ==================== */
   .progress-bar-wrap {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 3px;
@@ -121,7 +121,7 @@
     width: 0%;
   }
 
-  /* ==================== P1: 入口页 ==================== */
+  /* ==================== P1: Entry Page ==================== */
   .level-badge {
     display: inline-block;
     font-size: 11px;
@@ -155,7 +155,7 @@
     margin: 0 auto 40px;
   }
 
-  /* 装饰圆环（第三关：清冷晨雾感） */
+  /* Decorative Ring (Level 3: cool morning mist feel) */
   .deco-ring {
     width: 160px; height: 160px;
     border: 1.5px solid var(--border);
@@ -163,7 +163,7 @@
     margin: 0 auto 40px;
     display: flex; align-items: center; justify-content: center;
     position: relative;
-    /* 雾气效果 */
+    /* Mist effect */
     box-shadow:
       0 0 30px rgba(180,160,120,0.15),
       inset 0 0 30px rgba(180,160,120,0.08);
@@ -192,7 +192,7 @@
     50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
   }
 
-  /* 雾气粒子装饰 */
+  /* Mist particle decorations */
   .fog-particle {
     position: fixed;
     border-radius: 50%;
@@ -206,7 +206,7 @@
     50% { transform: translateY(-20px) translateX(15px); opacity: 0.6; }
   }
 
-  /* ==================== P2: 社交瞬间选择页 ==================== */
+  /* ==================== P2: Social Moment Selection Page ==================== */
   .moment-layer-title {
     text-align: center;
     font-size: 11px;
@@ -279,7 +279,7 @@
     margin-top: 16px;
   }
 
-  /* ==================== P3: 冒险卡 ==================== */
+  /* ==================== P3: Adventure Card ==================== */
   .adventure-wrap {
     display: flex; flex-direction: column; align-items: center;
     padding: 20px 0;
@@ -339,7 +339,7 @@
     50% { opacity: 1; }
   }
 
-  /* ==================== P4: 诊断测试 ==================== */
+  /* ==================== P4: Diagnostic Test ==================== */
   .question-header {
     text-align: center;
     margin-bottom: 28px;
@@ -412,7 +412,7 @@
     margin-top: 28px;
   }
 
-  /* ==================== P5: 诊断结果 ==================== */
+  /* ==================== P5: Diagnostic Results ==================== */
   .result-header {
     text-align: center;
     margin-bottom: 32px;
@@ -466,7 +466,7 @@
   .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
   .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
 
-  /* ==================== P6: 通关建议 ==================== */
+  /* ==================== P6: Advice ==================== */
   .advice-header {
     text-align: center;
     margin-bottom: 28px;
@@ -533,7 +533,7 @@
   }
   .advice-card-action::before { content: '→ '; }
 
-  /* ==================== P7: 隐藏关卡 ==================== */
+  /* ==================== P7: Hidden Level ==================== */
   .hidden-header {
     text-align: center;
     margin-bottom: 28px;
@@ -636,7 +636,7 @@
   }
   .download-btn:hover { background: rgba(201,168,76,0.1); }
 
-  /* ==================== 彩蛋 ==================== */
+  /* ==================== Easter Egg ==================== */
   .easter-egg {
     display: none;
     background: rgba(90,50,20,0.95);
@@ -665,7 +665,7 @@
     cursor: pointer; line-height: 1;
   }
 
-  /* ==================== 隐藏关卡入口 ==================== */
+  /* ==================== Hidden Level Entry ==================== */
   .hidden-trigger {
     display: block; width: 200px; margin: 32px auto 0; padding: 10px 20px;
     background: none; border: 1px dashed var(--border); border-radius: 20px;
@@ -678,10 +678,10 @@
     letter-spacing: 2px; margin-top: 20px;
   }
 
-  /* ==================== 完成页 ==================== */
+  /* ==================== Completion Page ==================== */
   .complete-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
 
-  /* ==================== 返回主页按钮 ==================== */
+  /* ==================== Back to Home Button ==================== */
   .back-home-btn {
     position: fixed; top: 16px; left: 16px; z-index: 200;
     display: flex; align-items: center; gap: 6px;
@@ -705,7 +705,7 @@
   }
   .back-home-btn .arrow { font-size: 14px; line-height: 1; color: var(--gold); }
 
-  /* ==================== 响应式 ==================== */
+  /* ==================== Responsive ==================== */
   @media (max-width: 600px) {
     .hero-title { font-size: 28px; letter-spacing: 4px; }
     .flip-card { width: 280px; height: 180px; }
@@ -718,481 +718,584 @@
 </head>
 <body>
 
-<!-- 雾气粒子装饰 -->
+<!-- Mist particle decorations -->
 <div class="fog-particle" style="width:200px;height:200px;top:10%;left:-50px;animation-delay:0s;"></div>
 <div class="fog-particle" style="width:150px;height:150px;top:40%;right:-30px;animation-delay:2s;"></div>
 <div class="fog-particle" style="width:180px;height:180px;bottom:15%;left:10%;animation-delay:4s;"></div>
 
-<!-- 进度条 -->
+<!-- Progress Bar -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<!-- 返回主页按钮 -->
-<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+<!-- Back to Home Button -->
+<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
-  <span>返回主页</span>
+  <span>Back to Home</span>
 </button>
 
-<!-- ==================== P1: 入口页 ==================== -->
+<!-- ==================== P1: Entry Page ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第三关 · 找到啦</div>
+    <div class="level-badge">LEVEL 3 · FOUND IT</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">初涉</div>
+      <div class="deco-ring-inner">First Steps</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">初入人海</h1>
+    <h1 class="hero-title">Entering the Crowd</h1>
     <p class="hero-sub">
-      你第一次发现：<br>
-      别人不是爸妈。
+      The first time you realized:<br>
+      Other people aren't your parents.
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      走出家门的那一刻，<br>
-      世界不再围着你转。<br>
-      有人对你笑，有人不理你，<br>
-      有人你以为是朋友，其实不是。
+      The moment you stepped out the door,<br>
+      the world stopped revolving around you.<br>
+      Some people smiled at you, some ignored you,<br>
+      and some you thought were friends — really weren't.
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      这一关，不讲社交技巧，<br>
-      只是让你看见：<br>
-      你是怎么「进入人群」的。
+      This level isn't about social skills.<br>
+      It's about seeing:<br>
+      how you "entered the crowd" in the first place.
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 6 分钟</p>
+    <button class="btn" onclick="goPage('dilemma')">Start Exploring</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 6 minutes</p>
   </div>
 </div>
 
-<!-- ==================== P2: 社交瞬间选择页 ==================== -->
+<!-- ==================== P2: Social Moment Selection Page ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第三关 · 初入人海</div>
+      <div class="level-badge">LEVEL 3 · ENTERING THE CROWD</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">哪个瞬间，你最记得？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 个你最有感觉的社交瞬间。<br>不用想，凭第一感觉选。</p>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Which moment do you remember most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1–3 social moments that hit you the hardest.<br>Don't overthink it — go with your gut.</p>
     </div>
 
-    <div class="moment-layer-title">— 幼儿园 · 小学 —</div>
+    <div class="moment-layer-title">— Kindergarten · Elementary School —</div>
     <div id="momentLayer1"></div>
 
-    <div class="moment-layer-title">— 中学 · 同龄人 —</div>
+    <div class="moment-layer-title">— Middle School · Peers —</div>
     <div id="momentLayer2"></div>
 
-    <div class="moment-layer-title">— 初入社会 · 第一份工 —</div>
+    <div class="moment-layer-title">— Entering the Workforce · First Job —</div>
     <div id="momentLayer3"></div>
 
-    <div class="dilemma-hint">已选择 <span id="dilemmaCount">0</span> 个瞬间</div>
+    <div class="dilemma-hint">Selected <span id="dilemmaCount">0</span> moments</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P3: 冒险卡页 ==================== -->
+<!-- ==================== P3: Adventure Card Page ==================== -->
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第三关 · 初入人海</div>
+      <div class="level-badge">LEVEL 3 · ENTERING THE CROWD</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">抽一张冒险卡</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before we begin the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard" onclick="flipCard()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">点击翻开</div>
+            <div class="flip-card-front-hint">Tap to reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"你以为你在看别人，其实别人也在看你。"</div>
-            <div class="flip-card-tap-hint">— 冒险卡</div>
+            <div class="flip-card-quote" id="flipQuote">"You think you're watching others — but they're watching you too."</div>
+            <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
-      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P4: 诊断测试页 ==================== -->
+<!-- ==================== P4: Diagnostic Test Page ==================== -->
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">第一题</div>
-      <div class="question-text" id="qText">你第一次注意到「别人不喜欢我」，是在什么时候？</div>
+      <div class="question-num" id="qNum">Question 1</div>
+      <div class="question-text" id="qText">When did you first notice "this person doesn't like me"?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
-      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P5: 诊断结果页 ==================== -->
+<!-- ==================== P5: Diagnostic Results Page ==================== -->
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">诊断完成</div>
+      <div class="level-badge">DIAGNOSIS COMPLETE</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的社交卡点画像</div>
-      <div class="result-sub">初入人海 · 第三关</div>
+      <div class="result-title">Your Social Blocker Profile</div>
+      <div class="result-sub">Entering the Crowd · Level 3</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
-    <!-- 彩蛋区域 -->
+    <!-- Easter Egg Area -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-label">You found a hidden thought</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+      <button class="btn" onclick="goAdvice()">View Advice</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P6: 通关建议页 ==================== -->
+<!-- ==================== P6: Advice Page ==================== -->
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第三关 · 初入人海</div>
+      <div class="level-badge">LEVEL 3 · ENTERING THE CROWD</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">通关建议</div>
+      <div class="advice-title">Level Clear Advice</div>
       <div class="advice-intro">
-        人群不可怕。<br>
-        可怕的是，你以为人群在看你。
+        The crowd isn't scary.<br>
+        What's scary is thinking the crowd is watching you.
       </div>
     </div>
     <div id="adviceList"></div>
 
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      以上不是你想说的？打开你的隐藏关卡 →
+      Not what you wanted to say? Open your Hidden Level →
     </div>
-    <div class="page-end-text">— 第三关 · 初入人海 · 完 —</div>
+    <div class="page-end-text">— Level 3 · Entering the Crowd · Complete —</div>
   </div>
 </div>
 
-<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<!-- ==================== P7: Hidden Level Page ==================== -->
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">隐藏关卡</div>
+      <div class="level-badge">HIDDEN LEVEL</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的社交初体验</div>
+      <div class="hidden-title">Your Personal Level</div>
       <div class="hidden-sub">
-        这里是你的空间，写下你第一次「进入人群」的故事。<br>
-        不用修饰，真实就好。
+        This is your space. Write about your first time "entering the crowd."<br>
+        No need to polish it — just be real.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">第一步</div>
-      <div class="step-label">我第一次觉得「别人不喜欢我」，是在什么时候？</div>
-      <textarea class="step-input" id="hidden1" placeholder="我记得……"></textarea>
+      <div class="step-num">Step One</div>
+      <div class="step-label">When was the first time I felt "this person doesn't like me"?</div>
+      <textarea class="step-input" id="hidden1" placeholder="I remember..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第二步</div>
-      <div class="step-label">当时我怎么反应的？我现在怎么看那个反应？</div>
-      <textarea class="step-input" id="hidden2" placeholder="我当时……现在回想起来……"></textarea>
+      <div class="step-num">Step Two</div>
+      <div class="step-label">How did I react at the time? How do I see that reaction now?</div>
+      <textarea class="step-input" id="hidden2" placeholder="At the time I... Looking back now..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第三步</div>
-      <div class="step-label">如果可以回到那一刻，我想对当时的自己说什么？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我想对当时的自己说……"></textarea>
+      <div class="step-num">Step Three</div>
+      <div class="step-label">If I could go back to that moment, what would I say to myself?</div>
+      <textarea class="step-input" id="hidden3" placeholder="I would tell myself..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第四步</div>
-      <div class="step-label">今天，我可以做一件什么事，来松动这个卡点？</div>
-      <textarea class="step-input" id="hidden4" placeholder="今天，我可以做……"></textarea>
+      <div class="step-num">Step Four</div>
+      <div class="step-label">What's one thing I can do today to loosen this block?</div>
+      <textarea class="step-input" id="hidden4" placeholder="Today, I can..."></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">生成我的社交觉醒卡片</button>
+    <button class="generate-btn" onclick="generateCard()">Generate My Social Awakening Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的社交初体验</div>
-      <div class="card-preview-sub">第三关 · 初入人海 · 找到啦</div>
+      <div class="card-preview-title">My First Social Experience</div>
+      <div class="card-preview-sub">Level 3 · Entering the Crowd · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+      <button class="download-btn" onclick="downloadCard()">Download Card</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== 完成页 ==================== -->
+<!-- ==================== Completion Page ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      看见自己的社交卡点，<br>
-      是走出人群焦虑的第一步。
+      Seeing your social blockers<br>
+      is the first step beyond crowd anxiety.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+    <button class="btn btn-ghost" onclick="restart()">Start Over</button>
   </div>
 </div>
 
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据：第三关 · 初入人海
+   Data: Level 3 · Entering the Crowd
    ============================================================ */
 
-// 社交瞬间卡（3层：幼儿园小学 / 中学同龄人 / 初入社会）
+// Social moment cards (3 layers: kindergarten/elementary, middle school/peers, first job)
 const moments = [
-  // 第一层：幼儿园 · 小学
+  // Layer 1: Kindergarten · Elementary School
   {
     id: 1, layer: 1,
     icon: "🏫",
-    title: "第一次被同学孤立",
-    desc: "你不记得具体原因，只记得那种感觉——围墙上有人在看你，但没人叫你一起玩。你假装不在乎，但其实很在乎。",
-    hint: "你就是那个小孩。你当时怎么做的？"
+    title: "First time being excluded by classmates",
+    desc: "You don't remember the exact reason — just the feeling. Kids were looking at you from across the yard, but nobody called you over to play. You pretended not to care, but you really did.",
+    hint: "You were that kid. What did you do?"
   },
   {
     id: 2, layer: 1,
     icon: "✋",
-    title: "老师当众批评你",
-    desc: "全班安静，所有人的眼睛都看向你。老师说的话你已经不记得，但那种「被所有人看着」的感觉，你还记得。",
-    hint: "你就是那个被批评的小孩。"
+    title: "Teacher criticized you in front of everyone",
+    desc: "The whole class went quiet. Every pair of eyes turned to you. You've forgotten what the teacher said, but you still remember the feeling of being watched by everyone.",
+    hint: "You were the kid being called out."
   },
   {
     id: 3, layer: 1,
     icon: "🎒",
-    title: "最好的朋友忽然不理你",
-    desc: "昨天还在分享秘密，今天就不跟你说话了。你不知道为什么，也不敢问。从此你学会了一件事：关系可能随时消失。",
-    hint: "你就是那个被冷落的小孩。"
+    title: "Your best friend suddenly stopped talking to you",
+    desc: "Yesterday you were sharing secrets. Today they won't look at you. You didn't know why, and you didn't dare ask. From that day on, you learned something: relationships can vanish at any moment.",
+    hint: "You were the kid being given the cold shoulder."
   },
   {
     id: 4, layer: 1,
     icon: "🏠",
-    title: "邻居小孩「借」了你的玩具，没有还",
-    desc: "你站在他家门口，不敢敲门。妈妈在后面说：「算了，大方一点。」但你心里不是「大方」——是委屈。",
-    hint: "你就是那个站在门口的小孩。"
+    title: "A neighbor's kid 'borrowed' your toy and never returned it",
+    desc: "You stood at their door, not daring to knock. Your mom said from behind you: 'Just let it go — be generous.' But it wasn't generosity you felt. It was hurt.",
+    hint: "You were the kid standing at the doorway."
   },
 
-  // 第二层：中学 · 同龄人
+  // Layer 2: Middle School · Peers
   {
     id: 5, layer: 2,
     icon: "📱",
-    title: "群里聊天，没有人回你的消息",
-    desc: "其他人都在热聊，你的消息发出去，像石沉大海。你删了又发，发了又删。最后你不发了，假装自己没发过。",
-    hint: "你就是那个盯著手机等回复的人。"
+    title: "In the group chat, nobody replied to your message",
+    desc: "Everyone else was chatting away. Your message went out and sank without a trace. You deleted it, retyped it, deleted it again. Eventually you just stopped, pretending you'd never sent it.",
+    hint: "You were the one staring at the phone waiting for a reply."
   },
   {
     id: 6, layer: 2,
     icon: "🎭",
-    title: "为了在人群中不被排挤，你变成了另一个人",
-    desc: "你说著自己不喜欢的话题，笑著自己不觉得好笑的笑话。回到家，你有点不认识自己了。但为了「被接纳」，你觉得值得。",
-    hint: "你就是那个戴著面具的人。"
+    title: "To fit in, you became someone else",
+    desc: "You talked about topics you didn't care about, laughed at jokes you didn't find funny. When you got home, you barely recognized yourself. But to be 'accepted,' you thought it was worth it.",
+    hint: "You were the one wearing a mask."
   },
   {
     id: 7, layer: 2,
     icon: "💬",
-    title: "你鼓起勇气说了真话，结果冷场了",
-    desc: "大家沉默了三秒，然后有人换了个话题。你说的话没有错，但那一刻你觉得：也许不说才是聪明的做法。",
-    hint: "你就是那个说真话的人。"
+    title: "You spoke the truth, and the room went silent",
+    desc: "Everyone went quiet for three seconds. Then someone changed the subject. You hadn't said anything wrong, but in that moment you thought: maybe staying silent is the smarter move.",
+    hint: "You were the one who told the truth."
   },
   {
     id: 8, layer: 2,
     icon: "🌙",
-    title: "深夜你反复回想白天说过的某句话",
-    desc: "「我是不是说错了？」「他们是不是在笑我？」你翻来覆去，觉得自己把某件事搞砸了。但第二天，发现根本没人在意。",
-    hint: "你就是那个深夜反刍的人。"
+    title: "Late at night, you replayed something you said during the day",
+    desc: "'Did I say something wrong?' 'Were they laughing at me?' You tossed and turned, convinced you'd messed something up. But the next day, you realized nobody even noticed.",
+    hint: "You were the one ruminating at midnight."
   },
 
-  // 第三层：初入社会 · 第一份工
+  // Layer 3: Entering the Workforce · First Job
   {
     id: 9, layer: 3,
     icon: "👔",
-    title: "第一次上班，不知道「规矩」是什么",
-    desc: "别人都懂，只有你不懂。你笑得有点多，问得有点少，怕显得自己「不够成熟」。那段时间，你每天都在消耗。",
-    hint: "你就是那个新人。"
+    title: "First day at work — no idea what the 'rules' were",
+    desc: "Everyone else seemed to know the drill. You smiled too much, asked too little, afraid of seeming 'immature.' Every day back then felt like it was draining you.",
+    hint: "You were the new person."
   },
   {
     id: 10, layer: 3,
     icon: "🍻",
-    title: "同事聚餐，你不知道该坐哪里",
-    desc: "推门进去，已经坐满了。你端着盘子站在那里，三秒钟像三分钟。最后你坐到了一个角落，整场饭你都在想怎么说话才不显得尴尬。"
+    title: "At a team dinner, you didn't know where to sit",
+    desc: "You walked in and it was already full. You stood there holding your plate — three seconds that felt like three minutes. You ended up in a corner, spending the whole meal thinking about how not to be awkward.",
+    hint: "You were the one standing with a plate."
   },
   {
     id: 11, layer: 3,
     icon: "🧊",
-    title: "你是那个「不太合群」的人",
-    desc: "别人三三两两聊得火热，你一个人站在旁边。你有点失落，但更多是困惑：为什么他们那么容易就能聊起来？你做不到。",
-    hint: "你就是那个站在旁边的人。"
+    title: "You were the one who 'didn't quite fit in'",
+    desc: "Everyone was chatting in small groups, and you stood to the side alone. You felt a bit left out, but mostly confused: why is it so easy for them to connect? You couldn't seem to manage it.",
+    hint: "You were the one standing on the sidelines."
   },
   {
     id: 12, layer: 3,
     icon: "🤝",
-    title: "你主动伸出了手，对方没有接",
-    desc: "你鼓起勇气说了一句「我们做朋友吧」，对方笑了笑，走了。你站在原地，觉得自己像个傻子。从此你决定：再也不主动了。",
-    hint: "你就是那个伸出手的人。"
+    title: "You reached out, and they didn't take your hand",
+    desc: "You gathered your courage and said 'Let's be friends.' They smiled — and walked away. You stood there feeling like a fool. From then on, you decided: never again.",
+    hint: "You were the one who reached out."
   }
 ];
 
-// 冒险卡（初入人海）
+// Adventure cards (Entering the Crowd)
 const adventureCards = [
-  "你以为你在看别人，其实别人也在看你。",
-  "人群里最怕的，不是别人不喜欢你，是你自己不喜欢自己。",
-  "你不是不会社交，你是忘了一件事：你也是人群的一部分。",
-  "被拒绝一次不等于被否定一生。那个人只是那一刻不想理你而已。",
-  "你在人群里的样子，其实是你和父母关系的样子。",
-  "沉默不等于没有价值。有些人的安静，是留给懂得人的。",
-  "你不需要让所有人都喜欢你。那是做不到的事，也是没有意义的事。",
-  "人群中，你最该在意的那个人，是你自己。",
-  "第一次见面被冷落，不一定是你的问题。也可能是对方那天刚好心情不好。",
-  "关系的建立需要时间。你不需要第一次就「搞定」所有人。",
-  "你小时候在人际关系里受的伤，可能现在还在影响你。只是你不知道。",
-  "社交不是表演，做自己才能吸引对的人。"
+  "You think you're watching others — but they're watching you too.",
+  "The scariest thing in a crowd isn't that people don't like you. It's that you don't like yourself.",
+  "You're not bad at socializing. You just forgot one thing: you're part of the crowd too.",
+  "Being rejected once doesn't mean you're worthless for life. That person just didn't feel like talking to you at that moment.",
+  "The way you act in a crowd mirrors your relationship with your parents.",
+  "Silence doesn't mean you have no value. Some people's quietness is reserved for those who understand them.",
+  "You don't need everyone to like you. That's impossible — and meaningless.",
+  "In a crowd, the person you should care about most is yourself.",
+  "Being cold-shouldered at a first meeting isn't necessarily your fault. Maybe the other person was just having a bad day.",
+  "Relationships take time. You don't need to 'click' with everyone right away.",
+  "The wounds you carried from childhood relationships may still be affecting you — you just don't know it yet.",
+  "Socializing isn't a performance. Being yourself is what attracts the right people."
 ];
 
-// 诊断题
+// Diagnostic questions
 const questions = [
   {
-    q: "聚会时，你通常坐在哪里？",
+    q: "At a gathering, where do you usually sit?",
     options: [
-      { text: "靠边的位置，方便随时走", key: "逃避社交" },
-      { text: "中间的位置，方便和人聊天", key: "主动社交" },
-      { text: "角落的位置，不想被人注意", key: "隐藏自己" },
-      { text: "无所谓，哪里有空坐哪里", key: "随遇而安" },
-      { text: "不去聚会，能推就推", key: "社交回避" }
+      { text: "Near the edge, so I can leave easily", key: "Avoiding Socializing" },
+      { text: "In the middle, so I can chat with people", key: "Active Socializing" },
+      { text: "In a corner, so I won't be noticed", key: "Hiding" },
+      { text: "Doesn't matter — wherever there's an open seat", key: "Go With the Flow" },
+      { text: "I don't go to gatherings — I decline whenever I can", key: "Social Avoidance" }
     ]
   },
   {
-    q: "有人说了一句让你不舒服的话，你第一反应是？",
+    q: "Someone says something that bothers you. What's your first reaction?",
     options: [
-      { text: "忍着不说，但心里一直记着", key: "压抑情绪" },
-      { text: "当场怼回去，不让自己吃亏", key: "攻击性" },
-      { text: "事后反复回想，越想越气", key: "反刍思维" },
-      { text: "算了，不值得计较", key: "忽略自己" },
-      { text: "直接说：我觉得你这样说不合适", key: "设立边界" }
+      { text: "I hold it in, but I keep thinking about it", key: "Suppressing Emotions" },
+      { text: "I fire back right away — I won't let anyone walk over me", key: "Aggression" },
+      { text: "I replay it over and over afterward, getting angrier each time", key: "Rumination" },
+      { text: "Whatever — it's not worth it", key: "Ignoring Self" },
+      { text: "I say directly: I don't think that was appropriate", key: "Setting Boundaries" }
     ]
   },
   {
-    q: "你觉得自己在社交中，最累的是什么？",
+    q: "What drains you the most in social situations?",
     options: [
-      { text: "不知道该说什么，怕冷场", key: "社交焦虑" },
-      { text: "怕说错话，得罪人", key: "过度谨慎" },
-      { text: "觉得别人都比我强", key: "自我否定" },
-      { text: "不知道怎么维护关系", key: "关系维护困难" },
-      { text: "怕被拒绝，所以不主动", key: "害怕拒绝" }
+      { text: "Not knowing what to say, afraid of awkward silence", key: "Social Anxiety" },
+      { text: "Afraid of saying the wrong thing and offending someone", key: "Overcautious" },
+      { text: "Feeling like everyone else is better than me", key: "Self-Negation" },
+      { text: "Not knowing how to maintain relationships", key: "Relationship Maintenance" },
+      { text: "Afraid of rejection, so I don't take initiative", key: "Fear of Rejection" }
     ]
   },
   {
-    q: "你身边有那种「特别会来事」的朋友吗？你怎么看他们？",
+    q: "Do you know someone who's a 'social butterfly'? What do you think of them?",
     options: [
-      { text: "很羡慕，觉得他们拥有的我没有", key: "羡慕" },
-      { text: "觉得他们有点假，不喜欢", key: "排斥" },
-      { text: "我就是那种人", key: "社交达人" },
-      { text: "我做不到，但也不羡慕", key: "自我接纳" },
-      { text: "我不知道，我不太关注别人", key: "自我封闭" }
+      { text: "I'm envious — they have something I don't", key: "Envy" },
+      { text: "I find them a bit fake — I don't like it", key: "Rejection" },
+      { text: "I am that person", key: "Social Expert" },
+      { text: "I can't do it, but I don't envy them either", key: "Self-Acceptance" },
+      { text: "I don't know — I don't really pay attention to others", key: "Self-Enclosure" }
     ]
   },
   {
-    q: "你发微信消息给朋友，对方很久没回，你会？",
+    q: "You text a friend. They don't reply for a long time. What do you do?",
     options: [
-      { text: "算了，可能人家忙", key: "自我安慰" },
-      { text: "反复看手机，等回复", key: "焦虑" },
-      { text: "想是不是我说错话了", key: "自我否定" },
-      { text: "再发一条，问问看到没", key: "追问" },
-      { text: "不会发，我不主动联系人", key: "被动" }
+      { text: "Whatever — they're probably busy", key: "Self-Comfort" },
+      { text: "Keep checking my phone, waiting for a reply", key: "Anxiety" },
+      { text: "Worry that I said something wrong", key: "Self-Negation" },
+      { text: "Send another message to ask if they saw it", key: "Following Up" },
+      { text: "I wouldn't text in the first place — I don't reach out", key: "Passive" }
     ]
   },
   {
-    q: "如果可以改变一件事，你最想改变的是？",
+    q: "If you could change one thing, what would it be?",
     options: [
-      { text: "不在乎别人怎么看我", key: "在意他人眼光" },
-      { text: "能轻松地和人聊天", key: "社交焦虑" },
-      { text: "能勇敢设立边界", key: "边界感弱" },
-      { text: "放下过去被伤害的记忆", key: "创伤" },
-      { text: "知道怎么分辨真朋友", key: "信任问题" }
+      { text: "Not caring what others think of me", key: "Others' Opinions" },
+      { text: "Being able to chat with people effortlessly", key: "Social Anxiety" },
+      { text: "Being brave enough to set boundaries", key: "Weak Boundaries" },
+      { text: "Letting go of past hurtful memories", key: "Trauma" },
+      { text: "Knowing how to tell true friends from fake ones", key: "Trust Issues" }
     ]
   }
 ];
 
-// 卡点完整数据
+// Blocker data
 const cardPoints = {
-  "社交焦虑": {
-    name: "社交焦虑",
-    desc: "你不知道该说什么，怕冷场，怕说错话。每次社交都像打仗，要消耗大量能量。你羡慕那些轻松聊天的人，而你好像是个耗电大户。",
-    advice: "内向和外向是真实存在的差异。如果你确实是内向型，不需要强迫自己变成外向。找到适合你的社交方式：少量但深入，比大量但表面，更适合你。",
+  "Social Anxiety": {
+    name: "Social Anxiety",
+    desc: "You don't know what to say, you're afraid of awkward silences, and every social event feels like a battle that drains your energy. You envy those who can chat effortlessly — meanwhile, you feel like a battery that drains fast.",
+    advice: "Introversion and extroversion are real differences. If you're truly introverted, don't force yourself to become extroverted. Find the social style that suits you: fewer but deeper connections, rather than many but surface-level ones.",
     color: "#9a8068"
   },
-  "自我否定": {
-    name: "自我否定",
-    desc: "每次社交受挫，你都会回到这个结论：「是我不够好」。不够好看，不够有趣，不够会说话，不够聪明——总之是「我」的问题。这个结论让你很自卑，也让你在社交中更加紧绷。",
-    advice: "把「我不够好所以别人不喜欢我」换成「别人不喜欢我，有时是因为我不是他们的类型，有时跟我也有关，但不是因为我「不够好」。」不够好是一个伪命题。",
+  "Self-Negation": {
+    name: "Self-Negation",
+    desc: "Every social setback leads you back to the same conclusion: 'I'm not good enough.' Not good-looking enough, not funny enough, not articulate enough — it's always 'me' that's the problem. This belief makes you insecure and even more tense in social situations.",
+    advice: "Replace 'People don't like me because I'm not good enough' with 'People don't like me sometimes because I'm not their type — sometimes it's about me too, but not because I'm not good enough.' 'Not good enough' is a false premise.",
     color: "#a07050"
   },
-  "逃避社交": {
-    name: "逃避社交",
-    desc: "每次社交场合，你都在想怎么离开。何时告辞、什么理由、怎么不显得突兀——这些想法占据了你大部分注意力，让你根本无法享受当下。",
-    advice: "下次去之前，先给自己定一个「离开的明确时间」。比如：最多待够一个半小时。有了边界，反而更容易放松。",
+  "Avoiding Socializing": {
+    name: "Avoiding Socializing",
+    desc: "At every social event, you're already planning your exit. When to leave, what excuse to use, how not to seem rude — these thoughts take up most of your attention, preventing you from enjoying the moment.",
+    advice: "Before your next event, set a clear 'exit time' — for example, stay at most ninety minutes. Having that boundary actually makes it easier to relax.",
     color: "#8a6850"
   },
-  "压抑情绪": {
-    name: "压抑情绪",
-    desc: "你不说，但你不忘。那句让你不舒服的话，那个让你受伤的瞬间，你都记着。记着不是为了报仇，是记着那种痛。你不知道该怎么处理，只能记着。",
-    advice: "忍着是压抑，记着是积累。积累多了，不是爆发就是内伤。下次试着说出来，哪怕对方不认，至少你表达了。表达本身就是疗愈。",
+  "Suppressing Emotions": {
+    name: "Suppressing Emotions",
+    desc: "You don't speak up, but you don't forget. That comment that stung, that moment that hurt — you remember it all. Not for revenge, but because the pain lingers. You don't know how to process it, so you just hold onto it.",
+    advice: "Holding it in is suppression; remembering it is accumulation. Accumulate too much, and it either explodes or causes internal damage. Next time, try to speak up. Even if the other person doesn't agree, at least you expressed yourself. Expression itself is healing.",
     color: "#8a5840"
   },
-  "攻击性": {
-    name: "攻击性",
-    desc: "你不让自己吃亏。你当场怼回去，怼得对方下不来台。事后你会有点心虚：我是不是太过分了？但下次你还是忍不住。",
-    advice: "怼回去有时是必要的，但不是所有情况都需要。试着分辨：这次是真的需要保护自己，还是只是咽不下那口气？两者都是合理的，但需要不同的处理方式。",
+  "Aggression": {
+    name: "Aggression",
+    desc: "You don't let anyone walk over you. You fire back on the spot, leaving the other person no way to save face. Afterward, you feel a bit uneasy: was I too harsh? But next time, you can't help yourself.",
+    advice: "Firing back is sometimes necessary, but not always. Try to distinguish: is this about genuinely protecting yourself, or just about swallowing your pride? Both are valid, but they require different approaches.",
     color: "#9a6848"
   },
-  "边界感弱": {
-    name: "边界感弱",
-    desc: "你经常在「设立边界」和「怕关系破裂」之间纠结。你想说不，但说不之后又后悔，担心对方会不会觉得你小气、不合群。于是你忍着，忍着忍着就委屈了。",
-    advice: "设立边界不是为了让别人喜欢你，是为了让你自己舒服。不设立边界换来的「关系」，往往是不平等的关系。真正的朋友，会尊重你的边界。",
+  "Weak Boundaries": {
+    name: "Weak Boundaries",
+    desc: "You constantly struggle between 'setting boundaries' and 'fearing the relationship will break.' You want to say no, but after saying it, you worry: will they think I'm petty, or unsociable? So you swallow it, and the resentment builds.",
+    advice: "Setting boundaries isn't about making others like you — it's about making yourself comfortable. Relationships built on having no boundaries are often unequal. True friends will respect your limits.",
     color: "#a08870"
   },
-  "信任问题": {
-    name: "信任问题",
-    desc: "你曾经把某人当朋友，但对方只是利用你。或者你把某段关系当真心，但发现对方并不是那么在意。这种被辜负的感觉，让你现在很难相信任何人。",
-    advice: "分辨真朋友需要时间和经历，没有完美的判断标准。但有一个简单的参考：看对方在你低谷时的态度。愿意陪你走低谷的，通常是真的。锦上添花容易，雪中送炭难得。",
+  "Trust Issues": {
+    name: "Trust Issues",
+    desc: "Once, you considered someone a friend, but they were just using you. Or you treated a relationship as genuine, only to find the other person didn't care as much. That sense of betrayal makes it hard to trust anyone now.",
+    advice: "Distinguishing true friends takes time and experience — there's no perfect formula. But one simple reference: watch how they treat you during your low points. Those willing to walk through tough times with you are usually the real ones.",
     color: "#a09070"
   },
-  "自我接纳": {
-    name: "自我接纳",
-    desc: "你接受了自己「不太会社交」这件事。你不去凑热闹，不假装熟络。你有自己的小世界，那里的人不多，但都是你真正想要的连接。",
-    advice: "这是很好的状态——自我接纳，同时也有自己的边界。你不需要改变，只需要确认：这是否是你真正想要的，还是你用来保护自己的借口？",
+  "Self-Acceptance": {
+    name: "Self-Acceptance",
+    desc: "You've accepted that you're 'not great at socializing.' You don't force yourself into the crowd, and you don't pretend to be buddy-buddy. You have your own small world — not many people in it, but the connections are real.",
+    advice: "This is a great state — self-acceptance with your own boundaries. You don't need to change. Just make sure: is this truly what you want, or is it a shield you've built to protect yourself?",
     color: "#b0a070"
+  },
+  "Active Socializing": {
+    name: "Active Socializing",
+    desc: "You genuinely enjoy connecting with people. You take the initiative to start conversations and make others feel comfortable. Socializing energizes you rather than drains you.",
+    advice: "Your social energy is a gift — but remember to also listen to your own needs. Don't spread yourself so thin that you forget to check in with yourself.",
+    color: "#a09060"
+  },
+  "Hiding": {
+    name: "Hiding",
+    desc: "In social situations, your instinct is to become invisible. You'd rather observe from the edges than be the center of attention. This isn't shyness — it's a protective strategy you learned early on.",
+    advice: "There's nothing wrong with observing from the sidelines. But make sure you're choosing to be there, not hiding out of fear. Try stepping forward once — just a small step — and see what happens.",
+    color: "#887860"
+  },
+  "Go With the Flow": {
+    name: "Go With the Flow",
+    desc: "You don't have strong preferences about social positioning. You adapt easily and don't stress about where you fit in. This flexibility is a strength.",
+    advice: "Flexibility is great, but make sure it comes from a place of genuine comfort, not from suppressing your own preferences. It's okay to want something specific sometimes.",
+    color: "#a09878"
+  },
+  "Social Avoidance": {
+    name: "Social Avoidance",
+    desc: "You avoid social situations whenever possible. It's not that you don't want connection — it's that the cost of socializing feels too high. The anxiety, the performance, the aftermath of overthinking — it's exhausting.",
+    advice: "Start small. One coffee with one person you trust. Social skills are muscles — they atrophy when unused but strengthen with practice. You don't need to attend every gathering; you just need to not avoid all of them.",
+    color: "#907860"
+  },
+  "Envy": {
+    name: "Envy",
+    desc: "When you see socially confident people, you feel a pang of envy. They seem to have something you lack — an ease, a naturalness. But what you're seeing is the surface, not the full picture.",
+    advice: "Envy is just your brain pointing at something you want. Use it as information, not judgment. What specifically do you admire? Pick one small thing and practice it this week.",
+    color: "#a88860"
+  },
+  "Rejection": {
+    name: "Rejection",
+    desc: "You reject the 'social butterfly' type — you find them fake. But sometimes this rejection is a defense mechanism. By dismissing what they have, you protect yourself from wanting it.",
+    advice: "There's a difference between genuine authenticity and performed extroversion. Some people are naturally warm and social — that doesn't make them fake. Look closer before judging.",
+    color: "#908070"
+  },
+  "Social Expert": {
+    name: "Social Expert",
+    desc: "You're the one who makes everyone feel welcome. You read the room, adjust your energy, and keep conversations flowing. It comes naturally to you — or at least, it looks that way.",
+    advice: "Being the social glue is wonderful, but check in with yourself: are you doing this because you enjoy it, or because you feel responsible for everyone's comfort? You're allowed to take a night off.",
+    color: "#a0a080"
+  },
+  "Self-Comfort": {
+    name: "Self-Comfort",
+    desc: "When someone doesn't reply, you quickly rationalize it: they're busy, it's not personal. This emotional resilience is healthy — you don't spiral into worst-case scenarios.",
+    advice: "This is a healthy coping mechanism. Just make sure it doesn't become a way to avoid addressing real issues in a relationship. Sometimes a delayed reply does mean something.",
+    color: "#90a080"
+  },
+  "Following Up": {
+    name: "Following Up",
+    desc: "When someone doesn't respond, you follow up. You're proactive about maintaining connections. This shows you value the relationship — you don't let things just fade away.",
+    advice: "Following up is a great habit. Just be mindful of the balance — if you're always the one reaching out, it might be worth examining whether the effort is mutual.",
+    color: "#a09888"
+  },
+  "Passive": {
+    name: "Passive",
+    desc: "You don't initiate contact. It's not that you don't care — you've just learned to wait for others to come to you. Being passive feels safer than risking rejection.",
+    advice: "Initiating contact is a skill, not a personality trait. Start with the lowest-stakes version: react to someone's story, share an article, send a meme. Small steps build momentum.",
+    color: "#989080"
+  },
+  "Others' Opinions": {
+    name: "Others' Opinions",
+    desc: "Other people's opinions weigh heavily on you. You adjust your behavior based on how you think others will perceive you. This constant monitoring is exhausting.",
+    advice: "The truth is: most people are too busy worrying about themselves to judge you. The ones who matter won't care about the small stuff. Practice doing one thing this week without considering anyone's reaction.",
+    color: "#988870"
+  },
+  "Overcautious": {
+    name: "Overcautious",
+    desc: "You carefully measure every word before speaking. You replay conversations afterward, analyzing whether you said anything wrong. This hyper-vigilance keeps you safe but also keeps you exhausted.",
+    advice: "Perfection in speech is impossible — and unnecessary. Most people don't remember the exact words you said; they remember how you made them feel. Focus on being genuine, not flawless.",
+    color: "#a09070"
+  },
+  "Relationship Maintenance": {
+    name: "Relationship Maintenance",
+    desc: "You don't know how to keep relationships going after the initial connection. Friendships seem to require constant effort, and you're not sure how much is too much or too little.",
+    advice: "There's no universal formula for maintaining relationships. The simplest rule: check in when you think of someone. A random 'how are you?' means more than you think.",
+    color: "#989080"
+  },
+  "Fear of Rejection": {
+    name: "Fear of Rejection",
+    desc: "The fear of being rejected keeps you from reaching out. You'd rather stay silent than risk hearing 'no.' But this protection comes at a cost — loneliness.",
+    advice: "Rejection stings, but it's rarely as devastating as we imagine. Each 'no' is just data — it doesn't define your worth. Try putting yourself out there once this week in a small way.",
+    color: "#908070"
+  },
+  "Trauma": {
+    name: "Trauma",
+    desc: "Past hurtful experiences in relationships have left scars. You carry them without realizing how much they shape your current behavior. The walls you built to survive may now be keeping good things out.",
+    advice: "Healing doesn't require forgetting. It means integrating the experience so it no longer controls your choices. Consider talking to someone you trust — or a professional — about what happened.",
+    color: "#a08060"
+  },
+  "Weak Boundaries": {
+    name: "Weak Boundaries",
+    desc: "You struggle to say no, even when something makes you uncomfortable. You'd rather endure discomfort than risk confrontation. But boundaries aren't walls — they're doors with locks.",
+    advice: "Start with the smallest boundary you can think of. Saying 'I need a minute' or 'That doesn't work for me' is a complete sentence. You don't owe anyone an explanation.",
+    color: "#a08870"
+  },
+  "Trust Issues": {
+    name: "Trust Issues",
+    desc: "Past betrayals have made you cautious about trusting new people. You test, you observe, you keep your distance. This protects you — but it also keeps connection at arm's length.",
+    advice: "Trust is rebuilt in small increments, not all at once. Give people small opportunities to show up for you, and notice when they do. Trust the pattern, not the promise.",
+    color: "#988070"
   }
 };
 
-// 彩蛋
+// Easter eggs
 const easterEggs = [
   {
-    title: "心理学研究：聚光灯效应",
-    text: "心理学发现：人们会高估别人对自己外表和行为的关注程度。事实上，大多数人根本没有那么在意你——他们也在想着自己。"
+    title: "Psychology: The Spotlight Effect",
+    text: "Research shows that people significantly overestimate how much others notice their appearance and behavior. In reality, most people aren't paying that much attention to you — they're too busy thinking about themselves."
   },
   {
-    title: "《智囊》· 丙吉",
-    text: "丙吉在朝中从不主动得罪人，也不刻意讨好。有人问他为何如此淡然，他说：「人各有长短，何必强求一律？」这句话送给总觉得自己「不合群」的你。"
+    title: "Historical Wisdom: Bing Ji",
+    text: "Bing Ji, a Han Dynasty official, never deliberately offended anyone nor tried to flatter. When asked why he was so calm, he said: 'Everyone has strengths and weaknesses — why insist they all be the same?' This is for you if you always feel like you 'don't fit in.'"
   },
   {
-    title: "心理学研究：安全的依恋关系",
-    text: "依恋理论发现：我们在第一段关系（与父母）中学会的社交模式，会影响我们一生的关系。意识到这个模式的存在，是改变它的第一步。"
+    title: "Attachment Theory",
+    text: "Attachment research has found that the social patterns we learn in our first relationship (with our parents) influence every relationship we have for the rest of our lives. Recognizing this pattern exists is the first step to changing it."
   },
   {
-    title: "《被讨厌的勇气》",
-    text: "阿德勒说：「人的一切烦恼，都来自人际关系；人的一切幸福，也来自人际关系。」关键不是有没有关系，而是你如何面对关系中的自己。"
+    title: "The Courage to Be Disliked",
+    text: "Alfred Adler said: 'All of humanity's problems stem from our inability to sit quietly in a room.' His insight was that our happiness and our suffering both come from how we relate to others. The key isn't whether you have relationships — it's how you face yourself within them."
   }
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedMoments = [];
@@ -1201,7 +1304,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航
+   Page Navigation
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1224,7 +1327,7 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   社交瞬间选择
+   Social Moment Selection
    ============================================================ */
 function renderMoments() {
   const layer1 = document.getElementById('momentLayer1');
@@ -1266,7 +1369,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1276,13 +1379,13 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+  document.getElementById('flipHint').textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('flipHint').textContent = '— This card will guide your diagnosis —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1291,12 +1394,12 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1311,7 +1414,7 @@ function renderQuestion() {
 
   document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
   nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
 }
 
@@ -1346,7 +1449,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnostic Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1365,9 +1468,9 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `你最核心的社交卡点是「${topKey ? topKey.name : ''}」。看见它，已经是改变的第一步。`,
-    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们相互影响，共同塑造了你面对人群的方式。`,
-    "人群不可怕。看见自己在人群里的样子，才是真正的出口。"
+    `Your core social blocker is "${topKey ? topKey.name : ''}." Seeing it is already the first step toward change.`,
+    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blockers — they interact with each other and shape how you face the crowd.`,
+    "The crowd isn't scary. Seeing yourself within it — that's the real way out."
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1380,7 +1483,7 @@ function showResult() {
       <div class="result-card">
         <div class="result-card-top">
           <span class="result-card-name">${cp.name}</span>
-          <span class="result-card-pct">命中 ${score} 次</span>
+          <span class="result-card-pct">Hit ${score} time${score > 1 ? 's' : ''}</span>
         </div>
         <div class="result-bar-bg">
           <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1412,7 +1515,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1424,7 +1527,7 @@ function showAdvice() {
     const cp = cardPoints[key];
     return `
       <div class="advice-card">
-        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-label">Blocker ${String(i+1).padStart(2,'0')}</div>
         <div class="advice-card-title">
           <span class="advice-card-num">${i+1}</span>
           ${cp.name}
@@ -1441,7 +1544,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1450,25 +1553,25 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你记得的社交瞬间。');
+    alert('Write something first — at least one social moment you remember.');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${['One','Two','Three','Four'][i]}: ${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
-    "你写的这些，是很多人不愿意面对的。你做了，这本身就是勇气。",
-    "那个小孩一直在你心里。看见他，已经是和解的开始。",
-    "有些卡点不是你一个人有的。你愿意把它说出来，本身就是治愈。",
-    "不是所有人都会在人际关系里受伤。但受过伤的人，需要被看见。"
+    "What you wrote is something many people refuse to face. You did it — that alone takes courage.",
+    "That child has always been inside you. Seeing them is already the beginning of reconciliation.",
+    "Some of these blocks aren't yours alone. Putting them into words is itself a form of healing.",
+    "Not everyone gets hurt in relationships. But those who do deserve to be seen."
   ];
-  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+  document.getElementById('cardResponse').textContent = responses[Math.floor(Math.random() * responses.length)];
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：下次在人多的场合，先看看自己的感受，而不是只看别人。';
+  const firstAction = h4 ? `Start with this today: ${h4.split('.')[0].split(',')[0]}` : "Today, just do one thing: next time you're in a crowd, check in with how you feel — not just how others seem.";
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
@@ -1491,11 +1594,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的社交初体验', 300, 80);
+  ctx.fillText('My First Social Experience', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第三关 · 初入人海 · 找到啦', 300, 108);
+  ctx.fillText('Level 3 · Entering the Crowd · Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1526,10 +1629,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第三关 · 初入人海 · 完 —', 300, 750);
+  ctx.fillText('— Level 3 · Entering the Crowd · Complete —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的社交初体验.png';
+  link.download = 'My First Social Experience.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1556,14 +1659,14 @@ function goBackHome() {
 }
 
 /* ============================================================
-   启动
+   Init
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderMoments();
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1579,7 +1682,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){
@@ -1590,7 +1693,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 Visitor #<span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span></span>';}
 })();
 </script>
 <script src="lang-toggle.js"></script>

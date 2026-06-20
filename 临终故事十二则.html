@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="临终故事十二则：十二位名人临终前的真实故事。从南怀瑾到海明威，从'此心光明'到'Oh wow'——他们留给世界的最后几秒。">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>临终故事十二则 — 第十二关 · 终篇传承 · 找到啦</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #9a7a4a;
+    --text-light: #b89a6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 8px;
+    border: 1.5px solid var(--border);
+    pointer-events: none; z-index: 0;
+  }
+  .page {
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .gold-line {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 24px;
+  }
+  .card {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px var(--shadow); }
+  .btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+    text-decoration: none;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+  }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--text-mid);
+    box-shadow: none;
+  }
+  .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+  .center { text-align: center; }
+  .text-mid { color: var(--text-mid); font-size: 14px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-40 { margin-top: 40px; }
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 6px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .hero-divider {
+    width: 180px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+  }
+  .back-home-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: rgba(245,230,200,0.88);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px var(--shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .back-home-btn:hover {
+    background: rgba(245,230,200,0.98);
+    border-color: var(--gold);
+    color: var(--text-dark);
+    box-shadow: 0 3px 12px var(--shadow);
+    transform: translateY(-1px);
+  }
+  .back-home-btn .arrow {
+    font-size: 14px;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .nav-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 32px;
+    justify-content: center;
+  }
+  .story-card {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .story-card:hover { box-shadow: 0 4px 20px var(--shadow); }
+  .story-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .story-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+  }
+  .story-era {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    border: 1px solid var(--border);
+    padding: 3px 12px;
+    border-radius: 12px;
+  }
+  .story-quote {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.8;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    background: rgba(201,168,76,0.08);
+    border-radius: var(--radius);
+    border-left: 2px solid var(--gold);
+    position: relative;
+  }
+  .story-quote::before {
+    content: '\201C';
+    font-size: 48px;
+    color: var(--gold);
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    line-height: 1;
+    opacity: 0.3;
+  }
+  .story-quote::after {
+    content: '\201D';
+    font-size: 48px;
+    color: var(--gold);
+    position: absolute;
+    bottom: -18px;
+    right: 12px;
+    line-height: 1;
+    opacity: 0.3;
+  }
+  .story-body {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 2;
+    text-align: justify;
+  }
+  .story-source {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139,90,43,0.15);
+    padding-bottom: 1px;
+    transition: all 0.2s;
+  }
+  .story-source:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .story-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 8px auto 20px;
+  }
+  .story-num {
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .footer {
+    text-align: center;
+    padding: 16px 20px 36px;
+    color: #9a7a4a;
+    font-size: 12.5px;
+    letter-spacing: 2px;
+    margin-top: 48px;
+  }
+  .bottom-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 48px auto 24px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(255,252,240,0.85);
+    border: 1.5px solid var(--border);
+    color: var(--text-mid);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, box-shadow 0.2s;
+    z-index: 50;
+    box-shadow: 0 2px 8px var(--shadow);
+    font-family: var(--font);
+  }
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--shadow);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .delay-1 { transition-delay: 0.15s; }
+  .delay-2 { transition-delay: 0.30s; }
+  .delay-3 { transition-delay: 0.45s; }
+  .intro-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 2;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 36px;
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; letter-spacing: 4px; }
+    .story-quote { font-size: 15px; padding: 14px 16px; }
+    .story-name { font-size: 18px; }
+    .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
+    .nav-bar { flex-direction: column; align-items: center; }
+    .nav-bar .btn { width: 100%; max-width: 260px; text-align: center; font-size: 13px; }
+  }
+</style>
+<link rel="stylesheet" href="enhance.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<a class="back-home-btn" href="index.html" title="返回主页">
+  <span class="arrow">←</span>
+  <span>返回主页</span>
+</a>
+
+<div class="page">
+
+  <!-- 标题区 -->
+  <div class="center fade-in">
+    <div class="level-badge">第十二关 · 终篇传承</div>
+    <h1 class="hero-title">临终故事十二则</h1>
+    <div class="hero-sub">十二位名人，十二种告别。<br>他们留给世界的最后几秒，比一生更诚实。</div>
+    <div class="hero-divider"></div>
+  </div>
+
+  <div class="intro-text fade-in delay-1">
+    人一生说过的大部分话都是给别人听的。<br>
+    唯有最后一句，往往只说给自己。<br>
+    这十二个故事，不是用来感动的——是用来照见的。<br>
+    读完之后，也许你会想：如果此刻就是最后一页，我会写下什么？
+  </div>
+
+  <div class="story-divider fade-in delay-2"></div>
+
+  <!-- 故事1：南怀瑾 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">南怀瑾</span>
+      <span class="story-era">2012年</span>
+    </div>
+    <div class="story-num">01 / 12</div>
+    <div class="story-quote">明白</div>
+    <div class="story-body">
+      2012年9月29日，南怀瑾先生在太湖大学堂辞世。临终前，他让弟子拿来纸笔，颤巍巍地写下两个字——<strong>「明白」</strong>。随后又写了<strong>「平凡」</strong>。写完，他盘腿端坐，如同平日打坐一般，安然而逝。享年九十五岁。这两个字，是他一生修行的总结，也是留给后人的最后嘱托：做人要明白，要甘于平凡。明白什么？明白生死无常，明白一切终将归于尘土。平凡在哪里？在吃饭穿衣里，在日用伦常里。南先生一生讲过无数道理，最后只留下四个字。能真正听懂的人，大概也不需要那四个字了。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E5%8D%97%E6%80%80%E7%91%BE" target="_blank" rel="noopener">出处：维基百科 · 南怀瑾</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事2：王阳明 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">王阳明</span>
+      <span class="story-era">1529年</span>
+    </div>
+    <div class="story-num">02 / 12</div>
+    <div class="story-quote">此心光明，亦复何言</div>
+    <div class="story-body">
+      1529年1月9日，王阳明病逝于江西南安的一条小船上。弟子周积问他有何遗言，王阳明只说了八个字：<strong>「此心光明，亦复何言。」</strong>然后闭目而逝，享年五十七岁。这八个字的意思是：我的心是光明的，还有什么好说的呢。他一生历经廷杖之祸、贬谪龙场、九死一生、平定叛乱，始终没有放弃对「知行合一」的追问。到最后，他不需要再向任何人证明什么。一个人如果活着的时候足够坦荡，死的时候确实不需要多说。问题是我们大多数人都有太多未了的心事、未解的心结。阳明先生的遗言不是豪言壮语，是一份对自己一生的验收报告。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E7%8E%8B%E5%AE%88%E4%BB%81" target="_blank" rel="noopener">出处：维基百科 · 王守仁</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事3：弘一法师 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">弘一法师</span>
+      <span class="story-era">1942年</span>
+    </div>
+    <div class="story-num">03 / 12</div>
+    <div class="story-quote">悲欣交集</div>
+    <div class="story-body">
+      1942年10月13日，弘一法师（李叔同）在泉州温陵养老院圆寂。临终前四天，他写下四个字：<strong>「悲欣交集」</strong>。悲的是众生仍在苦海中挣扎，欣的是自己终于要回到本来的地方。他让弟子在龛脚垫四碗水，以免荼毗（火化）时伤到蚂蚁。一个将死之人，想的不是自己，而是脚下的虫子。弘一法师前半生是风流才子——写诗、画画、演戏、弹琴、留学日本，什么都做过。后半生是律宗高僧——过午不食、一件衲衣穿几十年。他用一生证明了一件事：人可以把浮华活尽，也可以把清苦活透。两种活法，他都心甘情愿。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E5%8F%94%E5%90%8C" target="_blank" rel="noopener">出处：维基百科 · 李叔同</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事4：王凤仪 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">王凤仪</span>
+      <span class="story-era">1937年</span>
+    </div>
+    <div class="story-num">04 / 12</div>
+    <div class="story-quote">我某日某时必死</div>
+    <div class="story-body">
+      王凤仪，人称「王善人」，清末民初的民间教育家。他不识字，却能讲病化人，一生创办了数百所义学。1937年，他提前告知弟子自己将于某日某时离世，并嘱咐后事。到了那一天，他沐浴更衣，端坐而逝，果然分毫不差。享年七十四岁。一个不识字的农民，能做到预知生死、从容赴死，这本身就是对「知识不等于智慧」最好的注脚。王凤仪一辈子讲的是「找好处」「认不是」——找别人的好处，认自己的不是。听起来简单，做到了就是圣人。他做到了。所以他走得坦然。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E7%8E%8B%E5%87%A4%E4%BB%AA" target="_blank" rel="noopener">出处：维基百科 · 王凤仪</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事5：曾国藩 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">曾国藩</span>
+      <span class="story-era">1872年</span>
+    </div>
+    <div class="story-num">05 / 12</div>
+    <div class="story-quote">无</div>
+    <div class="story-body">
+      1872年3月12日，曾国藩在南京两江总督府散步时突发脚麻，扶回书房后端坐而逝。从发病到辞世，仅四十五分钟。没有遗言，没有挣扎，没有卧床。享年六十一岁。曾国藩一生以「慎独」自持，日记写了三十多年，连「看了人家妻子一眼」都要痛骂自己。这样一个人，死法也是最「慎独」的——不给别人添麻烦。四十五分钟，干净利落。他生前常说：<strong>「不为圣贤，便为禽兽。」</strong>他大概觉得自己两者都不是，只是一个努力过的人。而一个努力过的人，值得一个干脆的结局。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E6%9B%BE%E5%9C%8B%E8%97%A9" target="_blank" rel="noopener">出处：维基百科 · 曾国藩</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事6：林则徐 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">林则徐</span>
+      <span class="story-era">1850年</span>
+    </div>
+    <div class="story-num">06 / 12</div>
+    <div class="story-quote">星斗南！星斗南！星斗南！</div>
+    <div class="story-body">
+      1850年11月22日，林则徐在赴任广西途中病逝于普宁行馆。临终前，他突然大呼三声：<strong>「星斗南！」</strong>随后气绝。享年六十六岁。「星斗南」三字，后人解读不一。有人说是福州话「新豆栏」的谐音（指广州十三行的洋商聚集地），有人说是他在提醒朝廷警惕西方列强。无论哪种解读，一个将死之人心中念念不忘的，仍是家国。林则徐虎门销烟时写下「苟利国家生死以，岂因祸福避趋之」，临终时又以三声呼喊呼应了这两句诗。他用一辈子证明：有些人，到死都是战士。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E6%9E%97%E5%89%87%E5%BE%90" target="_blank" rel="noopener">出处：维基百科 · 林则徐</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事7：谭嗣同 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">谭嗣同</span>
+      <span class="story-era">1898年</span>
+    </div>
+    <div class="story-num">07 / 12</div>
+    <div class="story-quote">有心杀贼，无力回天，死得其所，快哉快哉</div>
+    <div class="story-body">
+      1898年9月28日，谭嗣同在北京菜市口就义，年仅三十三岁。戊戌变法失败后，他本可逃走，却选择留下。他说：「各国变法，无不从流血而成，今中国未闻有因变法而流血者，此国之所以不昌也。有之，请自嗣同始。」临刑前，他面不改色，高声吟诵：<strong>「有心杀贼，无力回天，死得其所，快哉快哉！」</strong>刽子手的刀落下的那一刻，中国近代史上最年轻的殉道者倒在了血泊里。他的死不是悲剧的结束，而是一个信号：有些人的命，比活着更重要的是怎么死。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E8%B0%AD%E5%97%A3%E5%90%8C" target="_blank" rel="noopener">出处：维基百科 · 谭嗣同</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事8：鲁迅 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">鲁迅</span>
+      <span class="story-era">1936年</span>
+    </div>
+    <div class="story-num">08 / 12</div>
+    <div class="story-quote">让他们怨恨去，我也一个都不宽恕</div>
+    <div class="story-body">
+      1936年10月19日，鲁迅在上海病逝，享年五十五岁。去世前一个月，他写了一篇短文《死》，其中交代遗嘱七条。最后一条写道：<strong>「让他们怨恨去，我也一个都不宽恕。」</strong>这是一个战斗了一辈子的人，对这个世界最后的态度。不和解，不道歉，不装好人。鲁迅一生骂过的人数不清——从军阀到文人，从伪君子到看客。到死他都不肯认错，因为他觉得自己没有错。你可以不同意他的态度，但你不得不佩服他的诚实。大多数人临终前都会变得温和，鲁迅没有。他把锋芒保持到了最后一秒。这本身就是一种了不起。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E9%B2%81%E8%BF%85" target="_blank" rel="noopener">出处：维基百科 · 鲁迅</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事9：杨绛 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">杨绛</span>
+      <span class="story-era">2016年</span>
+    </div>
+    <div class="story-num">09 / 12</div>
+    <div class="story-quote">火化后再发讣告，不设灵堂，不留骨灰</div>
+    <div class="story-body">
+      2016年5月25日，杨绛在北京协和医院辞世，享年一百零五岁。她的遗嘱极为简朴：<strong>「火化后再发讣告，不设灵堂，不出版纪念集，不留骨灰。」</strong>她用一百零五年的生命证明了一件事：一个人可以活得无比丰盛，同时走得无比安静。钱瑗走了，钱钟书走了，她一个人又活了十八年。这十八年里，她翻译、写作、整理丈夫的遗稿，把悲伤化成了文字。杨绛说过：<strong>「我们曾如此渴望命运的波澜，到最后才发现，人生最曼妙的风景，竟是内心的淡定与从容。」</strong>她最后的选择，是这句注脚。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E6%9D%A8%E7%BB%9B" target="_blank" rel="noopener">出处：维基百科 · 杨绛</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事10：苏格拉底 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">苏格拉底</span>
+      <span class="story-era">公元前399年</span>
+    </div>
+    <div class="story-num">10 / 12</div>
+    <div class="story-quote">克里托，我们欠阿斯克勒庇俄斯一只公鸡，记得替我还上</div>
+    <div class="story-body">
+      公元前399年，苏格拉底在雅典饮下毒芹汁，从容赴死，享年七十岁。他是被雅典法庭以「腐蚀青年心灵」的罪名判处死刑的。朋友们为他准备好了逃跑的计划，他拒绝了。他说：一个公民不能因为怕死就违背法律。喝下毒药后，他的身体逐渐变冷。临终前，他对弟子克里托说的最后一句话是：<strong>「克里托，我们欠阿斯克勒庇俄斯一只公鸡，记得替我还上。」</strong>阿斯克勒庇俄斯是医神。有人说他在感谢医神让他从「疾病」（即生命）中痊愈（即死亡）。一个哲学家，到死还在还债——还的是生命的债。这份清醒，两千四百年后依然让人震动。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E8%8B%8F%E6%A0%BC%E6%8B%89%E5%BA%95" target="_blank" rel="noopener">出处：维基百科 · 苏格拉底</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事11：乔布斯 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">史蒂夫·乔布斯</span>
+      <span class="story-era">2011年</span>
+    </div>
+    <div class="story-num">11 / 12</div>
+    <div class="story-quote">Oh wow. Oh wow. Oh wow.</div>
+    <div class="story-body">
+      2011年10月5日，乔布斯在加州帕洛阿尔托的家中去世，享年五十六岁。他的妹妹莫娜·辛普森后来在悼词中写道，乔布斯临终前最后的目光越过家人的肩膀，看向远处，然后说：<strong>「Oh wow. Oh wow. Oh wow.」</strong>连说三遍。没有人知道他看到了什么。也许是此生的走马灯，也许是另一个世界的入口，也许只是窗外的天空。但一个创造了iPhone、改变了全世界沟通方式的人，最后的遗言只有三个感叹词——没有商业战略，没有人生哲理，没有对后人的嘱托。只有纯粹的惊叹。也许，死亡本身就是值得惊叹的事。
+    </div>
+    <a class="story-source" href="https://www.nytimes.com/2011/10/30/opinion/steve-jobss-fading-senses.html" target="_blank" rel="noopener">出处：The New York Times · Mona Simpson</a>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- 故事12：海明威 -->
+  <div class="story-card fade-in">
+    <div class="story-header">
+      <span class="story-name">欧内斯特·海明威</span>
+      <span class="story-era">1961年</span>
+    </div>
+    <div class="story-num">12 / 12</div>
+    <div class="story-quote">砰</div>
+    <div class="story-body">
+      1961年7月2日清晨，海明威在爱达荷州凯彻姆的家中，用他最心爱的双管猎枪结束了自己的生命，享年六十一岁。官方说法是「擦枪走火」，但所有人都知道真相。海明威一生都在书写死亡——在非洲打猎时差点死于飞机失事，在西班牙内战中目睹无数人倒下，《老人与海》写的是一个老人与大海的搏斗。他笔下的硬汉从不屈服，可现实中的海明威，最终屈服于自己的抑郁症和日渐衰退的身体。他的最后一枪没有遗言。这一枪本身就是遗言。它说的是：有些人宁可自己选择终点，也不愿被命运牵着走。这很残酷，也很海明威。
+    </div>
+    <a class="story-source" href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E5%86%85%E6%96%AF%E7%89%B9%C2%B7%E6%B5%B7%E6%98%8E%E5%A8%81" target="_blank" rel="noopener">出处：维基百科 · 海明威</a>
+  </div>
+
+  <!-- 尾声 -->
+  <div class="bottom-deco">
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+  </div>
+
+  <div class="center fade-in" style="margin-bottom: 40px;">
+    <div class="story-quote" style="max-width: 480px; margin: 0 auto 24px; font-size: 15px;">
+      十二个人，十二种死法，十二句最后的话。<br>
+      没有标准答案，只有真实。<br>
+      你读完了他们的故事。<br>
+      现在，故事回到你手里。
+    </div>
+  </div>
+
+  <div class="nav-bar center mt-24">
+    <a class="btn btn-ghost" href="第十二关-终篇传承.html" style="font-size: 13px; letter-spacing: 3px;">← 返回第十二关</a>
+    <a class="btn" href="index.html" style="font-size: 13px; letter-spacing: 3px;">返回主页</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer" style="margin-top: 60px;">
+    <div style="margin-bottom: 12px;">
+      <a href="第十二关-终篇传承.html" style="color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid rgba(139,90,43,0.2); padding-bottom: 2px; transition: all 0.2s;">← 返回第十二关 · 终篇传承</a>
+    </div>
+    找到啦 · 帮你看见自己真正卡在哪——然后迈出那一步
+    <div style="margin-top: 12px;">
+      <span style="font-size: 11px; opacity: 0.5;">© 找到啦 zhaodaola.com</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- 回到顶部 -->
+<button class="back-to-top" title="回到顶部">↑</button>
+
+<script>
+// 滚动淡入 + 回到顶部
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
+  var btn=document.querySelector('.back-to-top');
+  if(btn){
+    window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400);});
+    btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  }
+})();
+</script>
+</body>
+</html>

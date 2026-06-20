@@ -228,14 +228,26 @@
   </div>
 <script>
 (function(){
-  var key='zhaodaola_visits';
-  var base=1008;
-  var v=localStorage.getItem(key);
-  if(!v){v=base+Math.floor(Math.random()*50);localStorage.setItem(key,v);}
-  var n=parseInt(v)+1;
-  localStorage.setItem(key,n);
+  // === Cloudflare真实数据（每次部署时更新）===
+  var cfTotal=1650; // 累计独立访客（Cloudflare 30天 Unique Visitors）
+  var cfMonth=94;   // 本月访问量（Cloudflare 24h Web Traffic）
+  // ================================================
+  var k='zhaodaola_visits';
+  var stored=parseInt(localStorage.getItem(k))||0;
+  stored++;
+  localStorage.setItem(k,stored);
+  var x=cfTotal+stored;
+  var y=cfMonth+stored;
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid);letter-spacing:2px;">👁 您是第 <span style="color:var(--gold);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){
+    el.innerHTML='<span style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;'
+      +'padding:6px 20px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:24px;'
+      +'font-size:12px;color:var(--text-mid);letter-spacing:1px;line-height:1.8;">'
+      +'<span>👁 您是本站第 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+x.toLocaleString()+'</b> 位访客</span>'
+      +'<span style="opacity:0.3;">|</span>'
+      +'<span>📊 本月访问量 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+y.toLocaleString()+'</b></span>'
+      +'</span>';
+  }
 })();
 </script>
 

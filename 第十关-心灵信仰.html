@@ -1492,5 +1492,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
+<!-- 访客计数器 -->
+<div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
+<script>
+(function(){
+  var key='zhaodaola_visitors';
+  var base=1008;
+  var stored=localStorage.getItem(key);
+  if(!stored){stored=String(base+Math.floor(Math.random()*50));localStorage.setItem(key,stored);}
+  var n=parseInt(stored)+1;
+  localStorage.setItem(key,String(n));
+  var el=document.getElementById('visitorCounter');
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+})();
+</script>
 </body>
 </html>

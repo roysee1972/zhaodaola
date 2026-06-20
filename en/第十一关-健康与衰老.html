@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="人际迷宫关卡：复杂的人际关系中，帮你找到那条属于自己的路。">
+<meta name="description" content="Health & Aging level: Make peace with your body and with time.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第八关 · 人际迷宫 — 找到啦</title>
+<title>Level 11 · Health & Aging — Found It</title>
 <style>
   :root {
     --bg: #f5e6c8;
@@ -755,207 +755,208 @@
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
-  <span>返回主页</span>
+  <span>Back to Home</span>
 </button>
 
-<!-- ==================== P1: 入口页 ==================== -->
+<!-- ==================== P1: Entry Page ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第八关 · 找到啦</div>
+    <div class="level-badge">Level 11 · Found It</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">人际</div>
+      <div class="deco-ring-inner">Vitality</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">人际迷宫</h1>
+    <h1 class="hero-title">Health & Aging</h1>
     <p class="hero-sub">
-      不是教你社交技巧。<br>
-      是帮你看见：你在关系里，弄丢了什么。
+      Your body is a diary written over decades<br>
+      Open it, and every page is a clue<br>
+      This level doesn't teach wellness — it helps you see
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      你总是在付出，但对方好像没怎么回应你。<br>
-      你不知道怎么拒绝，哪怕已经很不舒服了。<br>
-      你不敢表达真实想法，怕说了之后对方不高兴。<br>
-      你在关系里表演一个「好脾气」的自己，很累。
+      Have you noticed:<br>
+      less energy than before?<br>
+      your body sending signals you haven't taken seriously?<br>
+      or starting to worry about a certain "possibility"?
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      关系不是目的。<br>
-      但它是一面镜子——<br>
-      照得见你的边界感，照得见你对自己的尊重，<br>
-      也照得见你到底有没有在关系里做自己。
+      Health isn't the absence of illness; aging isn't all bad news.<br>
+      This level helps you read your body's diary—<br>
+      where does your vitality truly stand?
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
+    <button class="btn" onclick="goPage('dilemma')">Begin Exploration</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 5 minutes</p>
   </div>
 </div>
 
-<!-- ==================== P2: 困境选择页 ==================== -->
+<!-- ==================== P2: Dilemma Selection ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="level-badge">第十一关 · 健康与aging</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">在哪件事上，你在关系里最委屈？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选择 1-3 条，最贴近你现在的感受。多选也无妨。</p>
+      <h2 class="hero-title" style="font-size: 26px;">What confuses you the most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 items closest to your true state. Multiple selections are fine.</p>
     </div>
     <div style="margin-top: 24px;" id="dilemmaList"></div>
-    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
+    <div class="dilemma-hint" id="dilemmaHint">Selected: <span id="dilemmaCount">0</span></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P3: 冒险卡页 ==================== -->
+<!-- ==================== P3: Adventure Card ==================== -->
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="level-badge">第十一关 · 健康与aging</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card First</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard" onclick="flipCard()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">点击翻开</div>
+            <div class="flip-card-front-hint">Tap to Reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"你在关系里弄丢的自己，比对方重要得多。"</div>
-            <div class="flip-card-tap-hint">— 冒险卡</div>
+            <div class="flip-card-quote" id="flipQuote">"身体是一本连续写了几十年的日记，翻开来，全是线索。"</div>
+            <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
-      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P4: 诊断测试页 ==================== -->
+<!-- ==================== P4: Diagnostic Test ==================== -->
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">第一题</div>
-      <div class="question-text" id="qText">在关系里，你最近感受到的是？</div>
+      <div class="question-num" id="qNum">Question 1</div>
+      <div class="question-text" id="qText">How would you rate your recent physical condition?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
-      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P5: 诊断结果页 ==================== -->
+<!-- ==================== P5: Diagnosis Results ==================== -->
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">诊断完成</div>
+      <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的认知卡点画像</div>
-      <div class="result-sub">人际迷宫 · 第八关</div>
+      <div class="result-title">Your Vitality Profile</div>
+      <div class="result-sub">Health & Aging · Level 11</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-label">You discovered a secret about your body</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+      <button class="btn" onclick="goAdvice()">View Level Advice</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P6: 通关建议页 ==================== -->
+<!-- ==================== P6: Level Advice ==================== -->
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第八关 · 人际迷宫</div>
+      <div class="level-badge">第十一关 · 健康与aging</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">通关建议</div>
+      <div class="advice-title">Level Advice</div>
       <div class="advice-intro">
-        关系不是目的，<br>
-        但它是一面镜子，照得见你在关系里有没有做自己。
+        Your vitality is your own business.<br>
+        Others' health advice — take it or leave it.<br>
+        This level helps you read your own "body diary."
       </div>
     </div>
     <div id="adviceList"></div>
 
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      以上不是你想说的？打开你的隐藏关卡 →
+      Not what you wanted to say? Open your hidden level →
     </div>
-    <div class="page-end-text">— 第八关 · 人际迷宫 · 完 —</div>
+    <div class="page-end-text">— Level 11 · Health & Aging · Complete —</div>
   </div>
 </div>
 
-<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<!-- ==================== P7: Hidden Level ==================== -->
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">隐藏关卡</div>
+      <div class="level-badge">Hidden Level</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的专属关卡</div>
+      <div class="hidden-title">Your Personal Level</div>
       <div class="hidden-sub">
-        这里是你的空间，写下你在人际关系里真正卡住的事。<br>
-        不用修饰，不用在意文采。真实就好。
+        This is your space. Write about what's truly stuck between you and your body.<br>
+        No need to polish. Just be honest.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">第一步</div>
-      <div class="step-label">我在关系里，卡在哪里？</div>
-      <textarea class="step-input" id="hidden1" placeholder="最近一次让我在关系里委屈的事是："></textarea>
+      <div class="step-num">Step 1</div>
+      <div class="step-label">What has my body been telling me lately?</div>
+      <textarea class="step-input" id="hidden1" placeholder="The signals my body has been giving me are..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第二步</div>
-      <div class="step-label">这种感觉最早出现在什么时候？</div>
-      <textarea class="step-input" id="hidden2" placeholder="最早是在……"></textarea>
+      <div class="step-num">Step 2</div>
+      <div class="step-label">What health issue am I most afraid of?</div>
+      <textarea class="step-input" id="hidden2" placeholder="I'm most worried about my body having problems with..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第三步</div>
-      <div class="step-label">如果可以改变一件事，我希望是？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我希望自己可以……"></textarea>
+      <div class="step-num">Step 3</div>
+      <div class="step-label">In what state do I want to grow old?</div>
+      <textarea class="step-input" id="hidden3" placeholder="When I'm old, I hope to..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第四步</div>
-      <div class="step-label">我愿意为此付出什么？</div>
-      <textarea class="step-input" id="hidden4" placeholder="为了改变，我愿意……"></textarea>
+      <div class="step-num">Step 4</div>
+      <div class="step-label">What am I willing to do now for a good ending?</div>
+      <textarea class="step-input" id="hidden4" placeholder="To live with quality, I am willing to..."></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
+    <button class="generate-btn" onclick="generateCard()">Generate My Hidden Level Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的隐藏关卡</div>
-      <div class="card-preview-sub">第八关 · 人际迷宫 · 找到啦</div>
+      <div class="card-preview-title">My Vitality Map</div>
+      <div class="card-preview-sub">Level 11 · Health & Aging · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+      <button class="download-btn" onclick="downloadCard()">Download Card</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== 完成页 ==================== -->
+<!-- ==================== Complete Page ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      看清自己在关系里的卡点，<br>
-      本身就是改变的开始。<br>
-      接下来的路，在你脚下。
+      Your body is your longest companion.<br>
+      Reading its signals matters more than any health advice.<br>
+      Treat it well, and it will repay you.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+    <button class="btn btn-ghost" onclick="restart()">Start Over</button>
   </div>
 </div>
 
@@ -965,142 +966,142 @@
    数据
    ============================================================ */
 
-// 困境（12条）
+// Dilemmas (12 items)
 const dilemmas = [
-  { id: 1, text: "别人找我帮忙，我不愿意但还是答应了，事后又后悔。" },
-  { id: 2, text: "我总是那个主动联系别人的人，不联系就怕关系淡了。" },
-  { id: 3, text: "我不知道怎么拒绝别人，哪怕这件事已经让我很不舒服。" },
-  { id: 4, text: "我在关系里付出很多，但对方好像没怎么回应我。" },
-  { id: 5, text: "我很怕被人讨厌，所以一直在表演一个「好脾气」的自己。" },
-  { id: 6, text: "我不敢表达真实的想法，怕说了之后对方不高兴。" },
-  { id: 7, text: "我对别人有期待，但对方没做到，我不敢说，只是自己生闷气。" },
-  { id: 8, text: "我总是在意别人的评价，哪怕那个人其实没那么重要。" },
-  { id: 9, text: "我付出了很多，但对方好像觉得理所当然，我心里不平衡。" },
-  { id: 10, text: "我想结束一段消耗我的关系，但不知道怎么开口，怕伤害对方。" },
-  { id: 11, text: "我在关系里总是猜对方的心情，却很少问自己舒不舒服。" },
-  { id: 12, text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。" }
+  { id: 1, text: "Always feeling tired lately, no amount of sleep helps." },
+  { id: 2, text: "Seeing my face in the mirror and pausing: is that me?" },
+  { id: 3, text: "Lost interest in many things — not unwilling, just no energy." },
+  { id: 4, text: "Starting to worry a certain disease might be hereditary." },
+  { id: 5, text: "Frequent back pain, but don't think it warrants a doctor visit." },
+  { id: 6, text: "Sleep quality has worsened, waking up in the middle of the night." },
+  { id: 7, text: "Sometimes feeling: life is pointless (but not often)." },
+  { id: 8, text: "Less energy than before, but with family to support, can't stop." },
+  { id: 9, text: "Body has given several warnings, but always too busy to address them." },
+  { id: 10, text: "Starting to seriously consider: what happens when I'm old?" },
+  { id: 11, text: "Know exercise is important, but just can't get moving." },
+  { id: 12, text: "Always been healthy, but recently started fearing death." }
 ];
 
-// 冒险卡（12张）
+// Adventure Cards (12)
 const adventureCards = [
-  "所有让你消耗的关系，都在偷偷问你要一样东西：你自己。",
-  "边界不是墙，是门——你决定谁可以进来。",
-  "你不是在维护关系，你是在用委屈换认可。",
-  "不敢拒绝，是因为你怕对方不喜欢「说不了」的你。",
-  "你在关系里弄丢的自己，比对方重要得多。",
-  "期待别人改变，是你给自己找的最大的借口。",
-  "你不是不会说话，你是不敢说真话。",
-  "一段需要你一直表演的关系，本来就不适合你。",
-  "你总是在替别人着想，谁在你难过的时候替你着想？",
-  "有些关系，结束比维持更勇敢。",
-  "你在关系里受的委屈，对方往往根本不知道。",
-  "真正的亲密，是两个人都不需要表演。"
+  "The brain is plastic. Every thought you have right now is reshaping your brain.",
+  "The best anti-aging medicine is 『meaningful relationships』 and 『things worth investing in』—— — proven by Harvard's 75-year study.",
+  "Aging isn't a disease — it's a gift from time, if you know how to unwrap it.",
+  "When essence is full, desire fades; when qi is full, hunger fades; when spirit is full, sleep fades. Where does your vitality stand now?",
+  "Your body is your longest companion. Treat it well, and it will repay you.",
+  "Anxiety is fear of the future; depression is despair about the past — both drain your 『spirit』。",
+  "Sitting is the gentlest slow suicide. Standing up to walk for 5 minutes each hour works better than any supplement.",
+  "The best wellness plan isn't expensive supplements — it's sleeping well, eating right, moving, and thinking clearly.",
+  "Aging is inevitable, but 『aging without decline』 is a choice.",
+  "Physical problems are often psychological in disguise. Back pain is sometimes stress; insomnia is sometimes anxiety.",
+  "Death isn't failure — it's completing your mission. In what state do you want to complete yours?",
+  "『精满不思淫，气满不思食，spirit满不思睡』—— — ancestral wisdom that modern medicine is also heading toward."
 ];
 
-// 诊断题（6题×5选项）
+// Diagnostic Questions (6 x 5 options)
 const questions = [
   {
-    q: "在关系里，你最常感受到的是？",
+    q: "How would you rate your recent physical condition?",
     options: [
-      { text: "我总是在付出，但对方好像没怎么回应我。", key: "01付出失衡" },
-      { text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。", key: "02冲突回避" },
-      { text: "我不敢表达真实想法，怕说了之后对方不高兴。", key: "03真实恐惧" },
-      { text: "我总是在意别人的评价，哪怕那人其实没那么重要。", key: "04评价焦虑" },
-      { text: "我不知道怎么拒绝别人，哪怕这件事已经让我很不舒服。", key: "05边界模糊" }
+      { text: "Energetic, feeling great.", key: "01精力充沛" },
+      { text: "Okay — not the best, not the worst.", key: "02基本正常" },
+      { text: "A bit tired, but managing.", key: "03轻度疲劳" },
+      { text: "Noticeably less energy than before.", key: "04中度疲劳" },
+      { text: "Often tired, can't recover.", key: "05严重疲劳" }
     ]
   },
   {
-    q: "关于「拒绝」，你最接近的感受是？",
+    q: "Your first feeling about 『aging』:",
     options: [
-      { text: "我不知道怎么拒绝，怕拒绝了对方会不高兴。", key: "05边界模糊" },
-      { text: "我拒绝了别人之后，会一直想：我是不是太过分了？", key: "06内疚惯性" },
-      { text: "我不敢说不，因为我怕对方从此就不联系我了。", key: "07被弃恐惧" },
-      { text: "我总是在别人找我帮忙时先答应，事后又后悔。", key: "05边界模糊" },
-      { text: "我怕拒绝别人会显得我很冷漠、不近人情。", key: "08形象维护" }
+      { text: "Normal phenomenon, nothing to fear.", key: "06接纳aging" },
+      { text: "A bit worried, but things will work out.", key: "07轻度担忧" },
+      { text: "Starting to seriously consider wellness.", key: "08主动应对" },
+      { text: "Quite scared, afraid to think about it.", key: "09回避恐惧" },
+      { text: "It's already happening — my body is declining.", key: "10现实接受" }
     ]
   },
   {
-    q: "关于期待和失望，你最接近的感受是？",
+    q: "How is your sleep quality now?",
     options: [
-      { text: "我对别人有期待，但对方没做到，我不敢说，只是自己生闷气。", key: "09期待压抑" },
-      { text: "我总是希望对方主动来理解我，但他往往没有。", key: "10被动等待" },
-      { text: "我付出了很多，但对方觉得理所当然，我心里不平衡。", key: "01付出失衡" },
-      { text: "我在关系里总是在猜对方的心情，却很少问自己舒不舒服。", key: "11自我忽视" },
-      { text: "我发现我对别人的期待，往往高过对方实际愿意给的。", key: "09期待压抑" }
+      { text: "睡得不错，醒来精spirit好。", key: "11睡眠优质" },
+      { text: "Basically okay, occasionally wake up.", key: "12睡眠尚可" },
+      { text: "经常睡不好，第二天精spirit差。", key: "13睡眠问题" },
+      { text: "Severe insomnia, already affecting life.", key: "14严重失眠" },
+      { text: "Need medication to fall asleep.", key: "15药物依赖" }
     ]
   },
   {
-    q: "关于冲突，你最接近的感受是？",
+    q: "What is your current exercise situation?",
     options: [
-      { text: "我很怕冲突，宁愿自己忍一忍，也不想让场面变差。", key: "02冲突回避" },
-      { text: "我不敢表达不同意见，怕说了之后关系就坏了。", key: "03真实恐惧" },
-      { text: "我觉得有冲突的关系都是不好的，所以我一直在避免冲突。", key: "02冲突回避" },
-      { text: "我在冲突的时候会大脑空白，不知道说什么，事后又很后悔。", key: "12冲突无助" },
-      { text: "我很怕对方生气，所以我会先妥协、先道歉。", key: "13讨好惯性" }
+      { text: "Exercise regularly, it's a habit.", key: "16规律运动" },
+      { text: "Occasionally exercise, but know I should do more.", key: "17意识清醒" },
+      { text: "Know exercise is important, but just don't do it.", key: "18知行不一" },
+      { text: "Physical condition doesn't allow exercise.", key: "19客观限制" },
+      { text: "Don't exercise at all, and don't plan to.", key: "20无动意愿" }
     ]
   },
   {
-    q: "关于自我和关系，你最接近的状态是？",
+    q: "Your first feeling about 自己健康最大的担心是？",
     options: [
-      { text: "我在关系里弄丢了自己，不知道哪个是真正的我。", key: "11自我忽视" },
-      { text: "我总是在表演一个「好脾气」的自己，很累。", key: "14表演疲惫" },
-      { text: "我怕别人不喜欢真正的我，所以一直在扮演别人喜欢的样子。", key: "14表演疲惫" },
-      { text: "我没有在关系里真正放松过，总是在想：我这样说行不行。", key: "04评价焦虑" },
-      { text: "我想结束一段消耗我的关系，但不知道怎么开口。", key: "15结束恐惧" }
+      { text: "No particular concerns.", key: "21心态乐观" },
+      { text: "Chronic diseases (blood pressure, blood sugar, etc.).", key: "22慢性病风险" },
+      { text: "Major diseases (cancer, cardiovascular, etc.).", key: "23重病恐惧" },
+      { text: "No one to care for me when old.", key: "24老年焦虑" },
+      { text: "Cognitive decline (dementia).", key: "25认知衰退" }
     ]
   },
   {
-    q: "以下哪句话，最接近你内心对关系的真实看法？",
+    q: "你现在的精spirit状态，最接近哪一种？",
     options: [
-      { text: "我配被好好对待，但我不太敢相信这件事会发生。", key: "16值得怀疑" },
-      { text: "我在关系里受的委屈，对方往往根本不知道。", key: "11自我忽视" },
-      { text: "我总是在替别人着想，谁在我难过的时候替我着想？", key: "11自我忽视" },
-      { text: "我怕冲突，但我更怕一直在委屈里待着。", key: "02冲突回避" },
-      { text: "我开始觉得：有些关系，结束比维持更勇敢。", key: "15结束恐惧" }
+      { text: "Fulfilled, with purpose.", key: "26精spirit充实" },
+      { text: "Ordinary, but stable.", key: "27基本安定" },
+      { text: "A bit lost, nothing particular I want to do.", key: "28精spirit平淡" },
+      { text: "Tired, but don't know why.", key: "29身心疲惫" },
+      { text: "Often feel life is pointless.", key: "30存在空虚" }
     ]
   }
 ];
 
-// 卡点完整数据（30个维度）
+// Card Points Data (30 dimensions)
 const cardPoints = {
-  "01付出失衡":    { name: "付出失衡",    desc: "你在关系里付出很多，但对方好像没怎么回应你。你不是善良，你是在用付出来换安全感。", advice: "这周，在一段关系里，做一次「不主动付出」的实验：对方不找你，你就不找对方。看看天会不会塌下来。", color: "var(--gold)" },
-  "02冲突回避":    { name: "冲突回避",    desc: "你很怕冲突，宁愿自己忍一忍，也不想让场面变差。但你忍的每一件事，都在暗暗记账。", advice: "下次有不同意见的时候，试着说一句：「我跟你想的有点不一样。」——就这一句，不用吵起来。", color: "#b89a6a" },
-  "03真实恐惧":    { name: "真实恐惧",    desc: "你不敢表达真实的想法，怕说了之后对方不高兴。但你没说出口的那些话，会变成心里的一根刺。", advice: "找一个你信任的人，说一件你真实想说但一直没说的事。你会发现：说开了，关系往往更好，不是更差。", color: "var(--gold)" },
-  "04评价焦虑":    { name: "评价焦虑",    desc: "你总是在意别人的评价，哪怕那个人其实没那么重要。你把别人的眼光，活成了自己的牢笼。", advice: "今天，做一件「别人可能会怎么想但实际上我挺想做」的小事。做完之后你会发现：没人那么在意。", color: "#c0784a" },
-  "05边界模糊":    { name: "边界模糊",    desc: "你不知道怎么拒绝别人，哪怕这件事已经让你很不舒服。你怕拒绝了就显得你不好，但你忘了：你的舒服也很重要。", advice: "这周，练习说一次「不好意思，这个我可能帮不上」。不用解释，不用道歉，就这一句话。", color: "var(--gold)" },
-  "06内疚惯性":    { name: "内疚惯性",    desc: "你拒绝了别人之后，会一直想：我是不是太过分了？你把「拒绝」当成了一种罪，但你忘了：对方也可以说不了。", advice: "下一次拒绝之后，对自己说三遍：「我有权利说不了。」——说出口，内疚感会轻一点。", color: "#a88040" },
-  "07被弃恐惧":    { name: "被弃恐惧",    desc: "你不敢说不，因为你怕对方从此就不联系你了。但你用委屈换来的联系，本来就不牢靠。", advice: "想一想：如果有一个人因为你说了「不」就不再理你，这段关系你真的可惜吗？", color: "#8a6040" },
-  "08形象维护":    { name: "形象维护",    desc: "你怕拒绝别人会显得你很冷漠、不近人情。但你一直在维护的那个「好人形象」，其实压得你喘不过气。", advice: "找一个你信任的朋友，跟TA说一句：「其实我有时候不想那么热心。」——你会发现，TA并不会因此不喜欢你。", color: "#b08a5a" },
-  "09期待压抑":    { name: "期待压抑",    desc: "你对别人有期待，但对方没做到，你不敢说，只是自己生闷气。但你不说，对方永远不会知道你在期待什么。", advice: "下次有期待的时候，试着说出来。比如：「这周末，我希望我们可以一起做点什么。」——说出口，才有机会被满足。", color: "var(--gold)" },
-  "10被动等待":    { name: "被动等待",    desc: "你总是希望对方主动来理解你，但他往往没有。但你没开口，对方可能根本不知道你需要被理解。", advice: "这周，主动说一次：「我最近有点……你可以陪我说说话吗？」——不用觉得很丢脸，这需要勇气，也很值得。", color: "#9a7060" },
-  "11自我忽视":    { name: "自我忽视",    desc: "你在关系里总是在猜对方的心情，却很少问自己舒不舒服。你把别人放在第一位，把自己排在了最后面。", advice: "今天，做一件「先顾及自己感受」的小事——不用很大，就是先问自己一次：我现在舒服吗？", color: "#c09060" },
-  "12冲突无助":    { name: "冲突无助",    desc: "你在冲突的时候会大脑空白，不知道说什么，事后又很后悔。你不是不会说话，你是在冲突里太紧张了。", advice: "预先准备一句话，下次冲突的时候先说：「我现在有点情绪，能不能先停一下，等会儿再聊？」——这会给你缓冲的时间。", color: "#a07850" },
-  "13讨好惯性":    { name: "讨好惯性",    desc: "你很怕对方生气，所以你会先妥协、先道歉。但你妥协的每一件事，都在告诉对方：你的感受不重要。", advice: "下次对方生气的时候，先别急着道歉。等三分钟，问问自己：这件事，真的是我的错吗？", color: "#b07050" },
-  "14表演疲惫":    { name: "表演疲惫",    desc: "你总是在表演一个「好脾气」的自己，很累。但你表演的那个版本，不是真正的你，对方喜欢的也不是真正的你。", advice: "找一个安全的人，在他面前尝试做一次「不表演」的自己——说一句你真实想说的、有点「不太乖」的话。", color: "var(--gold)" },
-  "15结束恐惧":    { name: "结束恐惧",    desc: "你想结束一段消耗你的关系，但不知道怎么开口，怕伤害对方。但你一直在消耗里待着，对自己才是最大的伤害。", advice: "写一封信（不用寄出去），把你想对那段关系说的话全写下来。写完了，你会清楚很多。", color: "#8a6040" },
-  "16值得怀疑":    { name: "值得怀疑",    desc: "你配被好好对待，但你不太敢相信这件事会发生。你潜意识里觉得自己不配，所以一直在接受低于你值得的关系。", advice: "写下来三件你值得被好好对待的理由。不用给别人看，就是写给自己看。你会发现自己比以为的更值得。", color: "var(--gold)" },
-  "17信任创伤":    { name: "信任创伤",    desc: "你曾经在关系里被辜负过，从那以后就很难再完全信任一个人。你不是不会信任，是你还没修复那个伤口。", advice: "找一个你信任的、很小的事（比如「我可以相信他会准时来」），练习把信任先放在这件小事上。", color: "#c0784a" },
-  "18比较消耗":    { name: "比较消耗",    desc: "你看到别人关系很好，就开始怀疑自己：为什么我的人际关系这么累？但每个人的关系里，都有你看不到的那一面。", advice: "下次想比较的时候，把注意力拉回来：在我现有的关系里，哪一段是让我舒服的？先把这一段经营好。", color: "#b89a6a" },
-  "19完美压力":    { name: "完美压力",    desc: "你觉得自己在关系里必须表现得很完美，不能出错、不能让人失望。但你又不是产品，为什么不许自己偶尔让人失望？", advice: "这周，故意在一件小事上「让人失望」一次——比如约好了但临时改时间。你会发现：对方往往没那么介意。", color: "#a88040" },
-  "20沉默成本":     { name: "沉默成本",    desc: "你知道这段关系在消耗你，但你已经投入了太多时间和情感，不舍得放手。但你越不舍，陷得越深。", advice: "问自己一个问题：「如果今天才认识这个人，我还会愿意和TA做朋友吗？」——答案会告诉你该不该继续。", color: "#9a7060" },
-  "21控制欲望":     { name: "控制欲望",    desc: "你总是想改变对方，觉得改了你们的关系就会变好。但你改变不了任何人，你只能改变自己应对的方式。", advice: "下次想改变对方的时候，把注意力转回自己：「我怎么能让自己在这段关系里更舒服？」", color: "#b08a5a" },
-  "22孤独恐惧":     { name: "孤独恐惧",    desc: "你怕一个人待着，所以宁愿在糟糕的关系里待着，也不愿一个人。但你先要能跟自己相处，才能跟别人相处得好。", advice: "这周，安排一个晚上，完全一个人待着，不刷手机、不找人聊天。你会发现：一个人，其实没那么可怕。", color: "#c09060" },
-  "23道歉惯性":     { name: "道歉惯性",    desc: "你总是先道歉，哪怕不是你的错。你用道歉来换关系的和平，但对方会慢慢觉得：反正你都会道歉。", advice: "这周，忍住一次「对不起」。如果一件事不是你的错，就不要说对不起。——忍住了，你会发现天不会塌。", color: "#a07850" },
-  "24羡慕回避":     { name: "羡慕回避",    desc: "你看到别人关系很好，心里会有点酸，但你不会承认，只是自己默默难受。你不是小气，是你也有权利渴望被好好对待。", advice: "下次心里酸的时候，对自己说一句：「我也值得被这样对待。」——承认这个渴望，它才会推动你去改变。", color: "#8a6040" },
-  "25共情过度":     { name: "共情过度",    desc: "你总是能感受到别人的情绪，但你会把别人的情绪当成自己的责任。你可以有同理心，但你不需要为别人的情绪买单。", advice: "下次感受到别人的负面情绪时，在心里说一句：「这是他的情绪，不是我的。」——划清这条线，你会轻松很多。", color: "var(--gold)" },
-  "26回馈压力":     { name: "回馈压力",    desc: "别人对你好，你一定要还回去，不然心里不踏实。但你把关系活成了交易，少了那份自然而然的流动。", advice: "下次有人对你好，试着只说「谢谢」，不要马上想着怎么还。有些好，收下就好。", color: "#b89a6a" },
-  "27防御过度":     { name: "防御过度",    desc: "你因为曾经被伤害过，所以现在对所有人都有防备。但你用防备保护了自己的同时，也把真正想靠近你的人挡在外面了。", advice: "找一个你觉得安全的人，试着多说一点关于自己的事。不用一下全说出来，就是多说一句。", color: "#c0784a" },
-  "28表达障碍":     { name: "表达障碍",    desc: "你有话想说，但话到嘴边又咽回去了，不知道怎么开口。你不是不会表达，是你还没找到属于你的表达方式。", advice: "这周，用文字代替口头表达一次——发一条消息，把你想说的写下来。文字会给你更多时间和勇气。", color: "var(--gold)" },
-  "29亲密恐惧":     { name: "亲密恐惧",    desc: "你渴望被理解，但你又怕被人看透。你一直在渴望和害怕之间拉扯，所以关系总是停在表面。", advice: "找一个你信任的人，跟TA说一件你从来没有跟别人说过的、关于你的小事。你会发现：被看透了，也没那么可怕。", color: "#a88040" },
-  "30和解障碍":     { name: "和解障碍",    desc: "你和一个人闹翻了，心里其实想和解，但不知道怎么开口，怕先开口就显得自己输了。但你不放过对方，其实是在不放过自己。", advice: "如果有一段关系你想和解，这周，发一条简单的消息：「最近还好吗？」——不用解释，不用道歉，就是先开口。", color: "#9a7060" }
+  "01精力充沛":    { name: "Full of Energy",    desc: "Your energy levels are good — that's great capital. Don't waste it by abusing your youth; energy is wealth that can be preserved.", advice: "Keep it up. Exercise 3+ times a week — it's the best investment.", color: "var(--gold)" },
+  "02基本正常":    { name: "Basically Normal",    desc: "Your body is basically on track — no need to over-worry, but not ideal for continued overexertion.", advice: "Get an annual checkup. Don't wait for problems. Prevention is always cheaper than treatment.", color: "#b89a6a" },
+  "03轻度疲劳":    { name: "Mild Fatigue",    desc: "Your body is already reminding you: tired, needs rest. Don't ignore this signal.", advice: "This week, go to bed before 11 PM at least two nights. The sleep you owe yourself will eventually be collected.", color: "#9a7a4a" },
+  "04中度疲劳":    { name: "Moderate Fatigue",    desc: "Less energy than before — not your fault, but ignoring it is your responsibility.", advice: "First check: anemia? Thyroid? Sleep apnea? Get basic tests to rule out organic issues.", color: "#a88040" },
+  "05严重疲劳":    { name: "Severe Fatigue",    desc: "Your body is sounding the alarm. You've been pushing, but pushing has limits.", advice: "This must be taken seriously. Get a full checkup and examine your stress sources — some fatigue isn't physical, it's psychological.", color: "#c0784a" },
+  "06接纳aging":    { name: "接纳aging",    desc: "Your first feeling about aging有平常心，这是成熟的表现。aging不可怕，怕的是抗拒。", advice: "Keep this acceptance while also checking: are you nourishing yourself with healthy habits? Acceptance needs action too.", color: "var(--gold)" },
+  "07轻度担忧":    { name: "Mild Concern",    desc: "Your first feeling about aging有些担心，但还没有被恐惧支配。这种担忧是有益的——它提醒你做点什么。", advice: "把担忧转化为行动：开始关注自己的饮食、睡眠 and 运动。担心本身不解决问题，行动才解决。", color: "#b89a6a" },
+  "08主动应对":    { name: "Proactive Approach",    desc: "You've started taking wellness seriously — great start. Direction matters more than effort.", advice: "Build sustainable health habits: 6000 steps daily, 3 workouts weekly, less processed food.——Small habits stick.", color: "var(--gold)" },
+  "09回避恐惧":    { name: "Avoidant Fear",    desc: "Your first feeling about aging有恐惧，而且选择了回避。恐惧本身是正常的，但回避会让你错过预防的机会。", advice: "Annual checkups are insurance for the future. Fear isn't scary — what's scary is avoiding checkups because of fear.", color: "#c0784a" },
+  "10现实接受":    { name: "Reality Accepted",    desc: "Your body has started declining. This isn't failure — it's reality everyone faces.", advice: "Focus on how to make the decline steadier. Control blood pressure and sugar, get regular checkups — the most important things you can do now.", color: "#9a7a4a" },
+  "11睡眠优质":    { name: "Quality Sleep",    desc: "你能睡个好觉，这是很大的福气。睡眠是最好的抗aging药，也是最好的补药。", advice: "Keep it up. Avoid phones before bed — blue light is sleep's greatest enemy.", color: "var(--gold)" },
+  "12睡眠尚可":    { name: "Decent Sleep",    desc: "Your sleep is basically okay, but room for improvement. Occasional insomnia is your body saying: time to adjust.", advice: "睡前2小时避免咖啡、浓茶 and 剧烈运动。给自己建立一个『sleep ritual』：: wash up, lights off, soft music.", color: "#b89a6a" },
+  "13睡眠问题":    { name: "Sleep Problems",    desc: "Your sleep has issues. Poor sleep affects everything: mood, memory, immunity, even lifespan.", advice: "First find the cause: stress? Coffee? Phone? Or physical issues? Treat accordingly. See a sleep specialist if needed.", color: "#a88040" },
+  "14严重失眠":    { name: "Severe Insomnia",    desc: "Insomnia has become part of your life. This isn't just a sleep issue — your body and mind are crying for help.", advice: "Insomnia is often the body's expression of psychological issues. See a professional — short-term medication is reasonable. Don't push through alone.", color: "#c0784a" },
+  "15药物依赖":    { name: "Medication Dependent",    desc: "你已经开始Need medication to fall asleep.药物可以帮助你度过难关，但不能成为长期解决方案。", advice: "See a specialist to adjust medication while fundamentally addressing sleep: stress management, lifestyle changes, cognitive behavioral therapy.", color: "#c0784a" },
+  "16规律运动":    { name: "Regular Exercise",    desc: "You have an exercise habit — great. Exercise is the best method for reversing aging, bar none.", advice: "Keep going, but diversify: cardio, strength, flexibility — all three. Over-exercise is also harmful.", color: "var(--gold)" },
+  "17意识清醒":    { name: "Aware But Inactive",    desc: "你knowing运动重要，但还没真正动起来。知识 and 行动之间，隔着一道鸿沟。", advice: "Start with the smallest action: 6000 steps daily. No gym needed, no equipment — just walking. One month and you'll see changes.", color: "#9a7a4a" },
+  "18知行不一":    { name: "Knowing Not Doing",    desc: "You understand health knowledge but can't act on it. This is modern life's most common struggle.", advice: "Knowing doesn't mean 『knowing』 means 『doing』。找一个人陪你一起运动，或者找一个目标——有人陪、有目标，才能坚持。", color: "#b89a6a" },
+  "19客观限制":    { name: "Physical Limitations",    desc: "你的身体状况确实限制了你运动的能力。这Knowing doesn't mean 你的问题，接受它，然后找到适合你的方式。", advice: "即使不能剧烈运动，也可以做柔 and 的运动：散步、太极、拉伸、游泳。关键是动起来，Knowing doesn't mean 动得多猛。", color: "#9a7a4a" },
+  "20无动意愿":    { name: "No Motivation to Move",    desc: "You have zero motivation to exercise. There may be a reason: depression? Fatigue? Or just habit?", advice: "Find the cause first. If fatigue, fix sleep first; if depression, seek professional help. If just habit, start with the simplest: stand up, take two steps.", color: "#c0784a" },
+  "21心态乐观":    { name: "Optimistic Mindset",    desc: "Your first feeling about 健康没有特别的担忧，这是好事。但乐观不应该变成大意。", advice: "Annual checkups are the best insurance for the future. Don't skip them just because you feel fine.", color: "var(--gold)" },
+  "22慢性病风险":  { name: "Chronic Disease Risk",  desc: "你担心Chronic diseases (blood pressure, blood sugar, etc.).这是最常见的健康威胁，也是最可控的。", advice: "慢性病管理，靠的是生活习惯，Knowing doesn't mean 靠感觉。控制饮食、增加运动、遵医嘱吃药，三管齐下，可以 and 慢性病 and 平共处。", color: "#b89a6a" },
+  "23重病恐惧":    { name: "Major Disease Fear",    desc: "Your first feeling about 重大疾病有恐惧。这个恐惧是合理的——但过度恐惧会影响生活质量。", advice: "Fear doesn't solve problems — action does. Convert fear into regular screenings: colonoscopy, gastroscopy, lung CT. Early detection is the best weapon against cancer.", color: "#a88040" },
+  "24老年焦虑":    { name: "Old Age Anxiety",    desc: "你担心No one to care for me when old.这是很多人不敢说出口的恐惧。", advice: "Plan ahead: financial preparation, social maintenance, health investment. Money, companions, and health — these secure old age.", color: "#9a7a4a" },
+  "25认知衰退":    { name: "Cognitive Decline Fear",    desc: "你担心Cognitive decline (dementia).这个恐惧越来越普遍——因为我们都看到了身边人的例子。", advice: "The brain can be exercised: reading, learning new skills, socializing, physical exercise, controlling blood pressure and sugar. The earlier you start, the better the results.", color: "#b89a6a" },
+  "26精spirit充实":    { name: "精spirit充实",    desc: "你的精spirit状态很好，有奔头。这是最难得的——很多人有钱有闲，但没有奔头。", advice: "继续保持。同时注意身体：精spirit充实的人容易透支身体，觉得自己还行。别忘了，你Knowing doesn't mean 铁打的。", color: "var(--gold)" },
+  "27基本安定":    { name: "Basically Settled",    desc: "你的精spirit状态基本安稳，不算充实但也不迷茫。这是最常见的状态。", advice: "Ordinariness is a blessing, but too long can slide into emptiness. Occasionally challenge yourself: learn something new, visit somewhere new, meet an old friend.", color: "#b89a6a" },
+  "28精spirit平淡":    { name: "精spirit平淡",    desc: "你A bit lost, nothing particular I want to do.这种平淡，是很多中年人的真实写照。", advice: "平淡的反面Knowing doesn't mean 轰轰烈烈，是『meaning』。找一个你能帮到的人、做一件你觉得有价值的小事——meaning，会慢慢回来的。", color: "#9a7a4a" },
+  "29身心疲惫":    { name: "Body-Mind Exhaustion",    desc: "你经常觉得累，不只是身体累，是心累。这种疲惫，是身体 and 心理的双重警报。", advice: "先停下来。Knowing doesn't mean 等有时间了再休息，是现在就休息。哪怕每天15分钟的放空，也比硬撑强。你的身体在求救。", color: "#c0784a" },
+  "30存在空虚":    { name: "Existential Emptiness",    desc: "你Often feel life is pointless.这Knowing doesn't mean 小问题——如果这个感觉持续超过两周，需要认真对待。", advice: "先排除抑郁症的可能。如果是抑郁症，寻求专业帮助；如果Knowing doesn't mean ，那意味着你的生活需要调整——加意义，减消耗，增联结。", color: "#8b3a2a" }
 };
 
-// 彩蛋（4个，围绕人际关系与自我成长主题）
+// 彩蛋（4个，围绕健康与aging主题）
 const easterEggs = [
-  { title: "《智囊》· 管仲与鲍叔牙", text: "管仲曰：「生我者父母，知我者鲍子也。」——真正的朋友，不是数量多，是有一个人，懂得你不为人知的那一面。" },
-  { title: "《智囊》· 王旦", text: "王旦为相，有人骂他，他装作没听见。——不是软弱，是知道自己要做什么，不把精力浪费在每一句噪音上。" },
-  { title: "王凤仪· 化性", text: "王凤仪说：「人要是能把脾气化去，自然就好了。」——你在关系里受的委屈，往往跟你没化完的性子有关。化性，不是改别人，是改自己。" },
-  { title: "反脆弱", text: "塔勒布说：反脆弱的系统，会从波动中受益。——你和人的关系也是，经历过低谷、冲突、误解，关系才会真正结实起来。没有冲突的关系，往往很脆弱。" }
+  { title: "Huangdi Neijing · Ancient Truths", text: "The Yellow Emperor asked Qi Bo: why could people in ancient times live to 100 without decline? Qi Bo answered: 『"Eat and drink in moderation, maintain regular routines, avoid overexertion." 』——Wellness advice from two thousand years ago that still works today." },
+  { title: "Harvard 75-Year Study", text: "哈佛大学追踪了724人75年，结论是：决定一个人健康 and 幸福的，Knowing doesn't mean 财富、Knowing doesn't mean 成就，而是——良好的人际关系。孤独，是健康最大的杀手。" },
+  { title: "spirit经可塑性", text: "大脑在你的一生中都在改变。每一次学习、每一次思考、每一次运动，都在重塑你的spirit经网络。60岁学画、70岁学琴，不晚——你的大脑还在等你给它惊喜。" },
+  { title: "The Telomere Effect", text: "诺贝尔奖得主布莱克本发现：决定你aging速度的，是端粒的长度。而保护端粒最好的方法，是：减少慢性压力、保持乐观、适度运动、良好睡眠。" }
 ];
 
 /* ============================================================
@@ -1187,7 +1188,7 @@ function selectRandomCard() {
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('flipHint').textContent = '— This card accompanies you to the diagnosis —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1272,7 +1273,7 @@ function showResult() {
   const summaryTexts = [
     `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
     `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `人和人的关系，说到底是人和自己的关系。看清卡在哪里，就已经是改变的开始。`
+    `身体是一本连续写了几十年的日记，读懂它，比任何养生经都重要。`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1286,7 +1287,7 @@ function showResult() {
       <div class="result-card">
         <div class="result-card-top">
           <span class="result-card-name">${cp.name}</span>
-          <span class="result-card-pct">命中 ${score} 次</span>
+          <span class="result-card-pct">matched ${score} times</span>
         </div>
         <div class="result-bar-bg">
           <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1357,7 +1358,7 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你卡住的事。');
+    alert('Please write something first — at least one thing you're stuck on.');
     return;
   }
 
@@ -1368,14 +1369,14 @@ function generateCard() {
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
-    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
-    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
-    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
-    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+    "What you've written shows you're already facing it. Just putting it into words is the beginning of change.",
+    "困境Knowing doesn't mean 一天形成的，解开它也不需要一天。你已经走出了第一步。",
+    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己knowing的要大。",
+    "Knowing doesn't mean 所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：把这件事再想一遍，比今天多想清楚一点。';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split('，')[0].split('。')[0]}` : 'Today, do just one thing: send your body a signal — I hear you.';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
@@ -1399,11 +1400,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的隐藏关卡', 300, 80);
+  ctx.fillText('My Hidden Level', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第八关 · 人际迷宫 · 找到啦', 300, 108);
+  ctx.fillText('第十一关 · 健康与aging · 找到啦', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1434,7 +1435,7 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第八关 · 人际迷宫 · 找到啦 —', 300, 750);
+  ctx.fillText('— 第十一关 · 健康与aging · 找到啦 —', 300, 750);
 
   const link = document.createElement('a');
   link.download = '我的隐藏关卡.png';
@@ -1471,7 +1472,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1487,7 +1488,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){
@@ -1498,7 +1499,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor # <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> </span>';}
 })();
 </script>
 <script src="lang-toggle.js"></script>

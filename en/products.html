@@ -1,0 +1,281 @@
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|    <meta charset="UTF-8">
+5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|    <title>AI数字产品 - zhaodaola.top</title>
+7|    <style>
+8|        * {
+9|            margin: 0;
+10|            padding: 0;
+11|            box-sizing: border-box;
+12|        }
+13|        body {
+14|            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+15|            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+16|            min-height: 100vh;
+17|            padding: 20px;
+18|        }
+19|        .container {
+20|            max-width: 1200px;
+21|            margin: 0 auto;
+22|        }
+23|        header {
+24|            text-align: center;
+25|            color: white;
+26|            margin-bottom: 40px;
+27|        }
+28|        header h1 {
+29|            font-size: 2.5rem;
+30|            margin-bottom: 10px;
+31|            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+32|        }
+33|        header p {
+34|            font-size: 1.2rem;
+35|            opacity: 0.9;
+36|        }
+37|        .products-grid {
+38|            display: grid;
+39|            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+40|            gap: 30px;
+41|            padding: 20px;
+42|        }
+43|        .product-card {
+44|            background: white;
+45|            border-radius: 15px;
+46|            padding: 30px;
+47|            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+48|            transition: transform 0.3s ease, box-shadow 0.3s ease;
+49|        }
+50|        .product-card:hover {
+51|            transform: translateY(-5px);
+52|            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+53|        }
+54|        .product-icon {
+55|            font-size: 3rem;
+56|            margin-bottom: 20px;
+57|        }
+58|        .product-title {
+59|            font-size: 1.5rem;
+60|            color: #333;
+61|            margin-bottom: 15px;
+62|            font-weight: 600;
+63|        }
+64|        .product-desc {
+65|            color: #666;
+66|            line-height: 1.6;
+67|            margin-bottom: 20px;
+68|        }
+69|        .product-features {
+70|            list-style: none;
+71|            margin-bottom: 25px;
+72|        }
+73|        .product-features li {
+74|            padding: 8px 0;
+75|            border-bottom: 1px solid #eee;
+76|            color: #555;
+77|        }
+78|        .product-features li:before {
+79|            content: "✓";
+80|            color: #667eea;
+81|            font-weight: bold;
+82|            margin-right: 10px;
+83|        }
+84|        .product-price {
+85|            font-size: 2rem;
+86|            color: #e74c3c;
+87|            font-weight: bold;
+88|            margin-bottom: 20px;
+89|        }
+90|        .product-price span {
+91|            font-size: 1rem;
+92|            color: #999;
+93|        }
+94|        .buy-btn {
+95|            display: inline-block;
+96|            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+97|            color: white;
+98|            padding: 12px 30px;
+99|            border: none;
+100|            border-radius: 25px;
+101|            font-size: 1.1rem;
+102|            cursor: pointer;
+103|            text-decoration: none;
+104|            transition: transform 0.3s ease;
+105|        }
+106|        .buy-btn:hover {
+107|            transform: scale(1.05);
+108|        }
+109|        .contact-info {
+110|            background: rgba(255,255,255,0.1);
+111|            border-radius: 10px;
+112|            padding: 20px;
+113|            margin-top: 40px;
+114|            text-align: center;
+115|            color: white;
+116|        }
+117|        .contact-info h3 {
+118|            margin-bottom: 15px;
+119|        }
+120|        .contact-info p {
+121|            margin-bottom: 10px;
+122|            opacity: 0.9;
+123|        }
+124|        footer {
+125|            text-align: center;
+126|            color: white;
+127|            margin-top: 40px;
+128|            opacity: 0.8;
+129|        }
+130|        @media (max-width: 768px) {
+131|            header h1 {
+132|                font-size: 2rem;
+133|            }
+134|            .products-grid {
+135|                grid-template-columns: 1fr;
+136|            }
+137|        }
+138|    </style>
+139|</head>
+140|<body>
+141|    <div class="container">
+142|        <header>
+143|            <h1>🚀 AI数字产品</h1>
+144|            <p>让AI成为你的超级助手，效率提升300%</p>
+145|        </header>
+146|
+147|        <div class="products-grid">
+148|            <!-- 新产品：打工人工具系列 -->
+149|            <div class="product-card" style="border: 3px solid #38ef7d;">
+150|                <div style="background:#38ef7d;color:white;display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.8em;margin-bottom:10px;">🔥 新品</div>
+151|                <div class="product-icon">📊</div>
+152|                <h2 class="product-title">AI周报生成器</h2>
+153|                <p class="product-desc">3分钟写出让领导满意的周报/月报/年终总结。含6大岗位模板，3种风格，一键复制直接用。</p>
+154|                <ul class="product-features">
+155|                    <li>6大岗位模板（产品/开发/运营/设计/销售/HR）</li>
+156|                    <li>3种风格（正式/简洁/微信）</li>
+157|                    <li>自动统计完成率</li>
+158|                    <li>无需安装，双击打开</li>
+159|                </ul>
+160|                <div class="product-price">¥9.9 <span>/永久使用</span></div>
+161|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+162|            </div>
+163|
+164|            <div class="product-card" style="border: 3px solid #38ef7d;">
+165|                <div style="background:#38ef7d;color:white;display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.8em;margin-bottom:10px;">🔥 新品</div>
+166|                <div class="product-icon">🎯</div>
+167|                <h2 class="product-title">2026找工作面试全攻略</h2>
+168|                <p class="product-desc">1.5万字实操指南，从简历到拿Offer的完整SOP。含话术模板、面试复盘表、薪资计算公式。</p>
+169|                <ul class="product-features">
+170|                    <li>简历撰写黄金法则（STAR+量化）</li>
+171|                    <li>面试全流程攻略（含群面/技术面）</li>
+172|                    <li>薪资谈判实战话术</li>
+173|                    <li>入职90天生存指南</li>
+174|                </ul>
+175|                <div class="product-price">¥9.9 <span>/PDF指南</span></div>
+176|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+177|            </div>
+178|
+179|            <div class="product-card" style="border: 3px solid #38ef7d;">
+180|                <div style="background:#38ef7d;color:white;display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.8em;margin-bottom:10px;">🔥 新品</div>
+181|                <div class="product-icon">📄</div>
+182|                <h2 class="product-title">求职神器·简历生成器</h2>
+183|                <p class="product-desc">填完信息一键生成专业简历，3套模板（经典/现代/创意），支持直接打印。</p>
+184|                <ul class="product-features">
+185|                    <li>3套专业模板</li>
+186|                    <li>填空式输入</li>
+187|                    <li>一键打印/导出</li>
+188|                    <li>附赠简历撰写指南</li>
+189|                </ul>
+190|                <div class="product-price">¥5.9 <span>/永久使用</span></div>
+191|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+192|            </div>
+193|
+194|            <div class="product-card" style="border: 3px solid #38ef7d;">
+195|                <div style="background:#38ef7d;color:white;display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.8em;margin-bottom:10px;">🔥 新品</div>
+196|                <div class="product-icon">💰</div>
+197|                <h2 class="product-title">记账神器·个人财务管理</h2>
+198|                <p class="product-desc">超简单的记账工具，预算控制+分类统计+数据导出。纯本地运行，隐私安全。</p>
+199|                <ul class="product-features">
+200|                    <li>12个支出分类+7个收入分类</li>
+201|                    <li>预算管理与超支提醒</li>
+202|                    <li>分类统计图表</li>
+203|                    <li>CSV/JSON数据导出</li>
+204|                </ul>
+205|                <div class="product-price">¥5.9 <span>/永久使用</span></div>
+206|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+207|            </div>
+208|
+209|            <!-- 原有产品 -->
+210|            <div class="product-card">
+211|                <div class="product-icon">📚</div>
+212|                <h2 class="product-title">AI指令包</h2>
+213|                <p class="product-desc">500+条精选AI指令，覆盖写作、营销、办公、学习等10+个场景，即买即用，效率翻倍！</p>
+214|                <ul class="product-features">
+215|                    <li>500+条精选指令</li>
+216|                    <li>覆盖10+个场景</li>
+217|                    <li>即买即用</li>
+218|                    <li>持续更新</li>
+219|                </ul>
+220|                <div class="product-price">¥19.9 <span>/标准版</span></div>
+221|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+222|            </div>
+223|
+224|            <div class="product-card">
+225|                <div class="product-icon">💼</div>
+226|                <h2 class="product-title">AI副业速成手册</h2>
+227|                <p class="product-desc">普通人用AI赚钱的7条路，从0到1的完整指南，包含真实案例和实操方法。</p>
+228|                <ul class="product-features">
+229|                    <li>7条赚钱路径</li>
+230|                    <li>真实案例解析</li>
+231|                    <li>实操步骤详解</li>
+232|                    <li>适合新手</li>
+233|                </ul>
+234|                <div class="product-price">¥29.9 <span>/完整版</span></div>
+235|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即购买</a>
+236|            </div>
+237|
+238|            <div class="product-card">
+239|                <div class="product-icon">📊</div>
+240|                <h2 class="product-title">行业调研报告定制</h2>
+241|                <p class="product-desc">资深媒体人定制行业调研报告，包含市场分析、竞品分析、机会评估。</p>
+242|                <ul class="product-features">
+243|                    <li>定制化报告</li>
+244|                    <li>专业分析</li>
+245|                    <li>数据支撑</li>
+246|                    <li>一对一咨询</li>
+247|                </ul>
+248|                <div class="product-price">¥99 <span>/起</span></div>
+249|                <a href="https://www.goofish.com/item?user_id=liren1972" class="buy-btn">立即咨询</a>
+250|            </div>
+251|        </div>
+252|
+253|        <div class="contact-info">
+254|            <h3>📞 Contact Us</h3>
+255|            <p>闲鱼ID：liren1972</p>
+256|            <p>响应时间：24小时内</p>
+257|            <p>定制服务：欢迎私聊咨询</p>
+258|        </div>
+259|
+260|        <footer>
+261|            <p>© 2026 zhaodaola.top - AI数字产品平台</p>
+262|            <p>让AI成为你的超级助手</p>
+263|        </footer>
+264|    </div>
+265|<!-- 访客计数器 -->
+266|<div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
+267|<script>
+268|(function(){
+269|  var key='zhaodaola_visitors';
+270|  var base=1008;
+271|  var stored=localStorage.getItem(key);
+272|  if(!stored){stored=String(base+Math.floor(Math.random()*50));localStorage.setItem(key,stored);}
+273|  var n=parseInt(stored)+1;
+274|  localStorage.setItem(key,String(n));
+275|  var el=document.getElementById('visitorCounter');
+276|  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+277|})();
+278|</script>
+279|<script src="lang-toggle.js"></script>
+280|</body>
+281|</html>

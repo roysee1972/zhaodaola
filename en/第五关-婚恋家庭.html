@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="婚恋家庭关卡：亲密关系中的困境与盲区，帮你看见关系中真实的自己。">
+<meta name="description" content="Love and Family: Dilemmas and blind spots in intimate relationships, helping you see your true self in relationships.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第五关 · 婚恋家庭 — 找到啦</title>
+<title>Stage 5 - Love and Family — Found It</title>
 <style>
   /* ==================== 基础变量（与前几关保持一致）==================== */
   :root {
@@ -722,7 +722,7 @@
 </head>
 <body>
 
-<!-- 种子粒子装饰 -->
+<!-- Seed particle decorations -->
 <div class="seed-particle" style="left:15%;animation-delay:0s;"></div>
 <div class="seed-particle" style="left:30%;animation-delay:1.5s;"></div>
 <div class="seed-particle" style="left:45%;animation-delay:3s;"></div>
@@ -730,28 +730,28 @@
 <div class="seed-particle" style="left:75%;animation-delay:6s;"></div>
 <div class="seed-particle" style="left:90%;animation-delay:7.5s;"></div>
 
-<!-- 进度条 -->
+<!-- Progress bar -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<!-- 返回主页按钮 -->
-<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+<!-- Back to home button -->
+<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
-  <span>返回主页</span>
+  <span>Back to Home</span>
 </button>
 
-<!-- ==================== P1: 入口页 ==================== -->
+<!-- ==================== P1: Entry Page ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第五关 · 找到啦</div>
+    <div class="level-badge">Stage 5 - Found It</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">成家</div>
+      <div class="deco-ring-inner">Family</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
     <h1 class="hero-title"><em>婚恋家庭</em></h1>
     <p class="hero-sub">
-      你第一次说：<br>"这是我的家。"
+      The first time you said:<br>"This is my home."
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
@@ -766,52 +766,52 @@
       你是怎么从"一个人"变成"一家人"的。
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" id="btnStartExplore">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 6 分钟</p>
+    <button class="btn" id="btnStartExplore">Start Exploring</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 6 minutes</p>
   </div>
 </div>
 
-<!-- ==================== P2: 困境瞬间选择页 ==================== -->
+<!-- ==================== P2: Dilemma Moments ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
       <div class="level-badge">第五关 · 婚恋家庭</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">哪个瞬间，你最有感觉？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 个你最有共鸣的家庭瞬间。<br>不用想，凭第一感觉选。</p>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Which moment resonates with you most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1-3 family moments that resonate most.<br>Don't overthink it - go with your gut.</p>
     </div>
 
-    <div class="moment-layer-title">— 感情与亲密 —</div>
+    <div class="moment-layer-title">— Emotion and Intimacy —</div>
     <div id="momentLayer1"></div>
 
-    <div class="moment-layer-title">— 夫妻之间 —</div>
+    <div class="moment-layer-title">— Between Partners —</div>
     <div id="momentLayer2"></div>
 
-    <div class="moment-layer-title">— 亲子与代际 —</div>
+    <div class="moment-layer-title">— Parenting and Generations —</div>
     <div id="momentLayer3"></div>
 
-    <div class="dilemma-hint">已选择 <span id="dilemmaCount">0</span> 个瞬间</div>
+    <div class="dilemma-hint">Selected <span id="dilemmaCount">0</span> moments</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
       <button class="btn" id="dilemmaNextBtn" disabled>继续</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P3: 冒险卡页 ==================== -->
+<!-- ==================== P3: Adventure Card ==================== -->
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
       <div class="level-badge">第五关 · 婚恋家庭</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">抽一张冒险卡</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis begins, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">点击翻开</div>
+            <div class="flip-card-front-hint">Tap to Flip</div>
           </div>
           <div class="flip-card-back">
             <div class="flip-card-quote" id="flipQuote">"年轻时的穷，不是穷，是本钱。"</div>
@@ -819,17 +819,17 @@
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to flip</p>
       <button class="btn" id="adventureNextBtn" style="display: none;">开始诊断</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P4: 诊断测试页 ==================== -->
+<!-- ==================== P4: Diagnostic Test ==================== -->
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-num" id="qNum">Question 1</div>
       <div class="question-text" id="qText">你第一次认真考虑"我要自己赚钱"是什么时候？</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
@@ -841,13 +841,13 @@
   </div>
 </div>
 
-<!-- ==================== P5: 诊断结果页 ==================== -->
+<!-- ==================== P5: Diagnostic Results ==================== -->
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">诊断完成</div>
+      <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的婚恋卡点画像</div>
+      <div class="result-title">Your Love and Family Block Profile</div>
       <div class="result-sub">第五关 · 婚恋家庭</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
@@ -856,89 +856,89 @@
     <!-- 彩蛋区域 -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" id="eggClose">×</button>
-      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-label">You discovered a hidden insight</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" id="adviceBtn">查看通关建议</button>
+      <button class="btn" id="adviceBtn">View Stage Advice</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P6: 通关建议页 ==================== -->
+<!-- ==================== P6: Stage Advice ==================== -->
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
       <div class="level-badge">第五关 · 婚恋家庭</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">通关建议</div>
+      <div class="advice-title">Stage Advice</div>
       <div class="advice-intro">
-        家不是终点。<br>家是你和最重要的人一起建造的避风港。
+        Home isn't the destination.<br>Home is the safe harbor you build with the people who matter most.
       </div>
     </div>
     <div id="adviceList"></div>
 
-    <button class="hidden-trigger" id="hiddenTrigger">以上不是你想说的？打开你的隐藏关卡 →</button>
-    <div class="page-end-text">— 第五关 · 婚恋家庭 · 完 —</div>
+    <button class="hidden-trigger" id="hiddenTrigger">Not what you wanted to say? Open your hidden stage -></button>
+    <div class="page-end-text">— Stage 5 - Love and Family - Complete —</div>
   </div>
 </div>
 
-<!-- ==================== P7: 隐藏关卡页 ==================== -->
+<!-- ==================== P7: Hidden Stage ==================== -->
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">隐藏关卡</div>
+      <div class="level-badge">Hidden Stage</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的家的故事</div>
+      <div class="hidden-title">Your Home Story</div>
       <div class="hidden-sub">
-        这里是你的空间，写下你对「家」这件事最真实的感受。<br>不用修饰，真实就好。
+        This is your space - write your truest feelings about home.<br>No need to polish it. Just be real.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">第一步</div>
-      <div class="step-label">你记忆中，「家」最温暖的一个画面是什么？</div>
-      <textarea class="step-input" id="hidden1" placeholder="我记得……"></textarea>
+      <div class="step-num">Step One</div>
+      <div class="step-label">What is the warmest image of home you remember?</div>
+      <textarea class="step-input" id="hidden1" placeholder="I remember..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第二步</div>
-      <div class="step-label">在亲密关系里，你最常感到困惑或无力的是什么？</div>
-      <textarea class="step-input" id="hidden2" placeholder="当时我觉得……"></textarea>
+      <div class="step-num">Step Two</div>
+      <div class="step-label">In intimate relationships, what do you feel most confused or helpless about?</div>
+      <textarea class="step-input" id="hidden2" placeholder="At the time I felt..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第三步</div>
-      <div class="step-label">如果用一个词来形容你和家人的关系，你会用什么词？为什么？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我最卡的地方是……"></textarea>
+      <div class="step-num">Step Three</div>
+      <div class="step-label">If you had to describe your relationship with your family in one word, what would it be? Why?</div>
+      <textarea class="step-input" id="hidden3" placeholder="Where I am most stuck is..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第四步</div>
-      <div class="step-label">如果可以给「未来的家」写一句话，你想说什么？</div>
-      <textarea class="step-input" id="hidden4" placeholder="我想对当时的自己说……"></textarea>
+      <div class="step-num">Step Four</div>
+      <div class="step-label">If you could write one message to your future home, what would you say?</div>
+      <textarea class="step-input" id="hidden4" placeholder="What I would tell myself back then..."></textarea>
     </div>
-    <button class="generate-btn" id="generateBtn">生成我的家的觉醒卡片</button>
+    <button class="generate-btn" id="generateBtn">Generate My Home Awakening Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的家的故事</div>
-      <div class="card-preview-sub">第五关 · 婚恋家庭 · 找到啦</div>
+      <div class="card-preview-title">My Home Story</div>
+      <div class="card-preview-sub">Stage 5 - Love and Family - Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" id="downloadBtn">下载卡片</button>
+      <button class="download-btn" id="downloadBtn">Download Card</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== 完成页 ==================== -->
+<!-- ==================== Completion Page ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Stage Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      从一个人到一家人，<br>每一步都是心和心的真实靠近。
+      From one person to one family -<br>every step was a genuine drawing closer, heart to heart.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" id="restartBtn">重新开始</button>
+    <button class="btn btn-ghost" id="restartBtn">Start Over</button>
   </div>
 </div>
 
@@ -951,142 +951,142 @@
 // 婚恋家庭困境瞬间（3层：求职与起步 / 夫妻之间 / 压力与选择）
 const moments = [
   // 第一层：感情与亲密
-  { id: 1, layer: 1, icon: '💔', title: '谈过几次恋爱，但都不长久', desc: '每次开始都满怀期待，但不知道为什么，最后都会走到分岔路口。有时候你会怀疑：是不是我不适合恋爱？', hint: '你就是那个在爱里反复练习的人。' },
-  { id: 2, layer: 1, icon: '🤐', title: '想表达爱，但说不出口', desc: '心里有很多话，但到了嘴边就咽回去了。你知道对方需要听到，但你的嘴好像有自己的想法。', hint: '你就是那个心里有爱但嘴上沉默的人。' },
-  { id: 3, layer: 1, icon: '🪞', title: '总觉得自己不够好，配不上对方', desc: '明明对方选择了你，但你总觉得：ta值得更好的。这种不配得感，让你在感情里总是小心翼翼。', hint: '你就是那个觉得自己不够好的人。' },
-  { id: 4, layer: 1, icon: '🔓', title: '害怕太近了会受伤，所以保持距离', desc: '你知道亲密关系需要敞开自己，但过去的经历让你不敢。你选择了一种安全的距离——不远不近，刚好不会痛。', hint: '你就是那个站在安全距离外的人。' },
+  { id: 1, layer: 1, icon: '💔', title: 'Had a few relationships, but none lasted', desc: 'Every time starts with hope, but somehow it always reaches a crossroads. Sometimes you wonder: am I just not cut out for love?', hint: 'You are the one who keeps practicing at love.' },
+  { id: 2, layer: 1, icon: '🤐', title: 'Want to express love, but can't find the words', desc: 'So many words in your heart, but they get swallowed before reaching your lips. You know they need to hear it, but your mouth seems to have a mind of its own.', hint: 'You are the one whose heart loves but whose lips stay silent.' },
+  { id: 3, layer: 1, icon: '🪞', title: 'Always feel not good enough for your partner', desc: 'They chose you, yet you keep thinking: they deserve better. This sense of unworthiness makes you tiptoe through love.', hint: 'You are the one who feels not good enough.' },
+  { id: 4, layer: 1, icon: '🔓', title: 'Afraid getting too close will hurt, so you keep your distance', desc: 'You know intimacy requires opening up, but past experiences hold you back. You chose a safe distance - not too close, not too far, just enough to avoid pain.', hint: 'You are the one standing at a safe distance.' },
   // 第二层：夫妻之间
-  { id: 5, layer: 2, icon: '🗣️', title: '吵架之后，谁也不理谁', desc: '你们吵了一架，然后冷战开始了。一天、两天、三天……你知道这样不好，但谁先开口就好像输了。', hint: '你就是那个在冷战中等待的人。' },
-  { id: 6, layer: 2, icon: '🔄', title: '同样的架，吵了很多次', desc: '你们为同样的事情反复争吵：家务、钱、孩子教育、婆媳关系……每一次都觉得这次不一样，但结局总是一样的。', hint: '你就是那个陷入循环争吵的人。' },
-  { id: 7, layer: 2, icon: '🤫', title: '有些事不想告诉伴侣', desc: '你有自己的小秘密、小情绪、小烦恼，但你不告诉ta。不是不信任，是觉得说了也没用，或者怕ta担心。', hint: '你就是那个把心事藏在心里的人。' },
-  { id: 8, layer: 2, icon: '⚖️', title: '觉得对方变了，不再是当初那个人', desc: '结婚之前，ta是这样的；结婚之后，ta变成了那样。你不确定是自己变了，还是ta变了，还是时间改变了所有人。', hint: '你就是那个在回忆和现实之间纠结的人。' },
+  { id: 5, layer: 2, icon: '🗣️', title: 'After a fight, neither speaks to the other', desc: 'You had a fight, then the silent treatment began. One day, two, three... You know it is not healthy, but speaking first feels like losing.', hint: 'You are the one waiting in the cold war.' },
+  { id: 6, layer: 2, icon: '🔄', title: 'The same fight, over and over', desc: 'You argue about the same things on repeat: chores, money, kids education, in-laws... Every time feels different, but the ending is always the same.', hint: 'You are the one trapped in circular arguments.' },
+  { id: 7, layer: 2, icon: '🤫', title: 'Some things you don't want to tell your partner', desc: 'You have your little secrets, little moods, little worries, but you don't share them. Not because you don't trust them - you just think it won't help, or you don't want them to worry.', hint: 'You are the one who hides their worries inside.' },
+  { id: 8, layer: 2, icon: '⚖️', title: 'Feel like they have changed - not the person they used to be', desc: 'Before marriage, they were like this; after, they became like that. You are not sure if you changed, they changed, or time changed everyone.', hint: 'You are the one caught between memory and reality.' },
   // 第三层：亲子与代际
-  { id: 9, layer: 3, icon: '👶', title: '有了孩子后，夫妻感情变淡了', desc: '孩子的到来填满了生活的每一个缝隙。你和伴侣之间的对话从今天怎么样变成了孩子拉了吗作业写了没。', hint: '你就是那个被育儿淹没的人。' },
-  { id: 10, layer: 3, icon: '👴', title: '夹在父母和配偶之间，左右为难', desc: '父母有父母的期望，配偶有配偶的底线。你是中间的那座桥，但桥有点累——两边都在拽，而你只有一个人。', hint: '你就是那个夹心饼干里的人。' },
-  { id: 11, layer: 3, icon: '🎭', title: '原生家庭的影子，跟到了新家里', desc: '你以为离开了原生家庭就自由了。但某天你发现自己正在用父母对待你的方式对待你的孩子或者伴侣。影子还在。', hint: '你就是那个发现影子跟着走的人。' },
-  { id: 12, layer: 3, icon: '🏠', title: '想给家人最好的，但力不从心', desc: '你想让家人过得好，想让父母安心，让孩子快乐，让伴侣满意。但你的时间和精力有限，常常顾此失彼。', hint: '你就是那个想撑起整个家的人。' }
+  { id: 9, layer: 3, icon: '👶', title: 'After having kids, the romance faded', desc: 'The baby filled every gap in your life. Conversations shifted from how was your day to did the baby poop and did they finish homework.', hint: 'You are the one drowning in parenthood.' },
+  { id: 10, layer: 3, icon: '👴', title: 'Caught between parents and spouse, pulled both ways', desc: 'Parents have their expectations; your spouse has their boundaries. You are the bridge in between, but the bridge is tired - pulled from both sides, and you are only one person.', hint: 'You are the one stuck in the middle.' },
+  { id: 11, layer: 3, icon: '🎭', title: 'The shadow of your family of origin followed you home', desc: 'You thought leaving your family of origin meant freedom. Then one day you caught yourself treating your kids or partner the way your parents treated you. The shadow is still there.', hint: 'You are the one who discovered the shadow follows you.' },
+  { id: 12, layer: 3, icon: '🏠', title: 'Want to give your family the best, but it feels impossible', desc: 'You want your family to live well - parents at ease, kids happy, partner satisfied. But your time and energy are limited, and you are always dropping one ball to catch another.', hint: 'You are the one trying to hold up the whole family.' }
 ]
 
 // 冒险卡（婚恋家庭）
 const adventureCards = [
-  '家不是一个地方，是一群人。',
-  '好的婚姻不是没有问题，是有能力一起解决问题。',
-  '爱情是火花，婚姻是把火花变成火炉的过程。',
-  '你在原生家庭学会的爱的方式，不一定适合你的新家庭。',
-  '真正的亲密不是无话不谈，是敢于在对方面前做真实的自己。',
-  '夫妻之间最大的距离，不是吵架，是无话可说。',
-  '孩子不需要完美的父母，需要的是真实在场。',
-  '婆媳关系本质上是两个女人对同一个男人的不同理解。',
-  '家是你卸下所有铠甲的地方，但卸甲也需要勇气。',
-  '婚姻里最珍贵的三个字不是我爱你，是在一起。',
-  '所有的家庭都有裂缝，那是光照进来的地方。',
-  '你不是在找完美的人，你是在找一个愿意和你一起修补不完美的人。'
+  'Home isn't a place - it's the people.',
+  'A good marriage isn't problem-free - it's having the ability to solve problems together.',
+  'Love is a spark; marriage is the process of turning that spark into a hearth.',
+  'The way you learned to love in your family of origin may not fit your new family.',
+  'True intimacy isn't about sharing everything - it's daring to be your real self in front of them.',
+  'The greatest distance between spouses isn't fighting - it's having nothing to say.',
+  'Kids don't need perfect parents - they need parents who are truly present.',
+  'The mother-in-law and daughter-in-law dynamic is essentially two women's different understandings of the same man.',
+  'Home is where you take off all your armor - but removing armor takes courage too.',
+  'The three most precious words in marriage aren't I love you - they're together.',
+  'Every family has cracks - that's where the light gets in.',
+  'You're not looking for a perfect person - you're looking for someone willing to mend imperfection with you.'
 ]
 
 // 诊断题
 const questions = [
   {
-    q: '你觉得「家」对你来说意味着什么？',
+    q: 'What does home mean to you?',
     options: [
-      { text: '一个可以完全放松、不用伪装的地方。', key: '01家=安全港湾' },
-      { text: '一个责任所在，我要照顾好里面的每一个人。', key: '02家=责任担当' },
-      { text: '一个还没找到归属感的地方，我还在寻找。', key: '03家=还在寻找' },
-      { text: '一个让我既温暖又焦虑的地方——温暖是因为有人，焦虑也是因为有人。', key: '04家=又暖又焦虑' },
-      { text: '说实话，我对「家」这个概念挺模糊的。', key: '05家=模糊概念' }
+      { text: 'A place where I can completely relax and drop all pretense.', key: '01家=安全港湾' },
+      { text: 'A responsibility - I need to take care of everyone in it.', key: '02家=责任担当' },
+      { text: 'A place I haven't found belonging in yet - I'm still searching.', key: '03家=还在寻找' },
+      { text: 'A place that's both warm and anxiety-inducing - warm because of the people, anxious because of the people.', key: '04家=又暖又焦虑' },
+      { text: 'Honestly, the concept of home is pretty blurry for me.', key: '05家=模糊概念' }
     ]
   },
   {
-    q: '当你和家人发生冲突时，你通常的反应是？',
+    q: 'When you have a conflict with family, what is your typical reaction?',
     options: [
-      { text: '忍着不说，避免冲突升级。', key: '06回避冲突' },
-      { text: '会直接说出来，哪怕场面不好看。', key: '07直面冲突' },
-      { text: '会生闷气，等着对方来哄。', key: '08生闷气等哄' },
-      { text: '会冷静下来再沟通，不当场处理。', key: '09冷静后再说' },
-      { text: '看情况，有时候忍有时候爆发。', key: '10看情况反应' }
+      { text: 'Bite my tongue to keep things from escalating.', key: '06回避冲突' },
+      { text: 'Speak up directly, even if it gets ugly.', key: '07直面冲突' },
+      { text: 'Sulk silently and wait for them to come comfort me.', key: '08生闷气等哄' },
+      { text: 'Cool down first, then talk it out - don't deal with it in the heat of the moment.', key: '09冷静后再说' },
+      { text: 'Depends on the situation - sometimes I hold back, sometimes I explode.', key: '10看情况反应' }
     ]
   },
   {
-    q: '你觉得目前自己在亲密关系中，最大的挑战是？',
+    q: 'What do you think is your biggest challenge in intimate relationships right now?',
     options: [
-      { text: '很难真正敞开心扉，信任别人。', key: '11难以信任' },
-      { text: '不知道怎么表达爱和关心，总是词不达意。', key: '12不善表达' },
-      { text: '容易患得患失，很在意对方的反应。', key: '13患得患失' },
-      { text: '习惯了独立，不太习惯依赖别人。', key: '14习惯独立' },
-      { text: '感觉对方不够了解自己，沟通总是不在一个频道。', key: '15频道不同' }
+      { text: 'It is hard to truly open up and trust others.', key: '11难以信任' },
+      { text: 'Don't know how to express love and care - words never come out right.', key: '12不善表达' },
+      { text: 'I overthink everything and care too much about their reactions.', key: '13患得患失' },
+      { text: 'I am used to being independent and not comfortable relying on others.', key: '14习惯独立' },
+      { text: 'They don't seem to understand me - our communication is always misaligned.', key: '15频道不同' }
     ]
   },
   {
-    q: '关于「原生家庭」，你最大的感受是？',
+    q: 'Regarding your family of origin, what is your biggest feeling?',
     options: [
-      { text: '它给了我很多爱，也给了我一些需要慢慢消化的东西。', key: '16爱中有伤' },
-      { text: '我在努力不让它影响我现在的生活，但偶尔还是会冒出来。', key: '17努力摆脱' },
-      { text: '我觉得自己和父母的关系还不错，没有什么大的困扰。', key: '18关系尚好' },
-      { text: '有些模式我发现自己在重复，这让我很不安。', key: '19重复模式' },
-      { text: '我不想过多思考这个问题，过去就过去了。', key: '20不愿多想' }
+      { text: 'It gave me a lot of love, but also things I am still processing.', key: '16爱中有伤' },
+      { text: 'I am trying not to let it affect my current life, but it still creeps in.', key: '17努力摆脱' },
+      { text: 'I think my relationship with my parents is okay - nothing major bothering me.', key: '18关系尚好' },
+      { text: 'I have noticed myself repeating certain patterns, and it unsettles me.', key: '19重复模式' },
+      { text: 'I don't want to think about this too much - what's done is done.', key: '20不愿多想' }
     ]
   },
   {
-    q: '如果可以改变一件事，让家庭关系更好，你最想改变什么？',
+    q: 'If you could change one thing to improve family relationships, what would it be?',
     options: [
-      { text: '我希望我能更坦诚地表达自己的想法和感受。', key: '21更坦诚' },
-      { text: '希望我和伴侣之间能多一些共同语言和相处时间。', key: '22更多相处' },
-      { text: '希望能放下原生家庭带给我的那些阴影。', key: '23放下阴影' },
-      { text: '希望我能平衡好各方关系——父母、伴侣、孩子。', key: '24平衡关系' },
-      { text: '希望自己先成为一个内心完整的人，再去经营家庭。', key: '25先完整自己' }
+      { text: 'I wish I could express my thoughts and feelings more honestly.', key: '21更坦诚' },
+      { text: 'I wish my partner and I had more in common and more time together.', key: '22更多相处' },
+      { text: 'I want to let go of the shadows from my family of origin.', key: '23放下阴影' },
+      { text: 'I want to balance my relationships - parents, partner, kids.', key: '24平衡关系' },
+      { text: 'I want to become a whole person first, then build my family.', key: '25先完整自己' }
     ]
   },
   {
-    q: '你理想中的「家」是什么样的？',
+    q: 'What does your ideal home look like?',
     options: [
-      { text: '不用太大，但要温暖，每个人都被接纳和理解。', key: '26温暖接纳' },
-      { text: '有事一起扛，有福一起享，像战友一样。', key: '27战友般' },
-      { text: '各自独立又有联结，既有空间又有陪伴。', key: '28独立又联结' },
-      { text: '平平淡淡就好，没有大起大落就是幸福。', key: '29平淡即福' },
-      { text: '说实话，我还没想过这个问题。', key: '30还没想过' }
+      { text: 'Doesn't need to be big - just warm, where everyone is accepted and understood.', key: '26温暖接纳' },
+      { text: 'Share burdens and blessings together, like comrades-in-arms.', key: '27战友般' },
+      { text: 'Independent yet connected - space and companionship coexisting.', key: '28独立又联结' },
+      { text: 'Simple and steady - no dramatic ups and downs is happiness.', key: '29平淡即福' },
+      { text: 'Honestly, I haven't thought about this.', key: '30还没想过' }
     ]
   }
 ]
 
 // 卡点完整数据
 const cardPoints = {
-  "01家=安全港湾": { name: "家=安全港湾", desc: "你渴望的是一个能让你完全卸下防备的地方。这说明在你的成长过程中，你可能缺少这样一个可以无条件接纳你的空间。这种渴望本身没有错——每个人都需要一个安全港。", advice: "安全港不是等来的，是慢慢建起来的。从小事开始：允许自己在一个信任的人面前展示脆弱。安全的感觉会在一次次的「被接纳」中积累起来。", color: "#8a6040" },
-  "02家=责任担当": { name: "家=责任担当", desc: "你把家理解为责任的集合体。照顾每一个人是你的本能，也是你的压力来源。你可能是家里的顶梁柱，但顶梁柱也会累。", advice: "承担责任是你的力量，但也要记得：你不是超人。允许自己有时候做不到、允许自己求助、允许别人也承担一部分。「照顾者」也需要被照顾。", color: "#7a5030" },
-  "03家=还在寻找": { name: "家=还在寻找", desc: "你对「家」还没有一个确定的答案。也许你还没有组建自己的家庭，也许你有了但还没有感受到那种归属感。寻找本身说明你很在乎这件事。", advice: "不要因为还没找到而焦虑。有些人很早就找到了，有些人花了一辈子。重要的是：你在认真寻找。家可能比你想象的更简单——它可能就在你已经拥有的关系里。", color: "#9a6840" },
-  "04家=又暖又焦虑": { name: "家=又暖又焦虑", desc: "你对家的感受是复杂的。它给你温暖，但也给你焦虑。这种矛盾感受很真实——亲密关系本身就是甜蜜和负担并存的东西。", advice: "接受这种复杂性。温暖和焦虑可以同时存在，不需要二选一。试着把焦虑具体化：到底是什么让你焦虑？当你看清焦虑的面目，它就没那么可怕了。", color: "#a07050" },
-  "05家=模糊概念": { name: "家=模糊概念", desc: "你对「家」还没有清晰的概念。这可能是因为你的成长经历中没有给你一个明确的模板，也可能是你一直在回避面对这件事。", advice: "模糊没关系，但不要一直模糊下去。试着从一个最小的问题开始：「对我来说，一个舒服的空间是什么样的？」答案可能比你想的要简单。", color: "#8a5040" },
-  "06回避冲突": { name: "回避冲突", desc: "你选择避免冲突。这不是因为你软弱，而是因为你可能经历过冲突带来的伤害，所以学会了用回避来保护自己。但回避久了，问题并不会消失，只会堆积。", advice: "回避是一种保护机制，但它不能解决所有问题。试试微冲突：从小的不满开始练习表达。你会发现：说出来之后，天不会塌，反而可能会亮。", color: "#9a8050" },
-  "07直面冲突": { name: "直面冲突", desc: "你会直接面对冲突。这是一种勇敢的品质，说明你不愿意让问题发酵。但也要注意：怎么说、什么时候说，和说什么一样重要。", advice: "直面冲突是好事，但要加上一点策略。下次冲突时试试：先确认对方的情绪，再表达自己的立场。带着温度的直率，比冰冷的坦诚更有力量。", color: "#8a7060" },
-  "08生闷气等哄": { name: "生闷气等哄", desc: "你生气的时候会选择沉默，等对方来发现、来哄你。这种行为背后是一个需求：我想被看见、被在乎。但有时候对方真的看不见。", advice: "等别人来猜你的心思是一件高耗低效的事。试着换一种方式：直接说出你的需求——「我现在很难过，我需要你陪陪我。」这不丢人，这是高效沟通。", color: "#a07050" },
-  "09冷静后再说": { name: "冷静后再说", desc: "你选择冷静之后再处理冲突。这是一种成熟的做法——情绪激动时说的话往往会后悔。你的理性是你的优势。", advice: "冷静处理很好，但要注意：不要把冷静变成拖延。设定一个期限：「我需要冷静一下，但我们今晚睡前好好谈谈。」这样双方都有预期。", color: "#9a7860" },
-  "10看情况反应": { name: "看情况反应", desc: "你不是一个固定反应模式的人。你会根据情况来判断怎么应对，这种灵活性是很好的适应能力。但有时候也可能让你显得不够坚定。", advice: "灵活是你的优势，但也要有一个核心原则：什么事是我绝对不能接受的？有了底线，灵活就不会变成随波逐流。", color: "#b0a070" },
-  "11难以信任": { name: "难以信任", desc: "你在亲密关系中很难完全信任他人。这可能源于过去的伤害——也许是童年，也许是上一段关系。你的保护壳很厚，但里面住着一个很想被信任的人。", advice: "信任不是开关，是调光器。不要指望一下子全信，可以从一件小事开始：分享一个小秘密，看看会发生什么。一次好的体验就会增加一分信任。", color: "#9a6848" },
-  "12不善表达": { name: "不善表达", desc: "你想表达爱，但不知道怎么说出口。你可能在一个不怎么表达情感的环境中长大，所以说爱这件事对你来说是一门外语。", advice: "表达不一定要用语言。行动也是一种表达——一杯热茶、一条信息、一个拥抱都是。如果你想说，可以先从最简单的开始：「今天的菜不错。」慢慢来。", color: "#a08068" },
-  "13患得患失": { name: "患得患失", desc: "你在亲密关系中很容易焦虑对方的反应。对方的一个表情、一句话，都能让你琢磨很久。这种敏感说明你很在乎，但也让你活得很累。", advice: "敏感是爱的放大镜，但别让它变成显微镜。当焦虑来袭时问自己一个问题：这是事实，还是我的想象？大多数时候，答案是后者。", color: "#8a5840" },
-  "14习惯独立": { name: "习惯独立", desc: "你已经太习惯独立了，以至于在亲密关系中也不知道如何依赖别人。独立本身是优点，但在亲密关系中过度独立，会让对方感到被拒绝。", advice: "独立不等于不需要任何人。试试微小依赖：让对方帮你做一件小事，然后好好接受。依赖不是软弱，是对关系的投资。", color: "#9a7060" },
-  "15频道不同": { name: "频道不同", desc: "你感觉和重要的人总是在不同的频道上。你说东，ta听成西；你在乎的事，ta好像不在乎。这种沟通错位让人很沮丧。", advice: "频道不同不代表无法连接。试试翻译：在说话之前先想想，对方最能听懂什么样的语言？用ta的语言去说你想说的，效果会好很多。", color: "#8a6850" },
-  "16爱中有伤": { name: "爱中有伤", desc: "你的原生家庭给了你爱，也给了你一些需要消化的东西。这是一个很普遍的现象——几乎没有完美的家庭，每个家庭都有它的光明面和阴影面。", advice: "看见爱中有伤这一事实，本身就是疗愈的开始。不必急着原谅，也不必急着切割。允许两种感受同时存在：感谢他们给你的爱，同时也承认那些伤。", color: "#a07048" },
-  "17努力摆脱": { name: "努力摆脱", desc: "你在有意识地摆脱原生家庭的影响。这说明你已经看见了那些影响的存在，并且在主动做出改变。这种觉察是非常宝贵的。", advice: "摆脱不是切断，是消化。那些模式之所以会冒出来，是因为它们曾经保护过你。感谢它们的保护，然后告诉它们：「谢谢，但我现在有新的方式了。」", color: "#8a5040" },
-  "18关系尚好": { name: "关系尚好", desc: "你和原生家庭的关系总体还好。你没有太大的困扰，但这不代表一切都完美——也许只是你选择不去深挖，或者确实比较幸运。", advice: "还好是一个很好的起点。但如果某些时刻你会隐隐约约感到不对劲，不妨停下来看一看。有时候平静的水面下也有暗流，看见了才能更好地前行。", color: "#907850" },
-  "19重复模式": { name: "重复模式", desc: "你发现了自己在重复原生家庭的一些模式。这是一个非常重要且令人不安的觉察——你正在成为你曾经不想成为的那种人。但这种觉察恰恰是改变的契机。", advice: "发现重复是打破循环的第一步。不要自责——这些模式是被编程进你的系统的，不是你的错。现在你看见了，就有机会重写程序。每次觉察到一个模式，就是一次重写的机会。", color: "#9a6858" },
-  "20不愿多想": { name: "不愿多想", desc: "你选择不多想原生家庭这件事。这可能是一种自我保护的策略——想太多会很累，不如算了。但有些东西不会因为你不想就不存在。", advice: "不愿意想是可以理解的。但如果某些事情反复出现在你的生活中（同样的冲突、同样的痛苦），那可能是它在敲门。你可以不开门，但至少要知道有人在敲。", color: "#a08860" },
-  "21更坦诚": { name: "更坦诚", desc: "你希望自己能更坦诚地表达。这说明你已经意识到：现在的表达方式还不够。想要改变的动力已经有了，接下来只需要一点点练习。", advice: "坦诚是可以练习的肌肉。从低风险的场合开始——和朋友、和不那么紧张的关系。每次坦诚表达之后的如释重负感，会成为下一次的动力。", color: "#b0a070" },
-  "22更多相处": { name: "更多相处", desc: "你希望和伴侣之间有更多的相处时间和共同语言。这说明你珍惜这段关系，也感受到了距离带来的失落。这种愿望很朴素，也很珍贵。", advice: "质量比数量更重要。与其追求更多的时间，不如创造更有质量的相处——放下手机、一起做一件事、聊一聊彼此的一天。每天15分钟的高质量相处，胜过一整晚各玩各的手机。", color: "#8a7060" },
-  "23放下阴影": { name: "放下阴影", desc: "你希望能放下原生家庭带来的阴影。这个愿望本身就说明了：那些阴影还在影响着你的生活。放下不是忘记，是不再被它控制。", advice: "放下是一个过程，不是一个决定。不要逼自己现在就放下。允许自己还需要一些时间，但同时做一些小的实验——在新的情境下尝试新的反应，而不是旧的自动反应。", color: "#9a7860" },
-  "24平衡关系": { name: "平衡关系", desc: "你希望在多方关系之间找到平衡。作为夹心层——上有父母下有子女旁有伴侣——平衡确实是最大的挑战之一。你已经在尽力了。", advice: "完美的平衡不存在。接受这一点会让你轻松很多。与其追求平衡，不如追求有意识的选择——这次我选谁，为什么，以及告诉没有被选中的人：下次轮到你。", color: "#8a6850" },
-  "25先完整自己": { name: "先完整自己", desc: "你意识到：要先让自己成为一个完整的人，才能经营好家庭。这是一种非常深刻的洞察——很多人跳过了这一步，直接进入了关系，然后发现处处碰壁。", advice: "先完整自己不是说你要等到完美才能进入关系。而是说：在关系中也要保持对自己的关注。每天留一点时间给自己，不是自私，是充电。", color: "#a08060" },
-  "26温暖接纳": { name: "温暖接纳", desc: "你理想的家是一个温暖且接纳每个人的地方。这说明你可能经历过不被接纳的痛苦，所以格外珍视这种氛围。你的愿景很美好。", advice: "温暖和接纳是从自己开始的。如果你想建立一个这样的家，先做一个这样的人——接纳自己，接纳身边的人的不完美。示范是最好的教育。", color: "#b0a070" },
-  "27战友般": { name: "战友般", desc: "你理想的家像战友一样——有福同享有难同当。这说明你看重实际的支持和精神上的同盟，胜过浪漫的形式。这是一种很务实的家庭观。", advice: "战友般的家庭很坚固，但别忘了：战友之间也需要温情。在并肩作战之余，留一些时间只是坐在一起，什么都不做，只是在场。", color: "#8a7060" },
-  "28独立又联结": { name: "独立又联结", desc: "你理想的家是既有个人空间又有相互联结的。这是一种非常成熟和健康的家庭观——既不互相吞噬，也不形同陌路。你已经有了一个很好的方向。", advice: "你已经知道目标是什么了。关键在于执行：如何在日常生活中创造这种节奏？也许可以约定每周每人有一天独处时间，其余时间是共处时间。", color: "#9a7860" },
-  "29平淡即福": { name: "平淡即福", desc: "你理想的家平平淡淡就好。这可能是因为你经历了足够的波澜，已经明白平淡的可贵。知足是一种智慧，但有时也可能是一种妥协。", advice: "平淡是真的福气，只要它是你主动选择的，而不是被动接受的。定期问问自己：我真的满足于这种平淡吗？如果答案是肯定的，那就享受它；如果不是，也许可以做一些小小的改变。", color: "#8a6850" },
-  "30还没想过": { name: "还没想过", desc: "你还没有认真想过理想的家是什么样的。这可能是因为你还年轻，也可能是因为你刻意回避了这个话题。无论哪种原因，想一想都没有坏处。", advice: "不需要一个完整的答案。只需要一个开始：闭上眼睛，想象一个让你微笑的画面——那里有什么？谁在那里？那个画面就是你心中关于家的第一个线索。", color: "#a08060" }
+  "01家=安全港湾": { name: "Home = Safe Harbor", desc: "You crave a place where you can completely let your guard down. This suggests you may have lacked such a space of unconditional acceptance growing up. This longing itself is not wrong - everyone needs a safe harbor.", advice: "A safe harbor is not found - it is built, slowly. Start small: allow yourself to be vulnerable in front of someone you trust. The feeling of safety accumulates through each experience of being accepted.", color: "#8a6040" },
+  "02家=责任担当": { name: "Home = Responsibility", desc: "You see home as a collection of responsibilities. Caring for everyone is your instinct and your source of stress. You may be the family pillar - but pillars get tired too.", advice: "Taking responsibility is your strength, but remember: you are not Superman. Allow yourself to sometimes fall short, to ask for help, to let others share the load. The caretaker also needs caretaking.", color: "#7a5030" },
+  "03家=还在寻找": { name: "Home = Still Searching", desc: "你对「家」还没有一个确定的答案。也许你还没有组建自己的家庭，也许你有了但还没有感受到那种归属感。寻找本身说明你很在乎这件事。", advice: "Don't worry that you haven't found it yet. Some find it early; some take a lifetime. What matters is: you're searching sincerely. Home might be simpler than you imagine - it might already be in the relationships you have.", color: "#9a6840" },
+  "04家=又暖又焦虑": { name: "Home = Warm Yet Anxious", desc: "Your feelings about home are complex. It gives you warmth, but also anxiety. This contradiction is very real - intimacy is inherently a blend of sweetness and burden.", advice: "Embrace this complexity. Warmth and anxiety can coexist - you don't have to choose. Try naming your anxiety: what exactly makes you anxious? When you see anxiety's face clearly, it becomes less frightening.", color: "#a07050" },
+  "05家=模糊概念": { name: "Home = Vague Concept", desc: "你对「家」还没有清晰的概念。这可能是因为你的成长经历中没有给你一个明确的模板，也可能是你一直在回避面对这件事。", advice: "Being vague is okay, but don't stay vague forever. Try starting with the smallest question: what does a comfortable space look like for me? The answer might be simpler than you think.", color: "#8a5040" },
+  "06回避冲突": { name: "Conflict Avoidance", desc: "You choose to avoid conflict. Not because you are weak, but because you have experienced the pain conflict can bring, and you learned to protect yourself by avoiding it. But avoidance doesn't make problems disappear - it just lets them pile up.", advice: "Avoidance is a protective mechanism, but it can't solve everything. Try micro-conflicts: practice expressing small grievances. You'll find that after speaking up, the sky doesn't fall - in fact, it might clear up.", color: "#9a8050" },
+  "07直面冲突": { name: "Facing Conflict Head-On", desc: "You face conflict directly. This is a brave quality - it shows you won't let problems fester. But remember: how you say it and when you say it are just as important as what you say.", advice: "Facing conflict is good, but add some strategy. Next time, try: acknowledge the other person's emotions first, then state your position. Warm directness is more powerful than cold candor.", color: "#8a7060" },
+  "08生闷气等哄": { name: "Sulking and Waiting to Be Comforted", desc: "When you are angry, you go silent and wait for them to notice and comfort you. Behind this behavior is a need: I want to be seen, to be cared about. But sometimes they really can't see it.", advice: "Waiting for others to read your mind is high-effort and low-yield. Try a different approach: state your needs directly - I am really upset right now, and I need you to be with me. This isn't embarrassing - it's effective communication.", color: "#a07050" },
+  "09冷静后再说": { name: "Talk After Cooling Down", desc: "You choose to handle conflict after cooling down. This is a mature approach - words spoken in the heat of the moment often lead to regret. Your rationality is your strength.", advice: "Cooling down is great, but don't let it become procrastination. Set a deadline: I need to cool off, but let's talk properly before bed tonight. This way both sides know what to expect.", color: "#9a7860" },
+  "10看情况反应": { name: "Situational Response", desc: "You don't have a fixed reaction pattern. You assess each situation and respond accordingly - this flexibility is great adaptability. But sometimes it can make you seem uncommitted.", advice: "Flexibility is your strength, but have a core principle: what is absolutely unacceptable to me? With a bottom line, flexibility won't become drifting.", color: "#b0a070" },
+  "11难以信任": { name: "Difficulty Trusting", desc: "You find it hard to fully trust others in intimate relationships. This may stem from past hurts - childhood, or a previous relationship. Your shell is thick, but inside lives someone who desperately wants to trust.", advice: "Trust isn't a light switch - it's a dimmer. Don't expect to trust fully overnight. Start with something small: share a little secret and see what happens. One good experience adds one degree of trust.", color: "#9a6848" },
+  "12不善表达": { name: "Poor at Expressing", desc: "You want to express love, but don't know how to say it. You may have grown up in an environment where emotions weren't expressed much, so saying I love you feels like a foreign language.", advice: "Expression doesn't have to be verbal. Actions count too - a cup of tea, a text message, a hug. If you want to start speaking, begin with the simplest: Dinner was good today. Take it slow.", color: "#a08068" },
+  "13患得患失": { name: "Overthinking and Anxiety", desc: "You easily get anxious about your partner's reactions. A single expression, a single sentence, can keep you analyzing for hours. This sensitivity shows you care deeply, but it also exhausts you.", advice: "Sensitivity is love's magnifying glass - just don't let it become a microscope. When anxiety hits, ask yourself: is this fact, or my imagination? Most of the time, it's the latter.", color: "#8a5840" },
+  "14习惯独立": { name: "Habitually Independent", desc: "You're so used to being independent that you don't know how to depend on others in intimate relationships. Independence is a virtue, but excessive independence in intimacy can make your partner feel rejected.", advice: "Independence doesn't mean needing no one. Try micro-dependence: let them help you with something small, and accept it graciously. Depending on someone isn't weakness - it's investing in the relationship.", color: "#9a7060" },
+  "15频道不同": { name: "Different Wavelengths", desc: "You feel like you're always on different wavelengths with the people who matter. You say east, they hear west; the things you care about, they don't seem to. This communication mismatch is deeply frustrating.", advice: "Different wavelengths doesn't mean you can't connect. Try translating: before speaking, think about what language they best understand. Say what you want to say in their language - it works much better.", color: "#8a6850" },
+  "16爱中有伤": { name: "Love with Wounds", desc: "Your family of origin gave you love, but also things you need to process. This is extremely common - almost no family is perfect. Every family has its light and shadow.", advice: "Simply seeing that love and wounds coexist is the beginning of healing. Don't rush to forgive, and don't rush to cut ties. Allow both feelings to exist: gratitude for the love they gave, and acknowledgment of the hurts.", color: "#a07048" },
+  "17努力摆脱": { name: "Trying to Break Free", desc: "You're consciously trying to break free from your family of origin's influence. This means you've already seen those influences and are actively making changes. This awareness is incredibly valuable.", advice: "Breaking free isn't cutting off - it's digesting. Those patterns surface because they once protected you. Thank them for their protection, then tell them: Thanks, but I have new ways now.", color: "#8a5040" },
+  "18关系尚好": { name: "Relationship Okay", desc: "你和原生家庭的关系总体还好。你没有太大的困扰，但这不代表一切都完美——也许只是你选择不去深挖，或者确实比较幸运。", advice: "Okay is a great starting point. But if something feels subtly off at times, pause and look. Sometimes there are undercurrents beneath calm waters - seeing them helps you move forward better.", color: "#907850" },
+  "19重复模式": { name: "Repeating Patterns", desc: "You've noticed yourself repeating patterns from your family of origin. This is a crucial yet unsettling awareness - you're becoming the person you never wanted to be. But this awareness is exactly the catalyst for change.", advice: "Discovering the repetition is the first step to breaking the cycle. Don't blame yourself - these patterns were programmed into your system; it's not your fault. Now that you see them, you can rewrite the program. Every time you catch a pattern, it's a chance to rewrite.", color: "#9a6858" },
+  "20不愿多想": { name: "Prefer Not to Think About It", desc: "You choose not to dwell on your family of origin. This might be a self-protective strategy - thinking too much is tiring, so why bother. But some things don't disappear just because you don't think about them.", advice: "Not wanting to think about it is understandable. But if certain things keep recurring in your life (the same conflicts, the same pain), it might be knocking at your door. You don't have to open it, but at least know someone's knocking.", color: "#a08860" },
+  "21更坦诚": { name: "More Candid", desc: "You wish you could express yourself more candidly. This shows you've realized your current way of expressing isn't enough. The motivation to change is already there - you just need a little practice.", advice: "Candor is a muscle you can practice. Start in low-stakes situations - with friends, with less intense relationships. The relief after each honest expression will fuel the next one.", color: "#b0a070" },
+  "22更多相处": { name: "More Quality Time", desc: "You wish for more time together and more common ground with your partner. This shows you cherish the relationship and feel the loss that distance brings. This wish is simple and precious.", advice: "Quality matters more than quantity. Instead of pursuing more time, create higher-quality togetherness - put down the phone, do something together, talk about each other's day. Fifteen minutes of quality time beats a whole evening of separate scrolling.", color: "#8a7060" },
+  "23放下阴影": { name: "Letting Go of Shadows", desc: "You want to let go of the shadows from your family of origin. This wish itself shows those shadows still affect your life. Letting go isn't forgetting - it's no longer being controlled by them.", advice: "Letting go is a process, not a decision. Don't force yourself to let go now. Allow yourself more time, but also try small experiments - new responses in new situations, instead of old automatic reactions.", color: "#9a7860" },
+  "24平衡关系": { name: "Balancing Relationships", desc: "You want to find balance among multiple relationships. As the sandwich generation - parents above, children below, partner beside - balance is truly one of the greatest challenges. You're already doing your best.", advice: "Perfect balance doesn't exist. Accepting this will lighten your load. Instead of pursuing balance, pursue conscious choices - this time I choose this person, why, and tell those not chosen: next time it's your turn.", color: "#8a6850" },
+  "25先完整自己": { name: "Complete Yourself First", desc: "You realize you need to become a whole person first before you can build a good family. This is a profound insight - many people skip this step, jump straight into relationships, and hit walls everywhere.", advice: "Completing yourself first doesn't mean waiting until you're perfect to enter a relationship. It means: maintain attention on yourself even within a relationship. Taking time for yourself each day isn't selfish - it's recharging.", color: "#a08060" },
+  "26温暖接纳": { name: "Warm Acceptance", desc: "Your ideal home is warm and accepting of everyone. This suggests you may have experienced the pain of not being accepted, making you value this atmosphere even more. Your vision is beautiful.", advice: "Warmth and acceptance start with yourself. If you want to build such a home, first be such a person - accept yourself, accept others' imperfections. Example is the best education.", color: "#b0a070" },
+  "27战友般": { name: "Comrades-in-Arms", desc: "Your ideal home is like comrades-in-arms - sharing blessings and burdens together. This shows you value practical support and spiritual alliance over romantic forms. This is a very pragmatic view of family.", advice: "A comrade-like family is strong, but don't forget: comrades need tenderness too. Beyond fighting side by side, set aside time to simply sit together, doing nothing, just being present.", color: "#8a7060" },
+  "28独立又联结": { name: "Independent Yet Connected", desc: "Your ideal home has both personal space and mutual connection. This is a very mature and healthy view of family - neither consuming each other nor being strangers. You already have a great direction.", advice: "You already know the goal. The key is execution: how to create this rhythm in daily life? Maybe agree that each person gets one day a week for solitude, and the rest is shared time.", color: "#9a7860" },
+  "29平淡即福": { name: "Simplicity Is Happiness", desc: "Your ideal home is simple and steady. This might be because you've weathered enough storms to appreciate the value of calm. Contentment is wisdom, but sometimes it can also be compromise.", advice: "Simplicity is true blessing - as long as it's chosen, not settled for. Regularly ask yourself: am I truly content with this simplicity? If yes, enjoy it. If not, maybe make small changes.", color: "#8a6850" },
+  "30还没想过": { name: "Haven't Thought About It", desc: "You haven't seriously thought about what your ideal home looks like. Maybe you're still young, or maybe you've deliberately avoided the topic. Either way, thinking about it can't hurt.", advice: "You don't need a complete answer. Just a beginning: close your eyes, imagine a scene that makes you smile - what's there? Who's there? That image is the first clue about what home means to your heart.", color: "#a08060" }
 }
 
 // 彩蛋
 const easterEggs = [
-  { title: "《智囊》· 张英", text: "清代名臣张英处理家族宅基地纠纷时，只写了一首诗：「千里修书只为墙，让他三尺又何妨？」他的家人退让三尺，邻居也被感动退让三尺，于是有了著名的六尺巷。家不是争输赢的地方，是互相让步之后，路变宽了。" },
-  { title: "《智囊》· 孟母", text: "孟子的母亲三次搬家，只为了给孩子一个好的成长环境。她懂得：环境塑造人。但更重要的是，她用自己的行动告诉孟子什么是坚持、什么是取舍。好的家庭教育从来不是说教，是身教。" },
-  { title: "心理学研究：依恋理论", text: "心理学家鲍尔比提出依恋理论：我们在婴儿期建立的依恋模式（安全型、焦虑型、回避型），会影响我们一生的亲密关系。好消息是：依恋类型不是固定的。一段稳定、安全的关系，可以重塑你的依恋模式。" },
-  { title: "萨提亚：家庭雕塑", text: "家庭治疗大师萨提亚创造了家庭雕塑技术——让家庭成员用身体姿态呈现彼此的关系位置。很多人第一次看见了自己的家庭结构：原来我一直是站在这里的，原来我一直是这样看着他们的。看见，就是改变的开始。" }
+  { title: "Zhang Ying - The Book of Wisdom", text: "When Qing dynasty official Zhang Ying dealt with a family land dispute, he simply wrote a poem: A letter across a thousand miles just for a wall, why not yield three feet? His family yielded three feet, and the neighbor was so moved they yielded three feet too, creating the famous Six-Foot Lane. Home is not about winning - it is about how the road widens when both sides give a little." },
+  { title: "Mencius's Mother - The Book of Wisdom", text: "Mencius's mother moved three times just to give her child a good environment. She understood that environment shapes people. But more importantly, she showed Mencius through her actions what persistence and trade-offs look like. Good family education is never preaching - it is leading by example." },
+  { title: "Psychology Research: Attachment Theory", text: "Psychologist Bowlby proposed attachment theory: the attachment patterns we form in infancy (secure, anxious, avoidant) affect our intimate relationships throughout life. The good news: attachment types are not fixed. A stable, secure relationship can reshape your attachment pattern." },
+  { title: "Satir: Family Sculpting", text: "Family therapy pioneer Virginia Satir created family sculpting - a technique where family members use body positions to show their relational dynamics. Many people saw their family structure for the first time: so this is where I have been standing, this is how I have been looking at them. Seeing is the beginning of change." }
 ]
 
 /* ============================================================
@@ -1107,7 +1107,7 @@ function goPage(name) {
     const el = document.getElementById('page-' + name);
     if (!el) {
       console.error('Page not found: page-' + name);
-      alert('页面加载出错，请刷新重试。');
+      alert('Page loading error. Please refresh and try again.');
       return;
     }
     el.classList.add('active');
@@ -1125,7 +1125,7 @@ function goPage(name) {
     window.scrollTo(0, 0);
   } catch (e) {
     console.error('goPage error:', e);
-    alert('发生错误：' + e.message);
+    alert('An error occurred: ' + e.message);
   }
 }
 
@@ -1193,7 +1193,7 @@ function selectRandomCard() {
   if (quoteEl) quoteEl.textContent = '"' + adventureCards[currentCardIndex] + '"';
   if (fc) fc.classList.remove('flipped');
   if (nextBtn) nextBtn.style.display = 'none';
-  if (hint) hint.textContent = '点击卡牌翻开';
+  if (hint) hint.textContent = 'Tap the card to flip';
 }
 
 function flipCard() {
@@ -1201,7 +1201,7 @@ function flipCard() {
   const hint = document.getElementById('flipHint');
   const nextBtn = document.getElementById('adventureNextBtn');
   if (fc) fc.classList.add('flipped');
-  if (hint) hint.textContent = '— 这张卡，陪你去诊断 —';
+  if (hint) hint.textContent = 'This card accompanies you to the diagnosis';
   if (nextBtn) nextBtn.style.display = 'inline-block';
 }
 
@@ -1238,7 +1238,7 @@ function renderQuestion() {
 
   if (prevBtn) prevBtn.style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   if (nextBtn) {
-    nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+    nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
     nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
   }
 }
@@ -1294,9 +1294,9 @@ function showResult() {
   const topKey = sorted[0] ? sorted[0][0] : null;
   const topCp = topKey ? cardPoints[topKey] : null;
   const summaryTexts = [
-    `你最核心的婚恋卡点是「${topCp ? topCp.name : '未知'}」。看见它，你已经比很多人走得更远了。`,
-    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们交织在一起，塑造了你面对亲密关系时的反应模式。`,
-    "亲密关系不是一场考试，没有标准答案。你唯一需要回答的问题是：在这段关系中，我真实吗？"
+    `Your core love and family block is「${topCp ? topCp.name : '未知'}」. Seeing it means you have already come further than most.`,
+    `你有 ${sorted.filter(s=>s[1]>=2).length}  deeper blocks that intertwine and shape how you respond in intimate relationships.`,
+    "Intimate relationships are not an exam with standard answers. The only question you need to answer is: Am I being real in this relationship?"
   ];
 
   const summaryEl = document.getElementById('resultSummary');
@@ -1313,7 +1313,7 @@ function showResult() {
         <div class="result-card">
           <div class="result-card-top">
             <span class="result-card-name">${cp.name}</span>
-            <span class="result-card-pct">命中 ${score} 次</span>
+            <span class="result-card-pct">Matched ${score} times</span>
           </div>
           <div class="result-bar-bg">
             <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1364,7 +1364,7 @@ function showAdvice() {
       if (!cp) return '';
       return `
         <div class="advice-card">
-          <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+          <div class="advice-card-label">Block ${String(i+1).padStart(2,'0')}</div>
           <div class="advice-card-title">
             <span class="advice-card-num">${i+1}</span>
             ${cp.name}
@@ -1391,7 +1391,7 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你和家有关的事。');
+    alert('Write something first - just one thing about your experience with home.');
     return;
   }
 
@@ -1407,14 +1407,14 @@ function generateCard() {
   if (cardContent) cardContent.textContent = content;
 
   const responses = [
-    "你写的这些，是你和家的真实故事。愿意把它写出来的人，已经在治愈的路上了。",
-    "家不是一个完美的概念，是一个不断被建造的过程。你在写下这些的时候，其实已经在建造了。",
-    "每一段关于家的记忆，都是一块砖。你在把它们砌成一堵温暖的墙。",
-    "不管你的家是什么样子，你愿意面对它，这就是最大的勇气。"
+    "What you wrote is your true story with home. Anyone willing to write it is already on the path to healing.",
+    "Home isn't a perfect concept - it's a process of continuous building. By writing these words, you're already building.",
+    "Every memory of home is a brick. You're building them into a warm wall.",
+    "No matter what your home looks like, the fact that you're willing to face it is the greatest courage."
   ];
   if (cardResponse) cardResponse.textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：对一个家人说一句你平时不会说的话——可以是感谢，也可以是想说但没说的任何话。';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split('，')[0].split('。')[0]}` : 'Today, do one thing: tell a family member something you wouldn't normally say - gratitude, or anything you've been holding back.';
   if (cardAction) cardAction.textContent = firstAction;
   if (cardPreview) cardPreview.classList.add('show');
 }
@@ -1436,11 +1436,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的家的故事', 300, 80);
+  ctx.fillText('My Home Story', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第五关 · 婚恋家庭 · 找到啦', 300, 108);
+  ctx.fillText('Stage 5 - Love and Family - Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1471,10 +1471,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第五关 · 婚恋家庭 · 完 —', 300, 750);
+  ctx.fillText('— Stage 5 - Love and Family - Complete —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的家的故事.png';
+  link.download = 'My-Home-Story.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1603,7 +1603,7 @@ function goBackHome() {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor # <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> </span>';}
 })();
 </script>
 <script src="lang-toggle.js"></script>

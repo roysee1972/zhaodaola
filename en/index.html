@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-    <meta name="description" content="找到啦 — 生命游戏的十二个关卡。帮你看见自己真正卡在哪，然后迈出那一步。人生困境的自我认知工具。">
+    <meta name="description" content="Found It! — 12 Stages of the Life Game. Help you see where you're truly stuck, then take that step. A self-awareness tool for life's challenges.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>找到啦 · 生命游戏</title>
+<title>Found It! · Life Game</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -170,8 +170,8 @@
 
   <!-- 标题 -->
   <div class="title-area" onclick="handleTitleClick()">
-    <div class="title">找到啦</div>
-    <div class="subtitle">生命游戏的十二关卡 · 拖动旋转球体</div>
+    <div class="title">Found It!</div>
+    <div class="subtitle">12 Stages of the Life Game · Drag to rotate the sphere</div>
     <div class="divider"></div>
   </div>
 
@@ -184,45 +184,45 @@
   <!-- 模块二：文字介绍 -->
   <div class="module-intro">
     <div class="intro-text">
-      人生是一场<span class="hl">生命游戏</span>，12个关卡分布在生命的球体上。<br>
-      拖动旋转，点击关卡，<span class="hl">认领</span>自己的处境。
+      Life is a <span class="hl">game</span>, with 12 stages mapped across a sphere of existence.<br>
+      Drag to rotate, click a stage, and <span class="hl">claim</span> where you stand.
     </div>
     <div class="questions">
-      <div class="question-item" onclick="startAssessment('energy')">我的生命能量状态如何？</div>
-      <div class="question-item" onclick="startAssessment('influence')">我的社会影响力如何？</div>
-      <div class="question-item" onclick="startAssessment('value')">我创造的社会价值有多少？</div>
+      <div class="question-item" onclick="startAssessment('energy')">How is my life energy?</div>
+      <div class="question-item" onclick="startAssessment('influence')">What is my social influence?</div>
+      <div class="question-item" onclick="startAssessment('value')">How much social value do I create?</div>
     </div>
   </div>
 
   <!-- 网站更新日志 -->
   <div style="text-align: center; padding: 10px 20px;">
-    <a href="updates.html" style="color: #9a7a4a; text-decoration: none; font-size: 13px; letter-spacing: 3px; transition: color 0.3s;" onmouseover="this.style.color='#7a5a28'" onmouseout="this.style.color='#9a7a4a'">📋 网站更新日志</a>
+    <a href="updates.html" style="color: #9a7a4a; text-decoration: none; font-size: 13px; letter-spacing: 3px; transition: color 0.3s;" onmouseover="this.style.color='#7a5a28'" onmouseout="this.style.color='#9a7a4a'">📋 Site Update Log</a>
   </div>
 
   <!-- 增值服务（低调展示） -->
   <div style="max-width: 640px; margin: 0 auto; padding: 10px 30px 30px;">
     <div style="text-align: center; margin-bottom: 14px;">
       <div style="width: 80px; height: 1px; background: linear-gradient(to right, transparent, rgba(139,90,43,0.2), transparent); margin: 0 auto 14px;"></div>
-      <a href="templates/index.html" style="font-size: 13px; color: #9a7a4a; letter-spacing: 3px; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#7a5a28'" onmouseout="this.style.color='#9a7a4a'">🛠 找到啦 · 增值服务</a>
+      <a href="templates/index.html" style="font-size: 13px; color: #9a7a4a; letter-spacing: 3px; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#7a5a28'" onmouseout="this.style.color='#9a7a4a'">🛠 Found It! · Premium Services</a>
     </div>
     <div style="text-align: center; font-size: 12px; color: #b8a070; line-height: 1.8; max-width: 480px; margin: 0 auto;">
-      活动网站模板定制 — 生日寿宴、婚礼请柬、商务考察、学习研修、身心疗愈、聚会派对
+      Custom event website templates — Birthday celebrations, wedding invitations, business trips, study tours, wellness retreats, parties & gatherings
     </div>
   </div>
 
   <div class="footer">
     <div style="margin-bottom: 12px;">
-      <a href="心灵小屋/index.html" style="color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid rgba(139,90,43,0.2); padding-bottom: 2px; transition: all 0.2s;">🏡 心灵小屋</a>
+      <a href="心灵小屋/index.html" style="color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid rgba(139,90,43,0.2); padding-bottom: 2px; transition: all 0.2s;">🏡 Soul Retreat</a>
     </div>
-    找到啦 · 帮你看见自己真正卡在哪——然后迈出那一步
+    Found It! · Helping you see where you're truly stuck — then take that step
     <div style="margin-top: 12px;">
-      <a href="建站缘起.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">建站缘起</a>
+      <a href="建站缘起.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">Why This Site</a>
       <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
-      <a href="联系我们.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">联系我们</a>
+      <a href="联系我们.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">Contact Us</a>
       <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
-      <a href="products.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">AI产品</a>
+      <a href="products.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">AI Products</a>
       <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
-      <a href="disclaimer.html" style="color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; opacity: 0.7; transition: all 0.2s;">用户隐私与免责声明</a>
+      <a href="disclaimer.html" style="color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; opacity: 0.7; transition: all 0.2s;">Privacy & Disclaimer</a>
     </div>
     <div id="visitorCounter" style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(139,90,43,0.1);"></div>
   </div>
@@ -243,9 +243,9 @@
     el.innerHTML='<span style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;'
       +'padding:6px 20px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:24px;'
       +'font-size:12px;color:var(--text-mid);letter-spacing:1px;line-height:1.8;">'
-      +'<span>👁 您是本站第 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+x.toLocaleString()+'</b> 位访客</span>'
+      +'<span>👁 You are visitor <b style="color:var(--gold);font-weight:700;font-size:13px;">'+x.toLocaleString()+'</b></span>'
       +'<span style="opacity:0.3;">|</span>'
-      +'<span>📊 本月访问量 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+y.toLocaleString()+'</b></span>'
+      +'<span>📊 Monthly visits <b style="color:var(--gold);font-weight:700;font-size:13px;">'+y.toLocaleString()+'</b></span>'
       +'</span>';
   }
 })();
@@ -260,18 +260,18 @@
 <script>
 // ===== 12关卡数据 =====
 const levels = [
-  { id:1,  name:'原生家庭', color:0x9a6832 },
-  { id:2,  name:'求知求学', color:0xa07838 },
-  { id:3,  name:'初入人海', color:0xb08840 },
-  { id:4,  name:'独立谋生', color:0xc09850 },
-  { id:5,  name:'婚恋家庭', color:0xa06040 },
-  { id:6,  name:'人到中年', color:0x78983a },
-  { id:7,  name:'金钱关系', color:0xb06838 },
-  { id:8,  name:'人际迷宫', color:0x4878a0 },
-  { id:9,  name:'兴趣爱好', color:0x7858a0 },
-  { id:10, name:'心灵信仰', color:0xa04040 },
-  { id:11, name:'健康衰老', color:0x388058 },
-  { id:12, name:'终篇传承', color:0x886030 }
+  { id:1,  name:'Family of Origin', color:0x9a6832 },
+  { id:2,  name:'Learning & Education', color:0xa07838 },
+  { id:3,  name:'Entering the World', color:0xb08840 },
+  { id:4,  name:'Independence & Livelihood', color:0xc09850 },
+  { id:5,  name:'Love & Marriage', color:0xa06040 },
+  { id:6,  name:'Midlife', color:0x78983a },
+  { id:7,  name:'Money & Relationships', color:0xb06838 },
+  { id:8,  name:'Social Maze', color:0x4878a0 },
+  { id:9,  name:'Hobbies & Interests', color:0x7858a0 },
+  { id:10, name:'Spirituality & Faith', color:0xa04040 },
+  { id:11, name:'Health & Aging', color:0x388058 },
+  { id:12, name:'Legacy & Passing On', color:0x886030 }
 ];
 
 // ===== Three.js 场景 =====
@@ -583,7 +583,7 @@ function handleTitleClick() {
   titleClickCount++;
   if (titleClickCount >= 3) {
     titleClickCount = 0;
-    alert('🎉 隐藏关卡已解锁！（待实现）');
+    alert('🎉 Hidden stage unlocked! (Coming soon)');
   }
   if (titleClickTimer) clearTimeout(titleClickTimer);
   titleClickTimer = setTimeout(function(){ titleClickCount = 0; }, 2000);
@@ -608,7 +608,7 @@ function goToLevel(n) {
   if (levelFiles[n]) {
     window.location.href = levelFiles[n];
   } else {
-    alert('「第' + n + '关」即将开放，敬请期待 ✦');
+    alert('Stage ' + n + ' is coming soon ✦');
   }
 }
 function startAssessment(type) {

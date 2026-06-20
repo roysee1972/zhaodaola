@@ -1,0 +1,275 @@
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|<meta charset="UTF-8">
+5|    <meta name="description" content="Contact Us — Get in touch with the Found It! team.">
+6|    <link rel="icon" href="favicon.ico" type="image/x-icon">
+7|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+8|<title>Contact Us — Found It!</title>
+9|<style>
+10|:root {
+11|  --bg: #f5e6c8;
+12|  --bg2: #eed9a4;
+13|  --text-dark: #5a3e1b;
+14|  --text-mid: #9a7a4a;
+15|  --text-light: #b89a6a;
+16|  --gold: #c9a84c;
+17|  --gold-light: #e8c870;
+18|  --border: rgba(139,90,43,0.18);
+19|  --shadow: rgba(90,60,20,0.12);
+20|  --radius: 8px;
+21|  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+22|}
+23|* { margin:0; padding:0; box-sizing:border-box; }
+24|body {
+25|  background: var(--bg);
+26|  font-family: var(--font);
+27|  color: var(--text-dark);
+28|  min-height: 100vh;
+29|  overflow-x: hidden;
+30|  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+31|}
+32|body::after {
+33|  content: '';
+34|  position: fixed; inset: 8px;
+35|  border: 1.5px solid var(--border);
+36|  pointer-events: none; z-index: 0;
+37|}
+38|.back-home-btn {
+39|  position: fixed; top: 16px; left: 16px; z-index: 200;
+40|  display: flex; align-items: center; gap: 6px;
+41|  padding: 7px 16px;
+42|  background: rgba(245,230,200,0.88);
+43|  border: 1px solid var(--border);
+44|  border-radius: 20px;
+45|  font-family: var(--font); font-size: 12px;
+46|  color: var(--text-mid); letter-spacing: 2px;
+47|  cursor: pointer; text-decoration: none;
+48|  transition: all 0.2s;
+49|  box-shadow: 0 2px 8px var(--shadow);
+50|}
+51|.back-home-btn:hover {
+52|  background: rgba(245,230,200,0.98);
+53|  border-color: var(--gold);
+54|  color: var(--text-dark);
+55|}
+56|.container {
+57|  position: relative; z-index: 1;
+58|  max-width: 560px;
+59|  margin: 0 auto;
+60|  padding: 60px 24px 80px;
+61|}
+62|.gold-line {
+63|  width: 120px; height: 1px;
+64|  background: linear-gradient(to right, transparent, var(--gold), transparent);
+65|  margin: 0 auto 36px;
+66|}
+67|h1 {
+68|  text-align: center;
+69|  font-size: 28px;
+70|  letter-spacing: 6px;
+71|  margin-bottom: 8px;
+72|}
+73|.subtitle {
+74|  text-align: center;
+75|  font-size: 13px;
+76|  color: var(--text-light);
+77|  letter-spacing: 3px;
+78|  margin-bottom: 40px;
+79|}
+80|.contact-card {
+81|  background: rgba(255,252,240,0.7);
+82|  border: 1px solid var(--border);
+83|  border-radius: var(--radius);
+84|  padding: 28px 30px;
+85|  margin-bottom: 24px;
+86|  box-shadow: 0 2px 12px var(--shadow);
+87|  text-align: center;
+88|}
+89|.contact-card h2 {
+90|  font-size: 17px;
+91|  color: var(--text-dark);
+92|  margin-bottom: 18px;
+93|  letter-spacing: 2px;
+94|  padding-bottom: 12px;
+95|  border-bottom: 1px solid var(--border);
+96|}
+97|.contact-item {
+98|  display: flex;
+99|  align-items: center;
+100|  justify-content: center;
+101|  gap: 12px;
+102|  padding: 14px 0;
+103|  font-size: 15px;
+104|  color: #6a4e28;
+105|  border-bottom: 1px dashed rgba(139,90,43,0.12);
+106|}
+107|.contact-item:last-of-type { border-bottom: none; }
+108|.contact-item .label {
+109|  color: var(--text-mid);
+110|  font-size: 13px;
+111|  letter-spacing: 2px;
+112|  min-width: 60px;
+113|}
+114|.contact-item .value {
+115|  color: var(--text-dark);
+116|  font-weight: 600;
+117|  font-size: 16px;
+118|  letter-spacing: 1px;
+119|  user-select: all;
+120|}
+121|.contact-item .note {
+122|  font-size: 12px;
+123|  color: var(--text-light);
+124|  margin-top: 4px;
+125|}
+126|.prefer-badge {
+127|  display: inline-block;
+128|  background: rgba(201,168,76,0.15);
+129|  border: 1px solid var(--gold);
+130|  border-radius: 12px;
+131|  padding: 3px 12px;
+132|  font-size: 11px;
+133|  color: var(--gold);
+134|  letter-spacing: 1px;
+135|  margin-left: 8px;
+136|}
+137|.qr-section {
+138|  text-align: center;
+139|  padding: 20px 0 8px;
+140|}
+141|.qr-section p {
+142|  font-size: 13px;
+143|  color: var(--text-mid);
+144|  margin-bottom: 16px;
+145|  letter-spacing: 1px;
+146|}
+147|.qr-img-wrap {
+148|  display: inline-block;
+149|  background: #fff;
+150|  padding: 16px;
+151|  border-radius: 8px;
+152|  border: 1px solid var(--border);
+153|  box-shadow: 0 2px 8px var(--shadow);
+154|}
+155|.qr-img-wrap img {
+156|  width: 220px;
+157|  height: 220px;
+158|  display: block;
+159|}
+160|.qr-note {
+161|  font-size: 11px;
+162|  color: var(--text-light);
+163|  margin-top: 12px;
+164|  letter-spacing: 1px;
+165|}
+166|.warm-words {
+167|  background: rgba(255,252,240,0.5);
+168|  border: 1px dashed var(--border);
+169|  border-radius: var(--radius);
+170|  padding: 24px;
+171|  text-align: center;
+172|  margin-bottom: 24px;
+173|}
+174|.warm-words p {
+175|  font-size: 14px;
+176|  color: var(--text-mid);
+177|  line-height: 2;
+178|  letter-spacing: 1px;
+179|}
+180|.footer-link {
+181|  text-align: center;
+182|  margin-top: 36px;
+183|}
+184|.footer-link a {
+185|  color: var(--gold);
+186|  text-decoration: none;
+187|  font-size: 14px;
+188|  letter-spacing: 2px;
+189|  border-bottom: 1px solid var(--border);
+190|  padding-bottom: 2px;
+191|  transition: all 0.2s;
+192|}
+193|.footer-link a:hover {
+194|  color: var(--text-dark);
+195|  border-color: var(--gold);
+196|}
+197|@media (max-width: 600px) {
+198|  .container { padding: 50px 16px 60px; }
+199|  h1 { font-size: 22px; letter-spacing: 4px; }
+200|  .contact-card { padding: 20px 18px; }
+201|  .qr-img-wrap img { width: 180px; height: 180px; }
+202|}
+203|</style>
+204|<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
+205|</head>
+206|<body>
+207|
+208|<button class="back-home-btn" onclick="window.location.href='index.html'" title="Back to Home">
+209|  <span style="color:var(--gold);">←</span> <span>Back to Home</span>
+210|</button>
+211|
+212|<div class="container">
+213|  <h1>Contact Us</h1>
+214|  <div class="subtitle">Found It! · The Life Game</div>
+215|  <div class="gold-line"></div>
+216|
+217|  <div class="contact-card">
+218|    <h2>Get in Touch</h2>
+219|    <div class="contact-item">
+220|      <span class="label">WeChat</span>
+221|      <span class="value">liren1972</span>
+222|      <span class="prefer-badge">Preferred</span>
+223|    </div>
+224|    <div class="contact-item" style="flex-direction: column; align-items: center;">
+225|      <div style="display:flex; align-items:center; gap:12px;">
+226|        <span class="label">Phone</span>
+227|        <span class="value">13908178760</span>
+228|      </div>
+229|      <div class="note">(Anti-spam enabled — WeChat preferred)</div>
+230|    </div>
+231|  </div>
+232|
+233|  <div class="contact-card">
+234|    <h2>Support Us</h2>
+235|    <div class="qr-section">
+236|      <p>If you found this content helpful,<br>even a small donation is the biggest encouragement</p>
+237|      <div class="qr-img-wrap">
+238|        <!-- 收款码图片：请将您的收款码图片命名为 收款码.jpg 放在与此页面同目录下 -->
+239|        <!-- 建议每7天更换一次 -->
+240|        <img src="收款码.jpg" alt="Scan to donate" onerror="this.parentElement.innerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;color:#b89a6a;font-size:13px;text-align:center;line-height:1.8;\'>收款码<br>即将上线</div>'">
+241|      </div>
+242|      <div class="qr-note">QR code updated regularly · Long-press or screenshot to scan</div>
+243|    </div>
+244|  </div>
+245|
+246|  <div class="warm-words">
+247|    <p>Thank you for every bit of kindness ✦</p>
+248|    <p style="font-size: 13px; color: var(--text-light);">May you find your own path through this life game</p>
+249|  </div>
+250|
+251|  <div class="footer-link">
+252|    <a href="建站缘起.html">← About this site</a>
+253|    &nbsp;&nbsp;·&nbsp;&nbsp;
+254|    <a href="index.html">Back to Home</a>
+255|  </div>
+256|</div>
+257|
+258|<!-- 访客计数器 -->
+259|<div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
+260|<script>
+261|(function(){
+262|  var key='zhaodaola_visitors';
+263|  var base=1008;
+264|  var stored=localStorage.getItem(key);
+265|  if(!stored){stored=String(base+Math.floor(Math.random()*50));localStorage.setItem(key,stored);}
+266|  var n=parseInt(stored)+1;
+267|  localStorage.setItem(key,String(n));
+268|  var el=document.getElementById('visitorCounter');
+269|  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+270|})();
+271|</script>
+272|<script src="lang-toggle.js"></script>
+273|</body>
+274|</html>
+275|

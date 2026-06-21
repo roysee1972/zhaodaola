@@ -1029,7 +1029,7 @@
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据
+   Data
    ============================================================ */
 
 // 困境
@@ -1183,7 +1183,7 @@ const easterEggs = [
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedDilemmas = [];
@@ -1192,7 +1192,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航
+   Page Navigation
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1215,7 +1215,7 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境选择
+   Dilemma Selection
    ============================================================ */
 function renderDilemma() {
   const list = document.getElementById('dilemmaList');
@@ -1251,7 +1251,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1276,7 +1276,7 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
@@ -1331,7 +1331,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnosis Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1541,7 +1541,7 @@ function goBackHome() {
 }
 
 /* ============================================================
-   启动
+   Initialize
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderDilemma();

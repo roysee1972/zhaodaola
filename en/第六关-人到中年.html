@@ -840,7 +840,7 @@
         <div style="font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px;">Featured Article</div>
         <div style="font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 2px; margin-bottom: 8px;">For You in Perimenopause</div>
         <div style="font-size: 14px; color: var(--text-mid); line-height: 1.7;">The biggest enemy is not hormones - it is fear</div>
-        <div style="font-size: 12px; color: var(--gold); margin-top: 12px; letter-spacing: 2px;">点击阅读 →</div>
+        <div style="font-size: 12px; color: var(--gold); margin-top: 12px; letter-spacing: 2px;">Read more →</div>
       </div>
     </a>
     
@@ -853,7 +853,7 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第六关 · 人到中年</div>
+      <div class="level-badge">Stage 6 · Midlife</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 class="hero-title" style="font-size: 26px;">Which issue are you most stuck on?</h2>
       <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1-3 that feel closest to your current situation. Multiple selections are fine.</p>
@@ -861,7 +861,7 @@
     <div style="margin-top: 24px;" id="dilemmaList"></div>
     <div class="dilemma-hint" id="dilemmaHint">Selected <span id="dilemmaCount">0</span></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -870,7 +870,7 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第六关 · 人到中年</div>
+      <div class="level-badge">Stage 6 · Midlife</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
       <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis begins, let this card set the tone.</p>
@@ -884,12 +884,12 @@
           </div>
           <div class="flip-card-back">
             <div class="flip-card-quote" id="flipQuote">"You have been holding on for a long time. This is not weakness - it is resilience."</div>
-            <div class="flip-card-tap-hint">— 冒险卡</div>
+            <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
       <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to flip</p>
-      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
@@ -905,7 +905,7 @@
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
       <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
-      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -940,7 +940,7 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第六关 · 人到中年</div>
+      <div class="level-badge">Stage 6 · Midlife</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="advice-title">Stage Advice</div>
       <div class="advice-intro">
@@ -1019,7 +1019,7 @@
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据
+   Data
    ============================================================ */
 
 // 困境
@@ -1053,11 +1053,11 @@ const questions = [
   {
     q: "Your check-up results are in. What is your first reaction?",
     options: [
-      { text: "Leave it unread - out of sight, out of mind", key: "逃避健康" },
+      { text: "Leave it unread - out of sight, out of mind", key: "Health Avoidance" },
       { text: "Looked at it, but pretended everything is fine", key: "Suppressed Anxiety" },
-      { text: "Read it carefully and started adjusting habits", key: "觉察" },
-      { text: "Looked at it, but feel indifferent - won't live much longer anyway", key: "消极" },
-      { text: "Didn't get a check-up - didn't see the need", key: "逃避健康" }
+      { text: "Read it carefully and started adjusting habits", key: "Awareness" },
+      { text: "Looked at it, but feel indifferent - won't live much longer anyway", key: "Passive" },
+      { text: "Didn't get a check-up - didn't see the need", key: "Health Avoidance" }
     ]
   },
   {
@@ -1065,39 +1065,39 @@ const questions = [
     options: [
       { text: "Can't remember - seems like ages", key: "Marriage Burnout" },
       { text: "Last week - we go out often", key: "Marriage Nurturing" },
-      { text: "Want to, but never seem to have the time", key: "逃避" },
-      { text: "Don't want to - seems pointless", key: "情感麻木" },
-      { text: "We have already separated", key: "关系破裂" }
+      { text: "Want to, but never seem to have the time", key: "Avoidance" },
+      { text: "Don't want to - seems pointless", key: "Emotional Numbness" },
+      { text: "We have already separated", key: "Relationship Breakdown" }
     ]
   },
   {
     q: "Your child did something you disagree with. What is your first reaction?",
     options: [
-      { text: "Must intervene - can't let them go down the wrong path", key: "控制执念" },
-      { text: "Want to intervene, but afraid they'll resent me", key: "边界纠结" },
-      { text: "Let it go - they're grown", key: "放手" },
+      { text: "Must intervene - can't let them go down the wrong path", key: "Control Obsession" },
+      { text: "Want to intervene, but afraid they'll resent me", key: "Boundary Struggle" },
+      { text: "Let it go - they're grown", key: "Letting Go" },
       { text: "Very angry, but holding it in", key: "Suppressed Emotions" },
-      { text: "I don't know how to handle it", key: "无力感" }
+      { text: "I don't know how to handle it", key: "Helplessness" }
     ]
   },
   {
     q: "Your parents call. What is your typical reaction?",
     options: [
-      { text: "Annoyed - they need help again", key: "厌烦" },
-      { text: "Guilty - feel like I haven't taken care of them well enough", key: "愧疚感" },
-      { text: "Worried - did something happen?", key: "焦虑" },
-      { text: "Happy - haven't been in touch for a while", key: "亲密" },
-      { text: "Don't want to answer, but feel I have to", key: "矛盾" }
+      { text: "Annoyed - they need help again", key: "Annoyance" },
+      { text: "Guilty - feel like I haven't taken care of them well enough", key: "Guilt" },
+      { text: "Worried - did something happen?", key: "Anxiety" },
+      { text: "Happy - haven't been in touch for a while", key: "Intimacy" },
+      { text: "Don't want to answer, but feel I have to", key: "Ambivalence" }
     ]
   },
   {
     q: "When you can't sleep at night, what do you usually think about?",
     options: [
-      { text: "The dreams I had when I was young - it's too late now", key: "梦想搁置" },
-      { text: "It feels like I haven't accomplished much in this life", key: "价值否定" },
-      { text: "Things to do tomorrow - the more I think, the more anxious I get", key: "焦虑" },
-      { text: "Nothing in particular - just can't sleep", key: "情感麻木" },
-      { text: "Thinking and then crying", key: "情绪释放" }
+      { text: "The dreams I had when I was young - it's too late now", key: "Shelved Dreams" },
+      { text: "It feels like I haven't accomplished much in this life", key: "Self-Worth Denial" },
+      { text: "Things to do tomorrow - the more I think, the more anxious I get", key: "Anxiety" },
+      { text: "Nothing in particular - just can't sleep", key: "Emotional Numbness" },
+      { text: "Thinking and then crying", key: "Emotional Release" }
     ]
   },
   {
@@ -1106,15 +1106,15 @@ const questions = [
       { text: "Marry someone I loved more", key: "Marriage Regret" },
       { text: "Spend more time with my parents", key: "Family Regret" },
       { text: "Hold on to my dreams", key: "Dream Regret" },
-      { text: "Be kinder to myself", key: "自我关怀" },
-      { text: "Not start over - it's not too late now", key: "接纳" }
+      { text: "Be kinder to myself", key: "Self-Compassion" },
+      { text: "Not start over - it's not too late now", key: "Acceptance" }
     ]
   }
 ];
 
 // 卡点完整数据
 const cardPoints = {
-  "逃避健康": {
+  "Health Avoidance": {
     name: "Health Avoidance",
     desc: "You are afraid to face health issues, pretending you don't understand the signals your body sends. Your check-up results sat unread for ages. You know your body is talking to you, but you keep avoiding it.",
     advice: "Today, schedule a check-up for yourself. Nothing major - just the basics. If you really don't want to go, walk instead - get your 6,000 steps in today.",
@@ -1126,37 +1126,37 @@ const cardPoints = {
     advice: "This month, find time to do something just the two of you. No kids, no household talk, no child discussions - like the early dating days.",
     color: "#c09060"
   },
-  "控制执念": {
+  "Control Obsession": {
     name: "Control Obsession",
     desc: "You want your child to avoid wrong turns, so you keep guiding them. It's not that you won't let go - you're afraid. Afraid they'll get hurt, afraid they'll make choices you'll regret.",
     advice: "This week, tell your child or partner about something, then ask: What do you think? - No advice, no judgment, just listen.",
     color: "#a07850"
   },
-  "愧疚感": {
+  "Guilt": {
     name: "Guilt",
     desc: "You always feel like you owe something - to your parents, kids, partner, yourself. Guilt is a heavy emotion because it comes from love. But guilt also drains you and prevents you from loving well.",
     advice: "Find a quiet evening, take a piece of paper, and write a letter to the person you feel most indebted to. Don't send it - just write. Put the words you can't say onto paper.",
     color: "#c08060"
   },
-  "梦想搁置": {
+  "Shelved Dreams": {
     name: "Shelved Dreams",
     desc: "Those dreams from your youth seem unrealistic now. You didn't give up on them - you just hid them away. Hidden dreams don't die - they just wait for the right time.",
     advice: "Take a piece of paper and write down three things you once wanted to do but never did. You don't have to do them now - just write them down. Pick one and do it within the next ten years.",
     color: "#a88040"
   },
-  "价值否定": {
+  "Self-Worth Denial": {
     name: "Self-Worth Denial",
     desc: "In every role, you feel you're not doing well enough. But you're overlooking: every step you've taken counts. What you think is not good enough might look like already great to others.",
     advice: "Flip through your photo album - on your phone or physical. Look at what you've done in the past five years. Not to be proud, but to know: you've been moving forward.",
     color: "#9a7060"
   },
-  "情感麻木": {
+  "Emotional Numbness": {
     name: "Emotional Numbness",
     desc: "You've lost interest in many things, including things you used to love. The heart closed its door to protect you, but when it stays closed too long, even sunlight can't get in.",
     advice: "Find one small thing - something you loved as a kid but stopped doing. No need for meaning or payoff - just enjoyment. Try it once.",
     color: "#8a6040"
   },
-  "身份迷失": {
+  "Identity Lost": {
     name: "Identity Lost",
     desc: "Switching between roles every day - employee, parent, child, partner - not knowing what you truly want. You've lived for others so long you forgot what living for yourself feels like.",
     advice: "Every morning, spend five minutes thinking of one thing just for yourself - not a responsibility, not a task, just something you want to do. It doesn't need to be long - five minutes is enough.",
@@ -1173,7 +1173,7 @@ const easterEggs = [
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedDilemmas = [];
@@ -1182,7 +1182,7 @@ let answers = {};       // question index -> array of selected option indices
 let cardScores = {};     // key -> count
 
 /* ============================================================
-   页面导航
+   Page Navigation
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1205,7 +1205,7 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境选择
+   Dilemma Selection
    ============================================================ */
 function renderDilemma() {
   const list = document.getElementById('dilemmaList');
@@ -1241,7 +1241,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1252,13 +1252,13 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+  document.getElementById('flipHint').textContent = 'Tap the card to flip';
 }
 
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('flipHint').textContent = '— This card accompanies you to diagnosis —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1267,12 +1267,12 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1322,7 +1322,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnosis Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1549,7 +1549,7 @@ function goBackHome() {
 }
 
 /* ============================================================
-   启动
+   Initialize
    ============================================================ */
 // Initialize dilemma on load
 document.addEventListener('DOMContentLoaded', () => {

@@ -826,7 +826,7 @@
           </div>
           <div class="flip-card-back">
             <div class="flip-card-quote" id="flipQuote">"Too early to write a will, but just right for a life review."</div>
-            <div class="flip-card-tap-hint">— 冒险卡</div>
+            <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
@@ -841,7 +841,7 @@
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">你最近的身体状态，你给自己的评分是？</div>
+      <div class="question-text" id="qText">How would you rate your recent physical condition?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
@@ -896,7 +896,7 @@
       <a href="临终故事十二则.html" style="display: inline-block; padding: 10px 28px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; font-family: var(--font); font-size: 14px; color: var(--text-dark); text-decoration: none; letter-spacing: 2px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(201,168,76,0.22)';this.style.borderColor='#c9a84c'" onmouseout="this.style.background='rgba(201,168,76,0.12)';this.style.borderColor='rgba(201,168,76,0.35)'">📖 Twelve End-of-Life Stories: Humanity's Last Words</a>
     </div>
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      以上不是你想说的？打开你的隐藏关卡 →
+      Not what you wanted to say? Open your hidden level →
     </div>
     <div class="page-end-text">— Stage 12 · Legacy & Passing On · Complete —</div>
   </div>
@@ -1005,97 +1005,97 @@ const questions = [
   {
     q: "What is your first reaction when you think about 'death'?",
     options: [
-      { text: "It's normal — everyone dies, nothing to fear.", key: "01平静接纳" },
-      { text: "I don't dare think about it — it makes me uncomfortable.", key: "02回避思考" },
-      { text: "I think about it occasionally, but stop when I can't figure it out.", key: "03偶有触动" },
-      { text: "Quite scared, especially at night when I can't sleep.", key: "04明显恐惧" },
-      { text: "已经认真想过很多次了，甚至做过一些准备。", key: "05主动面对" }
+      { text: "It's normal — everyone dies, nothing to fear.", key: "01Calm Acceptance" },
+      { text: "I don't dare think about it — it makes me uncomfortable.", key: "02Avoidance" },
+      { text: "I think about it occasionally, but stop when I can't figure it out.", key: "03Occasionally Moved" },
+      { text: "Quite scared, especially at night when I can't sleep.", key: "04Overt Fear" },
+      { text: "I've thought about it seriously many times, even made some preparations.", key: "05Proactive" }
     ]
   },
   {
     q: "If today were the last day of your life, what would you regret?",
     options: [
-      { text: "No regrets — I'm basically satisfied with my life.", key: "06人生无憾" },
-      { text: "Some regrets, but overall it's okay.", key: "07略有遗憾" },
-      { text: "I'd regret not spending more time with family.", key: "08亏欠关系" },
-      { text: "I'd regret not doing what I truly wanted to do.", key: "09辜负自己" },
-      { text: "不知道——从没认真想过这个问题。", key: "10从未审视" }
+      { text: "No regrets — I'm basically satisfied with my life.", key: "06No Regrets" },
+      { text: "Some regrets, but overall it's okay.", key: "07Slight Regrets" },
+      { text: "I'd regret not spending more time with family.", key: "08Relational Debt" },
+      { text: "I'd regret not doing what I truly wanted to do.", key: "09Betrayed Self" },
+      { text: "Don't know - never seriously thought about it.", key: "10Never Examined" }
     ]
   },
   {
     q: "Regarding 'what to leave behind,' which is closest to your current thinking?",
     options: [
-      { text: "I hope to leave my children some material foundation — that's enough.", key: "11留物质" },
-      { text: "I hope people remember my character — remember me as a good person.", key: "12留名声" },
-      { text: "I hope to leave something behind — works, ideas, or a story.", key: "13留精神" },
-      { text: "Haven't thought about it — whatever happens, happens.", key: "14无所谓" },
-      { text: "我觉得自己什么都留不下，有点慌。", key: "15焦虑虚无" }
+      { text: "I hope to leave my children some material foundation — that's enough.", key: "11Material Legacy" },
+      { text: "I hope people remember my character — remember me as a good person.", key: "12Good Name" },
+      { text: "I hope to leave something behind — works, ideas, or a story.", key: "13Spiritual Legacy" },
+      { text: "Haven't thought about it — whatever happens, happens.", key: "14Doesnt Matter" },
+      { text: "I feel I can't leave anything behind - it makes me anxious.", key: "15Anxious Emptiness" }
     ]
   },
   {
     q: "How do you feel about 'being forgotten'?",
     options: [
-      { text: "Being forgotten is normal — a few generations later, who remembers who?", key: "16接受遗忘" },
-      { text: "I don't need many to remember me — family remembering is enough.", key: "17小范围即可" },
-      { text: "I hope at least some people truly remember me and smile when they think of me.", key: "18渴望被记" },
-      { text: "I fear being completely forgotten — that feeling is an indescribable loneliness.", key: "19恐惧遗忘" },
-      { text: "与其被人记住，不如活得精彩。", key: "20活在当下" }
+      { text: "Being forgotten is normal — a few generations later, who remembers who?", key: "16Accept Forgotten" },
+      { text: "I don't need many to remember me — family remembering is enough.", key: "17Small Circle" },
+      { text: "I hope at least some people truly remember me and smile when they think of me.", key: "18Want Remembered" },
+      { text: "I fear being completely forgotten — that feeling is an indescribable loneliness.", key: "19Fear Forgotten" },
+      { text: "Rather than being remembered, live a brilliant life.", key: "20Live Present" }
     ]
   },
   {
     q: "Regarding end-of-life, wills, and funerals — what is your current state?",
     options: [
-      { text: "Never thought about it — feels very far away.", key: "21从未准备" },
-      { text: "The thought crosses my mind occasionally, but I quickly shift my attention.", key: "22有意回避" },
-      { text: "I've thought about it, but don't know where to start preparing.", key: "23迷茫无助" },
-      { text: "I've already talked about this with my family.", key: "24沟通过" },
-      { text: "已经做了基本的安排（遗嘱/保险/意愿书等）。", key: "25有备无患" }
+      { text: "Never thought about it — feels very far away.", key: "21Never Prepared" },
+      { text: "The thought crosses my mind occasionally, but I quickly shift my attention.", key: "22Intentional Avoid" },
+      { text: "I've thought about it, but don't know where to start preparing.", key: "23Lost Helpless" },
+      { text: "I've already talked about this with my family.", key: "24Had Conversation" },
+      { text: "Already made basic arrangements (will/insurance/living will, etc.)", key: "25Prepared Ready" }
     ]
   },
   {
     q: "If you could know what happens after death, would you want to know?",
     options: [
-      { text: "No — living life is already busy enough.", key: "26专注今生" },
-      { text: "Curious, but not a strong desire.", key: "27温和好奇" },
-      { text: "I'd really like to know — this has bothered me for a long time.", key: "28渴望答案" },
-      { text: "I have my own faith and already have an answer.", key: "29已有信仰" },
-      { text: "我觉得死后什么都没有，所以不想浪费时间想。", key: "30唯物主义" }
+      { text: "No — living life is already busy enough.", key: "26Focus This Life" },
+      { text: "Curious, but not a strong desire.", key: "27Mild Curiosity" },
+      { text: "I'd really like to know — this has bothered me for a long time.", key: "28Crave Answers" },
+      { text: "I have my own faith and already have an answer.", key: "29Have Faith" },
+      { text: "I think there's nothing after death, so I don't want to waste time thinking about it.", key: "30Materialist" }
     ]
   }
 ];
 
 // Complete Card Point Data (30 dimensions)
 const cardPoints = {
-  "01平静接纳":     { name: "Calm Acceptance",     desc: "You have a calm attitude toward death — a sign of wisdom. Not fearing it doesn't mean not caring; it means you've seen a truth.", advice: "Keep this calm and let it remind you: because life is finite, every day is worth living well.", color: "var(--gold)" },
-  "02回避思考":     { name: "Avoidance",     desc: "You choose not to think about death. This is a self-protection mechanism, but protection too long becomes avoidance.", advice: "You don't need to figure it all out at once. Start small: if you had only one year left, what three things would you absolutely do?", color: "#b89a6a" },
-  "03偶有触动":     { name: "Occasionally Moved",     desc: "The topic of death touches you, but you haven't thought deeply about it. This is a good start — you haven't completely closed the door.", advice: "Next time you're moved, don't immediately shift your attention. Pause and let the feeling stay a while. It may tell you something important.", color: "#9a7a4a" },
-  "04明显恐惧":     { name: "Overt Fear",     desc: "Your fear of death has begun to affect daily life. Fear itself isn't the problem — being controlled by it is.", advice: "Fear often comes from the unknown. Try reading a good book about death (like Being Mortal) or watching a related film. The more you understand, the less you fear.", color: "#c0784a" },
-  "05主动面对":     { name: "Proactive Confrontation",     desc: "You've already seriously faced the topic of death. This takes courage, and you have it.", advice: "Share your experience and thoughts with people you trust. You may be able to help those still in fear more than you imagine.", color: "var(--gold)" },
-  "06人生无憾":     { name: "No Regrets",     desc: "You're basically satisfied with your life. This is a rare state — many people spend their whole lives chasing this kind of satisfaction.", advice: "No regrets doesn't mean there's nothing left to do. Ask yourself: is there a small wish unfulfilled? Go fulfill it. Not to make up for something, but for joy.", color: "var(--gold)" },
-  "07略有遗憾":     { name: "Slight Regrets",     desc: "You have some regrets, but not serious ones. These regrets are more like gentle reminders than heavy burdens.", advice: "Pick the smallest regret and start making amends today. Even if it's just a phone call or writing a card. Action is the best remedy.", color: "#b89a6a" },
-  "08亏欠关系":     { name: "Relational Debt",     desc: "What you care about most is the debt in relationships — family, friends, loved ones. This shows you value connection.", advice: "Don't wait until you 'have time' to be together. This weekend, do one thing: have a nice meal or take a walk with someone you care about.", color: "#9a7a4a" },
-  "09辜负自己":     { name: "Betrayed Myself",     desc: "Your biggest regret is not living for yourself. Others' expectations and society's pressure led you down a path that wasn't yours.", advice: "It's never too late. Ask yourself: if no one would be disappointed, what would I do today? Then do a small part of that thing.", color: "#a88040" },
-  "10从未审视":     { name: "Never Examined",     desc: "You've never seriously examined your life. Being busy may be a way to avoid facing this question.", advice: "Find a quiet time, give yourself 30 minutes, do nothing — just think: am I satisfied with my life so far? What am I not satisfied with?", color: "#9a7a4a" },
-  "11留物质":       { name: "Leave Material Things",       desc: "You think leaving a material foundation is the most important legacy. This is a practical thought, and the choice of most people.", advice: "Material things matter, but also think: besides money, is there something intangible yet more valuable? Like lessons you teach your children, or people you've helped.", color: "#b89a6a" },
-  "12留名声":       { name: "Leave a Good Name",       desc: "You want to be remembered as a good person. Reputation is the legacy form you value.", advice: "A good reputation isn't manufactured — it's built through consistent actions over time. Keep being kind, and remember: being a good person starts with being good to yourself.", color: "#9a7a4a" },
-  "13留精神":       { name: "Leave a Legacy of Ideas",       desc: "You want to leave something spiritual — works, ideas, stories. This is the highest form of legacy.", advice: "Start recording today. Write it down, record it, draw it. You don't need to become a writer — you just need to express yourself authentically. That is legacy.", color: "var(--gold)" },
-  "14无所谓":       { name: "Doesn't Matter",       desc: "You're open-minded about 'what to leave behind.' This isn't indifference — it's a kind of openness.", advice: "Being open-minded is great. But if one day you suddenly feel a strong urge to leave something behind, don't suppress it. It might be your inner self speaking.", color: "#b89a6a" },
-  "15焦虑虚无":     { name: "Anxious Emptiness",     desc: "You feel you might not be able to leave anything behind, and this anxiety is eating at you. Emptiness is a common modern struggle.", advice: "The opposite of anxiety isn't certainty — it's action. Do one small thing today: help someone, write a paragraph, plant a tree. Action heals emptiness.", color: "#c0784a" },
-  "16接受遗忘":     { name: "Accepts Being Forgotten",     desc: "You can accept the fact of being forgotten. This is a deep wisdom — acknowledging finitude allows you to live more freely.", advice: "Since you accept being forgotten, live more freely. Don't live to be remembered — live for yourself, and paradoxically, you're more likely to be remembered.", color: "var(--gold)" },
-  "17小范围即可":   { name: "A Small Circle Is Enough",   desc: "You don't seek to be remembered by the masses — just by those close to you. This is a warm and realistic thought.", advice: "Then put your energy into those people. Create more shared memories — travel, talk, do things together. Memories are the most real legacy.", color: "#b89a6a" },
-  "18渴望被记":     { name: "Yearning to Be Remembered",     desc: "You yearn to be remembered, to be missed. This isn't vanity — it's the instinctive need of a social being.", advice: "The best way to be remembered isn't to deliberately leave something behind, but to treat every person sincerely and do every task well. Influence is left without you noticing.", color: "#9a7a4a" },
-  "19恐惧遗忘":     { name: "Fear of Being Forgotten",     desc: "You fear being completely forgotten. Behind this fear is a yearning for meaning.", advice: "Instead of worrying about being forgotten, think: which things you're doing now might leave traces in others' lives? Keep doing those things — that's how you fight being forgotten.", color: "#a88040" },
-  "20活在当下":     { name: "Living in the Present",     desc: "You chose to live in the present rather than worry about your legacy. This is a powerful life attitude.", advice: "Keep it up. Also allow yourself to look back sometimes — not to dwell on the past, but to confirm you're on the path you want to walk.", color: "var(--gold)" },
-  "21从未准备":     { name: "Never Prepared",     desc: "You haven't prepared at all for the 'end.' Most people are like this — until life forces you to think about it.", advice: "You don't need to write a will right away. Start with the smallest thing: open your phone's notes app and write 'If something happens to me, here are 3 things I want my family to know.' That's enough. Really.", color: "#9a7a4a" },
-  "22有意回避":     { name: "Intentional Avoidance",     desc: "You consciously avoid these topics. Behind avoidance is usually fear or unease.", advice: "Find a safe way to start: watch a movie about end of life (recommend Coco), talk with family about 'what if.' Start small — it's not so scary.", color: "#b89a6a" },
-  "23迷茫无助":     { name: "Lost and Helpless",     desc: "You want to prepare, but don't know how to start. This confusion is normal — schools never teach this.", advice: "Start with the most practical: look up what a 'living will' is, learn the basic types of wills. Knowledge itself is power. Once you know, you won't be afraid.", color: "#a88040" },
-  "24沟通过":       { name: "Had the Conversation",       desc: "You've talked about this with your family. This is very rare — most people don't even dare bring it up.", advice: "The conversation is a one-time event, but the topic can continue. Regularly update each other's thoughts to ensure your understanding and expectations stay aligned.", color: "var(--gold)" },
-  "25有备无患":     { name: "Prepared and Ready",     desc: "You've made basic arrangements. This isn't just responsibility to yourself — it's love for your family. You've saved them a lot of trouble.", advice: "Review and update your arrangements regularly. Life changes, and your plans need to keep up. Reviewing every two years is a good habit.", color: "var(--gold)" },
-  "26专注今生":     { name: "Focused on This Life",     desc: "You choose to focus on the present life. This is a pragmatic attitude, and the choice of many.", advice: "Focusing on this life doesn't mean you can't think about this question. Occasionally pausing to reflect may help you cherish what you have now.", color: "#b89a6a" },
-  "27温和好奇":     { name: "Gentle Curiosity",     desc: "You have moderate curiosity about the afterlife. This open mindset is good — neither believing nor rejecting.", advice: "Stay curious. Read how different cultures answer this question — you don't have to accept any of them, but diverse perspectives help you see more clearly.", color: "#9a7a4a" },
-  "28渴望答案":     { name: "Craving Answers",     desc: "You really want to know what happens after death. This question may be especially intense on certain nights.", advice: "Rather than seeking a definitive answer, accept the fact that 'nobody knows.' Various religions and philosophies offer different possibilities — all worth considering, none need be taken as absolute truth.", color: "#a88040" },
-  "29已有信仰":     { name: "Has Faith",     desc: "You have your own belief system to answer this question. Faith gives comfort and direction.", advice: "Faith is a personal choice. Stay open: others having different beliefs doesn't mean you can't respect each other. On ultimate questions, humility matters more than being right.", color: "var(--gold)" },
-  "30唯物主义":     { name: "Materialist",     desc: "You believe there's nothing after death. This is a rational and honest position.", advice: "Materialism isn't nihilism. Precisely because there's only this one life, every moment is more precious. Use 'only once' to drive yourself, not to deny meaning.", color: "#b89a6a" }
+  "01Calm Acceptance":     { name: "Calm Acceptance",     desc: "You have a calm attitude toward death — a sign of wisdom. Not fearing it doesn't mean not caring; it means you've seen a truth.", advice: "Keep this calm and let it remind you: because life is finite, every day is worth living well.", color: "var(--gold)" },
+  "02Avoidance":     { name: "Avoidance",     desc: "You choose not to think about death. This is a self-protection mechanism, but protection too long becomes avoidance.", advice: "You don't need to figure it all out at once. Start small: if you had only one year left, what three things would you absolutely do?", color: "#b89a6a" },
+  "03Occasionally Moved":     { name: "Occasionally Moved",     desc: "The topic of death touches you, but you haven't thought deeply about it. This is a good start — you haven't completely closed the door.", advice: "Next time you're moved, don't immediately shift your attention. Pause and let the feeling stay a while. It may tell you something important.", color: "#9a7a4a" },
+  "04Overt Fear":     { name: "Overt Fear",     desc: "Your fear of death has begun to affect daily life. Fear itself isn't the problem — being controlled by it is.", advice: "Fear often comes from the unknown. Try reading a good book about death (like Being Mortal) or watching a related film. The more you understand, the less you fear.", color: "#c0784a" },
+  "05Proactive":     { name: "Proactive Confrontation",     desc: "You've already seriously faced the topic of death. This takes courage, and you have it.", advice: "Share your experience and thoughts with people you trust. You may be able to help those still in fear more than you imagine.", color: "var(--gold)" },
+  "06No Regrets":     { name: "No Regrets",     desc: "You're basically satisfied with your life. This is a rare state — many people spend their whole lives chasing this kind of satisfaction.", advice: "No regrets doesn't mean there's nothing left to do. Ask yourself: is there a small wish unfulfilled? Go fulfill it. Not to make up for something, but for joy.", color: "var(--gold)" },
+  "07Slight Regrets":     { name: "Slight Regrets",     desc: "You have some regrets, but not serious ones. These regrets are more like gentle reminders than heavy burdens.", advice: "Pick the smallest regret and start making amends today. Even if it's just a phone call or writing a card. Action is the best remedy.", color: "#b89a6a" },
+  "08Relational Debt":     { name: "Relational Debt",     desc: "What you care about most is the debt in relationships — family, friends, loved ones. This shows you value connection.", advice: "Don't wait until you 'have time' to be together. This weekend, do one thing: have a nice meal or take a walk with someone you care about.", color: "#9a7a4a" },
+  "09Betrayed Self":     { name: "Betrayed Myself",     desc: "Your biggest regret is not living for yourself. Others' expectations and society's pressure led you down a path that wasn't yours.", advice: "It's never too late. Ask yourself: if no one would be disappointed, what would I do today? Then do a small part of that thing.", color: "#a88040" },
+  "10Never Examined":     { name: "Never Examined",     desc: "You've never seriously examined your life. Being busy may be a way to avoid facing this question.", advice: "Find a quiet time, give yourself 30 minutes, do nothing — just think: am I satisfied with my life so far? What am I not satisfied with?", color: "#9a7a4a" },
+  "11Material Legacy":       { name: "Leave Material Things",       desc: "You think leaving a material foundation is the most important legacy. This is a practical thought, and the choice of most people.", advice: "Material things matter, but also think: besides money, is there something intangible yet more valuable? Like lessons you teach your children, or people you've helped.", color: "#b89a6a" },
+  "12Good Name":       { name: "Leave a Good Name",       desc: "You want to be remembered as a good person. Reputation is the legacy form you value.", advice: "A good reputation isn't manufactured — it's built through consistent actions over time. Keep being kind, and remember: being a good person starts with being good to yourself.", color: "#9a7a4a" },
+  "13Spiritual Legacy":       { name: "Leave a Legacy of Ideas",       desc: "You want to leave something spiritual — works, ideas, stories. This is the highest form of legacy.", advice: "Start recording today. Write it down, record it, draw it. You don't need to become a writer — you just need to express yourself authentically. That is legacy.", color: "var(--gold)" },
+  "14Doesnt Matter":       { name: "Doesn't Matter",       desc: "You're open-minded about 'what to leave behind.' This isn't indifference — it's a kind of openness.", advice: "Being open-minded is great. But if one day you suddenly feel a strong urge to leave something behind, don't suppress it. It might be your inner self speaking.", color: "#b89a6a" },
+  "15Anxious Emptiness":     { name: "Anxious Emptiness",     desc: "You feel you might not be able to leave anything behind, and this anxiety is eating at you. Emptiness is a common modern struggle.", advice: "The opposite of anxiety isn't certainty — it's action. Do one small thing today: help someone, write a paragraph, plant a tree. Action heals emptiness.", color: "#c0784a" },
+  "16Accept Forgotten":     { name: "Accepts Being Forgotten",     desc: "You can accept the fact of being forgotten. This is a deep wisdom — acknowledging finitude allows you to live more freely.", advice: "Since you accept being forgotten, live more freely. Don't live to be remembered — live for yourself, and paradoxically, you're more likely to be remembered.", color: "var(--gold)" },
+  "17Small Circle":   { name: "A Small Circle Is Enough",   desc: "You don't seek to be remembered by the masses — just by those close to you. This is a warm and realistic thought.", advice: "Then put your energy into those people. Create more shared memories — travel, talk, do things together. Memories are the most real legacy.", color: "#b89a6a" },
+  "18Want Remembered":     { name: "Yearning to Be Remembered",     desc: "You yearn to be remembered, to be missed. This isn't vanity — it's the instinctive need of a social being.", advice: "The best way to be remembered isn't to deliberately leave something behind, but to treat every person sincerely and do every task well. Influence is left without you noticing.", color: "#9a7a4a" },
+  "19Fear Forgotten":     { name: "Fear of Being Forgotten",     desc: "You fear being completely forgotten. Behind this fear is a yearning for meaning.", advice: "Instead of worrying about being forgotten, think: which things you're doing now might leave traces in others' lives? Keep doing those things — that's how you fight being forgotten.", color: "#a88040" },
+  "20Live Present":     { name: "Living in the Present",     desc: "You chose to live in the present rather than worry about your legacy. This is a powerful life attitude.", advice: "Keep it up. Also allow yourself to look back sometimes — not to dwell on the past, but to confirm you're on the path you want to walk.", color: "var(--gold)" },
+  "21Never Prepared":     { name: "Never Prepared",     desc: "You haven't prepared at all for the 'end.' Most people are like this — until life forces you to think about it.", advice: "You don't need to write a will right away. Start with the smallest thing: open your phone's notes app and write 'If something happens to me, here are 3 things I want my family to know.' That's enough. Really.", color: "#9a7a4a" },
+  "22Intentional Avoid":     { name: "Intentional Avoidance",     desc: "You consciously avoid these topics. Behind avoidance is usually fear or unease.", advice: "Find a safe way to start: watch a movie about end of life (recommend Coco), talk with family about 'what if.' Start small — it's not so scary.", color: "#b89a6a" },
+  "23Lost Helpless":     { name: "Lost and Helpless",     desc: "You want to prepare, but don't know how to start. This confusion is normal — schools never teach this.", advice: "Start with the most practical: look up what a 'living will' is, learn the basic types of wills. Knowledge itself is power. Once you know, you won't be afraid.", color: "#a88040" },
+  "24Had Conversation":       { name: "Had the Conversation",       desc: "You've talked about this with your family. This is very rare — most people don't even dare bring it up.", advice: "The conversation is a one-time event, but the topic can continue. Regularly update each other's thoughts to ensure your understanding and expectations stay aligned.", color: "var(--gold)" },
+  "25Prepared Ready":     { name: "Prepared and Ready",     desc: "You've made basic arrangements. This isn't just responsibility to yourself — it's love for your family. You've saved them a lot of trouble.", advice: "Review and update your arrangements regularly. Life changes, and your plans need to keep up. Reviewing every two years is a good habit.", color: "var(--gold)" },
+  "26Focus This Life":     { name: "Focused on This Life",     desc: "You choose to focus on the present life. This is a pragmatic attitude, and the choice of many.", advice: "Focusing on this life doesn't mean you can't think about this question. Occasionally pausing to reflect may help you cherish what you have now.", color: "#b89a6a" },
+  "27Mild Curiosity":     { name: "Gentle Curiosity",     desc: "You have moderate curiosity about the afterlife. This open mindset is good — neither believing nor rejecting.", advice: "Stay curious. Read how different cultures answer this question — you don't have to accept any of them, but diverse perspectives help you see more clearly.", color: "#9a7a4a" },
+  "28Crave Answers":     { name: "Craving Answers",     desc: "You really want to know what happens after death. This question may be especially intense on certain nights.", advice: "Rather than seeking a definitive answer, accept the fact that 'nobody knows.' Various religions and philosophies offer different possibilities — all worth considering, none need be taken as absolute truth.", color: "#a88040" },
+  "29Have Faith":     { name: "Has Faith",     desc: "You have your own belief system to answer this question. Faith gives comfort and direction.", advice: "Faith is a personal choice. Stay open: others having different beliefs doesn't mean you can't respect each other. On ultimate questions, humility matters more than being right.", color: "var(--gold)" },
+  "30Materialist":     { name: "Materialist",     desc: "You believe there's nothing after death. This is a rational and honest position.", advice: "Materialism isn't nihilism. Precisely because there's only this one life, every moment is more precious. Use 'only once' to drive yourself, not to deny meaning.", color: "#b89a6a" }
 };
 
 // Easter Eggs (4, around legacy theme)
@@ -1334,7 +1334,7 @@ function showAdvice() {
     if (!cp) return '';
     return `
       <div class="advice-card">
-        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-label">Block ${String(i+1).padStart(2,'0')}</div>
         <div class="advice-card-title">
           <span class="advice-card-num">${i+1}</span>
           ${cp.name}

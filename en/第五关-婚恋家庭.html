@@ -775,7 +775,7 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第五关 · 婚恋家庭</div>
+      <div class="level-badge">Stage 5 · Love & Family</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Which moment resonates with you most?</h2>
       <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1-3 family moments that resonate most.<br>Don't overthink it - go with your gut.</p>
@@ -792,7 +792,7 @@
 
     <div class="dilemma-hint">Selected <span id="dilemmaCount">0</span> moments</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -801,7 +801,7 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第五关 · 婚恋家庭</div>
+      <div class="level-badge">Stage 5 · Love & Family</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
       <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis begins, let this card set the tone.</p>
@@ -814,13 +814,13 @@
             <div class="flip-card-front-hint">Tap to Flip</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"年轻时的穷，不是穷，是本钱。"</div>
-            <div class="flip-card-tap-hint">— 冒险卡</div>
+            <div class="flip-card-quote" id="flipQuote">"Poverty in youth isn't poverty — it's capital."</div>
+            <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
       <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to flip</p>
-      <button class="btn" id="adventureNextBtn" style="display: none;">开始诊断</button>
+      <button class="btn" id="adventureNextBtn" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
@@ -830,13 +830,13 @@
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">你第一次认真考虑"我要自己赚钱"是什么时候？</div>
+      <div class="question-text" id="qText">When did you first seriously consider "earning my own money"?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" style="display:none;">上一题</button>
-      <button class="btn" id="nextBtn" disabled>继续</button>
+      <button class="btn btn-ghost" id="prevBtn" style="display:none;">Previous</button>
+      <button class="btn" id="nextBtn" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -848,7 +848,7 @@
       <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="result-title">Your Love and Family Block Profile</div>
-      <div class="result-sub">第五关 · 婚恋家庭</div>
+      <div class="result-sub">Stage 5 · Love & Family</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
@@ -871,7 +871,7 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第五关 · 婚恋家庭</div>
+      <div class="level-badge">Stage 5 · Love & Family</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="advice-title">Stage Advice</div>
       <div class="advice-intro">
@@ -945,7 +945,7 @@
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据：第五关 · 婚恋家庭
+   Data: Stage 5 · Love & Family
    ============================================================ */
 
 // 婚恋家庭困境瞬间（3层：求职与起步 / 夫妻之间 / 压力与选择）
@@ -988,97 +988,97 @@ const questions = [
   {
     q: 'What does home mean to you?',
     options: [
-      { text: 'A place where I can completely relax and drop all pretense.', key: '01家=安全港湾' },
-      { text: 'A responsibility - I need to take care of everyone in it.', key: '02家=责任担当' },
-      { text: 'A place I haven't found belonging in yet - I'm still searching.', key: '03家=还在寻找' },
-      { text: 'A place that's both warm and anxiety-inducing - warm because of the people, anxious because of the people.', key: '04家=又暖又焦虑' },
-      { text: 'Honestly, the concept of home is pretty blurry for me.', key: '05家=模糊概念' }
+      { text: 'A place where I can completely relax and drop all pretense.', key: '01Safe Harbor' },
+      { text: 'A responsibility - I need to take care of everyone in it.', key: '02Responsibility' },
+      { text: 'A place I haven't found belonging in yet - I'm still searching.', key: '03Still Searching' },
+      { text: 'A place that's both warm and anxiety-inducing - warm because of the people, anxious because of the people.', key: '04Warm Anxious' },
+      { text: 'Honestly, the concept of home is pretty blurry for me.', key: '05Vague Concept' }
     ]
   },
   {
     q: 'When you have a conflict with family, what is your typical reaction?',
     options: [
-      { text: 'Bite my tongue to keep things from escalating.', key: '06回避冲突' },
-      { text: 'Speak up directly, even if it gets ugly.', key: '07直面冲突' },
-      { text: 'Sulk silently and wait for them to come comfort me.', key: '08生闷气等哄' },
-      { text: 'Cool down first, then talk it out - don't deal with it in the heat of the moment.', key: '09冷静后再说' },
-      { text: 'Depends on the situation - sometimes I hold back, sometimes I explode.', key: '10看情况反应' }
+      { text: 'Bite my tongue to keep things from escalating.', key: '06Avoid Conflict' },
+      { text: 'Speak up directly, even if it gets ugly.', key: '07Face Conflict' },
+      { text: 'Sulk silently and wait for them to come comfort me.', key: '08Sulking' },
+      { text: 'Cool down first, then talk it out - don't deal with it in the heat of the moment.', key: '09Cool Down First' },
+      { text: 'Depends on the situation - sometimes I hold back, sometimes I explode.', key: '10Situational' }
     ]
   },
   {
     q: 'What do you think is your biggest challenge in intimate relationships right now?',
     options: [
-      { text: 'It is hard to truly open up and trust others.', key: '11难以信任' },
-      { text: 'Don't know how to express love and care - words never come out right.', key: '12不善表达' },
-      { text: 'I overthink everything and care too much about their reactions.', key: '13患得患失' },
-      { text: 'I am used to being independent and not comfortable relying on others.', key: '14习惯独立' },
-      { text: 'They don't seem to understand me - our communication is always misaligned.', key: '15频道不同' }
+      { text: 'It is hard to truly open up and trust others.', key: '11Hard Trust' },
+      { text: 'Don't know how to express love and care - words never come out right.', key: '12Poor Express' },
+      { text: 'I overthink everything and care too much about their reactions.', key: '13Overthinking' },
+      { text: 'I am used to being independent and not comfortable relying on others.', key: '14Independent' },
+      { text: 'They don't seem to understand me - our communication is always misaligned.', key: '15Diff Wavelength' }
     ]
   },
   {
     q: 'Regarding your family of origin, what is your biggest feeling?',
     options: [
-      { text: 'It gave me a lot of love, but also things I am still processing.', key: '16爱中有伤' },
-      { text: 'I am trying not to let it affect my current life, but it still creeps in.', key: '17努力摆脱' },
-      { text: 'I think my relationship with my parents is okay - nothing major bothering me.', key: '18关系尚好' },
-      { text: 'I have noticed myself repeating certain patterns, and it unsettles me.', key: '19重复模式' },
-      { text: 'I don't want to think about this too much - what's done is done.', key: '20不愿多想' }
+      { text: 'It gave me a lot of love, but also things I am still processing.', key: '16Love Wounds' },
+      { text: 'I am trying not to let it affect my current life, but it still creeps in.', key: '17Break Free' },
+      { text: 'I think my relationship with my parents is okay - nothing major bothering me.', key: '18Relation OK' },
+      { text: 'I have noticed myself repeating certain patterns, and it unsettles me.', key: '19Repeat Pattern' },
+      { text: 'I don't want to think about this too much - what's done is done.', key: '20Avoid Thinking' }
     ]
   },
   {
     q: 'If you could change one thing to improve family relationships, what would it be?',
     options: [
-      { text: 'I wish I could express my thoughts and feelings more honestly.', key: '21更坦诚' },
-      { text: 'I wish my partner and I had more in common and more time together.', key: '22更多相处' },
-      { text: 'I want to let go of the shadows from my family of origin.', key: '23放下阴影' },
-      { text: 'I want to balance my relationships - parents, partner, kids.', key: '24平衡关系' },
-      { text: 'I want to become a whole person first, then build my family.', key: '25先完整自己' }
+      { text: 'I wish I could express my thoughts and feelings more honestly.', key: '21More Candid' },
+      { text: 'I wish my partner and I had more in common and more time together.', key: '22More Time' },
+      { text: 'I want to let go of the shadows from my family of origin.', key: '23Let Go Shadows' },
+      { text: 'I want to balance my relationships - parents, partner, kids.', key: '24Balance' },
+      { text: 'I want to become a whole person first, then build my family.', key: '25Complete Self' }
     ]
   },
   {
     q: 'What does your ideal home look like?',
     options: [
-      { text: 'Doesn't need to be big - just warm, where everyone is accepted and understood.', key: '26温暖接纳' },
-      { text: 'Share burdens and blessings together, like comrades-in-arms.', key: '27战友般' },
-      { text: 'Independent yet connected - space and companionship coexisting.', key: '28独立又联结' },
-      { text: 'Simple and steady - no dramatic ups and downs is happiness.', key: '29平淡即福' },
-      { text: 'Honestly, I haven't thought about this.', key: '30还没想过' }
+      { text: 'Doesn't need to be big - just warm, where everyone is accepted and understood.', key: '26Warm Accept' },
+      { text: 'Share burdens and blessings together, like comrades-in-arms.', key: '27Comrades' },
+      { text: 'Independent yet connected - space and companionship coexisting.', key: '28Indep Connect' },
+      { text: 'Simple and steady - no dramatic ups and downs is happiness.', key: '29Simplicity' },
+      { text: 'Honestly, I haven't thought about this.', key: '30Not Thought' }
     ]
   }
 ]
 
 // 卡点完整数据
 const cardPoints = {
-  "01家=安全港湾": { name: "Home = Safe Harbor", desc: "You crave a place where you can completely let your guard down. This suggests you may have lacked such a space of unconditional acceptance growing up. This longing itself is not wrong - everyone needs a safe harbor.", advice: "A safe harbor is not found - it is built, slowly. Start small: allow yourself to be vulnerable in front of someone you trust. The feeling of safety accumulates through each experience of being accepted.", color: "#8a6040" },
-  "02家=责任担当": { name: "Home = Responsibility", desc: "You see home as a collection of responsibilities. Caring for everyone is your instinct and your source of stress. You may be the family pillar - but pillars get tired too.", advice: "Taking responsibility is your strength, but remember: you are not Superman. Allow yourself to sometimes fall short, to ask for help, to let others share the load. The caretaker also needs caretaking.", color: "#7a5030" },
-  "03家=还在寻找": { name: "Home = Still Searching", desc: "你对「家」还没有一个确定的答案。也许你还没有组建自己的家庭，也许你有了但还没有感受到那种归属感。寻找本身说明你很在乎这件事。", advice: "Don't worry that you haven't found it yet. Some find it early; some take a lifetime. What matters is: you're searching sincerely. Home might be simpler than you imagine - it might already be in the relationships you have.", color: "#9a6840" },
-  "04家=又暖又焦虑": { name: "Home = Warm Yet Anxious", desc: "Your feelings about home are complex. It gives you warmth, but also anxiety. This contradiction is very real - intimacy is inherently a blend of sweetness and burden.", advice: "Embrace this complexity. Warmth and anxiety can coexist - you don't have to choose. Try naming your anxiety: what exactly makes you anxious? When you see anxiety's face clearly, it becomes less frightening.", color: "#a07050" },
-  "05家=模糊概念": { name: "Home = Vague Concept", desc: "你对「家」还没有清晰的概念。这可能是因为你的成长经历中没有给你一个明确的模板，也可能是你一直在回避面对这件事。", advice: "Being vague is okay, but don't stay vague forever. Try starting with the smallest question: what does a comfortable space look like for me? The answer might be simpler than you think.", color: "#8a5040" },
-  "06回避冲突": { name: "Conflict Avoidance", desc: "You choose to avoid conflict. Not because you are weak, but because you have experienced the pain conflict can bring, and you learned to protect yourself by avoiding it. But avoidance doesn't make problems disappear - it just lets them pile up.", advice: "Avoidance is a protective mechanism, but it can't solve everything. Try micro-conflicts: practice expressing small grievances. You'll find that after speaking up, the sky doesn't fall - in fact, it might clear up.", color: "#9a8050" },
-  "07直面冲突": { name: "Facing Conflict Head-On", desc: "You face conflict directly. This is a brave quality - it shows you won't let problems fester. But remember: how you say it and when you say it are just as important as what you say.", advice: "Facing conflict is good, but add some strategy. Next time, try: acknowledge the other person's emotions first, then state your position. Warm directness is more powerful than cold candor.", color: "#8a7060" },
-  "08生闷气等哄": { name: "Sulking and Waiting to Be Comforted", desc: "When you are angry, you go silent and wait for them to notice and comfort you. Behind this behavior is a need: I want to be seen, to be cared about. But sometimes they really can't see it.", advice: "Waiting for others to read your mind is high-effort and low-yield. Try a different approach: state your needs directly - I am really upset right now, and I need you to be with me. This isn't embarrassing - it's effective communication.", color: "#a07050" },
-  "09冷静后再说": { name: "Talk After Cooling Down", desc: "You choose to handle conflict after cooling down. This is a mature approach - words spoken in the heat of the moment often lead to regret. Your rationality is your strength.", advice: "Cooling down is great, but don't let it become procrastination. Set a deadline: I need to cool off, but let's talk properly before bed tonight. This way both sides know what to expect.", color: "#9a7860" },
-  "10看情况反应": { name: "Situational Response", desc: "You don't have a fixed reaction pattern. You assess each situation and respond accordingly - this flexibility is great adaptability. But sometimes it can make you seem uncommitted.", advice: "Flexibility is your strength, but have a core principle: what is absolutely unacceptable to me? With a bottom line, flexibility won't become drifting.", color: "#b0a070" },
-  "11难以信任": { name: "Difficulty Trusting", desc: "You find it hard to fully trust others in intimate relationships. This may stem from past hurts - childhood, or a previous relationship. Your shell is thick, but inside lives someone who desperately wants to trust.", advice: "Trust isn't a light switch - it's a dimmer. Don't expect to trust fully overnight. Start with something small: share a little secret and see what happens. One good experience adds one degree of trust.", color: "#9a6848" },
-  "12不善表达": { name: "Poor at Expressing", desc: "You want to express love, but don't know how to say it. You may have grown up in an environment where emotions weren't expressed much, so saying I love you feels like a foreign language.", advice: "Expression doesn't have to be verbal. Actions count too - a cup of tea, a text message, a hug. If you want to start speaking, begin with the simplest: Dinner was good today. Take it slow.", color: "#a08068" },
-  "13患得患失": { name: "Overthinking and Anxiety", desc: "You easily get anxious about your partner's reactions. A single expression, a single sentence, can keep you analyzing for hours. This sensitivity shows you care deeply, but it also exhausts you.", advice: "Sensitivity is love's magnifying glass - just don't let it become a microscope. When anxiety hits, ask yourself: is this fact, or my imagination? Most of the time, it's the latter.", color: "#8a5840" },
-  "14习惯独立": { name: "Habitually Independent", desc: "You're so used to being independent that you don't know how to depend on others in intimate relationships. Independence is a virtue, but excessive independence in intimacy can make your partner feel rejected.", advice: "Independence doesn't mean needing no one. Try micro-dependence: let them help you with something small, and accept it graciously. Depending on someone isn't weakness - it's investing in the relationship.", color: "#9a7060" },
-  "15频道不同": { name: "Different Wavelengths", desc: "You feel like you're always on different wavelengths with the people who matter. You say east, they hear west; the things you care about, they don't seem to. This communication mismatch is deeply frustrating.", advice: "Different wavelengths doesn't mean you can't connect. Try translating: before speaking, think about what language they best understand. Say what you want to say in their language - it works much better.", color: "#8a6850" },
-  "16爱中有伤": { name: "Love with Wounds", desc: "Your family of origin gave you love, but also things you need to process. This is extremely common - almost no family is perfect. Every family has its light and shadow.", advice: "Simply seeing that love and wounds coexist is the beginning of healing. Don't rush to forgive, and don't rush to cut ties. Allow both feelings to exist: gratitude for the love they gave, and acknowledgment of the hurts.", color: "#a07048" },
-  "17努力摆脱": { name: "Trying to Break Free", desc: "You're consciously trying to break free from your family of origin's influence. This means you've already seen those influences and are actively making changes. This awareness is incredibly valuable.", advice: "Breaking free isn't cutting off - it's digesting. Those patterns surface because they once protected you. Thank them for their protection, then tell them: Thanks, but I have new ways now.", color: "#8a5040" },
-  "18关系尚好": { name: "Relationship Okay", desc: "你和原生家庭的关系总体还好。你没有太大的困扰，但这不代表一切都完美——也许只是你选择不去深挖，或者确实比较幸运。", advice: "Okay is a great starting point. But if something feels subtly off at times, pause and look. Sometimes there are undercurrents beneath calm waters - seeing them helps you move forward better.", color: "#907850" },
-  "19重复模式": { name: "Repeating Patterns", desc: "You've noticed yourself repeating patterns from your family of origin. This is a crucial yet unsettling awareness - you're becoming the person you never wanted to be. But this awareness is exactly the catalyst for change.", advice: "Discovering the repetition is the first step to breaking the cycle. Don't blame yourself - these patterns were programmed into your system; it's not your fault. Now that you see them, you can rewrite the program. Every time you catch a pattern, it's a chance to rewrite.", color: "#9a6858" },
-  "20不愿多想": { name: "Prefer Not to Think About It", desc: "You choose not to dwell on your family of origin. This might be a self-protective strategy - thinking too much is tiring, so why bother. But some things don't disappear just because you don't think about them.", advice: "Not wanting to think about it is understandable. But if certain things keep recurring in your life (the same conflicts, the same pain), it might be knocking at your door. You don't have to open it, but at least know someone's knocking.", color: "#a08860" },
-  "21更坦诚": { name: "More Candid", desc: "You wish you could express yourself more candidly. This shows you've realized your current way of expressing isn't enough. The motivation to change is already there - you just need a little practice.", advice: "Candor is a muscle you can practice. Start in low-stakes situations - with friends, with less intense relationships. The relief after each honest expression will fuel the next one.", color: "#b0a070" },
-  "22更多相处": { name: "More Quality Time", desc: "You wish for more time together and more common ground with your partner. This shows you cherish the relationship and feel the loss that distance brings. This wish is simple and precious.", advice: "Quality matters more than quantity. Instead of pursuing more time, create higher-quality togetherness - put down the phone, do something together, talk about each other's day. Fifteen minutes of quality time beats a whole evening of separate scrolling.", color: "#8a7060" },
-  "23放下阴影": { name: "Letting Go of Shadows", desc: "You want to let go of the shadows from your family of origin. This wish itself shows those shadows still affect your life. Letting go isn't forgetting - it's no longer being controlled by them.", advice: "Letting go is a process, not a decision. Don't force yourself to let go now. Allow yourself more time, but also try small experiments - new responses in new situations, instead of old automatic reactions.", color: "#9a7860" },
-  "24平衡关系": { name: "Balancing Relationships", desc: "You want to find balance among multiple relationships. As the sandwich generation - parents above, children below, partner beside - balance is truly one of the greatest challenges. You're already doing your best.", advice: "Perfect balance doesn't exist. Accepting this will lighten your load. Instead of pursuing balance, pursue conscious choices - this time I choose this person, why, and tell those not chosen: next time it's your turn.", color: "#8a6850" },
-  "25先完整自己": { name: "Complete Yourself First", desc: "You realize you need to become a whole person first before you can build a good family. This is a profound insight - many people skip this step, jump straight into relationships, and hit walls everywhere.", advice: "Completing yourself first doesn't mean waiting until you're perfect to enter a relationship. It means: maintain attention on yourself even within a relationship. Taking time for yourself each day isn't selfish - it's recharging.", color: "#a08060" },
-  "26温暖接纳": { name: "Warm Acceptance", desc: "Your ideal home is warm and accepting of everyone. This suggests you may have experienced the pain of not being accepted, making you value this atmosphere even more. Your vision is beautiful.", advice: "Warmth and acceptance start with yourself. If you want to build such a home, first be such a person - accept yourself, accept others' imperfections. Example is the best education.", color: "#b0a070" },
-  "27战友般": { name: "Comrades-in-Arms", desc: "Your ideal home is like comrades-in-arms - sharing blessings and burdens together. This shows you value practical support and spiritual alliance over romantic forms. This is a very pragmatic view of family.", advice: "A comrade-like family is strong, but don't forget: comrades need tenderness too. Beyond fighting side by side, set aside time to simply sit together, doing nothing, just being present.", color: "#8a7060" },
-  "28独立又联结": { name: "Independent Yet Connected", desc: "Your ideal home has both personal space and mutual connection. This is a very mature and healthy view of family - neither consuming each other nor being strangers. You already have a great direction.", advice: "You already know the goal. The key is execution: how to create this rhythm in daily life? Maybe agree that each person gets one day a week for solitude, and the rest is shared time.", color: "#9a7860" },
-  "29平淡即福": { name: "Simplicity Is Happiness", desc: "Your ideal home is simple and steady. This might be because you've weathered enough storms to appreciate the value of calm. Contentment is wisdom, but sometimes it can also be compromise.", advice: "Simplicity is true blessing - as long as it's chosen, not settled for. Regularly ask yourself: am I truly content with this simplicity? If yes, enjoy it. If not, maybe make small changes.", color: "#8a6850" },
-  "30还没想过": { name: "Haven't Thought About It", desc: "You haven't seriously thought about what your ideal home looks like. Maybe you're still young, or maybe you've deliberately avoided the topic. Either way, thinking about it can't hurt.", advice: "You don't need a complete answer. Just a beginning: close your eyes, imagine a scene that makes you smile - what's there? Who's there? That image is the first clue about what home means to your heart.", color: "#a08060" }
+  "01Safe Harbor": { name: "Home = Safe Harbor", desc: "You crave a place where you can completely let your guard down. This suggests you may have lacked such a space of unconditional acceptance growing up. This longing itself is not wrong - everyone needs a safe harbor.", advice: "A safe harbor is not found - it is built, slowly. Start small: allow yourself to be vulnerable in front of someone you trust. The feeling of safety accumulates through each experience of being accepted.", color: "#8a6040" },
+  "02Responsibility": { name: "Home = Responsibility", desc: "You see home as a collection of responsibilities. Caring for everyone is your instinct and your source of stress. You may be the family pillar - but pillars get tired too.", advice: "Taking responsibility is your strength, but remember: you are not Superman. Allow yourself to sometimes fall short, to ask for help, to let others share the load. The caretaker also needs caretaking.", color: "#7a5030" },
+  "03Still Searching": { name: "Home = Still Searching", desc: "You haven't found a definite answer about 'home' yet. Maybe you haven't started your own family, or maybe you have but haven't felt that sense of belonging. The search itself shows you care about this.", advice: "Don't worry that you haven't found it yet. Some find it early; some take a lifetime. What matters is: you're searching sincerely. Home might be simpler than you imagine - it might already be in the relationships you have.", color: "#9a6840" },
+  "04Warm Anxious": { name: "Home = Warm Yet Anxious", desc: "Your feelings about home are complex. It gives you warmth, but also anxiety. This contradiction is very real - intimacy is inherently a blend of sweetness and burden.", advice: "Embrace this complexity. Warmth and anxiety can coexist - you don't have to choose. Try naming your anxiety: what exactly makes you anxious? When you see anxiety's face clearly, it becomes less frightening.", color: "#a07050" },
+  "05Vague Concept": { name: "Home = Vague Concept", desc: "You don't have a clear concept of 'home' yet. This may be because your upbringing didn't give you a clear template, or because you've been avoiding facing it.", advice: "Being vague is okay, but don't stay vague forever. Try starting with the smallest question: what does a comfortable space look like for me? The answer might be simpler than you think.", color: "#8a5040" },
+  "06Avoid Conflict": { name: "Conflict Avoidance", desc: "You choose to avoid conflict. Not because you are weak, but because you have experienced the pain conflict can bring, and you learned to protect yourself by avoiding it. But avoidance doesn't make problems disappear - it just lets them pile up.", advice: "Avoidance is a protective mechanism, but it can't solve everything. Try micro-conflicts: practice expressing small grievances. You'll find that after speaking up, the sky doesn't fall - in fact, it might clear up.", color: "#9a8050" },
+  "07Face Conflict": { name: "Facing Conflict Head-On", desc: "You face conflict directly. This is a brave quality - it shows you won't let problems fester. But remember: how you say it and when you say it are just as important as what you say.", advice: "Facing conflict is good, but add some strategy. Next time, try: acknowledge the other person's emotions first, then state your position. Warm directness is more powerful than cold candor.", color: "#8a7060" },
+  "08Sulking": { name: "Sulking and Waiting to Be Comforted", desc: "When you are angry, you go silent and wait for them to notice and comfort you. Behind this behavior is a need: I want to be seen, to be cared about. But sometimes they really can't see it.", advice: "Waiting for others to read your mind is high-effort and low-yield. Try a different approach: state your needs directly - I am really upset right now, and I need you to be with me. This isn't embarrassing - it's effective communication.", color: "#a07050" },
+  "09Cool Down First": { name: "Talk After Cooling Down", desc: "You choose to handle conflict after cooling down. This is a mature approach - words spoken in the heat of the moment often lead to regret. Your rationality is your strength.", advice: "Cooling down is great, but don't let it become procrastination. Set a deadline: I need to cool off, but let's talk properly before bed tonight. This way both sides know what to expect.", color: "#9a7860" },
+  "10Situational": { name: "Situational Response", desc: "You don't have a fixed reaction pattern. You assess each situation and respond accordingly - this flexibility is great adaptability. But sometimes it can make you seem uncommitted.", advice: "Flexibility is your strength, but have a core principle: what is absolutely unacceptable to me? With a bottom line, flexibility won't become drifting.", color: "#b0a070" },
+  "11Hard Trust": { name: "Difficulty Trusting", desc: "You find it hard to fully trust others in intimate relationships. This may stem from past hurts - childhood, or a previous relationship. Your shell is thick, but inside lives someone who desperately wants to trust.", advice: "Trust isn't a light switch - it's a dimmer. Don't expect to trust fully overnight. Start with something small: share a little secret and see what happens. One good experience adds one degree of trust.", color: "#9a6848" },
+  "12Poor Express": { name: "Poor at Expressing", desc: "You want to express love, but don't know how to say it. You may have grown up in an environment where emotions weren't expressed much, so saying I love you feels like a foreign language.", advice: "Expression doesn't have to be verbal. Actions count too - a cup of tea, a text message, a hug. If you want to start speaking, begin with the simplest: Dinner was good today. Take it slow.", color: "#a08068" },
+  "13Overthinking": { name: "Overthinking and Anxiety", desc: "You easily get anxious about your partner's reactions. A single expression, a single sentence, can keep you analyzing for hours. This sensitivity shows you care deeply, but it also exhausts you.", advice: "Sensitivity is love's magnifying glass - just don't let it become a microscope. When anxiety hits, ask yourself: is this fact, or my imagination? Most of the time, it's the latter.", color: "#8a5840" },
+  "14Independent": { name: "Habitually Independent", desc: "You're so used to being independent that you don't know how to depend on others in intimate relationships. Independence is a virtue, but excessive independence in intimacy can make your partner feel rejected.", advice: "Independence doesn't mean needing no one. Try micro-dependence: let them help you with something small, and accept it graciously. Depending on someone isn't weakness - it's investing in the relationship.", color: "#9a7060" },
+  "15Diff Wavelength": { name: "Different Wavelengths", desc: "You feel like you're always on different wavelengths with the people who matter. You say east, they hear west; the things you care about, they don't seem to. This communication mismatch is deeply frustrating.", advice: "Different wavelengths doesn't mean you can't connect. Try translating: before speaking, think about what language they best understand. Say what you want to say in their language - it works much better.", color: "#8a6850" },
+  "16Love Wounds": { name: "Love with Wounds", desc: "Your family of origin gave you love, but also things you need to process. This is extremely common - almost no family is perfect. Every family has its light and shadow.", advice: "Simply seeing that love and wounds coexist is the beginning of healing. Don't rush to forgive, and don't rush to cut ties. Allow both feelings to exist: gratitude for the love they gave, and acknowledgment of the hurts.", color: "#a07048" },
+  "17Break Free": { name: "Trying to Break Free", desc: "You're consciously trying to break free from your family of origin's influence. This means you've already seen those influences and are actively making changes. This awareness is incredibly valuable.", advice: "Breaking free isn't cutting off - it's digesting. Those patterns surface because they once protected you. Thank them for their protection, then tell them: Thanks, but I have new ways now.", color: "#8a5040" },
+  "18Relation OK": { name: "Relationship Okay", desc: "Your relationship with your family of origin is generally okay. You don't have major struggles, but that doesn't mean everything is perfect — maybe you just choose not to dig deeper, or maybe you've been relatively lucky.", advice: "Okay is a great starting point. But if something feels subtly off at times, pause and look. Sometimes there are undercurrents beneath calm waters - seeing them helps you move forward better.", color: "#907850" },
+  "19Repeat Pattern": { name: "Repeating Patterns", desc: "You've noticed yourself repeating patterns from your family of origin. This is a crucial yet unsettling awareness - you're becoming the person you never wanted to be. But this awareness is exactly the catalyst for change.", advice: "Discovering the repetition is the first step to breaking the cycle. Don't blame yourself - these patterns were programmed into your system; it's not your fault. Now that you see them, you can rewrite the program. Every time you catch a pattern, it's a chance to rewrite.", color: "#9a6858" },
+  "20Avoid Thinking": { name: "Prefer Not to Think About It", desc: "You choose not to dwell on your family of origin. This might be a self-protective strategy - thinking too much is tiring, so why bother. But some things don't disappear just because you don't think about them.", advice: "Not wanting to think about it is understandable. But if certain things keep recurring in your life (the same conflicts, the same pain), it might be knocking at your door. You don't have to open it, but at least know someone's knocking.", color: "#a08860" },
+  "21More Candid": { name: "More Candid", desc: "You wish you could express yourself more candidly. This shows you've realized your current way of expressing isn't enough. The motivation to change is already there - you just need a little practice.", advice: "Candor is a muscle you can practice. Start in low-stakes situations - with friends, with less intense relationships. The relief after each honest expression will fuel the next one.", color: "#b0a070" },
+  "22More Time": { name: "More Quality Time", desc: "You wish for more time together and more common ground with your partner. This shows you cherish the relationship and feel the loss that distance brings. This wish is simple and precious.", advice: "Quality matters more than quantity. Instead of pursuing more time, create higher-quality togetherness - put down the phone, do something together, talk about each other's day. Fifteen minutes of quality time beats a whole evening of separate scrolling.", color: "#8a7060" },
+  "23Let Go Shadows": { name: "Letting Go of Shadows", desc: "You want to let go of the shadows from your family of origin. This wish itself shows those shadows still affect your life. Letting go isn't forgetting - it's no longer being controlled by them.", advice: "Letting go is a process, not a decision. Don't force yourself to let go now. Allow yourself more time, but also try small experiments - new responses in new situations, instead of old automatic reactions.", color: "#9a7860" },
+  "24Balance": { name: "Balancing Relationships", desc: "You want to find balance among multiple relationships. As the sandwich generation - parents above, children below, partner beside - balance is truly one of the greatest challenges. You're already doing your best.", advice: "Perfect balance doesn't exist. Accepting this will lighten your load. Instead of pursuing balance, pursue conscious choices - this time I choose this person, why, and tell those not chosen: next time it's your turn.", color: "#8a6850" },
+  "25Complete Self": { name: "Complete Yourself First", desc: "You realize you need to become a whole person first before you can build a good family. This is a profound insight - many people skip this step, jump straight into relationships, and hit walls everywhere.", advice: "Completing yourself first doesn't mean waiting until you're perfect to enter a relationship. It means: maintain attention on yourself even within a relationship. Taking time for yourself each day isn't selfish - it's recharging.", color: "#a08060" },
+  "26Warm Accept": { name: "Warm Acceptance", desc: "Your ideal home is warm and accepting of everyone. This suggests you may have experienced the pain of not being accepted, making you value this atmosphere even more. Your vision is beautiful.", advice: "Warmth and acceptance start with yourself. If you want to build such a home, first be such a person - accept yourself, accept others' imperfections. Example is the best education.", color: "#b0a070" },
+  "27Comrades": { name: "Comrades-in-Arms", desc: "Your ideal home is like comrades-in-arms - sharing blessings and burdens together. This shows you value practical support and spiritual alliance over romantic forms. This is a very pragmatic view of family.", advice: "A comrade-like family is strong, but don't forget: comrades need tenderness too. Beyond fighting side by side, set aside time to simply sit together, doing nothing, just being present.", color: "#8a7060" },
+  "28Indep Connect": { name: "Independent Yet Connected", desc: "Your ideal home has both personal space and mutual connection. This is a very mature and healthy view of family - neither consuming each other nor being strangers. You already have a great direction.", advice: "You already know the goal. The key is execution: how to create this rhythm in daily life? Maybe agree that each person gets one day a week for solitude, and the rest is shared time.", color: "#9a7860" },
+  "29Simplicity": { name: "Simplicity Is Happiness", desc: "Your ideal home is simple and steady. This might be because you've weathered enough storms to appreciate the value of calm. Contentment is wisdom, but sometimes it can also be compromise.", advice: "Simplicity is true blessing - as long as it's chosen, not settled for. Regularly ask yourself: am I truly content with this simplicity? If yes, enjoy it. If not, maybe make small changes.", color: "#8a6850" },
+  "30Not Thought": { name: "Haven't Thought About It", desc: "You haven't seriously thought about what your ideal home looks like. Maybe you're still young, or maybe you've deliberately avoided the topic. Either way, thinking about it can't hurt.", advice: "You don't need a complete answer. Just a beginning: close your eyes, imagine a scene that makes you smile - what's there? Who's there? That image is the first clue about what home means to your heart.", color: "#a08060" }
 }
 
 // 彩蛋
@@ -1090,7 +1090,7 @@ const easterEggs = [
 ]
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedMoments = [];
@@ -1099,7 +1099,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航（带错误处理）
+   Page Navigation (with error handling)
    ============================================================ */
 function goPage(name) {
   try {
@@ -1137,7 +1137,7 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境瞬间选择
+   Dilemma Moment Selection
    ============================================================ */
 function renderMoments() {
   const layer1 = document.getElementById('momentLayer1');
@@ -1180,7 +1180,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1210,7 +1210,7 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
@@ -1274,7 +1274,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnosis Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1294,8 +1294,8 @@ function showResult() {
   const topKey = sorted[0] ? sorted[0][0] : null;
   const topCp = topKey ? cardPoints[topKey] : null;
   const summaryTexts = [
-    `Your core love and family block is「${topCp ? topCp.name : '未知'}」. Seeing it means you have already come further than most.`,
-    `你有 ${sorted.filter(s=>s[1]>=2).length}  deeper blocks that intertwine and shape how you respond in intimate relationships.`,
+    `Your core love and family block is「${topCp ? topCp.name : 'Unknown'}」. Seeing it means you have already come further than most.`,
+    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blocks that intertwine and shape how you respond in intimate relationships.`,
     "Intimate relationships are not an exam with standard answers. The only question you need to answer is: Am I being real in this relationship?"
   ];
 
@@ -1350,7 +1350,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Stage Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1382,7 +1382,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Stage
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1396,7 +1396,7 @@ function generateCard() {
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${i+1}: ${t}`
   ).join('\n\n');
 
   const cardContent = document.getElementById('cardContent');
@@ -1496,7 +1496,7 @@ function restart() {
 }
 
 /* ============================================================
-   启动 & 事件绑定
+   Initialize & Event Binding
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   // 渲染初始数据

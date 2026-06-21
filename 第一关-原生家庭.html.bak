@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Money and Finances: Your relationship with money reflects your relationship with yourself.">
+<meta name="description" content="原生家庭关卡：识别原生家庭给你留下的认知卡点，看见伤口，走出困境。">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stage 7 - Money and Finances — Found It</title>
+<title>第一关 · 原生家庭 — 找到啦</title>
 <style>
+  /* ==================== 基础变量 ==================== */
   :root {
     --bg: #f5e6c8;
     --bg2: #eed9a4;
@@ -22,6 +23,8 @@
     --radius: 8px;
     --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
   }
+
+  /* ==================== 全局 ==================== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -31,18 +34,23 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* 纸张纹理背景 */
   body::before {
     content: '';
     position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 0;
   }
+  /* 金边装饰 */
   body::after {
     content: '';
     position: fixed; inset: 8px;
     border: 1.5px solid var(--border);
     pointer-events: none; z-index: 0;
   }
+
+  /* ==================== 页面容器 ==================== */
   .page {
     display: none;
     position: relative; z-index: 1;
@@ -56,11 +64,14 @@
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ==================== 通用组件 ==================== */
   .gold-line {
     width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 0 auto 24px;
   }
+
   .card {
     background: rgba(255,252,240,0.7);
     border: 1px solid var(--border);
@@ -71,6 +82,7 @@
     transition: box-shadow 0.2s;
   }
   .card:hover { box-shadow: 0 4px 20px var(--shadow); }
+
   .btn {
     display: inline-block;
     padding: 12px 36px;
@@ -98,12 +110,15 @@
     box-shadow: none;
   }
   .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+
   .center { text-align: center; }
   .text-mid { color: var(--text-mid); font-size: 14px; }
   .mt-16 { margin-top: 16px; }
   .mt-24 { margin-top: 24px; }
   .mt-40 { margin-top: 40px; }
   .mb-8 { margin-bottom: 8px; }
+
+  /* ==================== 进度条 ==================== */
   .progress-bar-wrap {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 3px;
@@ -115,6 +130,8 @@
     transition: width 0.5s ease;
     width: 0%;
   }
+
+  /* ==================== P1: 入口页 ==================== */
   .level-badge {
     display: inline-block;
     font-size: 11px;
@@ -133,6 +150,10 @@
     line-height: 1.3;
     margin-bottom: 12px;
   }
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
   .hero-sub {
     font-size: 15px;
     color: var(--text-mid);
@@ -146,6 +167,8 @@
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 0 auto 40px;
   }
+
+  /* 装饰圆环 */
   .deco-ring {
     width: 160px; height: 160px;
     border: 1.5px solid var(--border);
@@ -177,6 +200,8 @@
     0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
     50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
   }
+
+  /* ==================== P2: 困境选择页 ==================== */
   .dilemma-card {
     background: rgba(255,252,240,0.6);
     border: 1px solid var(--border);
@@ -228,6 +253,8 @@
     text-align: right;
     margin-top: 16px;
   }
+
+  /* ==================== P3: 冒险卡 ==================== */
   .adventure-wrap {
     display: flex; flex-direction: column; align-items: center;
     padding: 20px 0;
@@ -296,6 +323,8 @@
     0%, 100% { opacity: 0.4; }
     50% { opacity: 1; }
   }
+
+  /* ==================== P4: 诊断测试 ==================== */
   .question-header {
     text-align: center;
     margin-bottom: 28px;
@@ -367,6 +396,8 @@
     display: flex; gap: 12px; justify-content: center;
     margin-top: 28px;
   }
+
+  /* ==================== P5: 诊断结果 ==================== */
   .result-header {
     text-align: center;
     margin-bottom: 32px;
@@ -426,6 +457,8 @@
   .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
   .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
   .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+
+  /* ==================== P6: 通关建议 ==================== */
   .advice-header {
     text-align: center;
     margin-bottom: 28px;
@@ -493,6 +526,8 @@
   .advice-card-action::before {
     content: '→ ';
   }
+
+  /* ==================== P7: 隐藏关卡 ==================== */
   .hidden-header {
     text-align: center;
     margin-bottom: 28px;
@@ -569,6 +604,8 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 18px rgba(201,168,76,0.4);
   }
+
+  /* 生成卡片预览 */
   .card-preview {
     display: none;
     background: linear-gradient(145deg, #f7edd5, #eed9a4);
@@ -635,6 +672,8 @@
     transition: all 0.2s;
   }
   .download-btn:hover { background: rgba(201,168,76,0.1); }
+
+  /* ==================== 彩蛋 ==================== */
   .easter-egg {
     display: none;
     background: rgba(90,50,20,0.95);
@@ -672,6 +711,8 @@
     cursor: pointer;
     line-height: 1;
   }
+
+  /* ==================== 隐藏关卡入口 ==================== */
   .hidden-trigger {
     display: block;
     width: 200px;
@@ -698,11 +739,15 @@
     letter-spacing: 2px;
     margin-top: 20px;
   }
+
+  /* ==================== 完成页 ==================== */
   .complete-icon {
     font-size: 64px;
     margin-bottom: 16px;
     opacity: 0.6;
   }
+
+  /* ==================== 返回主页按钮 ==================== */
   .back-home-btn {
     position: fixed;
     top: 16px;
@@ -738,6 +783,8 @@
     line-height: 1;
     color: var(--gold);
   }
+
+  /* ==================== 响应式 ==================== */
   @media (max-width: 600px) {
     .hero-title { font-size: 28px; letter-spacing: 4px; }
     .flip-card { width: 280px; height: 180px; }
@@ -746,49 +793,68 @@
     .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
   }
 </style>
-<link rel="stylesheet" href="enhance.css">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
+<!-- 进度条 -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
+<!-- 返回主页按钮（全局固定，所有页面可见） -->
+<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
   <span class="arrow">←</span>
-  <span>Back to Home</span>
+  <span>返回主页</span>
 </button>
 
 <!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">Stage 7 - Found It</div>
+    <div class="level-badge">第一关 · 找到啦</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">Money</div>
+      <div class="deco-ring-inner">原生</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">Money and Finances</h1>
+    <h1 class="hero-title">原生家庭</h1>
     <p class="hero-sub">
-      Not about teaching you how to make money.<br>
-      It is about helping you see what stands between you and money.
+      你受的伤是真的。<br>
+      但困在那里，不是唯一的出路。
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      You think talking about money is tacky, but youwrestling about it every day.<br>
-      You want to earn more, but feel "talking money hurts feelings."<br>
-      You don't dare ask for fair compensation, afraid of being called mercenary.<br>
-      You feel guilty after spending money, as if enjoyment is sinful.
+      有些东西，是你小时候种下的，<br>
+      却要用一辈子来辨认它是不是伤口。<br>
+      有些话，你对自己说了很多年，<br>
+      却从来没有停下来问一句：这是真的吗？
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      Money is not the goal.<br>
-      But it is a mirror -<br>
-      reflecting your sense of self-worth, your trust in others,<br>
-      and how much you truly value yourself.
+      这一关，不是让你责怪谁，<br>
+      也不是让你原谅谁。<br>
+      只是让你，看见自己在卡哪里。
     </p>
+    <!-- 专题文章链接 -->
+    <a href="article-原生家庭-为你好.html" class="card" style="display: block; text-decoration: none; margin: 20px auto; max-width: 480px; border: 1.5px solid var(--gold); background: rgba(255,252,240,0.85); transition: all 0.3s;">
+      <div style="text-align: center;">
+        <div style="font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px;">专题文章</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 2px; margin-bottom: 8px;">父母的"为你好"，为什么成了最深的伤？</div>
+        <div style="font-size: 14px; color: var(--text-mid); line-height: 1.7;">12个扎心问题 + 4大误区 + 5个破局思路</div>
+        <div style="font-size: 12px; color: var(--gold); margin-top: 12px; letter-spacing: 2px;">点击阅读 →</div>
+      </div>
+    </a>
+
+    <a href="article-原生家庭-幸福观.html" class="card" style="display: block; text-decoration: none; margin: 20px auto; max-width: 480px; border: 1.5px solid var(--gold); background: rgba(255,252,240,0.85); transition: all 0.3s;">
+      <div style="text-align: center;">
+        <div style="font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px;">专题文章</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 2px; margin-bottom: 8px;">原生家庭：幸福观和无常观</div>
+        <div style="font-size: 14px; color: var(--text-mid); line-height: 1.7;">除了伤痕，原生家庭还给了你养分</div>
+        <div style="font-size: 12px; color: var(--gold); margin-top: 12px; letter-spacing: 2px;">点击阅读 →</div>
+      </div>
+    </a>
+
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" onclick="goPage('dilemma')">Start Exploring</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 5 minutes</p>
+    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
   </div>
 </div>
 
@@ -796,15 +862,15 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">Stage 7 · Money Relationship</div>
+      <div class="level-badge">第一关 · 原生家庭</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">Which issue makes you mostwrestling about money?</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1-3 that feel closest to your current situation. Multiple selections are fine.</p>
+      <h2 class="hero-title" style="font-size: 26px;">你在哪件事上，最卡？</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">选择 1-3 条，最贴近你现在的感受。多选也无妨。</p>
     </div>
     <div style="margin-top: 24px;" id="dilemmaList"></div>
-    <div class="dilemma-hint" id="dilemmaHint">Selected <span id="dilemmaCount">0</span></div>
+    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>Continue</button>
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
     </div>
   </div>
 </div>
@@ -813,26 +879,26 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">Stage 7 · Money Relationship</div>
+      <div class="level-badge">第一关 · 原生家庭</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis begins, let this card set the tone.</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard" onclick="flipCard()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">Tap to Flip</div>
+            <div class="flip-card-front-hint">点击翻开</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"Your relationship with money is your relationship with yourself."</div>
-            <div class="flip-card-tap-hint">— Adventure Card</div>
+            <div class="flip-card-quote" id="flipQuote">"你的感受是真实的。不需要任何人允许。"</div>
+            <div class="flip-card-tap-hint">— 冒险卡</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to flip</p>
-      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
     </div>
   </div>
 </div>
@@ -841,14 +907,14 @@
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">What have you felt about money recently?</div>
+      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-text" id="qText">关于时间，你最近感受到的是？</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
-      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
     </div>
   </div>
 </div>
@@ -857,23 +923,24 @@
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">Diagnosis Complete</div>
+      <div class="level-badge">诊断完成</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">Your Cognitive Block Profile</div>
-      <div class="result-sub">Money and Finances - Stage 7</div>
+      <div class="result-title">你的认知卡点画像</div>
+      <div class="result-sub">原生家庭 · 第一关</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
+    <!-- 彩蛋区域 -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">You discovered a hidden insight</div>
+      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" onclick="goAdvice()">View Stage Advice</button>
+      <button class="btn" onclick="goAdvice()">查看通关建议</button>
     </div>
   </div>
 </div>
@@ -882,20 +949,20 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">Stage 7 · Money Relationship</div>
+      <div class="level-badge">第一关 · 原生家庭</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">Stage Advice</div>
+      <div class="advice-title">通关建议</div>
       <div class="advice-intro">
-        Money is not the goal,<br>
-        but it is a mirror that reflects how you truly see yourself.
+        原生家庭给了你伤口，<br>
+        但你没有让伤口变成你的全部。
       </div>
     </div>
     <div id="adviceList"></div>
 
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      Not what you wanted to say? Open your hidden level →
+      以上不是你想说的？打开你的隐藏关卡 →
     </div>
-    <div class="page-end-text">--- Stage 7 - Money and Finances - Complete ---</div>
+    <div class="page-end-text">— 第一关 · 原生家庭 · 完 —</div>
   </div>
 </div>
 
@@ -903,208 +970,249 @@
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">Hidden Stage</div>
+      <div class="level-badge">隐藏关卡</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">Your Personal Stage</div>
+      <div class="hidden-title">你的专属关卡</div>
       <div class="hidden-sub">
-        This is your space - write about what truly holds you back with money.<br>
-        No need to polish it. Just be real.
+        这里是你的空间，写下你真正卡住的事。<br>
+        不用修饰，不用在意文采。真实就好。
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">Step One</div>
-      <div class="step-label">Where am I stuck with money?</div>
-      <textarea class="step-input" id="hidden1" placeholder="The last thing that made mewrestling about money was:"></textarea>
+      <div class="step-num">第一步</div>
+      <div class="step-label">我的困境是什么？</div>
+      <textarea class="step-input" id="hidden1" placeholder="我现在最卡住的事是："></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step Two</div>
-      <div class="step-label">When did this feeling first appear?</div>
-      <textarea class="step-input" id="hidden2" placeholder="It first started when..."></textarea>
+      <div class="step-num">第二步</div>
+      <div class="step-label">这种感觉最早出现在什么时候？</div>
+      <textarea class="step-input" id="hidden2" placeholder="最早是在……"></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step Three</div>
-      <div class="step-label">If I could change one thing, it would be?</div>
-      <textarea class="step-input" id="hidden3" placeholder="I wish I could..."></textarea>
+      <div class="step-num">第三步</div>
+      <div class="step-label">我真正想要的是什么？</div>
+      <textarea class="step-input" id="hidden3" placeholder="如果可以改变一件事，我希望是："></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step Four</div>
-      <div class="step-label">What am I willing to give for this?</div>
-      <textarea class="step-input" id="hidden4" placeholder="To change, I am willing to..."></textarea>
+      <div class="step-num">第四步</div>
+      <div class="step-label">我愿意为此付出什么？</div>
+      <textarea class="step-input" id="hidden4" placeholder="为了改变，我愿意……"></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">Generate My Hidden Stage Card</button>
+    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">My Hidden Stage</div>
-      <div class="card-preview-sub">Stage 7 - Money and Finances - Found It</div>
+      <div class="card-preview-title">我的隐藏关卡</div>
+      <div class="card-preview-sub">第一关 · 原生家庭 · 找到啦</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" onclick="downloadCard()">Download Card</button>
+      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== 完成页 ==================== -->
+<!-- ==================== P7b: 完成页 ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      Seeing the blocks between you and money<br>
-      is itself the beginning of change.<br>
-      The road ahead is under your feet.
+      看见自己的卡点，本身就是通关的第一步。<br>
+      接下来的路，在你脚下。
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" onclick="restart()">Start Over</button>
+    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
   </div>
 </div>
 
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   Data
+   数据
    ============================================================ */
 
-// 困境（12条）
+// 困境
 const dilemmas = [
-  { id: 1, text: "The cashier said the second drink was half price. I couldn't finish it, but I dragged a friend to split the deal anyway." },
-  { id: 2, text: "I wanted to buy something I liked, agonized for two weeks, didn't buy it, and then found it was already sold out." },
-  { id: 3, text: "A friend who never paid me back is borrowing again. I don't know how to refuse or how to ask for the money back." },
-  { id: 4, text: "I bought a bunch of stuff I didn't need just to hit the minimum for a discount." },
-  { id: 5, text: "When splitting the bill, I always find it awkward to bring it up and would rather pay a bit more myself." },
-  { id: 6, text: "I want to ask my boss for a raise, but the words always get swallowed - afraid of being called mercenary." },
-  { id: 7, text: "Friends always insist on paying when we eat out. I always want to treat them back but get stopped - it doesn't sit right." },
-  { id: 8, text: "I don't know how to price my freelance work. Too high and no one bites; too low and I lose out." },
-  { id: 9, text: "My family opposes my unprofitable hobbies, calling them a waste of time. I'm torn." },
-  { id: 10, text: "When I got unexpected income, my first reaction wasn't joy - it was why am I getting this money?" },
-  { id: 11, text: "I always feel guilty spending money on enjoyment, as if enjoying things is sinful." },
-  { id: 12, text: "I know I deserve better pay, but I just can't bring myself to ask - afraid of rejection." }
+  { id: 1, text: "感受不到生命应有的能量，渴望活出自由舒展的自己，但原生家庭的阴影让我无力挣脱。" },
+  { id: 2, text: "发现自己染上了并不喜欢的习性，想要改变、想要变得更好，却总是重复相同的模式。" },
+  { id: 3, text: "真心希望父母能理解我、尊重我，但现实中每次尝试沟通都在消耗自己，这种无力感让我痛苦。" },
+  { id: 4, text: "渴望独立、渴望摆脱原生家庭的束缚，但我缺乏能量和勇气，只能困在原地。" },
+  { id: 5, text: "从小就被迫充当「小大人」承担不属于自己的责任，现在想为自己而活，但习惯性的牺牲模式让我无法挣脱。" },
+  { id: 6, text: "想要设立边界、保护自己的感受，但「孝道」的道德压力让我不敢这样做，这种内心撕裂让我无处可逃。" }
 ];
 
-// 冒险卡（12张）
+// 冒险卡（温柔而坚定）
 const adventureCards = [
-  "Your relationship with money is your relationship with yourself.",
-  "Talking about money isn't tacky - not talking about it causes misunderstandings.",
-  "You deserve to ask a fair price for your work.",
-  "Spending isn't waste - the question is whether you dare to spend when it matters.",
-  "Guilt about money often comes from hearing we are not well-off as a child.",
-  "Not daring to negotiate salary isn't humility - it's undervaluing yourself.",
-  "Money is a tool, not a goal. But you first need to admit it needs to exist.",
-  "When was the last time you spent money without any guilt?",
-  "Being good at earning isn't shameful - not knowing how to talk about money is what gets you lose out.",
-  "You're not greedy - you just want a little sense of security. That's perfectly normal.",
-  "Hearing money is dirty too often as a child makes you don't dare ask for it confidently as an adult.",
-  "True freedom is being able to earn money when you need it."
+  "你的感受是真实的。不需要任何人允许。",
+  "说出来，本身就是一种力量。",
+  "你走到这里，已经很不容易了。",
+  "承认疼，不等于软弱。",
+  "看见问题的人，已经比看不见的人走得更远。",
+  "原生家庭给了你伤口，但你没有让伤口变成你的全部。",
+  "你不需要原谅所有人，你只需要原谅自己的一部分。",
+  "有时候，最好的和解，是先承认自己没有被好好对待。",
+  "你值得被好好对待——这句话，不需要任何人说才算数。",
+  "伤口不会消失，但你可以决定不让它一直流血。",
+  "你比你的原生家庭更大。这一点，时间会证明。",
+  "你不是因为他们而成为今天的你——你也选择了自己的路。"
 ];
 
-// 诊断题（6题×5选项）
+// 诊断题
 const questions = [
   {
-    q: "What was the last thing that made youwrestling about money?",
+    q: "你现在的内心状态是？",
     options: [
-      { text: "Wanted something, agonized for ages, didn't buy it - then it was sold out.", key: "01Spending Hesitation" },
-      { text: "Embarrassed to refuse when friends borrow money, and don't know how to ask for it back.", key: "02Difficulty Asking" },
-      { text: "Want to ask for a raise but words get swallowed - afraid of being called mercenary.", key: "03Salary Fear" },
-      { text: "First reaction to receiving money is guilt - feeling I shouldn't take it.", key: "04Money Shame" },
-      { text: "Don't know how to price my services - afraid too high means no clients, too low means losing out.", key: "05Pricing Anxiety" }
+      { text: "如果不是因为他们，我的人生不会是这样。", key: "01怨他们" },
+      { text: "我发火的样子，和我爸一模一样。", key: "03我活成了他们" },
+      { text: "我相信有一天他们会醒悟，会跟我道歉。", key: "04等他们道歉" },
+      { text: "我能理解他们的不易，但那些伤害还是在。", key: "11理解就等于原谅" },
+      { text: "我知道他们是为我好，但就是很窒息。", key: "06爱我还是伤我" }
     ]
   },
   {
-    q: "Regarding spending, what feeling is closest to yours?",
+    q: "当父母做出让你不舒服的事，你内心的第一反应是？",
     options: [
-      { text: "Feel guilty after buying things I like, as if enjoyment is sinful.", key: "04Money Shame" },
-      { text: "I buy a bunch of things I don't need to hit the minimum, then regret it.", key: "06Impulse Spending" },
-      { text: "I always find it awkward to suggest splitting the bill.", key: "07Social Obligation" },
-      { text: "Friends insist on paying and stop me - it doesn't feel right, like I owe them.", key: "07Social Obligation" },
-      { text: "I don't really dare spend money - always feel I need to save for emergencies.", key: "08Savings Obsession" }
+      { text: "他们怎么还是老样子，一点都没变。", key: "04等他们道歉" },
+      { text: "我已经说了一百遍，他们就是不听。", key: "07都是他们的错" },
+      { text: "我发现自己某些行为方式，和父母惊人地相似。", key: "03我活成了他们" },
+      { text: "他们的出发点是爱，但我感受到的是伤害。", key: "06爱我还是伤我" },
+      { text: "原谅他们就等于承认伤害不存在。", key: "10不原谅才是对的" }
     ]
   },
   {
-    q: "Regarding earning, what feeling is closest to yours?",
+    q: "关于你对父母的感情，哪句话最接近你的真实感受？",
     options: [
-      { text: "I want to ask for a raise but can't bring myself to - afraid of rejection and being called mercenary.", key: "03Salary Fear" },
-      { text: "I don't know how to price my freelance work - always feel I'm not worth that price.", key: "09Value Underest" },
-      { text: "My family opposes my unprofitable hobbies, calling them a waste of time.", key: "10Interest Conflict" },
-      { text: "I know I deserve better pay, but I just can't say it.", key: "03Salary Fear" },
-      { text: "Some people's money-making methods make me uncomfortable, yet I envy how much they earn.", key: "11Moral Dilemma" }
+      { text: "如果他们能理解我，一切都会好起来。", key: "04等他们道歉" },
+      { text: "不原谅是我保护自己的方式。", key: "10不原谅才是对的" },
+      { text: "他们根本不配当父母。", key: "05他们根本不配" },
+      { text: "我对他们的怨恨里，有一部分是我自己的问题。", key: "07都是他们的错" },
+      { text: "我不想活成他们那个样子。", key: "08我会变成他们" }
     ]
   },
   {
-    q: "Regarding others and money, what feeling is closest to yours?",
+    q: "你最不愿意面对的是什么？",
     options: [
-      { text: "A friend who never paid me back is borrowing again - I don't know how to handle it.", key: "02Difficulty Asking" },
-      { text: "Someone treats me and insists on paying. I always want to reciprocate but get stopped - it doesn't feel right.", key: "07Social Obligation" },
-      { text: "I disapprove of how some people earn money, but secretly envy them.", key: "11Moral Dilemma" },
-      { text: "I'm afraid people will think I'm borrowing because I'm failing, so I never ask.", key: "12Help Shame" },
-      { text: "I always feel talking money hurts relationships, so I avoid it whenever possible.", key: "13Relation Worry" }
+      { text: "血缘不等于亲密，这个事实让我很难接受。", key: "12一家人怎么会疏远" },
+      { text: "我所有的不幸，都是原生家庭造成的。", key: "01怨他们" },
+      { text: "他们养育我的方式，也是从自己父母那里学来的。", key: "05他们根本不配" },
+      { text: "被偏爱的那个孩子，其实也被扭曲了。", key: "13被偏爱的才幸福" },
+      { text: "我是在用怨恨喂养伤口。", key: "10不原谅才是对的" }
     ]
   },
   {
-    q: "Regarding self-worth, which best describes your relationship with money?",
+    q: "关于原生家庭对下一代的影响，你内心的想法是？",
     options: [
-      { text: "I feel I don't deserve to earn big money - being able to support myself is enough.", key: "09Value Underest" },
-      { text: "My first reaction to unexpected income is guilt.", key: "04Money Shame" },
-      { text: "I dare not mention money to others - afraid of being called mercenary or worldly.", key: "04Money Shame" },
-      { text: "I feel talking money hurts feelings, so I avoid it whenever possible.", key: "13Relation Worry" },
-      { text: "I really want to earn money, but I'm embarrassed to admit it - I just say I want to do what I love.", key: "04Money Shame" }
+      { text: "我害怕我会像他们对待我一样对待我的孩子。", key: "09我在重复同样的错" },
+      { text: "我努力避免，却还是重复了他们的模式。", key: "03我活成了他们" },
+      { text: "他们的局限不是我的判决。", key: "08我会变成他们" },
+      { text: "我无法理解他们为什么不能改变。", key: "05他们根本不配" },
+      { text: "理解他们，不代表我要接受那些伤害。", key: "11理解就等于原谅" }
     ]
   },
   {
-    q: "Which statement is closest to your true inner view of money?",
+    q: "如果可以改变一件事，你最想改变的是？",
     options: [
-      { text: "Money is a tool for maintaining relationships - being clear about it creates distance.", key: "13Relation Worry" },
-      { text: "Mywrestling about money comes from always hearing we are not well-off as a child.", key: "04Money Shame" },
-      { text: "I just don't dare talk about money - not because I don't want to, but because I don't know how to start.", key: "03Salary Fear" },
-      { text: "I wish I could talk about money more openly, without feeling ashamed.", key: "14Awakening" },
-      { text: "I've actually started to change - I just need a little more time.", key: "14Awakening" }
+      { text: "我再也不想和他们有任何瓜葛了。", key: "02断联才能解脱" },
+      { text: "我们是一家人，但感觉像陌生人。", key: "12一家人怎么会疏远" },
+      { text: "我是在用怨恨困住自己。", key: "10不原谅才是对的" },
+      { text: "我需要承认那些伤害是真实发生过的。", key: "06爱我还是伤我" },
+      { text: "被偏爱的那个，其实也比我更压抑。", key: "13被偏爱的才幸福" }
     ]
   }
 ];
 
-// 卡点完整数据（30个维度）
+// 卡点完整数据
 const cardPoints = {
-  "01Spending Hesitation":    { name: "Spending Hesitation",    desc: "You agonized for ages over something you liked, didn't buy it, and then it was sold out. You're not frugal - you use not buying to prove you are disciplined.", advice: "Today, pick one small thing you've been wanting but haven't bought (under 100 yuan), and buy it. No explanations, no regrets.", color: "var(--gold)" },
-  "02Difficulty Asking":    { name: "Difficulty Asking for Money",    desc: "Embarrassed to refuse when friends borrow, and don't know how to ask for it back. You're afraid of hurting feelings, but the person who owes you is often more afraid of contacting you.", advice: "This week, send a message to the person who owes you money: Things are a bit tight lately - if it's convenient, could you transfer what you borrowed last time?", color: "#b08a5a" },
-  "03Salary Fear":    { name: "Salary Negotiation Fear",    desc: "Want to ask for a raise but words get swallowed - afraid of being called mercenary. But if you don't ask, your boss won't offer. This isn't humility - it's undervaluing yourself.", advice: "Tonight, write down the 3 most valuable things you've done in the past six months. Don't send it to anyone - just write it. Next time the opportunity comes, you'll be ready.", color: "var(--gold)" },
-  "04Money Shame":    { name: "Money Shame",    desc: "Your first reaction to receiving money is guilt. You may have heard: we are not well-off, money is dirty. But these shouldn't be your shackles today.", advice: "Take a piece of paper and write: I deserve to have money, and money deserves to be had by me. Write it three times, fold it up, and put it in your wallet.", color: "#c0784a" },
-  "05Pricing Anxiety":    { name: "Pricing Anxiety",    desc: "You don't know how to price your services - too high and no one bites, too low and you lose. It's not that you can't price - you're not sure you're worth it.", advice: "Find someone doing similar work and check their pricing. Not to copy - but to know: the range of what you're worth is larger than you think.", color: "#a88040" },
-  "06Impulse Spending":    { name: "Impulse Spending",    desc: "You buy a bunch of things you don't need for a discount, then regret it. It's not that you can't control money - you can't control that momentary fear of missing out.", advice: "Next time you'readding items to reach the minimum, ask yourself: If this weren't on sale, would I buy it? If the answer is no, put it down.", color: "#b08a5a" },
-  "07Social Obligation":    { name: "Social Obligation Worry",    desc: "You find it awkward to suggest splitting the bill, or feel uneasy when friends insist on paying. You're afraid that being clear about money creates distance.", advice: "Next time you eat out, say: My treat this time, yours next time. Turn social obligations into taking turns, rather than who owes whom.", color: "var(--gold)" },
-  "08Savings Obsession":    { name: "Savings Obsession",    desc: "You don't really dare spend money - always saving for emergencies. Saving is good, but if you never dare spend, money is just a number, not a tool.", advice: "This month, set a small must-spend budget (say 200 yuan) for things that purely make you happy.", color: "#9a7060" },
-  "09Value Underest":    { name: "Value Underestimation",    desc: "You feel you don't deserve to earn big money - supporting yourself is enough. This isn't humility - it's what you heard growing up that unknowingly became your self-assessment.", advice: "Make a list: of things you've done, which ones were useful to others? Each one is a reason you deserve to be paid.", color: "#c08060" },
-  "10Interest Conflict":    { name: "Interest Conflict",    desc: "Your family opposes your unprofitable hobbies, calling them a waste. But the things that light up your eyes are often the most worth investing in.", advice: "Find a way for your passion to at least cover its own costs. You don't need to get rich - just stop apologizing to your family for it.", color: "#a07850" },
-  "11Moral Dilemma":    { name: "Moral Dilemma",    desc: "Some people's money-making methods make you uncomfortable, yet you envy their earnings. It's not jealousy - you just haven't found your own, uncomplicated way to earn.", advice: "Write down three things you would never do. Then, outside of those three, think about what you can do. People with principles can earn money too.", color: "#8a6040" },
-  "12Help Shame":    { name: "Help-Seeking Shame",    desc: "You're afraid people will think borrowing means you're failing, so you never ask. But truly failing people never admit they need help.", advice: "This week, ask someone for a small favor (not money - just help). You'll find: most people actually want to be needed.", color: "#b07050" },
-  "13Relation Worry":    { name: "Relationship Worry",    desc: "You feel talking money hurts relationships, so you avoid it. But real relationships can withstand clarity. The ones that can't wouldn't last anyway.", advice: "In a relationship you care about most, initiate a money conversation - not arguing, just sharing your feelings. You'll find that clarity actually brings relief.", color: "var(--gold)" },
-  "14Awakening":    { name: "Awakening Willingness",    desc: "You wish you could talk about money more openly, without shame. That willingness alone already puts you ahead of many. You're on the path to change.", advice: "Today, say to the mirror: I deserve to have money, and I'm not ashamed to admit it. Say it three times, until it feels natural.", color: "#c09060" },
-  "15Sacrifice Inertia":    { name: "Sacrifice Inertia",    desc: "You always put others' needs first and yours last. It's not that you don't deserve money - you're just used to putting yourself last.", advice: "This week, do one small thing that satisfies yourself first - nothing big, just think of yourself first once. You'll find the sky doesn't fall.", color: "#a88040" },
-  "16Comparison Anxiety":     { name: "Comparison Anxiety",     desc: "Seeing others earn faster than you doesn't feel good. But what you see is always their highlight reel, not their behind-the-scenes balance sheet.", advice: "Next time you want to compare, replace his gap with me with my gap from a year ago. You'll see you've actually come far.", color: "#b89a6a" },
-  "17Risk Fear":     { name: "Risk Fear",     desc: "You want to earn more, but fear losses, failure, and what-ifs. It's not that you can't - you just imagine the what-ifs bigger than the what-if-it-works.", advice: "Find the smallest loss you canlose and take a small risk. It doesn't need to succeed - just show yourself: you can afford to lose.", color: "#c0784a" },
-  "18Giving Obstacle":     { name: "Giving Obstacle",     desc: "You want to buy things for your parents, but fear they'll scold you for wasting money. You're not wasting - you're trying to express love, but haven't found a way they can accept.", advice: "Next time you buy something for family, don't say I bought this for you - say I happened to see this and thought you'd like it. Reduce their psychological burden.", color: "#b08a5a" },
-  "19Hidden Desire":     { name: "Hidden Desire",     desc: "You really want to earn money, but are embarrassed to admit it - you just say I want to do what I love. You're not fake - you're just not ready for others' judgment.", advice: "Find someone you trust and tell them your real reason for wanting to earn money. Say it out loud and you'll find: it's not that hard to admit.", color: "#9a7060" },
-  "20Skill Mismatch":   { name: "Skill Mismatch",   desc: "You know you should earn more, but don't know where to start. It's not that you can't - you just haven't found your own way to relate to money.", advice: "Write down three things you're good at. Then think: which of these would people pay someone to do? That's your starting point.", color: "var(--gold)" },
-  "21Fairness Sensitivity":     { name: "Fairness Sensitivity",     desc: "Seeing others earn more while doing less doesn't feel fair. But feeling unfair won't earn you more - it just drains the energy you could use to improve yourself.", advice: "Shift your focus from why does he earn more than me to how can I make myself more valuable. The former drains; the latter invests.", color: "#a07850" },
-  "22Intimacy Confusion":     { name: "Intimacy Confusion",     desc: "You feel talking money in intimate relationships creates distance, but the less you talk about it, the more likely you'll clash over money someday. Truly intimate relationships can actually withstand financial clarity.", advice: "If you have a partner, initiate this week: Let's talk about how we manage our household finances. Not arguing - just talking.", color: "#c08060" },
-  "23Delayed Grat Blind":   { name: "Delayed Gratification Blind Spot",   desc: "You can't resist spending what you have, and when you truly need it, it's gone. It's not lack of self-control - you just haven't found a way to make saving interesting.", advice: "Set a savings goal you can see progress on - like save 5000 yuan for a trip. Goal-based saving is much easier to stick with than saving for emergencies.", color: "#b89a6a" },
-  "24Blurred Boundaries":     { name: "Blurred Boundaries",     desc: "You always pay for others and feel embarrassed to ask for it back. You're not generous - you just haven't learned: helping is fine, but with boundaries.", advice: "Next time someone asks you to pay first, ask yourself: If this money never comes back, can I accept it? If not, don't pay.", color: "#8a6040" },
-  "25Achievement Deval":     { name: "Achievement Devaluation",     desc: "You've accomplished things, but always think it's nothing or anyone could do it. You're not mediocre - you're just used to discounting your own achievements.", advice: "Ask a trusted friend to tell you: what do they admire most about you? You'll find you're worth more than you think.", color: "var(--gold)" },
-  "26Depend on Luck":     { name: "Dependence on Luck",     desc: "You feel things will work out, so you don't do much financial planning. But sometimes the boat makes it through, and sometimes it doesn't. You deserve to be prepared.", advice: "This week, do one small thing to prepare for the worst case - even if it's just checking your social security records or organizing your bank cards.", color: "#b07050" },
-  "27Single Income":   { name: "Single Income Stream",   desc: "All your income comes from one salary, so you dare not ask for a raise, quit, or rest. It's not that you can't - your income structure is just too fragile.", advice: "Think of one thing you can do that brings in a little extra income (not much - a few hundred a month is fine). Start doing it, even if slowly.", color: "#a88040" },
-  "28Emotional Spend":     { name: "Emotional Spending",     desc: "You shop when you're feeling down, then regret it. It's not that you can't control your wallet - you've just made shopping your way of soothing emotions.", advice: "Next time you're feeling down, wait 15 minutes before ordering. If you still want it after 15 minutes, buy it. But you'll find you usually don't.", color: "#c0784a" },
-  "29Power Projection":     { name: "Power Projection",     desc: "You feel people who earn well rely on connections or luck, so you don't try. But thinking this way hands the power of change to luck and others.", advice: "Find someone you know who earned money through their own effort and ask: How did you first find your direction? You'll hear a more ordinary answer than you expect.", color: "#b08a5a" },
-  "30Legacy Anxiety":     { name: "Legacy Anxiety",     desc: "You worry you can't earn enough to give your kids a good life. But the best inheritance you can give them isn't money - it's a healthy relationship with them.", advice: "Today, do something with your child that costs nothing, and tell them: Did you know, doing this with you makes me happier than earning money?", color: "#c09060" }
+  "01怨他们": {
+    name: "怨他们就能轻松",
+    desc: "你把人生的不如意都归咎于原生家庭。这个想法让你舒服，因为它把责任推给了别人。但真相是：原生家庭确实影响了你，但它不能决定你的一生。你不是受害者，你是成年人，你有选择的权利。",
+    advice: "承认原生家庭的影响，但停止用它来解释一切。从今天开始，把「都是因为他们」换成「我现在能做什么」。过去无法改变，但未来可以。",
+    color: "#b85a3a"
+  },
+  "02断联才能解脱": {
+    name: "断联才能解脱",
+    desc: "你觉得断绝关系是唯一的出路。这听起来很决绝，但你心里知道：这不是解脱，这是逃避。你用「切断」来代替「面对」，用「消失」来代替「解决」。",
+    advice: "在切断之前，先问自己：我是否真正尝试过设立边界？断绝关系是最后的手段，不是第一步。如果必须切断，也要带着理解，而不是怨恨。",
+    color: "#8a5040"
+  },
+  "03我活成了他们": {
+    name: "我活成了他们",
+    desc: "你发现自己在重复父母的模式。发火的样子、说话的语气、对待伴侣的方式，都和他们惊人地相似。你曾经发誓不要变成他们，但不知不觉中，你已经变成了他们的翻版。这不是你的错，但这是你的责任。",
+    advice: "觉察是改变的第一步。下次你发现自己在重复父母的模式时，停下来，深呼吸，问自己：这是我想要的方式吗？你不需要完美，只需要比上一代做得好一点。",
+    color: "#a07040"
+  },
+  "04等他们道歉": {
+    name: "等他们道歉",
+    desc: "你一直在等父母改变。等他们醒悟，等他们道歉，等他们变成你期待的样子。这个期待像一根绳子，把你绑在原地。但真相是：你无法改变任何人，除了你自己。",
+    advice: "放下对父母的期待，不是放弃他们，而是放过自己。把「等他们改变」换成「我先改变自己」。当你不再期待，你就自由了。",
+    color: "#907050"
+  },
+  "05他们根本不配": {
+    name: "他们根本不配",
+    desc: "你觉得父母不配当父母。你无法理解他们为什么不能改变。但你可能不知道：他们养育你的方式，往往是从自己父母那里学来的。他们也是「受伤的孩子」，只是他们没有意识到。",
+    advice: "试着了解父母的童年。不是为了原谅他们，而是为了理解他们。当你看到他们也是「受害者」时，你的怨恨可能会减轻一些。",
+    color: "#806050"
+  },
+  "06爱我还是伤我": {
+    name: "爱我还是伤我",
+    desc: "你知道父母是爱你的，但你感受到的却是伤害。你在这两种感受之间撕裂：一方面感激他们的付出，一方面痛苦于他们的方式。真相是：意图和效果可以同时存在——他们的出发点是爱，但造成的影响是真实的伤害。",
+    advice: "接受这个矛盾：父母是爱你的，但他们也伤害了你。这两件事可以同时为真。你不需要否定任何一个，只需要承认两者都存在。",
+    color: "#a08060"
+  },
+  "07都是他们的错": {
+    name: "都是他们的错",
+    desc: "你把所有的问题都归咎于父母。「我已经说了一百遍，他们就是不听」——但你有没有想过：你在关系中也有自己的模式？你对父母的怨恨里，可能有一部分是你自己的投射。你看到的他们，可能是你自己的镜像。",
+    advice: "诚实地审视自己：我在关系中是否也有问题？我对父母的怨恨，有多少是他们的错，有多少是我自己的投射？看到自己的部分，不是否定伤害，而是看清全貌。",
+    color: "#906050"
+  },
+  "08我会变成他们": {
+    name: "我会变成他们",
+    desc: "你害怕活成父母的样子。他们的局限、他们的困境，让你感到恐惧。但你忘了：他们的天花板不是你的天花板。父母有他们的局限，但那不是对你的判决。",
+    advice: "停止恐惧「变成父母」，开始专注「成为自己」。父母的局限是他们的，不是你的。你可以选择不同的路，但首先你要相信自己可以。",
+    color: "#a09060"
+  },
+  "09我在重复同样的错": {
+    name: "我在重复同样的错",
+    desc: "你害怕自己会像父母对待你一样对待自己的孩子。你努力避免，但有时还是会重复相同的模式。这个恐惧是真实的，但你没有意识到：你已经在改变。你能看到这个问题，说明你已经在打破循环。",
+    advice: "觉察是最好的预防。每次你发现自己在重复父母的模式时，停下来，选择不同的方式。你不需要完美，只需要比上一代做得好一点。每一点进步，都是在改写下一代的命运。",
+    color: "#908060"
+  },
+  "10不原谅才是对的": {
+    name: "不原谅才是对的",
+    desc: "你觉得不原谅是保护自己的方式。原谅他们就等于承认伤害不存在，就等于否定自己的感受。但你有没有想过：不原谅困住的不是他们，是你自己。你用怨恨喂养伤口，伤口永远无法愈合。",
+    advice: "原谅不是为他们，是为你自己。原谅不等于接受伤害，不等于忘记过去，不等于和解。原谅只是放下怨恨，让自己自由。你可以选择原谅，同时继续保护自己。",
+    color: "#b07050"
+  },
+  "11理解就等于原谅": {
+    name: "理解就等于原谅",
+    desc: "你能理解父母的不易，但那些伤害还是在。你在这两种感受之间挣扎：理解他们，又不想接受伤害。你不知道该怎么做。真相是：理解不等于接受。你可以理解他们的局限，同时不接受他们的伤害。",
+    advice: "把「理解」和「接受」分开。理解是看到他们的局限，接受是允许伤害继续。你可以选择理解，同时拒绝接受。这两件事可以同时存在。",
+    color: "#a08070"
+  },
+  "12一家人怎么会疏远": {
+    name: "一家人怎么会疏远",
+    desc: "你们是一家人，但感觉像陌生人。血缘是生物学事实，但亲密是需要经营的关系。你以为血缘会自动带来亲密，但现实让你失望。血缘不等于亲密。",
+    advice: "接受血缘不等于亲密的事实，然后选择：你要不要经营这段关系？如果要，就付出努力；如果不要，就接受现状。但不要因为血缘而强迫自己假装亲密。",
+    color: "#907060"
+  },
+  "13被偏爱的才幸福": {
+    name: "被偏爱的才幸福",
+    desc: "你觉得被偏爱的那个孩子过得比你好。你羡慕他们，甚至怨恨他们。但你可能不知道：被偏爱的孩子，也被扭曲了。他们承受的压力、他们的内疚，可能比你想象的要多。被偏爱不等于幸福。",
+    advice: "停止比较，停止怨恨。被偏爱的孩子也是受害者，只是方式不同。你们都是原生家庭的产物，都有各自的伤痛。与其互相怨恨，不如互相理解。",
+    color: "#c09070"
+  }
 };
 
-// 彩蛋（4个，围绕金钱与价值主题）
+// 彩蛋
 const easterEggs = [
-  { title: "Guan Zhong - The Book of Wisdom", text: "When granaries are full, people know propriety; when fed and clothed, they know honor and shame. Guan Zhong knew: talking about money is not shameful - using money for evil is. First live well, then talk about other things." },
-  { title: "Fan Li - The Book of Wisdom", text: "Fan Li made a fortune three times and gave it away three times. True freedom isn't how much you have - it's no longer being trapped by the fear of letting go." },
-  { title: "Antifragile", text: "Taleb says: the greatest power of money is giving you the right to say no. You earn money not to buy more things, but to have choices in what matters." },
-  { title: "Chen Guan - The Book of Wisdom", text: "When discussing matters, first consider right and wrong, then consider profit and loss. With money matters, first ask is this right, then ask is this worth it. The order cannot be reversed." }
+  { title: "《智囊》· 周处", text: "周处少时凶强侠气，为乡里所患。后访问陆机陆云，慨然改节，终为忠臣。——原生家庭给了你过去，但不是你的结局。" },
+  { title: "苏明玉的觉醒", text: "《都挺好》里苏明玉从小被忽视，最终活成了全家人最仰仗的样子。有些路，只能自己走出来。" },
+  { title: "心理学研究", text: "依恋理论发现：我们的第一段关系塑造了我们的内在工作模型——但模型是可以修正的，在每一段新的关系里。关键是你愿意尝试。" },
+  { title: "《智囊》· 范仲淹", text: "范仲淹幼年丧父，母亲改嫁。他少时苦读，终成一代名臣。——不被爱过的人，也可以学会爱；受过伤的人，也可以成为疗愈者。" }
 ];
 
 /* ============================================================
-   State
+   状态
    ============================================================ */
 let currentPage = 'entry';
 let selectedDilemmas = [];
@@ -1113,7 +1221,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   Page Navigation
+   页面导航
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1122,7 +1230,7 @@ function goPage(name) {
   currentPage = name;
   updateProgress(name);
   if (name === 'dilemma') renderDilemma();
-  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display = 'block'; }
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display='block'; }
   if (name === 'question') renderQuestion();
   if (name === 'result') showResult();
   if (name === 'advice') showAdvice();
@@ -1136,13 +1244,13 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   Dilemma Selection
+   困境选择
    ============================================================ */
 function renderDilemma() {
   const list = document.getElementById('dilemmaList');
   list.innerHTML = dilemmas.map(d => `
     <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
-      <div class="dilemma-num">Dilemma ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
       <div class="dilemma-text">${d.text}</div>
     </div>
   `).join('');
@@ -1162,7 +1270,8 @@ function toggleDilemma(id) {
 function updateDilemmaBtn() {
   const count = selectedDilemmas.length;
   document.getElementById('dilemmaCount').textContent = count;
-  document.getElementById('dilemmaNextBtn').disabled = count === 0;
+  const btn = document.getElementById('dilemmaNextBtn');
+  btn.disabled = count === 0;
 }
 
 function goDilemma() {
@@ -1171,7 +1280,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   Adventure Card
+   冒险卡
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1181,13 +1290,13 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = 'Tap the card to flip';
+  document.getElementById('flipHint').textContent = '点击卡牌翻开';
 }
 
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— This card accompanies you to diagnosis —';
+  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1196,12 +1305,12 @@ function goQuestion() {
 }
 
 /* ============================================================
-   Diagnostic Questions
+   诊断题
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
+  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1216,7 +1325,7 @@ function renderQuestion() {
 
   document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
+  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
   nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
 }
 
@@ -1251,7 +1360,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   Diagnosis Results
+   诊断结果
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1270,23 +1379,22 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `Your core block is「${topKey ? topKey.name : ''}」. The others are extensions of it.`,
-    `You have ${sorted.filter(s => s[1] >= 2).length} deeper blocks that are interconnected.`,
-    `The relationship between people and money is ultimately the relationship between people and themselves. Seeing where you're stuck is already the beginning of change.`
+    `你最核心的卡点是「${topKey ? topKey.name : ''}」。看见它，已经是改变的第一步。`,
+    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们相互关联，互为表里。`,
+    "你走到这一步，已经比大多数人都清醒了。"
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
   const resultList = document.getElementById('resultList');
   resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
     const cp = cardPoints[key];
-    if (!cp) return '';
     const pct = Math.min(100, score * 40);
     const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
     return `
       <div class="result-card">
         <div class="result-card-top">
           <span class="result-card-name">${cp.name}</span>
-          <span class="result-card-pct">Matched ${score} times</span>
+          <span class="result-card-pct">命中 ${score} 次</span>
         </div>
         <div class="result-bar-bg">
           <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1318,7 +1426,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   Stage Advice
+   通关建议
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1328,10 +1436,9 @@ function showAdvice() {
   const adviceList = document.getElementById('adviceList');
   adviceList.innerHTML = topCards.map(([key, score], i) => {
     const cp = cardPoints[key];
-    if (!cp) return '';
     return `
       <div class="advice-card">
-        <div class="advice-card-label">Block ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
         <div class="advice-card-title">
           <span class="advice-card-num">${i+1}</span>
           ${cp.name}
@@ -1348,7 +1455,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   Hidden Stage
+   隐藏关卡
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1357,32 +1464,31 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('Write something first - just one thing about where you are stuck.');
+    alert('先写点什么吧，至少说一件你卡住的事。');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `Step ${i+1}: ${t}`
+    `第${['一','二','三','四'][i]}步：${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
-    "What you wrote shows you are already facing it. Simply articulating it in your mind is the beginning of change.",
-    "Dilemmas don't form in a day, and they don't need a day to unravel. You have already taken the first step.",
-    "What you said out loud is what many people are afraid to face. Your courage is greater than you know.",
-    "Not everyone is willing to write these things down. You did. That alone is no small feat."
+    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
+    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
+    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
+    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `Start with this one thing today: ${h4.split(',')[0].split('.')[0]}` : 'Today, do one thing: think about this one more time, and clarify it a little more than today.';
+  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：把这件事再想一遍，比今天多想清楚一点。';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
 }
 
 function downloadCard() {
-  const preview = document.getElementById('cardPreview');
   const canvas = document.createElement('canvas');
   canvas.width = 600; canvas.height = 800;
   const ctx = canvas.getContext('2d');
@@ -1399,11 +1505,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('My Hidden Stage', 300, 80);
+  ctx.fillText('我的隐藏关卡', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('Stage 7 - Money and Finances - Found It', 300, 108);
+  ctx.fillText('第一关 · 原生家庭 · 找到啦', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1418,7 +1524,7 @@ function downloadCard() {
   let y = 170;
   lines.forEach(para => {
     ctx.fillText(para, 50, y);
-    y += 26 + 20;
+    y += para.split('\n').length * 26 + 20;
   });
 
   ctx.fillStyle = '#9a7a4a';
@@ -1434,10 +1540,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— Stage 7 - Money and Finances - Found It —', 300, 750);
+  ctx.fillText('— 第一关 · 原生家庭 · 完 —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = 'My-Hidden-Stage.png';
+  link.download = '我的隐藏关卡.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1464,43 +1570,12 @@ function goBackHome() {
 }
 
 /* ============================================================
-   Initialize
+   启动
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderDilemma();
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
-<script>
-(function(){
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-    });
-  },{threshold:0.15});
-  document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
-  var btn=document.querySelector('.back-to-top');
-  if(btn){
-    window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400);});
-    btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-  }
-})();
-</script>
-<!-- 访客计数器 -->
-<div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
-<script>
-(function(){
-  var key='zhaodaola_visitors';
-  var base=1008;
-  var stored=localStorage.getItem(key);
-  if(!stored){stored=String(base+Math.floor(Math.random()*50));localStorage.setItem(key,stored);}
-  var n=parseInt(stored)+1;
-  localStorage.setItem(key,String(n));
-  var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor # <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> </span>';}
-})();
-</script>
-<script src="lang-toggle.js?v=2"></script>
 </body>
 </html>

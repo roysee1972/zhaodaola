@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三关 · 初入人海 — 找到啦（重设计版）</title>
+<style>
+  /* ==================== DESIGN.md 规范变量 ==================== */
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --bg3: #e8d898;
+    --card-bg: rgba(255,252,240,0.55);
+    --text-dark: #5a3e1b;
+    --text-mid: #9a7a4a;
+    --text-light: #b89a6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+    /* 第三关辅助色：晨雾灰 */
+    --level-accent: #a8a090;
+  }
+
+  /* ==================== 全局重置 ==================== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 纸张纹理叠加 */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  /* 内边框画框 */
+  body::after {
+    content: '';
+    position: fixed; inset: 8px;
+    border: 1.5px solid var(--border);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ==================== 入口页容器 ==================== */
+  .entry-page {
+    position: relative; z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 60px 28px 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ==================== 返回按钮 ==================== */
+  .back-btn {
+    position: fixed;
+    top: 20px; left: 20px;
+    z-index: 200;
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 18px;
+    background: rgba(245,230,200,0.85);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .back-btn:hover {
+    border-color: var(--gold);
+    color: var(--text-dark);
+    background: rgba(245,230,200,0.95);
+  }
+
+  /* ==================== 关卡徽章 ==================== */
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+
+  /* ==================== 装饰圆环 ==================== */
+  .deco-ring {
+    width: 140px; height: 140px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow:
+      0 0 40px rgba(180,160,120,0.12),
+      inset 0 0 30px rgba(180,160,120,0.06);
+  }
+  .deco-ring::before {
+    content: '';
+    position: absolute;
+    width: 105px; height: 105px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+  }
+  .deco-ring::after {
+    content: '';
+    position: absolute;
+    width: 70px; height: 70px;
+    border: 1px dashed rgba(201,168,76,0.1);
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .deco-ring-inner {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(201,168,76,0.25);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.25); }
+    50% { box-shadow: 0 0 36px rgba(201,168,76,0.45); }
+  }
+
+  /* ==================== 金色分隔线 ==================== */
+  .gold-line {
+    width: 100px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 28px;
+  }
+
+  /* ==================== 标题层级 ==================== */
+  .hero-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 8px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    line-height: 1.9;
+    margin-bottom: 36px;
+  }
+
+  /* ==================== 正文叙事 ==================== */
+  .narrative {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .narrative p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 2;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .narrative p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ==================== 按钮 ==================== */
+  .btn {
+    display: inline-block;
+    padding: 14px 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 6px;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 12px rgba(201,168,76,0.3);
+    margin-top: 8px;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+  }
+  .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+
+  /* ==================== 辅助信息 ==================== */
+  .meta-text {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-top: 28px;
+  }
+
+  /* ==================== 底部装饰 ==================== */
+  .bottom-deco {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 3px; height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+</style>
+</head>
+<body>
+
+<a class="back-btn" href="../index.html">← 返回主页</a>
+
+<div class="entry-page">
+  <div class="level-badge">第三关 · 找到啦</div>
+
+  <div class="deco-ring">
+    <div class="deco-ring-inner">初涉</div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <h1 class="hero-title">初入<em>人海</em></h1>
+
+  <p class="hero-sub">
+    你第一次发现：<br>
+    别人不是爸妈。
+  </p>
+
+  <div class="gold-line" style="width: 60px; margin-bottom: 32px;"></div>
+
+  <div class="narrative">
+    <p>
+      走出家门的那一刻，<br>
+      世界不再围着你转。<br>
+      有人对你笑，有人不理你，<br>
+      有人你以为是朋友，其实不是。
+    </p>
+    <p>
+      这一关，不讲社交技巧，<br>
+      只是让你看见：<br>
+      你是怎么「进入人群」的。
+    </p>
+  </div>
+
+  <div class="gold-line" style="width: 60px; margin: 32px auto;"></div>
+
+  <button class="btn">开始探索</button>
+
+  <p class="meta-text">约需 6 分钟</p>
+
+  <div class="bottom-deco">
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+  </div>
+</div>
+
+</body>
+</html>

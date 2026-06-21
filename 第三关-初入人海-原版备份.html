@@ -2,26 +2,29 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="终篇传承关卡：你想留下什么？这是生命最后的追问。">
+<meta name="description" content="初入人海关卡：面对社会的第一步，识别你在人际关系和自我认知上的盲区。">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第十二关 · 终篇传承 — 找到啦</title>
+<title>第三关 · 初入人海 — 找到啦</title>
 <style>
+  /* ==================== 基础变量（与一二关保持一致）==================== */
   :root {
     --bg: #f5e6c8;
     --bg2: #eed9a4;
+    --bg3: #e8d898;
     --text-dark: #5a3e1b;
     --text-mid: #9a7a4a;
     --text-light: #b89a6a;
     --gold: #c9a84c;
     --gold-light: #e8c870;
-    --red: #8b3a2a;
     --border: rgba(139,90,43,0.18);
     --shadow: rgba(90,60,20,0.12);
     --radius: 8px;
     --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
   }
+
+  /* ==================== 全局 ==================== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -43,6 +46,8 @@
     border: 1.5px solid var(--border);
     pointer-events: none; z-index: 0;
   }
+
+  /* ==================== 页面容器 ==================== */
   .page {
     display: none;
     position: relative; z-index: 1;
@@ -56,21 +61,13 @@
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ==================== 通用组件 ==================== */
   .gold-line {
     width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 0 auto 24px;
   }
-  .card {
-    background: rgba(255,252,240,0.7);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 12px var(--shadow);
-    transition: box-shadow 0.2s;
-  }
-  .card:hover { box-shadow: 0 4px 20px var(--shadow); }
   .btn {
     display: inline-block;
     padding: 12px 36px;
@@ -98,12 +95,20 @@
     box-shadow: none;
   }
   .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
   .center { text-align: center; }
   .text-mid { color: var(--text-mid); font-size: 14px; }
   .mt-16 { margin-top: 16px; }
   .mt-24 { margin-top: 24px; }
   .mt-40 { margin-top: 40px; }
   .mb-8 { margin-bottom: 8px; }
+
+  /* ==================== 进度条 ==================== */
   .progress-bar-wrap {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 3px;
@@ -115,6 +120,8 @@
     transition: width 0.5s ease;
     width: 0%;
   }
+
+  /* ==================== P1: 入口页 ==================== */
   .level-badge {
     display: inline-block;
     font-size: 11px;
@@ -133,6 +140,7 @@
     line-height: 1.3;
     margin-bottom: 12px;
   }
+  .hero-title em { font-style: normal; color: var(--gold); }
   .hero-sub {
     font-size: 15px;
     color: var(--text-mid);
@@ -146,6 +154,8 @@
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 0 auto 40px;
   }
+
+  /* 装饰圆环（第三关：清冷晨雾感） */
   .deco-ring {
     width: 160px; height: 160px;
     border: 1.5px solid var(--border);
@@ -153,12 +163,16 @@
     margin: 0 auto 40px;
     display: flex; align-items: center; justify-content: center;
     position: relative;
+    /* 雾气效果 */
+    box-shadow:
+      0 0 30px rgba(180,160,120,0.15),
+      inset 0 0 30px rgba(180,160,120,0.08);
   }
   .deco-ring::before {
     content: '';
     position: absolute;
     width: 120px; height: 120px;
-    border: 1px solid rgba(201,168,76,0.3);
+    border: 1px solid rgba(201,168,76,0.2);
     border-radius: 50%;
   }
   .deco-ring-inner {
@@ -177,31 +191,55 @@
     0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
     50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
   }
-  .dilemma-card {
-    background: rgba(255,252,240,0.6);
-    border: 1px solid var(--border);
+
+  /* 雾气粒子装饰 */
+  .fog-particle {
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,185,150,0.25), transparent);
+    pointer-events: none;
+    z-index: 0;
+    animation: fogFloat 8s ease-in-out infinite;
+  }
+  @keyframes fogFloat {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-20px) translateX(15px); opacity: 0.6; }
+  }
+
+  /* ==================== P2: 社交瞬间选择页 ==================== */
+  .moment-layer-title {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .moment-card {
+    background: rgba(255,252,240,0.55);
+    border: 1.5px solid var(--border);
     border-radius: var(--radius);
-    padding: 18px 22px;
-    margin-bottom: 12px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
     cursor: pointer;
     transition: all 0.2s;
     position: relative;
     user-select: none;
   }
-  .dilemma-card:hover {
-    background: rgba(255,252,240,0.9);
-    border-color: var(--gold);
+  .moment-card:hover {
+    background: rgba(255,252,240,0.88);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 2px 12px var(--shadow);
   }
-  .dilemma-card.selected {
-    background: rgba(201,168,76,0.12);
+  .moment-card.selected {
+    background: rgba(201,168,76,0.1);
     border-color: var(--gold);
     box-shadow: 0 0 0 2px rgba(201,168,76,0.2);
   }
-  .dilemma-card.selected::after {
+  .moment-card.selected::after {
     content: '';
     position: absolute;
-    right: 16px; top: 50%;
-    transform: translateY(-50%);
+    right: 14px; top: 14px;
     width: 20px; height: 20px;
     background: var(--gold);
     border-radius: 50%;
@@ -210,17 +248,29 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  .dilemma-num {
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 2px;
+  .moment-icon {
+    font-size: 18px;
     margin-bottom: 6px;
   }
-  .dilemma-text {
-    font-size: 15px;
+  .moment-title {
+    font-size: 14px;
+    font-weight: 600;
     color: var(--text-dark);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .moment-desc {
+    font-size: 13px;
+    color: var(--text-mid);
     line-height: 1.7;
     padding-right: 30px;
+  }
+  .moment-hint {
+    font-size: 11px;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 8px;
+    letter-spacing: 1px;
   }
   .dilemma-hint {
     font-size: 12px;
@@ -228,6 +278,8 @@
     text-align: right;
     margin-top: 16px;
   }
+
+  /* ==================== P3: 冒险卡 ==================== */
   .adventure-wrap {
     display: flex; flex-direction: column; align-items: center;
     padding: 20px 0;
@@ -244,9 +296,7 @@
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
   }
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
   .flip-card-front, .flip-card-back {
     position: absolute; inset: 0;
     border-radius: var(--radius);
@@ -260,16 +310,8 @@
     border: 1.5px solid var(--gold);
     box-shadow: 0 4px 20px var(--shadow);
   }
-  .flip-card-front-icon {
-    font-size: 48px;
-    margin-bottom: 12px;
-    opacity: 0.4;
-  }
-  .flip-card-front-hint {
-    font-size: 13px;
-    color: var(--text-mid);
-    letter-spacing: 3px;
-  }
+  .flip-card-front-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .flip-card-front-hint { font-size: 13px; color: var(--text-mid); letter-spacing: 3px; }
   .flip-card-back {
     background: linear-gradient(145deg, var(--bg), var(--bg2));
     border: 1.5px solid var(--gold);
@@ -296,6 +338,8 @@
     0%, 100% { opacity: 0.4; }
     50% { opacity: 1; }
   }
+
+  /* ==================== P4: 诊断测试 ==================== */
   .question-header {
     text-align: center;
     margin-bottom: 28px;
@@ -367,6 +411,8 @@
     display: flex; gap: 12px; justify-content: center;
     margin-top: 28px;
   }
+
+  /* ==================== P5: 诊断结果 ==================== */
   .result-header {
     text-align: center;
     margin-bottom: 32px;
@@ -402,15 +448,8 @@
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 8px;
   }
-  .result-card-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-dark);
-  }
-  .result-card-pct {
-    font-size: 12px;
-    color: var(--text-mid);
-  }
+  .result-card-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+  .result-card-pct { font-size: 12px; color: var(--text-mid); }
   .result-bar-bg {
     height: 6px;
     background: rgba(139,90,43,0.1);
@@ -426,6 +465,8 @@
   .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
   .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
   .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+
+  /* ==================== P6: 通关建议 ==================== */
   .advice-header {
     text-align: center;
     margin-bottom: 28px;
@@ -490,9 +531,9 @@
     border-radius: 4px;
     display: inline-block;
   }
-  .advice-card-action::before {
-    content: '→ ';
-  }
+  .advice-card-action::before { content: '→ '; }
+
+  /* ==================== P7: 隐藏关卡 ==================== */
   .hidden-header {
     text-align: center;
     margin-bottom: 28px;
@@ -518,18 +559,8 @@
     padding: 18px 20px;
     margin-bottom: 14px;
   }
-  .step-num {
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 3px;
-    margin-bottom: 6px;
-  }
-  .step-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-  }
+  .step-num { font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 6px; }
+  .step-label { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; }
   .step-input {
     width: 100%;
     background: rgba(255,255,255,0.7);
@@ -544,10 +575,7 @@
     line-height: 1.7;
     transition: border-color 0.2s;
   }
-  .step-input:focus {
-    outline: none;
-    border-color: var(--gold);
-  }
+  .step-input:focus { outline: none; border-color: var(--gold); }
   .step-input::placeholder { color: var(--text-light); }
   .generate-btn {
     margin-top: 20px;
@@ -565,10 +593,7 @@
     box-shadow: 0 2px 12px rgba(201,168,76,0.3);
     transition: all 0.2s;
   }
-  .generate-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 18px rgba(201,168,76,0.4);
-  }
+  .generate-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(201,168,76,0.4); }
   .card-preview {
     display: none;
     background: linear-gradient(145deg, #f7edd5, #eed9a4);
@@ -587,54 +612,31 @@
     background: linear-gradient(90deg, var(--gold), var(--gold-light));
   }
   .card-preview-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-dark);
-    letter-spacing: 3px;
-    margin-bottom: 4px;
+    font-size: 18px; font-weight: 700; color: var(--text-dark);
+    letter-spacing: 3px; margin-bottom: 4px;
   }
   .card-preview-sub {
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 3px;
-    margin-bottom: 18px;
+    font-size: 11px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 18px;
   }
   .card-preview-content {
-    font-size: 14px;
-    color: var(--text-dark);
-    line-height: 2;
-    white-space: pre-wrap;
+    font-size: 14px; color: var(--text-dark); line-height: 2; white-space: pre-wrap;
   }
   .card-preview-response {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--border);
-    font-size: 13px;
-    color: var(--text-mid);
-    font-style: italic;
-    line-height: 1.8;
+    margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border);
+    font-size: 13px; color: var(--text-mid); font-style: italic; line-height: 1.8;
   }
   .card-preview-action {
-    margin-top: 12px;
-    font-size: 12px;
-    color: var(--gold);
-    font-weight: 600;
+    margin-top: 12px; font-size: 12px; color: var(--gold); font-weight: 600;
   }
   .download-btn {
-    margin-top: 14px;
-    width: 100%;
-    padding: 10px;
-    background: transparent;
-    border: 1px solid var(--gold);
-    border-radius: var(--radius);
-    font-family: var(--font);
-    font-size: 13px;
-    color: var(--text-mid);
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.2s;
+    margin-top: 14px; width: 100%; padding: 10px; background: transparent;
+    border: 1px solid var(--gold); border-radius: var(--radius);
+    font-family: var(--font); font-size: 13px; color: var(--text-mid);
+    letter-spacing: 3px; cursor: pointer; transition: all 0.2s;
   }
   .download-btn:hover { background: rgba(201,168,76,0.1); }
+
+  /* ==================== 彩蛋 ==================== */
   .easter-egg {
     display: none;
     background: rgba(90,50,20,0.95);
@@ -648,79 +650,47 @@
   }
   .easter-egg.show { display: block; animation: fadeIn 0.8s ease; }
   .easter-egg-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: rgba(201,168,76,0.7);
-    margin-bottom: 10px;
+    font-size: 10px; letter-spacing: 4px; color: rgba(201,168,76,0.7); margin-bottom: 10px;
   }
   .easter-egg-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--gold-light);
-    margin-bottom: 12px;
+    font-size: 16px; font-weight: 600; color: var(--gold-light); margin-bottom: 12px;
   }
   .easter-egg-text {
-    font-size: 14px;
-    line-height: 1.9;
-    color: rgba(245,230,200,0.9);
+    font-size: 14px; line-height: 1.9; color: rgba(245,230,200,0.9);
   }
   .easter-egg-close {
     position: absolute; top: 10px; right: 14px;
     background: none; border: none;
-    color: rgba(201,168,76,0.5);
-    font-size: 18px;
-    cursor: pointer;
-    line-height: 1;
+    color: rgba(201,168,76,0.5); font-size: 18px;
+    cursor: pointer; line-height: 1;
   }
+
+  /* ==================== 隐藏关卡入口 ==================== */
   .hidden-trigger {
-    display: block;
-    width: 200px;
-    margin: 32px auto 0;
-    padding: 10px 20px;
-    background: none;
-    border: 1px dashed var(--border);
-    border-radius: 20px;
-    font-family: var(--font);
-    font-size: 12px;
-    color: var(--text-light);
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
+    display: block; width: 200px; margin: 32px auto 0; padding: 10px 20px;
+    background: none; border: 1px dashed var(--border); border-radius: 20px;
+    font-family: var(--font); font-size: 12px; color: var(--text-light);
+    letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
   }
-  .hidden-trigger:hover {
-    border-color: var(--gold);
-    color: var(--text-mid);
-  }
+  .hidden-trigger:hover { border-color: var(--gold); color: var(--text-mid); }
   .page-end-text {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-light);
-    letter-spacing: 2px;
-    margin-top: 20px;
+    text-align: center; font-size: 12px; color: var(--text-light);
+    letter-spacing: 2px; margin-top: 20px;
   }
-  .complete-icon {
-    font-size: 64px;
-    margin-bottom: 16px;
-    opacity: 0.6;
-  }
+
+  /* ==================== 完成页 ==================== */
+  .complete-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
+
+  /* ==================== 返回主页按钮 ==================== */
   .back-home-btn {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    position: fixed; top: 16px; left: 16px; z-index: 200;
+    display: flex; align-items: center; gap: 6px;
     padding: 7px 16px;
     background: rgba(245,230,200,0.88);
     border: 1px solid var(--border);
     border-radius: 20px;
-    font-family: var(--font);
-    font-size: 12px;
-    color: var(--text-mid);
-    letter-spacing: 2px;
-    cursor: pointer;
-    text-decoration: none;
+    font-family: var(--font); font-size: 12px; color: var(--text-mid);
+    letter-spacing: 2px; cursor: pointer; text-decoration: none;
     transition: all 0.2s;
     box-shadow: 0 2px 8px var(--shadow);
     backdrop-filter: blur(4px);
@@ -733,28 +703,31 @@
     box-shadow: 0 3px 12px var(--shadow);
     transform: translateY(-1px);
   }
-  .back-home-btn .arrow {
-    font-size: 14px;
-    line-height: 1;
-    color: var(--gold);
-  }
+  .back-home-btn .arrow { font-size: 14px; line-height: 1; color: var(--gold); }
+
+  /* ==================== 响应式 ==================== */
   @media (max-width: 600px) {
     .hero-title { font-size: 28px; letter-spacing: 4px; }
     .flip-card { width: 280px; height: 180px; }
     .flip-card-quote { font-size: 14px; }
-    .advice-card-action { font-size: 12px; }
     .back-home-btn { top: 12px; left: 12px; font-size: 11px; padding: 6px 12px; }
   }
 </style>
-<link rel="stylesheet" href="enhance.css">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
+<!-- 雾气粒子装饰 -->
+<div class="fog-particle" style="width:200px;height:200px;top:10%;left:-50px;animation-delay:0s;"></div>
+<div class="fog-particle" style="width:150px;height:150px;top:40%;right:-30px;animation-delay:2s;"></div>
+<div class="fog-particle" style="width:180px;height:180px;bottom:15%;left:10%;animation-delay:4s;"></div>
+
+<!-- 进度条 -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
+<!-- 返回主页按钮 -->
 <button class="back-home-btn" onclick="goBackHome()" title="返回主页">
   <span class="arrow">←</span>
   <span>返回主页</span>
@@ -763,45 +736,54 @@
 <!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第十二关 · 找到啦</div>
+    <div class="level-badge">第三关 · 找到啦</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">传承</div>
+      <div class="deco-ring-inner">初涉</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">终篇 · 传承</h1>
+    <h1 class="hero-title">初入人海</h1>
     <p class="hero-sub">
-      写遗书太早，写人生回顾刚刚好<br>
-      这一关不谈死亡，帮你回望
+      你第一次发现：<br>
+      别人不是爸妈。
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      你有没有想过：<br>
-      如果今天就是最后一天，我会后悔什么？<br>
-      我这辈子，到底留下了什么？<br>
-      或者——我害怕被遗忘吗？
+      走出家门的那一刻，<br>
+      世界不再围着你转。<br>
+      有人对你笑，有人不理你，<br>
+      有人你以为是朋友，其实不是。
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      死亡不是人生的对立面，是人生的一部分。<br>
-      这一关，不给你答案，只陪你<br>
-      看见自己走过的路。
+      这一关，不讲社交技巧，<br>
+      只是让你看见：<br>
+      你是怎么「进入人群」的。
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
     <button class="btn" onclick="goPage('dilemma')">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 6 分钟</p>
   </div>
 </div>
 
-<!-- ==================== P2: 困境选择页 ==================== -->
+<!-- ==================== P2: 社交瞬间选择页 ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十二关 · 终篇传承</div>
+      <div class="level-badge">第三关 · 初入人海</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">在哪件事上，你最困惑？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 条最触动你的。不需要勇敢，诚实就好。</p>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">哪个瞬间，你最记得？</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 个你最有感觉的社交瞬间。<br>不用想，凭第一感觉选。</p>
     </div>
-    <div style="margin-top: 24px;" id="dilemmaList"></div>
-    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
+
+    <div class="moment-layer-title">— 幼儿园 · 小学 —</div>
+    <div id="momentLayer1"></div>
+
+    <div class="moment-layer-title">— 中学 · 同龄人 —</div>
+    <div id="momentLayer2"></div>
+
+    <div class="moment-layer-title">— 初入社会 · 第一份工 —</div>
+    <div id="momentLayer3"></div>
+
+    <div class="dilemma-hint">已选择 <span id="dilemmaCount">0</span> 个瞬间</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
       <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
     </div>
@@ -812,9 +794,9 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十二关 · 终篇传承</div>
+      <div class="level-badge">第三关 · 初入人海</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">抽一张冒险卡</h2>
       <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
     </div>
     <div class="adventure-wrap">
@@ -825,7 +807,7 @@
             <div class="flip-card-front-hint">点击翻开</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"写遗书太早，写人生回顾刚刚好。"</div>
+            <div class="flip-card-quote" id="flipQuote">"你以为你在看别人，其实别人也在看你。"</div>
             <div class="flip-card-tap-hint">— 冒险卡</div>
           </div>
         </div>
@@ -841,7 +823,7 @@
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">第一题</div>
-      <div class="question-text" id="qText">你最近的身体状态，你给自己的评分是？</div>
+      <div class="question-text" id="qText">你第一次注意到「别人不喜欢我」，是在什么时候？</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
@@ -858,15 +840,16 @@
     <div class="result-header">
       <div class="level-badge">诊断完成</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的人生回望画像</div>
-      <div class="result-sub">终篇传承 · 第十二关</div>
+      <div class="result-title">你的社交卡点画像</div>
+      <div class="result-sub">初入人海 · 第三关</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
+    <!-- 彩蛋区域 -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">你发现了一个关于人生的小秘密</div>
+      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
@@ -881,24 +864,20 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第十二关 · 终篇传承</div>
+      <div class="level-badge">第三关 · 初入人海</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="advice-title">通关建议</div>
       <div class="advice-intro">
-        终篇，不是终点，是一面镜子。<br>
-        不需要想通生死，只需要看见自己。<br>
-        这一关，帮你回望走过的路。
+        人群不可怕。<br>
+        可怕的是，你以为人群在看你。
       </div>
     </div>
     <div id="adviceList"></div>
 
-    <div style="text-align: center; margin: 24px 0 12px;">
-      <a href="临终故事十二则.html" style="display: inline-block; padding: 10px 28px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; font-family: var(--font); font-size: 14px; color: var(--text-dark); text-decoration: none; letter-spacing: 2px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(201,168,76,0.22)';this.style.borderColor='#c9a84c'" onmouseout="this.style.background='rgba(201,168,76,0.12)';this.style.borderColor='rgba(201,168,76,0.35)'">📖 临终故事十二则：人类最后的遗言</a>
-    </div>
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
       以上不是你想说的？打开你的隐藏关卡 →
     </div>
-    <div class="page-end-text">— 第十二关 · 终篇传承 · 完 —</div>
+    <div class="page-end-text">— 第三关 · 初入人海 · 完 —</div>
   </div>
 </div>
 
@@ -908,36 +887,36 @@
     <div class="hidden-header">
       <div class="level-badge">隐藏关卡</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的专属关卡</div>
+      <div class="hidden-title">你的社交初体验</div>
       <div class="hidden-sub">
-        这里是你的空间，写下关于「终篇」你真正想说的。<br>
-        不用修饰，不用在意文采。真实就好。
+        这里是你的空间，写下你第一次「进入人群」的故事。<br>
+        不用修饰，真实就好。
       </div>
     </div>
     <div class="step-card">
       <div class="step-num">第一步</div>
-      <div class="step-label">如果今天是你最后一天，你最想做的一件事是？</div>
-      <textarea class="step-input" id="hidden1" placeholder="如果时间只剩一天，我会……"></textarea>
+      <div class="step-label">我第一次觉得「别人不喜欢我」，是在什么时候？</div>
+      <textarea class="step-input" id="hidden1" placeholder="我记得……"></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">第二步</div>
-      <div class="step-label">你希望别人怎么记住你？用一句话。</div>
-      <textarea class="step-input" id="hidden2" placeholder="我希望被人记住的样子是……"></textarea>
+      <div class="step-label">当时我怎么反应的？我现在怎么看那个反应？</div>
+      <textarea class="step-input" id="hidden2" placeholder="我当时……现在回想起来……"></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">第三步</div>
-      <div class="step-label">这辈子你最骄傲的一个决定是什么？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我最骄傲的决定是……"></textarea>
+      <div class="step-label">如果可以回到那一刻，我想对当时的自己说什么？</div>
+      <textarea class="step-input" id="hidden3" placeholder="我想对当时的自己说……"></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">第四步</div>
-      <div class="step-label">给十年后的自己留一句话。</div>
-      <textarea class="step-input" id="hidden4" placeholder="十年后的我，我想对你说……"></textarea>
+      <div class="step-label">今天，我可以做一件什么事，来松动这个卡点？</div>
+      <textarea class="step-input" id="hidden4" placeholder="今天，我可以做……"></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
+    <button class="generate-btn" onclick="generateCard()">生成我的社交觉醒卡片</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的人生回望书</div>
-      <div class="card-preview-sub">第十二关 · 终篇传承 · 找到啦</div>
+      <div class="card-preview-title">我的社交初体验</div>
+      <div class="card-preview-sub">第三关 · 初入人海 · 找到啦</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
@@ -951,11 +930,10 @@
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">十二关，你走到了这里</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      从原生家庭到终篇传承，<br>
-      你已经走完了人生的整个圆。<br>
-      这不是终点，是另一个起点。
+      看见自己的社交卡点，<br>
+      是走出人群焦虑的第一步。
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
     <button class="btn btn-ghost" onclick="restart()">重新开始</button>
@@ -965,152 +943,258 @@
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据
+   数据：第三关 · 初入人海
    ============================================================ */
 
-// 困境（12条，3层：回望来路/此刻重量/留下什么）
-const dilemmas = [
-  { id: 1, text: "想到死亡会觉得害怕，但说不清到底怕的是什么。" },
-  { id: 2, text: "总觉得还有什么事没做完，但又说不清是什么。" },
-  { id: 3, text: "看着父母老去，第一次意识到：下一个就是我。" },
-  { id: 4, text: "如果今天就是最后一天，我会后悔很多事。" },
-  { id: 5, text: "担心自己老了以后没人记得。" },
-  { id: 6, text: "不确定自己这一生，到底留下了什么。" },
-  { id: 7, text: "想写点什么给孩子或后人，但拿起笔又不知道写什么。" },
-  { id: 8, text: "害怕的不是死，是被遗忘。" },
-  { id: 9, text: "有时候觉得：我这辈子好像白活了。" },
-  { id: 10, text: "想要某种形式的「不朽」，但又不信宗教。" },
-  { id: 11, text: "看到新闻里有人突然离世，会想：如果是我呢？" },
-  { id: 12, text: "关于临终、遗嘱、葬礼——完全没想过，也不想想。" }
+// 社交瞬间卡（3层：幼儿园小学 / 中学同龄人 / 初入社会）
+const moments = [
+  // 第一层：幼儿园 · 小学
+  {
+    id: 1, layer: 1,
+    icon: "🏫",
+    title: "第一次被同学孤立",
+    desc: "你不记得具体原因，只记得那种感觉——围墙上有人在看你，但没人叫你一起玩。你假装不在乎，但其实很在乎。",
+    hint: "你就是那个小孩。你当时怎么做的？"
+  },
+  {
+    id: 2, layer: 1,
+    icon: "✋",
+    title: "老师当众批评你",
+    desc: "全班安静，所有人的眼睛都看向你。老师说的话你已经不记得，但那种「被所有人看着」的感觉，你还记得。",
+    hint: "你就是那个被批评的小孩。"
+  },
+  {
+    id: 3, layer: 1,
+    icon: "🎒",
+    title: "最好的朋友忽然不理你",
+    desc: "昨天还在分享秘密，今天就不跟你说话了。你不知道为什么，也不敢问。从此你学会了一件事：关系可能随时消失。",
+    hint: "你就是那个被冷落的小孩。"
+  },
+  {
+    id: 4, layer: 1,
+    icon: "🏠",
+    title: "邻居小孩「借」了你的玩具，没有还",
+    desc: "你站在他家门口，不敢敲门。妈妈在后面说：「算了，大方一点。」但你心里不是「大方」——是委屈。",
+    hint: "你就是那个站在门口的小孩。"
+  },
+
+  // 第二层：中学 · 同龄人
+  {
+    id: 5, layer: 2,
+    icon: "📱",
+    title: "群里聊天，没有人回你的消息",
+    desc: "其他人都在热聊，你的消息发出去，像石沉大海。你删了又发，发了又删。最后你不发了，假装自己没发过。",
+    hint: "你就是那个盯著手机等回复的人。"
+  },
+  {
+    id: 6, layer: 2,
+    icon: "🎭",
+    title: "为了在人群中不被排挤，你变成了另一个人",
+    desc: "你说著自己不喜欢的话题，笑著自己不觉得好笑的笑话。回到家，你有点不认识自己了。但为了「被接纳」，你觉得值得。",
+    hint: "你就是那个戴著面具的人。"
+  },
+  {
+    id: 7, layer: 2,
+    icon: "💬",
+    title: "你鼓起勇气说了真话，结果冷场了",
+    desc: "大家沉默了三秒，然后有人换了个话题。你说的话没有错，但那一刻你觉得：也许不说才是聪明的做法。",
+    hint: "你就是那个说真话的人。"
+  },
+  {
+    id: 8, layer: 2,
+    icon: "🌙",
+    title: "深夜你反复回想白天说过的某句话",
+    desc: "「我是不是说错了？」「他们是不是在笑我？」你翻来覆去，觉得自己把某件事搞砸了。但第二天，发现根本没人在意。",
+    hint: "你就是那个深夜反刍的人。"
+  },
+
+  // 第三层：初入社会 · 第一份工
+  {
+    id: 9, layer: 3,
+    icon: "👔",
+    title: "第一次上班，不知道「规矩」是什么",
+    desc: "别人都懂，只有你不懂。你笑得有点多，问得有点少，怕显得自己「不够成熟」。那段时间，你每天都在消耗。",
+    hint: "你就是那个新人。"
+  },
+  {
+    id: 10, layer: 3,
+    icon: "🍻",
+    title: "同事聚餐，你不知道该坐哪里",
+    desc: "推门进去，已经坐满了。你端着盘子站在那里，三秒钟像三分钟。最后你坐到了一个角落，整场饭你都在想怎么说话才不显得尴尬。"
+  },
+  {
+    id: 11, layer: 3,
+    icon: "🧊",
+    title: "你是那个「不太合群」的人",
+    desc: "别人三三两两聊得火热，你一个人站在旁边。你有点失落，但更多是困惑：为什么他们那么容易就能聊起来？你做不到。",
+    hint: "你就是那个站在旁边的人。"
+  },
+  {
+    id: 12, layer: 3,
+    icon: "🤝",
+    title: "你主动伸出了手，对方没有接",
+    desc: "你鼓起勇气说了一句「我们做朋友吧」，对方笑了笑，走了。你站在原地，觉得自己像个傻子。从此你决定：再也不主动了。",
+    hint: "你就是那个伸出手的人。"
+  }
 ];
 
-// 冒险卡（12张）
+// 冒险卡（初入人海）
 const adventureCards = [
-  "你每天在写自己的墓志铭，你写的是什么？",
-  "死亡不是人生的对立面，是人生的一部分。海德格尔说的。",
-  "琼瑶选择自己的告别方式——这不是逃避，是对生命的最后一次掌控。",
-  "人这辈子会死三次：第一次是断气，第二次是葬礼，第三次是最后一个记得你的人也走了。你在第几次？",
-  "最好的遗产不是钱，是一个让人想起你就微笑的故事。",
-  "写遗书太早，但给重要的人写几句话——刚刚好。",
-  "你害怕的不是死亡本身，是你觉得还有很多事没做完。那……哪一件是最重要的？",
-  "有人因为你的存在，生活变好了一点点。这就够了。真的够了。",
-  "临终关怀里有个发现：临终者最后悔的从来不是『做错了什么』，而是『没做什么』。",
-  "数字时代的新问题：你的微信朋友圈、云盘、账号——在你死后会怎样？",
-  "你不需要被万人铭记。有几个人真心记得你，就是『不朽』。",
-  "终篇不是终点。你走过的每一步，都在别人生命里留下了脚印——只是你可能不知道。"
+  "你以为你在看别人，其实别人也在看你。",
+  "人群里最怕的，不是别人不喜欢你，是你自己不喜欢自己。",
+  "你不是不会社交，你是忘了一件事：你也是人群的一部分。",
+  "被拒绝一次不等于被否定一生。那个人只是那一刻不想理你而已。",
+  "你在人群里的样子，其实是你和父母关系的样子。",
+  "沉默不等于没有价值。有些人的安静，是留给懂得人的。",
+  "你不需要让所有人都喜欢你。那是做不到的事，也是没有意义的事。",
+  "人群中，你最该在意的那个人，是你自己。",
+  "第一次见面被冷落，不一定是你的问题。也可能是对方那天刚好心情不好。",
+  "关系的建立需要时间。你不需要第一次就「搞定」所有人。",
+  "你小时候在人际关系里受的伤，可能现在还在影响你。只是你不知道。",
+  "社交不是表演，做自己才能吸引对的人。"
 ];
 
-// 诊断题（6题×5选项）
+// 诊断题
 const questions = [
   {
-    q: "想到『死亡』这件事，你的第一反应是？",
+    q: "聚会时，你通常坐在哪里？",
     options: [
-      { text: "正常现象，每个人都会死，没什么好怕的。", key: "01平静接纳" },
-      { text: "不太敢想，一想就觉得不舒服。", key: "02回避思考" },
-      { text: "偶尔会想，但想不通就不想了。", key: "03偶有触动" },
-      { text: "挺害怕的，尤其晚上睡不着的时候。", key: "04明显恐惧" },
-      { text: "已经认真想过很多次了，甚至做过一些准备。", key: "05主动面对" }
+      { text: "靠边的位置，方便随时走", key: "逃避社交" },
+      { text: "中间的位置，方便和人聊天", key: "主动社交" },
+      { text: "角落的位置，不想被人注意", key: "隐藏自己" },
+      { text: "无所谓，哪里有空坐哪里", key: "随遇而安" },
+      { text: "不去聚会，能推就推", key: "社交回避" }
     ]
   },
   {
-    q: "如果今天就是你生命的最后一天，你会后悔？",
+    q: "有人说了一句让你不舒服的话，你第一反应是？",
     options: [
-      { text: "不会后悔，我对自己的人生基本满意。", key: "06人生无憾" },
-      { text: "有些遗憾，但整体还好。", key: "07略有遗憾" },
-      { text: "后悔没多陪陪家人。", key: "08亏欠关系" },
-      { text: "后悔没有做自己真正想做的事。", key: "09辜负自己" },
-      { text: "不知道——从没认真想过这个问题。", key: "10从未审视" }
+      { text: "忍着不说，但心里一直记着", key: "压抑情绪" },
+      { text: "当场怼回去，不让自己吃亏", key: "攻击性" },
+      { text: "事后反复回想，越想越气", key: "反刍思维" },
+      { text: "算了，不值得计较", key: "忽略自己" },
+      { text: "直接说：我觉得你这样说不合适", key: "设立边界" }
     ]
   },
   {
-    q: "关于『留下什么』，你现在的想法最接近？",
+    q: "你觉得自己在社交中，最累的是什么？",
     options: [
-      { text: "希望能给孩子留点物质基础就够了。", key: "11留物质" },
-      { text: "希望别人记住我的为人，记得我是个好人。", key: "12留名声" },
-      { text: "希望能留下点什么——作品、思想、或者一段故事。", key: "13留精神" },
-      { text: "没想过留什么，顺其自然吧。", key: "14无所谓" },
-      { text: "我觉得自己什么都留不下，有点慌。", key: "15焦虑虚无" }
+      { text: "不知道该说什么，怕冷场", key: "社交焦虑" },
+      { text: "怕说错话，得罪人", key: "过度谨慎" },
+      { text: "觉得别人都比我强", key: "自我否定" },
+      { text: "不知道怎么维护关系", key: "关系维护困难" },
+      { text: "怕被拒绝，所以不主动", key: "害怕拒绝" }
     ]
   },
   {
-    q: "关于『被遗忘』这件事，你的感受是？",
+    q: "你身边有那种「特别会来事」的朋友吗？你怎么看他们？",
     options: [
-      { text: "被遗忘很正常，几代人之后谁还记得谁。", key: "16接受遗忘" },
-      { text: "不奢求被很多人记得，家人记得就好。", key: "17小范围即可" },
-      { text: "希望至少有些人真心记得我，想起我会微笑。", key: "18渴望被记" },
-      { text: "害怕被彻底遗忘，那种感觉说不出的孤独。", key: "19恐惧遗忘" },
-      { text: "与其被人记住，不如活得精彩。", key: "20活在当下" }
+      { text: "很羡慕，觉得他们拥有的我没有", key: "羡慕" },
+      { text: "觉得他们有点假，不喜欢", key: "排斥" },
+      { text: "我就是那种人", key: "社交达人" },
+      { text: "我做不到，但也不羡慕", key: "自我接纳" },
+      { text: "我不知道，我不太关注别人", key: "自我封闭" }
     ]
   },
   {
-    q: "关于临终、遗嘱、葬礼这些事，你的状态是？",
+    q: "你发微信消息给朋友，对方很久没回，你会？",
     options: [
-      { text: "完全没想过，觉得离我很远。", key: "21从未准备" },
-      { text: "偶尔闪过念头，但马上转移注意力。", key: "22有意回避" },
-      { text: "想过，但不知道从何开始准备。", key: "23迷茫无助" },
-      { text: "已经和家人聊过这个话题了。", key: "24沟通过" },
-      { text: "已经做了基本的安排（遗嘱/保险/意愿书等）。", key: "25有备无患" }
+      { text: "算了，可能人家忙", key: "自我安慰" },
+      { text: "反复看手机，等回复", key: "焦虑" },
+      { text: "想是不是我说错话了", key: "自我否定" },
+      { text: "再发一条，问问看到没", key: "追问" },
+      { text: "不会发，我不主动联系人", key: "被动" }
     ]
   },
   {
-    q: "如果你能知道死后会发生什么，你想知道吗？",
+    q: "如果可以改变一件事，你最想改变的是？",
     options: [
-      { text: "不想知道，活着的事已经够忙了。", key: "26专注今生" },
-      { text: "好奇，但没有特别强烈的愿望。", key: "27温和好奇" },
-      { text: "挺想知道的，这困扰我很久了。", key: "28渴望答案" },
-      { text: "我有自己的信仰，已经有答案了。", key: "29已有信仰" },
-      { text: "我觉得死后什么都没有，所以不想浪费时间想。", key: "30唯物主义" }
+      { text: "不在乎别人怎么看我", key: "在意他人眼光" },
+      { text: "能轻松地和人聊天", key: "社交焦虑" },
+      { text: "能勇敢设立边界", key: "边界感弱" },
+      { text: "放下过去被伤害的记忆", key: "创伤" },
+      { text: "知道怎么分辨真朋友", key: "信任问题" }
     ]
   }
 ];
 
-// 卡点完整数据（30个维度）
+// 卡点完整数据
 const cardPoints = {
-  "01平静接纳":     { name: "平静接纳",     desc: "你对死亡有平常心，这是智慧的表现。不恐惧不代表不在乎，代表你看清了一个事实。", advice: "保持这份平静，同时用它来提醒自己：正因为生命有限，每一天才更值得好好过。", color: "var(--gold)" },
-  "02回避思考":     { name: "回避思考",     desc: "你选择不去想死亡这件事。这是一种自我保护机制，但保护太久会变成逃避。", advice: "不需要一下子就想通。试着从一个小的角度开始：如果只剩一年，哪三件事是你一定要做的？", color: "#b89a6a" },
-  "03偶有触动":     { name: "偶有触动",     desc: "死亡的话题会触碰到你，但你还没有深入去想。这是一个好的开始——你没有完全关闭这扇门。", advice: "下次再被触动的时候，不要马上转移注意力。停下来，让那个感觉待一会儿。它可能告诉你一些重要的事。", color: "#9a7a4a" },
-  "04明显恐惧":     { name: "明显恐惧",     desc: "你对死亡的恐惧已经影响到日常生活了。恐惧本身不是问题，被恐惧支配才是。", advice: "恐惧往往来自未知。试着读一本关于死亡的好书（如《最好的告别》），或者看一部相关电影。了解越多，恐惧越少。", color: "#c0784a" },
-  "05主动面对":     { name: "主动面对",     desc: "你已经认真地面对过死亡这个话题了。这需要勇气，而你拥有它。", advice: "把你的经验和思考分享给身边信任的人。你可能比你自己想象的更能帮助那些还在恐惧中的人。", color: "var(--gold)" },
-  "06人生无憾":     { name: "人生无憾",     desc: "你对自己的生命基本满意。这是很难得的状态——很多人终其一生都在追逐这种满意度。", advice: "无憾不代表无事可做。问问自己：还有什么小小的愿望没实现？去实现它。不是为了弥补，是为了快乐。", color: "var(--gold)" },
-  "07略有遗憾":     { name: "略有遗憾",     desc: "你有一些遗憾，但不严重。这些遗憾更像是一种温柔的提醒，而不是沉重的负担。", advice: "挑一个最小的遗憾，今天就开始补救。哪怕只是打个电话、写张卡片。行动是最好的解药。", color: "#b89a6a" },
-  "08亏欠关系":     { name: "亏欠关系",     desc: "你最在意的是人际关系中的亏欠——家人、朋友、爱人。这说明你在乎联结。", advice: "不要等『有空』再去陪伴。这周末就去做一件事：和一个你在乎的人，好好吃顿饭、散散步。", color: "#9a7a4a" },
-  "09辜负自己":     { name: "辜负自己",     desc: "你最遗憾的是没有为自己而活。别人的期待、社会的压力，让你走了一条不是自己的路。", advice: "永远不会太晚。问自己一个问题：如果没有人会失望，我今天会做什么？然后去做那件事的一小部分。", color: "#a88040" },
-  "10从未审视":     { name: "从未审视",     desc: "你从来没有认真审视过自己的人生。忙碌可能是一种方式，让你不必面对这个问题。", advice: "找个安静的时间，给自己30分钟，什么都不做，只是想一想：我这辈子到目前为止，满意吗？不满意的是什么？", color: "#9a7a4a" },
-  "11留物质":       { name: "留物质",       desc: "你觉得留下物质基础是最重要的遗产。这是很实在的想法，也是大多数人的选择。", advice: "物质重要，但也想想：除了钱，有没有什么东西是无形的却更有价值？比如你教给孩子的道理，或者你帮助过的人。", color: "#b89a6a" },
-  "12留名声":       { name: "留名声",       desc: "你希望被记住是一个好人。名誉是你看重的遗产形式。", advice: "好名声不是靠经营来的，是靠日积月累的行为。继续保持善良，同时别忘了：做一个好人首先是要对自己也好一点。", color: "#9a7a4a" },
-  "13留精神":       { name: "留精神",       desc: "你希望留下的是精神层面的东西——作品、思想、故事。这是最高形式的遗产。", advice: "从今天开始记录。写下来、录下来、画下来。你不需要成为作家，你只需要真实地表达自己。这就是遗产。", color: "var(--gold)" },
-  "14无所谓":       { name: "无所谓",       desc: "对『留下什么』你持开放态度。这不是冷漠，是一种豁达。", advice: "豁达很好。但如果有一天你突然很想留下什么，别压抑那个冲动。那可能是你内心在说话。", color: "#b89a6a" },
-  "15焦虑虚无":     { name: "焦虑虚无",     desc: "你觉得自己可能什么都留不下，这种焦虑在啃噬你。虚无感是现代人的常见困境。", advice: "焦虑的反面不是确信，是行动。今天做一件小事——帮一个人、写一段话、种一棵树。行动会治愈虚无。", color: "#c0784a" },
-  "16接受遗忘":     { name: "接受遗忘",     desc: "你能接受被遗忘的事实。这是一种深刻的智慧——承认有限性，才能活得更自由。", advice: "既然接受被遗忘，那就更自由地活。不用为了『被记住』而活——为自己而活，反而更容易被记住。", color: "var(--gold)" },
-  "17小范围即可":   { name: "小范围即可",   desc: "你不追求被大众铭记，只希望亲近的人记得你。这是温暖而现实的想法。", advice: "那就把精力放在这些人身上。多创造一些共同的回忆——旅行、聊天、一起做事。回忆是最真实的遗产。", color: "#b89a6a" },
-  "18渴望被记":     { name: "渴望被记",     desc: "你渴望被记住，被怀念。这不虚荣，是人作为社会性动物的本能需求。", advice: "被记住最好的方式不是刻意留下什么，而是真诚地对待每一个人、做好每一件事。影响力是在不知不觉中留下的。", color: "#9a7a4a" },
-  "19恐惧遗忘":     { name: "恐惧遗忘",     desc: "你害怕被彻底遗忘，这种恐惧背后是对意义的渴望。", advice: "与其担心被遗忘，不如想想：你现在做的哪些事可能在别人生命中留下痕迹？继续做那些事，就是对抗遗忘的方式。", color: "#a88040" },
-  "20活在当下":     { name: "活在当下",     desc: "你选择了活在当下，而非担忧身后名。这是一种有力量的生活态度。", advice: "保持。同时允许自己在某些时刻回望一下——不是纠结过去，而是确认自己走在想走的路上。", color: "var(--gold)" },
-  "21从未准备":     { name: "从未准备",     desc: "你完全没有为『终点』做准备。大多数人都是这样——直到生活逼着你去想。", advice: "不需要马上立遗嘱。先做一件最小的事：打开手机备忘录，写下『如果我出事了，我希望家人知道的3件事』。这就够了，真的。", color: "#9a7a4a" },
-  "22有意回避":     { name: "有意回避",     desc: "你有意识地避开这类话题。回避的背后通常是恐惧或不安。", advice: "找一个安全的方式来开始：看一部关于临终的电影（推荐《寻梦环游记》），和家人聊聊『如果』。从小处入手，没那么可怕。", color: "#b89a6a" },
-  "23迷茫无助":     { name: "迷茫无助",     desc: "你想做准备，但不知道怎么开始。这种迷茫很正常——学校从来不教这个。", advice: "从最实用的开始：查一下『生前预嘱』是什么，了解一下遗嘱的基本类型。知识本身就是一种力量。知道了就不怕了。", color: "#a88040" },
-  "24沟通过":       { name: "沟通过",       desc: "你和家人聊过这个话题了。这在华人社会中非常难得——大多数人连提都不敢提。", advice: "沟通是一次性的，但话题可以持续。定期更新彼此的想法，确保你们的理解和期望保持一致。", color: "var(--gold)" },
-  "25有备无患":     { name: "有备无患",     desc: "你已经做了基本的安排。这不仅是对自己负责，也是对家人的爱——你为他们省去了很多麻烦。", advice: "定期检查和更新你的安排。人生在变，安排也需要跟上变化。每两年review一次是个好习惯。", color: "var(--gold)" },
-  "26专注今生":     { name: "专注今生",     desc: "你选择专注于当下的生活。这是务实的态度，也是很多人的选择。", advice: "专注今生不代表不能思考这个问题。偶尔停下来想一想，可能会让你更珍惜现在所拥有的。", color: "#b89a6a" },
-  "27温和好奇":     { name: "温和好奇",     desc: "你对死后世界有适度的好奇心。这种开放的心态很好——既不信也不排斥。", advice: "保持好奇。可以读一些不同文化对这个问题的回答——不一定要接受任何一种，但多元视角会让你看得更清楚。", color: "#9a7a4a" },
-  "28渴望答案":     { name: "渴望答案",     desc: "你很想知道死后会发生什么。这个困惑可能在某些夜晚特别强烈。", advice: "与其寻找一个确定的答案，不如接受『没人知道』这个事实本身。各种宗教和哲学给出了不同的可能性，都可以参考，但都不必当成真理。", color: "#a88040" },
-  "29已有信仰":     { name: "已有信仰",     desc: "你有自己的信仰体系来回答这个问题。信仰给人安慰和方向。", advice: "信仰是个人选择。同时保持开放：别人的信仰和你不同，不代表你们不能互相尊重。终极问题上，谦卑比正确更重要。", color: "var(--gold)" },
-  "30唯物主义":     { name: "唯物主义",     desc: "你认为死后什么都没有。这是理性且诚实的立场。", advice: "唯物主义不等于虚无主义。正因为只有这一次生命，每一刻才更加珍贵。用『只有一次』来驱动自己，而不是用来否定意义。", color: "#b89a6a" }
+  "社交焦虑": {
+    name: "社交焦虑",
+    desc: "你不知道该说什么，怕冷场，怕说错话。每次社交都像打仗，要消耗大量能量。你羡慕那些轻松聊天的人，而你好像是个耗电大户。",
+    advice: "内向和外向是真实存在的差异。如果你确实是内向型，不需要强迫自己变成外向。找到适合你的社交方式：少量但深入，比大量但表面，更适合你。",
+    color: "#9a8068"
+  },
+  "自我否定": {
+    name: "自我否定",
+    desc: "每次社交受挫，你都会回到这个结论：「是我不够好」。不够好看，不够有趣，不够会说话，不够聪明——总之是「我」的问题。这个结论让你很自卑，也让你在社交中更加紧绷。",
+    advice: "把「我不够好所以别人不喜欢我」换成「别人不喜欢我，有时是因为我不是他们的类型，有时跟我也有关，但不是因为我「不够好」。」不够好是一个伪命题。",
+    color: "#a07050"
+  },
+  "逃避社交": {
+    name: "逃避社交",
+    desc: "每次社交场合，你都在想怎么离开。何时告辞、什么理由、怎么不显得突兀——这些想法占据了你大部分注意力，让你根本无法享受当下。",
+    advice: "下次去之前，先给自己定一个「离开的明确时间」。比如：最多待够一个半小时。有了边界，反而更容易放松。",
+    color: "#8a6850"
+  },
+  "压抑情绪": {
+    name: "压抑情绪",
+    desc: "你不说，但你不忘。那句让你不舒服的话，那个让你受伤的瞬间，你都记着。记着不是为了报仇，是记着那种痛。你不知道该怎么处理，只能记着。",
+    advice: "忍着是压抑，记着是积累。积累多了，不是爆发就是内伤。下次试着说出来，哪怕对方不认，至少你表达了。表达本身就是疗愈。",
+    color: "#8a5840"
+  },
+  "攻击性": {
+    name: "攻击性",
+    desc: "你不让自己吃亏。你当场怼回去，怼得对方下不来台。事后你会有点心虚：我是不是太过分了？但下次你还是忍不住。",
+    advice: "怼回去有时是必要的，但不是所有情况都需要。试着分辨：这次是真的需要保护自己，还是只是咽不下那口气？两者都是合理的，但需要不同的处理方式。",
+    color: "#9a6848"
+  },
+  "边界感弱": {
+    name: "边界感弱",
+    desc: "你经常在「设立边界」和「怕关系破裂」之间纠结。你想说不，但说不之后又后悔，担心对方会不会觉得你小气、不合群。于是你忍着，忍着忍着就委屈了。",
+    advice: "设立边界不是为了让别人喜欢你，是为了让你自己舒服。不设立边界换来的「关系」，往往是不平等的关系。真正的朋友，会尊重你的边界。",
+    color: "#a08870"
+  },
+  "信任问题": {
+    name: "信任问题",
+    desc: "你曾经把某人当朋友，但对方只是利用你。或者你把某段关系当真心，但发现对方并不是那么在意。这种被辜负的感觉，让你现在很难相信任何人。",
+    advice: "分辨真朋友需要时间和经历，没有完美的判断标准。但有一个简单的参考：看对方在你低谷时的态度。愿意陪你走低谷的，通常是真的。锦上添花容易，雪中送炭难得。",
+    color: "#a09070"
+  },
+  "自我接纳": {
+    name: "自我接纳",
+    desc: "你接受了自己「不太会社交」这件事。你不去凑热闹，不假装熟络。你有自己的小世界，那里的人不多，但都是你真正想要的连接。",
+    advice: "这是很好的状态——自我接纳，同时也有自己的边界。你不需要改变，只需要确认：这是否是你真正想要的，还是你用来保护自己的借口？",
+    color: "#b0a070"
+  }
 };
 
-// 彩蛋（4个，围绕终篇传承主题）
+// 彩蛋
 const easterEggs = [
-  { title: "海德格尔 · 向死而生", text: "德国哲学家海德格尔说：人是唯一知道自己会死的生物。正因为我们知道生命有限，才有了『紧迫感』去真正地活。死亡不是人生的对立面，它赋予人生意义。" },
-  { title: "琼瑶的告别", text: "2024年，台湾作家琼瑶以自己的方式选择告别。她在遗书中写道：『我不想听天由命，我想自己做主。』——这不是放弃生命，而是对生命最后的主权宣告。她引发了全社会对『善终权利』的讨论。" },
-  { title: "数字遗产", text: "你死后，微信怎么办？云盘里的照片呢？游戏账号？社交媒体？数字时代带来了新问题：人在物理世界中消失，但在数字空间里『活着』。有人开始设立『数字 executor（执行人）』——你考虑过吗？" },
-  { title: "世界的死亡地图", text: "藏人有天葬，认为身体最后的价值是供养万物；墨西哥有亡灵节（Dia de los Muertos），用色彩和音乐庆祝逝者；埃及人做木乃伊等待复活；日本有佛事传统……每种文化都在用自己的方式回答同一个问题。没有标准答案，但每一种都值得尊重。" }
+  {
+    title: "心理学研究：聚光灯效应",
+    text: "心理学发现：人们会高估别人对自己外表和行为的关注程度。事实上，大多数人根本没有那么在意你——他们也在想着自己。"
+  },
+  {
+    title: "《智囊》· 丙吉",
+    text: "丙吉在朝中从不主动得罪人，也不刻意讨好。有人问他为何如此淡然，他说：「人各有长短，何必强求一律？」这句话送给总觉得自己「不合群」的你。"
+  },
+  {
+    title: "心理学研究：安全的依恋关系",
+    text: "依恋理论发现：我们在第一段关系（与父母）中学会的社交模式，会影响我们一生的关系。意识到这个模式的存在，是改变它的第一步。"
+  },
+  {
+    title: "《被讨厌的勇气》",
+    text: "阿德勒说：「人的一切烦恼，都来自人际关系；人的一切幸福，也来自人际关系。」关键不是有没有关系，而是你如何面对关系中的自己。"
+  }
 ];
 
 /* ============================================================
    状态
    ============================================================ */
 let currentPage = 'entry';
-let selectedDilemmas = [];
+let selectedMoments = [];
 let currentQuestion = 0;
 let answers = {};
 let cardScores = {};
@@ -1124,8 +1208,8 @@ function goPage(name) {
   if (el) el.classList.add('active');
   currentPage = name;
   updateProgress(name);
-  if (name === 'dilemma') renderDilemma();
-  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display = 'block'; }
+  if (name === 'dilemma') renderMoments();
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display='block'; }
   if (name === 'question') renderQuestion();
   if (name === 'result') showResult();
   if (name === 'advice') showAdvice();
@@ -1139,37 +1223,44 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境选择
+   社交瞬间选择
    ============================================================ */
-function renderDilemma() {
-  const list = document.getElementById('dilemmaList');
-  list.innerHTML = dilemmas.map(d => `
-    <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
-      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
-      <div class="dilemma-text">${d.text}</div>
+function renderMoments() {
+  const layer1 = document.getElementById('momentLayer1');
+  const layer2 = document.getElementById('momentLayer2');
+  const layer3 = document.getElementById('momentLayer3');
+
+  layer1.innerHTML = moments.filter(m => m.layer === 1).map(m => makeMomentCard(m)).join('');
+  layer2.innerHTML = moments.filter(m => m.layer === 2).map(m => makeMomentCard(m)).join('');
+  layer3.innerHTML = moments.filter(m => m.layer === 3).map(m => makeMomentCard(m)).join('');
+}
+
+function makeMomentCard(m) {
+  const sel = selectedMoments.includes(m.id);
+  return `
+    <div class="moment-card${sel ? ' selected' : ''}" onclick="toggleMoment(${m.id})">
+      <div class="moment-icon">${m.icon}</div>
+      <div class="moment-title">${m.title}</div>
+      <div class="moment-desc">${m.desc}</div>
+      <div class="moment-hint">${m.hint}</div>
     </div>
-  `).join('');
-  updateDilemmaBtn();
+  `;
 }
 
-function toggleDilemma(id) {
-  const idx = selectedDilemmas.indexOf(id);
+function toggleMoment(id) {
+  const idx = selectedMoments.indexOf(id);
   if (idx === -1) {
-    if (selectedDilemmas.length < 3) selectedDilemmas.push(id);
+    if (selectedMoments.length < 3) selectedMoments.push(id);
   } else {
-    selectedDilemmas.splice(idx, 1);
+    selectedMoments.splice(idx, 1);
   }
-  renderDilemma();
-}
-
-function updateDilemmaBtn() {
-  const count = selectedDilemmas.length;
-  document.getElementById('dilemmaCount').textContent = count;
-  document.getElementById('dilemmaNextBtn').disabled = count === 0;
+  renderMoments();
+  document.getElementById('dilemmaCount').textContent = selectedMoments.length;
+  document.getElementById('dilemmaNextBtn').disabled = selectedMoments.length === 0;
 }
 
 function goDilemma() {
-  if (selectedDilemmas.length === 0) return;
+  if (selectedMoments.length === 0) return;
   goPage('adventure');
 }
 
@@ -1273,16 +1364,15 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
-    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `你走过的每一步都在写你的故事——今天，你读到了其中一页。`
+    `你最核心的社交卡点是「${topKey ? topKey.name : ''}」。看见它，已经是改变的第一步。`,
+    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们相互影响，共同塑造了你面对人群的方式。`,
+    "人群不可怕。看见自己在人群里的样子，才是真正的出口。"
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
   const resultList = document.getElementById('resultList');
   resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
     const cp = cardPoints[key];
-    if (!cp) return '';
     const pct = Math.min(100, score * 40);
     const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
     return `
@@ -1331,7 +1421,6 @@ function showAdvice() {
   const adviceList = document.getElementById('adviceList');
   adviceList.innerHTML = topCards.map(([key, score], i) => {
     const cp = cardPoints[key];
-    if (!cp) return '';
     return `
       <div class="advice-card">
         <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
@@ -1360,7 +1449,7 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你卡住的事。');
+    alert('先写点什么吧，至少说一件你记得的社交瞬间。');
     return;
   }
 
@@ -1371,21 +1460,20 @@ function generateCard() {
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
-    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
-    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
-    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
-    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+    "你写的这些，是很多人不愿意面对的。你做了，这本身就是勇气。",
+    "那个小孩一直在你心里。看见他，已经是和解的开始。",
+    "有些卡点不是你一个人有的。你愿意把它说出来，本身就是治愈。",
+    "不是所有人都会在人际关系里受伤。但受过伤的人，需要被看见。"
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：给你的身体一个信号——我听到你了。';
+  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：下次在人多的场合，先看看自己的感受，而不是只看别人。';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
 }
 
 function downloadCard() {
-  const preview = document.getElementById('cardPreview');
   const canvas = document.createElement('canvas');
   canvas.width = 600; canvas.height = 800;
   const ctx = canvas.getContext('2d');
@@ -1402,11 +1490,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的隐藏关卡', 300, 80);
+  ctx.fillText('我的社交初体验', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第十二关 · 终篇传承 · 找到啦', 300, 108);
+  ctx.fillText('第三关 · 初入人海 · 找到啦', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1421,7 +1509,7 @@ function downloadCard() {
   let y = 170;
   lines.forEach(para => {
     ctx.fillText(para, 50, y);
-    y += 26 + 20;
+    y += para.split('\n').length * 26 + 20;
   });
 
   ctx.fillStyle = '#9a7a4a';
@@ -1437,16 +1525,16 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第十二关 · 终篇传承 · 找到啦 —', 300, 750);
+  ctx.fillText('— 第三关 · 初入人海 · 完 —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的隐藏关卡.png';
+  link.download = '我的社交初体验.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
 
 function restart() {
-  selectedDilemmas = [];
+  selectedMoments = [];
   currentQuestion = 0;
   answers = {};
   cardScores = {};
@@ -1470,40 +1558,9 @@ function goBackHome() {
    启动
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  renderDilemma();
+  renderMoments();
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
-<script>
-(function(){
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-    });
-  },{threshold:0.15});
-  document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
-  var btn=document.querySelector('.back-to-top');
-  if(btn){
-    window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400);});
-    btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-  }
-})();
-</script>
-<!-- 访客计数器 -->
-<div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
-<script>
-(function(){
-  var key='zhaodaola_visitors';
-  var base=1008;
-  var stored=localStorage.getItem(key);
-  if(!stored){stored=String(base+Math.floor(Math.random()*50));localStorage.setItem(key,stored);}
-  var n=parseInt(stored)+1;
-  localStorage.setItem(key,String(n));
-  var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
-})();
-</script>
-<script src="lang-toggle.js?v=2"></script>
 </body>
 </html>

@@ -39,9 +39,12 @@ header .scene-time{font-size:12px;color:var(--text-mid);margin-top:2px;}
 footer{text-align:center;padding:24px 0;margin-top:20px;border-top:1px solid rgba(0,0,0,0.1);}
 .complete-msg{font-size:16px;color:var(--accent);font-weight:700;margin-bottom:12px;display:none;}
 </style>
+    <link rel="stylesheet" href="enhance.css">
 </head>
 <body>
-<div class="container">
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<div class="container" id="main-content">
 <header>
   <h1>🎬 Leon: The Professional</h1>
   <div class="scene-title">场景01 · 开场 · Leon的世界</div>
@@ -332,5 +335,36 @@ renderCards();
 bindCardEvents();
 updateProgressUI();
 </script>
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
 </body>
 </html>

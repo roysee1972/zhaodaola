@@ -6,6 +6,9 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>临终故事十二则 — 第十二关 · 终篇传承 · 找到啦</title>
 <style>
   :root {
@@ -30,19 +33,7 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed; inset: 8px;
-    border: 1.5px solid var(--border);
-    pointer-events: none; z-index: 0;
-  }
-  .page {
+.page {
     position: relative; z-index: 1;
     max-width: 780px;
     margin: 0 auto;
@@ -358,12 +349,14 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+
 <a class="back-home-btn" href="index.html" title="返回主页">
   <span class="arrow">←</span>
   <span>返回主页</span>
 </a>
 
-<div class="page">
+<div class="page" id="main-content">
 
   <!-- 标题区 -->
   <div class="center fade-in">
@@ -640,5 +633,19 @@
 })();
 </script>
 <script src="lang-toggle-v2.js"></script>
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
 </body>
 </html>

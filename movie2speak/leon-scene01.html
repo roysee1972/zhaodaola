@@ -110,8 +110,11 @@ footer{
 }
 footer p{font-size:13px;color:var(--text-mid);}
 </style>
+    <link rel="stylesheet" href="enhance.css">
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
 
 <!-- Fixed Top Bar -->
 <div class="topbar">
@@ -133,7 +136,7 @@ footer p{font-size:13px;color:var(--text-mid);}
   </div>
 </div>
 
-<div class="container">
+<div class="container" id="main-content">
   <div class="hint">👆 点句子暂停/继续 · 开启"自动"则播完一句自动跳下一句</div>
   <section class="cards" id="cardList">
   </section>
@@ -352,5 +355,36 @@ document.addEventListener('keydown',function(e){
   }
 });
 </script>
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
 </body>
 </html>

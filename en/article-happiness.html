@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>Game of Life — Family of Origin: Happiness and Impermanence</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,12 +73,15 @@ blockquote p { font-size: 15px; color: #555; margin-bottom: 0; font-style: itali
   .content { padding: 40px 32px; }
 }
 </style>
+<link rel="stylesheet" href="enhance.css">
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script>
 </head>
 <body>
 
-<div class="container">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="container" id="main-content">
 
   <div class="hero">
     <h1>Game of Life — Family of Origin:<br>Happiness and Impermanence</h1>
@@ -250,5 +256,36 @@ blockquote p { font-size: 15px; color: #555; margin-bottom: 0; font-style: itali
 </div>
 
 <script src="lang-toggle-v2.js"></script>
+<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
 </body>
 </html>

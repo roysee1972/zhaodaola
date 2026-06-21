@@ -32,17 +32,6 @@ body {
   position: relative;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
 }
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 8px;
-  border: 2px solid var(--gold);
-  border-radius: 12px;
-  pointer-events: none;
-  z-index: 9999;
-}
-
 .progress-bar {
   position: fixed;
   top: 0;
@@ -410,9 +399,12 @@ body::after {
   .back-home-btn { top: 16px; left: 16px; padding: 5px 12px; font-size: 13px; }
 }
 </style>
+<link rel="stylesheet" href="enhance.css">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
 
 <div class="progress-bar" id="progressBar"></div>
 <button class="back-home-btn" onclick="window.location.href='index.html'">← 返回主页</button>
@@ -804,5 +796,36 @@ function restart() {
   document.getElementById('qDots').innerHTML = h;
 })();
 </script>
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
 </body>
 </html>

@@ -32,17 +32,7 @@
       color: var(--text-dark);
       overflow-x: hidden;
     }
-
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 8px;
-      border: 1.5px solid var(--border);
-      pointer-events: none;
-      z-index: 9998;
-    }
-
-    /* === 头部横幅 === */
+/* === 头部横幅 === */
     header {
       position: relative;
       z-index: 10;
@@ -337,9 +327,12 @@
       background: var(--bg2);
     }
   </style>
+<link rel="stylesheet" href="enhance.css">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
 
 <button class="back-btn" onclick="window.location.href='../index.html'">← 返回主页</button>
 
@@ -634,5 +627,36 @@
     if (e.key === 'Escape') closeBoo();
   });
 </script>
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
 </body>
 </html>

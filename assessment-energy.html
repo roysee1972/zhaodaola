@@ -29,16 +29,6 @@ body {
   min-height: 100vh;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
 }
-body::after {
-  content:'';
-  position:fixed;
-  inset:8px;
-  border:1.5px solid var(--gold);
-  border-radius:6px;
-  pointer-events:none;
-  z-index:9999;
-  opacity:0.35;
-}
 .progress-bar {
   position:fixed; top:0; left:0; height:3px;
   background: linear-gradient(90deg, var(--gold), var(--gold-light));
@@ -163,15 +153,18 @@ h2 { font-size:22px; margin-bottom:16px; }
   .total-score { font-size:38px; }
 }
 </style>
+<link rel="stylesheet" href="enhance.css">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
 <div class="progress-bar" id="progress"></div>
 <button class="back-home-btn" onclick="window.location.href='index.html'">← 返回主页</button>
 <div class="container">
 
 <!-- PAGE 1: ENTRY -->
-<div class="page active" id="page-entry">
+<div class="page active" id="main-content" id="page-entry">
   <div class="card" style="text-align:center;">
     <div class="badge">生命能量评估 · 找到啦</div>
     <h1>你的生命能量，还好吗？</h1>
@@ -500,5 +493,36 @@ function renderAdvice() {
 // Init
 document.getElementById('progress').style.width = '10%';
 </script>
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
 </body>
 </html>

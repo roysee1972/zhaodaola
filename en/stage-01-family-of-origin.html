@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Spirituality & Faith level: Find your inner anchor amid the noise.">
+<meta name="description" content="Stage 1: Family of Origin — Identify the cognitive blocks your family left you, see the wounds, and find your way out.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Level 10 · Spirituality & Faith — Found It</title>
+<title>Stage 1 · Family of Origin — Found It!</title>
 <style>
+  /* ==================== 基础变量 ==================== */
   :root {
     --bg: #f5e6c8;
     --bg2: #eed9a4;
@@ -22,6 +23,8 @@
     --radius: 8px;
     --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
   }
+
+  /* ==================== 全局 ==================== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -31,18 +34,23 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* 纸张纹理背景 */
   body::before {
     content: '';
     position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 0;
   }
+  /* 金边装饰 */
   body::after {
     content: '';
     position: fixed; inset: 8px;
     border: 1.5px solid var(--border);
     pointer-events: none; z-index: 0;
   }
+
+  /* ==================== 页面容器 ==================== */
   .page {
     display: none;
     position: relative; z-index: 1;
@@ -56,11 +64,14 @@
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ==================== 通用组件 ==================== */
   .gold-line {
     width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 0 auto 24px;
   }
+
   .card {
     background: rgba(255,252,240,0.7);
     border: 1px solid var(--border);
@@ -71,6 +82,7 @@
     transition: box-shadow 0.2s;
   }
   .card:hover { box-shadow: 0 4px 20px var(--shadow); }
+
   .btn {
     display: inline-block;
     padding: 12px 36px;
@@ -98,12 +110,15 @@
     box-shadow: none;
   }
   .btn-ghost:hover { background: rgba(201,168,76,0.1); }
+
   .center { text-align: center; }
   .text-mid { color: var(--text-mid); font-size: 14px; }
   .mt-16 { margin-top: 16px; }
   .mt-24 { margin-top: 24px; }
   .mt-40 { margin-top: 40px; }
   .mb-8 { margin-bottom: 8px; }
+
+  /* ==================== 进度条 ==================== */
   .progress-bar-wrap {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 3px;
@@ -115,6 +130,8 @@
     transition: width 0.5s ease;
     width: 0%;
   }
+
+  /* ==================== P1: 入口页 ==================== */
   .level-badge {
     display: inline-block;
     font-size: 11px;
@@ -133,6 +150,10 @@
     line-height: 1.3;
     margin-bottom: 12px;
   }
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
   .hero-sub {
     font-size: 15px;
     color: var(--text-mid);
@@ -146,6 +167,8 @@
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 0 auto 40px;
   }
+
+  /* 装饰圆环 */
   .deco-ring {
     width: 160px; height: 160px;
     border: 1.5px solid var(--border);
@@ -177,6 +200,8 @@
     0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
     50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
   }
+
+  /* ==================== P2: 困境选择页 ==================== */
   .dilemma-card {
     background: rgba(255,252,240,0.6);
     border: 1px solid var(--border);
@@ -228,6 +253,8 @@
     text-align: right;
     margin-top: 16px;
   }
+
+  /* ==================== P3: 冒险卡 ==================== */
   .adventure-wrap {
     display: flex; flex-direction: column; align-items: center;
     padding: 20px 0;
@@ -296,6 +323,8 @@
     0%, 100% { opacity: 0.4; }
     50% { opacity: 1; }
   }
+
+  /* ==================== P4: 诊断测试 ==================== */
   .question-header {
     text-align: center;
     margin-bottom: 28px;
@@ -367,6 +396,8 @@
     display: flex; gap: 12px; justify-content: center;
     margin-top: 28px;
   }
+
+  /* ==================== P5: 诊断结果 ==================== */
   .result-header {
     text-align: center;
     margin-bottom: 32px;
@@ -426,6 +457,8 @@
   .bar-high { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
   .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
   .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
+
+  /* ==================== P6: 通关建议 ==================== */
   .advice-header {
     text-align: center;
     margin-bottom: 28px;
@@ -493,6 +526,8 @@
   .advice-card-action::before {
     content: '→ ';
   }
+
+  /* ==================== P7: 隐藏关卡 ==================== */
   .hidden-header {
     text-align: center;
     margin-bottom: 28px;
@@ -569,6 +604,8 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 18px rgba(201,168,76,0.4);
   }
+
+  /* 生成卡片预览 */
   .card-preview {
     display: none;
     background: linear-gradient(145deg, #f7edd5, #eed9a4);
@@ -635,6 +672,8 @@
     transition: all 0.2s;
   }
   .download-btn:hover { background: rgba(201,168,76,0.1); }
+
+  /* ==================== 彩蛋 ==================== */
   .easter-egg {
     display: none;
     background: rgba(90,50,20,0.95);
@@ -672,6 +711,8 @@
     cursor: pointer;
     line-height: 1;
   }
+
+  /* ==================== 隐藏关卡入口 ==================== */
   .hidden-trigger {
     display: block;
     width: 200px;
@@ -698,11 +739,15 @@
     letter-spacing: 2px;
     margin-top: 20px;
   }
+
+  /* ==================== 完成页 ==================== */
   .complete-icon {
     font-size: 64px;
     margin-bottom: 16px;
     opacity: 0.6;
   }
+
+  /* ==================== 返回主页按钮 ==================== */
   .back-home-btn {
     position: fixed;
     top: 16px;
@@ -738,6 +783,8 @@
     line-height: 1;
     color: var(--gold);
   }
+
+  /* ==================== 响应式 ==================== */
   @media (max-width: 600px) {
     .hero-title { font-size: 28px; letter-spacing: 4px; }
     .flip-card { width: 280px; height: 180px; }
@@ -751,58 +798,75 @@
 </head>
 <body>
 
+<!-- 进度条 -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
+<!-- 返回主页按钮（全局固定，所有页面可见） -->
 <button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
   <span>Back to Home</span>
 </button>
 
-<!-- ==================== P1: Entry Page ==================== -->
+<!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">Level 10 · Found It</div>
+    <div class="level-badge">STAGE 1 · FOUND IT!</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">Spirit</div>
+      <div class="deco-ring-inner">ORIGIN</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">Spirituality & Faith</h1>
+    <h1 class="hero-title">Family of Origin</h1>
     <p class="hero-sub">
-      Some answers aren't in books<br>
-      Others can't give them<br>
-      You can only ask yourself
+      Your wounds are real.<br>
+      But staying stuck there isn't the only way out.
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      Have you ever woken in the dead of night wondering:<br>
-      What does all this mean?<br>
-      Have you ever doubted:<br>
-      Were the things I was taught really right?<br>
-      Have you ever envied:<br>
-      People who believe in something with absolute certainty?
+      Some things were planted in you as a child,<br>
+      and it takes a lifetime to recognize whether they're wounds.<br>
+      Some things you've told yourself for years,<br>
+      without ever stopping to ask: Is it even true?
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      Faith isn't religion — it's what grounds you.<br>
-      It might be a set of values, a life purpose,<br>
-      or simply the conviction: "I choose to live this way."<br>
-      This level helps you see your inner map.
+      This stage isn't about blaming anyone,<br>
+      nor about forgiving anyone.<br>
+      It's simply about seeing where you're stuck.
     </p>
+    <!-- 专题文章链接 -->
+    <a href="article-for-your-own-good.html" class="card" style="display: block; text-decoration: none; margin: 20px auto; max-width: 480px; border: 1.5px solid var(--gold); background: rgba(255,252,240,0.85); transition: all 0.3s;">
+      <div style="text-align: center;">
+        <div style="font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px;">FEATURED ARTICLE</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 2px; margin-bottom: 8px;">When "It's for your good" becomes the deepest wound</div>
+        <div style="font-size: 14px; color: var(--text-mid); line-height: 1.7;">12 piercing questions + 4 common traps + 5 ways to break free</div>
+        <div style="font-size: 12px; color: var(--gold); margin-top: 12px; letter-spacing: 2px;">Read more →</div>
+      </div>
+    </a>
+
+    <a href="article-happiness.html" class="card" style="display: block; text-decoration: none; margin: 20px auto; max-width: 480px; border: 1.5px solid var(--gold); background: rgba(255,252,240,0.85); transition: all 0.3s;">
+      <div style="text-align: center;">
+        <div style="font-size: 11px; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px;">FEATURED ARTICLE</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 2px; margin-bottom: 8px;">Family of Origin: Happiness and Impermanence</div>
+        <div style="font-size: 14px; color: var(--text-mid); line-height: 1.7;">Beyond the scars, your family also gave you nourishment</div>
+        <div style="font-size: 12px; color: var(--gold); margin-top: 12px; letter-spacing: 2px;">Read more →</div>
+      </div>
+    </a>
+
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" onclick="goPage('dilemma')">Begin Exploration</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 5 minutes</p>
+    <button class="btn" onclick="goPage('dilemma')">Begin Exploring</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">Takes about 5 minutes</p>
   </div>
 </div>
 
-<!-- ==================== P2: Dilemma Selection ==================== -->
+<!-- ==================== P2: 困境选择页 ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十关 · 心灵信仰</div>
+      <div class="level-badge">STAGE 1 · FAMILY OF ORIGIN</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">What confuses you the most?</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 items closest to your true state. Multiple selections are fine.</p>
+      <h2 class="hero-title" style="font-size: 26px;">What hits closest to home?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1–3 that resonate most with how you feel right now. Multiple choices are fine.</p>
     </div>
     <div style="margin-top: 24px;" id="dilemmaList"></div>
     <div class="dilemma-hint" id="dilemmaHint">Selected: <span id="dilemmaCount">0</span></div>
@@ -812,40 +876,40 @@
   </div>
 </div>
 
-<!-- ==================== P3: Adventure Card ==================== -->
+<!-- ==================== P3: 冒险卡页 ==================== -->
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十关 · 心灵信仰</div>
+      <div class="level-badge">STAGE 1 · FAMILY OF ORIGIN</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card First</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before we begin the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard" onclick="flipCard()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">Tap to Reveal</div>
+            <div class="flip-card-front-hint">Tap to flip</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"你和钱的关系，就是你和自己的关系。"</div>
+            <div class="flip-card-quote" id="flipQuote">"Your feelings are real. You don't need anyone's permission."</div>
             <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to flip</p>
       <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P4: Diagnostic Test ==================== -->
+<!-- ==================== P4: 诊断测试页 ==================== -->
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">How have you been feeling lately?</div>
+      <div class="question-text" id="qText">Regarding time, what have you felt lately?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
@@ -856,89 +920,89 @@
   </div>
 </div>
 
-<!-- ==================== P5: Diagnosis Results ==================== -->
+<!-- ==================== P5: 诊断结果页 ==================== -->
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">Diagnosis Complete</div>
+      <div class="level-badge">DIAGNOSIS COMPLETE</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="result-title">Your Cognitive Block Profile</div>
-      <div class="result-sub">Spirituality & Faith · Level 10</div>
+      <div class="result-sub">Family of Origin · Stage 1</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
+    <!-- 彩蛋区域 -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">You discovered a hidden thought</div>
+      <div class="easter-egg-label">You found a hidden reflection</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" onclick="goAdvice()">View Level Advice</button>
+      <button class="btn" onclick="goAdvice()">View Advice</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P6: Level Advice ==================== -->
+<!-- ==================== P6: 通关建议页 ==================== -->
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第十关 · 心灵信仰</div>
+      <div class="level-badge">STAGE 1 · FAMILY OF ORIGIN</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">Level Advice</div>
+      <div class="advice-title">Advice for Moving Forward</div>
       <div class="advice-intro">
-        Passion is a fire—<br>
-        it can light your path or burn you.<br>
-        This level helps you see where your fire is burning.
+        Your family gave you wounds,<br>
+        but you didn't let those wounds become all of who you are.
       </div>
     </div>
     <div id="adviceList"></div>
 
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      Not what you wanted to say? Open your hidden level →
+      Not what you wanted to say? Open your hidden stage →
     </div>
-    <div class="page-end-text">— Level 10 · Spirituality & Faith · Complete —</div>
+    <div class="page-end-text">— Stage 1 · Family of Origin · Complete —</div>
   </div>
 </div>
 
-<!-- ==================== P7: Hidden Level ==================== -->
+<!-- ==================== P7: 隐藏关卡页 ==================== -->
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">Hidden Level</div>
+      <div class="level-badge">HIDDEN STAGE</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">Your Personal Level</div>
+      <div class="hidden-title">Your Personal Stage</div>
       <div class="hidden-sub">
-        This is your space. Write about what's truly stuck in your spiritual journey.<br>
-        No need to polish. Just be honest.
+        This is your space to write about what's truly holding you back.<br>
+        No need to polish it. Just be honest.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">Step 1</div>
-      <div class="step-label">Where is my inner map most blurry?</div>
-      <textarea class="step-input" id="hidden1" placeholder="The last thing that made me deeply question/think about meaning was..."></textarea>
+      <div class="step-num">STEP 1</div>
+      <div class="step-label">What is my struggle?</div>
+      <textarea class="step-input" id="hidden1" placeholder="The thing I'm most stuck on right now is..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step 2</div>
-      <div class="step-label">When did this confusion first appear?</div>
-      <textarea class="step-input" id="hidden2" placeholder="I first started questioning certain values when..."></textarea>
+      <div class="step-num">STEP 2</div>
+      <div class="step-label">When did this feeling first appear?</div>
+      <textarea class="step-input" id="hidden2" placeholder="It first started when..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step 3</div>
-      <div class="step-label">If I could choose again, what would I want to believe?</div>
-      <textarea class="step-input" id="hidden3" placeholder="I wish I could truly believe..."></textarea>
+      <div class="step-num">STEP 3</div>
+      <div class="step-label">What do I truly want?</div>
+      <textarea class="step-input" id="hidden3" placeholder="If I could change one thing, I would want..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step 4</div>
-      <div class="step-label">What beliefs am I willing to act on?</div>
-      <textarea class="step-input" id="hidden4" placeholder="To live authentically, I am willing to..."></textarea>
+      <div class="step-num">STEP 4</div>
+      <div class="step-label">What am I willing to do about it?</div>
+      <textarea class="step-input" id="hidden4" placeholder="To make a change, I'm willing to..."></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">Generate My Hidden Level Card</button>
+    <button class="generate-btn" onclick="generateCard()">Generate My Hidden Stage Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">My Inner Map</div>
-      <div class="card-preview-sub">Level 10 · Spirituality & Faith · Found It</div>
+      <div class="card-preview-title">My Hidden Stage</div>
+      <div class="card-preview-sub">Stage 1 · Family of Origin · Found It!</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
@@ -947,16 +1011,15 @@
   </div>
 </div>
 
-<!-- ==================== Complete Page ==================== -->
+<!-- ==================== P7b: 完成页 ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">You've Passed This Stage</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      Seeing what you believe and why<br>
-      is itself the beginning of freedom.<br>
-      The road ahead lies within your heart.
+      Seeing your own blocks is the first step to breaking through.<br>
+      The road ahead is yours to walk.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
     <button class="btn btn-ghost" onclick="restart()">Start Over</button>
@@ -969,143 +1032,154 @@
    Data
    ============================================================ */
 
-// Dilemmas (12 items)
+// 困境
 const dilemmas = [
-  { id: 1, text: "Sometimes I wonder: what am I supposed to do with my life?" },
-  { id: 2, text: "Seeing others believe in something with certainty, I feel a bit envious." },
-  { id: 3, text: "Reading a book or watching a movie suddenly gave me a new perspective on life." },
-  { id: 4, text: "Every day feels like a repeat, but I can't pinpoint what's wrong." },
-  { id: 5, text: "Values instilled since childhood — I'm increasingly questioning them." },
-  { id: 6, text: "Everyone around me pursues success, but I don't know what I truly want." },
-  { id: 7, text: "I often ask myself: is the path I'm on really the one I want?" },
-  { id: 8, text: "Some things I can't do, but I can't say it — afraid of being called faithless." },
-  { id: 9, text: "After a crisis, everything I used to believe shattered." },
-  { id: 10, text: "Joined a group whose ideas seemed reasonable, but something felt off." },
-  { id: 11, text: "Used to believe "hard work guarantees success," but no longer." },
-  { id: 12, text: "Feel like I'm living just to check boxes, never truly lived." }
+  { id: 1, text: "Going home for the holidays, relatives pressure me about marriage and kids. My parents are anxious about face-saving. I want to say, 'Why should my life revolve around your reputation?'" },
+  { id: 2, text: "In my family, resources went to the son or the favorite child. I tried so hard to please but was always overlooked. Deep down, I feel I'm not good enough." },
+  { id: 3, text: "My parents are controlling — what I eat, what I wear, who I befriend, who I date. They meddle in everything, and when I resist, they say 'It's for your own good.'" },
+  { id: 4, text: "I've tried communicating — they won't listen. I've tried pushing back — it only got worse. I've tried pleasing them — they took it for granted. I don't know what to do anymore." },
+  { id: 5, text: "The way I lose my temper, my tone of voice, how I treat my partner — it's shockingly similar to my parents. I hate it, but I can't seem to change." },
+  { id: 6, text: "I'm afraid I'll treat my kids the way my parents treated me. I try so hard to break the pattern, but I keep repeating it." }
 ];
 
-// Adventure Cards (12)
+// 冒险卡（温柔而坚定）
 const adventureCards = [
-  "Answers from others can never replace your own questioning.",
-  "Faith isn't found — it's lived.",
-  "Be wary of anyone who says "just believe and all problems will be solved."",
-  "Meaning and happiness are different. Happiness is in the moment; meaning is seen in hindsight.",
-  "True faith sets you freer, not more constrained.",
-  "Doubt isn't the enemy of faith — blind belief is.",
-  "How many of your values were planted by others?",
-  "A faith without questioning is one step from superstition.",
-  "Life's meaning isn't "found" — it grows from doing.",
-  "No dogma survives the simple question: "Why?"",
-  "True freedom is the ability to choose what you believe.",
-  "The courage of spiritual exploration lies not in finding answers, but in daring to ask questions."
+  "Your feelings are real. You don't need anyone's permission.",
+  "Speaking up is itself an act of strength.",
+  "Getting this far hasn't been easy.",
+  "Acknowledging pain doesn't mean you're weak.",
+  "Someone who sees the problem is already further along than someone who doesn't.",
+  "Your family gave you wounds, but you didn't let them become all of who you are.",
+  "You don't need to forgive everyone. You just need to forgive a part of yourself.",
+  "Sometimes the best reconciliation starts with admitting you weren't treated well.",
+  "You deserve to be treated well — this doesn't need anyone else to say it for it to be true.",
+  "Wounds don't disappear, but you can decide not to let them keep bleeding.",
+  "You are bigger than your family of origin. Time will prove it.",
+  "You didn't become who you are just because of them — you also chose your own path."
 ];
 
-// Diagnostic Questions (6 × 5 options)
+// 诊断题
 const questions = [
   {
-    q: "Where do your beliefs mainly come from?",
+    q: "Going home for the holidays, a relative asks, 'Do you have a partner yet?' What's your first reaction?",
     options: [
-      { text: "Independent thinking, built up piece by piece.", key: "01Independent Thinker" },
-      { text: "Instilled by family and school, rarely questioned.", key: "02Family Indoctrination" },
-      { text: "Mainstream social values — I live as everyone does.", key: "03Social Influence" },
-      { text: "A group I joined whose ideas influenced me.", key: "04Group Attachment" },
-      { text: "Hard to say — it all seems mixed together.", key: "05Undifferentiated Chaos" }
+      { text: "So annoying — why is it any of their business?", key: "Weak Boundaries" },
+      { text: "My parents aren't helping me; they're joining in on the pressure.", key: "Resenting Parents" },
+      { text: "Maybe I really should find someone. Am I not good enough?", key: "Self-Denial" },
+      { text: "It's always like this. I don't even want to go home anymore.", key: "Avoiding Relationships" },
+      { text: "I'd snap back, but then I'd feel bad about it afterward.", key: "Suppressing Emotions" }
     ]
   },
   {
-    q: "When facing a major setback, what's your first reaction?",
+    q: "When you lose your temper, have you noticed you're a lot like your parents?",
     options: [
-      { text: "Ask myself: what is this trying to teach me?", key: "06Growth Mindset" },
-      { text: "Talk to someone, hear other perspectives.", key: "07Seeking Outside Help" },
-      { text: "Feel like fate is targeting me.", key: "08Victim Mentality" },
-      { text: "Retreat into a faith/theory for comfort.", key: "09Spiritual Refuge" },
-      { text: "Carry it alone, tell no one.", key: "10Island Mentality" }
+      { text: "Exactly alike. I hate it.", key: "Repeating Parents' Patterns" },
+      { text: "A little, but I can control it.", key: "Self-Awareness" },
+      { text: "Nothing like them — I get angry because of them.", key: "Resenting Parents" },
+      { text: "I don't lose my temper. I bottle it up.", key: "Suppressing Emotions" },
+      { text: "I don't lose my temper. I just disappear.", key: "Avoiding Relationships" }
     ]
   },
   {
-    q: "What is your attitude toward "life's meaning"?",
+    q: "How do you wish your parents would treat you?",
     options: [
-      { text: "Actively exploring, wanting to find my own answer.", key: "11Active Exploration" },
-      { text: "Occasionally think about it, but not systematically.", key: "12Occasional Reflection" },
-      { text: "Meaning is nice, but I can live without it.", key: "13Pragmatism" },
-      { text: "Already found it — it guides my life.", key: "14Clear Meaning" },
-      { text: "Doubt whether "meaning" even exists.", key: "15Nihilism" }
+      { text: "I wish they'd apologize and admit they hurt me.", key: "Waiting for Approval" },
+      { text: "I wish they'd respect my choices.", key: "Weak Boundaries" },
+      { text: "I wish they'd understand why I'm sad.", key: "Waiting for Approval" },
+      { text: "I wish they'd stop controlling me.", key: "Weak Boundaries" },
+      { text: "I don't know. I've stopped expecting anything.", key: "Acceptance & Letting Go" }
     ]
   },
   {
-    q: "Have you ever been deeply influenced by a group/theory?",
+    q: "If your parents grew old and needed your care, what would you do?",
     options: [
-      { text: "No, I'm quite independent and not easily influenced.", key: "01Independent Thinker" },
-      { text: "Yes, but not deeply — I eventually moved on.", key: "16Mild Influence" },
-      { text: "Yes, deeply — still processing it.", key: "17Deep Influence" },
-      { text: "Yes, and I'm still in it, afraid to leave.", key: "18Easily Influenced" },
-      { text: "Yes, now I'm very wary of being influenced by any group/theory.", key: "19Vigilant Against Dependency" }
+      { text: "Of course I would. It's my responsibility.", key: "Suppressing Emotions" },
+      { text: "I would, but I'd feel resentful.", key: "Resenting Parents" },
+      { text: "I don't know. It depends.", key: "Self-Denial" },
+      { text: "No. They didn't treat me well.", key: "Resenting Parents" },
+      { text: "Yes, because I've already let it go.", key: "Acceptance & Letting Go" }
     ]
   },
   {
-    q: "What is your attitude toward superstition or cults?",
+    q: "What do you think is your biggest loss from your family of origin?",
     options: [
-      { text: "Don't believe at all — think it's all deception.", key: "20Rational Clarity" },
-      { text: "Hard to say — some things science can't explain.", key: "21Open Curiosity" },
-      { text: "Once deeply believed, later found it was wrong.", key: "22Once Lost" },
-      { text: "If people around me are superstitious, I worry about them.", key: "23Observer's Concern" },
-      { text: "Not sure — some things are truly unclear.", key: "24Gray Area" }
+      { text: "Years of wasted time.", key: "Resenting Parents" },
+      { text: "Picking up bad habits.", key: "Repeating Parents' Patterns" },
+      { text: "Losing my confidence.", key: "Self-Denial" },
+      { text: "Not knowing how to love.", key: "Repeating Parents' Patterns" },
+      { text: "No loss — it's all experience.", key: "Acceptance & Letting Go" }
     ]
   },
   {
-    q: "Which best describes your current spiritual state?",
+    q: "If you could say one thing to your younger self, what would it be?",
     options: [
-      { text: "Spiritually fulfilled, with my own belief system.", key: "25Spiritually Fulfilled" },
-      { text: "Basically settled — not fulfilled but not lost.", key: "26Basically Settled" },
-      { text: "Neutral — not believing or doubting anything strongly.", key: "27Flat Indifference" },
-      { text: "Spiritually empty, feeling something is missing.", key: "28Spiritual Emptiness" },
-      { text: "Existential crisis, often asking: why am I alive?", key: "29Existential Crisis" }
+      { text: "It wasn't your fault.", key: "Self-Denial" },
+      { text: "Just hang in there. It gets better when you grow up.", key: "Suppressing Emotions" },
+      { text: "Leave that home sooner.", key: "Avoiding Relationships" },
+      { text: "You deserve to be loved.", key: "Self-Denial" },
+      { text: "Thank you for making it through.", key: "Acceptance & Letting Go" }
     ]
   }
 ];
 
-// Card Points Data (30 dimensions)
-// Card Points Data (30 dimensions)
+// 卡点完整数据
 const cardPoints = {
-  "01Independent Thinker":    { name: "Independent Thinker",    desc: "Your values were built piece by piece on your own — that's rare. Having your own mind and not following blindly is your strongest card.", advice: "Maintain this independence. Occasionally ask yourself: 『Could what I currently believe be wrong?』——Being able to ask this question means you're still growing.", color: "var(--gold)" },
-  "02Family Indoctrination":    { name: "Family Indoctrination",    desc: "Many of your ideas come from family and school. This isn't necessarily bad — but you need to distinguish what's truly yours from what isn't.", advice: "This week, make a list: of all the values you were taught, which do you still认同? Which have you quietly stopped believing?——Writing it down will bring clarity.", color: "#b89a6a" },
-  "03Social Influence":    { name: "Social Influence",    desc: "Your values mainly come from mainstream society. This isn't a lack of opinion — many people are this way. But note: mainstream isn't necessarily right, just popular.", advice: "Pick a mainstream view and seriously ask yourself: 『If no one else thought this way, would I still?』——This question will help you see yourself.", color: "#9a7a4a" },
-  "04Group Attachment":    { name: "Group Attachment",    desc: "You've been or are being deeply influenced by a group's ideas. The sense of belonging is precious, but the cost is gradually losing your own judgment.", advice: "This week, do one small thing the group wouldn't approve of but you feel is right.——Not rebellion — practice: you can do the right thing without group approval.", color: "#a88040" },
-  "05Undifferentiated Chaos":    { name: "Undifferentiated Chaos",    desc: "Your values are mixed together with unclear origins. This is normal — most people are this way. But in chaos, it's easy to be led by others.", advice: "Start clarifying with one question: 『What treatment do I find most unacceptable?』——Your bottom line is often the first thing to see clearly.", color: "#c0784a" },
-  "06Growth Mindset":    { name: "Growth Mindset",    desc: "When facing setbacks, you ask: what is this trying to teach me? This is a sophisticated mindset — you treat suffering as a teacher, not an enemy.", advice: "Write down your setback-to-insight story and share it with someone.——Your insight might be the light someone else needs most.", color: "var(--gold)" },
-  "07Seeking Outside Help":    { name: "Seeking Outside Help",    desc: "When facing setbacks, you talk to someone. This isn't weakness — it's wisdom. No one figures life out alone. But do discern whose advice truly helps.", advice: "Find someone you trust and tell them: 『I've been thinking about life's meaning lately.』——Saying it out loud, you'll realize you've thought about it more than you imagined.", color: "#b89a6a" },
-  "08Victim Mentality":  { name: "Victim Mentality",  desc: "When facing setbacks, you tend to feel targeted by fate. This feeling is real, but it makes you increasingly passive — if you see yourself as a victim, you'll remain one.", advice: "Next time you think "why me," ask yourself: 『Is there anything in this situation I can control?』——Redirect your attention to what you can do.", color: "#c0784a" },
-  "09Spiritual Refuge":    { name: "Spiritual Refuge",    desc: "When facing setbacks, you retreat into a faith or theory for comfort. That's fine — everyone needs refuge. But be careful: refuges don't grow strength.", advice: "Try this: face one small setback alone, without any faith or theory.——You'll find you're stronger than you imagined.", color: "#a88040" },
-  "10Island Mentality":     { name: "Island Mentality",     desc: "遇到挫折，你Carry it alone, tell no one.你觉得自己能处理——但长期这样，你会越来越孤独，越来越难信任别人。", advice: "This week, tell someone one thing you're struggling with.——No need for advice — just say it. Saying it lightens the burden.", color: "#c0784a" },
-  "11Active Exploration":    { name: "Active Exploration",    desc: "你在Active Exploration人生意义，这本身就是一种意义。愿意问问题的人，比相信自己已经有答案的人，离真理更近。", advice: "Write down your thoughts from the exploration process.——No need to publish — just write. As you write, you'll see your growth trajectory.", color: "var(--gold)" },
-  "12Occasional Reflection":    { name: "Occasional Reflection",    desc: "你偶尔会想人生意义，但没有系统思考过。这很正常——不是每个人都要成为哲学家。但Occasional Reflection的人，容易在危机来临时措手不及。", advice: "Each year, choose a quiet moment (birthday, New Year's) and ask: 『This year, have I moved closer to who I want to become?』——No answer needed — just ask.", color: "#9a7a4a" },
-  "13Pragmatism":    { name: "Pragmatism",    desc: "你Meaning is nice, but I can live without it.这是很务实的态度——但也要小心：完全不追问意义的人，容易在低谷时找不到撑下去的理由。", advice: "Find something you're willing to do for nothing — no reward needed. Within it lies your sense of meaning.", color: "#b89a6a" },
-  "14Clear Meaning":    { name: "Clear Meaning",    desc: "You've found your life's meaning, and it guides you. This is what many aspire to — but beware: can meaning become a shackle?", advice: "Occasionally ask yourself: 『If my "meaning" suddenly vanished, would I still live well?』——Meaning is a lighthouse, but you can't live only at the lighthouse.", color: "var(--gold)" },
-  "15Nihilism":    { name: "Nihilism",    desc: "你Doubt whether "meaning" even exists.这不是病态——很多深刻的思考者都经历过这个阶段。虚无之后，往往是最真实的重建。", advice: "Read Camus' "The Myth of Sisyphus" — he said: we must imagine Sisyphus happy. Meaning may not exist, but you can create it.", color: "#8b3a2a" },
-  "16Mild Influence":    { name: "Mild Influence",    desc: "You were once influenced by a group/theory but moved on. This shows self-correction ability — something many lack.", advice: "Look back at that influenced period: 『Why did I believe it then?』——Seeing your past self clearly will help you protect yourself better.", color: "#b89a6a" },
-  "17Deep Influence":    { name: "Deep Influence",    desc: "你曾经或正在被某个群体Deep Influence，而且还在消化。这没什么不好意思的——人的心灵本来就容易被深刻的东西打动。", advice: "Do a point-by-point review: for each core view of this group/theory, ask yourself: 『Do I truly agree?』——Not about leaving — it's about staying or leaving more consciously.", color: "#a88040" },
-  "18Easily Influenced":    { name: "Easily Influenced",    desc: "You're still in a group, afraid to leave. Leaving isn't just changing ideas — it means rebuilding your entire social circle. That does take courage.", advice: "No rush to leave. First, allow yourself to doubt.——Doubt is the beginning of freedom. When you're clear enough, the way out will appear.", color: "#c0784a" },
-  "19Vigilant Against Dependency":    { name: "Vigilant Against Dependency",    desc: "你曾经被Deep Influence过，现在很警惕。这是很好的自我保护——但也要小心：过度警惕可能让你拒绝所有深刻的东西。", advice: "Tell yourself: 『being easily influenced』isn't a flaw — it's proof your heart is still beating.——Protect yourself, but no need to wrap yourself in armor.", color: "#b89a6a" },
-  "20Rational Clarity":    { name: "Rational Clarity",    desc: "You stay clear-headed about superstition and cults — that's essential. People who exploit others' faith for profit have always existed.", advice: "Stay clear-headed, but no need to mock those with faith.——Everyone's spiritual journey is different. Your clarity doesn't mean others' devotion is wrong.", color: "var(--gold)" },
-  "21Open Curiosity":    { name: "Open Curiosity",    desc: "You feel some things science can't explain — that's normal. Being open is good — but openness isn't blind acceptance, and curiosity isn't deep belief.", advice: "When encountering things "science can't explain," set them aside. No rush to believe or deny.——Time will help you sort it out. What's the hurry?", color: "#9a7a4a" },
-  "22Once Lost":    { name: "Once Lost",    desc: "You once deeply believed in something, later found it was wrong. This experience is precious — those who've been lost are often clearer than those who never were.", advice: "Share your story of being lost with someone you care about.——No need to lecture — just share. Your experience might be the warning they need most.", color: "#b89a6a" },
-  "23Observer's Concern":    { name: "Observer's Concern",    desc: "People around you are superstitious, and you worry. This is a kind response — but know this: you can't wake someone pretending to sleep, or save someone who doesn't want saving.", advice: "What you can do is live your own clear-headed life.——Living well is the best influence on those you care about.", color: "#a88040" },
-  "24Gray Area":    { name: "Gray Area",    desc: "你觉得有些事说不清楚，既不完全信，也不完全不信。这是最容易被趁虚而入的状态——Gray Area，最容易被人填上他们的答案。", advice: "This week, pick one thing you find "unclear" and seriously research and reflect on it.——Ambiguity isn't tolerance — it's not having thought it through. Once you have, you earn the right to say 『"I choose to believe"』。", color: "#c0784a" },
-  "25Spiritually Fulfilled":    { name: "Spiritually Fulfilled",    desc: "Your spiritual state is fulfilled with your own belief system. This is a fortunate state — many spend their whole lives searching for what you already have.", advice: "Write down your belief system.——No need to publish — just organize. As you write, you'll find yourself clearer than you thought.", color: "var(--gold)" },
-  "26Basically Settled":    { name: "Basically Settled",    desc: "你精神状态Basically settled — not fulfilled but not lost.这是很舒服的状态——没有剧烈的痛苦，也没有剧烈的狂热。", advice: "Maintain this calm. If something suddenly draws you strongly (or repels you), pause and ask: 『Is this real, or am I too thirsty?』", color: "#b89a6a" },
-  "27Flat Indifference":    { name: "Flat Indifference",    desc: "You don't strongly believe or doubt anything. This isn't apathy — maybe you haven't encountered what truly moves you.", advice: "This week, do something that slightly moves you — watch a profound film, read a poem, sit in nature. Awakening seeds may hide in the ordinary.", color: "#9a7a4a" },
-  "28Spiritual Emptiness":    { name: "Spiritual Emptiness",    desc: "你觉得Spiritual Emptiness，总缺了点什么。这种感觉很难受——但也要恭喜你：能感受到空虚，说明你的心灵还在渴望，还没有完全麻木。", advice: "When feeling empty, don't rush to fill it.——Sit with the emptiness for a while and ask it: 『What are you trying to tell me?』Sometimes emptiness is your heart reminding you: you've gone off course.", color: "#c0784a" },
-  "29Existential Crisis":    { name: "Existential Crisis",    desc: "You often ask yourself: why am I alive? This isn't illness — this is humanity's deepest question. Many spend their lives avoiding it. Daring to ask is already remarkable.", advice: "Existential Crisis的时候，不用急着找答案。——Living itself may be part of the answer. Your existence means one more being in this world who can ask this question.", color: "#8b3a2a" }
+  "Resenting Parents": {
+    name: "Resenting Parents",
+    desc: "You blame your life's hardships on your family of origin. It feels comforting because it shifts responsibility onto others. But the truth is: your family shaped you, yes, but it doesn't have to define your entire life. You're not a victim — you're an adult with the power to choose.",
+    advice: "Acknowledge your family's influence, but stop using it to explain everything. Starting today, swap 'It's all because of them' for 'What can I do now?' The past can't change, but the future can.",
+    color: "#b85a3a"
+  },
+  "Repeating Parents' Patterns": {
+    name: "Repeating Parents' Patterns",
+    desc: "You've caught yourself repeating your parents' patterns — the way you lose your temper, your tone of voice, how you treat your partner. You swore you'd never become them, yet somehow you have. It's not your fault, but it is your responsibility.",
+    advice: "Awareness is the first step to change. Next time you catch yourself slipping into their patterns, stop, take a breath, and ask: Is this how I want to be? You don't need to be perfect — just a little better than the last generation.",
+    color: "#a07040"
+  },
+  "Waiting for Approval": {
+    name: "Waiting for Approval",
+    desc: "You've been waiting for your parents to change — for them to wake up, to apologize, to become who you need them to be. That expectation is a rope tying you in place. The truth is: you can't change anyone except yourself.",
+    advice: "Letting go of expectations for your parents isn't giving up on them — it's setting yourself free. Replace 'When they change' with 'I'll change first.' When you stop expecting, you become free.",
+    color: "#907050"
+  },
+  "Weak Boundaries": {
+    name: "Weak Boundaries",
+    desc: "You can't say 'no' to your parents. You can't set boundaries. You fear conflict, fear being called ungrateful, fear hurting them. But what you haven't realized is: a relationship without boundaries will eventually hurt everyone.",
+    advice: "Setting boundaries isn't saying 'You're not my parent.' It's saying 'I love you, but there are things I can't accept.' Start small — practice saying 'no' on little things. You'll find: the sky doesn't fall.",
+    color: "#806050"
+  },
+  "Self-Denial": {
+    name: "Self-Denial",
+    desc: "Every family conflict leads you back to the same conclusion: 'I'm not good enough.' Not obedient enough, not successful enough, not considerate enough — it's always 'me.' This conclusion makes you feel small and keeps you on edge in every relationship.",
+    advice: "Replace 'They don't love me because I'm not good enough' with 'The way they love me is wrong — it's not that I'm not good enough.' 'Not good enough' is a false premise. You are worthy of love, as you are.",
+    color: "#a08060"
+  },
+  "Avoiding Relationships": {
+    name: "Avoiding Relationships",
+    desc: "You think cutting ties is the only way out. It sounds decisive, but deep down you know: this isn't freedom — it's avoidance. You use 'severing' instead of 'confronting,' and 'disappearing' instead of 'resolving.'",
+    advice: "Before you cut ties, ask yourself: Have I truly tried setting boundaries? Cutting off is a last resort, not a first step. If you must walk away, do it with understanding, not resentment.",
+    color: "#8a5040"
+  },
+  "Suppressing Emotions": {
+    name: "Suppressing Emotions",
+    desc: "You hold it in, but you never forget. You fear conflict, fear being called immature, fear damaging relationships. What you haven't realized is: suppressed emotions don't vanish — they erupt eventually.",
+    advice: "Allow yourself to express dissatisfaction. Expressing isn't the same as fighting, and it doesn't make you ungrateful. You can say 'I don't like this' and still love your parents.",
+    color: "#906050"
+  },
+  "Acceptance & Letting Go": {
+    name: "Acceptance & Letting Go",
+    desc: "You've let it go. Not because you forgot the hurt, but because you chose not to let it define your life. You understand your parents' limitations and have accepted your past. This is true freedom.",
+    advice: "Hold on to this awareness. Reconciliation isn't a destination — it's an ongoing process. You may have setbacks, and that's okay. You're already on the right path.",
+    color: "#708060"
+  }
 };
 
-
-// Easter Eggs (4, spirituality & faith theme)
+// 彩蛋
 const easterEggs = [
-  { title: "Analects · Confucius Enters the Grand Temple", text: "Confucius entered the Grand Temple and asked about everything. Someone said: 『"Who says this son of Zou knows ritual? He asks about everything in the Grand Temple." 』Confucius heard this and said: 『"That is ritual." 』——True faith begins with daring to ask "why."" },
-  { title: "Wang Yangming · Unity of Knowledge and Action", text: "Wang Yangming said: 『Knowledge is the beginning of action; action is the completion of knowledge. 』——What you know doesn't count as belief — what you do does. True faith is lived, not spoken." },
-  { title: "Descartes · I Think Therefore I Am", text: "Descartes said: 『I think, therefore I am. 』——Doubt is the starting point of all faith. A faith that cannot be questioned is one step from superstition. Daring to doubt is truly searching.", icon: "🜂" },
-  { title: "Lindy Effect", text: "Lindy Effect说：已经存在越久的东西，还会存在更久。——Be wary of newly emerged "absolute truths." True wisdom endures the test of time." }
+  { title: "From 'The Wisdom Treasury' — Zhou Chu", text: "Zhou Chu was violent and reckless in his youth, feared by the whole village. After visiting the scholars Lu Ji and Lu Yun, he transformed himself and became a loyal minister. — Your family of origin gave you a past, but not your ending." },
+  { title: "Su Mingyu's Awakening", text: "In 'All Is Well,' Su Mingyu was neglected since childhood but grew to become the person the whole family relied on most. Some paths can only be walked alone." },
+  { title: "Psychological Research", text: "Attachment theory reveals: our first relationships shape our internal working models — but those models can be revised in every new relationship. The key is your willingness to try." },
+  { title: "From 'The Wisdom Treasury' — Fan Zhongyan", text: "Fan Zhongyan lost his father young, and his mother remarried. Through hardship and relentless study, he became one of China's greatest statesmen. — Those who weren't loved can learn to love. Those who were wounded can become healers." }
 ];
 
 /* ============================================================
@@ -1127,7 +1201,7 @@ function goPage(name) {
   currentPage = name;
   updateProgress(name);
   if (name === 'dilemma') renderDilemma();
-  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display = 'block'; }
+  if (name === 'adventure') { selectRandomCard(); document.getElementById('flipHint').style.display='block'; }
   if (name === 'question') renderQuestion();
   if (name === 'result') showResult();
   if (name === 'advice') showAdvice();
@@ -1147,7 +1221,7 @@ function renderDilemma() {
   const list = document.getElementById('dilemmaList');
   list.innerHTML = dilemmas.map(d => `
     <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
-      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-num">DILEMMA ${String(d.id).padStart(2,'0')}</div>
       <div class="dilemma-text">${d.text}</div>
     </div>
   `).join('');
@@ -1167,7 +1241,8 @@ function toggleDilemma(id) {
 function updateDilemmaBtn() {
   const count = selectedDilemmas.length;
   document.getElementById('dilemmaCount').textContent = count;
-  document.getElementById('dilemmaNextBtn').disabled = count === 0;
+  const btn = document.getElementById('dilemmaNextBtn');
+  btn.disabled = count === 0;
 }
 
 function goDilemma() {
@@ -1186,13 +1261,13 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+  document.getElementById('flipHint').textContent = 'Tap the card to flip';
 }
 
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— This card accompanies you to the diagnosis —';
+  document.getElementById('flipHint').textContent = '— This card will guide your diagnosis —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1206,7 +1281,7 @@ function goQuestion() {
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1221,7 +1296,7 @@ function renderQuestion() {
 
   document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
   nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
 }
 
@@ -1275,23 +1350,22 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
-    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `Faith isn't found — it's lived.看清自己相信什么、为什么相信，就已经是自由的开始。`
+    `Your core block is "${topKey ? topKey.name : ''}". Seeing it is already the first step toward change.`,
+    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blocks that are interconnected and shape each other.`,
+    "Getting here means you're already more self-aware than most people."
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
   const resultList = document.getElementById('resultList');
   resultList.innerHTML = sorted.slice(0, 6).map(([key, score]) => {
     const cp = cardPoints[key];
-    if (!cp) return '';
     const pct = Math.min(100, score * 40);
     const barClass = pct >= 60 ? 'bar-high' : pct >= 30 ? 'bar-mid' : 'bar-low';
     return `
       <div class="result-card">
         <div class="result-card-top">
           <span class="result-card-name">${cp.name}</span>
-          <span class="result-card-pct">matched ${score} times</span>
+          <span class="result-card-pct">Matched ${score} time${score > 1 ? 's' : ''}</span>
         </div>
         <div class="result-bar-bg">
           <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1333,10 +1407,9 @@ function showAdvice() {
   const adviceList = document.getElementById('adviceList');
   adviceList.innerHTML = topCards.map(([key, score], i) => {
     const cp = cardPoints[key];
-    if (!cp) return '';
     return `
       <div class="advice-card">
-        <div class="advice-card-label">卡点 ${String(i+1).padStart(2,'0')}</div>
+        <div class="advice-card-label">BLOCK ${String(i+1).padStart(2,'0')}</div>
         <div class="advice-card-title">
           <span class="advice-card-num">${i+1}</span>
           ${cp.name}
@@ -1362,32 +1435,31 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('Please write something first — at least one thing you're stuck on.');
+    alert('Please write something first — at least one thing you\'re stuck on.');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${['1','2','3','4'][i]}: ${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
     "What you've written shows you're already facing it. Just putting it into words is the beginning of change.",
-    "Stuck points don't form in a day, and they don't need a day to unravel. You've already taken the first step.",
-    "What you've expressed is what many dare not face. Your courage is greater than you know.",
-    "Not everyone is willing to write these things down. You did. That alone is no small feat."
+    "Struggles don't form in a day, and they don't need a day to untangle. You've already taken the first step.",
+    "What you've said out loud is what many people are afraid to face. Your courage is bigger than you know.",
+    "Not everyone is willing to write these things down. You did. That alone is no small thing."
   ];
-  document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
+  document.getElementById('cardResponse').textContent = '"' + responses[Math.floor(Math.random() * responses.length)] + '"';
 
-  const firstAction = h4 ? `Start with this one thing today: ${h4.split('，')[0].split('。')[0]}` : 'Today, do just one thing: set a boundary for your interest, even a tiny one.';
+  const firstAction = h4 ? `Start with this today: ${h4.split('，')[0].split('。')[0]}` : "Today, do just one thing: think about this once more — one step clearer than yesterday.";
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
 }
 
 function downloadCard() {
-  const preview = document.getElementById('cardPreview');
   const canvas = document.createElement('canvas');
   canvas.width = 600; canvas.height = 800;
   const ctx = canvas.getContext('2d');
@@ -1404,11 +1476,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('My Hidden Level', 300, 80);
+  ctx.fillText('My Hidden Stage', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('Level 10 · Spirituality & Faith · Found It', 300, 108);
+  ctx.fillText('Stage 1 · Family of Origin · Found It!', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1423,7 +1495,7 @@ function downloadCard() {
   let y = 170;
   lines.forEach(para => {
     ctx.fillText(para, 50, y);
-    y += 26 + 20;
+    y += para.split('\n').length * 26 + 20;
   });
 
   ctx.fillStyle = '#9a7a4a';
@@ -1439,10 +1511,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— Level 10 · Spirituality & Faith · Found It —', 300, 750);
+  ctx.fillText('— Stage 1 · Family of Origin · Complete —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的隐藏关卡.png';
+  link.download = 'My Hidden Stage.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1476,7 +1548,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<!-- enhance: scroll fade-in + back to top -->
+<!-- enhance: 滚动淡入 + 回到顶部 -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1492,7 +1564,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
-<!-- Visitor Counter -->
+<!-- 访客计数器 -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){
@@ -1503,7 +1575,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor # <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> </span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span></span>';}
 })();
 </script>
 <script src="lang-toggle-v2.js"></script>

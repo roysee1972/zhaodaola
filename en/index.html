@@ -203,7 +203,7 @@
   <div style="max-width: 640px; margin: 0 auto; padding: 10px 30px 30px;">
     <div style="text-align: center; margin-bottom: 14px;">
       <div style="width: 80px; height: 1px; background: linear-gradient(to right, transparent, rgba(139,90,43,0.2), transparent); margin: 0 auto 14px;"></div>
-      <a href="templates/index.html" style="font-size: 13px; color: #9a7a4a; letter-spacing: 3px; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#7a5a28'" onmouseout="this.style.color='#9a7a4a'">🛠 Found It! · Premium Services</a>
+      <a href="../templates/index.html" style="font-size: 13px; color: #9a7a4a; letter-spacing: 3px; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#7a5a28'" onmouseout="this.style.color='#9a7a4a'">🛠 Found It! · Premium Services</a>
     </div>
     <div style="text-align: center; font-size: 12px; color: #b8a070; line-height: 1.8; max-width: 480px; margin: 0 auto;">
       Custom event website templates — Birthday celebrations, wedding invitations, business trips, study tours, wellness retreats, parties & gatherings
@@ -212,15 +212,13 @@
 
   <div class="footer">
     <div style="margin-bottom: 12px;">
-      <a href="心灵小屋/index.html" style="color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid rgba(139,90,43,0.2); padding-bottom: 2px; transition: all 0.2s;">🏡 Soul Retreat</a>
+      <a href="../心灵小屋/index.html" style="color: var(--gold); text-decoration: none; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid rgba(139,90,43,0.2); padding-bottom: 2px; transition: all 0.2s;">🏡 Soul Retreat</a>
     </div>
     Found It! · Helping you see where you're truly stuck — then take that step
     <div style="margin-top: 12px;">
-      <a href="建站缘起.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">Why This Site</a>
+      <a href="about.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">Why This Site</a>
       <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
-      <a href="联系我们.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">Contact Us</a>
-      <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
-      <a href="products.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">AI Products</a>
+      <a href="contact.html" style="color: var(--text-mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; opacity: 0.8; transition: all 0.2s;">Contact Us</a>
       <span style="color: var(--text-mid); opacity: 0.4; margin: 0 8px;">·</span>
       <a href="disclaimer.html" style="color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; opacity: 0.7; transition: all 0.2s;">Privacy & Disclaimer</a>
     </div>
@@ -260,18 +258,18 @@
 <script>
 // ===== 12关卡数据 =====
 const levels = [
-  { id:1,  name:'Family of Origin', color:0x9a6832 },
-  { id:2,  name:'Learning & Education', color:0xa07838 },
-  { id:3,  name:'Entering the World', color:0xb08840 },
-  { id:4,  name:'Independence & Livelihood', color:0xc09850 },
-  { id:5,  name:'Love & Marriage', color:0xa06040 },
-  { id:6,  name:'Midlife', color:0x78983a },
-  { id:7,  name:'Money & Relationships', color:0xb06838 },
-  { id:8,  name:'Social Maze', color:0x4878a0 },
-  { id:9,  name:'Hobbies & Interests', color:0x7858a0 },
-  { id:10, name:'Spirituality & Faith', color:0xa04040 },
-  { id:11, name:'Health & Aging', color:0x388058 },
-  { id:12, name:'Legacy & Passing On', color:0x886030 }
+  { id:1,  name:'Family of Origin', color:0xEAA8B8 },
+  { id:2,  name:'Learning & Education', color:0x2968B0 },
+  { id:3,  name:'Entering the World', color:0x229088 },
+  { id:4,  name:'Independence & Livelihood', color:0x2D7545 },
+  { id:5,  name:'Love & Marriage', color:0xA07830 },
+  { id:6,  name:'Midlife', color:0x7040A5 },
+  { id:7,  name:'Money & Relationships', color:0xCC7525 },
+  { id:8,  name:'Social Maze', color:0xAA3578 },
+  { id:9,  name:'Hobbies & Interests', color:0xE0A020 },
+  { id:10, name:'Spirituality & Faith', color:0x882040 },
+  { id:11, name:'Health & Aging', color:0x6A8830 },
+  { id:12, name:'Legacy & Passing On', color:0x1A1A2E }
 ];
 
 // ===== Three.js 场景 =====
@@ -592,18 +590,18 @@ function handleTitleClick() {
 function goToLevel(n) {
   // 12个关卡全部就绪
   const levelFiles = {
-    1: '第一关-原生家庭.html',
-    2: '第二关-求知求学.html',
-    3: '第三关-初入人海.html',
-    4: '第四关-独立谋生.html',
-    5: '第五关-婚恋家庭.html',
-    6: '第六关-人到中年.html',
-    7: '第七关-金钱关系.html',
-    8: '第八关-人际迷宫.html',
-    9: '第九关-兴趣爱好.html',
-    10: '第十关-心灵信仰.html',
-    11: '第十一关-健康与衰老.html',
-    12: '第十二关-终篇传承.html'
+    1: 'stage-01-family-of-origin.html',
+    2: 'stage-02-learning.html',
+    3: 'stage-03-entering-world.html',
+    4: 'stage-04-independence.html',
+    5: 'stage-05-love-marriage.html',
+    6: 'stage-06-midlife.html',
+    7: 'stage-07-money.html',
+    8: 'stage-08-social-maze.html',
+    9: 'stage-09-hobbies.html',
+    10: 'stage-10-spirituality.html',
+    11: 'stage-11-health.html',
+    12: 'stage-12-legacy.html'
   };
   if (levelFiles[n]) {
     window.location.href = levelFiles[n];
@@ -612,7 +610,7 @@ function goToLevel(n) {
   }
 }
 function startAssessment(type) {
-  var p = { energy:'assessment-energy.html', influence:'assessment-influence.html', value:'assessment-value.html' };
+  var p = { energy:'../assessment-energy.html', influence:'../assessment-influence.html', value:'../assessment-value.html' };
   if (p[type]) window.location.href = p[type];
 }
 </script>

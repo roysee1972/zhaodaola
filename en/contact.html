@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-    <meta name="description" content="Privacy & Disclaimer — Found It! privacy policy and terms of service.">
+    <meta name="description" content="Contact Us — Get in touch with the Found It! team.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy & Disclaimer — Found It!</title>
+<title>Contact Us — Found It!</title>
 <style>
 :root {
   --bg: #f5e6c8;
@@ -55,14 +55,14 @@ body::after {
 }
 .container {
   position: relative; z-index: 1;
-  max-width: 720px;
+  max-width: 560px;
   margin: 0 auto;
   padding: 60px 24px 80px;
 }
 .gold-line {
   width: 120px; height: 1px;
   background: linear-gradient(to right, transparent, var(--gold), transparent);
-  margin: 0 auto 32px;
+  margin: 0 auto 36px;
 }
 h1 {
   text-align: center;
@@ -77,29 +77,106 @@ h1 {
   letter-spacing: 3px;
   margin-bottom: 40px;
 }
-.section {
+.contact-card {
   background: rgba(255,252,240,0.7);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 24px 28px;
-  margin-bottom: 20px;
+  padding: 28px 30px;
+  margin-bottom: 24px;
   box-shadow: 0 2px 12px var(--shadow);
+  text-align: center;
 }
-.section h2 {
+.contact-card h2 {
   font-size: 17px;
   color: var(--text-dark);
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 18px;
   letter-spacing: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
 }
-.section p {
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 0;
+  font-size: 15px;
+  color: #6a4e28;
+  border-bottom: 1px dashed rgba(139,90,43,0.12);
+}
+.contact-item:last-of-type { border-bottom: none; }
+.contact-item .label {
+  color: var(--text-mid);
+  font-size: 13px;
+  letter-spacing: 2px;
+  min-width: 60px;
+}
+.contact-item .value {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  user-select: all;
+}
+.contact-item .note {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+.prefer-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+.qr-section {
+  text-align: center;
+  padding: 20px 0 8px;
+}
+.qr-section p {
+  font-size: 13px;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.qr-img-wrap {
+  display: inline-block;
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.qr-img-wrap img {
+  width: 220px;
+  height: 220px;
+  display: block;
+}
+.qr-note {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+.warm-words {
+  background: rgba(255,252,240,0.5);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.warm-words p {
   font-size: 14px;
   color: var(--text-mid);
   line-height: 2;
-  margin-bottom: 12px;
+  letter-spacing: 1px;
 }
-.section p:last-child { margin-bottom: 0; }
 .footer-link {
   text-align: center;
   margin-top: 36px;
@@ -120,67 +197,61 @@ h1 {
 @media (max-width: 600px) {
   .container { padding: 50px 16px 60px; }
   h1 { font-size: 22px; letter-spacing: 4px; }
-  .section { padding: 18px 16px; }
+  .contact-card { padding: 20px 18px; }
+  .qr-img-wrap img { width: 180px; height: 180px; }
 }
 </style>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
-title="Back to Home"
+<button class="back-home-btn" onclick="window.location.href='index.html'" title="Back to Home">
   <span style="color:var(--gold);">←</span> <span>Back to Home</span>
 </button>
 
 <div class="container">
-  <h1>Privacy & Disclaimer</h1>
+  <h1>Contact Us</h1>
   <div class="subtitle">Found It! · The Life Game</div>
   <div class="gold-line"></div>
 
-  <div class="section">
-    <h2>I. Nature of This Website</h2>
-    <p>"Found It!" is a public-facing <b>personal growth and self-awareness</b> information-sharing website.</p>
-    <p>All content provided on this site, including but not limited to text, test questions, assessment results, recommendations, and character descriptions, is <b>for personal reference and self-exploration only</b>. It does not constitute professional psychological counseling, psychotherapy, psychiatric diagnosis, or medical advice of any kind.</p>
-    <p>This site <b>does not provide psychological counseling or therapy services</b>, holds no psychological or medical credentials, and does not issue any legally binding diagnoses or assessment reports.</p>
+  <div class="contact-card">
+    <h2>Get in Touch</h2>
+    <div class="contact-item">
+      <span class="label">WeChat</span>
+      <span class="value">liren1972</span>
+      <span class="prefer-badge">Preferred</span>
+    </div>
+    <div class="contact-item" style="flex-direction: column; align-items: center;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="label">Phone</span>
+        <span class="value">13908178760</span>
+      </div>
+      <div class="note">(Anti-spam enabled — WeChat preferred)</div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>II. Third-Party Services Disclaimer</h2>
-    <p>This site may provide information and links to third-party counselors, mental health services, or helplines. This information is provided solely for user convenience and <b>does not constitute endorsement, recommendation, or guarantee of any third-party service</b>.</p>
-    <p><b>All disputes, losses, or damages</b> arising from users' interactions with any third-party counselor or service — whether related to counseling, treatment, or any other matter — <b>are not the responsibility of this site</b>.</p>
-    <p>Users should independently verify the qualifications and reputation of any third-party service before engaging with it.</p>
+  <div class="contact-card">
+    <h2>Support Us</h2>
+    <div class="qr-section">
+      <p>If you found this content helpful,<br>even a small donation is the biggest encouragement</p>
+      <div class="qr-img-wrap">
+        <!-- Payment QR code image: donation-qrcode.jpg in same directory -->
+        <!-- 建议每7天更换一次 -->
+        <img src="donation-qrcode.jpg" alt="Scan to donate" onerror="this.parentElement.innerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;color:#b89a6a;font-size:13px;text-align:center;line-height:1.8;\'>QR Code<br>Coming Soon</div>'">
+      </div>
+      <div class="qr-note">QR code updated regularly · Long-press or screenshot to scan</div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>III. Privacy Protection</h2>
-    <p>This is a purely static display website that <b>does not collect, store, or transmit any personal information</b> from users.</p>
-    <p>All tests and assessments are completed locally in the user's browser. All response data and assessment results are saved only on the user's current device and are never uploaded to any server.</p>
-    <p>Any content entered by users in interactive features such as the "Soul Cabin" is not recorded or used for any commercial purpose.</p>
-  </div>
-
-  <div class="section">
-    <h2>IV. Content Accuracy</h2>
-    <p>This site strives to provide accurate and helpful information, but makes no express or implied warranties regarding the <b>completeness, accuracy, or timeliness</b> of its content.</p>
-    <p>Assessment results are generated based on simplified self-evaluation models and <b>lack the scientific validity of professional psychological assessments</b>. They should not be used as the basis for any major life decisions.</p>
-  </div>
-
-  <div class="section">
-    <h2>V. Emergency Information</h2>
-    <p>If you are experiencing severe psychological distress, emotional crisis, or thoughts of self-harm, <b>please seek professional help immediately</b>:</p>
-    <p>China 24-hour mental health hotline: <b style="color:var(--gold);">400-161-9995</b></p>
-    <p>Beijing Crisis Research & Intervention Center: <b style="color:var(--gold);">010-82951332</b></p>
-    <p>Life Line: <b style="color:var(--gold);">400-821-1215</b></p>
-    <p>International Association for Suicide Prevention: <a href="https://www.iasp.info/resources/Crisis_Centres/" style="color:var(--gold);">Find a helpline near you</a></p>
-  </div>
-
-  <div class="section">
-    <h2>VI. General Disclaimer</h2>
-    <p>By accessing or using this website, users are deemed to have fully read, understood, and agreed to all contents of this statement.</p>
-    <p>This site and its operators <b>bear no legal liability</b> for any losses or damages directly or indirectly caused by the use or inability to use the content of this website.</p>
-    <p>The right of final interpretation of this statement belongs to this website.</p>
+  <div class="warm-words">
+    <p>Thank you for every bit of kindness ✦</p>
+    <p style="font-size: 13px; color: var(--text-light);">May you find your own path through this life game</p>
   </div>
 
   <div class="footer-link">
-    <a href="index.html">← Back to Home</a>
+    <a href="about.html">← About this site</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="index.html">Back to Home</a>
   </div>
 </div>
 

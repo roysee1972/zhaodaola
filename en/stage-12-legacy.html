@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Hobbies & Interests level: Rediscover the thing that lights up your eyes.">
+<meta name="description" content="Legacy & Passing On: What do you want to leave behind? The final question of life.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Level 9 · Hobbies & Interests — Found It</title>
+<title>Stage 12 · Legacy & Passing On — Found It</title>
 <style>
   :root {
     --bg: #f5e6c8;
@@ -763,29 +763,27 @@
 <!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">Level 9 · Found It</div>
+    <div class="level-badge">Stage 12 · Found It</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">Flow</div>
+      <div class="deco-ring-inner">Legacy</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">Hobbies & Interests</h1>
+    <h1 class="hero-title">Final Chapter · Legacy</h1>
     <p class="hero-sub">
-      Some things make you lose track of time<br>
-      Some things make you lose yourself<br>
-      Flow is a gift; obsession is the price
+      Too early to write a will, but just right for a life review<br>
+      This level doesn't talk about death — it helps you look back
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      Have you ever had a moment—<br>
-      doing something, looking up to find it's already dark?<br>
-      Or knowing you should stop, but unable to?<br>
-      In this level, let's talk about the things that make you lose yourself.
+      Have you ever wondered:<br>
+      If today were my last day, what would I regret?<br>
+      What have I actually left behind in this life?<br>
+      Or — am I afraid of being forgotten?
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      Passion is a fire—<br>
-      it can light your path and warm your life,<br>
-      or it can burn out of control.<br>
-      This level helps you see where your fire is burning.
+      Death isn't the opposite of life — it's part of it.<br>
+      This level doesn't give you answers, it just accompanies you<br>
+      in seeing the path you've walked.
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
     <button class="btn" onclick="goPage('dilemma')">Begin Exploration</button>
@@ -797,10 +795,10 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">Level 9 · Hobbies & Interests</div>
+      <div class="level-badge">Stage 12 · Legacy & Passing On</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">What makes you lose track of time?</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 items closest to how you feel. Multiple selections are fine.</p>
+      <h2 class="hero-title" style="font-size: 26px;">What confuses you the most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 items that resonate most with you. No courage needed — just honesty.</p>
     </div>
     <div style="margin-top: 24px;" id="dilemmaList"></div>
     <div class="dilemma-hint" id="dilemmaHint">Selected: <span id="dilemmaCount">0</span></div>
@@ -814,7 +812,7 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">Level 9 · Hobbies & Interests</div>
+      <div class="level-badge">Stage 12 · Legacy & Passing On</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card First</h2>
       <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
@@ -827,7 +825,7 @@
             <div class="flip-card-front-hint">Tap to Reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"Your relationship with money is your relationship with yourself."</div>
+            <div class="flip-card-quote" id="flipQuote">"Too early to write a will, but just right for a life review."</div>
             <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
@@ -843,7 +841,7 @@
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">How have you been feeling lately?</div>
+      <div class="question-text" id="qText">How would you rate your recent physical condition?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
@@ -860,15 +858,15 @@
     <div class="result-header">
       <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">Your Cognitive Block Profile</div>
-      <div class="result-sub">Hobbies & Interests · Level 9</div>
+      <div class="result-title">Your Life Reflection Profile</div>
+      <div class="result-sub">Legacy & Passing On · Stage 12</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">You discovered a hidden thought</div>
+      <div class="easter-egg-label">You discovered a little secret about life</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
@@ -883,21 +881,24 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">Level 9 · Hobbies & Interests</div>
+      <div class="level-badge">Stage 12 · Legacy & Passing On</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="advice-title">Level Advice</div>
       <div class="advice-intro">
-        Passion is a fire—<br>
-        it can light your path or burn you.<br>
-        This level helps you see where your fire is burning.
+        The final chapter isn't the end — it's a mirror.<br>
+        You don't need to resolve life and death, just see yourself.<br>
+        This level helps you look back at the path you've walked.
       </div>
     </div>
     <div id="adviceList"></div>
 
+    <div style="text-align: center; margin: 24px 0 12px;">
+      <a href="deathbed-stories.html" style="display: inline-block; padding: 10px 28px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; font-family: var(--font); font-size: 14px; color: var(--text-dark); text-decoration: none; letter-spacing: 2px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(201,168,76,0.22)';this.style.borderColor='#c9a84c'" onmouseout="this.style.background='rgba(201,168,76,0.12)';this.style.borderColor='rgba(201,168,76,0.35)'">📖 Twelve End-of-Life Stories: Humanity's Last Words</a>
+    </div>
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
       Not what you wanted to say? Open your hidden level →
     </div>
-    <div class="page-end-text">— Level 9 · Hobbies & Interests · Complete —</div>
+    <div class="page-end-text">— Stage 12 · Legacy & Passing On · Complete —</div>
   </div>
 </div>
 
@@ -909,34 +910,34 @@
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="hidden-title">Your Personal Level</div>
       <div class="hidden-sub">
-        This is your space. Write about what's truly stuck between you and your passions.<br>
+        This is your space. Write what you truly want to say about the "final chapter."<br>
         No need to polish. Just be honest.
       </div>
     </div>
     <div class="step-card">
       <div class="step-num">Step 1</div>
-      <div class="step-label">Where am I stuck with my interests?</div>
-      <textarea class="step-input" id="hidden1" placeholder="The last thing I got so absorbed in that I lost track of time was..."></textarea>
+      <div class="step-label">If today were your last day, what is the one thing you'd most want to do?</div>
+      <textarea class="step-input" id="hidden1" placeholder="If I had only one day left, I would..."></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">Step 2</div>
-      <div class="step-label">When did this kind of absorption first appear?</div>
-      <textarea class="step-input" id="hidden2" placeholder="The earliest time I was absorbed in something was..."></textarea>
+      <div class="step-label">How do you want others to remember you? In one sentence.</div>
+      <textarea class="step-input" id="hidden2" placeholder="I want to be remembered as..."></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">Step 3</div>
-      <div class="step-label">If I could change one thing, what would it be?</div>
-      <textarea class="step-input" id="hidden3" placeholder="I wish I could..."></textarea>
+      <div class="step-label">What is the decision you are most proud of in your life?</div>
+      <textarea class="step-input" id="hidden3" placeholder="The decision I'm most proud of is..."></textarea>
     </div>
     <div class="step-card">
       <div class="step-num">Step 4</div>
-      <div class="step-label">What boundaries am I willing to set for my interests?</div>
-      <textarea class="step-input" id="hidden4" placeholder="To stay in control, I am willing to..."></textarea>
+      <div class="step-label">Leave a message for yourself ten years from now.</div>
+      <textarea class="step-input" id="hidden4" placeholder="To my future self, I want to say..."></textarea>
     </div>
     <button class="generate-btn" onclick="generateCard()">Generate My Hidden Level Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">My Hidden Level</div>
-      <div class="card-preview-sub">Level 9 · Hobbies & Interests · Found It</div>
+      <div class="card-preview-title">My Life Reflection Book</div>
+      <div class="card-preview-sub">Stage 12 · Legacy & Passing On · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
@@ -950,11 +951,11 @@
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Twelve Levels — You Made It Here</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      Seeing whether your passions drive you or trap you<br>
-      is itself the beginning of change.<br>
-      The road ahead lies beneath your feet.
+      From your family of origin to legacy and passing on,<br>
+      you've walked the entire circle of life.<br>
+      This isn't the end — it's another beginning.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
     <button class="btn btn-ghost" onclick="restart()">Start Over</button>
@@ -967,139 +968,142 @@
    Data
    ============================================================ */
 
-// 困境（12条）
+// Dilemmas (12 items, 3 layers: Looking Back / The Weight of Now / What to Leave Behind)
 const dilemmas = [
-  { id: 1, text: "Can't stop scrolling short videos, look up and it's already dark." },
-  { id: 2, text: "Gaming until dawn, knowing full well I should sleep." },
-  { id: 3, text: "Binge-watching series late into the night, one after another." },
-  { id: 4, text: "Mindlessly scrolling social media, an hour gone." },
-  { id: 5, text: "Drawing/writing/coding... lose track of meals once I start." },
-  { id: 6, text: "Researching a hobby (cooking/crafts/sports), can't stop." },
-  { id: 7, text: "Reading until dawn, completely unaware of time passing." },
-  { id: 8, text: "Doing something I love, don't hear people calling me multiple times." },
-  { id: 9, text: "Gambling/stock trading, knowing the risk is high but can't stop." },
-  { id: 10, text: "Caught in an online romance, knowing it's unrealistic but deeply immersed." },
-  { id: 11, text: "Pursuing extreme sports/adventures, always pushing to the edge of danger." },
-  { id: 12, text: "Spending large sums on a hobby, already affecting basic living." }
+  { id: 1, text: "Thinking about death scares me, but I can't articulate what exactly I'm afraid of." },
+  { id: 2, text: "I always feel there's something unfinished, but I can't say what." },
+  { id: 3, text: "Watching my parents grow old, I realized for the first time: I'm next." },
+  { id: 4, text: "If today were my last day, I'd regret many things." },
+  { id: 5, text: "I worry that when I'm old, no one will remember me." },
+  { id: 6, text: "I'm not sure what I've actually left behind in this life." },
+  { id: 7, text: "I want to write something for my children or descendants, but when I pick up the pen, I don't know what to write." },
+  { id: 8, text: "What I fear isn't death — it's being forgotten." },
+  { id: 9, text: "Sometimes I feel: my life has been wasted." },
+  { id: 10, text: "I want some form of 'immortality,' but I'm not religious." },
+  { id: 11, text: "When I see news of someone dying suddenly, I think: what if that were me?" },
+  { id: 12, text: "End of life, wills, funerals — I've never thought about it, and I don't want to." }
 ];
 
-// 冒险卡（12张）
+// Adventure Cards (12)
 const adventureCards = [
-  "Algorithms know you better than you do — that's both convenience and a cage.",
-  "Achievement in the virtual world sometimes compensates for what's missing in reality.",
-  "The joys and sorrows in stories can feel more real than your own life.",
-  "Others' highlight reels may be their most inauthentic side.",
-  "Flow is a gift of life, but don't forget — gifts can become debts.",
-  "Creation is a human instinct, but what you create defines who you are.",
-  "Feeding others' stomachs sometimes feeds your own heart.",
-  "Reading ten thousand books — if only to escape your present life — the books become a cage too.",
-  "The gambler's most dangerous illusion: thinking you can win it back.",
-  "The market won't reward your diligence, only your clarity.",
-  "Imagined people are always more perfect — and more dangerous — than real ones.",
-  "Brushing with death is sometimes about feeling alive."
+  "Every day you're writing your own epitaph. What are you writing?",
+  "Death isn't the opposite of life — it's part of life. Heidegger said that.",
+  "Qiong Yao chose her own way to say goodbye — this wasn't escape, it was the last act of control over her life.",
+  "A person dies three times: first when they stop breathing, second at the funeral, third when the last person who remembers you passes. Which stage are you at?",
+  "The best legacy isn't money — it's a story that makes people smile when they think of you.",
+  "Writing a will is too early, but writing a few words for the people who matter — that's just right.",
+  "What you fear isn't death itself — it's feeling like there's still so much unfinished. So... which one matters most?",
+  "Someone's life got a little better because you existed. That's enough. Really enough.",
+  "A finding from palliative care: what the dying regret most is never 'what I did wrong,' but 'what I didn't do.'",
+  "A new question of the digital age: what happens to your social media, cloud storage, and accounts after you die?",
+  "You don't need to be remembered by millions. A few people who truly remember you — that is 'immortality.'",
+  "The final chapter isn't the end. Every step you've taken has left footprints in others' lives — you just may not know it."
 ];
 
-// 诊断题（6题×5选项）
+// Diagnostic Questions (6 × 5 options)
 const questions = [
   {
-    q: "How do you perceive time when doing your favorite thing?",
+    q: "What is your first reaction when you think about 'death'?",
     options: [
-      { text: "Completely lose track of time, look up to find hours have passed.", key: "01Deep Flow" },
-      { text: "Know time is passing, but don't care at all.", key: "02Passionate Focus" },
-      { text: "Occasionally check the time, but mostly forget about it.", key: "03Light Immersion" },
-      { text: "Always conscious of time, unable to truly immerse.", key: "04Shallow Interests" },
-      { text: "Give up before even starting, finding it pointless.", key: "05Lack of Interests" }
+      { text: "It's normal — everyone dies, nothing to fear.", key: "01Calm Acceptance" },
+      { text: "I don't dare think about it — it makes me uncomfortable.", key: "02Avoidance" },
+      { text: "I think about it occasionally, but stop when I can't figure it out.", key: "03Occasionally Moved" },
+      { text: "Quite scared, especially at night when I can't sleep.", key: "04Overt Fear" },
+      { text: "I've thought about it seriously many times, even made some preparations.", key: "05Proactive" }
     ]
   },
   {
-    q: "Have your interests affected things you should be doing?",
+    q: "If today were the last day of your life, what would you regret?",
     options: [
-      { text: "Never — I always manage my time well.", key: "06Good Self-Control" },
-      { text: "Occasionally, but I can usually pull back.", key: "07Occasional Loss of Control" },
-      { text: "Sometimes, and I regret it afterward.", key: "08Frequent Loss of Control" },
-      { text: "Often, and it has delayed important responsibilities.", key: "09Seriously Affected" },
-      { text: "Already affecting basic life (work/health/relationships).", key: "10Addiction State" }
+      { text: "No regrets — I'm basically satisfied with my life.", key: "06No Regrets" },
+      { text: "Some regrets, but overall it's okay.", key: "07Slight Regrets" },
+      { text: "I'd regret not spending more time with family.", key: "08Relational Debt" },
+      { text: "I'd regret not doing what I truly wanted to do.", key: "09Betrayed Self" },
+      { text: "Don't know - never seriously thought about it.", key: "10Never Examined" }
     ]
   },
   {
-    q: "How much are you willing to spend on your interests?",
+    q: "Regarding 'what to leave behind,' which is closest to your current thinking?",
     options: [
-      { text: "Happy without spending — interests don't need to cost money.", key: "11Rational Spending" },
-      { text: "A little spending, within control.", key: "12Small Investment" },
-      { text: "Quite a bit of money, but still manageable.", key: "13Moderate Investment" },
-      { text: "Would borrow money to invest, feeling it's worth it.", key: "14Over-Investment" },
-      { text: "Already in debt, but still can't stop.", key: "10Addiction State" }
+      { text: "I hope to leave my children some material foundation — that's enough.", key: "11Material Legacy" },
+      { text: "I hope people remember my character — remember me as a good person.", key: "12Good Name" },
+      { text: "I hope to leave something behind — works, ideas, or a story.", key: "13Spiritual Legacy" },
+      { text: "Haven't thought about it — whatever happens, happens.", key: "14Doesnt Matter" },
+      { text: "I feel I can't leave anything behind - it makes me anxious.", key: "15Anxious Emptiness" }
     ]
   },
   {
-    q: "If your interest were forbidden, how would you react?",
+    q: "How do you feel about 'being forgotten'?",
     options: [
-      { text: "Doesn't matter, I'd just find another interest.", key: "04Shallow Interests" },
-      { text: "A bit disappointed, but can accept it.", key: "15Healthy Attachment" },
-      { text: "Very upset — it's my important spiritual anchor.", key: "16Deep Dependency" },
-      { text: "Angry rebellion — can't accept life without it.", key: "17Compulsive Tendencies" },
-      { text: "Life feels meaningless, don't know what else to do.", key: "18Interest as Everything" }
+      { text: "Being forgotten is normal — a few generations later, who remembers who?", key: "16Accept Forgotten" },
+      { text: "I don't need many to remember me — family remembering is enough.", key: "17Small Circle" },
+      { text: "I hope at least some people truly remember me and smile when they think of me.", key: "18Want Remembered" },
+      { text: "I fear being completely forgotten — that feeling is an indescribable loneliness.", key: "19Fear Forgotten" },
+      { text: "Rather than being remembered, live a brilliant life.", key: "20Live Present" }
     ]
   },
   {
-    q: "In your interests, are you creating or consuming?",
+    q: "Regarding end-of-life, wills, and funerals — what is your current state?",
     options: [
-      { text: "Mainly creating, with output and a sense of achievement.", key: "19Creative Type" },
-      { text: "More creating than consuming, overall positive.", key: "02Passionate Focus" },
-      { text: "Half and half — sometimes creating, sometimes consuming.", key: "20Mixed Bag" },
-      { text: "More consuming than creating, mainly passing time.", key: "21Consuming Type" },
-      { text: "Purely consuming, knowing it's pointless but can't stop.", key: "22Escape Type" }
+      { text: "Never thought about it — feels very far away.", key: "21Never Prepared" },
+      { text: "The thought crosses my mind occasionally, but I quickly shift my attention.", key: "22Intentional Avoid" },
+      { text: "I've thought about it, but don't know where to start preparing.", key: "23Lost Helpless" },
+      { text: "I've already talked about this with my family.", key: "24Had Conversation" },
+      { text: "Already made basic arrangements (will/insurance/living will, etc.)", key: "25Prepared Ready" }
     ]
   },
   {
-    q: "How do people around you view your interests?",
+    q: "If you could know what happens after death, would you want to know?",
     options: [
-      { text: "Supportive and appreciative, think I'm doing great.", key: "23Social Support" },
-      { text: "Understanding but a bit worried I'm too obsessed.", key: "24Gentle Reminders" },
-      { text: "Don't quite understand, think I'm wasting time.", key: "25Misunderstood" },
-      { text: "Opposed, think my interests are frivolous.", key: "26Conflict Type" },
-      { text: "Serious conflicts have already arisen, relationships affected.", key: "27Interest-Caused Conflict" }
+      { text: "No — living life is already busy enough.", key: "26Focus This Life" },
+      { text: "Curious, but not a strong desire.", key: "27Mild Curiosity" },
+      { text: "I'd really like to know — this has bothered me for a long time.", key: "28Crave Answers" },
+      { text: "I have my own faith and already have an answer.", key: "29Have Faith" },
+      { text: "I think there's nothing after death, so I don't want to waste time thinking about it.", key: "30Materialist" }
     ]
   }
 ];
 
-// 卡点完整数据（30个维度）
+// Complete Card Point Data (30 dimensions)
 const cardPoints = {
-  "01Deep Flow":    { name: "Deep Flow",    desc: "You can enter a Deep Flow state — an ability many people dream of. But flow can also make you ignore your body's needs — a gift misused can become a burden.", advice: "This week, set a gentle alarm for your flow time — not to interrupt, but as a reminder: you're still in this world.", color: "var(--gold)" },
-  "02Passionate Focus":    { name: "Passionate Focus",    desc: "You have genuine passion for your interests — not following trends, but your inner voice. Guard this passion; it's your weapon against mediocrity.", advice: "Find someone equally passionate about this and have a conversation — you'll discover that resonance between enthusiasts nourishes more than solitary obsession.", color: "#b89a6a" },
-  "03Light Immersion":    { name: "Light Immersion",    desc: "You enjoy your interests without being consumed by them. This is a healthy state — interests are the seasoning of life, not the main course.", advice: "Try sharing your interest with someone — no need to teach, just do it together. Sharing warms up any interest.", color: "#9a7a4a" },
-  "04Shallow Interests":    { name: "Shallow Interests",    desc: "You have many interests, but they stay surface-level, hard to deeply immerse in. This isn't necessarily a flaw — but you might miss the thrill of mastering one thing.", advice: "Over the next six months, pick one interest and go deeper — no need to become an expert, just learn and experience a bit more.", color: "#b89a6a" },
-  "05Lack of Interests":    { name: "Lack of Interests",    desc: "You're not sure what you like, or you used to but gradually lost enthusiasm. This may be emotional numbness — people who suppress themselves long-term forget what they enjoy.", advice: "This week, do one small thing purely because you enjoy it — it doesn't need to be meaningful or productive. Just because you like it.", color: "#c0784a" },
-  "06Good Self-Control":    { name: "Good Self-Control",    desc: "You can enjoy your interests and stop when needed. This is a rare ability — your interests are freedom, not a cage.", advice: "Maintain this sense of freedom. If one day you find you can't stop, that's a signal to be cautious.", color: "var(--gold)" },
-  "07Occasional Loss of Control":    { name: "Occasional Loss of Control",    desc: "Most of the time you can control it, but occasionally you over-indulge. This shows your interest has real pull on you — as long as it's not frequent, occasional loss of control is one of life's pleasures.", advice: "Record your state before a loss of control — were you tired? Empty? Bored? Finding the trigger makes you more aware.", color: "#9a7a4a" },
-  "08Frequent Loss of Control":    { name: "Frequent Loss of Control",    desc: "Your interests frequently affect what you should do, followed by regret. You're torn between wanting to and needing to — that tug-of-war itself is draining you.", advice: "This week, make a should-do list before starting your interest — complete one item first. Sweet after bitter feels more satisfying.", color: "#a88040" },
-  "09Seriously Affected":    { name: "Seriously Affected",    desc: "Your interest has seriously affected your work, health, or relationships. It's not that you lack self-control — you just haven't found a compelling enough reason to stop.", advice: "Find someone you truly care about and tell them: 'I'm working on making changes.' — Make adjustment a matter of external accountability.", color: "#c0784a" },
-  "10Addiction State":    { name: "Addiction State",    desc: "Your interests have affected basic life, but you still can't stop. This isn't a willpower issue — your brain has formed dependency circuits that need systematic approaches to break.", advice: "At this point, consider talking to a professional (counseling or addiction intervention). Addiction isn't a moral issue — it's a physiological condition requiring professional support.", color: "#8b3a2a" },
-  "11Rational Spending":    { name: "Rational Spending",    desc: "You spend rationally on interests and can be happy without spending. This shows a healthy understanding — interests are intrinsic satisfaction, not an equipment competition.", advice: "Stay clear-headed. If one day you find 「you don't want to do it without buying gear」，that's a sign the interest has soured.", color: "var(--gold)" },
-  "12Small Investment":    { name: "Small Investment",    desc: "You're willing to spend a little on interests, all within control. This is a comfortable state — spending brings joy without lingering anxiety.", advice: "Each time you spend, ask: 『Is this money buying joy or gear vanity?』——Answer honestly, and you'll understand your motives better.", color: "#9a7a4a" },
-  "13Moderate Investment":    { name: "Moderate Investment",    desc: "You've spent quite a bit on interests, but it's still manageable. Investing in what you love isn't wrong — as long as it doesn't affect basic living.", advice: "Set an interest budget — decide the monthly cap in advance. Bounded investment lasts longer than uncontrolled spending.", color: "#a88040" },
-  "14Over-Investment":    { name: "Over-Investment",    desc: "You'd borrow money for your interests, feeling it's worth it. But happiness bought on credit often comes with high interest — not just financial, but psychological.", advice: "This week, do the math: what would your life look like if you stopped spending on this interest?——If the answer is 『much lighter』，it's time to hit the brakes.", color: "#c0784a" },
-  "15Healthy Attachment":    { name: "Healthy Attachment",    desc: "Your interest matters to you, but losing it wouldn't break you. This is the healthiest relationship — you've given it a place in your heart, but not all of it.", advice: "Maintain this balance. Periodically check: is my interest enriching my life, or replacing it?", color: "var(--gold)" },
-  "16Deep Dependency":    { name: "Deep Dependency",    desc: "Your interest is already an important spiritual anchor. Without it, you'd struggle. This isn't necessarily unhealthy — a little dependency is fine if it doesn't harm you.", advice: "Build a backup anchor — cultivate a less demanding interest. If one pillar breaks, you have another.", color: "#b89a6a" },
-  "17Compulsive Tendencies":    { name: "Compulsive Tendencies",    desc: "You can't accept life without your interest and react with angry resistance. You're not loving it — you're depending on it. Dependency and love look alike on the surface but differ at the core.", advice: "Do a disconnect experiment: voluntarily step away from your interest for one week (not forever) and see what happens. If it's painful, take this dependency seriously.", color: "#a88040" },
-  "18Interest as Everything":  { name: "Interest as Everything",    desc: "Without this interest, life feels meaningless. This is a dangerous signal — you've staked all your self-worth on one thing, and if it falters, you'll collapse.", advice: "This week, do something completely unrelated to your interest that gives you a sense of value. Your worth can't be proven by just one thing.", color: "#8b3a2a" },
-  "19Creative Type":      { name: "Creative Type",      desc: "Your interest is mainly about creating, with output and a sense of achievement. This is the ideal state — you're nourishing yourself through your interest while adding something to the world.", advice: "Share your creations (doesn't have to be grand — a social post works). When creation is seen, the sense of achievement doubles.", color: "var(--gold)" },
-  "20Mixed Bag":    { name: "Mixed Bag",    desc: "Your interests are half creating, half consuming. This is normal — most people's interests are like this. The key question: which half is growing?", advice: "Track for a week: after each session, do you feel more energized or more drained?——Keep tracking, and you'll see this interest's true impact.", color: "#9a7a4a" },
-  "21Consuming Type":      { name: "Consuming Type",      desc: "Your interests mainly consume time without clear output. This isn't necessarily waste — but if it's all consumption and no creation, emptiness will creep in.", advice: "This week, add 10% creation time to your interest — write a reflection, take a photo, produce something. Consumption + creation changes the equation.", color: "#a88040" },
-  "22Escape Type":      { name: "Escape Type",      desc: "You know the interest is pointless but can't stop — because it helps you avoid something worse. The interest has become a refuge, but refuges don't grow strength.", advice: "Ask yourself: 『If I didn't have to face what I'm avoiding, would I still want this interest?』——If the answer is 『no』，what you need to face isn't the interest — it's the thing you're avoiding.", color: "#c0784a" },
-  "23Social Support":    { name: "Social Support",    desc: "You have people around you who support your interests — that's fortunate. Shared passions last longer and feel warmer than solitary obsession.", advice: "Occasionally bring someone along to experience your interest — no need to teach, just play together. Shared joy doubles.", color: "var(--gold)" },
-  "24Gentle Reminders":    { name: "Gentle Reminders",    desc: "People around you understand but worry you're too obsessed. Their concern may not always be right, but it's worth hearing — sometimes bystanders see more clearly.", advice: "Initiate a conversation: 『Do you think I've been too obsessed lately?』——Listen to their observations without defending yourself. Just listen.", color: "#b89a6a" },
-  "25Misunderstood":    { name: "Misunderstood",    desc: "People around you don't understand your interest and think you're wasting time. This is perfectly normal — everyone values different things. Being misunderstood doesn't mean you're wrong.", advice: "Find a community that shares this passion (online works too). It's okay not to be understood by those around you — being understood by fellow enthusiasts is what matters.", color: "#9a7a4a" },
-  "26Conflict Type":      { name: "Conflict Type",      desc: "Your interests have sparked conflict with those around you. Torn between 『being yourself』 and 『maintaining relationships』 — it's uncomfortable, and there's no standard answer.", advice: "Find a calm moment and say: 『This matters to me, and I hope you can understand.』——You don't need them to like it — just to understand.", color: "#a88040" },
-  "27Interest-Caused Conflict":  { name: "Interest-Caused Conflict",  desc: "Your interest has seriously affected your relationships. Ask yourself: is it the interest itself that's the problem, or the way you express it that makes others uncomfortable?", advice: "This week, draw a clear line between interest time and relationship time — for example, 'weekdays off, weekends only.' Bounded interests don't devour relationships.", color: "#c0784a" }
+  "01Calm Acceptance":     { name: "Calm Acceptance",     desc: "You have a calm attitude toward death — a sign of wisdom. Not fearing it doesn't mean not caring; it means you've seen a truth.", advice: "Keep this calm and let it remind you: because life is finite, every day is worth living well.", color: "var(--gold)" },
+  "02Avoidance":     { name: "Avoidance",     desc: "You choose not to think about death. This is a self-protection mechanism, but protection too long becomes avoidance.", advice: "You don't need to figure it all out at once. Start small: if you had only one year left, what three things would you absolutely do?", color: "#b89a6a" },
+  "03Occasionally Moved":     { name: "Occasionally Moved",     desc: "The topic of death touches you, but you haven't thought deeply about it. This is a good start — you haven't completely closed the door.", advice: "Next time you're moved, don't immediately shift your attention. Pause and let the feeling stay a while. It may tell you something important.", color: "#9a7a4a" },
+  "04Overt Fear":     { name: "Overt Fear",     desc: "Your fear of death has begun to affect daily life. Fear itself isn't the problem — being controlled by it is.", advice: "Fear often comes from the unknown. Try reading a good book about death (like Being Mortal) or watching a related film. The more you understand, the less you fear.", color: "#c0784a" },
+  "05Proactive":     { name: "Proactive Confrontation",     desc: "You've already seriously faced the topic of death. This takes courage, and you have it.", advice: "Share your experience and thoughts with people you trust. You may be able to help those still in fear more than you imagine.", color: "var(--gold)" },
+  "06No Regrets":     { name: "No Regrets",     desc: "You're basically satisfied with your life. This is a rare state — many people spend their whole lives chasing this kind of satisfaction.", advice: "No regrets doesn't mean there's nothing left to do. Ask yourself: is there a small wish unfulfilled? Go fulfill it. Not to make up for something, but for joy.", color: "var(--gold)" },
+  "07Slight Regrets":     { name: "Slight Regrets",     desc: "You have some regrets, but not serious ones. These regrets are more like gentle reminders than heavy burdens.", advice: "Pick the smallest regret and start making amends today. Even if it's just a phone call or writing a card. Action is the best remedy.", color: "#b89a6a" },
+  "08Relational Debt":     { name: "Relational Debt",     desc: "What you care about most is the debt in relationships — family, friends, loved ones. This shows you value connection.", advice: "Don't wait until you 'have time' to be together. This weekend, do one thing: have a nice meal or take a walk with someone you care about.", color: "#9a7a4a" },
+  "09Betrayed Self":     { name: "Betrayed Myself",     desc: "Your biggest regret is not living for yourself. Others' expectations and society's pressure led you down a path that wasn't yours.", advice: "It's never too late. Ask yourself: if no one would be disappointed, what would I do today? Then do a small part of that thing.", color: "#a88040" },
+  "10Never Examined":     { name: "Never Examined",     desc: "You've never seriously examined your life. Being busy may be a way to avoid facing this question.", advice: "Find a quiet time, give yourself 30 minutes, do nothing — just think: am I satisfied with my life so far? What am I not satisfied with?", color: "#9a7a4a" },
+  "11Material Legacy":       { name: "Leave Material Things",       desc: "You think leaving a material foundation is the most important legacy. This is a practical thought, and the choice of most people.", advice: "Material things matter, but also think: besides money, is there something intangible yet more valuable? Like lessons you teach your children, or people you've helped.", color: "#b89a6a" },
+  "12Good Name":       { name: "Leave a Good Name",       desc: "You want to be remembered as a good person. Reputation is the legacy form you value.", advice: "A good reputation isn't manufactured — it's built through consistent actions over time. Keep being kind, and remember: being a good person starts with being good to yourself.", color: "#9a7a4a" },
+  "13Spiritual Legacy":       { name: "Leave a Legacy of Ideas",       desc: "You want to leave something spiritual — works, ideas, stories. This is the highest form of legacy.", advice: "Start recording today. Write it down, record it, draw it. You don't need to become a writer — you just need to express yourself authentically. That is legacy.", color: "var(--gold)" },
+  "14Doesnt Matter":       { name: "Doesn't Matter",       desc: "You're open-minded about 'what to leave behind.' This isn't indifference — it's a kind of openness.", advice: "Being open-minded is great. But if one day you suddenly feel a strong urge to leave something behind, don't suppress it. It might be your inner self speaking.", color: "#b89a6a" },
+  "15Anxious Emptiness":     { name: "Anxious Emptiness",     desc: "You feel you might not be able to leave anything behind, and this anxiety is eating at you. Emptiness is a common modern struggle.", advice: "The opposite of anxiety isn't certainty — it's action. Do one small thing today: help someone, write a paragraph, plant a tree. Action heals emptiness.", color: "#c0784a" },
+  "16Accept Forgotten":     { name: "Accepts Being Forgotten",     desc: "You can accept the fact of being forgotten. This is a deep wisdom — acknowledging finitude allows you to live more freely.", advice: "Since you accept being forgotten, live more freely. Don't live to be remembered — live for yourself, and paradoxically, you're more likely to be remembered.", color: "var(--gold)" },
+  "17Small Circle":   { name: "A Small Circle Is Enough",   desc: "You don't seek to be remembered by the masses — just by those close to you. This is a warm and realistic thought.", advice: "Then put your energy into those people. Create more shared memories — travel, talk, do things together. Memories are the most real legacy.", color: "#b89a6a" },
+  "18Want Remembered":     { name: "Yearning to Be Remembered",     desc: "You yearn to be remembered, to be missed. This isn't vanity — it's the instinctive need of a social being.", advice: "The best way to be remembered isn't to deliberately leave something behind, but to treat every person sincerely and do every task well. Influence is left without you noticing.", color: "#9a7a4a" },
+  "19Fear Forgotten":     { name: "Fear of Being Forgotten",     desc: "You fear being completely forgotten. Behind this fear is a yearning for meaning.", advice: "Instead of worrying about being forgotten, think: which things you're doing now might leave traces in others' lives? Keep doing those things — that's how you fight being forgotten.", color: "#a88040" },
+  "20Live Present":     { name: "Living in the Present",     desc: "You chose to live in the present rather than worry about your legacy. This is a powerful life attitude.", advice: "Keep it up. Also allow yourself to look back sometimes — not to dwell on the past, but to confirm you're on the path you want to walk.", color: "var(--gold)" },
+  "21Never Prepared":     { name: "Never Prepared",     desc: "You haven't prepared at all for the 'end.' Most people are like this — until life forces you to think about it.", advice: "You don't need to write a will right away. Start with the smallest thing: open your phone's notes app and write 'If something happens to me, here are 3 things I want my family to know.' That's enough. Really.", color: "#9a7a4a" },
+  "22Intentional Avoid":     { name: "Intentional Avoidance",     desc: "You consciously avoid these topics. Behind avoidance is usually fear or unease.", advice: "Find a safe way to start: watch a movie about end of life (recommend Coco), talk with family about 'what if.' Start small — it's not so scary.", color: "#b89a6a" },
+  "23Lost Helpless":     { name: "Lost and Helpless",     desc: "You want to prepare, but don't know how to start. This confusion is normal — schools never teach this.", advice: "Start with the most practical: look up what a 'living will' is, learn the basic types of wills. Knowledge itself is power. Once you know, you won't be afraid.", color: "#a88040" },
+  "24Had Conversation":       { name: "Had the Conversation",       desc: "You've talked about this with your family. This is very rare — most people don't even dare bring it up.", advice: "The conversation is a one-time event, but the topic can continue. Regularly update each other's thoughts to ensure your understanding and expectations stay aligned.", color: "var(--gold)" },
+  "25Prepared Ready":     { name: "Prepared and Ready",     desc: "You've made basic arrangements. This isn't just responsibility to yourself — it's love for your family. You've saved them a lot of trouble.", advice: "Review and update your arrangements regularly. Life changes, and your plans need to keep up. Reviewing every two years is a good habit.", color: "var(--gold)" },
+  "26Focus This Life":     { name: "Focused on This Life",     desc: "You choose to focus on the present life. This is a pragmatic attitude, and the choice of many.", advice: "Focusing on this life doesn't mean you can't think about this question. Occasionally pausing to reflect may help you cherish what you have now.", color: "#b89a6a" },
+  "27Mild Curiosity":     { name: "Gentle Curiosity",     desc: "You have moderate curiosity about the afterlife. This open mindset is good — neither believing nor rejecting.", advice: "Stay curious. Read how different cultures answer this question — you don't have to accept any of them, but diverse perspectives help you see more clearly.", color: "#9a7a4a" },
+  "28Crave Answers":     { name: "Craving Answers",     desc: "You really want to know what happens after death. This question may be especially intense on certain nights.", advice: "Rather than seeking a definitive answer, accept the fact that 'nobody knows.' Various religions and philosophies offer different possibilities — all worth considering, none need be taken as absolute truth.", color: "#a88040" },
+  "29Have Faith":     { name: "Has Faith",     desc: "You have your own belief system to answer this question. Faith gives comfort and direction.", advice: "Faith is a personal choice. Stay open: others having different beliefs doesn't mean you can't respect each other. On ultimate questions, humility matters more than being right.", color: "var(--gold)" },
+  "30Materialist":     { name: "Materialist",     desc: "You believe there's nothing after death. This is a rational and honest position.", advice: "Materialism isn't nihilism. Precisely because there's only this one life, every moment is more precious. Use 'only once' to drive yourself, not to deny meaning.", color: "#b89a6a" }
 };
 
-// 彩蛋（4个，围绕金钱与价值主题）
+// Easter Eggs (4, around legacy theme)
 const easterEggs = [
-  { title: "Zhuangzi · The Cicada Catcher", text: "An old hunchback caught cicadas as easily as picking up objects. Confucius asked how. The old man said: 『Though heaven and earth are vast and things are many, I see only the cicada's wing. 』——True masters aren't without distractions — they see only one thing." },
-  { title: "Analects · Knowing vs. Loving", text: "Confucius said: 『Those who know it are not as good as those who love it; those who love it are not as good as those who delight in it. 』——The highest level of interest isn't persistence — it's joy. If you're still relying on willpower, it's not true passion yet." },
-  { title: "Csikszentmihalyi · Flow", text: "Csikszentmihalyi said: Flow is 『"being completely immersed in an activity, oblivious to everything else." 』——But flow can also make you ignore your body and others. Enjoy flow, but remember: you're still in the world." },
-  { title: "Antifragile", text: "Taleb says: Antifragile systems benefit from volatility. ——Interests are the same — moderate obsession builds you up; excessive obsession makes you fragile. True strength is being able to enter and exit freely, never fully captured by any one thing." }
+  { title: "Heidegger · Being-Toward-Death", text: "German philosopher Heidegger said: humans are the only beings that know they will die. Because we know life is finite, we have the urgency to truly live. Death isn't the opposite of life — it gives life meaning." },
+  { title: "Qiong Yao's Farewell", text: "In 2024, Taiwanese writer Qiong Yao chose to say goodbye in her own way. In her letter she wrote: 'I don't want to leave it to fate — I want to be in charge.' This wasn't giving up life — it was the last declaration of sovereignty over her life. She sparked a nationwide discussion about the right to a good death." },
+  { title: "Digital Legacy", text: "After you die, what happens to your social media? Your photos in the cloud? Your game accounts? The digital age brings new questions: a person disappears from the physical world but remains 'alive' in digital space. Some people have started appointing 'digital executors' — have you considered it?" },
+  { title: "The World's Map of Death", text: "Tibetans practice sky burial, believing the body's final value is nourishing all living things; Mexico has Día de los Muertos, celebrating the departed with color and music; Egyptians made mummies awaiting resurrection; Japan has Buddhist memorial traditions... Every culture answers the same question in its own way. There's no standard answer, but each one deserves respect." }
 ];
 
 /* ============================================================
@@ -1180,7 +1184,7 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = 'Tap the card to flip';
+  document.getElementById('flipHint').textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
@@ -1269,9 +1273,9 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `Your core block is「${topKey ? topKey.name : ''}」. The others are extensions of it.`,
+    `Your core block is '${topKey ? topKey.name : 'Unknown'}'. The rest are extensions of this block.`,
     `You have ${sorted.filter(s => s[1] >= 2).length} deeper blocks that are interconnected.`,
-    `Interest is a fire — it can light your way or burn you. Seeing where your fire burns is already the beginning of awareness.`
+    `Every step you've taken writes your story — today, you read one page of it.`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1317,7 +1321,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   Stage Advice
+   Level Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1347,7 +1351,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   Hidden Stage
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1356,25 +1360,25 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('Please write something first — at least one thing you're stuck on.');
+    alert("Please write something first — at least one thing you're stuck on.");
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `Step ${i+1}: ${t}`
+    `Step ${['One','Two','Three','Four'][i]}: ${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
     "What you've written shows you're already facing it. Just putting it into words is the beginning of change.",
-    "Stuck points don't form in a day, and they don't need a day to unravel. You've already taken the first step.",
-    "What you've expressed is what many dare not face. Your courage is greater than you know.",
-    "Not everyone is willing to write these things down. You did. That alone is no small feat."
+    "Blocks didn't form in a day, and they don't need a day to unravel. You've already taken the first step.",
+    "What you've put into words is what many people dare not face. Your courage is greater than you know.",
+    "Not everyone is willing to write these things down. You did. That step alone is remarkable."
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `Start with this one thing today: ${h4.split('，')[0].split('。')[0]}` : 'Today, do just one thing: set a boundary for your interest, even a tiny one.';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split(',')[0].split('.')[0]}` : 'Today, do just one thing: send your body a signal — I hear you.';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
@@ -1398,11 +1402,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('My Hidden Stage', 300, 80);
+  ctx.fillText('My Hidden Level', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('Level 9 · Hobbies & Interests · Found It', 300, 108);
+  ctx.fillText('Stage 12 · Legacy & Passing On · Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1433,10 +1437,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— Stage 9 · Hobbies & Interests · Found It —', 300, 750);
+  ctx.fillText('— Stage 12 · Legacy & Passing On · Found It —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = 'my-hidden-stage.png';
+  link.download = 'my-hidden-level.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1463,14 +1467,14 @@ function goBackHome() {
 }
 
 /* ============================================================
-   Initialize
+   Startup
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderDilemma();
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1486,7 +1490,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){

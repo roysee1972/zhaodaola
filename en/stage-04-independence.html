@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Love and Family: Dilemmas and blind spots in intimate relationships, helping you see your true self in relationships.">
+<meta name="description" content="Earning a Living: The clash between financial independence and self-worth — see the cognitive traps on your path to making a living.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stage 5 - Love and Family — Found It</title>
+<title>Stage 4 · Earning a Living — Found It</title>
 <style>
   /* ==================== Base Variables (consistent with previous levels) ==================== */
   :root {
@@ -47,7 +47,7 @@
     pointer-events: none; z-index: 0;
   }
 
-  /* ==================== 页面容器 ==================== */
+  /* ==================== Page Container ==================== */
   .page {
     display: none;
     position: relative; z-index: 1;
@@ -62,7 +62,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ==================== 通用组件 ==================== */
+  /* ==================== Common Components ==================== */
   .gold-line {
     width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
@@ -108,7 +108,7 @@
   .mt-40 { margin-top: 40px; }
   .mb-8 { margin-bottom: 8px; }
 
-  /* ==================== 进度条 ==================== */
+  /* ==================== Progress Bar ==================== */
   .progress-bar-wrap {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 3px;
@@ -121,7 +121,7 @@
     width: 0%;
   }
 
-  /* ==================== P1: 入口页 ==================== */
+  /* ==================== P1: Entry Page ==================== */
   .level-badge {
     display: inline-block;
     font-size: 11px;
@@ -155,7 +155,7 @@
     margin: 0 auto 40px;
   }
 
-  /* 装饰圆环 */
+  /* Decorative Ring */
   .deco-ring {
     width: 160px; height: 160px;
     border: 1.5px solid var(--border);
@@ -191,7 +191,7 @@
     50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
   }
 
-  /* 种子粒子动画 */
+  /* Seed Particle Animation */
   .seed-particle {
     position: fixed;
     width: 3px;
@@ -210,7 +210,7 @@
     100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
   }
 
-  /* ==================== P2: 困境瞬间选择页 ==================== */
+  /* ==================== P2: Dilemma Moment Selection ==================== */
   .moment-layer-title {
     text-align: center;
     font-size: 11px;
@@ -283,7 +283,7 @@
     margin-top: 16px;
   }
 
-  /* ==================== P3: 冒险卡 ==================== */
+  /* ==================== P3: Adventure Card ==================== */
   .adventure-wrap {
     display: flex; flex-direction: column; align-items: center;
     padding: 20px 0;
@@ -343,7 +343,7 @@
     50% { opacity: 1; }
   }
 
-  /* ==================== P4: 诊断测试 ==================== */
+  /* ==================== P4: Diagnostic Test ==================== */
   .question-header {
     text-align: center;
     margin-bottom: 28px;
@@ -416,7 +416,7 @@
     margin-top: 28px;
   }
 
-  /* ==================== P5: 诊断结果 ==================== */
+  /* ==================== P5: Diagnosis Results ==================== */
   .result-header {
     text-align: center;
     margin-bottom: 32px;
@@ -470,7 +470,7 @@
   .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
   .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
 
-  /* ==================== P6: 通关建议 ==================== */
+  /* ==================== P6: Level Advice ==================== */
   .advice-header {
     text-align: center;
     margin-bottom: 28px;
@@ -537,7 +537,7 @@
   }
   .advice-card-action::before { content: '→ '; }
 
-  /* ==================== P7: 隐藏关卡 ==================== */
+  /* ==================== P7: Hidden Level ==================== */
   .hidden-header {
     text-align: center;
     margin-bottom: 28px;
@@ -640,7 +640,7 @@
   }
   .download-btn:hover { background: rgba(201,168,76,0.1); }
 
-  /* ==================== 彩蛋 ==================== */
+  /* ==================== Easter Egg ==================== */
   .easter-egg {
     display: none;
     background: rgba(90,50,20,0.95);
@@ -669,7 +669,7 @@
     cursor: pointer; line-height: 1;
   }
 
-  /* ==================== 隐藏关卡入口 ==================== */
+  /* ==================== Hidden Level Entry ==================== */
   .hidden-trigger {
     display: block; width: 200px; margin: 32px auto 0; padding: 10px 20px;
     background: none; border:1px dashed var(--border); border-radius: 20px;
@@ -682,10 +682,10 @@
     letter-spacing: 2px; margin-top: 20px;
   }
 
-  /* ==================== 完成页 ==================== */
+  /* ==================== Completion Page ==================== */
   .complete-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
 
-  /* ==================== 返回主页按钮 ==================== */
+  /* ==================== Back to Home Button ==================== */
   .back-home-btn {
     position: fixed; top: 16px; left: 16px; z-index: 200;
     display: flex; align-items: center; gap: 6px;
@@ -709,7 +709,7 @@
   }
   .back-home-btn .arrow { font-size: 14px; line-height: 1; color: var(--gold); }
 
-  /* ==================== 响应式 ==================== */
+  /* ==================== Responsive ==================== */
   @media (max-width: 600px) {
     .hero-title { font-size: 28px; letter-spacing: 4px; }
     .flip-card { width: 280px; height: 180px; }
@@ -722,7 +722,7 @@
 </head>
 <body>
 
-<!-- Seed particle decorations -->
+<!-- Seed Particle Decorations -->
 <div class="seed-particle" style="left:15%;animation-delay:0s;"></div>
 <div class="seed-particle" style="left:30%;animation-delay:1.5s;"></div>
 <div class="seed-particle" style="left:45%;animation-delay:3s;"></div>
@@ -730,88 +730,89 @@
 <div class="seed-particle" style="left:75%;animation-delay:6s;"></div>
 <div class="seed-particle" style="left:90%;animation-delay:7.5s;"></div>
 
-<!-- Progress bar -->
+<!-- Progress Bar -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<!-- Back to home button -->
+<!-- Back to Home Button -->
 <button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
   <span>Back to Home</span>
 </button>
 
-<!-- ==================== P1: Entry Page ==================== -->
+<!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">Stage 5 - Found It</div>
+    <div class="level-badge">Stage 4 · Found It</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">Family</div>
+      <div class="deco-ring-inner">Living</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title"><em>Love &amp; Family</em></h1>
+    <h1 class="hero-title">Earning a Living</h1>
     <p class="hero-sub">
-      The first time you said:<br>"This is my home."
+      The first time you said:<br>
+      "I want to earn my own money."
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      From "my home" to "our home,"<br>
-      what lies between isn't just a marriage certificate —<br>
-      it's the whole journey of being truly accepted by another person,<br>
-      of being relied upon, hurt, and forgiven.
+      From asking for money to earning it,<br>
+      what lies between is more than just a paycheck —<br>
+      it's the whole process of being sized up by the world,<br>
+      being rejected, being seen, being needed.
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      This level won't lecture you about "marriages need work."
-      It simply helps you see:<br>
-      how you went from "one person" to "one family."
+      This level isn't about "young people must endure hardship."
+      It just lets you see:<br>
+      how you went from "asking" to "earning."
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" id="btnStartExplore">Start Exploring</button>
+    <button class="btn" id="btnStartExplore">Begin Exploration</button>
     <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 6 minutes</p>
   </div>
 </div>
 
-<!-- ==================== P2: Dilemma Moments ==================== -->
+<!-- ==================== P2: 困境瞬间选择页 ==================== -->
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">Stage 5 · Love & Family</div>
+      <div class="level-badge">Stage 4 · Earning a Living</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Which moment resonates with you most?</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">Pick 1-3 family moments that resonate most.<br>Don't overthink it - go with your gut.</p>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Which moment resonates with you the most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 moments that resonate most with you.<br>No need to overthink — go with your gut feeling.</p>
     </div>
 
-    <div class="moment-layer-title">— Emotion and Intimacy —</div>
+    <div class="moment-layer-title">— Job Hunting & Starting Out —</div>
     <div id="momentLayer1"></div>
 
-    <div class="moment-layer-title">— Between Partners —</div>
+    <div class="moment-layer-title">— First Time Earning —</div>
     <div id="momentLayer2"></div>
 
-    <div class="moment-layer-title">— Parenting and Generations —</div>
+    <div class="moment-layer-title">— Pressure & Choices —</div>
     <div id="momentLayer3"></div>
 
-    <div class="dilemma-hint">Selected <span id="dilemmaCount">0</span> moments</div>
+    <div class="dilemma-hint">Selected: <span id="dilemmaCount">0</span> moments</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
       <button class="btn" id="dilemmaNextBtn" disabled>Continue</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P3: Adventure Card ==================== -->
+<!-- ==================== P3: 冒险卡页 ==================== -->
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">Stage 5 · Love & Family</div>
+      <div class="level-badge">Stage 4 · Earning a Living</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis begins, let this card set the tone.</p>
+      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">Tap to Flip</div>
+            <div class="flip-card-front-hint">Tap to Reveal</div>
           </div>
           <div class="flip-card-back">
             <div class="flip-card-quote" id="flipQuote">"Poverty in youth isn't poverty — it's capital."</div>
@@ -819,18 +820,18 @@
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to flip</p>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
       <button class="btn" id="adventureNextBtn" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P4: Diagnostic Test ==================== -->
+<!-- ==================== P4: 诊断测试页 ==================== -->
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">When did you first seriously consider "earning my own money"?</div>
+      <div class="question-text" id="qText">When did you first seriously think about "earning my own money"?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
@@ -841,19 +842,19 @@
   </div>
 </div>
 
-<!-- ==================== P5: Diagnostic Results ==================== -->
+<!-- ==================== P5: 诊断结果页 ==================== -->
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
       <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">Your Love and Family Block Profile</div>
-      <div class="result-sub">Stage 5 · Love & Family</div>
+      <div class="result-title"<div class="result-title">Your Livelihood Profile</div>
+      <div class="result-sub">Stage 4 · Earning a Living</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
-    <!-- 彩蛋区域 -->
+    <!-- Easter Egg Area -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" id="eggClose">×</button>
       <div class="easter-egg-label">You discovered a hidden insight</div>
@@ -862,64 +863,66 @@
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" id="adviceBtn">View Stage Advice</button>
+      <button class="btn" id="adviceBtn">View Level Advice</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== P6: Stage Advice ==================== -->
+<!-- ==================== P6: 通关建议页 ==================== -->
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">Stage 5 · Love & Family</div>
+      <div class="level-badge">Stage 4 · Earning a Living</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">Stage Advice</div>
+      <div class="advice-title">Level Advice</div>
       <div class="advice-intro">
-        Home isn't the destination.<br>Home is the safe harbor you build with the people who matter most.
+        Earning a living isn't the end goal.<br>
+        It's the first deal you negotiate with the world.
       </div>
     </div>
     <div id="adviceList"></div>
 
-    <button class="hidden-trigger" id="hiddenTrigger">Not what you wanted to say? Open your hidden stage -></button>
-    <div class="page-end-text">— Stage 5 - Love and Family - Complete —</div>
+    <button class="hidden-trigger" id="hiddenTrigger">Not what you wanted to say? Open your hidden level →</button>
+    <div class="page-end-text">— Stage 4 · Earning a Living · Complete —</div>
   </div>
 </div>
 
-<!-- ==================== P7: Hidden Stage ==================== -->
+<!-- ==================== P7: 隐藏关卡页 ==================== -->
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">Hidden Stage</div>
+      <div class="level-badge">Hidden Level</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">Your Home Story</div>
+      <div class="hidden-title">Your First Earning Experience</div>
       <div class="hidden-sub">
-        This is your space - write your truest feelings about home.<br>No need to polish it. Just be real.
+        This is your space. Write about the first time you earned your own money.<br>
+        No need to polish. Just be honest.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">Step One</div>
-      <div class="step-label">What is the warmest image of home you remember?</div>
+      <div class="step-num">Step 1</div>
+      <div class="step-label">When did I first truly "earn my own money"?</div>
       <textarea class="step-input" id="hidden1" placeholder="I remember..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step Two</div>
-      <div class="step-label">In intimate relationships, what do you feel most confused or helpless about?</div>
+      <div class="step-num">Step 2</div>
+      <div class="step-label">How did I feel about "money" back then?</div>
       <textarea class="step-input" id="hidden2" placeholder="At the time I felt..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step Three</div>
-      <div class="step-label">If you had to describe your relationship with your family in one word, what would it be? Why?</div>
-      <textarea class="step-input" id="hidden3" placeholder="Where I am most stuck is..."></textarea>
+      <div class="step-num">Step 3</div>
+      <div class="step-label">Looking back today, what holds me back the most in "earning a living"?</div>
+      <textarea class="step-input" id="hidden3" placeholder="What holds me back the most is..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">Step Four</div>
-      <div class="step-label">If you could write one message to your future home, what would you say?</div>
-      <textarea class="step-input" id="hidden4" placeholder="What I would tell myself back then..."></textarea>
+      <div class="step-num">Step 4</div>
+      <div class="step-label">If I could start over, what would I say to my younger self just beginning to earn a living?</div>
+      <textarea class="step-input" id="hidden4" placeholder="I would tell my younger self..."></textarea>
     </div>
-    <button class="generate-btn" id="generateBtn">Generate My Home Awakening Card</button>
+    <button class="generate-btn" id="generateBtn">Generate My Livelihood Awakening Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">My Home Story</div>
-      <div class="card-preview-sub">Stage 5 - Love and Family - Found It</div>
+      <div class="card-preview-title">My First Earning Experience</div>
+      <div class="card-preview-sub">Stage 4 · Earning a Living · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
@@ -928,14 +931,15 @@
   </div>
 </div>
 
-<!-- ==================== Completion Page ==================== -->
+<!-- ==================== 完成页 ==================== -->
 <div class="page" id="page-complete">
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Stage Complete</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      From one person to one family -<br>every step was a genuine drawing closer, heart to heart.
+      From asking to earning,<br>
+      every step is a real conversation with the world.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
     <button class="btn btn-ghost" id="restartBtn">Start Over</button>
@@ -945,149 +949,385 @@
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   Data: Stage 5 · Love & Family
+   Data: Stage 4 · Earning a Living
    ============================================================ */
 
-// 婚恋家庭困境瞬间（3层：求职与起步 / 夫妻之间 / 压力与选择）
+// Livelihood dilemma moments (3 layers: Job Hunting & Starting Out / First Earning / Pressure & Choices)
 const moments = [
-  // 第一层：感情与亲密
-  { id: 1, layer: 1, icon: '💔', title: 'Had a few relationships, but none lasted', desc: 'Every time starts with hope, but somehow it always reaches a crossroads. Sometimes you wonder: am I just not cut out for love?', hint: 'You are the one who keeps practicing at love.' },
-  { id: 2, layer: 1, icon: '🤐', title: 'Want to express love, but can't find the words', desc: 'So many words in your heart, but they get swallowed before reaching your lips. You know they need to hear it, but your mouth seems to have a mind of its own.', hint: 'You are the one whose heart loves but whose lips stay silent.' },
-  { id: 3, layer: 1, icon: '🪞', title: 'Always feel not good enough for your partner', desc: 'They chose you, yet you keep thinking: they deserve better. This sense of unworthiness makes you tiptoe through love.', hint: 'You are the one who feels not good enough.' },
-  { id: 4, layer: 1, icon: '🔓', title: 'Afraid getting too close will hurt, so you keep your distance', desc: 'You know intimacy requires opening up, but past experiences hold you back. You chose a safe distance - not too close, not too far, just enough to avoid pain.', hint: 'You are the one standing at a safe distance.' },
-  // 第二层：夫妻之间
-  { id: 5, layer: 2, icon: '🗣️', title: 'After a fight, neither speaks to the other', desc: 'You had a fight, then the silent treatment began. One day, two, three... You know it is not healthy, but speaking first feels like losing.', hint: 'You are the one waiting in the cold war.' },
-  { id: 6, layer: 2, icon: '🔄', title: 'The same fight, over and over', desc: 'You argue about the same things on repeat: chores, money, kids education, in-laws... Every time feels different, but the ending is always the same.', hint: 'You are the one trapped in circular arguments.' },
-  { id: 7, layer: 2, icon: '🤫', title: 'Some things you don't want to tell your partner', desc: 'You have your little secrets, little moods, little worries, but you don't share them. Not because you don't trust them - you just think it won't help, or you don't want them to worry.', hint: 'You are the one who hides their worries inside.' },
-  { id: 8, layer: 2, icon: '⚖️', title: 'Feel like they have changed - not the person they used to be', desc: 'Before marriage, they were like this; after, they became like that. You are not sure if you changed, they changed, or time changed everyone.', hint: 'You are the one caught between memory and reality.' },
-  // 第三层：亲子与代际
-  { id: 9, layer: 3, icon: '👶', title: 'After having kids, the romance faded', desc: 'The baby filled every gap in your life. Conversations shifted from how was your day to did the baby poop and did they finish homework.', hint: 'You are the one drowning in parenthood.' },
-  { id: 10, layer: 3, icon: '👴', title: 'Caught between parents and spouse, pulled both ways', desc: 'Parents have their expectations; your spouse has their boundaries. You are the bridge in between, but the bridge is tired - pulled from both sides, and you are only one person.', hint: 'You are the one stuck in the middle.' },
-  { id: 11, layer: 3, icon: '🎭', title: 'The shadow of your family of origin followed you home', desc: 'You thought leaving your family of origin meant freedom. Then one day you caught yourself treating your kids or partner the way your parents treated you. The shadow is still there.', hint: 'You are the one who discovered the shadow follows you.' },
-  { id: 12, layer: 3, icon: '🏠', title: 'Want to give your family the best, but it feels impossible', desc: 'You want your family to live well - parents at ease, kids happy, partner satisfied. But your time and energy are limited, and you are always dropping one ball to catch another.', hint: 'You are the one trying to hold up the whole family.' }
-]
+  // Layer 1: Job Hunting & Starting Out
+  {
+    id: 1, layer: 1,
+    icon: "📄",
+    title: "Sent out 20 resumes, got zero replies",
+    desc: "You carefully revised every resume, wrote every cover letter. After sending them out, you checked your email every day. A week later, you started wondering: is there something wrong with my resume?",
+    hint: "You are the one checking your inbox every day."
+  },
+  {
+    id: 2, layer: 1,
+    icon: "🎓",
+    title: "Graduated, but no idea what to do",
+    desc: "Four years of college flew by. On the day you got your diploma, you suddenly realized: after all those years of studying, you had no idea what you truly wanted to do or what you could do.",
+    hint: "You are the graduate standing at the crossroads."
+  },
+  {
+    id: 3, layer: 1,
+    icon: "🏢",
+    title: "Your first job was nothing like you imagined",
+    desc: "Before starting, you thought it would be like a TV drama. Once inside, you found yourself doing trivial, repetitive tasks that felt meaningless every day.",
+    hint: "You are the one staring blankly at your desk."
+  },
+  {
+    id: 4, layer: 1,
+    icon: "💰",
+    title: "Your first paycheck was much less than expected",
+    desc: "You calculated over and over. After deducting rent and living expenses, you found much less remained than you imagined. For the first time, you realized: earning money is truly not easy.",
+    hint: "You are the one staring into space after doing the math."
+  },
 
-// 冒险卡（婚恋家庭）
+  // Layer 2: First Time Earning
+  {
+    id: 5, layer: 2,
+    icon: "⏰",
+    title: "Working overtime late, but not sure why",
+    desc: "You don't know why you have to work this late today, or whether tomorrow will be the same. You only know: this is work, it's expected.",
+    hint: "You are the one working late into the night."
+  },
+  {
+    id: 6, layer: 2,
+    icon: "⚖️",
+    title: "Effort and reward always feel unequal",
+    desc: "You've done a lot, but received so little. You're not the type to keep score, but there's still a voice inside asking: why?",
+    hint: "You are the one feeling the imbalance inside."
+  },
+  {
+    id: 7, layer: 2,
+    icon: "👐",
+    title: "Helped a colleague with their work, and they took it for granted",
+    desc: "You helped them do things that were supposed to be their job. They didn't say thank you — as if it was your duty.",
+    hint: "You are the one being taken for granted."
+  },
+  {
+    id: 8, layer: 2,
+    icon: "🔄",
+    title: "Changed direction several times, still uncertain",
+    desc: "You've switched jobs, tried different paths, but still aren't sure this is what you want. Sometimes you wonder: am I too restless?",
+    hint: "You are the one always changing direction."
+  },
+
+  // Layer 3: Pressure & Choices
+  {
+    id: 9, layer: 3,
+    icon: "👨‍👩‍👧",
+    title: "Supporting a family, but money isn't enough",
+    desc: "You got married, had kids, or need to care for aging parents. The pressure of income suddenly became very real. For the first time, you felt: not having enough money truly causes anxiety.",
+    hint: "You are the one counting every penny."
+  },
+  {
+    id: 10, layer: 3,
+    icon: "⚖️",
+    title: "Torn between stability and what you truly want",
+    desc: "You have a stable job, but it's not what you want. You want to chase a dream, but can't bring yourself to give up what you have.",
+    hint: "You are the one caught in the middle."
+  },
+  {
+    id: 11, layer: 3,
+    icon: "📈",
+    title: "Working hard, but money is never enough",
+    desc: "You've worked harder than many people, but still can't save. Every month's paycheck never seems to be enough.",
+    hint: "You are the one budgeting every month."
+  },
+  {
+    id: 12, layer: 3,
+    icon: "🏠",
+    title: "Wanting to settle down, but nowhere to land",
+    desc: "You want to put down roots in this city, but housing prices, residency permits, children's schooling... everything reminds you: you want to settle, but this city doesn't seem to welcome you.",
+    hint: "You are the one drifting."
+  }
+];
+
+// Adventure Cards (Earning a Living)
 const adventureCards = [
-  'Home isn't a place - it's the people.',
-  'A good marriage isn't problem-free - it's having the ability to solve problems together.',
-  'Love is a spark; marriage is the process of turning that spark into a hearth.',
-  'The way you learned to love in your family of origin may not fit your new family.',
-  'True intimacy isn't about sharing everything - it's daring to be your real self in front of them.',
-  'The greatest distance between spouses isn't fighting - it's having nothing to say.',
-  'Kids don't need perfect parents - they need parents who are truly present.',
-  'The mother-in-law and daughter-in-law dynamic is essentially two women's different understandings of the same man.',
-  'Home is where you take off all your armor - but removing armor takes courage too.',
-  'The three most precious words in marriage aren't I love you - they're together.',
-  'Every family has cracks - that's where the light gets in.',
-  'You're not looking for a perfect person - you're looking for someone willing to mend imperfection with you.'
-]
+  "Poverty in youth isn't poverty — it's capital.",
+  "How much your first paycheck was doesn't matter. What matters is what you learned from it.",
+  "Earning a living: some mature early, some late — each has their own path.",
+  "Money isn't everything, but you can't do anything without it — this saying is true.",
+  "You're not just looking for a job — you're looking for a way to deal with the world.",
+  "Your monthly paycheck isn't just money — it's the life you traded your time for.",
+  "Earning your own living is the first deal you negotiate with the world. How well it goes depends on more than money.",
+  "Confusion in youth isn't a disease — you just haven't found your patch of land yet.",
+  "Those people you envy have their own unspoken struggles too.",
+  "The process of making a living is also the process of finding yourself.",
+  "True independence isn't never asking for help — it's knowing when to ask.",
+  "Money is a tool, not a goal. What you want is what money can buy."
+];
 
-// 诊断题
+// Diagnostic Questions
 const questions = [
   {
-    q: 'What does home mean to you?',
+    q: "When did you first seriously think about 'I want to earn my own money'?",
     options: [
-      { text: 'A place where I can completely relax and drop all pretense.', key: '01Safe Harbor' },
-      { text: 'A responsibility - I need to take care of everyone in it.', key: '02Responsibility' },
-      { text: 'A place I haven't found belonging in yet - I'm still searching.', key: '03Still Searching' },
-      { text: 'A place that's both warm and anxiety-inducing - warm because of the people, anxious because of the people.', key: '04Warm Anxious' },
-      { text: 'Honestly, the concept of home is pretty blurry for me.', key: '05Vague Concept' }
+      { text: "Quite early — I started finding ways to earn money while still in school.", key: "01Started Early" },
+      { text: "After graduation, when I truly realized I needed to support myself.", key: "02After Graduation" },
+      { text: "After starting a family, when responsibilities grew.", key: "03After Family" },
+      { text: "I always knew, but never seriously thought about it.", key: "04Know Not Urgent" },
+      { text: "Hard to say - I feel like I was just pushed along.", key: "05Pushed Along" }
     ]
   },
   {
-    q: 'When you have a conflict with family, what is your typical reaction?',
+    q: "When you first faced unfairness at work, what did you do?",
     options: [
-      { text: 'Bite my tongue to keep things from escalating.', key: '06Avoid Conflict' },
-      { text: 'Speak up directly, even if it gets ugly.', key: '07Face Conflict' },
-      { text: 'Sulk silently and wait for them to come comfort me.', key: '08Sulking' },
-      { text: 'Cool down first, then talk it out - don't deal with it in the heat of the moment.', key: '09Cool Down First' },
-      { text: 'Depends on the situation - sometimes I hold back, sometimes I explode.', key: '10Situational' }
+      { text: "Endured it — that's just how the workplace is.", key: "06Endured" },
+      { text: "Got angry, but didn't know how to express it.", key: "07Angry Held Back" },
+      { text: "Found a chance to speak up, even at some risk.", key: "08Spoke Up" },
+      { text: "Noted it down and waited for the right moment to deal with it.", key: "09Noted Waited" },
+      { text: "Depends on the situation - sometimes I hold back, sometimes I speak up.", key: "10Depends" }
     ]
   },
   {
-    q: 'What do you think is your biggest challenge in intimate relationships right now?',
+    q: "What is your overall feeling about 'earning money' right now?",
     options: [
-      { text: 'It is hard to truly open up and trust others.', key: '11Hard Trust' },
-      { text: 'Don't know how to express love and care - words never come out right.', key: '12Poor Express' },
-      { text: 'I overthink everything and care too much about their reactions.', key: '13Overthinking' },
-      { text: 'I am used to being independent and not comfortable relying on others.', key: '14Independent' },
-      { text: 'They don't seem to understand me - our communication is always misaligned.', key: '15Diff Wavelength' }
+      { text: "As long as I work hard, money won't be a problem.", key: "11Hard Work Pays" },
+      { text: "Earning money is hard, but I'm willing to work for it.", key: "12Hard But Trying" },
+      { text: "Enough to get by is fine — I don't seek great wealth.", key: "13Enough Is Enough" },
+      { text: "Sometimes earning money feels very hard, other times it's okay.", key: "14Ups And Downs" },
+      { text: "I don't really want to think about it - it makes me anxious.", key: "15Anxiety Trigger" }
     ]
   },
   {
-    q: 'Regarding your family of origin, what is your biggest feeling?',
+    q: "What is your biggest obstacle in earning a living independently?",
     options: [
-      { text: 'It gave me a lot of love, but also things I am still processing.', key: '16Love Wounds' },
-      { text: 'I am trying not to let it affect my current life, but it still creeps in.', key: '17Break Free' },
-      { text: 'I think my relationship with my parents is okay - nothing major bothering me.', key: '18Relation OK' },
-      { text: 'I have noticed myself repeating certain patterns, and it unsettles me.', key: '19Repeat Pattern' },
-      { text: 'I don't want to think about this too much - what's done is done.', key: '20Avoid Thinking' }
+      { text: "Not confident enough — I always feel I'm not good enough.", key: "16Lacks Confidence" },
+      { text: "I don't know which direction to go.", key: "17Lost Direction" },
+      { text: "I work hard but don't get enough in return.", key: "18Low Returns" },
+      { text: "Lacking resources and connections.", key: "19Lacks Resources" },
+      { text: "Sometimes I really want to give up, but I can't accept that.", key: "20Want Quit Cant" }
     ]
   },
   {
-    q: 'If you could change one thing to improve family relationships, what would it be?',
+    q: "If you could change one thing, what would you most want to change?",
     options: [
-      { text: 'I wish I could express my thoughts and feelings more honestly.', key: '21More Candid' },
-      { text: 'I wish my partner and I had more in common and more time together.', key: '22More Time' },
-      { text: 'I want to let go of the shadows from my family of origin.', key: '23Let Go Shadows' },
-      { text: 'I want to balance my relationships - parents, partner, kids.', key: '24Balance' },
-      { text: 'I want to become a whole person first, then build my family.', key: '25Complete Self' }
+      { text: "I wish I could be more confident and care less about what others think.", key: "21More Confident" },
+      { text: "I wish I could find a direction that truly suits me.", key: "22Find Direction" },
+      { text: "I wish my efforts could be rewarded more fairly.", key: "23Fair Reward" },
+      { text: "I wish I could let go of my anxiety about money.", key: "24Release Anxiety" },
+      { text: "I wish I could learn to navigate society better.", key: "25Learn Socialize" }
     ]
   },
   {
-    q: 'What does your ideal home look like?',
+    q: "What is your understanding of 'earning a living independently'?",
     options: [
-      { text: 'Doesn't need to be big - just warm, where everyone is accepted and understood.', key: '26Warm Accept' },
-      { text: 'Share burdens and blessings together, like comrades-in-arms.', key: '27Comrades' },
-      { text: 'Independent yet connected - space and companionship coexisting.', key: '28Indep Connect' },
-      { text: 'Simple and steady - no dramatic ups and downs is happiness.', key: '29Simplicity' },
-      { text: 'Honestly, I haven't thought about this.', key: '30Not Thought' }
+      { text: "Earn your own money, spend your own money, don't depend on others.", key: "26No Dependence" },
+      { text: "Being able to exchange your abilities for their fair value.", key: "27Fair Exchange" },
+      { text: "Finding your place in this world.", key: "28Find Place" },
+      { text: "Being able to afford the life you choose.", key: "29Afford Choices" },
+      { text: "Honestly, I'm still figuring it out.", key: "30Still Exploring" }
     ]
   }
-]
+];
 
-// 卡点完整数据
+// Complete Card Point Data
 const cardPoints = {
-  "01Safe Harbor": { name: "Home = Safe Harbor", desc: "You crave a place where you can completely let your guard down. This suggests you may have lacked such a space of unconditional acceptance growing up. This longing itself is not wrong - everyone needs a safe harbor.", advice: "A safe harbor is not found - it is built, slowly. Start small: allow yourself to be vulnerable in front of someone you trust. The feeling of safety accumulates through each experience of being accepted.", color: "#8a6040" },
-  "02Responsibility": { name: "Home = Responsibility", desc: "You see home as a collection of responsibilities. Caring for everyone is your instinct and your source of stress. You may be the family pillar - but pillars get tired too.", advice: "Taking responsibility is your strength, but remember: you are not Superman. Allow yourself to sometimes fall short, to ask for help, to let others share the load. The caretaker also needs caretaking.", color: "#7a5030" },
-  "03Still Searching": { name: "Home = Still Searching", desc: "You haven't found a definite answer about 'home' yet. Maybe you haven't started your own family, or maybe you have but haven't felt that sense of belonging. The search itself shows you care about this.", advice: "Don't worry that you haven't found it yet. Some find it early; some take a lifetime. What matters is: you're searching sincerely. Home might be simpler than you imagine - it might already be in the relationships you have.", color: "#9a6840" },
-  "04Warm Anxious": { name: "Home = Warm Yet Anxious", desc: "Your feelings about home are complex. It gives you warmth, but also anxiety. This contradiction is very real - intimacy is inherently a blend of sweetness and burden.", advice: "Embrace this complexity. Warmth and anxiety can coexist - you don't have to choose. Try naming your anxiety: what exactly makes you anxious? When you see anxiety's face clearly, it becomes less frightening.", color: "#a07050" },
-  "05Vague Concept": { name: "Home = Vague Concept", desc: "You don't have a clear concept of 'home' yet. This may be because your upbringing didn't give you a clear template, or because you've been avoiding facing it.", advice: "Being vague is okay, but don't stay vague forever. Try starting with the smallest question: what does a comfortable space look like for me? The answer might be simpler than you think.", color: "#8a5040" },
-  "06Avoid Conflict": { name: "Conflict Avoidance", desc: "You choose to avoid conflict. Not because you are weak, but because you have experienced the pain conflict can bring, and you learned to protect yourself by avoiding it. But avoidance doesn't make problems disappear - it just lets them pile up.", advice: "Avoidance is a protective mechanism, but it can't solve everything. Try micro-conflicts: practice expressing small grievances. You'll find that after speaking up, the sky doesn't fall - in fact, it might clear up.", color: "#9a8050" },
-  "07Face Conflict": { name: "Facing Conflict Head-On", desc: "You face conflict directly. This is a brave quality - it shows you won't let problems fester. But remember: how you say it and when you say it are just as important as what you say.", advice: "Facing conflict is good, but add some strategy. Next time, try: acknowledge the other person's emotions first, then state your position. Warm directness is more powerful than cold candor.", color: "#8a7060" },
-  "08Sulking": { name: "Sulking and Waiting to Be Comforted", desc: "When you are angry, you go silent and wait for them to notice and comfort you. Behind this behavior is a need: I want to be seen, to be cared about. But sometimes they really can't see it.", advice: "Waiting for others to read your mind is high-effort and low-yield. Try a different approach: state your needs directly - I am really upset right now, and I need you to be with me. This isn't embarrassing - it's effective communication.", color: "#a07050" },
-  "09Cool Down First": { name: "Talk After Cooling Down", desc: "You choose to handle conflict after cooling down. This is a mature approach - words spoken in the heat of the moment often lead to regret. Your rationality is your strength.", advice: "Cooling down is great, but don't let it become procrastination. Set a deadline: I need to cool off, but let's talk properly before bed tonight. This way both sides know what to expect.", color: "#9a7860" },
-  "10Situational": { name: "Situational Response", desc: "You don't have a fixed reaction pattern. You assess each situation and respond accordingly - this flexibility is great adaptability. But sometimes it can make you seem uncommitted.", advice: "Flexibility is your strength, but have a core principle: what is absolutely unacceptable to me? With a bottom line, flexibility won't become drifting.", color: "#b0a070" },
-  "11Hard Trust": { name: "Difficulty Trusting", desc: "You find it hard to fully trust others in intimate relationships. This may stem from past hurts - childhood, or a previous relationship. Your shell is thick, but inside lives someone who desperately wants to trust.", advice: "Trust isn't a light switch - it's a dimmer. Don't expect to trust fully overnight. Start with something small: share a little secret and see what happens. One good experience adds one degree of trust.", color: "#9a6848" },
-  "12Poor Express": { name: "Poor at Expressing", desc: "You want to express love, but don't know how to say it. You may have grown up in an environment where emotions weren't expressed much, so saying I love you feels like a foreign language.", advice: "Expression doesn't have to be verbal. Actions count too - a cup of tea, a text message, a hug. If you want to start speaking, begin with the simplest: Dinner was good today. Take it slow.", color: "#a08068" },
-  "13Overthinking": { name: "Overthinking and Anxiety", desc: "You easily get anxious about your partner's reactions. A single expression, a single sentence, can keep you analyzing for hours. This sensitivity shows you care deeply, but it also exhausts you.", advice: "Sensitivity is love's magnifying glass - just don't let it become a microscope. When anxiety hits, ask yourself: is this fact, or my imagination? Most of the time, it's the latter.", color: "#8a5840" },
-  "14Independent": { name: "Habitually Independent", desc: "You're so used to being independent that you don't know how to depend on others in intimate relationships. Independence is a virtue, but excessive independence in intimacy can make your partner feel rejected.", advice: "Independence doesn't mean needing no one. Try micro-dependence: let them help you with something small, and accept it graciously. Depending on someone isn't weakness - it's investing in the relationship.", color: "#9a7060" },
-  "15Diff Wavelength": { name: "Different Wavelengths", desc: "You feel like you're always on different wavelengths with the people who matter. You say east, they hear west; the things you care about, they don't seem to. This communication mismatch is deeply frustrating.", advice: "Different wavelengths doesn't mean you can't connect. Try translating: before speaking, think about what language they best understand. Say what you want to say in their language - it works much better.", color: "#8a6850" },
-  "16Love Wounds": { name: "Love with Wounds", desc: "Your family of origin gave you love, but also things you need to process. This is extremely common - almost no family is perfect. Every family has its light and shadow.", advice: "Simply seeing that love and wounds coexist is the beginning of healing. Don't rush to forgive, and don't rush to cut ties. Allow both feelings to exist: gratitude for the love they gave, and acknowledgment of the hurts.", color: "#a07048" },
-  "17Break Free": { name: "Trying to Break Free", desc: "You're consciously trying to break free from your family of origin's influence. This means you've already seen those influences and are actively making changes. This awareness is incredibly valuable.", advice: "Breaking free isn't cutting off - it's digesting. Those patterns surface because they once protected you. Thank them for their protection, then tell them: Thanks, but I have new ways now.", color: "#8a5040" },
-  "18Relation OK": { name: "Relationship Okay", desc: "Your relationship with your family of origin is generally okay. You don't have major struggles, but that doesn't mean everything is perfect — maybe you just choose not to dig deeper, or maybe you've been relatively lucky.", advice: "Okay is a great starting point. But if something feels subtly off at times, pause and look. Sometimes there are undercurrents beneath calm waters - seeing them helps you move forward better.", color: "#907850" },
-  "19Repeat Pattern": { name: "Repeating Patterns", desc: "You've noticed yourself repeating patterns from your family of origin. This is a crucial yet unsettling awareness - you're becoming the person you never wanted to be. But this awareness is exactly the catalyst for change.", advice: "Discovering the repetition is the first step to breaking the cycle. Don't blame yourself - these patterns were programmed into your system; it's not your fault. Now that you see them, you can rewrite the program. Every time you catch a pattern, it's a chance to rewrite.", color: "#9a6858" },
-  "20Avoid Thinking": { name: "Prefer Not to Think About It", desc: "You choose not to dwell on your family of origin. This might be a self-protective strategy - thinking too much is tiring, so why bother. But some things don't disappear just because you don't think about them.", advice: "Not wanting to think about it is understandable. But if certain things keep recurring in your life (the same conflicts, the same pain), it might be knocking at your door. You don't have to open it, but at least know someone's knocking.", color: "#a08860" },
-  "21More Candid": { name: "More Candid", desc: "You wish you could express yourself more candidly. This shows you've realized your current way of expressing isn't enough. The motivation to change is already there - you just need a little practice.", advice: "Candor is a muscle you can practice. Start in low-stakes situations - with friends, with less intense relationships. The relief after each honest expression will fuel the next one.", color: "#b0a070" },
-  "22More Time": { name: "More Quality Time", desc: "You wish for more time together and more common ground with your partner. This shows you cherish the relationship and feel the loss that distance brings. This wish is simple and precious.", advice: "Quality matters more than quantity. Instead of pursuing more time, create higher-quality togetherness - put down the phone, do something together, talk about each other's day. Fifteen minutes of quality time beats a whole evening of separate scrolling.", color: "#8a7060" },
-  "23Let Go Shadows": { name: "Letting Go of Shadows", desc: "You want to let go of the shadows from your family of origin. This wish itself shows those shadows still affect your life. Letting go isn't forgetting - it's no longer being controlled by them.", advice: "Letting go is a process, not a decision. Don't force yourself to let go now. Allow yourself more time, but also try small experiments - new responses in new situations, instead of old automatic reactions.", color: "#9a7860" },
-  "24Balance": { name: "Balancing Relationships", desc: "You want to find balance among multiple relationships. As the sandwich generation - parents above, children below, partner beside - balance is truly one of the greatest challenges. You're already doing your best.", advice: "Perfect balance doesn't exist. Accepting this will lighten your load. Instead of pursuing balance, pursue conscious choices - this time I choose this person, why, and tell those not chosen: next time it's your turn.", color: "#8a6850" },
-  "25Complete Self": { name: "Complete Yourself First", desc: "You realize you need to become a whole person first before you can build a good family. This is a profound insight - many people skip this step, jump straight into relationships, and hit walls everywhere.", advice: "Completing yourself first doesn't mean waiting until you're perfect to enter a relationship. It means: maintain attention on yourself even within a relationship. Taking time for yourself each day isn't selfish - it's recharging.", color: "#a08060" },
-  "26Warm Accept": { name: "Warm Acceptance", desc: "Your ideal home is warm and accepting of everyone. This suggests you may have experienced the pain of not being accepted, making you value this atmosphere even more. Your vision is beautiful.", advice: "Warmth and acceptance start with yourself. If you want to build such a home, first be such a person - accept yourself, accept others' imperfections. Example is the best education.", color: "#b0a070" },
-  "27Comrades": { name: "Comrades-in-Arms", desc: "Your ideal home is like comrades-in-arms - sharing blessings and burdens together. This shows you value practical support and spiritual alliance over romantic forms. This is a very pragmatic view of family.", advice: "A comrade-like family is strong, but don't forget: comrades need tenderness too. Beyond fighting side by side, set aside time to simply sit together, doing nothing, just being present.", color: "#8a7060" },
-  "28Indep Connect": { name: "Independent Yet Connected", desc: "Your ideal home has both personal space and mutual connection. This is a very mature and healthy view of family - neither consuming each other nor being strangers. You already have a great direction.", advice: "You already know the goal. The key is execution: how to create this rhythm in daily life? Maybe agree that each person gets one day a week for solitude, and the rest is shared time.", color: "#9a7860" },
-  "29Simplicity": { name: "Simplicity Is Happiness", desc: "Your ideal home is simple and steady. This might be because you've weathered enough storms to appreciate the value of calm. Contentment is wisdom, but sometimes it can also be compromise.", advice: "Simplicity is true blessing - as long as it's chosen, not settled for. Regularly ask yourself: am I truly content with this simplicity? If yes, enjoy it. If not, maybe make small changes.", color: "#8a6850" },
-  "30Not Thought": { name: "Haven't Thought About It", desc: "You haven't seriously thought about what your ideal home looks like. Maybe you're still young, or maybe you've deliberately avoided the topic. Either way, thinking about it can't hurt.", advice: "You don't need a complete answer. Just a beginning: close your eyes, imagine a scene that makes you smile - what's there? Who's there? That image is the first clue about what home means to your heart.", color: "#a08060" }
-}
+  "01Started Early": {
+    name: "Started Earning Early",
+    desc: "You started facing the reality of money very early. Maybe because of family, maybe because of personality — you knew sooner than your peers that money doesn't fall from the sky.",
+    advice: "Early starters often have more resilience. But be careful: don't let earning a living become your only thing. You deserve more than just work.",
+    color: "#8a6040"
+  },
+  "02After Graduation": {
+    name: "Started After Graduation",
+    desc: "Graduation was your real starting point for earning a living. You stepped out of the ivory tower and faced society's rules for the first time. This transition isn't easy for anyone.",
+    advice: "The first few years after graduation are crucial for building your livelihood operating system. The habits and mindsets you plant now will affect you for years. Slow is fine, but be serious.",
+    color: "#7a5030"
+  },
+  "03After Family": {
+    name: "Got Serious After Starting a Family",
+    desc: "Once you have a family, earning a living is no longer just about you. You're responsible for another person, or more. This sense of responsibility is both pressure and motivation.",
+    advice: "People with families often have more resilience. But remember: you're not just a pillar — you're also a person. Take care of yourself first to take care of your family.",
+    color: "#9a6840"
+  },
+  "04Know Not Urgent": {
+    name: "Know But Not Urgent",
+    desc: "You know earning a living is inevitable, but don't feel real urgency yet. Maybe someone has your back, maybe you're still exploring. It's not bad, but it can't last forever.",
+    advice: "Being unhurried is a good mindset, but don't let it become procrastination. Set a deadline: by this time, I need a stable income source.",
+    color: "#a07050"
+  },
+  "05Pushed Along": {
+    name: "Being Pushed Along",
+    desc: "Your path to earning a living seems to have been a matter of being pushed forward. No clear plan, no particular urgency — just dealing with things as they come.",
+    advice: "Passive earning isn't wrong, but it gets tiring after a while. Try stopping occasionally to think: is this the way I want to make a living? Occasional active thinking gives you more direction.",
+    color: "#8a5040"
+  },
+  "06Endured": {
+    name: "Endured It",
+    desc: "You chose to endure. You've seen plenty of unfairness at work, but chose not to react. This endurance is a sign of maturity, but it also accumulates grievance.",
+    advice: "Endurance is wisdom, but constant endurance becomes suppression. Find a way to process what you've swallowed — exercise, talk it out, or write it down. Endurance isn't the goal; processing is.",
+    color: "#9a8050"
+  },
+  "07Angry Held Back": {
+    name: "Angry But Holding Back",
+    desc: "You have anger inside, but don't know how to express it. You're not the type for confrontation, so you hold it in. Over time, the frustration builds up inside.",
+    advice: "Anger is a normal emotion, not a character flaw. Next time you're angry, try finding a safe way to express it — even posting something only you can see.",
+    color: "#8a7060"
+  },
+  "08Spoke Up": {
+    name: "Speaks Up",
+    desc: "You speak up. This takes courage, especially at work. But you chose to express yourself, even if it sometimes ruffles feathers.",
+    advice: "Speaking up is your strength, but pay attention to how. Sometimes how you say it matters more than what you say. Learn to protect yourself while expressing yourself.",
+    color: "#a07050"
+  },
+  "09Noted Waited": {
+    name: "Notes It Down, Waits for the Right Moment",
+    desc: "You don't react on the spot, but you note it down. You know some things need the right timing and can't be rushed. This patience is a sign of maturity.",
+    advice: "Waiting is a good strategy, but don't let it become forgetting. Periodically review what you've noted — is now the right time to deal with them?",
+    color: "#9a7860"
+  },
+  "10Depends": {
+    name: "Reads the Situation",
+    desc: "You're not a one-pattern person. You judge based on the situation: when to endure, when to speak up. This flexibility is a great survival skill.",
+    advice: "Reading the situation is your maturity, but be careful not to become someone with no position. Stay flexible while maintaining your inner bottom line.",
+    color: "#b0a070"
+  },
+  "11Hard Work Pays": {
+    name: "Hard Work Equals Money",
+    desc: "You're fairly optimistic about the relationship between effort and reward. You believe: as long as you work hard, money won't be a problem. This belief drives you forward.",
+    advice: "Optimism is good, but manage your expectations realistically. Not all effort immediately translates to money, but all effort pays you back in some way.",
+    color: "#9a7050"
+  },
+  "12Hard But Trying": {
+    name: "Hard But Trying",
+    desc: "You know earning money isn't easy, but you're willing to work for it. This kind of clear-eyed effort is rarer than blind optimism.",
+    advice: "Clear-eyed effort is the best state. You don't need to believe effort always pays off — just that effort makes things a little better than no effort.",
+    color: "#a08060"
+  },
+  "13Enough Is Enough": {
+    name: "Enough Is Enough",
+    desc: "You don't pursue great wealth — enough to get by is fine. This contentment is a healthy mindset, but sometimes it costs you some drive to push forward.",
+    advice: "Contentment is wisdom, but the definition of 'enough' changes over time. Periodically ask yourself: will today's 'enough' still be enough in the future?",
+    color: "#8a6850"
+  },
+  "14Ups And Downs": {
+    name: "Sometimes Hard, Sometimes Easy",
+    desc: "Your feelings about money aren't fixed. Sometimes it feels hard, sometimes okay. This fluctuation makes your financial anxiety ebb and flow too.",
+    advice: "Accept the ups and downs. Different periods bring different challenges. What matters: don't give up when it's hard, and don't splurge when it's good.",
+    color: "#a08870"
+  },
+  "15Anxiety Trigger": {
+    name: "Anxiety on My Mind",
+    desc: "Money is a sore spot in your heart. You don't want to think about it, but you can't help it. Thinking about it makes you anxious, and after the anxiety, you still don't know how to solve it.",
+    advice: "Anxiety shows you care. Write down your anxiety, turn it into concrete numbers and plans. When anxiety becomes a to-do list, it's not so scary anymore.",
+    color: "#907860"
+  },
+  "16Lacks Confidence": {
+    name: "Not Confident Enough",
+    desc: "You feel you're not good enough. This self-doubt makes your path to earning a living harder than it actually needs to be.",
+    advice: "Confidence isn't innate — it's built by succeeding at things, one after another. Make a short list: what have I accomplished in the past year? Seeing your past is the first step to building confidence.",
+    color: "#9a6848"
+  },
+  "17Lost Direction": {
+    name: "Lost on Direction",
+    desc: "You don't know which direction to go. This confusion is a phase many people experience. It's not a problem, but it requires you to actively explore.",
+    advice: "Direction isn't figured out by thinking — it's found by trying. Don't wait for the perfect direction. Start with small experiments and adjust along the way.",
+    color: "#a08068"
+  },
+  "18Low Returns": {
+    name: "Insufficient Returns",
+    desc: "You feel your efforts aren't getting the reward they deserve. This sense of imbalance is something many working professionals experience.",
+    advice: "Insufficient returns are sometimes real, sometimes a cognitive bias. Either way, try two things: 1) raise your barriers to being replaced; 2) learn to make your efforts visible.",
+    color: "#8a5840"
+  },
+  "19Lacks Resources": {
+    name: "Lacking Resources",
+    desc: "You feel your resources and connections are insufficient. This feeling is real, but it might also be the illusion of starting out — many people begin with limited resources.",
+    advice: "Resources can be accumulated — they're not fixed. Set a goal to meet one new person each month. In a year, your network will be completely different.",
+    color: "#9a7060"
+  },
+  "20Want Quit Cant": {
+    name: "Want to Quit But Can't Accept It",
+    desc: "Sometimes you really want to give up, but you feel you've come so far that quitting would be a waste. This contradiction is painful.",
+    advice: "Quitting and not quitting are both choices. The key: what do you want to quit? The thing itself, or the state you're in? Clarify this and the answer emerges.",
+    color: "#8a6850"
+  },
+  "21More Confident": {
+    name: "More Confidence",
+    desc: "You wish you were more confident. Caring less about others' opinions, trusting your own judgment more. This desire is a signal of growth.",
+    advice: "Confidence isn't about not caring what others think — it's about trusting your own judgment while listening to others. This can be practiced: before each decision, write down your own reasons first, then ask others.",
+    color: "#a07048"
+  },
+  "22Find Direction": {
+    name: "Find Direction",
+    desc: "You want to find a direction that truly suits you. The search itself is meaningful. Direction isn't found once — it's what remains after eliminating alternatives.",
+    advice: "Direction isn't thought up — it's lived out. Try more, experience more, reflect more. In this process, the right direction will gradually reveal itself.",
+    color: "#8a5040"
+  },
+  "23Fair Reward": {
+    name: "Fair Return",
+    desc: "You want your efforts to be rewarded more fairly. This is a legitimate desire, but fairness itself is a complex concept.",
+    advice: "Fairness sometimes needs to be fought for, sometimes accepted, sometimes requires a change of environment. Try to distinguish: does this situation require you to fight, accept, or move on?",
+    color: "#907850"
+  },
+  "24Release Anxiety": {
+    name: "Let Go of Anxiety",
+    desc: "You want to let go of your anxiety about money. This is a high state of mind — not because you have money, but because your mindset has shifted.",
+    advice: "Letting go of anxiety isn't pretending money doesn't matter. It's: 1) accepting financial uncertainty; 2) separating money from your self-worth; 3) making money a tool for other goals, not the goal itself.",
+    color: "#9a6858"
+  },
+  "25Learn Socialize": {
+    name: "Learn to Navigate Society",
+    desc: "You want to learn to navigate society better. This desire shows you realize: earning a living isn't just about doing work — it's also about dealing with people.",
+    advice: "Navigating society isn't about pleasing people — it's about building mutually beneficial relationships. Be genuine, be fair, maintain boundaries — do these three and you'll build your social network.",
+    color: "#a08860"
+  },
+  "26No Dependence": {
+    name: "No Dependence",
+    desc: "Your understanding of earning a living independently is: earn your own, spend your own, don't depend on others. This is a simple and honest understanding.",
+    advice: "Not depending on others is the first step to independence, but not the whole picture. True independence is the ability to depend when needed and not depend when not — the choice is yours.",
+    color: "#b0a070"
+  },
+  "27Fair Exchange": {
+    name: "Fair Exchange",
+    desc: "You see earning a living as exchanging your abilities for their fair value. This is a mature understanding — you've come to see earning as a value exchange.",
+    advice: "Fair exchange is market logic, but in reality, exchanges are often not immediate. Sometimes giving a little extra is investing in your future.",
+    color: "#8a7060"
+  },
+  "28Find Place": {
+    name: "Find Your Place",
+    desc: "You see earning a living as finding your place in the world. This is a profound understanding — you're thinking about the meaning of earning, not just the form.",
+    advice: "Finding your place is a process, not a result. Before you find it, stay present, keep trying, stay open.",
+    color: "#9a7860"
+  },
+  "29Afford Choices": {
+    name: "Afford Your Choices",
+    desc: "You see earning a living as being able to afford the life you choose. This means: you acknowledge choices have costs, and you're willing to take responsibility for your choices.",
+    advice: "Affording your choices is the mark of an adult. But remember: you don't have to bear every cost alone. Learning to ask for help when needed is also part of being independent.",
+    color: "#8a6850"
+  },
+  "30Still Exploring": {
+    name: "Still Figuring It Out",
+    desc: "You're still figuring out what earning a living independently means to you. This isn't bad — many people spend their whole lives figuring it out. What matters: you're taking it seriously.",
+    advice: "The exploration itself is part of the answer. The fact that you're seriously thinking about earning a living will gradually give you answers. Give yourself some time.",
+    color: "#a08060"
+  }
+};
 
-// 彩蛋
+// Easter Eggs
 const easterEggs = [
-  { title: "Zhang Ying - The Book of Wisdom", text: "When Qing dynasty official Zhang Ying dealt with a family land dispute, he simply wrote a poem: A letter across a thousand miles just for a wall, why not yield three feet? His family yielded three feet, and the neighbor was so moved they yielded three feet too, creating the famous Six-Foot Lane. Home is not about winning - it is about how the road widens when both sides give a little." },
-  { title: "Mencius's Mother - The Book of Wisdom", text: "Mencius's mother moved three times just to give her child a good environment. She understood that environment shapes people. But more importantly, she showed Mencius through her actions what persistence and trade-offs look like. Good family education is never preaching - it is leading by example." },
-  { title: "Psychology Research: Attachment Theory", text: "Psychologist Bowlby proposed attachment theory: the attachment patterns we form in infancy (secure, anxious, avoidant) affect our intimate relationships throughout life. The good news: attachment types are not fixed. A stable, secure relationship can reshape your attachment pattern." },
-  { title: "Satir: Family Sculpting", text: "Family therapy pioneer Virginia Satir created family sculpting - a technique where family members use body positions to show their relational dynamics. Many people saw their family structure for the first time: so this is where I have been standing, this is how I have been looking at them. Seeing is the beginning of change." }
-]
+  {
+    title: "The Wisdom of Fan Li",
+    text: "After helping King Goujian of Yue defeat Wu and restore his kingdom, Fan Li retired from politics and became a wealthy merchant. He knew: earning a living isn't just about making money — it's knowing when to advance and when to retreat. True wisdom is choosing to leave at the height of success."
+  },
+  {
+    title: "The Wisdom of Lü Buwei",
+    text: "Lü Buwei was a great merchant of the Warring States period. He said: 'Rare goods are worth holding.' He saw not just immediate profits, but future value. Earning a living is the same — sometimes you're not just looking at how much you can earn now, but where this path can take you."
+  },
+  {
+    title: "Psychology: The Endowment Effect",
+    text: "Psychologists have found that people value things they own more highly. This is why many people are reluctant to switch jobs or change direction — not because the other choice is truly better, but because 'I already have this.' Breaking the endowment effect is the first step to rational career decisions."
+  },
+  {
+    title: "Antifragile",
+    text: "Nassim Taleb says: antifragile things aren't just strong — they benefit from shocks. Earning a living is the same — those who learn from small setbacks have more vitality than those who've always had smooth sailing. Small failures aren't curses; they're vaccines."
+  }
+];
 
 /* ============================================================
    State
@@ -1140,6 +1380,7 @@ function updateProgress(name) {
    Dilemma Moment Selection
    ============================================================ */
 function renderMoments() {
+  // Re-render all layers
   const layer1 = document.getElementById('momentLayer1');
   const layer2 = document.getElementById('momentLayer2');
   const layer3 = document.getElementById('momentLayer3');
@@ -1193,7 +1434,7 @@ function selectRandomCard() {
   if (quoteEl) quoteEl.textContent = '"' + adventureCards[currentCardIndex] + '"';
   if (fc) fc.classList.remove('flipped');
   if (nextBtn) nextBtn.style.display = 'none';
-  if (hint) hint.textContent = 'Tap the card to flip';
+  if (hint) hint.textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
@@ -1201,7 +1442,7 @@ function flipCard() {
   const hint = document.getElementById('flipHint');
   const nextBtn = document.getElementById('adventureNextBtn');
   if (fc) fc.classList.add('flipped');
-  if (hint) hint.textContent = 'This card accompanies you to the diagnosis';
+  if (hint) hint.textContent = '— This card accompanies you to the diagnosis —';
   if (nextBtn) nextBtn.style.display = 'inline-block';
 }
 
@@ -1294,9 +1535,9 @@ function showResult() {
   const topKey = sorted[0] ? sorted[0][0] : null;
   const topCp = topKey ? cardPoints[topKey] : null;
   const summaryTexts = [
-    `Your core love and family block is「${topCp ? topCp.name : 'Unknown'}」. Seeing it means you have already come further than most.`,
-    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blocks that intertwine and shape how you respond in intimate relationships.`,
-    "Intimate relationships are not an exam with standard answers. The only question you need to answer is: Am I being real in this relationship?"
+    `Your core livelihood block is '${topCp ? topCp.name : 'Unknown'}'. Seeing it means you've already gone further than many.`,
+    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blocks that interweave, shaping how you respond to earning a living.`,
+    "Earning a living isn't a confrontation with the world — it's your first collaboration. The conversation isn't always pleasant, but it always has a message."
   ];
 
   const summaryEl = document.getElementById('resultSummary');
@@ -1313,7 +1554,7 @@ function showResult() {
         <div class="result-card">
           <div class="result-card-top">
             <span class="result-card-name">${cp.name}</span>
-            <span class="result-card-pct">Matched ${score} times</span>
+            <span class="result-card-pct">matched ${score} times</span>
           </div>
           <div class="result-bar-bg">
             <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1350,7 +1591,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   Stage Advice
+   Level Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1382,7 +1623,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   Hidden Stage
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1391,12 +1632,12 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('Write something first - just one thing about your experience with home.');
+    alert('Please write something first — at least one earning moment you remember.');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `Step ${i+1}: ${t}`
+    `Step ${['One','Two','Three','Four'][i]}: ${t}`
   ).join('\n\n');
 
   const cardContent = document.getElementById('cardContent');
@@ -1407,14 +1648,14 @@ function generateCard() {
   if (cardContent) cardContent.textContent = content;
 
   const responses = [
-    "What you wrote is your true story with home. Anyone willing to write it is already on the path to healing.",
-    "Home isn't a perfect concept - it's a process of continuous building. By writing these words, you're already building.",
-    "Every memory of home is a brick. You're building them into a warm wall.",
-    "No matter what your home looks like, the fact that you're willing to face it is the greatest courage."
+    "What you've written is what many people refuse to face. You did it — that itself is courage.",
+    "The person who went from asking to earning has always been inside you. Seeing them is already the beginning of reconciliation.",
+    "Some blocks aren't yours alone. Being willing to write them down is itself healing.",
+    "Not everyone's path to earning a living is smooth. Those who've written this card have already seen their own path."
   ];
   if (cardResponse) cardResponse.textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `Start with this one thing today: ${h4.split('，')[0].split('。')[0]}` : 'Today, do one thing: tell a family member something you wouldn't normally say - gratitude, or anything you've been holding back.';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split(',')[0].split('.')[0]}` : "Today, do just one thing: next time you feel you're not good enough, remind yourself how far you've already come — that alone is remarkable.";
   if (cardAction) cardAction.textContent = firstAction;
   if (cardPreview) cardPreview.classList.add('show');
 }
@@ -1436,11 +1677,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('My Home Story', 300, 80);
+  ctx.fillText('My First Earning Experience', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('Stage 5 - Love and Family - Found It', 300, 108);
+  ctx.fillText('Stage 4 · Earning a Living · Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1471,10 +1712,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— Stage 5 - Love and Family - Complete —', 300, 750);
+  ctx.fillText('— Stage 4 · Earning a Living · Complete —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = 'My-Home-Story.png';
+  link.download = 'my-first-earning.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1496,7 +1737,7 @@ function restart() {
 }
 
 /* ============================================================
-   Initialize & Event Binding
+   Startup & Event Binding
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   // 渲染初始数据
@@ -1518,7 +1759,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const adventureBtn = document.getElementById('adventureNextBtn');
   if (adventureBtn) adventureBtn.addEventListener('click', () => goQuestion());
 
-  // 诊断题选项点击
+  // Diagnostic Questions选项点击
   const optList = document.getElementById('optionList');
   if (optList) {
     optList.addEventListener('click', (e) => {
@@ -1527,7 +1768,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 诊断题导航
+  // Diagnostic Questions导航
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   if (prevBtn) prevBtn.addEventListener('click', () => prevQuestion());
@@ -1558,7 +1799,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadBtn = document.getElementById('downloadBtn');
   if (downloadBtn) downloadBtn.addEventListener('click', () => downloadCard());
 
-  // 彩蛋关闭
+  // Easter Eggs关闭
   const eggClose = document.getElementById('eggClose');
   if (eggClose) eggClose.addEventListener('click', () => closeEgg());
 

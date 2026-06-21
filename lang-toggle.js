@@ -1,4 +1,4 @@
-/* ===== 找到啦 双语切换系统 v1.0 ===== */
+/* ===== 找到啦 双语切换系统 v2.0 ===== */
 (function(){
   var STORAGE_KEY='zhaodaola_lang';
   var isEN=location.pathname.indexOf('/en/')!==-1;
@@ -6,6 +6,29 @@
 
   // 持久化语言选择
   try{localStorage.setItem(STORAGE_KEY,currentLang);}catch(e){}
+
+  // 注入样式
+  var style=document.createElement('style');
+  style.textContent='#langToggle{'
+    +'position:fixed;bottom:20px;right:20px;z-index:9999;'
+    +'display:inline-block;padding:8px 18px;'
+    +'background:rgba(245,230,200,0.92);'
+    +'border:1px solid rgba(139,90,43,0.25);'
+    +'border-radius:20px;'
+    +'font-family:"Noto Serif SC","STSong",serif;'
+    +'font-size:13px;color:#5a3e1b;'
+    +'letter-spacing:2px;cursor:pointer;'
+    +'text-decoration:none;'
+    +'box-shadow:0 2px 12px rgba(90,60,20,0.15);'
+    +'backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);'
+    +'transition:all 0.2s;'
+    +'}'
+    +'#langToggle:hover{'
+    +'background:rgba(245,230,200,1);'
+    +'border-color:#c9a84c;'
+    +'box-shadow:0 4px 16px rgba(90,60,20,0.25);'
+    +'}';
+  document.head.appendChild(style);
 
   // 创建切换按钮
   function createToggle(){
@@ -19,14 +42,11 @@
     btn.onclick=function(){
       var target;
       if(isEN){
-        // EN → ZH: 回到上级目录
         var path=location.pathname;
         var idx=path.indexOf('/en/');
         target=path.substring(0,idx)+'/'+path.substring(idx+4);
-        // 处理 index.html
         if(target.endsWith('/en')||target.endsWith('/en/'))target=target.replace(/\/en\/?$/,'/');
       }else{
-        // ZH → EN: 进入 /en/ 子目录
         var path=location.pathname;
         var file=path.split('/').pop()||'index.html';
         var dir=path.substring(0,path.lastIndexOf('/'));
@@ -42,15 +62,13 @@
   function autoRedirect(){
     try{
       var saved=localStorage.getItem(STORAGE_KEY);
-      if(saved)return; // 已有选择，不自动跳转
+      if(saved)return;
       var browserLang=(navigator.language||navigator.userLanguage||'').toLowerCase();
       if(browserLang.indexOf('zh')===-1 && !isEN){
-        // 非中文浏览器，自动跳转英文版
         var path=location.pathname;
         var file=path.split('/').pop()||'index.html';
         var dir=path.substring(0,path.lastIndexOf('/'));
         var target=dir+'/en/'+file;
-        // 只对首页自动跳转
         if(file==='index.html'||file===''||file==='/'){
           localStorage.setItem(STORAGE_KEY,'en');
           location.href=target;

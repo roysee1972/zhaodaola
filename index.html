@@ -232,20 +232,14 @@
   var cfTotal=1650; // 累计独立访客（Cloudflare 30天 Unique Visitors）
   var cfMonth=94;   // 本月访问量（Cloudflare 24h Web Traffic）
   // ================================================
-  var k='zhaodaola_visits';
-  var stored=parseInt(localStorage.getItem(k))||0;
-  stored++;
-  localStorage.setItem(k,stored);
-  var x=cfTotal+stored;
-  var y=cfMonth+stored;
   var el=document.getElementById('visitorCounter');
   if(el){
     el.innerHTML='<span style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;'
       +'padding:6px 20px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:24px;'
       +'font-size:12px;color:var(--text-mid);letter-spacing:1px;line-height:1.8;">'
-      +'<span>👁 您是本站第 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+x.toLocaleString()+'</b> 位访客</span>'
+      +'<span>👁 您是本站第 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+cfTotal.toLocaleString()+'</b> 位访客</span>'
       +'<span style="opacity:0.3;">|</span>'
-      +'<span>📊 本月访问量 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+y.toLocaleString()+'</b></span>'
+      +'<span>📊 本月访问量 <b style="color:var(--gold);font-weight:700;font-size:13px;">'+cfMonth.toLocaleString()+'</b></span>'
       +'</span>';
   }
 })();

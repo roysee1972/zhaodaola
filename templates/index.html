@@ -4,362 +4,509 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>活动网站模板系统 — 找到啦·定制服务</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    :root {
+      --bg-page: #faf5e8;
+      --bg-card: #fffef7;
+      --bg-tech: rgba(139,90,43,0.04);
+      --color-title: #4a3016;
+      --color-sub: #9a7a4a;
+      --color-gold: #b8902a;
+      --color-text: #5a3e1b;
+      --color-muted: #8a7a5a;
+      --color-border: rgba(139,90,43,0.15);
+      --font-serif: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+      --font-sans: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+      --shadow-sm: 0 2px 8px rgba(139,90,43,0.08);
+      --shadow-md: 0 8px 32px rgba(139,90,43,0.14);
+      --shadow-lg: 0 16px 48px rgba(139,90,43,0.18);
+      --radius-card: 14px;
+      --radius-btn: 24px;
+      --radius-tag: 20px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      color: #2C3E50;
-      background: #F5F7FA;
+      background: var(--bg-page);
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      line-height: 1.7;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* 纸张纹理 */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== 顶部标题区 ===== */
+    .hero {
+      text-align: center;
+      padding: 72px 0 52px;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-size: 0.82rem;
+      color: var(--color-gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border: 1px solid rgba(184,144,42,0.35);
+      border-radius: 20px;
+      padding: 6px 20px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--color-title);
+      letter-spacing: 6px;
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+
+    .hero-divider {
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+      margin: 0 auto 22px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.05rem;
+      color: var(--color-sub);
+      max-width: 620px;
+      margin: 0 auto;
+      letter-spacing: 1px;
       line-height: 1.8;
     }
-    /* Header */
-    .header {
-      background: linear-gradient(135deg, #1B3A5C 0%, #0F2337 60%, #C8963E 100%);
-      color: #fff;
-      padding: 3rem 1.25rem;
-      text-align: center;
+
+    /* ===== 模板选择区 ===== */
+    .templates {
+      padding: 12px 0 60px;
     }
-    .header h1 {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.02em;
-    }
-    .header p {
-      opacity: 0.85;
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .header .badge {
-      display: inline-block;
-      background: rgba(200,150,62,0.3);
-      border: 1px solid rgba(200,150,62,0.5);
-      padding: 0.3rem 1rem;
-      border-radius: 2rem;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-    }
-    /* Grid */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem;
-    }
+
     .section-title {
       text-align: center;
-      font-size: 1.6rem;
-      margin-bottom: 0.3rem;
-      color: #0F2337;
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-title);
+      letter-spacing: 4px;
+      margin-bottom: 44px;
     }
-    .section-divider {
-      width: 50px;
-      height: 3px;
-      background: #C8963E;
-      margin: 0.8rem auto 2rem;
-      border-radius: 2px;
-    }
-    .template-grid {
+
+    .card-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
     }
-    @media (min-width: 600px) {
-      .template-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 900px) {
-      .template-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    /* Card */
-    .template-card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-    .template-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-    }
-    .card-preview {
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: 32px 28px 28px;
       position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
       overflow: hidden;
     }
-    .card-preview .emoji {
-      font-size: 4rem;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
-    }
-    .card-preview .overlay {
+
+    /* 卡片顶部色条 */
+    .card::before {
+      content: '';
       position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.5);
-      opacity: 0;
-      transition: opacity 0.3s;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 14px 14px 0 0;
+      opacity: 0.85;
     }
-    .template-card:hover .overlay {
-      opacity: 1;
+
+    .card--birthday::before  { background: linear-gradient(to right, #d4786e, #e8a090); }
+    .card--wedding::before   { background: linear-gradient(to right, #c49b8a, #dbb8a8); }
+    .card--business::before  { background: linear-gradient(to right, #5b7a9a, #7a9ab8); }
+    .card--learning::before  { background: linear-gradient(to right, #6b8a6b, #8aaa8a); }
+    .card--wellness::before  { background: linear-gradient(to right, #8a9a7b, #a8b89a); }
+    .card--party::before     { background: linear-gradient(to right, #d4826e, #e8a898); }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
     }
-    .overlay a {
-      color: #fff;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.5);
-      padding: 0.5rem 1.5rem;
-      border-radius: 2rem;
-      font-size: 0.9rem;
+
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+      display: block;
+      line-height: 1;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.78rem;
+      color: var(--color-muted);
       text-decoration: none;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s;
+      letter-spacing: 1px;
+      transition: color var(--transition);
+      font-family: var(--font-serif);
     }
-    .overlay a:hover {
-      background: rgba(255,255,255,0.35);
+
+    .card-tag:hover {
+      color: var(--color-gold);
     }
-    .card-body {
-      padding: 1.2rem 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+
+    .card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-title);
+      letter-spacing: 2px;
+      margin: 10px 0 6px;
     }
-    .card-body h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.3rem;
-      color: #0F2337;
-    }
-    .card-body .subtitle {
-      font-size: 0.85rem;
-      color: #7A8B9A;
-      margin-bottom: 0.6rem;
-    }
-    .card-body p {
+
+    .card-style {
       font-size: 0.9rem;
-      color: #4A5D6E;
-      flex: 1;
+      color: var(--color-sub);
+      margin-bottom: 10px;
+      font-style: italic;
     }
-    .card-tags {
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .card-features {
+      list-style: none;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.8rem;
+      gap: 8px;
+      margin-bottom: 24px;
     }
-    .tag {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 1rem;
-      font-size: 0.75rem;
-      background: #EDF0F5;
-      color: #4A5D6E;
+
+    .card-features li {
+      font-size: 0.8rem;
+      color: var(--color-sub);
+      background: rgba(139,94,42,0.06);
+      border: 1px solid rgba(139,94,42,0.12);
+      padding: 5px 14px;
+      border-radius: var(--radius-tag);
+      letter-spacing: 0.5px;
+      transition: background var(--transition), border-color var(--transition);
     }
+
+    .card:hover .card-features li {
+      background: rgba(139,94,42,0.1);
+      border-color: rgba(139,94,42,0.2);
+    }
+
     .card-btn {
-      display: block;
-      text-align: center;
-      padding: 0.8rem;
-      background: var(--card-accent, #1B3A5C);
-      color: #fff;
+      display: inline-block;
+      padding: 10px 28px;
+      background: var(--color-title);
+      color: #faf5e8;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: opacity 0.3s;
+      border-radius: var(--radius-btn);
+      font-size: 0.9rem;
+      font-family: var(--font-serif);
+      letter-spacing: 2px;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
     }
-    .card-btn:hover { opacity: 0.85; }
-    /* Footer */
-    .footer {
-      background: #0F2337;
-      color: rgba(255,255,255,0.7);
-      padding: 2.5rem 1.25rem;
+
+    .card-btn:hover {
+      background: #6b4a28;
+      box-shadow: 0 4px 16px rgba(74,48,22,0.25);
+      transform: translateY(-1px);
+    }
+
+    /* ===== 技术特点区 ===== */
+    .tech {
+      padding: 52px 48px;
+      margin: 0 0 60px;
+      background: var(--bg-tech);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+    }
+
+    .tech-item {
       text-align: center;
-      font-size: 0.85rem;
+      padding: 8px 12px;
     }
-    .footer h3 {
-      color: #fff;
+
+    .tech-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .tech-item h3 {
+      font-family: var(--font-serif);
       font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: var(--color-title);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
     }
-    .footer p { margin: 0.3rem 0; }
-    .footer a { color: #C8963E; }
+
+    .tech-item p {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== 底部 ===== */
+    .footer {
+      text-align: center;
+      padding: 48px 0 40px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-title);
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+
+    .footer-slogan {
+      font-size: 0.95rem;
+      color: var(--color-sub);
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .footer-link {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--color-gold);
+      text-decoration: none;
+      letter-spacing: 2px;
+      padding: 8px 24px;
+      border: 1px solid rgba(184,144,42,0.3);
+      border-radius: var(--radius-btn);
+      transition: all var(--transition);
+      margin-bottom: 28px;
+    }
+
+    .footer-link:hover {
+      background: rgba(184,144,42,0.08);
+      border-color: var(--color-gold);
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: #b8a88a;
+      letter-spacing: 1px;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 768px) {
+      .hero { padding: 48px 0 36px; }
+      .hero h1 { font-size: 1.9rem; letter-spacing: 4px; }
+      .hero .subtitle { font-size: 0.92rem; }
+      .section-title { font-size: 1.4rem; letter-spacing: 3px; }
+      .card-grid { grid-template-columns: 1fr; gap: 20px; }
+      .card { padding: 28px 22px 24px; }
+      .tech { padding: 36px 24px; }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .footer-brand { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 0 16px; }
+      .hero h1 { font-size: 1.6rem; letter-spacing: 2px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .card-tag { top: 16px; right: 16px; }
+    }
   </style>
 </head>
 <body>
+<div class="page">
 
-<!-- 顶部 -->
-<header class="header">
-  <div class="badge">找到啦 · 增值服务</div>
-  <h1>活动网站模板系统</h1>
-  <p>6套精美模板，覆盖生日、婚礼、考察、学习、疗愈、聚会等场景。<br>手机优先，一键部署，即刻拥有专属活动网站。</p>
-</header>
+  <!-- ===== 顶部标题区 ===== -->
+  <header class="hero">
+    <span class="hero-badge">TEMPLATES</span>
+    <h1>活动网站模板系统</h1>
+    <div class="hero-divider"></div>
+    <p class="subtitle">6套精美模板，覆盖生日、婚礼、考察、学习、疗愈、聚会等场景。手机优先，一键部署，即刻拥有专属活动网站。</p>
+  </header>
 
-<!-- 模板展示 -->
-<div class="container">
-  <h2 class="section-title">选择您的模板</h2>
-  <div class="section-divider"></div>
+  <!-- ===== 模板选择区 ===== -->
+  <section class="templates">
+    <h2 class="section-title">选择您的模板</h2>
+    <div class="card-grid">
 
-  <div class="template-grid">
-
-    <!-- A. 生日寿宴 -->
-    <div class="template-card">
-      <div class="card-preview" style="background: linear-gradient(135deg, #C41E3A, #D4A843);">
-        <span class="emoji">🎂</span>
-        <div class="overlay"><a href="themes/birthday.html">预览模板</a></div>
-      </div>
-      <div class="card-body">
+      <!-- 生日寿宴 -->
+      <div class="card card--birthday">
+        <span class="card-icon">🎂</span>
+        <a href="themes/birthday.html" class="card-tag">预览模板</a>
         <h3>生日寿宴</h3>
-        <p class="subtitle">温馨喜庆 · 红金搭配</p>
-        <p style="font-size:0.88rem; color:#5A4A3F; margin-top:0.5rem;">寿星故事、祝福墙、照片瀑布流，适合生日宴、寿宴、满月宴等喜庆场合。</p>
-        <div class="card-tags">
-          <span class="tag">红金配色</span>
-          <span class="tag">祝福留言</span>
-          <span class="tag">倒计时</span>
-          <span class="tag">照片墙</span>
-        </div>
+        <p class="card-style">温馨喜庆 · 红金搭配</p>
+        <p class="card-desc">寿星故事、祝福墙、照片瀑布流，适合生日宴、寿宴、满月宴等喜庆场合。</p>
+        <ul class="card-features">
+          <li>红金配色</li>
+          <li>祝福留言</li>
+          <li>倒计时</li>
+          <li>照片墙</li>
+        </ul>
+        <a href="themes/birthday.html" class="card-btn">查看模板</a>
       </div>
-      <a href="themes/birthday.html" class="card-btn" style="--card-accent:#C41E3A;">查看模板</a>
-    </div>
 
-    <!-- B. 婚礼婚宴 -->
-    <div class="template-card">
-      <div class="card-preview" style="background: linear-gradient(135deg, #B76E79, #8B7DB8);">
-        <span class="emoji">💍</span>
-        <div class="overlay"><a href="themes/wedding.html">预览模板</a></div>
-      </div>
-      <div class="card-body">
+      <!-- 婚礼婚宴 -->
+      <div class="card card--wedding">
+        <span class="card-icon">💍</span>
+        <a href="themes/wedding.html" class="card-tag">预览模板</a>
         <h3>婚礼婚宴</h3>
-        <p class="subtitle">浪漫精致 · 玫瑰金+薰衣草</p>
-        <p style="font-size:0.88rem; color:#5A4A3F; margin-top:0.5rem;">爱情时间线、电子请柬、RSVP出席确认，婚礼从邀请开始就不平凡。</p>
-        <div class="card-tags">
-          <span class="tag">爱情故事</span>
-          <span class="tag">电子请柬</span>
-          <span class="tag">出席确认</span>
-          <span class="tag">相册轮播</span>
-        </div>
+        <p class="card-style">浪漫精致 · 玫瑰金+薰衣草</p>
+        <p class="card-desc">爱情时间线、电子请柬、RSVP出席确认，婚礼从邀请开始就不平凡。</p>
+        <ul class="card-features">
+          <li>爱情故事</li>
+          <li>电子请柬</li>
+          <li>出席确认</li>
+          <li>相册轮播</li>
+        </ul>
+        <a href="themes/wedding.html" class="card-btn">查看模板</a>
       </div>
-      <a href="themes/wedding.html" class="card-btn" style="--card-accent:#B76E79;">查看模板</a>
-    </div>
 
-    <!-- C. 商务考察 -->
-    <div class="template-card">
-      <div class="card-preview" style="background: linear-gradient(135deg, #1B3A5C, #C8963E);">
-        <span class="emoji">🌏</span>
-        <div class="overlay"><a href="themes/business-trip.html">预览模板</a></div>
-      </div>
-      <div class="card-body">
+      <!-- 商务考察 -->
+      <div class="card card--business">
+        <span class="card-icon">🌏</span>
+        <a href="themes/business-trip.html" class="card-tag">预览模板</a>
         <h3>商务考察</h3>
-        <p class="subtitle">专业大气 · 深蓝+铜金</p>
-        <p style="font-size:0.88rem; color:#5A4A3F; margin-top:0.5rem;">行程路线、图文日记、深度思考，适合游学考察、企业参访、行业交流。</p>
-        <div class="card-tags">
-          <span class="tag">行程时间线</span>
-          <span class="tag">图文日记</span>
-          <span class="tag">影像记录</span>
-          <span class="tag">思考总结</span>
-        </div>
+        <p class="card-style">专业大气 · 深蓝+铜金</p>
+        <p class="card-desc">行程路线、图文日记、深度思考，适合游学考察、企业参访、行业交流。</p>
+        <ul class="card-features">
+          <li>行程时间线</li>
+          <li>图文日记</li>
+          <li>影像记录</li>
+          <li>思考总结</li>
+        </ul>
+        <a href="themes/business-trip.html" class="card-btn">查看模板</a>
       </div>
-      <a href="themes/business-trip.html" class="card-btn" style="--card-accent:#1B3A5C;">查看模板</a>
-    </div>
 
-    <!-- D. 学习提升 -->
-    <div class="template-card">
-      <div class="card-preview" style="background: linear-gradient(135deg, #2D5A3D, #8B6914);">
-        <span class="emoji">📚</span>
-        <div class="overlay"><a href="themes/learning.html">预览模板</a></div>
-      </div>
-      <div class="card-body">
+      <!-- 学习提升 -->
+      <div class="card card--learning">
+        <span class="card-icon">📚</span>
+        <a href="themes/learning.html" class="card-tag">预览模板</a>
         <h3>学习提升</h3>
-        <p class="subtitle">清新知性 · 墨绿+深棕</p>
-        <p style="font-size:0.88rem; color:#5A4A3F; margin-top:0.5rem;">课程安排、学习笔记、进度追踪，适合研修班、读书会、工作坊。</p>
-        <div class="card-tags">
-          <span class="tag">课程时间线</span>
-          <span class="tag">笔记卡片</span>
-          <span class="tag">学习掠影</span>
-        </div>
+        <p class="card-style">清新知性 · 墨绿+深棕</p>
+        <p class="card-desc">课程安排、学习笔记、进度追踪，适合研修班、读书会、工作坊。</p>
+        <ul class="card-features">
+          <li>课程时间线</li>
+          <li>笔记卡片</li>
+          <li>学习掠影</li>
+        </ul>
+        <a href="themes/learning.html" class="card-btn">查看模板</a>
       </div>
-      <a href="themes/learning.html" class="card-btn" style="--card-accent:#2D5A3D;">查看模板</a>
-    </div>
 
-    <!-- E. 身心疗愈 -->
-    <div class="template-card">
-      <div class="card-preview" style="background: linear-gradient(135deg, #5B7B6F, #A0887D);">
-        <span class="emoji">🌿</span>
-        <div class="overlay"><a href="themes/wellness.html">预览模板</a></div>
-      </div>
-      <div class="card-body">
+      <!-- 身心疗愈 -->
+      <div class="card card--wellness">
+        <span class="card-icon">🌿</span>
+        <a href="themes/wellness.html" class="card-tag">预览模板</a>
         <h3>身心疗愈</h3>
-        <p class="subtitle">宁静素雅 · 青苔绿+水墨</p>
-        <p style="font-size:0.88rem; color:#5A4A3F; margin-top:0.5rem;">禅意留白、文字渐显、呼吸节奏，适合禅修营、疗愈工作坊、静修之旅。</p>
-        <div class="card-tags">
-          <span class="tag">禅意设计</span>
-          <span class="tag">大量留白</span>
-          <span class="tag">渐显动画</span>
-        </div>
+        <p class="card-style">宁静素雅 · 青苔绿+水墨</p>
+        <p class="card-desc">禅意留白、文字渐显、呼吸节奏，适合禅修营、疗愈工作坊、静修之旅。</p>
+        <ul class="card-features">
+          <li>禅意设计</li>
+          <li>大量留白</li>
+          <li>渐显动画</li>
+        </ul>
+        <a href="themes/wellness.html" class="card-btn">查看模板</a>
       </div>
-      <a href="themes/wellness.html" class="card-btn" style="--card-accent:#5B7B6F;">查看模板</a>
-    </div>
 
-    <!-- F. 聚会派对 -->
-    <div class="template-card">
-      <div class="card-preview" style="background: linear-gradient(135deg, #E85D75, #5B8DEF, #FFB347);">
-        <span class="emoji">🎉</span>
-        <div class="overlay"><a href="themes/party.html">预览模板</a></div>
-      </div>
-      <div class="card-body">
+      <!-- 聚会派对 -->
+      <div class="card card--party">
+        <span class="card-icon">🎉</span>
+        <a href="themes/party.html" class="card-tag">预览模板</a>
         <h3>聚会派对</h3>
-        <p class="subtitle">活泼热闹 · 多彩珊瑚</p>
-        <p style="font-size:0.88rem; color:#5A4A3F; margin-top:0.5rem;">日程卡片、地点导航、互动留言，适合同学聚会、团建、周年庆、节日派对。</p>
-        <div class="card-tags">
-          <span class="tag">倒计时</span>
-          <span class="tag">派对流程</span>
-          <span class="tag">留言板</span>
-          <span class="tag">地点导航</span>
-        </div>
+        <p class="card-style">活泼热闹 · 多彩珊瑚</p>
+        <p class="card-desc">日程卡片、地点导航、互动留言，适合同学聚会、团建、周年庆、节日派对。</p>
+        <ul class="card-features">
+          <li>倒计时</li>
+          <li>派对流程</li>
+          <li>留言板</li>
+          <li>地点导航</li>
+        </ul>
+        <a href="themes/party.html" class="card-btn">查看模板</a>
       </div>
-      <a href="themes/party.html" class="card-btn" style="--card-accent:#E85D75;">查看模板</a>
-    </div>
 
-  </div>
+    </div>
+  </section>
+
+  <!-- ===== 技术特点区 ===== -->
+  <section class="tech">
+    <div class="tech-grid">
+      <div class="tech-item">
+        <span class="tech-icon">📱</span>
+        <h3>手机优先</h3>
+        <p>完美适配微信浏览器</p>
+      </div>
+      <div class="tech-item">
+        <span class="tech-icon">⚡</span>
+        <h3>零依赖</h3>
+        <p>纯 HTML/CSS/JS，加载飞快</p>
+      </div>
+      <div class="tech-item">
+        <span class="tech-icon">🎨</span>
+        <h3>主题切换</h3>
+        <p>CSS 变量驱动，一键换肤</p>
+      </div>
+      <div class="tech-item">
+        <span class="tech-icon">🚀</span>
+        <h3>一键部署</h3>
+        <p>GitHub Pages / 任何静态托管</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 底部 ===== -->
+  <footer class="footer">
+    <p class="footer-brand">找到啦 · 活动网站定制服务</p>
+    <p class="footer-slogan">每一个值得纪念的时刻，都值得一个专属网站</p>
+    <a href="https://zhaodaola.top" class="footer-link">zhaodaola.top</a>
+    <p class="footer-copy">© 2026 找到啦</p>
+  </footer>
+
 </div>
-
-<!-- 技术说明 -->
-<div class="container" style="padding-bottom:3rem;">
-  <h2 class="section-title">技术特点</h2>
-  <div class="section-divider"></div>
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; text-align:center;">
-    <div style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-      <div style="font-size:1.8rem; margin-bottom:0.5rem;">📱</div>
-      <strong>手机优先</strong>
-      <p style="font-size:0.85rem; color:#7A8B9A; margin:0.3rem 0 0;">完美适配微信浏览器</p>
-    </div>
-    <div style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-      <div style="font-size:1.8rem; margin-bottom:0.5rem;">⚡</div>
-      <strong>零依赖</strong>
-      <p style="font-size:0.85rem; color:#7A8B9A; margin:0.3rem 0 0;">纯HTML/CSS/JS，加载飞快</p>
-    </div>
-    <div style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-      <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎨</div>
-      <strong>主题切换</strong>
-      <p style="font-size:0.85rem; color:#7A8B9A; margin:0.3rem 0 0;">CSS变量驱动，一键换肤</p>
-    </div>
-    <div style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-      <div style="font-size:1.8rem; margin-bottom:0.5rem;">🚀</div>
-      <strong>一键部署</strong>
-      <p style="font-size:0.85rem; color:#7A8B9A; margin:0.3rem 0 0;">GitHub Pages / 任何静态托管</p>
-    </div>
-  </div>
-</div>
-
-<!-- 底部 -->
-<footer class="footer">
-  <h3>找到啦 · 活动网站定制服务</h3>
-  <p>每一个值得纪念的时刻，都值得一个专属网站</p>
-  <p style="margin-top:1rem;"><a href="https://zhaodaola.top">zhaodaola.top</a></p>
-  <p style="margin-top:0.5rem; opacity:0.5;">© 2026 找到啦</p>
-</footer>
-
 </body>
 </html>

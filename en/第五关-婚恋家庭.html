@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stage 5 - Love and Family — Found It</title>
 <style>
-  /* ==================== 基础变量（与前几关保持一致）==================== */
+  /* ==================== Base Variables (consistent with previous levels) ==================== */
   :root {
     --bg: #f5e6c8;
     --bg2: #eed9a4;
@@ -24,7 +24,7 @@
     --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
   }
 
-  /* ==================== 全局 ==================== */
+  /* ==================== Global ==================== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -1222,7 +1222,7 @@ function renderQuestion() {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
 
-  if (qNum) qNum.textContent = `第${currentQuestion + 1}题`;
+  if (qNum) qNum.textContent = `Question ${currentQuestion + 1}`;
   if (qText) qText.textContent = q.q;
   if (qProgress) qProgress.textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1576,7 +1576,7 @@ function goBackHome() {
 }
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1592,7 +1592,7 @@ function goBackHome() {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){

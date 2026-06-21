@@ -796,7 +796,7 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十一关 · 健康与aging</div>
+      <div class="level-badge">Level 11 · Health & Aging</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 class="hero-title" style="font-size: 26px;">What confuses you the most?</h2>
       <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 items closest to your true state. Multiple selections are fine.</p>
@@ -813,7 +813,7 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十一关 · 健康与aging</div>
+      <div class="level-badge">Level 11 · Health & Aging</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
       <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card First</h2>
       <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
@@ -826,7 +826,7 @@
             <div class="flip-card-front-hint">Tap to Reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"身体是一本连续写了几十年的日记，翻开来，全是线索。"</div>
+            <div class="flip-card-quote" id="flipQuote">"Your body is a diary written over decades. Open it, and every page is a clue."</div>
             <div class="flip-card-tap-hint">— Adventure Card</div>
           </div>
         </div>
@@ -882,7 +882,7 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第十一关 · 健康与aging</div>
+      <div class="level-badge">Level 11 · Health & Aging</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
       <div class="advice-title">Level Advice</div>
       <div class="advice-intro">
@@ -963,7 +963,7 @@
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据
+   Data
    ============================================================ */
 
 // Dilemmas (12 items)
@@ -1003,109 +1003,109 @@ const questions = [
   {
     q: "How would you rate your recent physical condition?",
     options: [
-      { text: "Energetic, feeling great.", key: "01精力充沛" },
-      { text: "Okay — not the best, not the worst.", key: "02基本正常" },
-      { text: "A bit tired, but managing.", key: "03轻度疲劳" },
-      { text: "Noticeably less energy than before.", key: "04中度疲劳" },
-      { text: "Often tired, can't recover.", key: "05严重疲劳" }
+      { text: "Energetic, feeling great.", key: "01Energetic" },
+      { text: "Okay — not the best, not the worst.", key: "02BasicallyNormal" },
+      { text: "A bit tired, but managing.", key: "03MildFatigue" },
+      { text: "Noticeably less energy than before.", key: "04ModerateFatigue" },
+      { text: "Often tired, can't recover.", key: "05SevereFatigue" }
     ]
   },
   {
     q: "Your first feeling about 『aging』:",
     options: [
-      { text: "Normal phenomenon, nothing to fear.", key: "06接纳aging" },
-      { text: "A bit worried, but things will work out.", key: "07轻度担忧" },
-      { text: "Starting to seriously consider wellness.", key: "08主动应对" },
-      { text: "Quite scared, afraid to think about it.", key: "09回避恐惧" },
-      { text: "It's already happening — my body is declining.", key: "10现实接受" }
+      { text: "Normal phenomenon, nothing to fear.", key: "06AcceptAging" },
+      { text: "A bit worried, but things will work out.", key: "07MildConcern" },
+      { text: "Starting to seriously consider wellness.", key: "08ProactiveApproach" },
+      { text: "Quite scared, afraid to think about it.", key: "09AvoidantFear" },
+      { text: "It's already happening — my body is declining.", key: "10RealityAccepted" }
     ]
   },
   {
     q: "How is your sleep quality now?",
     options: [
-      { text: "睡得不错，醒来精spirit好。", key: "11睡眠优质" },
-      { text: "Basically okay, occasionally wake up.", key: "12睡眠尚可" },
-      { text: "经常睡不好，第二天精spirit差。", key: "13睡眠问题" },
-      { text: "Severe insomnia, already affecting life.", key: "14严重失眠" },
-      { text: "Need medication to fall asleep.", key: "15药物依赖" }
+      { text: "Sleep well, wake up feeling great.", key: "11QualitySleep" },
+      { text: "Basically okay, occasionally wake up.", key: "12DecentSleep" },
+      { text: "Often sleep poorly, feel drained the next day.", key: "13SleepProblems" },
+      { text: "Severe insomnia, already affecting life.", key: "14SevereInsomnia" },
+      { text: "Need medication to fall asleep.", key: "15MedicationDependent" }
     ]
   },
   {
     q: "What is your current exercise situation?",
     options: [
-      { text: "Exercise regularly, it's a habit.", key: "16规律运动" },
-      { text: "Occasionally exercise, but know I should do more.", key: "17意识清醒" },
-      { text: "Know exercise is important, but just don't do it.", key: "18知行不一" },
-      { text: "Physical condition doesn't allow exercise.", key: "19客观限制" },
-      { text: "Don't exercise at all, and don't plan to.", key: "20无动意愿" }
+      { text: "Exercise regularly, it's a habit.", key: "16RegularExercise" },
+      { text: "Occasionally exercise, but know I should do more.", key: "17AwareButInactive" },
+      { text: "Know exercise is important, but just don't do it.", key: "18KnowingNotDoing" },
+      { text: "Physical condition doesn't allow exercise.", key: "19PhysicalLimitations" },
+      { text: "Don't exercise at all, and don't plan to.", key: "20NoMotivation" }
     ]
   },
   {
-    q: "Your first feeling about 自己健康最大的担心是？",
+    q: "What is your biggest health concern?",
     options: [
-      { text: "No particular concerns.", key: "21心态乐观" },
-      { text: "Chronic diseases (blood pressure, blood sugar, etc.).", key: "22慢性病风险" },
-      { text: "Major diseases (cancer, cardiovascular, etc.).", key: "23重病恐惧" },
-      { text: "No one to care for me when old.", key: "24老年焦虑" },
-      { text: "Cognitive decline (dementia).", key: "25认知衰退" }
+      { text: "No particular concerns.", key: "21OptimisticMindset" },
+      { text: "Chronic diseases (blood pressure, blood sugar, etc.).", key: "22ChronicDiseaseRisk" },
+      { text: "Major diseases (cancer, cardiovascular, etc.).", key: "23MajorDiseaseFear" },
+      { text: "No one to care for me when old.", key: "24OldAgeAnxiety" },
+      { text: "Cognitive decline (dementia).", key: "25CognitiveDecline" }
     ]
   },
   {
-    q: "你现在的精spirit状态，最接近哪一种？",
+    q: "Which best describes your current spiritual state?",
     options: [
-      { text: "Fulfilled, with purpose.", key: "26精spirit充实" },
-      { text: "Ordinary, but stable.", key: "27基本安定" },
-      { text: "A bit lost, nothing particular I want to do.", key: "28精spirit平淡" },
-      { text: "Tired, but don't know why.", key: "29身心疲惫" },
-      { text: "Often feel life is pointless.", key: "30存在空虚" }
+      { text: "Fulfilled, with purpose.", key: "26SpiritFulfilled" },
+      { text: "Ordinary, but stable.", key: "27BasicallySettled" },
+      { text: "A bit lost, nothing particular I want to do.", key: "28SpiritFlat" },
+      { text: "Tired, but don't know why.", key: "29BodyMindExhausted" },
+      { text: "Often feel life is pointless.", key: "30ExistentialEmptiness" }
     ]
   }
 ];
 
 // Card Points Data (30 dimensions)
 const cardPoints = {
-  "01精力充沛":    { name: "Full of Energy",    desc: "Your energy levels are good — that's great capital. Don't waste it by abusing your youth; energy is wealth that can be preserved.", advice: "Keep it up. Exercise 3+ times a week — it's the best investment.", color: "var(--gold)" },
-  "02基本正常":    { name: "Basically Normal",    desc: "Your body is basically on track — no need to over-worry, but not ideal for continued overexertion.", advice: "Get an annual checkup. Don't wait for problems. Prevention is always cheaper than treatment.", color: "#b89a6a" },
-  "03轻度疲劳":    { name: "Mild Fatigue",    desc: "Your body is already reminding you: tired, needs rest. Don't ignore this signal.", advice: "This week, go to bed before 11 PM at least two nights. The sleep you owe yourself will eventually be collected.", color: "#9a7a4a" },
-  "04中度疲劳":    { name: "Moderate Fatigue",    desc: "Less energy than before — not your fault, but ignoring it is your responsibility.", advice: "First check: anemia? Thyroid? Sleep apnea? Get basic tests to rule out organic issues.", color: "#a88040" },
-  "05严重疲劳":    { name: "Severe Fatigue",    desc: "Your body is sounding the alarm. You've been pushing, but pushing has limits.", advice: "This must be taken seriously. Get a full checkup and examine your stress sources — some fatigue isn't physical, it's psychological.", color: "#c0784a" },
-  "06接纳aging":    { name: "接纳aging",    desc: "Your first feeling about aging有平常心，这是成熟的表现。aging不可怕，怕的是抗拒。", advice: "Keep this acceptance while also checking: are you nourishing yourself with healthy habits? Acceptance needs action too.", color: "var(--gold)" },
-  "07轻度担忧":    { name: "Mild Concern",    desc: "Your first feeling about aging有些担心，但还没有被恐惧支配。这种担忧是有益的——它提醒你做点什么。", advice: "把担忧转化为行动：开始关注自己的饮食、睡眠 and 运动。担心本身不解决问题，行动才解决。", color: "#b89a6a" },
-  "08主动应对":    { name: "Proactive Approach",    desc: "You've started taking wellness seriously — great start. Direction matters more than effort.", advice: "Build sustainable health habits: 6000 steps daily, 3 workouts weekly, less processed food.——Small habits stick.", color: "var(--gold)" },
-  "09回避恐惧":    { name: "Avoidant Fear",    desc: "Your first feeling about aging有恐惧，而且选择了回避。恐惧本身是正常的，但回避会让你错过预防的机会。", advice: "Annual checkups are insurance for the future. Fear isn't scary — what's scary is avoiding checkups because of fear.", color: "#c0784a" },
-  "10现实接受":    { name: "Reality Accepted",    desc: "Your body has started declining. This isn't failure — it's reality everyone faces.", advice: "Focus on how to make the decline steadier. Control blood pressure and sugar, get regular checkups — the most important things you can do now.", color: "#9a7a4a" },
-  "11睡眠优质":    { name: "Quality Sleep",    desc: "你能睡个好觉，这是很大的福气。睡眠是最好的抗aging药，也是最好的补药。", advice: "Keep it up. Avoid phones before bed — blue light is sleep's greatest enemy.", color: "var(--gold)" },
-  "12睡眠尚可":    { name: "Decent Sleep",    desc: "Your sleep is basically okay, but room for improvement. Occasional insomnia is your body saying: time to adjust.", advice: "睡前2小时避免咖啡、浓茶 and 剧烈运动。给自己建立一个『sleep ritual』：: wash up, lights off, soft music.", color: "#b89a6a" },
-  "13睡眠问题":    { name: "Sleep Problems",    desc: "Your sleep has issues. Poor sleep affects everything: mood, memory, immunity, even lifespan.", advice: "First find the cause: stress? Coffee? Phone? Or physical issues? Treat accordingly. See a sleep specialist if needed.", color: "#a88040" },
-  "14严重失眠":    { name: "Severe Insomnia",    desc: "Insomnia has become part of your life. This isn't just a sleep issue — your body and mind are crying for help.", advice: "Insomnia is often the body's expression of psychological issues. See a professional — short-term medication is reasonable. Don't push through alone.", color: "#c0784a" },
-  "15药物依赖":    { name: "Medication Dependent",    desc: "你已经开始Need medication to fall asleep.药物可以帮助你度过难关，但不能成为长期解决方案。", advice: "See a specialist to adjust medication while fundamentally addressing sleep: stress management, lifestyle changes, cognitive behavioral therapy.", color: "#c0784a" },
-  "16规律运动":    { name: "Regular Exercise",    desc: "You have an exercise habit — great. Exercise is the best method for reversing aging, bar none.", advice: "Keep going, but diversify: cardio, strength, flexibility — all three. Over-exercise is also harmful.", color: "var(--gold)" },
-  "17意识清醒":    { name: "Aware But Inactive",    desc: "你knowing运动重要，但还没真正动起来。知识 and 行动之间，隔着一道鸿沟。", advice: "Start with the smallest action: 6000 steps daily. No gym needed, no equipment — just walking. One month and you'll see changes.", color: "#9a7a4a" },
-  "18知行不一":    { name: "Knowing Not Doing",    desc: "You understand health knowledge but can't act on it. This is modern life's most common struggle.", advice: "Knowing doesn't mean 『knowing』 means 『doing』。找一个人陪你一起运动，或者找一个目标——有人陪、有目标，才能坚持。", color: "#b89a6a" },
-  "19客观限制":    { name: "Physical Limitations",    desc: "你的身体状况确实限制了你运动的能力。这Knowing doesn't mean 你的问题，接受它，然后找到适合你的方式。", advice: "即使不能剧烈运动，也可以做柔 and 的运动：散步、太极、拉伸、游泳。关键是动起来，Knowing doesn't mean 动得多猛。", color: "#9a7a4a" },
-  "20无动意愿":    { name: "No Motivation to Move",    desc: "You have zero motivation to exercise. There may be a reason: depression? Fatigue? Or just habit?", advice: "Find the cause first. If fatigue, fix sleep first; if depression, seek professional help. If just habit, start with the simplest: stand up, take two steps.", color: "#c0784a" },
-  "21心态乐观":    { name: "Optimistic Mindset",    desc: "Your first feeling about 健康没有特别的担忧，这是好事。但乐观不应该变成大意。", advice: "Annual checkups are the best insurance for the future. Don't skip them just because you feel fine.", color: "var(--gold)" },
-  "22慢性病风险":  { name: "Chronic Disease Risk",  desc: "你担心Chronic diseases (blood pressure, blood sugar, etc.).这是最常见的健康威胁，也是最可控的。", advice: "慢性病管理，靠的是生活习惯，Knowing doesn't mean 靠感觉。控制饮食、增加运动、遵医嘱吃药，三管齐下，可以 and 慢性病 and 平共处。", color: "#b89a6a" },
-  "23重病恐惧":    { name: "Major Disease Fear",    desc: "Your first feeling about 重大疾病有恐惧。这个恐惧是合理的——但过度恐惧会影响生活质量。", advice: "Fear doesn't solve problems — action does. Convert fear into regular screenings: colonoscopy, gastroscopy, lung CT. Early detection is the best weapon against cancer.", color: "#a88040" },
-  "24老年焦虑":    { name: "Old Age Anxiety",    desc: "你担心No one to care for me when old.这是很多人不敢说出口的恐惧。", advice: "Plan ahead: financial preparation, social maintenance, health investment. Money, companions, and health — these secure old age.", color: "#9a7a4a" },
-  "25认知衰退":    { name: "Cognitive Decline Fear",    desc: "你担心Cognitive decline (dementia).这个恐惧越来越普遍——因为我们都看到了身边人的例子。", advice: "The brain can be exercised: reading, learning new skills, socializing, physical exercise, controlling blood pressure and sugar. The earlier you start, the better the results.", color: "#b89a6a" },
-  "26精spirit充实":    { name: "精spirit充实",    desc: "你的精spirit状态很好，有奔头。这是最难得的——很多人有钱有闲，但没有奔头。", advice: "继续保持。同时注意身体：精spirit充实的人容易透支身体，觉得自己还行。别忘了，你Knowing doesn't mean 铁打的。", color: "var(--gold)" },
-  "27基本安定":    { name: "Basically Settled",    desc: "你的精spirit状态基本安稳，不算充实但也不迷茫。这是最常见的状态。", advice: "Ordinariness is a blessing, but too long can slide into emptiness. Occasionally challenge yourself: learn something new, visit somewhere new, meet an old friend.", color: "#b89a6a" },
-  "28精spirit平淡":    { name: "精spirit平淡",    desc: "你A bit lost, nothing particular I want to do.这种平淡，是很多中年人的真实写照。", advice: "平淡的反面Knowing doesn't mean 轰轰烈烈，是『meaning』。找一个你能帮到的人、做一件你觉得有价值的小事——meaning，会慢慢回来的。", color: "#9a7a4a" },
-  "29身心疲惫":    { name: "Body-Mind Exhaustion",    desc: "你经常觉得累，不只是身体累，是心累。这种疲惫，是身体 and 心理的双重警报。", advice: "先停下来。Knowing doesn't mean 等有时间了再休息，是现在就休息。哪怕每天15分钟的放空，也比硬撑强。你的身体在求救。", color: "#c0784a" },
-  "30存在空虚":    { name: "Existential Emptiness",    desc: "你Often feel life is pointless.这Knowing doesn't mean 小问题——如果这个感觉持续超过两周，需要认真对待。", advice: "先排除抑郁症的可能。如果是抑郁症，寻求专业帮助；如果Knowing doesn't mean ，那意味着你的生活需要调整——加意义，减消耗，增联结。", color: "#8b3a2a" }
+  "01Energetic":    { name: "Full of Energy",    desc: "Your energy levels are good — that's great capital. Don't waste it by abusing your youth; energy is wealth that can be preserved.", advice: "Keep it up. Exercise 3+ times a week — it's the best investment.", color: "var(--gold)" },
+  "02BasicallyNormal":    { name: "Basically Normal",    desc: "Your body is basically on track — no need to over-worry, but not ideal for continued overexertion.", advice: "Get an annual checkup. Don't wait for problems. Prevention is always cheaper than treatment.", color: "#b89a6a" },
+  "03MildFatigue":    { name: "Mild Fatigue",    desc: "Your body is already reminding you: tired, needs rest. Don't ignore this signal.", advice: "This week, go to bed before 11 PM at least two nights. The sleep you owe yourself will eventually be collected.", color: "#9a7a4a" },
+  "04ModerateFatigue":    { name: "Moderate Fatigue",    desc: "Less energy than before — not your fault, but ignoring it is your responsibility.", advice: "First check: anemia? Thyroid? Sleep apnea? Get basic tests to rule out organic issues.", color: "#a88040" },
+  "05SevereFatigue":    { name: "Severe Fatigue",    desc: "Your body is sounding the alarm. You've been pushing, but pushing has limits.", advice: "This must be taken seriously. Get a full checkup and examine your stress sources — some fatigue isn't physical, it's psychological.", color: "#c0784a" },
+  "06AcceptAging":    { name: "Accepts Aging",    desc: "Your first reaction to aging shows equanimity — a sign of maturity. Aging isn't scary; what's scary is resisting it.", advice: "Keep this acceptance while also checking: are you nourishing yourself with healthy habits? Acceptance needs action too.", color: "var(--gold)" },
+  "07MildConcern":    { name: "Mild Concern",    desc: "You feel some concern about aging, but aren't controlled by fear. This worry is helpful — it reminds you to do something.", advice: "Turn worry into action: start paying attention to your diet, sleep, and exercise. Worry itself doesn't solve problems — action does.", color: "#b89a6a" },
+  "08ProactiveApproach":    { name: "Proactive Approach",    desc: "You've started taking wellness seriously — great start. Direction matters more than effort.", advice: "Build sustainable health habits: 6000 steps daily, 3 workouts weekly, less processed food.——Small habits stick.", color: "var(--gold)" },
+  "09AvoidantFear":    { name: "Avoidant Fear",    desc: "You feel fear about aging, and you chose to avoid it. Fear itself is normal, but avoidance makes you miss chances for prevention.", advice: "Annual checkups are insurance for the future. Fear isn't scary — what's scary is avoiding checkups because of fear.", color: "#c0784a" },
+  "10RealityAccepted":    { name: "Reality Accepted",    desc: "Your body has started declining. This isn't failure — it's reality everyone faces.", advice: "Focus on how to make the decline steadier. Control blood pressure and sugar, get regular checkups — the most important things you can do now.", color: "#9a7a4a" },
+  "11QualitySleep":    { name: "Quality Sleep",    desc: "You can sleep well — that's a great blessing. Sleep is the best anti-aging medicine and the best tonic.", advice: "Keep it up. Avoid phones before bed — blue light is sleep's greatest enemy.", color: "var(--gold)" },
+  "12DecentSleep":    { name: "Decent Sleep",    desc: "Your sleep is basically okay, but room for improvement. Occasional insomnia is your body saying: time to adjust.", advice: "睡前2小时避免咖啡、浓茶 and 剧烈运动。给自己建立一个『sleep ritual』：: wash up, lights off, soft music.", color: "#b89a6a" },
+  "13SleepProblems":    { name: "Sleep Problems",    desc: "Your sleep has issues. Poor sleep affects everything: mood, memory, immunity, even lifespan.", advice: "First find the cause: stress? Coffee? Phone? Or physical issues? Treat accordingly. See a sleep specialist if needed.", color: "#a88040" },
+  "14SevereInsomnia":    { name: "Severe Insomnia",    desc: "Insomnia has become part of your life. This isn't just a sleep issue — your body and mind are crying for help.", advice: "Insomnia is often the body's expression of psychological issues. See a professional — short-term medication is reasonable. Don't push through alone.", color: "#c0784a" },
+  "15MedicationDependent":    { name: "Medication Dependent",    desc: "你已经开始Need medication to fall asleep.药物可以帮助你度过难关，但不能成为长期解决方案。", advice: "See a specialist to adjust medication while fundamentally addressing sleep: stress management, lifestyle changes, cognitive behavioral therapy.", color: "#c0784a" },
+  "16RegularExercise":    { name: "Regular Exercise",    desc: "You have an exercise habit — great. Exercise is the best method for reversing aging, bar none.", advice: "Keep going, but diversify: cardio, strength, flexibility — all three. Over-exercise is also harmful.", color: "var(--gold)" },
+  "17AwareButInactive":    { name: "Aware But Inactive",    desc: "You know exercise is important, but haven't really started. Between knowledge and action lies a gap.", advice: "Start with the smallest action: 6000 steps daily. No gym needed, no equipment — just walking. One month and you'll see changes.", color: "#9a7a4a" },
+  "18KnowingNotDoing":    { name: "Knowing Not Doing",    desc: "You understand health knowledge but can't act on it. This is modern life's most common struggle.", advice: "Knowing doesn't mean doing. Find someone to exercise with, or find a goal — companionship and goals help you persist.", color: "#b89a6a" },
+  "19PhysicalLimitations":    { name: "Physical Limitations",    desc: "Your physical condition does limit your ability to exercise. This isn't your fault — accept it, then find what works for you.", advice: "Even if you can't do vigorous exercise, you can do gentle exercise: walking, tai chi, stretching, swimming. The key is to move, not how intensely.", color: "#9a7a4a" },
+  "20NoMotivation":    { name: "No Motivation to Move",    desc: "You have zero motivation to exercise. There may be a reason: depression? Fatigue? Or just habit?", advice: "Find the cause first. If fatigue, fix sleep first; if depression, seek professional help. If just habit, start with the simplest: stand up, take two steps.", color: "#c0784a" },
+  "21OptimisticMindset":    { name: "Optimistic Mindset",    desc: "You have no particular worries about your health — that's good. But optimism shouldn't become carelessness.", advice: "Annual checkups are the best insurance for the future. Don't skip them just because you feel fine.", color: "var(--gold)" },
+  "22ChronicDiseaseRisk":  { name: "Chronic Disease Risk",  desc: "You worry about chronic diseases (blood pressure, blood sugar, etc.). These are the most common health threats, and also the most controllable.", advice: "Managing chronic disease relies on lifestyle habits, not feelings. Control diet, increase exercise, take prescribed medication — all three together can help you coexist peacefully with chronic disease.", color: "#b89a6a" },
+  "23MajorDiseaseFear":    { name: "Major Disease Fear",    desc: "You feel fear about major diseases. This fear is reasonable — but excessive fear affects quality of life.", advice: "Fear doesn't solve problems — action does. Convert fear into regular screenings: colonoscopy, gastroscopy, lung CT. Early detection is the best weapon against cancer.", color: "#a88040" },
+  "24OldAgeAnxiety":    { name: "Old Age Anxiety",    desc: "You worry about having no one to care for you when old. This is a fear many people don't dare voice.", advice: "Plan ahead: financial preparation, social maintenance, health investment. Money, companions, and health — these secure old age.", color: "#9a7a4a" },
+  "25CognitiveDecline":    { name: "Cognitive Decline Fear",    desc: "You worry about cognitive decline (dementia). This fear is increasingly common — because we've all seen examples close to us.", advice: "The brain can be exercised: reading, learning new skills, socializing, physical exercise, controlling blood pressure and sugar. The earlier you start, the better the results.", color: "#b89a6a" },
+  "26SpiritFulfilled":    { name: "Fulfilled Spirit",    desc: "Your spirit is fulfilled with purpose. This is rare — many people have money and time, but no sense of direction.", advice: "Keep it up. Also watch your body: people with fulfilled spirits tend to overdraw their physical health. Don't forget, you're not made of iron.", color: "var(--gold)" },
+  "27BasicallySettled":    { name: "Basically Settled",    desc: "Your spirit is basically settled — not fulfilled, but not lost either. This is the most common state.", advice: "Ordinariness is a blessing, but too long can slide into emptiness. Occasionally challenge yourself: learn something new, visit somewhere new, meet an old friend.", color: "#b89a6a" },
+  "28SpiritFlat":    { name: "Flat Spirit",    desc: "You feel a bit lost with nothing particular you want to do. This flatness is a true portrait of many middle-aged people.", advice: "The opposite of flatness isn't excitement — it's meaning. Find someone you can help, do one small thing you find valuable — meaning will gradually return.", color: "#9a7a4a" },
+  "29BodyMindExhausted":    { name: "Body-Mind Exhaustion",    desc: "You often feel tired — not just physically, but mentally. This exhaustion is a dual alarm from body and mind.", advice: "Stop first. Don't wait until you have time to rest — rest now. Even 15 minutes of mental blankness per day is better than pushing through. Your body is crying for help.", color: "#c0784a" },
+  "30ExistentialEmptiness":    { name: "Existential Emptiness",    desc: "You often feel life is pointless. This isn't a small problem — if this feeling persists for more than two weeks, it needs serious attention.", advice: "First rule out depression. If it's depression, seek professional help; if not, it means your life needs adjustment — add meaning, reduce drain, increase connection.", color: "#8b3a2a" }
 };
 
 // 彩蛋（4个，围绕健康与aging主题）
 const easterEggs = [
-  { title: "Huangdi Neijing · Ancient Truths", text: "The Yellow Emperor asked Qi Bo: why could people in ancient times live to 100 without decline? Qi Bo answered: 『"Eat and drink in moderation, maintain regular routines, avoid overexertion." 』——Wellness advice from two thousand years ago that still works today." },
-  { title: "Harvard 75-Year Study", text: "哈佛大学追踪了724人75年，结论是：决定一个人健康 and 幸福的，Knowing doesn't mean 财富、Knowing doesn't mean 成就，而是——良好的人际关系。孤独，是健康最大的杀手。" },
-  { title: "spirit经可塑性", text: "大脑在你的一生中都在改变。每一次学习、每一次思考、每一次运动，都在重塑你的spirit经网络。60岁学画、70岁学琴，不晚——你的大脑还在等你给它惊喜。" },
-  { title: "The Telomere Effect", text: "诺贝尔奖得主布莱克本发现：决定你aging速度的，是端粒的长度。而保护端粒最好的方法，是：减少慢性压力、保持乐观、适度运动、良好睡眠。" }
+  { title: "Huangdi Neijing · Ancient Truths", text: "The Yellow Emperor asked Qi Bo: why could people in ancient times live to 100 without decline? Qi Bo answered: 'Eat and drink in moderation, maintain regular routines, avoid overexertion.' Wellness advice from two thousand years ago that still works today." },
+  { title: "Harvard 75-Year Study", text: "Harvard tracked 724 people for 75 years. The conclusion: what determines a person's health and happiness isn't wealth or achievement — it's good relationships. Loneliness is the biggest killer of health." },
+  { title: "Neuroplasticity", text: "Your brain changes throughout your entire life. Every time you learn, think, or exercise, you reshape your neural networks. Learning to paint at 60, learning piano at 70 — it's not too late. Your brain is still waiting for you to surprise it." },
+  { title: "The Telomere Effect", text: "Nobel laureate Elizabeth Blackburn discovered: what determines your aging speed is telomere length. The best way to protect telomeres: reduce chronic stress, stay optimistic, exercise moderately, sleep well." }
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedDilemmas = [];
@@ -1114,7 +1114,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航
+   Page Navigation
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1143,7 +1143,7 @@ function renderDilemma() {
   const list = document.getElementById('dilemmaList');
   list.innerHTML = dilemmas.map(d => `
     <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
-      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-num">Dilemma ${String(d.id).padStart(2,'0')}</div>
       <div class="dilemma-text">${d.text}</div>
     </div>
   `).join('');
@@ -1172,7 +1172,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1182,7 +1182,7 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+  document.getElementById('flipHint').textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
@@ -1197,12 +1197,12 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1217,7 +1217,7 @@ function renderQuestion() {
 
   document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
   nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
 }
 
@@ -1252,7 +1252,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnosis Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1271,9 +1271,9 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
-    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `身体是一本连续写了几十年的日记，读懂它，比任何养生经都重要。`
+    `Your core block is '${topKey ? topKey.name : 'Unknown'}'. The rest are extensions of this block.`,
+    `You have ${sorted.filter(s => s[1] >= 2).length} deeper blocks that are interconnected.`,
+    `Your body is a diary written over decades. Reading it matters more than any health advice.`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1319,7 +1319,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Level Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1349,7 +1349,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1370,9 +1370,9 @@ function generateCard() {
 
   const responses = [
     "What you've written shows you're already facing it. Just putting it into words is the beginning of change.",
-    "困境Knowing doesn't mean 一天形成的，解开它也不需要一天。你已经走出了第一步。",
-    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己knowing的要大。",
-    "Knowing doesn't mean 所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+    "Blocks didn't form in a day, and they don't need a day to unravel. You've already taken the first step.",
+    "What you've put into words is what many people dare not face. Your courage is greater than you know.",
+    "Not everyone is willing to write these things down. You did. That step alone is remarkable."
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
@@ -1404,7 +1404,7 @@ function downloadCard() {
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第十一关 · 健康与aging · 找到啦', 300, 108);
+  ctx.fillText('Level 11 · Health & Aging · 找到啦', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1435,10 +1435,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第十一关 · 健康与aging · 找到啦 —', 300, 750);
+  ctx.fillText('— Level 11 · Health & Aging · 找到啦 —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的隐藏关卡.png';
+  link.download = 'my-hidden-level.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1465,7 +1465,7 @@ function goBackHome() {
 }
 
 /* ============================================================
-   启动
+   Startup
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderDilemma();

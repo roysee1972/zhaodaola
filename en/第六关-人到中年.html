@@ -899,12 +899,12 @@
   <div style="padding-top: 20px;">
     <div class="question-header">
       <div class="question-num" id="qNum">Question 1</div>
-      <div class="question-text" id="qText">关于时间，你最近感受到的是？</div>
+      <div class="question-text" id="qText">What have you been feeling about time lately?</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
       <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
     </div>
   </div>
@@ -951,7 +951,7 @@
     <div id="adviceList"></div>
 
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
-      以上不是你想说的？打开你的隐藏关卡 →
+      Not what you wanted to say? Open your hidden stage →
     </div>
     <div class="page-end-text">--- Stage 6 - Midlife - Complete ---</div>
   </div>
@@ -1006,7 +1006,7 @@
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Stage Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
       Finding your own blocks is the first step to passing this stage.<br>
       The road ahead is under your feet.
@@ -1054,7 +1054,7 @@ const questions = [
     q: "Your check-up results are in. What is your first reaction?",
     options: [
       { text: "Leave it unread - out of sight, out of mind", key: "逃避健康" },
-      { text: "Looked at it, but pretended everything is fine", key: "压抑焦虑" },
+      { text: "Looked at it, but pretended everything is fine", key: "Suppressed Anxiety" },
       { text: "Read it carefully and started adjusting habits", key: "觉察" },
       { text: "Looked at it, but feel indifferent - won't live much longer anyway", key: "消极" },
       { text: "Didn't get a check-up - didn't see the need", key: "逃避健康" }
@@ -1063,8 +1063,8 @@ const questions = [
   {
     q: "When was your last date alone with your partner?",
     options: [
-      { text: "Can't remember - seems like ages", key: "婚姻倦怠" },
-      { text: "Last week - we go out often", key: "婚姻经营" },
+      { text: "Can't remember - seems like ages", key: "Marriage Burnout" },
+      { text: "Last week - we go out often", key: "Marriage Nurturing" },
       { text: "Want to, but never seem to have the time", key: "逃避" },
       { text: "Don't want to - seems pointless", key: "情感麻木" },
       { text: "We have already separated", key: "关系破裂" }
@@ -1076,7 +1076,7 @@ const questions = [
       { text: "Must intervene - can't let them go down the wrong path", key: "控制执念" },
       { text: "Want to intervene, but afraid they'll resent me", key: "边界纠结" },
       { text: "Let it go - they're grown", key: "放手" },
-      { text: "Very angry, but holding it in", key: "压抑情绪" },
+      { text: "Very angry, but holding it in", key: "Suppressed Emotions" },
       { text: "I don't know how to handle it", key: "无力感" }
     ]
   },
@@ -1103,9 +1103,9 @@ const questions = [
   {
     q: "If you could start over, what would you most want to change?",
     options: [
-      { text: "Marry someone I loved more", key: "婚姻遗憾" },
-      { text: "Spend more time with my parents", key: "亲情遗憾" },
-      { text: "Hold on to my dreams", key: "梦想遗憾" },
+      { text: "Marry someone I loved more", key: "Marriage Regret" },
+      { text: "Spend more time with my parents", key: "Family Regret" },
+      { text: "Hold on to my dreams", key: "Dream Regret" },
       { text: "Be kinder to myself", key: "自我关怀" },
       { text: "Not start over - it's not too late now", key: "接纳" }
     ]
@@ -1120,7 +1120,7 @@ const cardPoints = {
     advice: "Today, schedule a check-up for yourself. Nothing major - just the basics. If you really don't want to go, walk instead - get your 6,000 steps in today.",
     color: "#c0784a"
   },
-  "婚姻倦怠": {
+  "Marriage Burnout": {
     name: "Marriage Burnout",
     desc: "Conversations between you keep dwindling - sometimes barely a few sentences a week. Love became familiarity, or settling. But the truth may be: you're just so familiar with each other that you forgot what brought you together.",
     advice: "This month, find time to do something just the two of you. No kids, no household talk, no child discussions - like the early dating days.",
@@ -1344,8 +1344,8 @@ function showResult() {
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
     `Your core block is「${topKey ? topKey.name : ''}」. The others are extensions of it.`,
-    `你有 ${sorted.filter(s=>s[1]>=2).length}  deeper blocks that are interconnected.`,
-    `人生没有简单的答案，但看清自己在卡哪里，已经是改变的开始。`
+    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blocks that are interconnected.`,
+    `There are no simple answers in life, but seeing where you're stuck is already the beginning of change.`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1393,7 +1393,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Stage Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1422,7 +1422,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Stage
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1436,7 +1436,7 @@ function generateCard() {
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${i+1}: ${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
@@ -1449,7 +1449,7 @@ function generateCard() {
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : 'Today, do one thing: think about this one more time, and clarify it a little more than today.';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split('，')[0].split('。')[0]}` : 'Today, do one thing: think about this one more time, and clarify it a little more than today.';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
@@ -1540,7 +1540,7 @@ function restart() {
 }
 
 function goBackHome() {
-  // 尝试返回上一页；若无历史记录则跳转到首页HTML
+  // Try to go back; if no history, redirect to homepage
   if (document.referrer && document.referrer !== window.location.href) {
     history.back();
   } else {

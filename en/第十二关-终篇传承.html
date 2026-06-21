@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="终篇传承关卡：你想留下什么？这是生命最后的追问。">
+<meta name="description" content="Legacy & Passing On: What do you want to leave behind? The final question of life.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第十二关 · 终篇传承 — 找到啦</title>
+<title>Stage 12 · Legacy & Passing On — Found It</title>
 <style>
   :root {
     --bg: #f5e6c8;
@@ -755,39 +755,39 @@
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
-  <span>返回主页</span>
+  <span>Back to Home</span>
 </button>
 
 <!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第十二关 · 找到啦</div>
+    <div class="level-badge">Stage 12 · Found It</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">传承</div>
+      <div class="deco-ring-inner">Legacy</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">终篇 · 传承</h1>
+    <h1 class="hero-title">Final Chapter · Legacy</h1>
     <p class="hero-sub">
-      写遗书太早，写人生回顾刚刚好<br>
-      这一关不谈死亡，帮你回望
+      Too early to write a will, but just right for a life review<br>
+      This level doesn't talk about death — it helps you look back
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      你有没有想过：<br>
-      如果今天就是最后一天，我会后悔什么？<br>
-      我这辈子，到底留下了什么？<br>
-      或者——我害怕被遗忘吗？
+      Have you ever wondered:<br>
+      If today were my last day, what would I regret?<br>
+      What have I actually left behind in this life?<br>
+      Or — am I afraid of being forgotten?
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      死亡不是人生的对立面，是人生的一部分。<br>
-      这一关，不给你答案，只陪你<br>
-      看见自己走过的路。
+      Death isn't the opposite of life — it's part of it.<br>
+      This level doesn't give you answers, it just accompanies you<br>
+      in seeing the path you've walked.
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" onclick="goPage('dilemma')">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 5 分钟</p>
+    <button class="btn" onclick="goPage('dilemma')">Begin Exploration</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 5 minutes</p>
   </div>
 </div>
 
@@ -795,15 +795,15 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十二关 · 终篇传承</div>
+      <div class="level-badge">Stage 12 · Legacy & Passing On</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 class="hero-title" style="font-size: 26px;">在哪件事上，你最困惑？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 条最触动你的。不需要勇敢，诚实就好。</p>
+      <h2 class="hero-title" style="font-size: 26px;">What confuses you the most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 items that resonate most with you. No courage needed — just honesty.</p>
     </div>
     <div style="margin-top: 24px;" id="dilemmaList"></div>
-    <div class="dilemma-hint" id="dilemmaHint">已选择 <span id="dilemmaCount">0</span> 条</div>
+    <div class="dilemma-hint" id="dilemmaHint">Selected: <span id="dilemmaCount">0</span></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" onclick="goDilemma()" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -812,26 +812,26 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第十二关 · 终篇传承</div>
+      <div class="level-badge">Stage 12 · Legacy & Passing On</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">先抽一张冒险卡</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card First</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard" onclick="flipCard()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">点击翻开</div>
+            <div class="flip-card-front-hint">Tap to Reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"写遗书太早，写人生回顾刚刚好。"</div>
+            <div class="flip-card-quote" id="flipQuote">"Too early to write a will, but just right for a life review."</div>
             <div class="flip-card-tap-hint">— 冒险卡</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
-      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">开始诊断</button>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
+      <button class="btn" id="adventureNextBtn" onclick="goQuestion()" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
@@ -840,14 +840,14 @@
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-num" id="qNum">Question 1</div>
       <div class="question-text" id="qText">你最近的身体状态，你给自己的评分是？</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">上一题</button>
-      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>继续</button>
+      <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -856,23 +856,23 @@
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">诊断完成</div>
+      <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的人生回望画像</div>
-      <div class="result-sub">终篇传承 · 第十二关</div>
+      <div class="result-title">Your Life Reflection Profile</div>
+      <div class="result-sub">Legacy & Passing On · Stage 12</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" onclick="closeEgg()">×</button>
-      <div class="easter-egg-label">你发现了一个关于人生的小秘密</div>
+      <div class="easter-egg-label">You discovered a little secret about life</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" onclick="goAdvice()">查看通关建议</button>
+      <button class="btn" onclick="goAdvice()">View Level Advice</button>
     </div>
   </div>
 </div>
@@ -881,24 +881,24 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第十二关 · 终篇传承</div>
+      <div class="level-badge">Stage 12 · Legacy & Passing On</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">通关建议</div>
+      <div class="advice-title">Level Advice</div>
       <div class="advice-intro">
-        终篇，不是终点，是一面镜子。<br>
-        不需要想通生死，只需要看见自己。<br>
-        这一关，帮你回望走过的路。
+        The final chapter isn't the end — it's a mirror.<br>
+        You don't need to resolve life and death, just see yourself.<br>
+        This level helps you look back at the path you've walked.
       </div>
     </div>
     <div id="adviceList"></div>
 
     <div style="text-align: center; margin: 24px 0 12px;">
-      <a href="临终故事十二则.html" style="display: inline-block; padding: 10px 28px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; font-family: var(--font); font-size: 14px; color: var(--text-dark); text-decoration: none; letter-spacing: 2px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(201,168,76,0.22)';this.style.borderColor='#c9a84c'" onmouseout="this.style.background='rgba(201,168,76,0.12)';this.style.borderColor='rgba(201,168,76,0.35)'">📖 临终故事十二则：人类最后的遗言</a>
+      <a href="临终故事十二则.html" style="display: inline-block; padding: 10px 28px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; font-family: var(--font); font-size: 14px; color: var(--text-dark); text-decoration: none; letter-spacing: 2px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(201,168,76,0.22)';this.style.borderColor='#c9a84c'" onmouseout="this.style.background='rgba(201,168,76,0.12)';this.style.borderColor='rgba(201,168,76,0.35)'">📖 Twelve End-of-Life Stories: Humanity's Last Words</a>
     </div>
     <div class="hidden-trigger" id="hiddenTrigger" onclick="goHidden()">
       以上不是你想说的？打开你的隐藏关卡 →
     </div>
-    <div class="page-end-text">— 第十二关 · 终篇传承 · 完 —</div>
+    <div class="page-end-text">— Stage 12 · Legacy & Passing On · Complete —</div>
   </div>
 </div>
 
@@ -906,42 +906,42 @@
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">隐藏关卡</div>
+      <div class="level-badge">Hidden Level</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的专属关卡</div>
+      <div class="hidden-title">Your Personal Level</div>
       <div class="hidden-sub">
-        这里是你的空间，写下关于「终篇」你真正想说的。<br>
-        不用修饰，不用在意文采。真实就好。
+        This is your space. Write what you truly want to say about the "final chapter."<br>
+        No need to polish. Just be honest.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">第一步</div>
-      <div class="step-label">如果今天是你最后一天，你最想做的一件事是？</div>
-      <textarea class="step-input" id="hidden1" placeholder="如果时间只剩一天，我会……"></textarea>
+      <div class="step-num">Step 1</div>
+      <div class="step-label">If today were your last day, what is the one thing you'd most want to do?</div>
+      <textarea class="step-input" id="hidden1" placeholder="If I had only one day left, I would..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第二步</div>
-      <div class="step-label">你希望别人怎么记住你？用一句话。</div>
-      <textarea class="step-input" id="hidden2" placeholder="我希望被人记住的样子是……"></textarea>
+      <div class="step-num">Step 2</div>
+      <div class="step-label">How do you want others to remember you? In one sentence.</div>
+      <textarea class="step-input" id="hidden2" placeholder="I want to be remembered as..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第三步</div>
-      <div class="step-label">这辈子你最骄傲的一个决定是什么？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我最骄傲的决定是……"></textarea>
+      <div class="step-num">Step 3</div>
+      <div class="step-label">What is the decision you are most proud of in your life?</div>
+      <textarea class="step-input" id="hidden3" placeholder="The decision I'm most proud of is..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第四步</div>
-      <div class="step-label">给十年后的自己留一句话。</div>
-      <textarea class="step-input" id="hidden4" placeholder="十年后的我，我想对你说……"></textarea>
+      <div class="step-num">Step 4</div>
+      <div class="step-label">Leave a message for yourself ten years from now.</div>
+      <textarea class="step-input" id="hidden4" placeholder="To my future self, I want to say..."></textarea>
     </div>
-    <button class="generate-btn" onclick="generateCard()">生成我的隐藏关卡卡片</button>
+    <button class="generate-btn" onclick="generateCard()">Generate My Hidden Level Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的人生回望书</div>
-      <div class="card-preview-sub">第十二关 · 终篇传承 · 找到啦</div>
+      <div class="card-preview-title">My Life Reflection Book</div>
+      <div class="card-preview-sub">Stage 12 · Legacy & Passing On · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" onclick="downloadCard()">下载卡片</button>
+      <button class="download-btn" onclick="downloadCard()">Download Card</button>
     </div>
   </div>
 </div>
@@ -951,163 +951,163 @@
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">十二关，你走到了这里</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Twelve Levels — You Made It Here</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      从原生家庭到终篇传承，<br>
-      你已经走完了人生的整个圆。<br>
-      这不是终点，是另一个起点。
+      From your family of origin to legacy and passing on,<br>
+      you've walked the entire circle of life.<br>
+      This isn't the end — it's another beginning.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" onclick="restart()">重新开始</button>
+    <button class="btn btn-ghost" onclick="restart()">Start Over</button>
   </div>
 </div>
 
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据
+   Data
    ============================================================ */
 
-// 困境（12条，3层：回望来路/此刻重量/留下什么）
+// Dilemmas (12 items, 3 layers: Looking Back / The Weight of Now / What to Leave Behind)
 const dilemmas = [
-  { id: 1, text: "想到死亡会觉得害怕，但说不清到底怕的是什么。" },
-  { id: 2, text: "总觉得还有什么事没做完，但又说不清是什么。" },
-  { id: 3, text: "看着父母老去，第一次意识到：下一个就是我。" },
-  { id: 4, text: "如果今天就是最后一天，我会后悔很多事。" },
-  { id: 5, text: "担心自己老了以后没人记得。" },
-  { id: 6, text: "不确定自己这一生，到底留下了什么。" },
-  { id: 7, text: "想写点什么给孩子或后人，但拿起笔又不知道写什么。" },
-  { id: 8, text: "害怕的不是死，是被遗忘。" },
-  { id: 9, text: "有时候觉得：我这辈子好像白活了。" },
-  { id: 10, text: "想要某种形式的「不朽」，但又不信宗教。" },
-  { id: 11, text: "看到新闻里有人突然离世，会想：如果是我呢？" },
-  { id: 12, text: "关于临终、遗嘱、葬礼——完全没想过，也不想想。" }
+  { id: 1, text: "Thinking about death scares me, but I can't articulate what exactly I'm afraid of." },
+  { id: 2, text: "I always feel there's something unfinished, but I can't say what." },
+  { id: 3, text: "Watching my parents grow old, I realized for the first time: I'm next." },
+  { id: 4, text: "If today were my last day, I'd regret many things." },
+  { id: 5, text: "I worry that when I'm old, no one will remember me." },
+  { id: 6, text: "I'm not sure what I've actually left behind in this life." },
+  { id: 7, text: "I want to write something for my children or descendants, but when I pick up the pen, I don't know what to write." },
+  { id: 8, text: "What I fear isn't death — it's being forgotten." },
+  { id: 9, text: "Sometimes I feel: my life has been wasted." },
+  { id: 10, text: "I want some form of 'immortality,' but I'm not religious." },
+  { id: 11, text: "When I see news of someone dying suddenly, I think: what if that were me?" },
+  { id: 12, text: "End of life, wills, funerals — I've never thought about it, and I don't want to." }
 ];
 
-// 冒险卡（12张）
+// Adventure Cards (12)
 const adventureCards = [
-  "你每天在写自己的墓志铭，你写的是什么？",
-  "死亡不是人生的对立面，是人生的一部分。海德格尔说的。",
-  "琼瑶选择自己的告别方式——这不是逃避，是对生命的最后一次掌控。",
-  "人这辈子会死三次：第一次是断气，第二次是葬礼，第三次是最后一个记得你的人也走了。你在第几次？",
-  "最好的遗产不是钱，是一个让人想起你就微笑的故事。",
-  "写遗书太早，但给重要的人写几句话——刚刚好。",
-  "你害怕的不是死亡本身，是你觉得还有很多事没做完。那……哪一件是最重要的？",
-  "有人因为你的存在，生活变好了一点点。这就够了。真的够了。",
-  "临终关怀里有个发现：临终者最后悔的从来不是『做错了什么』，而是『没做什么』。",
-  "数字时代的新问题：你的微信朋友圈、云盘、账号——在你死后会怎样？",
-  "你不需要被万人铭记。有几个人真心记得你，就是『不朽』。",
-  "终篇不是终点。你走过的每一步，都在别人生命里留下了脚印——只是你可能不知道。"
+  "Every day you're writing your own epitaph. What are you writing?",
+  "Death isn't the opposite of life — it's part of life. Heidegger said that.",
+  "Qiong Yao chose her own way to say goodbye — this wasn't escape, it was the last act of control over her life.",
+  "A person dies three times: first when they stop breathing, second at the funeral, third when the last person who remembers you passes. Which stage are you at?",
+  "The best legacy isn't money — it's a story that makes people smile when they think of you.",
+  "Writing a will is too early, but writing a few words for the people who matter — that's just right.",
+  "What you fear isn't death itself — it's feeling like there's still so much unfinished. So... which one matters most?",
+  "Someone's life got a little better because you existed. That's enough. Really enough.",
+  "A finding from palliative care: what the dying regret most is never 'what I did wrong,' but 'what I didn't do.'",
+  "A new question of the digital age: what happens to your social media, cloud storage, and accounts after you die?",
+  "You don't need to be remembered by millions. A few people who truly remember you — that is 'immortality.'",
+  "The final chapter isn't the end. Every step you've taken has left footprints in others' lives — you just may not know it."
 ];
 
-// 诊断题（6题×5选项）
+// Diagnostic Questions (6 × 5 options)
 const questions = [
   {
-    q: "想到『死亡』这件事，你的第一反应是？",
+    q: "What is your first reaction when you think about 'death'?",
     options: [
-      { text: "正常现象，每个人都会死，没什么好怕的。", key: "01平静接纳" },
-      { text: "不太敢想，一想就觉得不舒服。", key: "02回避思考" },
-      { text: "偶尔会想，但想不通就不想了。", key: "03偶有触动" },
-      { text: "挺害怕的，尤其晚上睡不着的时候。", key: "04明显恐惧" },
+      { text: "It's normal — everyone dies, nothing to fear.", key: "01平静接纳" },
+      { text: "I don't dare think about it — it makes me uncomfortable.", key: "02回避思考" },
+      { text: "I think about it occasionally, but stop when I can't figure it out.", key: "03偶有触动" },
+      { text: "Quite scared, especially at night when I can't sleep.", key: "04明显恐惧" },
       { text: "已经认真想过很多次了，甚至做过一些准备。", key: "05主动面对" }
     ]
   },
   {
-    q: "如果今天就是你生命的最后一天，你会后悔？",
+    q: "If today were the last day of your life, what would you regret?",
     options: [
-      { text: "不会后悔，我对自己的人生基本满意。", key: "06人生无憾" },
-      { text: "有些遗憾，但整体还好。", key: "07略有遗憾" },
-      { text: "后悔没多陪陪家人。", key: "08亏欠关系" },
-      { text: "后悔没有做自己真正想做的事。", key: "09辜负自己" },
+      { text: "No regrets — I'm basically satisfied with my life.", key: "06人生无憾" },
+      { text: "Some regrets, but overall it's okay.", key: "07略有遗憾" },
+      { text: "I'd regret not spending more time with family.", key: "08亏欠关系" },
+      { text: "I'd regret not doing what I truly wanted to do.", key: "09辜负自己" },
       { text: "不知道——从没认真想过这个问题。", key: "10从未审视" }
     ]
   },
   {
-    q: "关于『留下什么』，你现在的想法最接近？",
+    q: "Regarding 'what to leave behind,' which is closest to your current thinking?",
     options: [
-      { text: "希望能给孩子留点物质基础就够了。", key: "11留物质" },
-      { text: "希望别人记住我的为人，记得我是个好人。", key: "12留名声" },
-      { text: "希望能留下点什么——作品、思想、或者一段故事。", key: "13留精神" },
-      { text: "没想过留什么，顺其自然吧。", key: "14无所谓" },
+      { text: "I hope to leave my children some material foundation — that's enough.", key: "11留物质" },
+      { text: "I hope people remember my character — remember me as a good person.", key: "12留名声" },
+      { text: "I hope to leave something behind — works, ideas, or a story.", key: "13留精神" },
+      { text: "Haven't thought about it — whatever happens, happens.", key: "14无所谓" },
       { text: "我觉得自己什么都留不下，有点慌。", key: "15焦虑虚无" }
     ]
   },
   {
-    q: "关于『被遗忘』这件事，你的感受是？",
+    q: "How do you feel about 'being forgotten'?",
     options: [
-      { text: "被遗忘很正常，几代人之后谁还记得谁。", key: "16接受遗忘" },
-      { text: "不奢求被很多人记得，家人记得就好。", key: "17小范围即可" },
-      { text: "希望至少有些人真心记得我，想起我会微笑。", key: "18渴望被记" },
-      { text: "害怕被彻底遗忘，那种感觉说不出的孤独。", key: "19恐惧遗忘" },
+      { text: "Being forgotten is normal — a few generations later, who remembers who?", key: "16接受遗忘" },
+      { text: "I don't need many to remember me — family remembering is enough.", key: "17小范围即可" },
+      { text: "I hope at least some people truly remember me and smile when they think of me.", key: "18渴望被记" },
+      { text: "I fear being completely forgotten — that feeling is an indescribable loneliness.", key: "19恐惧遗忘" },
       { text: "与其被人记住，不如活得精彩。", key: "20活在当下" }
     ]
   },
   {
-    q: "关于临终、遗嘱、葬礼这些事，你的状态是？",
+    q: "Regarding end-of-life, wills, and funerals — what is your current state?",
     options: [
-      { text: "完全没想过，觉得离我很远。", key: "21从未准备" },
-      { text: "偶尔闪过念头，但马上转移注意力。", key: "22有意回避" },
-      { text: "想过，但不知道从何开始准备。", key: "23迷茫无助" },
-      { text: "已经和家人聊过这个话题了。", key: "24沟通过" },
+      { text: "Never thought about it — feels very far away.", key: "21从未准备" },
+      { text: "The thought crosses my mind occasionally, but I quickly shift my attention.", key: "22有意回避" },
+      { text: "I've thought about it, but don't know where to start preparing.", key: "23迷茫无助" },
+      { text: "I've already talked about this with my family.", key: "24沟通过" },
       { text: "已经做了基本的安排（遗嘱/保险/意愿书等）。", key: "25有备无患" }
     ]
   },
   {
-    q: "如果你能知道死后会发生什么，你想知道吗？",
+    q: "If you could know what happens after death, would you want to know?",
     options: [
-      { text: "不想知道，活着的事已经够忙了。", key: "26专注今生" },
-      { text: "好奇，但没有特别强烈的愿望。", key: "27温和好奇" },
-      { text: "挺想知道的，这困扰我很久了。", key: "28渴望答案" },
-      { text: "我有自己的信仰，已经有答案了。", key: "29已有信仰" },
+      { text: "No — living life is already busy enough.", key: "26专注今生" },
+      { text: "Curious, but not a strong desire.", key: "27温和好奇" },
+      { text: "I'd really like to know — this has bothered me for a long time.", key: "28渴望答案" },
+      { text: "I have my own faith and already have an answer.", key: "29已有信仰" },
       { text: "我觉得死后什么都没有，所以不想浪费时间想。", key: "30唯物主义" }
     ]
   }
 ];
 
-// 卡点完整数据（30个维度）
+// Complete Card Point Data (30 dimensions)
 const cardPoints = {
-  "01平静接纳":     { name: "平静接纳",     desc: "你对死亡有平常心，这是智慧的表现。不恐惧不代表不在乎，代表你看清了一个事实。", advice: "保持这份平静，同时用它来提醒自己：正因为生命有限，每一天才更值得好好过。", color: "var(--gold)" },
-  "02回避思考":     { name: "回避思考",     desc: "你选择不去想死亡这件事。这是一种自我保护机制，但保护太久会变成逃避。", advice: "不需要一下子就想通。试着从一个小的角度开始：如果只剩一年，哪三件事是你一定要做的？", color: "#b89a6a" },
-  "03偶有触动":     { name: "偶有触动",     desc: "死亡的话题会触碰到你，但你还没有深入去想。这是一个好的开始——你没有完全关闭这扇门。", advice: "下次再被触动的时候，不要马上转移注意力。停下来，让那个感觉待一会儿。它可能告诉你一些重要的事。", color: "#9a7a4a" },
-  "04明显恐惧":     { name: "明显恐惧",     desc: "你对死亡的恐惧已经影响到日常生活了。恐惧本身不是问题，被恐惧支配才是。", advice: "恐惧往往来自未知。试着读一本关于死亡的好书（如《最好的告别》），或者看一部相关电影。了解越多，恐惧越少。", color: "#c0784a" },
-  "05主动面对":     { name: "主动面对",     desc: "你已经认真地面对过死亡这个话题了。这需要勇气，而你拥有它。", advice: "把你的经验和思考分享给身边信任的人。你可能比你自己想象的更能帮助那些还在恐惧中的人。", color: "var(--gold)" },
-  "06人生无憾":     { name: "人生无憾",     desc: "你对自己的生命基本满意。这是很难得的状态——很多人终其一生都在追逐这种满意度。", advice: "无憾不代表无事可做。问问自己：还有什么小小的愿望没实现？去实现它。不是为了弥补，是为了快乐。", color: "var(--gold)" },
-  "07略有遗憾":     { name: "略有遗憾",     desc: "你有一些遗憾，但不严重。这些遗憾更像是一种温柔的提醒，而不是沉重的负担。", advice: "挑一个最小的遗憾，今天就开始补救。哪怕只是打个电话、写张卡片。行动是最好的解药。", color: "#b89a6a" },
-  "08亏欠关系":     { name: "亏欠关系",     desc: "你最在意的是人际关系中的亏欠——家人、朋友、爱人。这说明你在乎联结。", advice: "不要等『有空』再去陪伴。这周末就去做一件事：和一个你在乎的人，好好吃顿饭、散散步。", color: "#9a7a4a" },
-  "09辜负自己":     { name: "辜负自己",     desc: "你最遗憾的是没有为自己而活。别人的期待、社会的压力，让你走了一条不是自己的路。", advice: "永远不会太晚。问自己一个问题：如果没有人会失望，我今天会做什么？然后去做那件事的一小部分。", color: "#a88040" },
-  "10从未审视":     { name: "从未审视",     desc: "你从来没有认真审视过自己的人生。忙碌可能是一种方式，让你不必面对这个问题。", advice: "找个安静的时间，给自己30分钟，什么都不做，只是想一想：我这辈子到目前为止，满意吗？不满意的是什么？", color: "#9a7a4a" },
-  "11留物质":       { name: "留物质",       desc: "你觉得留下物质基础是最重要的遗产。这是很实在的想法，也是大多数人的选择。", advice: "物质重要，但也想想：除了钱，有没有什么东西是无形的却更有价值？比如你教给孩子的道理，或者你帮助过的人。", color: "#b89a6a" },
-  "12留名声":       { name: "留名声",       desc: "你希望被记住是一个好人。名誉是你看重的遗产形式。", advice: "好名声不是靠经营来的，是靠日积月累的行为。继续保持善良，同时别忘了：做一个好人首先是要对自己也好一点。", color: "#9a7a4a" },
-  "13留精神":       { name: "留精神",       desc: "你希望留下的是精神层面的东西——作品、思想、故事。这是最高形式的遗产。", advice: "从今天开始记录。写下来、录下来、画下来。你不需要成为作家，你只需要真实地表达自己。这就是遗产。", color: "var(--gold)" },
-  "14无所谓":       { name: "无所谓",       desc: "对『留下什么』你持开放态度。这不是冷漠，是一种豁达。", advice: "豁达很好。但如果有一天你突然很想留下什么，别压抑那个冲动。那可能是你内心在说话。", color: "#b89a6a" },
-  "15焦虑虚无":     { name: "焦虑虚无",     desc: "你觉得自己可能什么都留不下，这种焦虑在啃噬你。虚无感是现代人的常见困境。", advice: "焦虑的反面不是确信，是行动。今天做一件小事——帮一个人、写一段话、种一棵树。行动会治愈虚无。", color: "#c0784a" },
-  "16接受遗忘":     { name: "接受遗忘",     desc: "你能接受被遗忘的事实。这是一种深刻的智慧——承认有限性，才能活得更自由。", advice: "既然接受被遗忘，那就更自由地活。不用为了『被记住』而活——为自己而活，反而更容易被记住。", color: "var(--gold)" },
-  "17小范围即可":   { name: "小范围即可",   desc: "你不追求被大众铭记，只希望亲近的人记得你。这是温暖而现实的想法。", advice: "那就把精力放在这些人身上。多创造一些共同的回忆——旅行、聊天、一起做事。回忆是最真实的遗产。", color: "#b89a6a" },
-  "18渴望被记":     { name: "渴望被记",     desc: "你渴望被记住，被怀念。这不虚荣，是人作为社会性动物的本能需求。", advice: "被记住最好的方式不是刻意留下什么，而是真诚地对待每一个人、做好每一件事。影响力是在不知不觉中留下的。", color: "#9a7a4a" },
-  "19恐惧遗忘":     { name: "恐惧遗忘",     desc: "你害怕被彻底遗忘，这种恐惧背后是对意义的渴望。", advice: "与其担心被遗忘，不如想想：你现在做的哪些事可能在别人生命中留下痕迹？继续做那些事，就是对抗遗忘的方式。", color: "#a88040" },
-  "20活在当下":     { name: "活在当下",     desc: "你选择了活在当下，而非担忧身后名。这是一种有力量的生活态度。", advice: "保持。同时允许自己在某些时刻回望一下——不是纠结过去，而是确认自己走在想走的路上。", color: "var(--gold)" },
-  "21从未准备":     { name: "从未准备",     desc: "你完全没有为『终点』做准备。大多数人都是这样——直到生活逼着你去想。", advice: "不需要马上立遗嘱。先做一件最小的事：打开手机备忘录，写下『如果我出事了，我希望家人知道的3件事』。这就够了，真的。", color: "#9a7a4a" },
-  "22有意回避":     { name: "有意回避",     desc: "你有意识地避开这类话题。回避的背后通常是恐惧或不安。", advice: "找一个安全的方式来开始：看一部关于临终的电影（推荐《寻梦环游记》），和家人聊聊『如果』。从小处入手，没那么可怕。", color: "#b89a6a" },
-  "23迷茫无助":     { name: "迷茫无助",     desc: "你想做准备，但不知道怎么开始。这种迷茫很正常——学校从来不教这个。", advice: "从最实用的开始：查一下『生前预嘱』是什么，了解一下遗嘱的基本类型。知识本身就是一种力量。知道了就不怕了。", color: "#a88040" },
-  "24沟通过":       { name: "沟通过",       desc: "你和家人聊过这个话题了。这在华人社会中非常难得——大多数人连提都不敢提。", advice: "沟通是一次性的，但话题可以持续。定期更新彼此的想法，确保你们的理解和期望保持一致。", color: "var(--gold)" },
-  "25有备无患":     { name: "有备无患",     desc: "你已经做了基本的安排。这不仅是对自己负责，也是对家人的爱——你为他们省去了很多麻烦。", advice: "定期检查和更新你的安排。人生在变，安排也需要跟上变化。每两年review一次是个好习惯。", color: "var(--gold)" },
-  "26专注今生":     { name: "专注今生",     desc: "你选择专注于当下的生活。这是务实的态度，也是很多人的选择。", advice: "专注今生不代表不能思考这个问题。偶尔停下来想一想，可能会让你更珍惜现在所拥有的。", color: "#b89a6a" },
-  "27温和好奇":     { name: "温和好奇",     desc: "你对死后世界有适度的好奇心。这种开放的心态很好——既不信也不排斥。", advice: "保持好奇。可以读一些不同文化对这个问题的回答——不一定要接受任何一种，但多元视角会让你看得更清楚。", color: "#9a7a4a" },
-  "28渴望答案":     { name: "渴望答案",     desc: "你很想知道死后会发生什么。这个困惑可能在某些夜晚特别强烈。", advice: "与其寻找一个确定的答案，不如接受『没人知道』这个事实本身。各种宗教和哲学给出了不同的可能性，都可以参考，但都不必当成真理。", color: "#a88040" },
-  "29已有信仰":     { name: "已有信仰",     desc: "你有自己的信仰体系来回答这个问题。信仰给人安慰和方向。", advice: "信仰是个人选择。同时保持开放：别人的信仰和你不同，不代表你们不能互相尊重。终极问题上，谦卑比正确更重要。", color: "var(--gold)" },
-  "30唯物主义":     { name: "唯物主义",     desc: "你认为死后什么都没有。这是理性且诚实的立场。", advice: "唯物主义不等于虚无主义。正因为只有这一次生命，每一刻才更加珍贵。用『只有一次』来驱动自己，而不是用来否定意义。", color: "#b89a6a" }
+  "01平静接纳":     { name: "Calm Acceptance",     desc: "You have a calm attitude toward death — a sign of wisdom. Not fearing it doesn't mean not caring; it means you've seen a truth.", advice: "Keep this calm and let it remind you: because life is finite, every day is worth living well.", color: "var(--gold)" },
+  "02回避思考":     { name: "Avoidance",     desc: "You choose not to think about death. This is a self-protection mechanism, but protection too long becomes avoidance.", advice: "You don't need to figure it all out at once. Start small: if you had only one year left, what three things would you absolutely do?", color: "#b89a6a" },
+  "03偶有触动":     { name: "Occasionally Moved",     desc: "The topic of death touches you, but you haven't thought deeply about it. This is a good start — you haven't completely closed the door.", advice: "Next time you're moved, don't immediately shift your attention. Pause and let the feeling stay a while. It may tell you something important.", color: "#9a7a4a" },
+  "04明显恐惧":     { name: "Overt Fear",     desc: "Your fear of death has begun to affect daily life. Fear itself isn't the problem — being controlled by it is.", advice: "Fear often comes from the unknown. Try reading a good book about death (like Being Mortal) or watching a related film. The more you understand, the less you fear.", color: "#c0784a" },
+  "05主动面对":     { name: "Proactive Confrontation",     desc: "You've already seriously faced the topic of death. This takes courage, and you have it.", advice: "Share your experience and thoughts with people you trust. You may be able to help those still in fear more than you imagine.", color: "var(--gold)" },
+  "06人生无憾":     { name: "No Regrets",     desc: "You're basically satisfied with your life. This is a rare state — many people spend their whole lives chasing this kind of satisfaction.", advice: "No regrets doesn't mean there's nothing left to do. Ask yourself: is there a small wish unfulfilled? Go fulfill it. Not to make up for something, but for joy.", color: "var(--gold)" },
+  "07略有遗憾":     { name: "Slight Regrets",     desc: "You have some regrets, but not serious ones. These regrets are more like gentle reminders than heavy burdens.", advice: "Pick the smallest regret and start making amends today. Even if it's just a phone call or writing a card. Action is the best remedy.", color: "#b89a6a" },
+  "08亏欠关系":     { name: "Relational Debt",     desc: "What you care about most is the debt in relationships — family, friends, loved ones. This shows you value connection.", advice: "Don't wait until you 'have time' to be together. This weekend, do one thing: have a nice meal or take a walk with someone you care about.", color: "#9a7a4a" },
+  "09辜负自己":     { name: "Betrayed Myself",     desc: "Your biggest regret is not living for yourself. Others' expectations and society's pressure led you down a path that wasn't yours.", advice: "It's never too late. Ask yourself: if no one would be disappointed, what would I do today? Then do a small part of that thing.", color: "#a88040" },
+  "10从未审视":     { name: "Never Examined",     desc: "You've never seriously examined your life. Being busy may be a way to avoid facing this question.", advice: "Find a quiet time, give yourself 30 minutes, do nothing — just think: am I satisfied with my life so far? What am I not satisfied with?", color: "#9a7a4a" },
+  "11留物质":       { name: "Leave Material Things",       desc: "You think leaving a material foundation is the most important legacy. This is a practical thought, and the choice of most people.", advice: "Material things matter, but also think: besides money, is there something intangible yet more valuable? Like lessons you teach your children, or people you've helped.", color: "#b89a6a" },
+  "12留名声":       { name: "Leave a Good Name",       desc: "You want to be remembered as a good person. Reputation is the legacy form you value.", advice: "A good reputation isn't manufactured — it's built through consistent actions over time. Keep being kind, and remember: being a good person starts with being good to yourself.", color: "#9a7a4a" },
+  "13留精神":       { name: "Leave a Legacy of Ideas",       desc: "You want to leave something spiritual — works, ideas, stories. This is the highest form of legacy.", advice: "Start recording today. Write it down, record it, draw it. You don't need to become a writer — you just need to express yourself authentically. That is legacy.", color: "var(--gold)" },
+  "14无所谓":       { name: "Doesn't Matter",       desc: "You're open-minded about 'what to leave behind.' This isn't indifference — it's a kind of openness.", advice: "Being open-minded is great. But if one day you suddenly feel a strong urge to leave something behind, don't suppress it. It might be your inner self speaking.", color: "#b89a6a" },
+  "15焦虑虚无":     { name: "Anxious Emptiness",     desc: "You feel you might not be able to leave anything behind, and this anxiety is eating at you. Emptiness is a common modern struggle.", advice: "The opposite of anxiety isn't certainty — it's action. Do one small thing today: help someone, write a paragraph, plant a tree. Action heals emptiness.", color: "#c0784a" },
+  "16接受遗忘":     { name: "Accepts Being Forgotten",     desc: "You can accept the fact of being forgotten. This is a deep wisdom — acknowledging finitude allows you to live more freely.", advice: "Since you accept being forgotten, live more freely. Don't live to be remembered — live for yourself, and paradoxically, you're more likely to be remembered.", color: "var(--gold)" },
+  "17小范围即可":   { name: "A Small Circle Is Enough",   desc: "You don't seek to be remembered by the masses — just by those close to you. This is a warm and realistic thought.", advice: "Then put your energy into those people. Create more shared memories — travel, talk, do things together. Memories are the most real legacy.", color: "#b89a6a" },
+  "18渴望被记":     { name: "Yearning to Be Remembered",     desc: "You yearn to be remembered, to be missed. This isn't vanity — it's the instinctive need of a social being.", advice: "The best way to be remembered isn't to deliberately leave something behind, but to treat every person sincerely and do every task well. Influence is left without you noticing.", color: "#9a7a4a" },
+  "19恐惧遗忘":     { name: "Fear of Being Forgotten",     desc: "You fear being completely forgotten. Behind this fear is a yearning for meaning.", advice: "Instead of worrying about being forgotten, think: which things you're doing now might leave traces in others' lives? Keep doing those things — that's how you fight being forgotten.", color: "#a88040" },
+  "20活在当下":     { name: "Living in the Present",     desc: "You chose to live in the present rather than worry about your legacy. This is a powerful life attitude.", advice: "Keep it up. Also allow yourself to look back sometimes — not to dwell on the past, but to confirm you're on the path you want to walk.", color: "var(--gold)" },
+  "21从未准备":     { name: "Never Prepared",     desc: "You haven't prepared at all for the 'end.' Most people are like this — until life forces you to think about it.", advice: "You don't need to write a will right away. Start with the smallest thing: open your phone's notes app and write 'If something happens to me, here are 3 things I want my family to know.' That's enough. Really.", color: "#9a7a4a" },
+  "22有意回避":     { name: "Intentional Avoidance",     desc: "You consciously avoid these topics. Behind avoidance is usually fear or unease.", advice: "Find a safe way to start: watch a movie about end of life (recommend Coco), talk with family about 'what if.' Start small — it's not so scary.", color: "#b89a6a" },
+  "23迷茫无助":     { name: "Lost and Helpless",     desc: "You want to prepare, but don't know how to start. This confusion is normal — schools never teach this.", advice: "Start with the most practical: look up what a 'living will' is, learn the basic types of wills. Knowledge itself is power. Once you know, you won't be afraid.", color: "#a88040" },
+  "24沟通过":       { name: "Had the Conversation",       desc: "You've talked about this with your family. This is very rare — most people don't even dare bring it up.", advice: "The conversation is a one-time event, but the topic can continue. Regularly update each other's thoughts to ensure your understanding and expectations stay aligned.", color: "var(--gold)" },
+  "25有备无患":     { name: "Prepared and Ready",     desc: "You've made basic arrangements. This isn't just responsibility to yourself — it's love for your family. You've saved them a lot of trouble.", advice: "Review and update your arrangements regularly. Life changes, and your plans need to keep up. Reviewing every two years is a good habit.", color: "var(--gold)" },
+  "26专注今生":     { name: "Focused on This Life",     desc: "You choose to focus on the present life. This is a pragmatic attitude, and the choice of many.", advice: "Focusing on this life doesn't mean you can't think about this question. Occasionally pausing to reflect may help you cherish what you have now.", color: "#b89a6a" },
+  "27温和好奇":     { name: "Gentle Curiosity",     desc: "You have moderate curiosity about the afterlife. This open mindset is good — neither believing nor rejecting.", advice: "Stay curious. Read how different cultures answer this question — you don't have to accept any of them, but diverse perspectives help you see more clearly.", color: "#9a7a4a" },
+  "28渴望答案":     { name: "Craving Answers",     desc: "You really want to know what happens after death. This question may be especially intense on certain nights.", advice: "Rather than seeking a definitive answer, accept the fact that 'nobody knows.' Various religions and philosophies offer different possibilities — all worth considering, none need be taken as absolute truth.", color: "#a88040" },
+  "29已有信仰":     { name: "Has Faith",     desc: "You have your own belief system to answer this question. Faith gives comfort and direction.", advice: "Faith is a personal choice. Stay open: others having different beliefs doesn't mean you can't respect each other. On ultimate questions, humility matters more than being right.", color: "var(--gold)" },
+  "30唯物主义":     { name: "Materialist",     desc: "You believe there's nothing after death. This is a rational and honest position.", advice: "Materialism isn't nihilism. Precisely because there's only this one life, every moment is more precious. Use 'only once' to drive yourself, not to deny meaning.", color: "#b89a6a" }
 };
 
-// 彩蛋（4个，围绕终篇传承主题）
+// Easter Eggs (4, around legacy theme)
 const easterEggs = [
-  { title: "海德格尔 · 向死而生", text: "德国哲学家海德格尔说：人是唯一知道自己会死的生物。正因为我们知道生命有限，才有了『紧迫感』去真正地活。死亡不是人生的对立面，它赋予人生意义。" },
-  { title: "琼瑶的告别", text: "2024年，台湾作家琼瑶以自己的方式选择告别。她在遗书中写道：『我不想听天由命，我想自己做主。』——这不是放弃生命，而是对生命最后的主权宣告。她引发了全社会对『善终权利』的讨论。" },
-  { title: "数字遗产", text: "你死后，微信怎么办？云盘里的照片呢？游戏账号？社交媒体？数字时代带来了新问题：人在物理世界中消失，但在数字空间里『活着』。有人开始设立『数字 executor（执行人）』——你考虑过吗？" },
-  { title: "世界的死亡地图", text: "藏人有天葬，认为身体最后的价值是供养万物；墨西哥有亡灵节（Dia de los Muertos），用色彩和音乐庆祝逝者；埃及人做木乃伊等待复活；日本有佛事传统……每种文化都在用自己的方式回答同一个问题。没有标准答案，但每一种都值得尊重。" }
+  { title: "Heidegger · Being-Toward-Death", text: "German philosopher Heidegger said: humans are the only beings that know they will die. Because we know life is finite, we have the urgency to truly live. Death isn't the opposite of life — it gives life meaning." },
+  { title: "Qiong Yao's Farewell", text: "In 2024, Taiwanese writer Qiong Yao chose to say goodbye in her own way. In her letter she wrote: 'I don't want to leave it to fate — I want to be in charge.' This wasn't giving up life — it was the last declaration of sovereignty over her life. She sparked a nationwide discussion about the right to a good death." },
+  { title: "Digital Legacy", text: "After you die, what happens to your social media? Your photos in the cloud? Your game accounts? The digital age brings new questions: a person disappears from the physical world but remains 'alive' in digital space. Some people have started appointing 'digital executors' — have you considered it?" },
+  { title: "The World's Map of Death", text: "Tibetans practice sky burial, believing the body's final value is nourishing all living things; Mexico has Día de los Muertos, celebrating the departed with color and music; Egyptians made mummies awaiting resurrection; Japan has Buddhist memorial traditions... Every culture answers the same question in its own way. There's no standard answer, but each one deserves respect." }
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedDilemmas = [];
@@ -1116,7 +1116,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航
+   Page Navigation
    ============================================================ */
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1139,13 +1139,13 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境选择
+   Dilemma Selection
    ============================================================ */
 function renderDilemma() {
   const list = document.getElementById('dilemmaList');
   list.innerHTML = dilemmas.map(d => `
     <div class="dilemma-card${selectedDilemmas.includes(d.id) ? ' selected' : ''}" onclick="toggleDilemma(${d.id})">
-      <div class="dilemma-num">困境 ${String(d.id).padStart(2,'0')}</div>
+      <div class="dilemma-num">Dilemma ${String(d.id).padStart(2,'0')}</div>
       <div class="dilemma-text">${d.text}</div>
     </div>
   `).join('');
@@ -1174,7 +1174,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1184,13 +1184,13 @@ function selectRandomCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.remove('flipped');
   document.getElementById('adventureNextBtn').style.display = 'none';
-  document.getElementById('flipHint').textContent = '点击卡牌翻开';
+  document.getElementById('flipHint').textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
   const fc = document.getElementById('flipCard');
   fc.classList.add('flipped');
-  document.getElementById('flipHint').textContent = '— 这张卡，陪你去诊断 —';
+  document.getElementById('flipHint').textContent = '— This card accompanies you to the diagnosis —';
   document.getElementById('adventureNextBtn').style.display = 'inline-block';
 }
 
@@ -1199,12 +1199,12 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
   const total = questions.length;
-  document.getElementById('qNum').textContent = `第${currentQuestion + 1}题`;
+  document.getElementById('qNum').textContent = `Question ${currentQuestion + 1}`;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('qProgress').textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1219,7 +1219,7 @@ function renderQuestion() {
 
   document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+  nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
   nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
 }
 
@@ -1254,7 +1254,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnosis Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1273,9 +1273,9 @@ function showResult() {
 
   const topKey = sorted[0] ? cardPoints[sorted[0][0]] : null;
   const summaryTexts = [
-    `你最核心的卡点是「${topKey ? topKey.name : ''}」。其他的，是这个卡点的延伸。`,
-    `你有 ${sorted.filter(s => s[1] >= 2).length} 个较深的卡点，它们相互关联，互为表里。`,
-    `你走过的每一步都在写你的故事——今天，你读到了其中一页。`
+    `Your core block is '${topKey ? topKey.name : 'Unknown'}'. The rest are extensions of this block.`,
+    `You have ${sorted.filter(s => s[1] >= 2).length} deeper blocks that are interconnected.`,
+    `Every step you've taken writes your story — today, you read one page of it.`
   ];
   document.getElementById('resultSummary').textContent = summaryTexts[Math.floor(Math.random() * summaryTexts.length)];
 
@@ -1289,7 +1289,7 @@ function showResult() {
       <div class="result-card">
         <div class="result-card-top">
           <span class="result-card-name">${cp.name}</span>
-          <span class="result-card-pct">命中 ${score} 次</span>
+          <span class="result-card-pct">matched ${score} times</span>
         </div>
         <div class="result-bar-bg">
           <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1321,7 +1321,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Level Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1351,7 +1351,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1360,25 +1360,25 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你卡住的事。');
+    alert('Please write something first — at least one thing you're stuck on.');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${['One','Two','Three','Four'][i]}: ${t}`
   ).join('\n\n');
 
   document.getElementById('cardContent').textContent = content;
 
   const responses = [
-    "你写的这些，说明你已经在面对了。光是在心里把它说清楚，就已经是改变的开始。",
-    "困境不是一天形成的，解开它也不需要一天。你已经走出了第一步。",
-    "你说出口的那些，是很多人不敢面对的。你的勇气，比你自己知道的要大。",
-    "不是所有人都愿意把这些写下来。你做了。光是这一步，就已经很不容易。"
+    "What you've written shows you're already facing it. Just putting it into words is the beginning of change.",
+    "Blocks didn't form in a day, and they don't need a day to unravel. You've already taken the first step.",
+    "What you've put into words is what many people dare not face. Your courage is greater than you know.",
+    "Not everyone is willing to write these things down. You did. That step alone is remarkable."
   ];
   document.getElementById('cardResponse').textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：给你的身体一个信号——我听到你了。';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split(',')[0].split('.')[0]}` : 'Today, do just one thing: send your body a signal — I hear you.';
   document.getElementById('cardAction').textContent = firstAction;
 
   document.getElementById('cardPreview').classList.add('show');
@@ -1402,11 +1402,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的隐藏关卡', 300, 80);
+  ctx.fillText('My Hidden Level', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第十二关 · 终篇传承 · 找到啦', 300, 108);
+  ctx.fillText('Stage 12 · Legacy & Passing On · Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1437,10 +1437,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第十二关 · 终篇传承 · 找到啦 —', 300, 750);
+  ctx.fillText('— Stage 12 · Legacy & Passing On · Found It —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的隐藏关卡.png';
+  link.download = 'my-hidden-level.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1467,14 +1467,14 @@ function goBackHome() {
 }
 
 /* ============================================================
-   启动
+   Startup
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderDilemma();
 });
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1490,7 +1490,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){
@@ -1501,7 +1501,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor # <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> </span>';}
 })();
 </script>
 <script src="lang-toggle.js"></script>

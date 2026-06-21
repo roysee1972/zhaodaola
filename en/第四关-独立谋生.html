@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="独立谋生关卡：经济独立与自我价值的碰撞，看见你在谋生路上的认知陷阱。">
+<meta name="description" content="Earning a Living: The clash between financial independence and self-worth — see the cognitive traps on your path to making a living.">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第四关 · 独立谋生 — 找到啦</title>
+<title>Stage 4 · Earning a Living — Found It</title>
 <style>
-  /* ==================== 基础变量（与前几关保持一致）==================== */
+  /* ==================== Base Variables (consistent with previous levels) ==================== */
   :root {
     --bg: #f5e6c8;
     --bg2: #eed9a4;
@@ -24,7 +24,7 @@
     --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
   }
 
-  /* ==================== 全局 ==================== */
+  /* ==================== Global ==================== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -47,7 +47,7 @@
     pointer-events: none; z-index: 0;
   }
 
-  /* ==================== 页面容器 ==================== */
+  /* ==================== Page Container ==================== */
   .page {
     display: none;
     position: relative; z-index: 1;
@@ -62,7 +62,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ==================== 通用组件 ==================== */
+  /* ==================== Common Components ==================== */
   .gold-line {
     width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
@@ -108,7 +108,7 @@
   .mt-40 { margin-top: 40px; }
   .mb-8 { margin-bottom: 8px; }
 
-  /* ==================== 进度条 ==================== */
+  /* ==================== Progress Bar ==================== */
   .progress-bar-wrap {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 3px;
@@ -121,7 +121,7 @@
     width: 0%;
   }
 
-  /* ==================== P1: 入口页 ==================== */
+  /* ==================== P1: Entry Page ==================== */
   .level-badge {
     display: inline-block;
     font-size: 11px;
@@ -155,7 +155,7 @@
     margin: 0 auto 40px;
   }
 
-  /* 装饰圆环 */
+  /* Decorative Ring */
   .deco-ring {
     width: 160px; height: 160px;
     border: 1.5px solid var(--border);
@@ -191,7 +191,7 @@
     50% { box-shadow: 0 0 35px rgba(201,168,76,0.5); }
   }
 
-  /* 种子粒子动画 */
+  /* Seed Particle Animation */
   .seed-particle {
     position: fixed;
     width: 3px;
@@ -210,7 +210,7 @@
     100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
   }
 
-  /* ==================== P2: 困境瞬间选择页 ==================== */
+  /* ==================== P2: Dilemma Moment Selection ==================== */
   .moment-layer-title {
     text-align: center;
     font-size: 11px;
@@ -283,7 +283,7 @@
     margin-top: 16px;
   }
 
-  /* ==================== P3: 冒险卡 ==================== */
+  /* ==================== P3: Adventure Card ==================== */
   .adventure-wrap {
     display: flex; flex-direction: column; align-items: center;
     padding: 20px 0;
@@ -343,7 +343,7 @@
     50% { opacity: 1; }
   }
 
-  /* ==================== P4: 诊断测试 ==================== */
+  /* ==================== P4: Diagnostic Test ==================== */
   .question-header {
     text-align: center;
     margin-bottom: 28px;
@@ -416,7 +416,7 @@
     margin-top: 28px;
   }
 
-  /* ==================== P5: 诊断结果 ==================== */
+  /* ==================== P5: Diagnosis Results ==================== */
   .result-header {
     text-align: center;
     margin-bottom: 32px;
@@ -470,7 +470,7 @@
   .bar-mid { background: linear-gradient(90deg, #b89a6a, var(--gold)); }
   .bar-low { background: linear-gradient(90deg, #c8a882, #b89a6a); }
 
-  /* ==================== P6: 通关建议 ==================== */
+  /* ==================== P6: Level Advice ==================== */
   .advice-header {
     text-align: center;
     margin-bottom: 28px;
@@ -537,7 +537,7 @@
   }
   .advice-card-action::before { content: '→ '; }
 
-  /* ==================== P7: 隐藏关卡 ==================== */
+  /* ==================== P7: Hidden Level ==================== */
   .hidden-header {
     text-align: center;
     margin-bottom: 28px;
@@ -640,7 +640,7 @@
   }
   .download-btn:hover { background: rgba(201,168,76,0.1); }
 
-  /* ==================== 彩蛋 ==================== */
+  /* ==================== Easter Egg ==================== */
   .easter-egg {
     display: none;
     background: rgba(90,50,20,0.95);
@@ -669,7 +669,7 @@
     cursor: pointer; line-height: 1;
   }
 
-  /* ==================== 隐藏关卡入口 ==================== */
+  /* ==================== Hidden Level Entry ==================== */
   .hidden-trigger {
     display: block; width: 200px; margin: 32px auto 0; padding: 10px 20px;
     background: none; border:1px dashed var(--border); border-radius: 20px;
@@ -682,10 +682,10 @@
     letter-spacing: 2px; margin-top: 20px;
   }
 
-  /* ==================== 完成页 ==================== */
+  /* ==================== Completion Page ==================== */
   .complete-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
 
-  /* ==================== 返回主页按钮 ==================== */
+  /* ==================== Back to Home Button ==================== */
   .back-home-btn {
     position: fixed; top: 16px; left: 16px; z-index: 200;
     display: flex; align-items: center; gap: 6px;
@@ -709,7 +709,7 @@
   }
   .back-home-btn .arrow { font-size: 14px; line-height: 1; color: var(--gold); }
 
-  /* ==================== 响应式 ==================== */
+  /* ==================== Responsive ==================== */
   @media (max-width: 600px) {
     .hero-title { font-size: 28px; letter-spacing: 4px; }
     .flip-card { width: 280px; height: 180px; }
@@ -722,7 +722,7 @@
 </head>
 <body>
 
-<!-- 种子粒子装饰 -->
+<!-- Seed Particle Decorations -->
 <div class="seed-particle" style="left:15%;animation-delay:0s;"></div>
 <div class="seed-particle" style="left:30%;animation-delay:1.5s;"></div>
 <div class="seed-particle" style="left:45%;animation-delay:3s;"></div>
@@ -730,45 +730,45 @@
 <div class="seed-particle" style="left:75%;animation-delay:6s;"></div>
 <div class="seed-particle" style="left:90%;animation-delay:7.5s;"></div>
 
-<!-- 进度条 -->
+<!-- Progress Bar -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-fill" id="progressBar"></div>
 </div>
 
-<!-- 返回主页按钮 -->
-<button class="back-home-btn" onclick="goBackHome()" title="返回主页">
+<!-- Back to Home Button -->
+<button class="back-home-btn" onclick="goBackHome()" title="Back to Home">
   <span class="arrow">←</span>
-  <span>返回主页</span>
+  <span>Back to Home</span>
 </button>
 
 <!-- ==================== P1: 入口页 ==================== -->
 <div class="page active" id="page-entry">
   <div class="center" style="padding-top: 60px;">
-    <div class="level-badge">第四关 · 找到啦</div>
+    <div class="level-badge">Stage 4 · Found It</div>
     <div class="deco-ring">
-      <div class="deco-ring-inner">谋生</div>
+      <div class="deco-ring-inner">Living</div>
     </div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h1 class="hero-title">独立谋生</h1>
+    <h1 class="hero-title">Earning a Living</h1>
     <p class="hero-sub">
-      你第一次说：<br>
-      "我要自己挣。"
+      The first time you said:<br>
+      "I want to earn my own money."
     </p>
     <div class="hero-divider"></div>
     <p class="text-mid" style="margin-bottom: 12px; line-height: 1.9;">
-      从伸手要钱，到伸手赚钱，<br>
-      中间隔着的不只是一份工资，<br>
-      是你第一次被世界打量、<br>
-      被拒绝、被看见、被需要的全部过程。
+      From asking for money to earning it,<br>
+      what lies between is more than just a paycheck —<br>
+      it's the whole process of being sized up by the world,<br>
+      being rejected, being seen, being needed.
     </p>
     <p class="text-mid" style="margin: 20px 0; line-height: 1.9;">
-      这一关，不讲"年轻人要吃苦"。
-      只是让你看见：<br>
-      你是怎么从"伸手要"变成"伸手挣"的。
+      This level isn't about "young people must endure hardship."
+      It just lets you see:<br>
+      how you went from "asking" to "earning."
     </p>
     <div class="gold-line" style="margin: 28px auto;"></div>
-    <button class="btn" id="btnStartExplore">开始探索</button>
-    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">约需 6 分钟</p>
+    <button class="btn" id="btnStartExplore">Begin Exploration</button>
+    <p class="text-mid mt-24" style="font-size: 12px; letter-spacing: 2px;">About 6 minutes</p>
   </div>
 </div>
 
@@ -776,24 +776,24 @@
 <div class="page" id="page-dilemma">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第四关 · 独立谋生</div>
+      <div class="level-badge">Stage 4 · Earning a Living</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">哪个瞬间，你最有感觉？</h2>
-      <p class="text-mid mb-8" style="line-height: 1.8;">选 1-3 个你最有共鸣的谋生瞬间。<br>不用想，凭第一感觉选。</p>
+      <h2 style="font-size: 26px; font-weight: 700; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Which moment resonates with you the most?</h2>
+      <p class="text-mid mb-8" style="line-height: 1.8;">Select 1-3 moments that resonate most with you.<br>No need to overthink — go with your gut feeling.</p>
     </div>
 
-    <div class="moment-layer-title">— 求职与起步 —</div>
+    <div class="moment-layer-title">— Job Hunting & Starting Out —</div>
     <div id="momentLayer1"></div>
 
-    <div class="moment-layer-title">— 第一次谋生 —</div>
+    <div class="moment-layer-title">— First Time Earning —</div>
     <div id="momentLayer2"></div>
 
-    <div class="moment-layer-title">— 压力与选择 —</div>
+    <div class="moment-layer-title">— Pressure & Choices —</div>
     <div id="momentLayer3"></div>
 
-    <div class="dilemma-hint">已选择 <span id="dilemmaCount">0</span> 个瞬间</div>
+    <div class="dilemma-hint">Selected: <span id="dilemmaCount">0</span> moments</div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn" id="dilemmaNextBtn" disabled>继续</button>
+      <button class="btn" id="dilemmaNextBtn" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -802,26 +802,26 @@
 <div class="page" id="page-adventure">
   <div style="padding-top: 20px;">
     <div class="center">
-      <div class="level-badge">第四关 · 独立谋生</div>
+      <div class="level-badge">Stage 4 · Earning a Living</div>
       <div class="gold-line" style="margin-bottom: 16px;"></div>
-      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">抽一张冒险卡</h2>
-      <p class="text-mid" style="margin-bottom: 28px;">在开始诊断之前，让这张卡为你定个调。</p>
+      <h2 style="font-size: 20px; font-weight: 600; color: var(--text-dark); letter-spacing: 3px; margin-bottom: 6px;">Draw an Adventure Card</h2>
+      <p class="text-mid" style="margin-bottom: 28px;">Before the diagnosis, let this card set the tone.</p>
     </div>
     <div class="adventure-wrap">
       <div class="flip-card" id="flipCard">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="flip-card-front-icon">✦</div>
-            <div class="flip-card-front-hint">点击翻开</div>
+            <div class="flip-card-front-hint">Tap to Reveal</div>
           </div>
           <div class="flip-card-back">
-            <div class="flip-card-quote" id="flipQuote">"年轻时的穷，不是穷，是本钱。"</div>
+            <div class="flip-card-quote" id="flipQuote">"Poverty in youth isn't poverty — it's capital."</div>
             <div class="flip-card-tap-hint">— 冒险卡</div>
           </div>
         </div>
       </div>
-      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">点击卡牌翻开</p>
-      <button class="btn" id="adventureNextBtn" style="display: none;">开始诊断</button>
+      <p class="text-mid" style="font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;" id="flipHint">Tap the card to reveal</p>
+      <button class="btn" id="adventureNextBtn" style="display: none;">Start Diagnosis</button>
     </div>
   </div>
 </div>
@@ -830,14 +830,14 @@
 <div class="page" id="page-question">
   <div style="padding-top: 20px;">
     <div class="question-header">
-      <div class="question-num" id="qNum">第一题</div>
+      <div class="question-num" id="qNum">Question 1</div>
       <div class="question-text" id="qText">你第一次认真考虑"我要自己赚钱"是什么时候？</div>
       <div class="question-progress" id="qProgress">1 / 6</div>
     </div>
     <div id="optionList"></div>
     <div class="nav-btn-wrap" style="margin-top: 20px;">
-      <button class="btn btn-ghost" id="prevBtn" style="display:none;">上一题</button>
-      <button class="btn" id="nextBtn" disabled>继续</button>
+      <button class="btn btn-ghost" id="prevBtn" style="display:none;">Previous</button>
+      <button class="btn" id="nextBtn" disabled>Continue</button>
     </div>
   </div>
 </div>
@@ -846,24 +846,24 @@
 <div class="page" id="page-result">
   <div style="padding-top: 20px;">
     <div class="result-header">
-      <div class="level-badge">诊断完成</div>
+      <div class="level-badge">Diagnosis Complete</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="result-title">你的谋生卡点画像</div>
-      <div class="result-sub">第四关 · 独立谋生</div>
+      <div class="result-title"<div class="result-title">Your Livelihood Profile</div>
+      <div class="result-sub">Stage 4 · Earning a Living</div>
       <div class="result-summary" id="resultSummary"></div>
     </div>
     <div id="resultList"></div>
 
-    <!-- 彩蛋区域 -->
+    <!-- Easter Egg Area -->
     <div class="easter-egg" id="easterEgg">
       <button class="easter-egg-close" id="eggClose">×</button>
-      <div class="easter-egg-label">你发现了一个隐藏的思考</div>
+      <div class="easter-egg-label">You discovered a hidden insight</div>
       <div class="easter-egg-title" id="eggTitle"></div>
       <div class="easter-egg-text" id="eggText"></div>
     </div>
 
     <div class="nav-btn-wrap">
-      <button class="btn" id="adviceBtn">查看通关建议</button>
+      <button class="btn" id="adviceBtn">View Level Advice</button>
     </div>
   </div>
 </div>
@@ -872,18 +872,18 @@
 <div class="page" id="page-advice">
   <div style="padding-top: 20px;">
     <div class="advice-header">
-      <div class="level-badge">第四关 · 独立谋生</div>
+      <div class="level-badge">Stage 4 · Earning a Living</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="advice-title">通关建议</div>
+      <div class="advice-title">Level Advice</div>
       <div class="advice-intro">
-        谋生不是终点。<br>
-        谋生是你和世界谈的第一笔交易。
+        Earning a living isn't the end goal.<br>
+        It's the first deal you negotiate with the world.
       </div>
     </div>
     <div id="adviceList"></div>
 
-    <button class="hidden-trigger" id="hiddenTrigger">以上不是你想说的？打开你的隐藏关卡 →</button>
-    <div class="page-end-text">— 第四关 · 独立谋生 · 完 —</div>
+    <button class="hidden-trigger" id="hiddenTrigger">Not what you wanted to say? Open your hidden level →</button>
+    <div class="page-end-text">— Stage 4 · Earning a Living · Complete —</div>
   </div>
 </div>
 
@@ -891,42 +891,42 @@
 <div class="page" id="page-hidden">
   <div style="padding-top: 20px;">
     <div class="hidden-header">
-      <div class="level-badge">隐藏关卡</div>
+      <div class="level-badge">Hidden Level</div>
       <div class="gold-line" style="margin-bottom: 14px;"></div>
-      <div class="hidden-title">你的谋生初体验</div>
+      <div class="hidden-title">Your First Earning Experience</div>
       <div class="hidden-sub">
-        这里是你的空间，写下你第一次「自己挣到钱」的故事。<br>
-        不用修饰，真实就好。
+        This is your space. Write about the first time you earned your own money.<br>
+        No need to polish. Just be honest.
       </div>
     </div>
     <div class="step-card">
-      <div class="step-num">第一步</div>
-      <div class="step-label">我第一次真正"自己赚到钱"是什么时候？</div>
-      <textarea class="step-input" id="hidden1" placeholder="我记得……"></textarea>
+      <div class="step-num">Step 1</div>
+      <div class="step-label">When did I first truly "earn my own money"?</div>
+      <textarea class="step-input" id="hidden1" placeholder="I remember..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第二步</div>
-      <div class="step-label">当时我对"钱"这件事是什么感觉？</div>
-      <textarea class="step-input" id="hidden2" placeholder="当时我觉得……"></textarea>
+      <div class="step-num">Step 2</div>
+      <div class="step-label">How did I feel about "money" back then?</div>
+      <textarea class="step-input" id="hidden2" placeholder="At the time I felt..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第三步</div>
-      <div class="step-label">今天回过头看，我在"谋生"这件事上，最卡住我的是什么？</div>
-      <textarea class="step-input" id="hidden3" placeholder="我最卡的地方是……"></textarea>
+      <div class="step-num">Step 3</div>
+      <div class="step-label">Looking back today, what holds me back the most in "earning a living"?</div>
+      <textarea class="step-input" id="hidden3" placeholder="What holds me back the most is..."></textarea>
     </div>
     <div class="step-card">
-      <div class="step-num">第四步</div>
-      <div class="step-label">如果可以重来，我想对刚开始谋生的自己说什么？</div>
-      <textarea class="step-input" id="hidden4" placeholder="我想对当时的自己说……"></textarea>
+      <div class="step-num">Step 4</div>
+      <div class="step-label">If I could start over, what would I say to my younger self just beginning to earn a living?</div>
+      <textarea class="step-input" id="hidden4" placeholder="I would tell my younger self..."></textarea>
     </div>
-    <button class="generate-btn" id="generateBtn">生成我的谋生觉醒卡片</button>
+    <button class="generate-btn" id="generateBtn">Generate My Livelihood Awakening Card</button>
     <div class="card-preview" id="cardPreview">
-      <div class="card-preview-title">我的谋生初体验</div>
-      <div class="card-preview-sub">第四关 · 独立谋生 · 找到啦</div>
+      <div class="card-preview-title">My First Earning Experience</div>
+      <div class="card-preview-sub">Stage 4 · Earning a Living · Found It</div>
       <div class="card-preview-content" id="cardContent"></div>
       <div class="card-preview-response" id="cardResponse"></div>
       <div class="card-preview-action" id="cardAction"></div>
-      <button class="download-btn" id="downloadBtn">下载卡片</button>
+      <button class="download-btn" id="downloadBtn">Download Card</button>
     </div>
   </div>
 </div>
@@ -936,401 +936,401 @@
   <div class="center" style="padding-top: 80px;">
     <div class="complete-icon">✦</div>
     <div class="gold-line" style="margin-bottom: 20px;"></div>
-    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">你已经通关</h2>
+    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); letter-spacing: 4px; margin-bottom: 12px;">Level Complete</h2>
     <p class="text-mid" style="line-height: 2; margin-bottom: 24px;">
-      从伸手要，到伸手挣，<br>
-      每一步都是你和世界的真实对话。
+      From asking to earning,<br>
+      every step is a real conversation with the world.
     </p>
     <div class="gold-line" style="margin: 0 auto 28px;"></div>
-    <button class="btn btn-ghost" id="restartBtn">重新开始</button>
+    <button class="btn btn-ghost" id="restartBtn">Start Over</button>
   </div>
 </div>
 
 <script src="share-card.js"></script>
 <script>
 /* ============================================================
-   数据：第四关 · 独立谋生
+   Data: Stage 4 · Earning a Living
    ============================================================ */
 
-// 谋生困境瞬间（3层：求职与起步 / 第一次谋生 / 压力与选择）
+// Livelihood dilemma moments (3 layers: Job Hunting & Starting Out / First Earning / Pressure & Choices)
 const moments = [
-  // 第一层：求职与起步
+  // Layer 1: Job Hunting & Starting Out
   {
     id: 1, layer: 1,
     icon: "📄",
-    title: "投了20份简历，没有一个回音",
-    desc: "你认真改了每一份简历，写了每一封求职信。发出去之后，每天刷邮箱。一周后，你开始怀疑：是不是我的简历有什么问题？",
-    hint: "你就是那个每天刷邮箱的人。"
+    title: "Sent out 20 resumes, got zero replies",
+    desc: "You carefully revised every resume, wrote every cover letter. After sending them out, you checked your email every day. A week later, you started wondering: is there something wrong with my resume?",
+    hint: "You are the one checking your inbox every day."
   },
   {
     id: 2, layer: 1,
     icon: "🎓",
-    title: "毕业了，不知道该干什么",
-    desc: "大学四年倏忽而过。拿到毕业证那天，你突然发现：读了这么多年书，却不知道自己真正想做什么、能做什么。",
-    hint: "你就是那个站在路口的毕业生。"
+    title: "Graduated, but no idea what to do",
+    desc: "Four years of college flew by. On the day you got your diploma, you suddenly realized: after all those years of studying, you had no idea what you truly wanted to do or what you could do.",
+    hint: "You are the graduate standing at the crossroads."
   },
   {
     id: 3, layer: 1,
     icon: "🏢",
-    title: "第一份工作，和想象完全不一样",
-    desc: "你进去之前以为会是电视剧里的样子。进去之后，你发现每天做的是一些琐碎的、重复的、看不到意义的事。",
-    hint: "你就是那个坐在工位上发呆的人。"
+    title: "Your first job was nothing like you imagined",
+    desc: "Before starting, you thought it would be like a TV drama. Once inside, you found yourself doing trivial, repetitive tasks that felt meaningless every day.",
+    hint: "You are the one staring blankly at your desk."
   },
   {
     id: 4, layer: 1,
     icon: "💰",
-    title: "第一份工资，比想象中少很多",
-    desc: "你算了又算，扣掉房租和生活费，发现剩下的钱比你想象的少得多。你第一次意识到：赚钱真的不容易。",
-    hint: "你就是那个算完账发呆的人。"
+    title: "Your first paycheck was much less than expected",
+    desc: "You calculated over and over. After deducting rent and living expenses, you found much less remained than you imagined. For the first time, you realized: earning money is truly not easy.",
+    hint: "You are the one staring into space after doing the math."
   },
 
-  // 第二层：第一次谋生
+  // Layer 2: First Time Earning
   {
     id: 5, layer: 2,
     icon: "⏰",
-    title: "加班到很晚，但不知道为什么加班",
-    desc: "你不知道为什么今天要加班到这个点，也不知道明天会不会又是这样。你只知道：这是工作，应该的。",
-    hint: "你就是那个加班到深夜的人。"
+    title: "Working overtime late, but not sure why",
+    desc: "You don't know why you have to work this late today, or whether tomorrow will be the same. You only know: this is work, it's expected.",
+    hint: "You are the one working late into the night."
   },
   {
     id: 6, layer: 2,
     icon: "⚖️",
-    title: "付出和回报，总觉得不对等",
-    desc: "你做了很多，但拿到的却很少。你不是爱计较的人，但心里还是有一个声音在说：凭什么？",
-    hint: "你就是那个心里不平衡的人。"
+    title: "Effort and reward always feel unequal",
+    desc: "You've done a lot, but received so little. You're not the type to keep score, but there's still a voice inside asking: why?",
+    hint: "You are the one feeling the imbalance inside."
   },
   {
     id: 7, layer: 2,
     icon: "👐",
-    title: "帮同事扛了活，他好像觉得理所当然",
-    desc: "你帮他做了一些本该他做的事。他没有说谢谢，好像这是你应该做的。",
-    hint: "你就是那个被当成理所当然的人。"
+    title: "Helped a colleague with their work, and they took it for granted",
+    desc: "You helped them do things that were supposed to be their job. They didn't say thank you — as if it was your duty.",
+    hint: "You are the one being taken for granted."
   },
   {
     id: 8, layer: 2,
     icon: "🔄",
-    title: "换了几次方向，还是不确定",
-    desc: "你换了几份工作，试了几个方向，但还是不确定这是不是你要的。有时候你会想：是不是我太浮躁了？",
-    hint: "你就是那个一直在换方向的人。"
+    title: "Changed direction several times, still uncertain",
+    desc: "You've switched jobs, tried different paths, but still aren't sure this is what you want. Sometimes you wonder: am I too restless?",
+    hint: "You are the one always changing direction."
   },
 
-  // 第三层：压力与选择
+  // Layer 3: Pressure & Choices
   {
     id: 9, layer: 3,
     icon: "👨‍👩‍👧",
-    title: "要养家了，钱不够用",
-    desc: "你结婚了，有孩子了，或者要照顾父母了。收入的压力突然变得很具体。你第一次感受到：钱不够用，是真的会很焦虑的事。",
-    hint: "你就是那个精打细算的人。"
+    title: "Supporting a family, but money isn't enough",
+    desc: "You got married, had kids, or need to care for aging parents. The pressure of income suddenly became very real. For the first time, you felt: not having enough money truly causes anxiety.",
+    hint: "You are the one counting every penny."
   },
   {
     id: 10, layer: 3,
     icon: "⚖️",
-    title: "在稳定和想要之间，左右为难",
-    desc: "有一份稳定的工作，但不是你想要的。想要去追一个梦想，但又不敢放弃现有的。",
-    hint: "你就是那个左右为难的人。"
+    title: "Torn between stability and what you truly want",
+    desc: "You have a stable job, but it's not what you want. You want to chase a dream, but can't bring yourself to give up what you have.",
+    hint: "You are the one caught in the middle."
   },
   {
     id: 11, layer: 3,
     icon: "📈",
-    title: "很努力，但钱总是不够花",
-    desc: "你已经比很多人努力了，但还是存不下钱。每个月到手的工资，好像怎么都不够。",
-    hint: "你就是那个精打细算的人。"
+    title: "Working hard, but money is never enough",
+    desc: "You've worked harder than many people, but still can't save. Every month's paycheck never seems to be enough.",
+    hint: "You are the one budgeting every month."
   },
   {
     id: 12, layer: 3,
     icon: "🏠",
-    title: "想安身立命，却没有落脚点",
-    desc: "你想在这个城市安定下来，但房价、户口、孩子上学……每一件事都在提醒你：你想安身，但这个城市好像不太欢迎你。",
-    hint: "你就是那个漂着的人。"
+    title: "Wanting to settle down, but nowhere to land",
+    desc: "You want to put down roots in this city, but housing prices, residency permits, children's schooling... everything reminds you: you want to settle, but this city doesn't seem to welcome you.",
+    hint: "You are the one drifting."
   }
 ];
 
-// 冒险卡（独立谋生）
+// Adventure Cards (Earning a Living)
 const adventureCards = [
-  "年轻时的穷，不是穷，是本钱。",
-  "第一份工资多少不重要，重要的是你从中学到了什么。",
-  "谋生这件事，有人早熟，有人晚熟，各有各的路。",
-  "钱不是万能的，但没钱是万万不能的——这句话是真的。",
-  "你不是在找一份工作，你是在找一种和世界打交道的方式。",
-  "每个月的工资，不只是钱，是你用时间换来的生命。",
-  "独立谋生，是你和世界谈的第一笔交易。谈得好不好，不只看钱。",
-  "年轻时的迷茫不是病，是还没找到自己那块地。",
-  "你羡慕的那些人，也有他们不说的难处。",
-  "谋生的过程，也是在谋自己。",
-  "真正的独立，不是不求人，是知道什么时候该求人。",
-  "钱是工具，不是目的。你要的是用钱买来的那个东西。"
+  "Poverty in youth isn't poverty — it's capital.",
+  "How much your first paycheck was doesn't matter. What matters is what you learned from it.",
+  "Earning a living: some mature early, some late — each has their own path.",
+  "Money isn't everything, but you can't do anything without it — this saying is true.",
+  "You're not just looking for a job — you're looking for a way to deal with the world.",
+  "Your monthly paycheck isn't just money — it's the life you traded your time for.",
+  "Earning your own living is the first deal you negotiate with the world. How well it goes depends on more than money.",
+  "Confusion in youth isn't a disease — you just haven't found your patch of land yet.",
+  "Those people you envy have their own unspoken struggles too.",
+  "The process of making a living is also the process of finding yourself.",
+  "True independence isn't never asking for help — it's knowing when to ask.",
+  "Money is a tool, not a goal. What you want is what money can buy."
 ];
 
-// 诊断题
+// Diagnostic Questions
 const questions = [
   {
-    q: "你第一次认真考虑「我要自己赚钱」是什么时候？",
+    q: "When did you first seriously think about 'I want to earn my own money'?",
     options: [
-      { text: "很早了，读书时候就开始想办法赚钱了。", key: "01很早就开始谋生" },
-      { text: "毕业之后，开始真正意识到要自己养活自己。", key: "02毕业后开始谋生" },
-      { text: "有了家庭之后，责任变大了。", key: "03有家后开始认真" },
-      { text: "一直都知道，但没有认真想过这件事。", key: "04知道但不急" },
+      { text: "Quite early — I started finding ways to earn money while still in school.", key: "01很早就开始谋生" },
+      { text: "After graduation, when I truly realized I needed to support myself.", key: "02毕业后开始谋生" },
+      { text: "After starting a family, when responsibilities grew.", key: "03有家后开始认真" },
+      { text: "I always knew, but never seriously thought about it.", key: "04知道但不急" },
       { text: "说不清，感觉是被推着往前走。", key: "05被推着走" }
     ]
   },
   {
-    q: "当你第一次面对工作中的不公平，你会怎么做？",
+    q: "When you first faced unfairness at work, what did you do?",
     options: [
-      { text: "忍着，觉得职场就是这样。", key: "06忍了" },
-      { text: "会生气，但不知道怎么表达。", key: "07生气但忍着" },
-      { text: "会找机会说出来，哪怕冒点风险。", key: "08说出来" },
-      { text: "会记下来，等机会来了再处理。", key: "09记下来等机会" },
+      { text: "Endured it — that's just how the workplace is.", key: "06忍了" },
+      { text: "Got angry, but didn't know how to express it.", key: "07生气但忍着" },
+      { text: "Found a chance to speak up, even at some risk.", key: "08说出来" },
+      { text: "Noted it down and waited for the right moment to deal with it.", key: "09记下来等机会" },
       { text: "看情况，有时候忍，有时候说。", key: "10看情况" }
     ]
   },
   {
-    q: "你目前对「赚钱」这件事，整体感觉是？",
+    q: "What is your overall feeling about 'earning money' right now?",
     options: [
-      { text: "只要努力，钱不是问题。", key: "11努力就有钱" },
-      { text: "赚钱很难，但我愿意努力。", key: "12难但努力" },
-      { text: "钱够用就好，不求大富大贵。", key: "13够用就好" },
-      { text: "有时候觉得钱很难赚，有时候又觉得还好。", key: "14时难时易" },
+      { text: "As long as I work hard, money won't be a problem.", key: "11努力就有钱" },
+      { text: "Earning money is hard, but I'm willing to work for it.", key: "12难但努力" },
+      { text: "Enough to get by is fine — I don't seek great wealth.", key: "13够用就好" },
+      { text: "Sometimes earning money feels very hard, other times it's okay.", key: "14时难时易" },
       { text: "不太愿意想这件事，想起来就焦虑。", key: "15想起来就焦虑" }
     ]
   },
   {
-    q: "你在独立谋生这件事上，最大的卡点是什么？",
+    q: "What is your biggest obstacle in earning a living independently?",
     options: [
-      { text: "不够自信，总觉得自己不够好。", key: "16不够自信" },
-      { text: "不知道该往哪个方向走。", key: "17方向迷茫" },
-      { text: "努力了但没有足够的回报。", key: "18回报不足" },
-      { text: "缺乏资源和人脉。", key: "19资源不足" },
+      { text: "Not confident enough — I always feel I'm not good enough.", key: "16不够自信" },
+      { text: "I don't know which direction to go.", key: "17方向迷茫" },
+      { text: "I work hard but don't get enough in return.", key: "18回报不足" },
+      { text: "Lacking resources and connections.", key: "19资源不足" },
       { text: "有时候很想放弃，但又不甘心。", key: "20想放弃又不甘" }
     ]
   },
   {
-    q: "如果可以改变一件事，你最想改变的是什么？",
+    q: "If you could change one thing, what would you most want to change?",
     options: [
-      { text: "我希望我能更自信一些，不那么在意别人的眼光。", key: "21更自信" },
-      { text: "我希望我能找到一个真正适合自己的方向。", key: "22找到方向" },
-      { text: "我希望我的努力能得到更公平的回报。", key: "23公平回报" },
-      { text: "我希望我能放下对钱的焦虑。", key: "24放下焦虑" },
+      { text: "I wish I could be more confident and care less about what others think.", key: "21更自信" },
+      { text: "I wish I could find a direction that truly suits me.", key: "22找到方向" },
+      { text: "I wish my efforts could be rewarded more fairly.", key: "23公平回报" },
+      { text: "I wish I could let go of my anxiety about money.", key: "24放下焦虑" },
       { text: "我希望我能学会更好地和这个社会打交道。", key: "25学会打交道" }
     ]
   },
   {
-    q: "你觉得自己对「独立谋生」的理解是什么？",
+    q: "What is your understanding of 'earning a living independently'?",
     options: [
-      { text: "自己赚钱自己花，不依赖别人。", key: "26不依赖" },
-      { text: "能够用自己的能力，换取应有的价值。", key: "27等价交换" },
-      { text: "在这个世界上找到自己的位置。", key: "28找到位置" },
-      { text: "能够负担自己选择的人生。", key: "29负担选择" },
+      { text: "Earn your own money, spend your own money, don't depend on others.", key: "26不依赖" },
+      { text: "Being able to exchange your abilities for their fair value.", key: "27等价交换" },
+      { text: "Finding your place in this world.", key: "28找到位置" },
+      { text: "Being able to afford the life you choose.", key: "29负担选择" },
       { text: "说实话，我还在摸索。", key: "30还在摸索" }
     ]
   }
 ];
 
-// 卡点完整数据
+// Complete Card Point Data
 const cardPoints = {
   "01很早就开始谋生": {
-    name: "很早就开始谋生",
-    desc: "你很早就开始面对「钱」这件事了。也许是因为家庭，也许是因为性格，你比同龄人更早知道：钱不是天上掉下来的。",
-    advice: "早起步的人，往往更有生存韧性。但也要注意：不要让「谋生」变成你唯一的事。你还值得拥有工作之外的东西。",
+    name: "Started Earning Early",
+    desc: "You started facing the reality of money very early. Maybe because of family, maybe because of personality — you knew sooner than your peers that money doesn't fall from the sky.",
+    advice: "Early starters often have more resilience. But be careful: don't let earning a living become your only thing. You deserve more than just work.",
     color: "#8a6040"
   },
   "02毕业后开始谋生": {
-    name: "毕业后开始谋生",
-    desc: "毕业是你谋生的真正起点。你从象牙塔走出来，第一次真正面对社会的规则。这种转变，对每个人来说都不容易。",
-    advice: "毕业后的前几年，是建立「谋生操作系统」的关键期。你现在种下的习惯和观念，会影响你很多年。慢一点没关系，但要认真。",
+    name: "Started After Graduation",
+    desc: "Graduation was your real starting point for earning a living. You stepped out of the ivory tower and faced society's rules for the first time. This transition isn't easy for anyone.",
+    advice: "The first few years after graduation are crucial for building your livelihood operating system. The habits and mindsets you plant now will affect you for years. Slow is fine, but be serious.",
     color: "#7a5030"
   },
   "03有家后开始认真": {
-    name: "有家后开始认真",
-    desc: "有了家庭之后，谋生就不只是你自己的事了。你要为另一个人、或者更多人负责。这种责任感，是压力，也是动力。",
-    advice: "有家的人，往往更有韧性。但也要记得：你不仅是支柱，你也是人。照顾好自己，才能照顾好家。",
+    name: "Got Serious After Starting a Family",
+    desc: "Once you have a family, earning a living is no longer just about you. You're responsible for another person, or more. This sense of responsibility is both pressure and motivation.",
+    advice: "People with families often have more resilience. But remember: you're not just a pillar — you're also a person. Take care of yourself first to take care of your family.",
     color: "#9a6840"
   },
   "04知道但不急": {
-    name: "知道但不急",
-    desc: "你知道谋生是迟早的事，但还没有真正紧迫感。也许是因为有人兜底，也许是因为你还在摸索。这不是坏事，但也不能一直这样。",
-    advice: "不急是好的心态，但不能变成拖延。给自己设一个底线：在这个时间之前，我需要有一份稳定的收入来源。",
+    name: "Know But Not Urgent",
+    desc: "You know earning a living is inevitable, but don't feel real urgency yet. Maybe someone has your back, maybe you're still exploring. It's not bad, but it can't last forever.",
+    advice: "Being unhurried is a good mindset, but don't let it become procrastination. Set a deadline: by this time, I need a stable income source.",
     color: "#a07050"
   },
   "05被推着走": {
-    name: "被推着走",
-    desc: "你的谋生之路，好像一直是「被推着」往前走。没有特别清晰的规划，也没有特别的紧迫感，只是事情来了就应对。",
-    advice: "被动谋生没有问题，但被动久了会累。试着偶尔停下来想一想：这是我想要的谋生方式吗？偶尔的主动思考，会让你更有方向感。",
+    name: "Being Pushed Along",
+    desc: "Your path to earning a living seems to have been a matter of being pushed forward. No clear plan, no particular urgency — just dealing with things as they come.",
+    advice: "Passive earning isn't wrong, but it gets tiring after a while. Try stopping occasionally to think: is this the way I want to make a living? Occasional active thinking gives you more direction.",
     color: "#8a5040"
   },
   "06忍了": {
-    name: "忍了",
-    desc: "你选择了忍耐。职场不公平的事，你见过不少，但你选择不发作。这种忍，是成熟的体现，但也是委屈的积累。",
-    advice: "忍是智慧，但一直忍是压抑。找到一种方式，把忍下来的东西消化掉——运动、倾诉、或者写下来。忍不是目的，消化才是。",
+    name: "Endured It",
+    desc: "You chose to endure. You've seen plenty of unfairness at work, but chose not to react. This endurance is a sign of maturity, but it also accumulates grievance.",
+    advice: "Endurance is wisdom, but constant endurance becomes suppression. Find a way to process what you've swallowed — exercise, talk it out, or write it down. Endurance isn't the goal; processing is.",
     color: "#9a8050"
   },
   "07生气但忍着": {
-    name: "生气但忍着",
-    desc: "你心里有气，但你不知道怎么表达。你不是那种会当面冲突的人，所以你选择忍着。忍着忍着，气就憋在心里了。",
-    advice: "生气是正常的情绪，不是一种性格缺陷。下次生气的时候，试着找一个安全的方式表达——哪怕是发一条仅自己可见的微博。",
+    name: "Angry But Holding Back",
+    desc: "You have anger inside, but don't know how to express it. You're not the type for confrontation, so you hold it in. Over time, the frustration builds up inside.",
+    advice: "Anger is a normal emotion, not a character flaw. Next time you're angry, try finding a safe way to express it — even posting something only you can see.",
     color: "#8a7060"
   },
   "08说出来": {
-    name: "说出来",
-    desc: "你会说出来。这需要勇气，尤其是在职场。但你选择了表达，哪怕有时候会得罪人。",
-    advice: "说出来是你的优势，但要注意方式。有时候「怎么说」比「说什么」更重要。学会在表达的同时保护自己。",
+    name: "Speaks Up",
+    desc: "You speak up. This takes courage, especially at work. But you chose to express yourself, even if it sometimes ruffles feathers.",
+    advice: "Speaking up is your strength, but pay attention to how. Sometimes how you say it matters more than what you say. Learn to protect yourself while expressing yourself.",
     color: "#a07050"
   },
   "09记下来等机会": {
-    name: "记下来等机会",
-    desc: "你不会当场发作，但你会记下来。你知道有些事情需要时机，急不得。这种耐心，是成熟的表现。",
-    advice: "等待是好的策略，但不要让等待变成遗忘。定期回顾你记下来的那些事，想一想：现在是不是处理它们的时候？",
+    name: "Notes It Down, Waits for the Right Moment",
+    desc: "You don't react on the spot, but you note it down. You know some things need the right timing and can't be rushed. This patience is a sign of maturity.",
+    advice: "Waiting is a good strategy, but don't let it become forgetting. Periodically review what you've noted — is now the right time to deal with them?",
     color: "#9a7860"
   },
   "10看情况": {
-    name: "看情况",
-    desc: "你不是一个固定模式的人。你会根据情况来判断：什么时候该忍，什么时候该说。这种灵活性，是很好的生存能力。",
-    advice: "看情况是你的成熟，但也要小心：不要变成「没有立场」。在灵活的同时，保持自己内在的底线。",
+    name: "Reads the Situation",
+    desc: "You're not a one-pattern person. You judge based on the situation: when to endure, when to speak up. This flexibility is a great survival skill.",
+    advice: "Reading the situation is your maturity, but be careful not to become someone with no position. Stay flexible while maintaining your inner bottom line.",
     color: "#b0a070"
   },
   "11努力就有钱": {
-    name: "努力就有钱",
-    desc: "你对努力和回报的关系，还是比较乐观的。你相信：只要努力，钱不是问题。这种信念，是前进的动力。",
-    advice: "乐观是好的，但也要有现实的预期管理。不是所有努力都会立刻换来钱，但所有的努力都会以某种方式回报你。",
+    name: "Hard Work Equals Money",
+    desc: "You're fairly optimistic about the relationship between effort and reward. You believe: as long as you work hard, money won't be a problem. This belief drives you forward.",
+    advice: "Optimism is good, but manage your expectations realistically. Not all effort immediately translates to money, but all effort pays you back in some way.",
     color: "#9a7050"
   },
   "12难但努力": {
-    name: "难但努力",
-    desc: "你知道赚钱不容易，但你愿意努力。这种「清醒的努力」，比盲目乐观更难得。",
-    advice: "清醒的努力，是最好的状态。你不需要相信「努力就一定有回报」，你只需要相信：努力了，会比不努力更好一点。",
+    name: "Hard But Trying",
+    desc: "You know earning money isn't easy, but you're willing to work for it. This kind of clear-eyed effort is rarer than blind optimism.",
+    advice: "Clear-eyed effort is the best state. You don't need to believe effort always pays off — just that effort makes things a little better than no effort.",
     color: "#a08060"
   },
   "13够用就好": {
-    name: "够用就好",
-    desc: "你不追求大富大贵，你觉得够用就好。这种知足，是很好的心态，但有时候也会让你失去一些进取的动力。",
-    advice: "知足是智慧，但「够用」的定义会随时间变化。定期想一想：现在的「够用」，未来还够用吗？",
+    name: "Enough Is Enough",
+    desc: "You don't pursue great wealth — enough to get by is fine. This contentment is a healthy mindset, but sometimes it costs you some drive to push forward.",
+    advice: "Contentment is wisdom, but the definition of "enough" changes over time. Periodically ask yourself: will today's "enough" still be enough in the future?",
     color: "#8a6850"
   },
   "14时难时易": {
-    name: "时难时易",
-    desc: "你对钱的感受，不是固定的。有时候觉得难，有时候又觉得还好。这种波动，让你对钱的焦虑也变得起伏不定。",
-    advice: "接受这种起伏。不同时期有不同的挑战，重要的是：在难的时候不放弃，在好的时候不挥霍。",
+    name: "Sometimes Hard, Sometimes Easy",
+    desc: "Your feelings about money aren't fixed. Sometimes it feels hard, sometimes okay. This fluctuation makes your financial anxiety ebb and flow too.",
+    advice: "Accept the ups and downs. Different periods bring different challenges. What matters: don't give up when it's hard, and don't splurge when it's good.",
     color: "#a08870"
   },
   "15想起来就焦虑": {
-    name: "想起来就焦虑",
-    desc: "钱这件事，是你心里的一个痛点。你不愿意想它，但又会忍不住想。想起来就焦虑，焦虑完还是不知道怎么解决。",
-    advice: "焦虑说明你在乎。把焦虑写下来，变成具体的数字和计划。当焦虑变成具体的待办事项，它就没那么可怕了。",
+    name: "Anxiety on My Mind",
+    desc: "Money is a sore spot in your heart. You don't want to think about it, but you can't help it. Thinking about it makes you anxious, and after the anxiety, you still don't know how to solve it.",
+    advice: "Anxiety shows you care. Write down your anxiety, turn it into concrete numbers and plans. When anxiety becomes a to-do list, it's not so scary anymore.",
     color: "#907860"
   },
   "16不够自信": {
-    name: "不够自信",
-    desc: "你觉得自己不够好。这种自我怀疑，让你在谋生路上走得比实际需要的更艰难。",
-    advice: "自信不是天生的，是一次次做成事情之后积累的。给自己列一个小清单：过去一年，我做成过哪几件事？看见自己的过去，是建立自信的第一步。",
+    name: "Not Confident Enough",
+    desc: "You feel you're not good enough. This self-doubt makes your path to earning a living harder than it actually needs to be.",
+    advice: "Confidence isn't innate — it's built by succeeding at things, one after another. Make a short list: what have I accomplished in the past year? Seeing your past is the first step to building confidence.",
     color: "#9a6848"
   },
   "17方向迷茫": {
-    name: "方向迷茫",
-    desc: "你不知道该往哪个方向走。这种迷茫，是很多人都会经历的阶段。它不是问题，但它需要你主动去探索。",
-    advice: "方向不是想出来的，是试出来的。不用等一个「完美的方向」再开始，先做一些小尝试，在尝试中调整。",
+    name: "Lost on Direction",
+    desc: "You don't know which direction to go. This confusion is a phase many people experience. It's not a problem, but it requires you to actively explore.",
+    advice: "Direction isn't figured out by thinking — it's found by trying. Don't wait for the perfect direction. Start with small experiments and adjust along the way.",
     color: "#a08068"
   },
   "18回报不足": {
-    name: "回报不足",
-    desc: "你觉得自己的付出没有得到应有的回报。这种不平衡感，是很多职场人都会有的感受。",
-    advice: "回报不足，有时候是真的，有时候是认知偏差。但不管是哪种，试着做两件事：1）提升自己的可替代性壁垒；2）学会让付出被看见。",
+    name: "Insufficient Returns",
+    desc: "You feel your efforts aren't getting the reward they deserve. This sense of imbalance is something many working professionals experience.",
+    advice: "Insufficient returns are sometimes real, sometimes a cognitive bias. Either way, try two things: 1) raise your barriers to being replaced; 2) learn to make your efforts visible.",
     color: "#8a5840"
   },
   "19资源不足": {
-    name: "资源不足",
-    desc: "你觉得自己的资源和人脉不够。这种感受是真实的，但也可能是「开始」的错觉——很多人都是从资源不足开始的。",
-    advice: "资源是可以积累的，不是一成不变的。给自己设一个「每月认识一个新朋友」的目标，一年下来，你的资源网络会完全不同。",
+    name: "Lacking Resources",
+    desc: "You feel your resources and connections are insufficient. This feeling is real, but it might also be the illusion of starting out — many people begin with limited resources.",
+    advice: "Resources can be accumulated — they're not fixed. Set a goal to meet one new person each month. In a year, your network will be completely different.",
     color: "#9a7060"
   },
   "20想放弃又不甘": {
-    name: "想放弃又不甘",
-    desc: "你有时候很想放弃，但又觉得已经走了这么远，放弃了太可惜。这种矛盾，让你很难受。",
-    advice: "放弃和不放弃，都是选择。关键是：你想放弃的是什么？是这件事，还是这个状态？想清楚这一点，答案就出来了。",
+    name: "Want to Quit But Can't Accept It",
+    desc: "Sometimes you really want to give up, but you feel you've come so far that quitting would be a waste. This contradiction is painful.",
+    advice: "Quitting and not quitting are both choices. The key: what do you want to quit? The thing itself, or the state you're in? Clarify this and the answer emerges.",
     color: "#8a6850"
   },
   "21更自信": {
-    name: "更自信",
-    desc: "你希望自己更自信。不要那么在意别人的眼光，更相信自己的判断。这种愿望，是成长的信号。",
-    advice: "自信不是「不在乎别人」，而是「在听别人意见的同时，相信自己的判断」。这是可以练习的——每次做决定之前，先写下来你自己的理由，再去问别人的意见。",
+    name: "More Confidence",
+    desc: "You wish you were more confident. Caring less about others' opinions, trusting your own judgment more. This desire is a signal of growth.",
+    advice: "Confidence isn't about not caring what others think — it's about trusting your own judgment while listening to others. This can be practiced: before each decision, write down your own reasons first, then ask others.",
     color: "#a07048"
   },
   "22找到方向": {
-    name: "找到方向",
-    desc: "你希望找到一个真正适合自己的方向。这种寻找，本身就是意义。方向不是一次找到的，是一次次排除之后剩下的。",
-    advice: "方向不是想出来的，是活出来的。多尝试，多体验，多反思。在这个过程中，适合你的方向会慢慢显现。",
+    name: "Find Direction",
+    desc: "You want to find a direction that truly suits you. The search itself is meaningful. Direction isn't found once — it's what remains after eliminating alternatives.",
+    advice: "Direction isn't thought up — it's lived out. Try more, experience more, reflect more. In this process, the right direction will gradually reveal itself.",
     color: "#8a5040"
   },
   "23公平回报": {
-    name: "公平回报",
-    desc: "你希望自己的努力能得到更公平的回报。这种诉求是正当的，但「公平」本身是一个复杂的概念。",
-    advice: "公平有时候需要争取，有时候需要接受，有时候需要换环境。试着分清楚：这件事，是需要你争取，还是需要你接受，还是需要你换一个地方？",
+    name: "Fair Return",
+    desc: "You want your efforts to be rewarded more fairly. This is a legitimate desire, but fairness itself is a complex concept.",
+    advice: "Fairness sometimes needs to be fought for, sometimes accepted, sometimes requires a change of environment. Try to distinguish: does this situation require you to fight, accept, or move on?",
     color: "#907850"
   },
   "24放下焦虑": {
-    name: "放下焦虑",
-    desc: "你希望放下对钱的焦虑。这是一种很高的境界——不是因为有钱才能放下，是因为心态变了。",
-    advice: "放下焦虑，不是假装钱不重要，而是：1）接受钱的不确定性；2）把钱和你的自我价值分开；3）把钱变成你实现其他目标的工具，而不是目标本身。",
+    name: "Let Go of Anxiety",
+    desc: "You want to let go of your anxiety about money. This is a high state of mind — not because you have money, but because your mindset has shifted.",
+    advice: "Letting go of anxiety isn't pretending money doesn't matter. It's: 1) accepting financial uncertainty; 2) separating money from your self-worth; 3) making money a tool for other goals, not the goal itself.",
     color: "#9a6858"
   },
   "25学会打交道": {
-    name: "学会打交道",
-    desc: "你希望学会更好地和社会打交道。这种愿望，说明你意识到：谋生不仅是做事，也是做人。",
-    advice: "和社会打交道，不是讨好，而是建立互惠的关系。真诚、互利、保持边界——做到这三点，你会慢慢建立起自己的社会网络。",
+    name: "Learn to Navigate Society",
+    desc: "You want to learn to navigate society better. This desire shows you realize: earning a living isn't just about doing work — it's also about dealing with people.",
+    advice: "Navigating society isn't about pleasing people — it's about building mutually beneficial relationships. Be genuine, be fair, maintain boundaries — do these three and you'll build your social network.",
     color: "#a08860"
   },
   "26不依赖": {
-    name: "不依赖",
-    desc: "你对独立谋生的理解是：自己赚钱自己花，不依赖别人。这是一种很朴素、也很真实的理解。",
-    advice: "不依赖是独立的第一步，但不是全部。真正的独立，是有能力依赖，也有能力不依赖——选择权在你手里。",
+    name: "No Dependence",
+    desc: "Your understanding of earning a living independently is: earn your own, spend your own, don't depend on others. This is a simple and honest understanding.",
+    advice: "Not depending on others is the first step to independence, but not the whole picture. True independence is the ability to depend when needed and not depend when not — the choice is yours.",
     color: "#b0a070"
   },
   "27等价交换": {
-    name: "等价交换",
-    desc: "你觉得独立谋生是用自己的能力，换取应有的价值。这种理解很成熟，说明你已经把谋生看作一种价值交换。",
-    advice: "等价交换是市场的逻辑，但在现实中，交换往往不是即时的。有时候多给一点，是在为未来存本金。",
+    name: "Fair Exchange",
+    desc: "You see earning a living as exchanging your abilities for their fair value. This is a mature understanding — you've come to see earning as a value exchange.",
+    advice: "Fair exchange is market logic, but in reality, exchanges are often not immediate. Sometimes giving a little extra is investing in your future.",
     color: "#8a7060"
   },
   "28找到位置": {
-    name: "找到位置",
-    desc: "你觉得独立谋生是在这个世界上找到自己的位置。这种理解很深刻，说明你在思考谋生的意义，而不只是谋生的形式。",
-    advice: "找到位置是一个过程，不是一个结果。在找到之前，先让自己保持在场、保持尝试、保持开放。",
+    name: "Find Your Place",
+    desc: "You see earning a living as finding your place in the world. This is a profound understanding — you're thinking about the meaning of earning, not just the form.",
+    advice: "Finding your place is a process, not a result. Before you find it, stay present, keep trying, stay open.",
     color: "#9a7860"
   },
   "29负担选择": {
-    name: "负担选择",
-    desc: "你觉得独立谋生是能够负担自己选择的人生。这意味着：你承认选择是有代价的，你愿意为你的选择负责。",
-    advice: "负担选择，是成年人的标志。但也要记得：不是所有的代价都要你一个人扛。学会在需要的时候求助，也是独立的一部分。",
+    name: "Afford Your Choices",
+    desc: "You see earning a living as being able to afford the life you choose. This means: you acknowledge choices have costs, and you're willing to take responsibility for your choices.",
+    advice: "Affording your choices is the mark of an adult. But remember: you don't have to bear every cost alone. Learning to ask for help when needed is also part of being independent.",
     color: "#8a6850"
   },
   "30还在摸索": {
-    name: "还在摸索",
-    desc: "你还在摸索对独立谋生的理解。这不是坏事——很多人一辈子都在摸索。重要的是：你一直在认真对待这件事。",
-    advice: "摸索本身，就是答案的一部分。你在认真思考谋生这件事，这件事本身就会慢慢给你答案。给自己一点时间。",
+    name: "Still Figuring It Out",
+    desc: "You're still figuring out what earning a living independently means to you. This isn't bad — many people spend their whole lives figuring it out. What matters: you're taking it seriously.",
+    advice: "The exploration itself is part of the answer. The fact that you're seriously thinking about earning a living will gradually give you answers. Give yourself some time.",
     color: "#a08060"
   }
 };
 
-// 彩蛋
+// Easter Eggs
 const easterEggs = [
   {
-    title: "《智囊》· 范蠡",
-    text: "范蠡辅佐越王勾践灭吴复国后，功成身退，经商成为巨富。他知道：谋生不仅是赚钱，是知道什么时候进，什么时候退。真正的智慧，是在成功的时候选择离开。"
+    title: "The Wisdom of Fan Li",
+    text: "After helping King Goujian of Yue defeat Wu and restore his kingdom, Fan Li retired from politics and became a wealthy merchant. He knew: earning a living isn't just about making money — it's knowing when to advance and when to retreat. True wisdom is choosing to leave at the height of success."
   },
   {
-    title: "《智囊》· 吕不韦",
-    text: "吕不韦是战国时期的大商人，他说：「奇货可居。」他看见的不仅是眼前的利润，是未来的价值。谋生也是如此——有时候你看的不只是现在能赚多少，是这条路能把你带到哪里。"
+    title: "The Wisdom of Lü Buwei",
+    text: "Lü Buwei was a great merchant of the Warring States period. He said: 'Rare goods are worth holding.' He saw not just immediate profits, but future value. Earning a living is the same — sometimes you're not just looking at how much you can earn now, but where this path can take you."
   },
   {
-    title: "心理学研究：禀赋效应",
-    text: "心理学家发现：人们对自己拥有的东西估值更高。这就是为什么很多人不愿意换工作、换方向——不是因为那个选择真的更好，是因为「已经拥有了」。打破禀赋效应，是理性谋生的第一步。"
+    title: "Psychology: The Endowment Effect",
+    text: "Psychologists have found that people value things they own more highly. This is why many people are reluctant to switch jobs or change direction — not because the other choice is truly better, but because 'I already have this.' Breaking the endowment effect is the first step to rational career decisions."
   },
   {
-    title: "反脆弱",
-    text: "塔勒布说：反脆弱的东西，不是坚强，是从冲击中获益。谋生也是如此——那些能从小挫折中学习的人，比一直顺风顺水的人更有生命力。小的失败不是诅咒，是疫苗。"
+    title: "Antifragile",
+    text: "Nassim Taleb says: antifragile things aren't just strong — they benefit from shocks. Earning a living is the same — those who learn from small setbacks have more vitality than those who've always had smooth sailing. Small failures aren't curses; they're vaccines."
   }
 ];
 
 /* ============================================================
-   状态
+   State
    ============================================================ */
 let currentPage = 'entry';
 let selectedMoments = [];
@@ -1339,7 +1339,7 @@ let answers = {};
 let cardScores = {};
 
 /* ============================================================
-   页面导航（带错误处理）
+   Page Navigation (with error handling)
    ============================================================ */
 function goPage(name) {
   try {
@@ -1347,7 +1347,7 @@ function goPage(name) {
     const el = document.getElementById('page-' + name);
     if (!el) {
       console.error('Page not found: page-' + name);
-      alert('页面加载出错，请刷新重试。');
+      alert('Page loading error. Please refresh and try again.');
       return;
     }
     el.classList.add('active');
@@ -1365,7 +1365,7 @@ function goPage(name) {
     window.scrollTo(0, 0);
   } catch (e) {
     console.error('goPage error:', e);
-    alert('发生错误：' + e.message);
+    alert('An error occurred: ' + e.message);
   }
 }
 
@@ -1377,9 +1377,10 @@ function updateProgress(name) {
 }
 
 /* ============================================================
-   困境瞬间选择
+   Dilemma Moment Selection
    ============================================================ */
 function renderMoments() {
+  // Re-render all layers
   const layer1 = document.getElementById('momentLayer1');
   const layer2 = document.getElementById('momentLayer2');
   const layer3 = document.getElementById('momentLayer3');
@@ -1420,7 +1421,7 @@ function goDilemma() {
 }
 
 /* ============================================================
-   冒险卡
+   Adventure Card
    ============================================================ */
 let currentCardIndex = 0;
 
@@ -1433,7 +1434,7 @@ function selectRandomCard() {
   if (quoteEl) quoteEl.textContent = '"' + adventureCards[currentCardIndex] + '"';
   if (fc) fc.classList.remove('flipped');
   if (nextBtn) nextBtn.style.display = 'none';
-  if (hint) hint.textContent = '点击卡牌翻开';
+  if (hint) hint.textContent = 'Tap the card to reveal';
 }
 
 function flipCard() {
@@ -1441,7 +1442,7 @@ function flipCard() {
   const hint = document.getElementById('flipHint');
   const nextBtn = document.getElementById('adventureNextBtn');
   if (fc) fc.classList.add('flipped');
-  if (hint) hint.textContent = '— 这张卡，陪你去诊断 —';
+  if (hint) hint.textContent = '— This card accompanies you to the diagnosis —';
   if (nextBtn) nextBtn.style.display = 'inline-block';
 }
 
@@ -1450,7 +1451,7 @@ function goQuestion() {
 }
 
 /* ============================================================
-   诊断题
+   Diagnostic Questions
    ============================================================ */
 function renderQuestion() {
   const q = questions[currentQuestion];
@@ -1462,7 +1463,7 @@ function renderQuestion() {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
 
-  if (qNum) qNum.textContent = `第${currentQuestion + 1}题`;
+  if (qNum) qNum.textContent = `Question ${currentQuestion + 1}`;
   if (qText) qText.textContent = q.q;
   if (qProgress) qProgress.textContent = `${currentQuestion + 1} / ${total}`;
 
@@ -1478,7 +1479,7 @@ function renderQuestion() {
 
   if (prevBtn) prevBtn.style.display = currentQuestion > 0 ? 'inline-block' : 'none';
   if (nextBtn) {
-    nextBtn.textContent = currentQuestion < total - 1 ? '继续' : '查看结果';
+    nextBtn.textContent = currentQuestion < total - 1 ? 'Continue' : 'View Results';
     nextBtn.disabled = (answers[currentQuestion] || []).length === 0;
   }
 }
@@ -1514,7 +1515,7 @@ function prevQuestion() {
 }
 
 /* ============================================================
-   诊断结果
+   Diagnosis Results
    ============================================================ */
 function computeScores() {
   cardScores = {};
@@ -1534,9 +1535,9 @@ function showResult() {
   const topKey = sorted[0] ? sorted[0][0] : null;
   const topCp = topKey ? cardPoints[topKey] : null;
   const summaryTexts = [
-    `你最核心的谋生卡点是「${topCp ? topCp.name : '未知'}」。看见它，你已经比很多人走得更远了。`,
-    `你有 ${sorted.filter(s=>s[1]>=2).length} 个较深的卡点，它们交织在一起，塑造了你面对谋生时的反应模式。`,
-    "谋生不是你和世界的对抗，是你和世界的第一笔合作。对话不一定每次都愉快，但每次都有信息。"
+    `Your core livelihood block is '${topCp ? topCp.name : 'Unknown'}'. Seeing it means you've already gone further than many.`,
+    `You have ${sorted.filter(s=>s[1]>=2).length} deeper blocks that interweave, shaping how you respond to earning a living.`,
+    "Earning a living isn't a confrontation with the world — it's your first collaboration. The conversation isn't always pleasant, but it always has a message."
   ];
 
   const summaryEl = document.getElementById('resultSummary');
@@ -1553,7 +1554,7 @@ function showResult() {
         <div class="result-card">
           <div class="result-card-top">
             <span class="result-card-name">${cp.name}</span>
-            <span class="result-card-pct">命中 ${score} 次</span>
+            <span class="result-card-pct">matched ${score} times</span>
           </div>
           <div class="result-bar-bg">
             <div class="result-bar-fill ${barClass}" data-width="${pct}"></div>
@@ -1590,7 +1591,7 @@ function goAdvice() {
 }
 
 /* ============================================================
-   通关建议
+   Level Advice
    ============================================================ */
 function showAdvice() {
   computeScores();
@@ -1622,7 +1623,7 @@ function goHidden() {
 }
 
 /* ============================================================
-   隐藏关卡
+   Hidden Level
    ============================================================ */
 function generateCard() {
   const h1 = document.getElementById('hidden1').value.trim();
@@ -1631,12 +1632,12 @@ function generateCard() {
   const h4 = document.getElementById('hidden4').value.trim();
 
   if (!h1 && !h2 && !h3 && !h4) {
-    alert('先写点什么吧，至少说一件你记得的谋生瞬间。');
+    alert('Please write something first — at least one earning moment you remember.');
     return;
   }
 
   const content = [h1, h2, h3, h4].filter(Boolean).map((t, i) =>
-    `第${['一','二','三','四'][i]}步：${t}`
+    `Step ${['One','Two','Three','Four'][i]}: ${t}`
   ).join('\n\n');
 
   const cardContent = document.getElementById('cardContent');
@@ -1647,14 +1648,14 @@ function generateCard() {
   if (cardContent) cardContent.textContent = content;
 
   const responses = [
-    "你写的这些，是很多人不愿意面对的。你做了，这本身就是勇气。",
-    "那个从伸手要到伸手挣的人，一直在你心里。看见他，已经是和解的开始。",
-    "有些卡点不是你一个人有的。你愿意把它写出来，本身就是治愈。",
-    "不是所有人的谋生之路都顺遂。写过这张卡片的人，已经看见了自己的路。"
+    "What you've written is what many people refuse to face. You did it — that itself is courage.",
+    "The person who went from asking to earning has always been inside you. Seeing them is already the beginning of reconciliation.",
+    "Some blocks aren't yours alone. Being willing to write them down is itself healing.",
+    "Not everyone's path to earning a living is smooth. Those who've written this card have already seen their own path."
   ];
   if (cardResponse) cardResponse.textContent = '「' + responses[Math.floor(Math.random() * responses.length)] + '」';
 
-  const firstAction = h4 ? `今天先做这一件事：${h4.split('，')[0].split('。')[0]}` : '今天，就做一件事：下次觉得自己不够好的时候，先想一想你已经走到今天，已经很不容易了。';
+  const firstAction = h4 ? `Start with this one thing today: ${h4.split(',')[0].split('.')[0]}` : 'Today, do just one thing: next time you feel you're not good enough, remind yourself how far you've already come — that alone is remarkable.';
   if (cardAction) cardAction.textContent = firstAction;
   if (cardPreview) cardPreview.classList.add('show');
 }
@@ -1676,11 +1677,11 @@ function downloadCard() {
   ctx.fillStyle = '#5a3e1b';
   ctx.font = 'bold 28px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('我的谋生初体验', 300, 80);
+  ctx.fillText('My First Earning Experience', 300, 80);
 
   ctx.fillStyle = '#9a7a4a';
   ctx.font = '12px serif';
-  ctx.fillText('第四关 · 独立谋生 · 找到啦', 300, 108);
+  ctx.fillText('Stage 4 · Earning a Living · Found It', 300, 108);
 
   ctx.strokeStyle = 'rgba(139,90,43,0.3)';
   ctx.beginPath();
@@ -1711,10 +1712,10 @@ function downloadCard() {
   ctx.fillStyle = '#b89a6a';
   ctx.font = '11px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('— 第四关 · 独立谋生 · 完 —', 300, 750);
+  ctx.fillText('— Stage 4 · Earning a Living · Complete —', 300, 750);
 
   const link = document.createElement('a');
-  link.download = '我的谋生初体验.png';
+  link.download = 'my-first-earning.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -1736,7 +1737,7 @@ function restart() {
 }
 
 /* ============================================================
-   启动 & 事件绑定
+   Startup & Event Binding
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   // 渲染初始数据
@@ -1758,7 +1759,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const adventureBtn = document.getElementById('adventureNextBtn');
   if (adventureBtn) adventureBtn.addEventListener('click', () => goQuestion());
 
-  // 诊断题选项点击
+  // Diagnostic Questions选项点击
   const optList = document.getElementById('optionList');
   if (optList) {
     optList.addEventListener('click', (e) => {
@@ -1767,7 +1768,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 诊断题导航
+  // Diagnostic Questions导航
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   if (prevBtn) prevBtn.addEventListener('click', () => prevQuestion());
@@ -1798,7 +1799,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadBtn = document.getElementById('downloadBtn');
   if (downloadBtn) downloadBtn.addEventListener('click', () => downloadCard());
 
-  // 彩蛋关闭
+  // Easter Eggs关闭
   const eggClose = document.getElementById('eggClose');
   if (eggClose) eggClose.addEventListener('click', () => closeEgg());
 
@@ -1816,7 +1817,7 @@ function goBackHome() {
 }
 </script>
 
-<!-- enhance: 滚动淡入 + 回到顶部 -->
+<!-- enhance: scroll fade-in + back to top -->
 <script>
 (function(){
   var io=new IntersectionObserver(function(entries){
@@ -1832,7 +1833,7 @@ function goBackHome() {
   }
 })();
 </script>
-<!-- 访客计数器 -->
+<!-- Visitor Counter -->
 <div id="visitorCounter" style="text-align:center;margin:16px 0 8px;"></div>
 <script>
 (function(){
@@ -1843,7 +1844,7 @@ function goBackHome() {
   var n=parseInt(stored)+1;
   localStorage.setItem(key,String(n));
   var el=document.getElementById('visitorCounter');
-  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 您是第 <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> 位访客</span>';}
+  if(el){el.innerHTML='<span style="display:inline-block;padding:4px 16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:20px;font-size:12px;color:var(--text-mid,rgba(90,62,27,0.6));letter-spacing:2px;">\ud83d\udc41 You are visitor # <span style="color:var(--gold,#c9a84c);font-weight:600;">'+n.toLocaleString()+'</span> </span>';}
 })();
 </script>
 <script src="lang-toggle.js"></script>

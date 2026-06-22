@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="殷云霁 — —笔迹识匿名信. A wisdom story from Zhi Nang (智囊) for the Love & Marriage stage.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>殷云霁: —笔迹识匿名信 — Found It</title>
+<style>
+  :root {
+    --bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;
+    --text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;
+    --border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);
+    --radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8;font-size:16px;}
+  .back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+  .page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+  .story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+  .story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+  .story-header .subtitle{font-size:15px;color:var(--text-mid);font-weight:400;letter-spacing:1px;}
+  .story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;box-shadow:0 2px 8px rgba(201,168,76,0.3);}
+  .gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+  .gold-line.long{width:200px;margin:40px auto;}
+  .principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+  .principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+  .principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+  .story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s ease,transform 0.3s ease;}
+  .story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+  .story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+  .story-section h2 .icon{margin-right:8px;}
+  .story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+  .story-section p + p{margin-top:12px;}
+  .reflection{margin-top:40px;}
+  .reflection h2{font-size:20px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:20px;text-align:center;}
+  .reflection .question{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .reflection .q-num{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:#fff;font-size:12px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .reflection .q-text{font-size:15px;line-height:1.7;color:var(--text-dark);}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+  .story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);}
+  .bottom-deco{display:flex;align-items:center;justify-content:center;gap:6px;margin:48px auto 24px;opacity:0.4;}
+  .bottom-deco .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+  .bottom-deco .line{width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;position:relative;z-index:1;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn{top:10px;left:10px;font-size:12px;padding:6px 14px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){.story-section,.back-btn,.story-nav a{transition:none;}.story-section:hover{transform:none;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="../stage-05-love-marriage.html" class="back-btn">← Back to Love & Marriage</a>
+
+<main id="main-content">
+<div class="page" style="display:block;">
+  <header class="story-header">
+    <div class="level-tag">LEVEL 05 · LOVE & MARRIAGE</div>
+    <h1>殷云霁</h1>
+    <p class="subtitle">—笔迹识匿名信</p>
+  </header>
+  <div class="gold-line"></div>
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">匿名不等于可信，隐藏本身就是一种信息。最聪明的计谋往往败于最基础的验证手段。不要被表面的&quot;明确指控&quot;所迷惑，追查动机比追查内容更重要。</div>
+  </div>
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>古代某地，朱铠被杀害于文庙西庑之中。案件调查期间，突然出现一封匿名信，声称&quot;杀铠者某也&quot;，指名道姓地指控了一个人。殷云霁奉命审理此案，他直觉感到匿名信不可信，需要另辟蹊径找出真正的凶手。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>匿名信提供了一个明确的嫌疑人，但殷云霁判断这很可能是&quot;嫁祸&quot;——真正的凶手故意写匿名信，将嫌疑引向无辜者，以拖延调查、保护自己。然而，要推翻匿名信的指控并找到真正的凶手，需要在缺乏直接证据的情况下突破。如何在不依赖匿名信的情况下锁定真凶？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> Motives</h2>
+    <p>殷云霁的目标是找出真正的凶手，避免被匿名信误导而冤枉无辜者。他的判断基于一个关键推理：如果匿名信的指控是真实的，举报人何必匿名？匿名本身就说明举报者心虚，很可能是真凶在转移视线。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> The Framework</h2>
+    <p>殷云霁采用&quot;逻辑反推&quot;的认知框架——匿名信的存在本身就值得怀疑，其动机最可能是&quot;嫁祸以缓治&quot;（嫁祸他人以延缓对自己的调查）。他将调查方向从&quot;匿名信指认的嫌疑人&quot;转向&quot;谁与死者关系密切且有作案机会&quot;，然后通过笔迹鉴定锁定真正的匿名信作者。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> The Mindset</h2>
+    <p>殷云霁冷静理性，不被匿名信的明确指控所迷惑。他深知&quot;此嫁贼以缓治也&quot;——真正的凶手往往通过制造混乱来保护自己。他的推理简洁有力，直接将怀疑指向最可能的作案者群体。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>殷云霁首先否定匿名信的可信度，然后询问左右：谁与朱铠关系最密切？答曰&quot;胥姚&quot;（一个姓姚的胥吏）。随后他召集所有胥吏到堂上，宣布要抄写文书，要求每人提交自己的字迹样本。他将样本与匿名信比对，发现&quot;姚明&quot;的字迹与匿名信高度吻合。面对证据，姚明认罪。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔬</span> The Mental Model</h2>
+    <p>核心模型是&quot;匿名即可疑&quot;——匿名举报的可信度天然低于实名举报，因为举报者选择匿名本身就说明他有隐藏自身身份的动机。另一个模型是&quot;笔迹不可伪造&quot;：在古代，一个人的笔迹是长期形成的习惯，难以刻意模仿或掩饰。殷云霁通过&quot;抄写文书&quot;的自然方式获取笔迹样本，避免了嫌疑人因警觉而刻意改变字迹。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>姚明被笔迹鉴定锁定为匿名信的作者，在证据面前大惊服罪。朱铠被杀案得以告破。此案展示了&quot;匿名信不等于可信信&quot;的司法原则，以及笔迹鉴定在刑事侦查中的重要作用。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>一个凶手自作聪明地写匿名信嫁祸他人，没想到这封信反而成了指认自己的铁证——这种&quot;聪明反被聪明误&quot;的结局令人称快。殷云霁&quot;此嫁贼以缓治也&quot;的精准判断，展现了洞察人性的非凡智慧。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>底层逻辑是&quot;隐藏行为本身携带信息&quot;：选择匿名这一行为本身就暴露了举报者的心理状态——他有需要隐藏的东西。延伸到现代：网络安全中的匿名攻击追踪、反洗钱中的异常交易模式识别，都遵循&quot;隐藏行为即线索&quot;的逻辑。</p>
+  </section>
+
+  <div class="gold-line long"></div>
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question"><span class="q-num">1</span><span class="q-text">What is the core dilemma in this story, and how does it relate to challenges you face in your own life?</span></div>
+    <div class="question"><span class="q-num">2</span><span class="q-text">What strategy did the main character use, and what does it reveal about the power of patience and insight?</span></div>
+    <div class="question"><span class="q-num">3</span><span class="q-text">How might the outcome have changed if the character had chosen a different path?</span></div>
+  </section>
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="#">← Previous Story</a>
+    <a href="#">Next Story →</a>
+  </nav>
+  <div class="bottom-deco"><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot"></span></div>
+</div>
+</main>
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from <em>Zhi Nang</em> (《智囊》) by Feng Menglong, translated for the modern seeker.</p>
+</footer>
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4a16f45f2bf34076856761562e78ccfe"}'></script>
+<script>
+(function(){
+  var btn=document.querySelector('.back-to-top');
+  window.addEventListener('scroll',function(){if(window.scrollY>300)btn.classList.add('show');else btn.classList.remove('show');});
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');obs.unobserve(e.target);});},{threshold:0.1});
+  document.querySelectorAll('.story-section').forEach(function(el){el.classList.add('fade-in');obs.observe(el);});
+})();
+</script>
+</body>
+</html>

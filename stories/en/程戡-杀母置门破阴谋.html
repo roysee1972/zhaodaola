@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="程戡 — —杀母置门破阴谋. A wisdom story from Zhi Nang (智囊) for the Family of Origin stage.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>程戡: —杀母置门破阴谋 — Found It</title>
+<style>
+  :root {
+    --bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;
+    --text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;
+    --border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);
+    --radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8;font-size:16px;}
+  .back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+  .page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+  .story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+  .story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+  .story-header .subtitle{font-size:15px;color:var(--text-mid);font-weight:400;letter-spacing:1px;}
+  .story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;box-shadow:0 2px 8px rgba(201,168,76,0.3);}
+  .gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+  .gold-line.long{width:200px;margin:40px auto;}
+  .principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+  .principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+  .principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+  .story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s ease,transform 0.3s ease;}
+  .story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+  .story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+  .story-section h2 .icon{margin-right:8px;}
+  .story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+  .story-section p + p{margin-top:12px;}
+  .reflection{margin-top:40px;}
+  .reflection h2{font-size:20px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:20px;text-align:center;}
+  .reflection .question{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .reflection .q-num{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:#fff;font-size:12px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .reflection .q-text{font-size:15px;line-height:1.7;color:var(--text-dark);}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+  .story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);}
+  .bottom-deco{display:flex;align-items:center;justify-content:center;gap:6px;margin:48px auto 24px;opacity:0.4;}
+  .bottom-deco .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+  .bottom-deco .line{width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;position:relative;z-index:1;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn{top:10px;left:10px;font-size:12px;padding:6px 14px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){.story-section,.back-btn,.story-nav a{transition:none;}.story-section:hover{transform:none;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="../stage-01-family-of-origin.html" class="back-btn">← Back to Family of Origin</a>
+
+<main id="main-content">
+<div class="page" style="display:block;">
+  <header class="story-header">
+    <div class="level-tag">LEVEL 01 · FAMILY OF ORIGIN</div>
+    <h1>程戡</h1>
+    <p class="subtitle">—杀母置门破阴谋</p>
+  </header>
+  <div class="gold-line"></div>
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">当证据&quot;过于完美&quot;地指向某人时，反而应该更加怀疑。真正的犯罪者会隐藏证据，不会把证据放在自己门口。最朴素的逻辑推理往往能击穿最精密的阴谋。人性的底线不可突破——以亲人生命为代价的复仇，是对人性最彻底的背叛。</div>
+  </div>
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>古代某地，一家与仇人积怨已久。这家的儿子们对母亲说：&quot;母亲年老多病，恐怕也活不了多久了，不如借母亲的死来报仇。&quot;于是他们杀害了自己的母亲，将尸体放在仇人家门口，然后向官府报案，指控仇人杀人。仇人面对指控无法自证清白，案件陷入僵局。程戡奉命审理此案。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>案件表面上是一起清晰的谋杀案——尸体在仇人家门口，死者家属指控仇人杀人。仇人因与这家有积怨，缺乏不在场证明，无法自证清白。但程戡敏锐地注意到一个关键矛盾：如果仇人真的杀了人，为什么要把尸体放在自己家门口？这不是自投罗网吗？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> Motives</h2>
+    <p>程戡的目标是查明真相，避免无辜的仇人被冤枉。儿子们的动机极为阴毒——他们利用母亲的生命作为复仇的工具，既除掉了&quot;累赘&quot;的母亲，又陷害了仇人。他们以为&quot;以母尸为证&quot;的策略天衣无缝，因为没有人会想到儿子们会杀害自己的母亲。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> The Framework</h2>
+    <p>程戡采用&quot;犯罪心理学&quot;的认知框架——他从犯罪者的本能反应出发进行推理：一个真正的杀人者会尽量将尸体隐藏或转移，绝不会把尸体放在自己家门口。&quot;杀人而自置于门&quot;这一行为本身就违背了犯罪心理的基本逻辑，因此最大的嫌疑人不是仇人，而是报案者。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> The Mindset</h2>
+    <p>程戡冷静理性，不被&quot;尸体在仇人家门口&quot;这一表面证据所左右。他深入思考犯罪心理：真正的凶手会把尸体放在自己家门口吗？这种朴素但深刻的逻辑推理，穿透了精心设计的阴谋。儿子们则自以为天衣无缝——他们牺牲了母亲的生命来制造&quot;铁证&quot;，没想到正是这种&quot;过于完美&quot;的证据反而暴露了真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>程戡直接指出核心矛盾：&quot;杀人而自置于门，非可疑耶！&quot;（杀了人却把尸体放在自己家门口，这难道不可疑吗？）随即亲自深入审讯，&quot;劾治&quot;（严厉追查），最终查明是儿子们杀害母亲、嫁祸仇人的全部阴谋。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔬</span> The Mental Model</h2>
+    <p>核心模型是&quot;犯罪行为合理性检验&quot;——任何犯罪行为都有其内在的合理性（隐藏证据、逃避追查），如果一个行为明显违背这种合理性，那么它很可能不是真正的犯罪行为。另一个模型是&quot;反向嫌疑推定&quot;——当证据&quot;过于完美&quot;地指向某人时，反而应该怀疑这是被刻意制造的。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>程戡亲自劾治，查明了儿子们杀害母亲、嫁祸仇人的全部阴谋。仇人得以洗清冤屈，儿子们因弑母和诬告罪受到严惩。此案展示了&quot;犯罪行为合理性检验&quot;在司法实践中的决定性价值，也揭示了人性中最阴暗的一面。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>儿子们杀害自己的母亲来报仇——这种将亲情和生命当作工具的残忍令人发指。一个无辜的仇人面对&quot;铁证&quot;百口莫叫的绝望令人心痛。程戡以朴素的逻辑推理揭穿阴谋、拯救无辜的正义之举令人敬佩。这个故事最深的悲哀在于：仇恨可以让人性堕落到如此地步。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>底层逻辑是&quot;反常即可疑&quot;：当一个行为明显违背行为者的本能反应时，它很可能不是真实发生的，而是被刻意制造的。延伸到现代：保险欺诈调查中的&quot;事故合理性分析&quot;、反腐调查中的&quot;资产异常检测&quot;，都遵循&quot;反常即线索&quot;的逻辑。</p>
+  </section>
+
+  <div class="gold-line long"></div>
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question"><span class="q-num">1</span><span class="q-text">What is the core dilemma in this story, and how does it relate to challenges you face in your own life?</span></div>
+    <div class="question"><span class="q-num">2</span><span class="q-text">What strategy did the main character use, and what does it reveal about the power of patience and insight?</span></div>
+    <div class="question"><span class="q-num">3</span><span class="q-text">How might the outcome have changed if the character had chosen a different path?</span></div>
+  </section>
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="#">← Previous Story</a>
+    <a href="#">Next Story →</a>
+  </nav>
+  <div class="bottom-deco"><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot"></span></div>
+</div>
+</main>
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from <em>Zhi Nang</em> (《智囊》) by Feng Menglong, translated for the modern seeker.</p>
+</footer>
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4a16f45f2bf34076856761562e78ccfe"}'></script>
+<script>
+(function(){
+  var btn=document.querySelector('.back-to-top');
+  window.addEventListener('scroll',function(){if(window.scrollY>300)btn.classList.add('show');else btn.classList.remove('show');});
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');obs.unobserve(e.target);});},{threshold:0.1});
+  document.querySelectorAll('.story-section').forEach(function(el){el.classList.add('fade-in');obs.observe(el);});
+})();
+</script>
+</body>
+</html>

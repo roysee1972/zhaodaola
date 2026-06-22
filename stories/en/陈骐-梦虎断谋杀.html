@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="陈骐 — —梦虎断谋杀. A wisdom story from Zhi Nang (智囊) for the Love & Marriage stage.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>陈骐: —梦虎断谋杀 — Found It</title>
+<style>
+  :root {
+    --bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;
+    --text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;
+    --border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);
+    --radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8;font-size:16px;}
+  .back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+  .page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+  .story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+  .story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+  .story-header .subtitle{font-size:15px;color:var(--text-mid);font-weight:400;letter-spacing:1px;}
+  .story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;box-shadow:0 2px 8px rgba(201,168,76,0.3);}
+  .gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+  .gold-line.long{width:200px;margin:40px auto;}
+  .principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+  .principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+  .principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+  .story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s ease,transform 0.3s ease;}
+  .story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+  .story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+  .story-section h2 .icon{margin-right:8px;}
+  .story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+  .story-section p + p{margin-top:12px;}
+  .reflection{margin-top:40px;}
+  .reflection h2{font-size:20px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:20px;text-align:center;}
+  .reflection .question{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .reflection .q-num{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:#fff;font-size:12px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .reflection .q-text{font-size:15px;line-height:1.7;color:var(--text-dark);}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+  .story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);}
+  .bottom-deco{display:flex;align-items:center;justify-content:center;gap:6px;margin:48px auto 24px;opacity:0.4;}
+  .bottom-deco .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+  .bottom-deco .line{width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;position:relative;z-index:1;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn{top:10px;left:10px;font-size:12px;padding:6px 14px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){.story-section,.back-btn,.story-nav a{transition:none;}.story-section:hover{transform:none;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="../stage-05-love-marriage.html" class="back-btn">← Back to Love & Marriage</a>
+
+<main id="main-content">
+<div class="page" style="display:block;">
+  <header class="story-header">
+    <div class="level-tag">LEVEL 05 · LOVE & MARRIAGE</div>
+    <h1>陈骐</h1>
+    <p class="subtitle">—梦虎断谋杀</p>
+  </header>
+  <div class="gold-line"></div>
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">直觉可以成为破案的起点，但不能成为定罪的依据。巧妙的心理策略比暴力审讯更有效。对弱势群体的偏见（嫌贫爱富）可能导致极端犯罪，社会应警惕这种心态。</div>
+  </div>
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>吉安府发生一起命案：一名女子许嫁庠生（秀才），女家富裕而夫家贫寒。贫士在前往女家途中遇盗被杀。贫士的父亲怀疑是女家因嫌弃门第不配而谋杀其子。陈骐奉命审理此案，却在梦中得到奇异启示。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>案件表面上是一起普通的盗匪劫杀案，但贫士之父坚持怀疑女家谋杀。如果没有确凿证据指向女家，就只能按盗案处理，真凶可能逍遥法外。如何从众多嫌疑人中找到真正的凶手，是本案的核心难题。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> Motives</h2>
+    <p>陈骐的目标是查明贫士被杀的真相。贫士之父的动机是为儿子讨公道，他凭直觉怀疑女家。真正的凶手周彪的动机可能是觊觎女子的美貌或财富，趁贫士出行之际杀人夺妻。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> The Framework</h2>
+    <p>陈骐采用&quot;梦境联想+逻辑推理&quot;的认知框架。他梦见一虎带三矢登舟，将&quot;虎&quot;联想到&quot;彪&quot;（虎纹），&quot;三矢&quot;暗示与案件的关联。虽然梦境本身不是证据，但它为陈骐提供了一个嫌疑方向，再通过巧妙的策略加以验证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> The Mindset</h2>
+    <p>陈骐善于利用直觉和联想，将梦境中的象征符号转化为调查线索。他没有迷信地依赖梦境，而是将其作为启发，再用理性的手段验证。周彪则自以为隐蔽，没想到一个梦境会成为他败露的开端。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>陈骐假借修撰郡志的名义，征召有学识的士人参与，周彪之名赫然在列。酒宴过半，陈骐单独召周彪到后堂，屏退左右，诈称：&quot;有人说你杀了贫士夺取其妻，我怜惜你有才学，你若说实话，我救你。&quot;周彪惊恐战栗，跪地坦白了全部罪行。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔬</span> The Mental Model</h2>
+    <p>核心模型是&quot;心理施压突破&quot;——通过单独召见、屏退左右、暗示&quot;说实话可救&quot;的方式，在封闭空间中对嫌疑人施加巨大心理压力。另一个模型是&quot;象征联想推理&quot;——将梦境中的虎、三矢等符号与现实人物关联，虽非严格逻辑，但提供了有价值的调查方向。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>周彪在陈骐的心理施压下跪地坦白，交代了杀人夺妻的全部经过。贫士之父的怀疑得到证实，冤屈得以昭雪。此案展示了审讯心理学在古代司法实践中的精妙运用。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>一个贫寒的读书人满怀希望前往未婚妻家，却在途中惨遭杀害——命运对穷人的残酷令人心酸。陈骐以梦境为引、以智谋为剑，为无辜死者讨回公道，这种正义感令人敬佩。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>底层逻辑是&quot;直觉启发+理性验证&quot;——直觉和联想可以提供调查方向，但必须通过理性的策略和证据来验证。延伸到现代：刑侦中的&quot;犯罪侧写&quot;也包含直觉成分，但最终需要证据支撑。</p>
+  </section>
+
+  <div class="gold-line long"></div>
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question"><span class="q-num">1</span><span class="q-text">What is the core dilemma in this story, and how does it relate to challenges you face in your own life?</span></div>
+    <div class="question"><span class="q-num">2</span><span class="q-text">What strategy did the main character use, and what does it reveal about the power of patience and insight?</span></div>
+    <div class="question"><span class="q-num">3</span><span class="q-text">How might the outcome have changed if the character had chosen a different path?</span></div>
+  </section>
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="#">← Previous Story</a>
+    <a href="#">Next Story →</a>
+  </nav>
+  <div class="bottom-deco"><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot"></span></div>
+</div>
+</main>
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from <em>Zhi Nang</em> (《智囊》) by Feng Menglong, translated for the modern seeker.</p>
+</footer>
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4a16f45f2bf34076856761562e78ccfe"}'></script>
+<script>
+(function(){
+  var btn=document.querySelector('.back-to-top');
+  window.addEventListener('scroll',function(){if(window.scrollY>300)btn.classList.add('show');else btn.classList.remove('show');});
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');obs.unobserve(e.target);});},{threshold:0.1});
+  document.querySelectorAll('.story-section').forEach(function(el){el.classList.add('fade-in');obs.observe(el);});
+})();
+</script>
+</body>
+</html>

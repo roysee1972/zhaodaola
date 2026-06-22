@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="傅嘏 — —三贤皆败德之人. A wisdom story from Zhi Nang (智囊) for the Social Maze stage.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>傅嘏: —三贤皆败德之人 — Found It</title>
+<style>
+  :root {
+    --bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;
+    --text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;
+    --border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);
+    --radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8;font-size:16px;}
+  .back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+  .page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+  .story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+  .story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+  .story-header .subtitle{font-size:15px;color:var(--text-mid);font-weight:400;letter-spacing:1px;}
+  .story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;box-shadow:0 2px 8px rgba(201,168,76,0.3);}
+  .gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+  .gold-line.long{width:200px;margin:40px auto;}
+  .principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+  .principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+  .principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+  .story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s ease,transform 0.3s ease;}
+  .story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+  .story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+  .story-section h2 .icon{margin-right:8px;}
+  .story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+  .story-section p + p{margin-top:12px;}
+  .reflection{margin-top:40px;}
+  .reflection h2{font-size:20px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:20px;text-align:center;}
+  .reflection .question{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .reflection .q-num{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:#fff;font-size:12px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .reflection .q-text{font-size:15px;line-height:1.7;color:var(--text-dark);}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+  .story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);}
+  .bottom-deco{display:flex;align-items:center;justify-content:center;gap:6px;margin:48px auto 24px;opacity:0.4;}
+  .bottom-deco .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+  .bottom-deco .line{width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;position:relative;z-index:1;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn{top:10px;left:10px;font-size:12px;padding:6px 14px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){.story-section,.back-btn,.story-nav a{transition:none;}.story-section:hover{transform:none;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="../stage-08-social-maze.html" class="back-btn">← Back to Social Maze</a>
+
+<main id="main-content">
+<div class="page" style="display:block;">
+  <header class="story-header">
+    <div class="level-tag">LEVEL 08 · SOCIAL MAZE</div>
+    <h1>傅嘏</h1>
+    <p class="subtitle">—三贤皆败德之人</p>
+  </header>
+  <div class="gold-line"></div>
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">择友慎交，远离有明显性格缺陷的人。名气和才华不等于值得结交，性格才是决定长期关系的关键因素。</div>
+  </div>
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>魏晋之际，名士风气盛行。何晏、邓飏、夏侯玄是当时最负盛名的三位名士，被誉为&quot;三贤&quot;，天下士人争相与之结交。傅嘏却始终保持距离。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>三位当红名士主动求交，这对任何士人来说都是莫大荣幸。傅嘏却断然拒绝，甚至直言他们是&quot;败德之人&quot;，这需要极大的勇气和判断力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> Motives</h2>
+    <p>傅嘏的目标是保全自身，远离潜在的政治漩涡。他看出这三人虽然声名显赫，但性格缺陷明显，迟早会惹来杀身之祸。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> The Framework</h2>
+    <p>傅嘏采用&quot;性格-命运&quot;分析框架：通过观察一个人的性格特征来预判其未来命运。他看到的不是表面的才华和名望，而是内在的致命缺陷。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> The Mindset</h2>
+    <p>傅嘏冷静理性，不为名利所动。面对三位当红名士的主动示好，他没有受宠若惊，反而更加警惕。这种定力来自深刻的人性洞察。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>傅嘏逐一分析三人缺陷：夏侯玄&quot;志大心劳，能合虚誉&quot;；何晏、邓飏&quot;有为而躁，博而寡要，外好利而内无关钥&quot;。结论是&quot;远之犹恐罹祸，况可亲之耶&quot;。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔬</span> The Mental Model</h2>
+    <p>核心模型是&quot;表面-本质分离论&quot;：名望和才华只是表面，性格缺陷才是决定命运的关键。傅嘏透过表面看本质，识别出隐藏的风险。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>后来司马懿发动高平陵之变，何晏、邓飏、夏侯玄都被诛杀，三族尽灭。傅嘏因为与他们保持距离而安然无恙，仕途顺利。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>傅嘏的孤独和清醒令人敬佩。在所有人都追捧&quot;三贤&quot;时，他能保持独立判断，这种&quot;众人皆醉我独醒&quot;的精神需要极大勇气。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>延伸至现代社交：不要被名气和地位迷惑，要观察一个人的性格和行为模式。与有明显性格缺陷的人保持距离，即使他们当前风光无限。</p>
+  </section>
+
+  <div class="gold-line long"></div>
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question"><span class="q-num">1</span><span class="q-text">What is the core dilemma in this story, and how does it relate to challenges you face in your own life?</span></div>
+    <div class="question"><span class="q-num">2</span><span class="q-text">What strategy did the main character use, and what does it reveal about the power of patience and insight?</span></div>
+    <div class="question"><span class="q-num">3</span><span class="q-text">How might the outcome have changed if the character had chosen a different path?</span></div>
+  </section>
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="#">← Previous Story</a>
+    <a href="#">Next Story →</a>
+  </nav>
+  <div class="bottom-deco"><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot"></span></div>
+</div>
+</main>
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from <em>Zhi Nang</em> (《智囊》) by Feng Menglong, translated for the modern seeker.</p>
+</footer>
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4a16f45f2bf34076856761562e78ccfe"}'></script>
+<script>
+(function(){
+  var btn=document.querySelector('.back-to-top');
+  window.addEventListener('scroll',function(){if(window.scrollY>300)btn.classList.add('show');else btn.classList.remove('show');});
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');obs.unobserve(e.target);});},{threshold:0.1});
+  document.querySelectorAll('.story-section').forEach(function(el){el.classList.add('fade-in');obs.observe(el);});
+})();
+</script>
+</body>
+</html>

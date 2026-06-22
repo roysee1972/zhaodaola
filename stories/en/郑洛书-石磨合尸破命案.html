@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="郑洛书 — —石磨合尸破命案. A wisdom story from Zhi Nang (智囊) for the Entering the World stage.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>郑洛书: —石磨合尸破命案 — Found It</title>
+<style>
+  :root {
+    --bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;
+    --text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;
+    --border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);
+    --radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8;font-size:16px;}
+  .back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+  .page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+  .story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+  .story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+  .story-header .subtitle{font-size:15px;color:var(--text-mid);font-weight:400;letter-spacing:1px;}
+  .story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;box-shadow:0 2px 8px rgba(201,168,76,0.3);}
+  .gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+  .gold-line.long{width:200px;margin:40px auto;}
+  .principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+  .principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+  .principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+  .story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s ease,transform 0.3s ease;}
+  .story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+  .story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+  .story-section h2 .icon{margin-right:8px;}
+  .story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+  .story-section p + p{margin-top:12px;}
+  .reflection{margin-top:40px;}
+  .reflection h2{font-size:20px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:20px;text-align:center;}
+  .reflection .question{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .reflection .q-num{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:#fff;font-size:12px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .reflection .q-text{font-size:15px;line-height:1.7;color:var(--text-dark);}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+  .story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 8px var(--shadow);}
+  .story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);}
+  .bottom-deco{display:flex;align-items:center;justify-content:center;gap:6px;margin:48px auto 24px;opacity:0.4;}
+  .bottom-deco .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+  .bottom-deco .line{width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;position:relative;z-index:1;}
+  footer a{color:var(--gold);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn{top:10px;left:10px;font-size:12px;padding:6px 14px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+  @media(prefers-reduced-motion:reduce){.story-section,.back-btn,.story-nav a{transition:none;}.story-section:hover{transform:none;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="../stage-03-entering-world.html" class="back-btn">← Back to Entering the World</a>
+
+<main id="main-content">
+<div class="page" style="display:block;">
+  <header class="story-header">
+    <div class="level-tag">LEVEL 03 · ENTERING THE WORLD</div>
+    <h1>郑洛书</h1>
+    <p class="subtitle">—石磨合尸破命案</p>
+  </header>
+  <div class="gold-line"></div>
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">不要因为某物&quot;常见&quot;就认为它无法作为证据——常见之物的异常状态本身就是线索。任何犯罪行为都会留下痕迹，关键在于是否有发现痕迹的眼睛。智慧在于从平凡中发现不平凡。</div>
+  </div>
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>某地发现一具沉尸，尸体上压着一扇石磨。石磨是常见之物，几乎家家户户都有，如何从这普通的石磨中找到破案线索？郑洛书奉命侦查此案，需要从这看似平常的凶器中找到凶手的踪迹。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>尸体被沉入水中，上面压着石磨以防止浮起。石磨在农村极为常见，无法直接通过石磨本身确定凶手。但郑洛书意识到：石磨由上下两扇组成（一牡一牝），如果能找到与这扇石磨配对的另一半，就能确定石磨的来源，进而锁定凶手。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> Motives</h2>
+    <p>郑洛书的目标是通过石磨的配对找到凶手。凶手的动机是谋财害命——被害者是江西的卖卜人（算命先生），房主贪图其钱财而将其杀害。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> The Framework</h2>
+    <p>郑洛书采用&quot;物证配对法&quot;的认知框架——石磨由上下两扇组成，必须成对使用，如果尸体上只有半扇石磨，那么找到与之配对的另一半，就能确定石磨的出处。这是&quot;从共性中找个性&quot;的思路。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> The Mindset</h2>
+    <p>郑洛书善于从常人忽略的角度切入。别人看到石磨只会想到&quot;常见之物，无法追查&quot;，他却想到&quot;石磨必须成对，少了一扇必然异常&quot;。这种逆向思维是破案的关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>郑洛书派人到附近村庄逐一排查，寻找丢失了石磨（缺少一扇）的人家。很快发现一户村民家的石磨少了牡扇（上扇）。将尸体上的石磨与该村民家的石磨合在一起，上下两扇完美吻合。一讯之下，凶手立即伏法，交代了谋杀江西卖卜人的经过。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔬</span> The Mental Model</h2>
+    <p>核心模型是&quot;配对验证法&quot;——利用物品必须成对使用的特性，通过寻找缺失的另一半来锁定来源。另一个模型是&quot;排查缩小范围&quot;——石磨虽常见，但&quot;丢失半扇石磨&quot;的农户不多，通过排查可以快速缩小嫌疑范围。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>通过石磨配对，郑洛书迅速锁定了凶手，房主在铁证面前认罪伏法。江西卖卜人的冤屈得以昭雪。此案展示了&quot;物证配对&quot;在刑侦中的独特价值——即使是常见物品，只要找到其配对关系，就能成为铁证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>一个四处流浪的卖卜人，本想在异乡谋生，却被房主图财害命——底层人物的悲惨命运令人心酸。郑洛书用&quot;石磨配对&quot;的方法为死者讨回公道，展示了智慧的力量。常见之物也能成为铁证，真相从不因平凡而隐匿。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>底层逻辑是&quot;配对即身份&quot;——成对使用的物品缺少一半时，另一半就是它的&quot;身份证&quot;。延伸到现代：手机IMEI号配对、车辆VIN码匹配、DNA比对，都是&quot;配对验证&quot;的高级形式。</p>
+  </section>
+
+  <div class="gold-line long"></div>
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question"><span class="q-num">1</span><span class="q-text">What is the core dilemma in this story, and how does it relate to challenges you face in your own life?</span></div>
+    <div class="question"><span class="q-num">2</span><span class="q-text">What strategy did the main character use, and what does it reveal about the power of patience and insight?</span></div>
+    <div class="question"><span class="q-num">3</span><span class="q-text">How might the outcome have changed if the character had chosen a different path?</span></div>
+  </section>
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="#">← Previous Story</a>
+    <a href="#">Next Story →</a>
+  </nav>
+  <div class="bottom-deco"><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot"></span></div>
+</div>
+</main>
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from <em>Zhi Nang</em> (《智囊》) by Feng Menglong, translated for the modern seeker.</p>
+</footer>
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4a16f45f2bf34076856761562e78ccfe"}'></script>
+<script>
+(function(){
+  var btn=document.querySelector('.back-to-top');
+  window.addEventListener('scroll',function(){if(window.scrollY>300)btn.classList.add('show');else btn.classList.remove('show');});
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');obs.unobserve(e.target);});},{threshold:0.1});
+  document.querySelectorAll('.story-section').forEach(function(el){el.classList.add('fade-in');obs.observe(el);});
+})();
+</script>
+</body>
+</html>

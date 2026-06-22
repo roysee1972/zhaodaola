@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gao Ziye (高子业): Digging Up the Room to Expose Murder. A story of wisdom from the Found It treasury.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>Gao Ziye (高子业): Common Sense Against a Perfect Crime — Found It</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #7d6030;
+    --text-light: #987845;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  /* ── Back Button ── */
+  .back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(255,252,240,0.85);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* ── Page Container ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .story-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease;
+  }
+  .story-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .story-header .subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .story-header .level-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+
+  /* ── Gold Divider ── */
+  .gold-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+  .gold-line.long {
+    width: 200px;
+    margin: 40px auto;
+  }
+
+  /* ── Life Principle Box ── */
+  .principle-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,200,112,0.06));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .principle-box::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .principle-box .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .principle-box .text {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── Story Sections ── */
+  .story-section {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .story-section:hover {
+    box-shadow: 0 6px 24px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .story-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .story-section h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(201,168,76,0.3);
+  }
+  .story-section p {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+  .story-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Deeper Lesson (special highlight) ── */
+  .deeper-lesson {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(232,200,112,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .deeper-lesson::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Reflection Section ── */
+  .reflection {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .reflection h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .reflection .question {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .reflection .question:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .reflection .q-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .reflection .q-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dark);
+  }
+
+  /* ── Navigation ── */
+  .story-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .story-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .story-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+  }
+
+  /* ── Bottom Decoration ── */
+  .bottom-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 48px auto 24px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page {
+      padding: 48px 16px 60px;
+    }
+    .story-header h1 {
+      font-size: 22px;
+    }
+    .story-section {
+      padding: 20px 18px;
+    }
+    .back-btn {
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+    .story-nav {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .story-nav a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-section, .back-btn, .story-nav a {
+      transition: none;
+    }
+    .story-section:hover {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Back Button -->
+<a href="../en/stage-01-family-of-origin.html" class="back-btn">← Back to Stage</a>
+
+<!-- Main Content -->
+<main id="main-content">
+<div class="page" style="display:block;">
+
+  <!-- Header -->
+  <header class="story-header">
+    <div class="level-tag">LEVEL 01 · FAMILY OF ORIGIN</div>
+    <h1>Gao Ziye (高子业): Digging Up the Room to Expose Murder</h1>
+    <p class="subtitle">— Common Sense Against a Perfect Crime</p>
+  </header>
+
+  <div class="gold-line"></div>
+
+  <!-- Life Principle -->
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">The most elaborate lie cannot survive a single question that begins with "Does that make sense?" Don't be overwhelmed by complex narratives — return to the simplest common sense. And remember: reasoning is the starting point, but action is what brings the conclusion to life.</div>
+  </div>
+
+  <!-- The Setting -->
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>During the Ming Dynasty, a man named Jiang Gao (江槔) secretly murdered two clan members — Jiang Zi (江孜) and others — and concealed their bodies. Years later, he orchestrated a lawsuit through his wife's family, accusing another clansman, Jiang Ji (江楫), of the murders, while simultaneously tying the case to a property dispute. In a separate case, Wu Shijie (吴世杰) falsely accused a clansman of robbery, leading to the torture and death of over twenty innocent people. Gao Ziye (高子业) was assigned to review both cases.</p>
+  </section>
+
+  <!-- The Dilemma -->
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>Both cases were designed to look airtight. Jiang Gao had buried the bodies and created a plausible narrative pointing to someone else. Wu Shijie had weaponized the legal system itself, using the gravity of robbery charges to destroy his enemies through forced confessions. Previous officials had accepted these surface stories without question. Gao Ziye needed to see through crimes that had been engineered to be invisible.</p>
+  </section>
+
+  <!-- The Strategy -->
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>In the Jiang Gao case, Gao Ziye asked one devastating question: "He killed someone and buried the bodies in his own room — does that make any sense?" (为尔争宅址杀人埋尸己室，有斯理乎？) A real murderer would hide the evidence far from his own home, not under his own floor. This single common-sense objection shattered the entire frame-up. Gao Ziye ordered a search of Jiang Gao's house, and the two bodies were unearthed. In the Wu Shijie case, Gao Ziye noticed a different kind of contradiction: Wu Shijiang, the accused, was a man of property — "he had fields and a house." Why would a wealthy man rob someone for "a cloth skirt and a few measures of grain"? The mismatch between the suspect's means and the petty value of the alleged loot exposed the accusation as a fabrication.</p>
+  </section>
+
+  <!-- The Outcome -->
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>Jiang Gao's room was excavated, the two bodies were found, and his conspiracy collapsed completely. Wu Shijiang's case was reopened for review. Both cases demonstrated the power of simple logical interrogation against elaborate deception. Over twenty lives that had been lost to false accusations might have been saved if someone had asked these questions sooner.</p>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>The moment Jiang Gao's house was dug up and two bodies emerged from beneath the floor is cinematic in its horror and justice. A man who killed his own relatives, buried them in his own home, and then blamed someone else — the sheer audacity of it is breathtaking. Gao Ziye's "Does that make sense?" is the kind of question that anyone could have asked, but no one did. Sometimes the most powerful tool in the world is the courage to state the obvious.</p>
+  </section>
+
+
+  <!-- The Deeper Lesson -->
+  <section class="deeper-lesson story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>The underlying principle is that every narrative must be internally consistent. Lies, no matter how carefully constructed, contain logical contradictions — because the liar is building from a conclusion backward, not from evidence forward. Gao Ziye's method is what modern analysts call "narrative auditing": testing a story against basic common sense. Fact-checkers, forensic accountants, and anti-fraud investigators all use the same approach — look for the place where the story doesn't make sense. That crack is where the truth hides.</p>
+  </section>
+
+  <div class="gold-line long"></div>
+
+  <!-- Reflection -->
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question">
+      <span class="q-num">1</span>
+      <span class="q-text">When you hear a complex story, do you instinctively test it for internal consistency? What questions do you ask?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">2</span>
+      <span class="q-text">Have you ever been in a situation where the "official story" didn't add up, but you hesitated to question it? What held you back?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">3</span>
+      <span class="q-text">Gao Ziye combined logical reasoning with immediate action — he didn't just argue, he ordered a search. How do you balance analysis with decisive action in your own life?</span>
+    </div>
+  </section>
+
+  <!-- Story Navigation -->
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="weixiaokuan-zhihuzhigu.html">← Previous Story</a>
+    <a href="chengkan-shamen.html">Next Story →</a>
+  </nav>
+
+  <!-- Bottom Decoration -->
+  <div class="bottom-deco">
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 &middot; Found It</a></p>
+  <p>Stories of wisdom from across centuries, translated for the modern seeker.</p>
+</footer>
+
+</body>
+</html>

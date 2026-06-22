@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Night-Caller Case: "Monk, Return My Head!". A story of money, wealth, and wisdom from the Found It treasury.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>The Night-Caller Case: "Monk, Return My Head!" — Found It</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #7d6030;
+    --text-light: #987845;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  .back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(255,252,240,0.85);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  .story-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease;
+  }
+  .story-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .story-header .subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .story-header .level-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+
+  .gold-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+  .gold-line.long {
+    width: 200px;
+    margin: 40px auto;
+  }
+
+  .principle-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,200,112,0.06));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .principle-box::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .principle-box .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .principle-box .text {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .story-section {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .story-section:hover {
+    box-shadow: 0 6px 24px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .story-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .story-section h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(201,168,76,0.3);
+  }
+  .story-section p {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+  .story-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .deeper-lesson {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(232,200,112,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .deeper-lesson::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .reflection {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .reflection h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .reflection .question {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .reflection .question:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .reflection .q-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .reflection .q-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dark);
+  }
+
+  .story-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .story-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .story-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+  }
+
+  .bottom-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 48px auto 24px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .page {
+      padding: 48px 16px 60px;
+    }
+    .story-header h1 {
+      font-size: 22px;
+    }
+    .story-section {
+      padding: 20px 18px;
+    }
+    .back-btn {
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+    .story-nav {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .story-nav a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-section, .back-btn, .story-nav a {
+      transition: none;
+    }
+    .story-section:hover {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<a href="../en/stage-07-money.html" class="back-btn">← Back to Stage</a>
+
+<main id="main-content">
+<div class="page" style="display:block;">
+
+  <header class="story-header">
+    <div class="level-tag">LEVEL 07 · MONEY &amp; WEALTH</div>
+    <h1>The Night-Caller Case</h1>
+    <p class="subtitle">"Monk, Return My Head!"</p>
+  </header>
+
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">Greed is the root of all evil — both the merchant and the husband paid the price for their desires. Psychological defenses matter more than physical ones; inner fear will eventually expose the truth. Bystanders' observations are often more accurate than the parties' own judgments.</div>
+  </div>
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>During the Song Dynasty, a wealthy merchant desired a young married woman and offered her husband a large sum of money. The husband, blinded by greed, forced his wife to comply, arranging a nighttime dinner where she would 'entertain' the merchant. But when the merchant arrived late that night, he found the woman murdered — and her head missing. The case seemed unsolvable until an elderly witness came forward with a critical observation: the night-calling monk who used to pass through the neighborhood had vanished after the murder.</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>The woman was dead, her head was gone, and the only clue was the sudden disappearance of a monk whose job was to chant through the streets at night. There was no body to examine (without the head), no witnesses to the crime, and no obvious motive beyond the sordid financial arrangement. How could the murderer be identified and forced to reveal where the head was hidden?</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>The investigator tracked the monk to another district and devised a plan rooted in psychology. He had someone disguise their voice and call out from the woods at night, mimicking the dead woman's voice: 'Monk... return my head...' The monk, already haunted by guilt, heard the ghostly voice and panicked. In his terror, he blurted out the location of the head: 'On the rack at the Three Families' shop!' When the head was recovered and examined, it was found to be from a completely different person — revealing that the monk had murdered someone else ten years earlier and hidden that victim's head in the same manner. The monk was ultimately convicted of both murders.</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>The psychological trap worked perfectly. The monk's guilty conscience, prodded by the simulated ghostly voice, caused him to reveal the location of the hidden head. Further investigation uncovered a second murder committed a decade earlier. The monk was executed for both crimes.</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>This case is one of the most dramatic in Chinese legal history. The image of a disembodied voice calling 'Monk, return my head!' in a dark forest is haunting — and the monk's terrified response is both chilling and satisfying. It speaks to a universal truth: guilt is a prisoner that never sleeps. No matter how far you run or how well you hide, the weight of what you've done follows you. The monk could flee to another district, but he could not flee from himself.</p>
+  </section>
+
+  <section class="deeper-lesson story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>The deeper principle is that 'fear drives truthful responses.' In moments of extreme psychological pressure, the rational mind loses control, and the instinct for self-preservation forces out the truth. This is the foundation of modern interrogation psychology — not physical force, but the strategic application of psychological pressure. The case also illustrates 'cross-temporal linking': the investigator connected a ten-year-old cold case to the current one through a single piece of evidence — the hidden head's origin. The broader lesson: the past never fully disappears. Old crimes leave traces that resurface when new events bring them to light.</p>
+  </section>
+
+  <div class="gold-line long"></div>
+
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question">
+      <span class="q-num">1</span>
+      <span class="q-text">The monk was ultimately undone by his own fear. What unaddressed fears in your own life might be silently influencing your decisions and behavior?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">2</span>
+      <span class="q-text">An elderly observer's noticing the monk's absence was the key breakthrough. How well do you pay attention to what's 'missing' or 'absent' in situations you encounter?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">3</span>
+      <span class="q-text">The psychological trap — calling out 'Monk, return my head!' — exploited the monk's guilt. Is there a difference between psychological tactics used in investigation and manipulation? Where is the line?</span>
+    </div>
+  </section>
+
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="qianzao-split-confession.html">← Previous Story</a>
+    <a href="murong-iron-silver.html">Next Story →</a>
+  </nav>
+
+  <div class="bottom-deco">
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from across centuries, translated for the modern seeker.</p>
+</footer>
+
+</body>
+</html>

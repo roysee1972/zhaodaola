@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An imperial envoy repunctuates an ancient Chinese will to reveal a father's true intention to protect his infant son from a greedy son-in-law. A story from the Found It wisdom treasury.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>The Imperial Envoy (奉使者): A Comma That Changed a Life — Repunctuating a Dead Man's Will — Found It</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #7d6030;
+    --text-light: #987845;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  /* ── Back Button ── */
+  .back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(255,252,240,0.85);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* ── Page Container ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .story-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease;
+  }
+  .story-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .story-header .subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .story-header .level-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+
+  /* ── Gold Divider ── */
+  .gold-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+  .gold-line.long {
+    width: 200px;
+    margin: 40px auto;
+  }
+
+  /* ── Life Principle Box ── */
+  .principle-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,200,112,0.06));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .principle-box::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .principle-box .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .principle-box .text {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── Story Sections ── */
+  .story-section {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .story-section:hover {
+    box-shadow: 0 6px 24px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .story-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .story-section h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(201,168,76,0.3);
+  }
+  .story-section p {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+  .story-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Deeper Lesson (special highlight) ── */
+  .deeper-lesson {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(232,200,112,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .deeper-lesson::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Reflection Section ── */
+  .reflection {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .reflection h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .reflection .question {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .reflection .question:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .reflection .q-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .reflection .q-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dark);
+  }
+
+  /* ── Navigation ── */
+  .story-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .story-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .story-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+  }
+
+  /* ── Bottom Decoration ── */
+  .bottom-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 48px auto 24px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page {
+      padding: 48px 16px 60px;
+    }
+    .story-header h1 {
+      font-size: 22px;
+    }
+    .story-section {
+      padding: 20px 18px;
+    }
+    .back-btn {
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+    .story-nav {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .story-nav a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-section, .back-btn, .story-nav a {
+      transition: none;
+    }
+    .story-section:hover {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Back Button -->
+<a href="../en/stage-01-family-of-origin.html" class="back-btn">← Back to Stage</a>
+
+<!-- Main Content -->
+<main id="main-content">
+<div class="page" style="display:block;">
+
+  <!-- Header -->
+  <header class="story-header">
+    <div class="level-tag">LEVEL 01 · FAMILY OF ORIGIN</div>
+    <h1>The Imperial Envoy (奉使者)</h1>
+    <p class="subtitle">A Comma That Changed a Life — Repunctuating a Dead Man's Will</p>
+  </header>
+
+  <div class="gold-line"></div>
+
+  <!-- Life Principle -->
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">Never be imprisoned by the surface meaning of written words — especially in a language where a single shift in punctuation can reverse meaning entirely. Protecting the young and helpless is the deepest human instinct; any father's final words should be read through the lens of that instinct.</div>
+  </div>
+
+  <!-- The Setting -->
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>In ancient China, a man surnamed Zhang (张老) had taken a son-in-law into his household through the tradition of uxorilocal marriage (入赘). Later, Zhang took a concubine who bore him a son, whom he named Yifei (一飞). As Zhang lay dying, he wrote a will — a document that would become one of the most celebrated puzzles in the history of Chinese jurisprudence. The will read, in classical Chinese without punctuation: "张一非吾子也家财尽与吾婿外人不得争夺"</p>
+  </section>
+
+  <!-- The Dilemma -->
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>The son-in-law read the will as: "Zhang Yifei is not my son. All my property goes to my son-in-law. Outsiders may not contest." Under this reading, the son-in-law inherited everything, and the infant Yifei was left with nothing. But an imperial envoy (奉使者) suspected this interpretation was wrong. He asked himself: <em>what kind of father would deny his own infant son and leave everything to a son-in-law?</em></p>
+  </section>
+
+  <!-- The Strategy -->
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>The envoy repunctuated the will. In classical Chinese, there were no punctuation marks — meaning depended entirely on how the reader divided the characters. The envoy read it as: "张一，非吾子也？家财尽与！吾婿外人，不得争夺。" This translates to: "Zhang Yi — is he not my son? Give him all the property! My son-in-law is an outsider — he may not contest." By shifting the breaks between phrases, the entire meaning was reversed. The envoy further explained: the father had written "飞" (fly) as "非" (not) deliberately — using a homophone to disguise his true intention, fearing the son-in-law would harm the child if the will were too obvious.</p>
+  </section>
+
+  <!-- The Outcome -->
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>The envoy's repunctuation was accepted as the father's true will. All property was awarded to the infant son Yifei. The son-in-law, identified by the will itself as an "outsider," was excluded from inheritance. The father's hidden strategy — his use of a homophone and his deliberate ambiguity — had finally been decoded by a reader with the wisdom to see through it.</p>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>This story is one of the most poignant in the entire wisdom treasury. A dying father, knowing his infant son would be vulnerable to a greedy son-in-law, could not write a straightforward will — it would have made the boy a target. So he encoded his love in ambiguity, trusting that someday, someone would read his words with a father's heart. The envoy who repunctuated the will did not just apply legal reasoning — he completed an act of love that a father began on his deathbed and could not finish. The story is a testament to the idea that justice, at its deepest, is an act of empathy.</p>
+  </section>
+
+  <!-- The Deeper Lesson -->
+  <section class="deeper-lesson story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>The core logic is that <strong>the meaning of language depends on interpretation, and interpretation must be guided by常识 and intent</strong>. Classical Chinese, with its absence of punctuation, makes this principle especially vivid — but it applies to all communication. In modern law, the tension between "textualism" (reading what the words say) and "purposivism" (reading what the writer meant) is the same tension at the heart of this story. The lesson extends beyond law: in any situation where language is ambiguous, the reader who asks <em>"what was the speaker trying to protect?"</em> will arrive at a truer understanding than the reader who stops at the surface.</p>
+  </section>
+
+  <div class="gold-line long"></div>
+
+  <!-- Reflection -->
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question">
+      <span class="q-num">1</span>
+      <span class="q-text">In your own experience, has a shift in how you "punctuated" a situation — reframed it, changed where you placed the breaks — ever revealed a completely different meaning?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">2</span>
+      <span class="q-text">The father used a homophone (飞/非) as a protective disguise. Can you think of a modern equivalent — a case where someone encoded a message to protect the innocent from a dangerous person?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">3</span>
+      <span class="q-text">When you encounter an ambiguous statement — from a colleague, a client, or a loved one — do you tend to take it at face value, or do you ask yourself what deeper intention might be hidden beneath the surface?</span>
+    </div>
+  </section>
+
+  <!-- Story Navigation -->
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="hewu-zhangyong-yishu.html">← He Wu (何武) & Zhang Yong (张咏)</a>
+    <a href="lisu-shizun-chaoting.html">Li Su (李愬) →</a>
+  </nav>
+
+  <!-- Bottom Decoration -->
+  <div class="bottom-deco">
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from across centuries, translated for the modern seeker.</p>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script>
+
+<!-- Back-to-top visibility + fade-in observer -->
+<script>
+(function(){
+  // Back-to-top button
+  var btn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){ btn.classList.add('show'); }
+    else{ btn.classList.remove('show'); }
+  });
+
+  // Fade-in observer
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A commander notices a horse-groom's repeated presence at interrogations and uncovers an information leak to the real thieves. A story from the Found It wisdom treasury.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>The Capital Commander (京师指挥): How a Groom's Suspicious Attendance Exposed a Spy — Found It</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #7d6030;
+    --text-light: #987845;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  /* ── Back Button ── */
+  .back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(255,252,240,0.85);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* ── Page Container ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .story-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease;
+  }
+  .story-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .story-header .subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .story-header .level-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+
+  /* ── Gold Divider ── */
+  .gold-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+  .gold-line.long {
+    width: 200px;
+    margin: 40px auto;
+  }
+
+  /* ── Life Principle Box ── */
+  .principle-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,200,112,0.06));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .principle-box::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .principle-box .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .principle-box .text {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── Story Sections ── */
+  .story-section {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .story-section:hover {
+    box-shadow: 0 6px 24px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .story-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .story-section h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(201,168,76,0.3);
+  }
+  .story-section p {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+  .story-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Deeper Lesson (special highlight) ── */
+  .deeper-lesson {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(232,200,112,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .deeper-lesson::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Reflection Section ── */
+  .reflection {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .reflection h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .reflection .question {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .reflection .question:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .reflection .q-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .reflection .q-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dark);
+  }
+
+  /* ── Navigation ── */
+  .story-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .story-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .story-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+  }
+
+  /* ── Bottom Decoration ── */
+  .bottom-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 48px auto 24px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page {
+      padding: 48px 16px 60px;
+    }
+    .story-header h1 {
+      font-size: 22px;
+    }
+    .story-section {
+      padding: 20px 18px;
+    }
+    .back-btn {
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+    .story-nav {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .story-nav a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-section, .back-btn, .story-nav a {
+      transition: none;
+    }
+    .story-section:hover {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Back Button -->
+<a href="../en/stage-02-learning.html" class="back-btn">← Back to Stage</a>
+
+<!-- Main Content -->
+<main id="main-content">
+<div class="page" style="display:block;">
+
+  <!-- Header -->
+  <header class="story-header">
+    <div class="level-tag">LEVEL 02 · LEARNING &amp; EDUCATION</div>
+    <h1>The Capital Commander (京师指挥)</h1>
+    <p class="subtitle">How a Groom's Suspicious Attendance Exposed a Spy</p>
+  </header>
+
+  <div class="gold-line"></div>
+
+  <!-- Life Principle -->
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">Never overlook seemingly insignificant people — they may be the most dangerous insiders. Observing "who is present" is often more important than observing "who is speaking." Every leak has a channel; find the channel and you find the mole.</div>
+  </div>
+
+  <!-- The Setting -->
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>In Ming Dynasty Beijing, a robbery case had baffled investigators. At the crime scene, the thieves had left behind a ledger listing the names of young men from wealthy families, along with their gathering places. The authorities arrested the young men based on this ledger, and under interrogation, obtained confessions. The case appeared solved — but a military commander (指挥) was not convinced.</p>
+  </section>
+
+  <!-- The Dilemma -->
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>The commander suspected that the ledger was a plant — left deliberately by the real thieves to frame innocent people. More troubling, he noticed that every time suspects were interrogated, the stolen goods seemed to vanish before they could be recovered. Information from the interrogations was leaking to the real criminals, who used it to move the stolen property. But the leak could come from anyone in the room — officials, clerks, servants. How do you find a spy when you don't even know which level of the organization is compromised?</p>
+  </section>
+
+  <!-- The Strategy -->
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>The commander began paying close attention not to the suspects, but to the audience. Over multiple interrogation sessions, he noticed a pattern: a bearded horse-groom (养马的胡须仆人) was consistently present near the interrogation room — a man whose duties gave him no reason to be there. This "anomalous attendance" became the commander's lead. He quietly verified the pattern over several sessions, then confronted the groom privately. Under questioning, the groom confessed: he had been bribed by the real thieves to attend every interrogation, memorize the details, and report back — allowing the thieves to move stolen goods before they could be recovered.</p>
+  </section>
+
+  <!-- The Outcome -->
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>The groom's confession exposed the entire network. The real thieves were identified and the stolen goods recovered. The wealthy young men who had been framed were released. The case became a landmark lesson in interrogation security and the dangers of information leaks within the justice system.</p>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>What is striking about this story is how small the clue was — a servant standing where he did not belong. Anyone else might have dismissed it as irrelevant. But the commander understood that intelligence operations depend on access, and access depends on presence. The groom's crime was not loud or dramatic; it was quiet, persistent, and almost invisible. It took an equally quiet, persistent observer to notice it. In an age of data breaches and insider threats, the principle has never been more relevant: the greatest security risks often come from the people no one thinks to watch.</p>
+  </section>
+
+  <!-- The Deeper Lesson -->
+  <section class="deeper-lesson story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>The underlying logic is that <strong>information leaks always have a physical channel</strong>. Information does not teleport — it passes through people, and those people must be present to receive it. By systematically observing who was present at each interrogation, the commander was able to triangulate the leak. The secondary principle is that <strong>insignificance is the best camouflage</strong>. A horse-groom is the last person anyone would suspect of espionage — which is exactly why he was chosen. Modern intelligence analysis calls this the "insider threat" problem: the most damaging leaks come from people with low-visibility access to high-value information.</p>
+  </section>
+
+  <div class="gold-line long"></div>
+
+  <!-- Reflection -->
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question">
+      <span class="q-num">1</span>
+      <span class="q-text">In your own organization, who has access to sensitive information that you might not think to monitor? Could a "horse-groom" — an overlooked person with physical access — be a security vulnerability?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">2</span>
+      <span class="q-text">The commander noticed the groom's presence through patient observation over multiple sessions, not through a single dramatic insight. How patient are you in collecting pattern evidence before drawing conclusions?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">3</span>
+      <span class="q-text">If you suspected an information leak in your team, what would be your first step? Would you focus on the content of the leak, or on who had physical access to the information?</span>
+    </div>
+  </section>
+
+  <!-- Story Navigation -->
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="qianliji-shishangyanzha.html">← Qianliji (千里急)</a>
+    <a href="lifuheng-dao-yanma-xue.html">Li Fuheng (李复亨) →</a>
+  </nav>
+
+  <!-- Bottom Decoration -->
+  <div class="bottom-deco">
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from across centuries, translated for the modern seeker.</p>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script>
+
+<!-- Back-to-top visibility + fade-in observer -->
+<script>
+(function(){
+  // Back-to-top button
+  var btn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){ btn.classList.add('show'); }
+    else{ btn.classList.remove('show'); }
+  });
+
+  // Fade-in observer
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cao Bin & Dou Yi — Official property must not be taken for private use. A story of integrity from the Found It wisdom treasury.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>Cao Bin & Dou Yi: Official Property Must Not Be Taken — Found It</title>
+<style>
+  :root {
+    --bg: #f5e6c8;
+    --bg2: #eed9a4;
+    --text-dark: #5a3e1b;
+    --text-mid: #7d6030;
+    --text-light: #987845;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --red: #8b3a2a;
+    --border: rgba(139,90,43,0.18);
+    --shadow: rgba(90,60,20,0.12);
+    --radius: 8px;
+    --font: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  /* ── Back Button ── */
+  .back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(255,252,240,0.85);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* ── Page Container ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .story-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease;
+  }
+  .story-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .story-header .subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .story-header .level-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+
+  /* ── Gold Divider ── */
+  .gold-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+  .gold-line.long {
+    width: 200px;
+    margin: 40px auto;
+  }
+
+  /* ── Life Principle Box ── */
+  .principle-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,200,112,0.06));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .principle-box::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .principle-box .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .principle-box .text {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── Story Sections ── */
+  .story-section {
+    background: rgba(255,252,240,0.6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .story-section:hover {
+    box-shadow: 0 6px 24px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .story-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .story-section h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark);
+    font-size: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(201,168,76,0.3);
+  }
+  .story-section p {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+  .story-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Deeper Lesson (special highlight) ── */
+  .deeper-lesson {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(232,200,112,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .deeper-lesson::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Reflection Section ── */
+  .reflection {
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .reflection h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .reflection .question {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .reflection .question:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .reflection .q-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .reflection .q-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dark);
+  }
+
+  /* ── Navigation ── */
+  .story-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .story-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: rgba(255,252,240,0.7);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    color: var(--text-mid);
+    font-family: var(--font);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .story-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--shadow);
+  }
+
+  /* ── Bottom Decoration ── */
+  .bottom-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 48px auto 24px;
+    opacity: 0.4;
+  }
+  .bottom-deco .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .bottom-deco .line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page {
+      padding: 48px 16px 60px;
+    }
+    .story-header h1 {
+      font-size: 22px;
+    }
+    .story-section {
+      padding: 20px 18px;
+    }
+    .back-btn {
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+    .story-nav {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .story-nav a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-section, .back-btn, .story-nav a {
+      transition: none;
+    }
+    .story-section:hover {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Back Button -->
+<a href="../en/stage-08-social-maze.html" class="back-btn">← Back to Stage</a>
+
+<!-- Main Content -->
+<main id="main-content">
+<div class="page" style="display:block;">
+
+  <!-- Header -->
+  <header class="story-header">
+    <div class="level-tag">LEVEL 08 · INTERPERSONAL MAZE</div>
+    <h1>Cao Bin (曹彬) &amp; Dou Yi (窦仪)</h1>
+    <p class="subtitle">Official Property Must Not Be Taken for Private Use</p>
+  </header>
+
+  <div class="gold-line"></div>
+
+  <!-- Life Principle -->
+  <div class="principle-box">
+    <div class="label">Life Principle</div>
+    <div class="text">Drawing a clear line between public and private is the baseline of professional integrity. When public resources cannot serve a personal request, use your own means to bridge the gap — this way, you keep both your principles and your relationships intact.</div>
+  </div>
+
+  <!-- The Setting -->
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> The Setting</h2>
+    <p>In the final years of the Five Dynasties period, Emperor Shizong of Later Zhou sat on the throne, but the real force rising through the ranks was Zhao Kuangyin (赵匡胤) — then merely a general, not yet the founder of the Song Dynasty. The political landscape was volatile. Power could shift hands at any moment, and every official had to navigate the uneasy space between loyalty to the current ruler and deference to the ascendant one.</p>
+  </section>
+
+  <!-- The Dilemma -->
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> The Dilemma</h2>
+    <p>Cao Bin (曹彬) was the keeper of the imperial wine stores. One day, Zhao Kuangyin — the man everyone knew was destined for greatness — asked him for some of that official wine. At the same time, Dou Yi (窦仪), who had been appointed to audit the imperial treasury, received a request from Zhao Kuangyin's trusted aide to take some bolts of silk from the government stores.</p>
+    <p>Both men faced the same impossible calculation: refuse, and you risk offending the most powerful man in the empire — a man who might soon <em>be</em> the emperor. Comply, and you betray your official duty. Saying yes was the easy, safe-looking path. Saying no required something rarer: the courage to believe that integrity would outlast political convenience.</p>
+  </section>
+
+  <!-- The Strategy -->
+  <section class="story-section">
+    <h2><span class="icon">💡</span> The Strategy</h2>
+    <p>Cao Bin chose a path of elegant diplomacy. He refused to hand over the official wine — that belonged to the state, and he could not give it away. But he didn't leave Zhao Kuangyin empty-handed. Instead, he went out and <em>bought wine with his own money</em>, then personally hosted his future emperor for a drink. The official stores stayed untouched. The relationship stayed warm. The principle stayed intact. It was, in five ancient characters, a masterpiece: <em>"自沽酒以饮之"</em> — he bought his own wine and served it.</p>
+    <p>Dou Yi took a harder line. When Zhao Kuangyin's aide came for the silk, Dou Yi pointed to the ledger: once goods are registered in the official inventory, they become state property and cannot be removed without proper authorization. No exceptions. He knew perfectly well that this man might one day rule the empire, and he said no anyway.</p>
+    <p>Both strategies defended the same principle — public property is not private to give — but they expressed it differently. Cao Bin offered warmth alongside firmness; Dou Yi offered unwavering procedural integrity.</p>
+  </section>
+
+  <!-- The Outcome -->
+  <section class="story-section">
+    <h2><span class="icon">🏛</span> The Outcome</h2>
+    <p>History vindicated both men. When Zhao Kuangyin seized the throne and founded the Song Dynasty, he did not punish Cao Bin or Dou Yi for their refusals. Quite the opposite: Cao Bin became one of his most trusted generals, a commander he relied upon in the great campaigns of reunification. Dou Yi, too, earned respect and was given important responsibilities.</p>
+    <p>The trust they gained by <em>refusing</em> to bend the rules far outweighed whatever goodwill a quick favor might have purchased. Zhao Kuangyin, it turned out, valued integrity. A man who would give away state wine to please a powerful visitor might just as easily give away state secrets. But a man who said "no" — and found a way to do it with grace — was someone you could trust with real power.</p>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="story-section">
+    <h2><span class="icon">💛</span> Why This Matters</h2>
+    <p>There is something deeply human in those five words — <em>"he bought his own wine and served it."</em> Cao Bin didn't lecture. He didn't moralize. He didn't make Zhao Kuangyin feel small. He simply drew a line around what belonged to the public, then crossed it himself — with his own wallet, on his own terms.</p>
+    <p>This is the part of the story that resonates across a thousand years. It's not about being a rigid rule-follower. It's about the grace to hold your ground without making enemies, to protect the institution without humiliating the person. In any workplace, in any era, the ability to say <em>"I can't do that with what belongs to everyone — but let me see what I can do with what's mine"</em> is a form of wisdom that transcends culture and time.</p>
+  </section>
+
+  <!-- The Deeper Lesson -->
+  <section class="deeper-lesson story-section">
+    <h2><span class="icon">🔮</span> The Deeper Lesson</h2>
+    <p>The underlying logic of this story is that <strong>institutional credibility is a long-term asset</strong>. In a time of political uncertainty, when you don't know who will be in charge tomorrow, sticking to the rules is the safest form of self-protection — not because rules are sacred in some abstract sense, but because they create a record of your character that survives regime changes.</p>
+    <p>Most people fall into a mental trap: <em>"If I得罪 a powerful person today, I'll be punished tomorrow."</em> But Cao Bin and Dou Yi saw through this linear thinking. They understood a deeper truth: <em>"If I坚守 my principles today, I build a reputation that protects me tomorrow."</em></p>
+    <p>The most dramatic irony? Zhao Kuangyin was asking for exactly the kind of thing he would one day be responsible for managing. If Cao Bin and Dou Yi had given in, they might have been <em>prosecuted</em> under the new dynasty for having been careless with state property. Their refusal wasn't just moral — it was, in hindsight, the smartest possible career move.</p>
+    <p>This lesson applies powerfully to the modern workplace. Financial officers, auditors, compliance professionals — anyone who faces pressure from leadership to "be flexible" with rules — will find in this ancient story a timeless template: integrity, expressed with warmth and intelligence, is the most durable form of professional insurance.</p>
+  </section>
+
+  <div class="gold-line long"></div>
+
+  <!-- Reflection -->
+  <section class="reflection">
+    <h2>Reflection</h2>
+    <div class="question">
+      <span class="q-num">1</span>
+      <span class="q-text">Have you ever been asked to bend a rule by someone in authority? How did you handle it — and how might Cao Bin's approach of "refusing with grace" have changed the outcome?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">2</span>
+      <span class="q-text">In your own work, where is the line between "being flexible" and "compromising your integrity"? Could you use your own resources to bridge a gap, the way Cao Bin bought his own wine?</span>
+    </div>
+    <div class="question">
+      <span class="q-num">3</span>
+      <span class="q-text">Think about someone you deeply trust. Is their trustworthiness rooted in their willingness to say "no" at the right moments? What does that tell you about the real value of principled refusal?</span>
+    </div>
+  </section>
+
+  <!-- Story Navigation -->
+  <nav class="story-nav" aria-label="Story navigation">
+    <a href="#">← Previous Story</a>
+    <a href="#">Next Story →</a>
+  </nav>
+
+  <!-- Bottom Decoration -->
+  <div class="bottom-deco">
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>Stories of wisdom from across centuries, translated for the modern seeker.</p>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4a16f45f2bf34076856761562e78ccfe"}'></script>
+
+<!-- Back-to-top visibility + fade-in observer -->
+<script>
+(function(){
+  // Back-to-top button
+  var btn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){ btn.classList.add('show'); }
+    else{ btn.classList.remove('show'); }
+  });
+
+  // Fade-in observer
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

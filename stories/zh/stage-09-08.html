@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="510 李广王越 — 来自冯梦龙《智囊》的智慧故事，找到啦第9关·兴趣爱好">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>510 李广王越 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#C8EAA8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-09.html" class="back-btn">← 第9关 · 兴趣爱好</a>
+<a href="../en/li-guang-wang-yue-bluff-retreat.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第9关 · 兴趣爱好</div>
+    <h1>510 李广王越</h1>
+    <p class="subtitle">—虚张声势与隐秘撤退</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">在绝境中不要被恐惧支配，要冷静分析最优策略。有时"不按常理出牌"反而是最安全的选择。撤退不是耻辱，有计划的撤退是高超的战术艺术。领导力体现在关键时刻的镇定和正确决策。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>西汉时期，李广率百余骑巡逻边境，遭遇匈奴数千骑兵，兵力对比悬殊。明代王越与保国公朱永率千人巡边，同样遭遇虏骑突袭。两个相隔千年的案例，都面临"敌众我寡、走则必败"的绝境，却都通过临危不乱的判断力化险为夷。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>李广以百余骑面对数千匈奴，若转身逃跑，匈奴追射必全军覆没。若留下对峙，兵力差距巨大，随时可能被歼灭。王越千人遇虏骑突袭，"主客不当"——敌方以逸待劳，己方长途跋涉，保国公朱永本能想撤退。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>李广的核心判断是"以走则死，以留则生"——逃跑必死，留下反而可能活。他的目标是让匈奴误以为自己是诱饵，背后有大军。王越的目标是稳住阵脚后择机脱身——先列阵自固使敌不敢轻进，再趁夜色悄然撤退。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>李广运用"反向推理"：正常情况下百余骑遇到数千骑应该逃跑，那么不逃跑反而暗示有埋伏。他将自己的恐惧转化为判断的依据——如果我是匈奴人，看到百骑不跑，我会怎么想？王越则运用"虚实相间"：先以阵列示强使敌犹豫，再以衔枚夜行示弱撤退。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>李广临危不惧，在百骑皆大恐时保持冷静，做出违背直觉的"不退反进"决策。下令"下马解鞍"时，部下必然惊骇，但李广的镇定感染了全军。王越在保国公朱永想逃跑时果断阻止，体现了"泰山崩于前而色不变"的胆识。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>李广的策略分三步：第一步，前进到距匈奴二里处停下，展示不惧姿态；第二步，下马解鞍，表示无意逃跑；第三步，射杀白马将展示武力，再回队解鞍令士纵马卧，营造"等待大军"的假象。王越的策略：先列阵自固使敌犹豫，薄暮后下马衔枚鱼贯而行，自率骁勇殿后，从山后悄然撤退。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"逆向操作"：当所有人都认为应该逃跑时，反而留下；当敌人认为你要抵抗时，反而撤退。李广和王越都是在"正常反应"和"最优策略"之间找到了反直觉的答案。关键在于读懂敌人的心理——敌人会根据你的行为推断你的意图。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>李广"与百余骑独出"说明他是主动脱离大军巡逻，这不是意外遭遇而是边境常态。白马将的出现给了李广射杀立威的机会。王越"自率骁勇殿后"体现了身先士卒的领导力——殿后是最危险的位置。山后五十里的地形知识是成功撤退的关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>匈奴骑兵犯了"过度推理"的错误：看到百骑不跑就推断有大军伏击。朱永犯了"本能反应"偏差：遇到危险就想逃跑，没有考虑逃跑的后果。匈奴"终怪之不敢击"体现了不确定性下的保守决策——宁可错失战机也不冒险中伏。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>匈奴终夜疑神疑鬼，半夜撤走，李广百余骑安然无恙。王越率军衔枚夜行五十里抵达城池，虏骑毫无察觉。两战都是"不战而屈人之兵"的典范——没有交战一兵一卒，仅凭心理战就化解了灭顶之灾。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>李广射杀白马将的壮举增添了传奇色彩——如果那一箭没有射中，可能引发匈奴全面进攻。夜半匈奴"疑汉伏军欲夜取之"的自我惊吓，体现了人在不确定性下的恐惧心理。王越撤退五十里而敌不觉，若有一人反顾惊呼，可能全军暴露。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>如果李广选择逃跑，百余骑在平原上被数千骑追射，必全军覆没。如果王越听从朱永的建议仓皇撤退，千人队伍在敌前撤退必然崩溃。如果匈奴中有经验丰富的将领识破李广的虚张声势，百骑将无一幸免。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>虚张声势适用于对方不确定你实力的情境——如果敌人已知你只有百骑，此计无效。衔枚撤退需要精确的纪律控制和地形知识。两种策略都依赖于敌人的"信息劣势"——一旦敌人获得准确情报，策略就会失效。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>李广在百骑皆恐时的镇定自若，体现了名将的非凡胆识。下令"下马解鞍"时的那种从容，是对生死的超越。王越在保国公想逃时果断阻止，展现了真正的领导力——在关键时刻做出正确决策，即使这个决策违反直觉。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>"虚张声势"的本质是利用信息不对称：敌方不知道你的真实实力，你的行为就是唯一的情报来源。延伸到商业竞争中，小公司在面对巨头时的"自信姿态"本身就是一种威慑。"隐秘撤退"则是在不利局面下保存实力的智慧——活着比面子更重要。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-09-07.html">← 上一个故事</a>
+    <a href="stage-09-09.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

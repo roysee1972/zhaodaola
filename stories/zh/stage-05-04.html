@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="陈骐 — 来自冯梦龙《智囊》的智慧故事，找到啦第5关·婚恋家庭">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>陈骐 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#EAA8C8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-05.html" class="back-btn">← 第5关 · 婚恋家庭</a>
+<a href="../en/chen-qi-tiger-dream-murder.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第5关 · 婚恋家庭</div>
+    <h1>陈骐</h1>
+    <p class="subtitle">—梦虎断谋杀</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">直觉可以成为破案的起点，但不能成为定罪的依据。巧妙的心理策略比暴力审讯更有效。对弱势群体的偏见（嫌贫爱富）可能导致极端犯罪，社会应警惕这种心态。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>吉安府发生一起命案：一名女子许嫁庠生（秀才），女家富裕而夫家贫寒。贫士在前往女家途中遇盗被杀。贫士的父亲怀疑是女家因嫌弃门第不配而谋杀其子。陈骐奉命审理此案，却在梦中得到奇异启示。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>案件表面上是一起普通的盗匪劫杀案，但贫士之父坚持怀疑女家谋杀。如果没有确凿证据指向女家，就只能按盗案处理，真凶可能逍遥法外。如何从众多嫌疑人中找到真正的凶手，是本案的核心难题。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>陈骐的目标是查明贫士被杀的真相。贫士之父的动机是为儿子讨公道，他凭直觉怀疑女家。真正的凶手周彪的动机可能是觊觎女子的美貌或财富，趁贫士出行之际杀人夺妻。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>陈骐采用"梦境联想+逻辑推理"的认知框架。他梦见一虎带三矢登舟，将"虎"联想到"彪"（虎纹），"三矢"暗示与案件的关联。虽然梦境本身不是证据，但它为陈骐提供了一个嫌疑方向，再通过巧妙的策略加以验证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>陈骐善于利用直觉和联想，将梦境中的象征符号转化为调查线索。他没有迷信地依赖梦境，而是将其作为启发，再用理性的手段验证。周彪则自以为隐蔽，没想到一个梦境会成为他败露的开端。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>陈骐假借修撰郡志的名义，征召有学识的士人参与，周彪之名赫然在列。酒宴过半，陈骐单独召周彪到后堂，屏退左右，诈称："有人说你杀了贫士夺取其妻，我怜惜你有才学，你若说实话，我救你。"周彪惊恐战栗，跪地坦白了全部罪行。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"心理施压突破"——通过单独召见、屏退左右、暗示"说实话可救"的方式，在封闭空间中对嫌疑人施加巨大心理压力。另一个模型是"象征联想推理"——将梦境中的虎、三矢等符号与现实人物关联，虽非严格逻辑，但提供了有价值的调查方向。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>周彪能被列入修志名单，说明他确实是当地有学识的人物，这为陈骐的"修志"借口提供了合理性。女子许嫁庠生的消息在地方上应该广为人知，周彪有充分的作案动机和条件。陈骐选择在酒宴半酣时单独召见，利用了周彪放松警惕后的心理脆弱期。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>周彪的盲区在于他以为自己作案隐蔽，不会被怀疑到"有学之士"的头上。他没想到陈骐会用"修郡志"的方式将他调出来。陈骐的心理施压策略利用了"坦白从宽"的暗示，让周彪误以为招供可以减轻惩罚，从而突破心理防线。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>周彪在陈骐的心理施压下跪地坦白，交代了杀人夺妻的全部经过。贫士之父的怀疑得到证实，冤屈得以昭雪。此案展示了审讯心理学在古代司法实践中的精妙运用。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>陈骐的梦境成为案件突破的关键——"虎带三矢"的意象恰好指向"周彪"的名字，这种巧合令人称奇。周彪以"有学之士"的身份自居，却因陈骐的"修志"之计自投罗网，命运的讽刺令人唏嘘。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若周彪的名字与"虎"无关，陈骐的梦境联想将不成立，案件可能需要其他突破口。若周彪心理素质更强，面对陈骐的诈术拒不承认，陈骐还需要寻找其他证据。若贫士之父没有坚持怀疑，此案可能被当作普通盗案处理。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于嫌疑人范围有限、可以通过心理施压突破的案件。梦境联想本身不是可靠的推理方法，不能作为定罪依据。现代司法审讯中，心理施压策略仍被广泛使用，但必须在法律框架内进行。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>一个贫寒的读书人满怀希望前往未婚妻家，却在途中惨遭杀害——命运对穷人的残酷令人心酸。陈骐以梦境为引、以智谋为剑，为无辜死者讨回公道，这种正义感令人敬佩。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"直觉启发+理性验证"——直觉和联想可以提供调查方向，但必须通过理性的策略和证据来验证。延伸到现代：刑侦中的"犯罪侧写"也包含直觉成分，但最终需要证据支撑。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-05-03.html">← 上一个故事</a>
+    <a href="stage-05-05.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

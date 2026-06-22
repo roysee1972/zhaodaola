@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="439 庸芮 — 来自冯梦龙《智囊》的智慧故事，找到啦第12关·终篇·传承">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>439 庸芮 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#D4C8A8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-12.html" class="back-btn">← 第12关 · 终篇·传承</a>
+<a href="../en/yong-rui-turning-argument-around.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第12关 · 终篇·传承</div>
+    <h1>439 庸芮</h1>
+    <p class="subtitle">—以子之矛攻子之盾</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">面对强者的任性决定，不要正面对抗，而要找到其逻辑漏洞。用对方自己的前提推出相反的结论，是最优雅也最有效的反驳。智慧比力量更能改变命运。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>战国时期，秦国宣太后执政，权倾朝野。她晚年宠爱魏丑夫，甚至在临终前下令要以魏丑夫殉葬。殉葬制度在战国时期已逐渐式微，但权贵仍偶有为之。宣太后的决定不仅关乎魏丑夫的生死，更折射出权力对人性的扭曲。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>魏丑夫面临被殉葬的生死危机。困境在于：直接反对太后的遗命是抗旨，可能死得更快；恳求则可能被视为软弱，反而激发太后的控制欲。更深层的困境是：太后以"爱"的名义行"杀"之实，这种扭曲的爱如何破解？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>庸芮的直接目标是救魏丑夫一命。深层目标是让太后自己意识到殉葬命令的荒谬。他的动机可能是友情、义气或政治考量——一个能为太后宠臣解决危机的人，在宫廷中自然获得影响力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>庸芮的认知框架是"二难推理"——设置两个相互矛盾的前提，让太后无论选择哪个都必须放弃殉葬。前提一：死者无知，则殉葬无意义；前提二：死者有知，则先王积怒，太后自顾不暇。两个前提殊途同归：不应该殉葬。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>庸芮面对的是一个即将死去的、权力最大的女人的任性命令。他没有恐惧，没有哀求，而是冷静地构建了一个逻辑陷阱。他的心态是"以理破情"——用最冷的逻辑击碎最热的执念。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>庸芮先问"死者有知乎？"太后答"无知"。庸芮随即追问：既然死者无知，为何要白白牺牲活人？然后话锋一转：如果死者有知，先王对你宠幸魏丑夫早已愤怒，你自保都来不及，哪有余力照顾魏丑夫？两个假设，两个结论，都指向"停止殉葬"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"二难困境"——无论对方选择哪个选项，都会落入你的结论。这在逻辑学中称为"构造性二难推理"。另一个模型是"借力打力"——用太后自己的信仰（死者无知）来反驳她自己的命令。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>庸芮的高明在于他没有从道德角度反对殉葬（这在当时可能不被接受），而是从实用性角度论证殉葬"无意义"或"有害"。他绕过了价值观之争，直击逻辑漏洞。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>太后的盲区是"情感执念"——她被对魏丑夫的爱冲昏了头脑，没有理性思考殉葬的实际意义。她假设殉葬是一种"永恒的拥有"，却没想到这个假设本身就站不住脚。庸芮正是利用了这种"未经检验的假设"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>太后被说服，放弃了殉葬魏丑夫的决定。魏丑夫得以保命。这个故事展示了逻辑推理在对抗权力任性的有效性——即使是最高统治者，在严密的逻辑面前也不得不低头。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>最精彩的戏剧性在于庸芮的"反问式开场"——"以死者为有知乎？"这个问题本身就是一个陷阱。无论太后怎么回答，都会落入庸芮的逻辑。这种预设陷阱的辩术堪称经典。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>如果庸芮直接求情或反对，太后可能因被顶撞而更加固执。如果他从道德角度批评殉葬，可能被视为对太后的不敬。只有这种"让你自己说服自己"的方式，才能在保全太后颜面的同时达到目的。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>这种二难推理适用于：对方的立场基于未经检验的假设、对方愿意听取理由、你有足够的时间构建逻辑。不适用于对方已完全情绪化或拒绝理性的场景。关键前提是对方必须"讲道理"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>魏丑夫在死亡阴影下的恐惧，庸芮在权力面前的勇气，太后在临终前的任性与最终的理性——这个故事展现了人性在极端情境下的多重面向。最打动人的是：一个朋友的智慧可以拯救一条生命。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"任何立场都基于假设，假设可以被检验"——当你无法直接反驳对方的结论时，可以攻击它的前提。这在辩论、法律、学术中都是基本功。延伸思考：我们有多少"不可动摇"的信念，其实建立在未经检验的假设之上？</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-12-07.html">← 上一个故事</a>
+    <a href="stage-12-09.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

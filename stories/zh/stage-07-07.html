@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="傅琰 — 来自冯梦龙《智囊》的智慧故事，找到啦第7关·金钱关系">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>傅琰 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAEA;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-07.html" class="back-btn">← 第7关 · 金钱关系</a>
+<a href="../en/fu-yan-detail-observation.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第7关 · 金钱关系</div>
+    <h1>傅琰</h1>
+    <p class="subtitle">—细节观察断物权</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">在物权纠纷中，分析物品本身比听信口供更有效。物品中的微观物质是最好的证人——它们不会说谎，也不会被收买。最简单的物理手段（鞭打、剖检）往往能暴露最隐蔽的真相。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>傅琰为南朝齐地方官员，以善断疑案著称。他审理了两起看似简单的物权纠纷：一起是两位老妇争夺一团丝线，另一起是两位村民争夺一只鸡。两案均无直接证据，但傅琰通过细致的观察和巧妙的方法，查明了真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>两案的共同困境是"无标记可辨"——丝线和鸡都是常见物品，没有独特的标识。两位老妇各执一词，两位村民互不相让。在缺乏第三方证人的情况下，如何通过物品本身的特性来判断归属？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>傅琰的目标是通过客观方法识别物品的真正物主。冒认者的动机是贪图小利。傅琰的智慧在于他意识到：物品的物理特性（丝线中的铁屑、鸡的饮食习惯）可以成为判断归属的关键证据。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>傅琰采用"微观物质分析法"——他不纠缠于口供，而是通过物理手段分析物品中的微观物质。丝线被鞭打后露出铁屑，说明它长期在铁器附近使用（属于卖针者）；鸡被剖开后胃中有粟，说明它长期被喂食粟米（属于喂粟者）。这种方法利用了"使用痕迹"和"饮食习惯"作为物证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>傅琰冷静而细致，面对两起看似简单的纠纷，没有草率了结，而是深入分析物品的物理特性。卖糖者在丝线中的铁屑暴露后被罚，说喂豆者在鸡胃中的粟暴露后获罪。两位冒认者都没有想到，物品本身会"出卖"他们。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>丝线案的策略：将丝线鞭打，仔细观察是否有异物从丝线中掉落。铁屑从丝线中掉落，说明它属于卖针者（针是铁制的），卖糖者被罚。争鸡案的策略：分别询问两位村民用什么喂鸡，一人说粟，一人说豆。然后剖开鸡的胃，发现其中有粟，说喂豆者获罪。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"物质分析替代口供判断"——当双方的主观陈述互相矛盾时，通过分析物品中的客观物质可以得出不可辩驳的结论。另一个模型是"交叉验证"——傅琰不仅分析了物品本身（丝线中的铁屑），还通过询问（喂鸡的食物）和验证（剖鸡胃）进行交叉验证，确保结论的可靠性。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>丝线作为一种纺织材料，其纤维结构会吸附和保留细小颗粒（如铁屑），这些颗粒在日常观察中不可见，但通过鞭打可以暴露出来。鸡的饮食习惯是长期形成的，其胃中的食物残留可以反映其日常喂养方式。傅琰对这些物理特性的了解，使他能够想到这些巧妙的方法。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>冒认者的盲区在于他们只关注物品的外观，忽略了物品内部可能隐藏的"使用痕迹"。卖糖者以为丝线没有标记就无法证明归属，没想到丝线中会有铁屑。说喂豆者以为无法验证他的说法，没想到可以通过剖鸡胃来验证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>丝线案中，铁屑的暴露使卖糖者被罚。争鸡案中，鸡胃中粟的暴露使说喂豆者获罪。两案都展示了"微观物质分析"在物权纠纷中的决定性价值，也为后世的"物证鉴定"提供了早期范例。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>一个看似"死无对证"的丝线纠纷，被一次简单的鞭打轻松破解——这种"以暴力求真相"的反直觉策略极具戏剧性。争鸡案中，"一云粟一云豆"的简单询问和"破鸡得粟"的验证，形成了完美的逻辑闭环。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若卖糖者也经常接触铁器（如铁锅），丝线中的铁屑可能来自多个来源，鞭打法的结论将不那么确定。若说喂豆者恰好也偶尔喂粟，鸡胃中的粟可能不足以证明他在说谎。若傅琰没有想到这些方法，两案可能无法在短时间内查明真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于：物品在使用过程中会积累可检测的物理痕迹的场景。在物品已经过彻底清洁、或使用过程中不会积累物理痕迹的情况下，此方法不适用。争鸡案的方法适用于：可以通过验证动物的生理特征来判断其主人的说法。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>"鞭丝"和"破鸡"看似粗暴，却是最直接有效的取证方式——这种"以简破繁"的智慧令人钦佩。丝线中的铁屑和鸡胃中的粟，就像无声的证人，为真正的物主辩护。傅琰的细致观察和巧妙方法，展示了"智者不惑"的风采。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"物质不会说谎"——物品中积累的物理痕迹（铁屑、食物残留）是客观存在的，不受主观意愿影响。延伸到现代：司法鉴定中的"微量物证分析"、食品溯源中的"成分检测"、考古学中的"残留物分析"，都遵循同一逻辑——通过分析物品中的客观物质来推断其历史和归属。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-07-06.html">← 上一个故事</a>
+    <a href="stage-07-08.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="郑洛书 — 来自冯梦龙《智囊》的智慧故事，找到啦第3关·初入人海">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>郑洛书 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAC8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-03.html" class="back-btn">← 第3关 · 初入人海</a>
+<a href="../en/zheng-luoshu-stone-mill-murder.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第3关 · 初入人海</div>
+    <h1>郑洛书</h1>
+    <p class="subtitle">—石磨合尸破命案</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">不要因为某物"常见"就认为它无法作为证据——常见之物的异常状态本身就是线索。任何犯罪行为都会留下痕迹，关键在于是否有发现痕迹的眼睛。智慧在于从平凡中发现不平凡。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>某地发现一具沉尸，尸体上压着一扇石磨。石磨是常见之物，几乎家家户户都有，如何从这普通的石磨中找到破案线索？郑洛书奉命侦查此案，需要从这看似平常的凶器中找到凶手的踪迹。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>尸体被沉入水中，上面压着石磨以防止浮起。石磨在农村极为常见，无法直接通过石磨本身确定凶手。但郑洛书意识到：石磨由上下两扇组成（一牡一牝），如果能找到与这扇石磨配对的另一半，就能确定石磨的来源，进而锁定凶手。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>郑洛书的目标是通过石磨的配对找到凶手。凶手的动机是谋财害命——被害者是江西的卖卜人（算命先生），房主贪图其钱财而将其杀害。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>郑洛书采用"物证配对法"的认知框架——石磨由上下两扇组成，必须成对使用，如果尸体上只有半扇石磨，那么找到与之配对的另一半，就能确定石磨的出处。这是"从共性中找个性"的思路。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>郑洛书善于从常人忽略的角度切入。别人看到石磨只会想到"常见之物，无法追查"，他却想到"石磨必须成对，少了一扇必然异常"。这种逆向思维是破案的关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>郑洛书派人到附近村庄逐一排查，寻找丢失了石磨（缺少一扇）的人家。很快发现一户村民家的石磨少了牡扇（上扇）。将尸体上的石磨与该村民家的石磨合在一起，上下两扇完美吻合。一讯之下，凶手立即伏法，交代了谋杀江西卖卜人的经过。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"配对验证法"——利用物品必须成对使用的特性，通过寻找缺失的另一半来锁定来源。另一个模型是"排查缩小范围"——石磨虽常见，但"丢失半扇石磨"的农户不多，通过排查可以快速缩小嫌疑范围。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>凶手选择石磨作为沉尸工具，是因为石磨重量大、易获取，但他没想到石磨必须成对使用这一特性会暴露自己。江西卖卜人是外来者，在当地无亲无故，失踪后不易引起注意，这也是凶手选择他下手的原因。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>凶手的盲区在于他认为石磨是"常见之物"，用它作案不会被追查。他没想到石磨的"配对性"会成为破案关键——少了半扇石磨的异常状态暴露了犯罪行为。普通人的偏差则是认为"常见物品无法作为物证"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>通过石磨配对，郑洛书迅速锁定了凶手，房主在铁证面前认罪伏法。江西卖卜人的冤屈得以昭雪。此案展示了"物证配对"在刑侦中的独特价值——即使是常见物品，只要找到其配对关系，就能成为铁证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>凶手本想用石磨掩盖罪行（沉尸灭迹），没想到石磨恰恰成了锁定他的铁证——"成也石磨，败也石磨"。郑洛书的"石磨配对"思路看似简单，却需要跳出"常见之物不可追查"的思维定式。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若凶手用铁链或铁块沉尸，而非石磨，配对法将不适用。若凶手将两扇石磨都扔入水中，或者从远处获取石磨，排查范围将大大扩大。若附近有多个农户丢失石磨，排查难度将增加。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于凶器或物证具有"配对特性"（如石磨、锁与钥匙、印章与印泥等）的案件。在物证为消耗品或无配对关系的情况下不适用。现代刑侦中的"工具痕迹比对""弹道分析"也遵循类似的"配对验证"逻辑。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>一个四处流浪的卖卜人，本想在异乡谋生，却被房主图财害命——底层人物的悲惨命运令人心酸。郑洛书用"石磨配对"的方法为死者讨回公道，展示了智慧的力量。常见之物也能成为铁证，真相从不因平凡而隐匿。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"配对即身份"——成对使用的物品缺少一半时，另一半就是它的"身份证"。延伸到现代：手机IMEI号配对、车辆VIN码匹配、DNA比对，都是"配对验证"的高级形式。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-03-07.html">← 上一个故事</a>
+    <a href="stage-03-09.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

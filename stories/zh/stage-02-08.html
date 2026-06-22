@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="李复亨 — 来自冯梦龙《智囊》的智慧故事，找到啦第2关·求知求学">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>李复亨 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8C8EA;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-02.html" class="back-btn">← 第2关 · 求知求学</a>
+<a href="../en/li-fuheng-blade-blood-horse.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第2关 · 求知求学</div>
+    <h1>李复亨</h1>
+    <p class="subtitle">—刀验马血牛惊跃</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">不要忽略看似无关的细节，它们可能是破案的关键。科学方法和动物本能都是可靠的工具——客观规律不会说谎。在破案中，"无利可图的杀害必然出于仇恨"是重要的推理原则。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>金代，李复亨为地方官员，负责处理各类民事和刑事案件。当时社会治安状况复杂，盗贼横行，官员需要运用各种智慧手段来破案。李复亨以善于观察细节和运用科学方法著称，多次通过巧妙的方法破解疑难案件。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>李复亨面临两个案件：一是护送官马时，马在旅店被盗杀；二是有盗贼割取民家牛耳。在第一个案件中，现场没有直接证据，难以确定嫌疑人；在第二个案件中，虽然知道是里人所为，但难以确定具体是谁。需要找到有效的方法来识别真正的罪犯。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>李复亨的目标是找出两个案件的真凶，维护社会秩序和法律尊严。在第一个案件中，他推断"不利而杀之，必有仇者"——无利可图的杀害必然出于仇恨，因此从仇恨关系入手调查。在第二个案件中，他利用动物的本能反应来识别罪犯。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>李复亨采用"因果推理+科学验证"的认知框架。对于马被杀案，他推断无利可图的杀害必然出于仇恨，因此从仇恨关系入手。对于牛耳案，他利用"火煅验血"的方法——刀上的马血经过火煅会变青，这是科学验证。同时，他利用牛对盗贼的恐惧反应来识别罪犯。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>李复亨冷静而善于观察，他能够从看似无关的细节中发现关键线索。他推断"不利而杀之，必有仇者"——这种逻辑推理体现了他对人性的深刻理解。对于牛耳案，他利用动物的本能反应，体现了他对动物行为的了解。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>李复亨的策略分两步：第一步，对于马被杀案，他命令旅店所有商人、过客和同邑人交出佩刀，用火煅验血的方法找出带马血的刀；第二步，对于牛耳案，他让牛主人牵着牛经过所有里人，当牛走到某人面前时惊跃而逃，此人就是盗贼。两种方法都取得了成功。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"科学验证+动物本能"。对于马被杀案，他利用"火煅验血"的科学方法——刀上的马血经过火煅会变青，这是客观的物理证据。对于牛耳案，他利用牛对盗贼的恐惧反应——动物对伤害过它的人有本能的恐惧，这种反应无法伪装。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>"火煅验血"的方法需要一定的科学知识——李复亨知道马血经过火煅会变青，这是当时已经掌握的知识。牛对盗贼的恐惧反应是动物的本能——牛对割取它耳朵的人有深刻的记忆和恐惧，这种反应无法伪装。两种方法都利用了客观的物理或生物规律，难以被反驳。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>盗贼的盲区在于他们以为没有直接证据就可以逃脱——他们没想到李复亨会用"火煅验血"的方法来验证。对于牛耳案，盗贼的盲区在于他们以为牛不会认出他们——他们没想到牛会对伤害过它的人产生本能的恐惧反应。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>两个案件都成功破获：在马被杀案中，带马血的刀主人被找出，果然与马主有仇；在牛耳案中，牛在盗贼面前惊跃而逃，盗贼"引伏"认罪。此案展示了"科学验证+动物本能"在破案中的价值，也体现了李复亨善于运用多种方法破案的能力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>在马被杀案中，盗贼竟然还带着那把杀过马的刀——这是一个戏剧性的疏忽。在牛耳案中，牛在盗贼面前的惊跃反应是动物本能的体现——这种反应无法伪装，也无法预料。两种方法的成功都依赖于客观规律的可靠性。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>如果盗贼在杀人后丢弃了凶器，李复亨就无法用"火煅验血"的方法来验证。如果牛没有在盗贼面前产生恐惧反应（比如牛不认识盗贼），李复亨就无法用此方法来识别。如果李复亨不知道"火煅验血"的科学原理，他就无法用此方法破案。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于：有明确嫌疑人范围、可以进行科学验证或动物实验的场景。在嫌疑人范围过大或无法进行验证的情况下，此方法的适用性降低。现代场景中，类似的"科学验证"在法医学、刑事侦查等领域仍有重要价值。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>李复亨的智慧令人钦佩——他能够从看似无关的细节中发现关键线索，并运用科学方法来验证。动物的本能反应体现了自然界的公正——动物对伤害过它的人有本能的恐惧，这种反应无法伪装。故事告诉我们：在破案中，科学方法和动物本能都是可靠的工具。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"客观规律是破案的可靠依据"——无论是物理规律（火煅验血）还是生物规律（动物本能），都是客观的、难以伪装的。延伸到现代：法医学中的DNA检测、刑事侦查中的指纹识别、动物行为学中的本能反应研究，都遵循同一逻辑——利用客观规律来识别真相。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-02-07.html">← 上一个故事</a>
+    <a href="stage-02-09.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

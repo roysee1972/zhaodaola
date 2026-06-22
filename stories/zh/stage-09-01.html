@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="范纯仁 — 来自冯梦龙《智囊》的智慧故事，找到啦第9关·兴趣爱好">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>范纯仁 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#C8EAA8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-09.html" class="back-btn">← 第9关 · 兴趣爱好</a>
+<a href="../en/fang-chunren-turtle-wine-poison.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第9关 · 兴趣爱好</div>
+    <h1>范纯仁</h1>
+    <p class="subtitle">—毒不在鳖而在酒</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">真相不会因为有人认罪就自动成立，深究细节才能接近事实。常识和逻辑是最可靠的审判工具，比刑讯更有力量。不要被表面的配合态度所迷惑，真正的智慧在于追问"为什么"。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>宋代官场中妾室与人私通谋杀亲夫的案件时有发生。范纯仁为北宋名臣范仲淹之子，以公正严明著称。此案中妾与小吏合谋毒杀参军宋儋年，试图以伪证掩盖真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>宋儋年暴死，范纯仁派子弟视丧发现口鼻出血，显然非正常死亡。审讯后查出妾与小吏有奸情，二人供认毒下于鳖肉中。但范纯仁产生疑问：中毒之人如何能吃完一整餐饭？这一矛盾成为突破案件的关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>妾与小吏的动机是除去宋儋年以长期私通，精心设计了以鳖肉为载体的投毒计划。范纯仁的目标是查明真正死因，不满足于表面认罪，追求事实真相。他质疑的是犯罪过程的合理性，而非犯罪动机本身。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>范纯仁采用了"生理合理性"的认知框架——中毒者不可能在毒发前继续正常进食。这是一种基于常识和人体机能的推理方式。妾与小吏的框架则是"转移注意力"，将毒物载体指向鳖肉，以掩盖真正下毒的酒。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>妾与小吏自以为计谋周全，供认毒鳖肉时态度配合，试图快速结案以逃死。范纯仁则始终保持怀疑心态，不被表面的"认罪"所迷惑。他的耐心和细致体现了对真相的执着追求。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>妾与小吏的策略是主动供认一个半真半假的事实——确实下毒，但将毒物载体从酒改为鳖肉。范纯仁的策略是追问"食肉在第几巡"，通过时间线推理发现矛盾。关键行动是继续深审，最终查明毒在酒中而非鳖肉。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>范纯仁运用的是"行为与后果一致性"模型：如果宋儋年真的在宴席中吃下毒鳖肉，那么他必然在席间毒发，不可能"终席"。这种推理基于对中毒生理反应的了解，将行为时间线与后果时间线进行匹配验证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>宋儋年"素不食鳖"这一关键事实，是在深入审讯后才浮出水面的。这说明初次审讯可能遗漏了重要背景信息。妾与小吏选择鳖肉作为伪证载体，正是利用了"鳖肉有毒"的民间认知，却忽略了宋儋年个人饮食习惯这一细节。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>初次审讯的官员可能存在"认罪即真相"的认知偏差，一旦嫌疑人供认就不再深究。妾与小吏的盲区在于低估了审判者的细致程度，以为供认毒物载体就能蒙混过关。他们忽略了"宋儋年不食鳖"这一常识性事实会被人追问。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>最终查明宋儋年是在醉归后被毒于酒中身亡，妾与小吏的伪证被揭穿。此案成为宋代司法审慎的典范，展示了不轻信口供、深究细节的断案方法。范纯仁的名声因此更加卓著。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>妾与小吏精心设计的伪证计划，竟因一个简单的饮食习惯而崩塌，充满讽刺意味。"岂有既中毒而尚能终席者乎"这一追问，如同一把利剑刺破了精心编织的谎言。整个案件的转折点在于一个看似无关紧要的细节。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若范纯仁不追问食肉在第几巡，案件将按"毒鳖肉"的版本结案，真相永远埋没。若宋儋年确有食鳖习惯，妾与小吏的伪证可能更难被识破。若初次审讯者有范纯仁的细致，或可更早发现矛盾。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于有明确时间线和行为逻辑的案件，需要审判者具备常识判断力和质疑精神。不适用于缺乏物证或时间线模糊的案件。核心价值在于"不轻信口供，用逻辑验证供词"的审案原则。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>忠臣之后范纯仁继承父亲公正品格的故事令人感动。妾与小吏的背叛与谋杀令人愤慨，而范纯仁不放过任何细节的坚持令人敬佩。真相大白的时刻，正义得到伸张的满足感令人欣慰。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"供词与事实的一致性验证"——任何供词都必须经得起常识和逻辑的检验。延伸到现代，这种审讯方法与"认知负荷理论"相关：说谎者需要维护虚假信息的一致性，细节追问会暴露矛盾。此案也体现了"奥卡姆剃刀"原则——最简单的解释（毒在酒中）往往最接近真相。</p>
+  </section>
+
+  <div class="story-nav">
+    <span></span>
+    <a href="stage-09-02.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

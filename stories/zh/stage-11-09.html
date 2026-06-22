@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="340 王羲之 — 来自冯梦龙《智囊》的智慧故事，找到啦第11关·健康与衰老">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>340 王羲之 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8C8C8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-11.html" class="back-btn">← 第11关 · 健康与衰老</a>
+<a href="../en/wang-xizhi-drooling-escape.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第11关 · 健康与衰老</div>
+    <h1>340 王羲之</h1>
+    <p class="subtitle">—吐唾装眠避杀祸</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">在生死关头，尊严可以暂时放下。有时候，"自污"比"自辩"更有效——当你主动展示一个"没人愿意展示"的弱点时，对方反而会相信你是无害的。关键是：要让"自污"看起来真实可信，不能有表演痕迹。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>东晋时期，大将军王敦权倾朝野，后发动叛乱。王羲之幼时深受王敦喜爱，常被安置在帐中睡觉。有一次王敦提前起床，不久钱凤进来，两人屏退旁人密谋叛逆之事，完全忘记了王羲之还在帐中。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>年幼的王羲之醒来后听到了王敦与钱凤密谋叛逆的全部内容。他立刻意识到：一旦王敦发现他在场，为了保密必然会杀他灭口。他的困境是：如何在无法逃脱的情况下，让王敦相信他什么都没听到？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>王羲之的目标是活命。作为幼童，他不可能与王敦正面对抗，也不可能悄悄溜走（王敦随时可能发现他不在帐中）。他需要找到一种方式，让王敦主动放弃杀他的念头。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>王羲之的认知框架是"自证无害"——他需要让王敦相信他一直在睡觉，什么都没听到。他选择的方式是"吐唾污面"——用呕吐物弄脏自己的头脸和被褥，制造一个"熟睡中流口水"的假象。这个假象的核心逻辑是：一个正在熟睡的人不可能听到密谋。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>幼年的王羲之展现出惊人的冷静和判断力。在听到密谋的瞬间，他没有惊慌失措，而是迅速分析了三种可能：逃跑（会被发现）、装睡（可能会被检查）、自污装睡（最有说服力）。他选择了第三种，这是最极端但也最有效的方式。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>王羲之的策略分为两步：第一步，"剔吐污头面被褥"——用呕吐物弄脏自己的头脸和被褥，制造一个"深度睡眠中流涎"的逼真场景；第二步，"诈熟眠"——保持深度睡眠的姿态，一动不动。当王敦想起他、掀开帐子检查时，看到的是一个满脸呕吐物、沉沉睡去的孩子，自然相信他什么都没听到。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>"自污求生"——通过主动制造"恶心"或"无能"的形象，来消除对方的杀意。这个模型的核心是：人们不会杀一个"毫无威胁"的人。王羲之通过呕吐物把自己塑造成一个"邋遢的孩子"，彻底消除了自己作为"泄密者"的威胁。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>王羲之选择"吐唾"而非其他方式（如装哭、装病），是因为呕吐物具有极强的视觉冲击力和"真实性"——没有人会故意往自己脸上吐唾沫，所以这个行为本身就具有"可信度"。此外，呕吐物还能掩盖他的表情，让王敦无法从面部表情判断他是否在装睡。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>王敦和钱凤犯了"注意力偏差"——他们讨论叛逆大事时完全忘记了帐中还有人。当他们想起王羲之时，第一反应是"必须除掉他"，但看到呕吐物后又犯了"表面判断"的偏差——他们认为呕吐物是熟睡的证据，没有考虑到这可能是故意制造的假象。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>王敦掀开帐子，看到"吐唾纵横"的王羲之，"信其实熟眠"，放弃了杀他的念头。王羲之因此得以保全性命，后来成为"书圣"，留下了《兰亭集序》等千古名作。一个幼童的机智，间接成就了中国书法史上最伟大的艺术家。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>故事的戏剧性在于时间差——王敦"论事半方悟右军未起"，讨论到一半才想起王羲之还在帐中。这个时间差给了王羲之足够的准备时间。如果王敦一开始就发现王羲之在场，可能当场就会处置他，王羲之根本没有反应的机会。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若王羲之选择悄悄逃跑，王敦发现帐中无人后必然追杀。若他选择装睡但不自污，王敦可能会仔细检查他的面部表情，发现破绽。唯有"吐唾污面"才能制造一个"不忍直视"的场景，让王敦不愿仔细查看。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此计适用于"被困且身份敏感"的场景，核心是"自污"的程度要足够——太轻不足以说服，太重可能引起怀疑。在极端情况下，"自污"比"自辩"更有效，因为人们倾向于相信"没有人会故意让自己这么狼狈"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>一个幼童在生死关头的冷静判断令人震撼——他没有哭闹、没有逃跑，而是用最"恶心"的方式救了自己一命。这个故事也让人感慨命运的奇妙：如果王敦当时杀了王羲之，中国书法史将失去最璀璨的明星。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>核心是"可信度悖论"——最可信的谎言往往是"没有人会故意编造"的那种。王羲之的呕吐物之所以可信，正是因为"没有人会故意往自己脸上吐"。现代心理学中的"逆向信号"理论与此相通：行为的成本越高（越恶心、越痛苦），其可信度越高。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-11-08.html">← 上一个故事</a>
+    <a href="stage-11-10.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

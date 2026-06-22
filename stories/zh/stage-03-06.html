@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="周纡 — 来自冯梦龙《智囊》的智慧故事，找到啦第3关·初入人海">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>周纡 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAC8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-03.html" class="back-btn">← 第3关 · 初入人海</a>
+<a href="../en/zhou-yu-rice-awn-cart.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第3关 · 初入人海</div>
+    <h1>周纡</h1>
+    <p class="subtitle">—稻芒问藁车</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">再微小的痕迹也可能成为破案的关键。面对恐吓和挑衅，冷静观察比暴怒回应更有效。不要被表面的恐怖所迷惑，追查"如何做到"比关注"做了什么"更重要。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>古代某地，周纡以严明著称，令地方豪强和胥吏畏惧。廷掾（地方小吏）为了削弱周纡的威信，策划了一起恶作剧：趁天未亮，将一具死人的手脚砍断，立在寺门处，企图制造恐怖气氛来动摇周纡的权威。周纡到达现场后，没有惊慌失措，而是冷静地"与死人共语"，暗中观察发现了关键线索。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>周纡面临的是一个"下马威"式的挑衅——有人故意将残肢死尸放在他面前，企图恐吓他、动摇他的权威。如果他表现软弱，将失去对下属的控制；如果他暴怒追查，可能打草惊蛇。他需要在不暴露调查意图的情况下，悄悄找出幕后主使。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>周纡的目标是找出将死尸放在寺门的幕后黑手，维护自己的权威。廷掾的动机是通过制造恐怖事件来削弱周纡的严明形象，让他"知道厉害"。周纡必须以冷静和智慧回应这一挑衅。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>周纡采用"物理痕迹溯源"的认知框架——他不关注死尸本身（这是用来吓人的道具），而是关注死尸被运送到寺门的过程。他在死尸的口眼中发现了稻芒，由此推断尸体是用稻草（藁）包裹运送的。然后通过询问守门人，确认谁用藁车运物进城，从而锁定嫌疑人。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>周纡表现出非凡的镇定——他"若与共语状"，假装在与死人说话，实际上是在近距离观察尸体的细节。这种从容不迫的态度既迷惑了暗中观察的廷掾，也为他赢得了仔细检查的时间。廷掾则以为自己的恶作剧成功了，没想到周纡的反应完全出乎预料。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>周纡到达现场后，假装与死人对话，暗中检查尸体的口眼，发现稻芒痕迹。他推断尸体是用稻草包裹后运到寺门的。随后他秘密询问守门人：今天谁用藁车运物进城？守门人回答只有廷掾一人。周纡立即逮捕廷掾，廷掾在拷问下全部招供。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"运输痕迹链"——任何物体从A点移动到B点，都会在运输工具和沿途留下痕迹。尸体上的稻芒证明它曾被稻草包裹，而稻草包裹物需要车辆运送。通过追查"谁今天用藁车进城"，周纡将调查范围缩小到唯一可能的嫌疑人。另一个模型是"秘密调查"——周纡没有公开追查，而是暗中观察和秘密询问，避免打草惊蛇。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>稻芒是一个极其微小的物证，只有在近距离仔细观察才能发现。周纡"与死人共语"的伪装为他创造了近距离检查的条件。守门人的记忆也是一个关键的非显性因素——他记得今天只有廷掾用藁车进城，这个看似无关紧要的日常记录成为了破案的关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>廷掾的盲区在于他只关注了"死尸的恐吓效果"，忽略了运输过程可能留下的物证。他以为只要尸体够吓人，周纡就不会仔细检查——这是一种"情绪干扰判断"的假设，低估了周纡的专业素养。廷掾还忽略了藁车进城需要经过守门人检查这一事实。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>廷掾被逮捕并全部招供，承认了为了削弱周纡权威而策划的恶作剧。周纡不仅没有被动摇威信，反而因为迅速破案而更加令人敬畏。此案展示了"物证追踪"在调查中的核心价值。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>周纡"与死人共语"的表演极具戏剧性——一个严明的官员在残肢断臂前从容不迫，假装与死人交谈，暗中却在搜寻物证。这种"表里不一"的智慧令人拍案。廷掾精心策划的恐吓行动，败露于一个微不足道的稻芒——这种"大阴谋败于小细节"的反差极具戏剧张力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若周纡被残肢死尸吓到而不敢靠近检查，稻芒线索将永远不被发现。若廷掾用更干净的方式运送尸体（不用稻草包裹），物证链将断裂。若守门人不记得谁用藁车进城，周纡虽能推断出运输方式，却无法锁定具体嫌疑人。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于：存在物证运输痕迹、且有可控的信息源（如守门人）可追溯的场景。在物证被彻底清理或运输过程无第三方目击的情况下，此方法不适用。现代场景中，类似的物证追踪已发展为犯罪现场勘查的标准流程。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>面对残肢断臂的恐吓，周纡不惊不惧、从容应对——这种胆识令人钦佩。一个微不足道的稻芒成为破案关键，展示了"细节决定成败"的深刻道理。廷掾自以为聪明的"下马威"，最终变成了自己的"催命符"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"运动必留痕"：任何物体的空间移动都会在物体本身和运输工具上留下痕迹。延伸到现代：数字取证中的"元数据分析"、物流追踪中的"供应链审计"，都遵循同样的原则——追踪痕迹链是还原真相的最可靠方法。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-03-05.html">← 上一个故事</a>
+    <a href="stage-03-07.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

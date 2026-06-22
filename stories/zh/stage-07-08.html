@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="钱藻 — 来自冯梦龙《智囊》的智慧故事，找到啦第7关·金钱关系">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>钱藻 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAEA;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-07.html" class="back-btn">← 第7关 · 金钱关系</a>
+<a href="../en/qian-zao-separating-suspects.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第7关 · 金钱关系</div>
+    <h1>钱藻</h1>
+    <p class="subtitle">—分置二人诱吐实</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">不要低估同伙之间的不信任心理——当一方以为被背叛时，攻守同盟就会崩溃。在审讯中，心理战术比暴力更有效。"信息不对称"是打破攻守同盟的利器。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>明代，钱藻在密云负责军事防务。当时有两个京军在通州抢劫，被抓获后拒不认罪。由于京军身份特殊，审讯难度较大。钱藻需要找到有效的方法来突破嫌疑人的心理防线，获取真实供词。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>两个京军抢劫被抓获，但拒不认罪。由于两人是同伙，他们可能事先串供，形成了攻守同盟。在这种情况下，传统的审讯方法难以奏效。钱藻面临的困境是：如何打破攻守同盟，让其中一人供出真相？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>钱藻的目标是让两个京军供出抢劫的真相，维护法律的尊严。他采用"分化瓦解"的策略——通过制造信息不对称，让两人互相猜疑，从而打破攻守同盟。京军的动机是保持沉默以逃避惩罚，但他们之间可能存在不信任。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>钱藻采用"信息不对称+心理博弈"的认知框架。他先将甲移到大门外，单独审讯乙，故意装作严厉审讯并记录口供的样子。然后放走乙，再审讯甲，告诉甲"乙已吐实"。甲在愤怒和恐惧中供出了乙的罪行。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>钱藻精明而善于心理战术，他了解同伙之间的不信任心理——当一方以为另一方已经招供时，愤怒和恐惧会驱使他也供出真相。甲在听到"乙已吐实"后，愤怒地说"乙本首事，何委于我"——这种愤怒正是钱藻想要的效果。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>钱藻的策略分三步：第一步，将甲移到大门外，单独审讯乙，故意装作严厉审讯并记录口供（"握笔作百许字，若录乙口语状"）；第二步，放走乙，再审讯甲；第三步，告诉甲"乙已吐实，事由于汝，乙当生汝当死矣"。甲在愤怒中供出了乙的罪行（"乃尽白乙首事状"）。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"信息不对称博弈"——钱藻通过制造信息不对称（甲不知道乙的真实供述），让甲在愤怒和恐惧中做出非理性决策。另一个模型是"心理分化"——同伙之间的信任是脆弱的，当一方以为另一方已经背叛时，这种信任就会崩溃。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>钱藻"握笔作百许字"的动作是关键——他并没有真正记录乙的口供，但这个动作让甲以为乙已经招供。这种"表演"是心理战术的重要组成部分。甲的愤怒反应（"乙本首事，何委于我"）说明他确实知道真相，并且对乙的"背叛"感到愤怒。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>甲的盲区在于他以为乙真的已经招供——他没有考虑到这可能是钱藻的心理战术。他的另一个盲区是"愤怒驱动的决策"——在愤怒中，他失去了理性思考的能力，供出了真相。乙的盲区在于他不知道甲已经被审讯，也不知道钱藻的战术。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>甲在愤怒中供出了乙的罪行（"乃尽白乙首事状"），抢劫案得以破获。此案展示了"信息不对称+心理博弈"在审讯中的价值——通过制造信息不对称，可以让同伙之间互相猜疑，从而打破攻守同盟。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>甲的愤怒反应是关键——如果甲没有愤怒，而是冷静思考，他可能不会供出真相。钱藻"握笔作百许字"的表演是成功的——如果这个动作不够逼真，甲可能不会相信乙已经招供。乙被放走后的沉默也是关键——如果乙告诉甲真相，钱藻的战术就会失败。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>如果甲没有愤怒，而是冷静思考，他可能不会供出真相。如果乙在被放走后告诉甲真相，钱藻的战术就会失败。如果钱藻没有"握笔作百许字"的表演，甲可能不会相信乙已经招供。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于：同伙之间存在不信任、可以制造信息不对称的场景。在同伙之间信任非常牢固的情况下，此方法可能失效。现代场景中，类似的"分化瓦解"策略在刑事侦查、反腐败调查等领域仍有重要价值。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>钱藻的智慧令人钦佩——他利用同伙之间的不信任心理，成功打破了攻守同盟。甲的愤怒反应体现了人性中的弱点——当以为被背叛时，愤怒会驱使人做出非理性决策。故事告诉我们：在审讯中，心理战术比暴力更有效。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"信任是攻守同盟的基石，而信任是脆弱的"——当一方以为另一方已经背叛时，攻守同盟就会崩溃。延伸到现代：刑事侦查中的"分化瓦解"、反腐败调查中的"囚徒困境"、商业谈判中的"信息不对称"，都遵循同一逻辑——利用信任的脆弱性来获取真相。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-07-07.html">← 上一个故事</a>
+    <a href="stage-07-09.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="207 京师指挥 — 来自冯梦龙《智囊》的智慧故事，找到啦第2关·求知求学">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>207 京师指挥 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8C8EA;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-02.html" class="back-btn">← 第2关 · 求知求学</a>
+<a href="../en/capital-commander-unmasking-traitor.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第2关 · 求知求学</div>
+    <h1>207 京师指挥</h1>
+    <p class="subtitle">—内奸现形</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">不要忽略看似不起眼的人，他们可能是最危险的内奸。观察"谁在场"比观察"谁说话"更重要。信息泄露必然有渠道，找到渠道就能找到内奸。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>明代京师治安案件中，盗贼作案后故意留下一册名册，将富室子弟牵连其中。官府按册捕人，屈打成招，制造冤案。此案揭示了司法系统中的深层腐败和信息泄露问题。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>京师有盗劫案，现场遗留一册名册，记录富室子弟姓名及聚会地点。按册捕来的都是放荡少年，官员以为破案无疑。但一名指挥（武官）怀疑案件有蹊跷——名册可能是栽赃，而审讯中的信息泄露可能是破案关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>指挥要查清案件真相，防止冤案。他怀疑：名册是盗贼故意留下以转移视线，而审讯内容被泄露给真正的盗贼，导致赃物被转移。他的目标是揪出信息泄露的源头。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>指挥运用"异常检测"思维：他注意到审讯时一个养马的胡须仆人总是出现在旁边，而其他人则否。这个"行为异常"成为发现内奸的关键线索。审讯内容的泄露必然通过固定渠道，观察谁在场就能定位。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>指挥沉思良久，体现了耐心和细致。他没有急于下结论，而是通过多次审讯来观察和验证。他的怀疑精神和观察能力使他从众多官员中脱颖而出。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>第一步：怀疑案件有蹊跷（名册可能是栽赃）。第二步：观察审讯现场，发现一个养马的胡须仆人总是出现。第三步：多次审讯，确认胡须仆人的"异常出席"模式。第四步：屏退左右，单独审问胡须仆人。第五步：胡须仆人招供——受盗贼贿赂，每次审讯都记录对话并报告，盗贼据此转移赃物。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>"信息泄露检测"模型：观察谁在审讯现场出现，定位信息泄露渠道。"异常出席"模型：正常情况下，养马仆人不应频繁出现在审讯现场，这个异常暗示其有其他目的。"利益驱动"模型：内奸的行为必然有利益动机，找到利益链条就能揭露真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>胡须仆人的"养马"身份看似卑微，实则有机会接触各种场合。盗贼选择贿赂一个不起眼的仆人而非官员，说明其策略的狡猾——越不起眼的人越不会被怀疑。审讯信息的泄露导致赃物被转移，使得案件更难查清。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>其他官员的盲区在于：他们只关注嫌疑人，忽略了审讯现场的"旁观者"。他们认为养马仆人只是"侍侧"，没有意识到其可能是信息泄露的渠道。急于破案的心理导致他们放弃了对审讯环境的审查。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>胡须仆人招供后，真正的盗贼被揭露，赃物被追回。富室子弟的冤案得以平反。此案揭示了司法系统中的信息泄露问题，成为后世审讯保密制度的重要参考。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>指挥恰好注意到胡须仆人的"异常出席"，这个观察的巧合成为破案关键。如果胡须仆人不是每次都出现，或者指挥没有多次审讯，内奸可能就不会被发现。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若指挥没有注意到胡须仆人的异常，冤案将继续，真正的盗贼逍遥法外。若胡须仆人更谨慎（不每次都出现），指挥可能难以定位内奸。此案说明，审讯保密是防止信息泄露的关键。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于审讯现场有固定人员出席的场景。若信息泄露通过更隐蔽的渠道（如窃听设备），此方法可能失效。现代司法对审讯保密有严格规定，但"内奸检测"的思路仍然适用。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>指挥的观察力和怀疑精神令人敬佩——他从一个"养马仆人"的异常行为中发现了惊天阴谋。冤案的平反和内奸的揭露，体现了正义的力量和智慧的价值。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>信息泄露必然有渠道——观察谁有接触信息的机会，就能定位泄露源。不起眼的人往往是最危险的内奸——越不被怀疑的人，越有机会接触敏感信息。审讯保密是司法公正的基础——没有保密，就没有真正的审判。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-02-06.html">← 上一个故事</a>
+    <a href="stage-02-08.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

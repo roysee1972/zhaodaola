@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="杖羊皮 杖蒲团 — 来自冯梦龙《智囊》的智慧故事，找到啦第7关·金钱关系">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>杖羊皮 杖蒲团 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAEA;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-07.html" class="back-btn">← 第7关 · 金钱关系</a>
+<a href="../en/beating-sheepskin-mat-ownership.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第7关 · 金钱关系</div>
+    <h1>杖羊皮 杖蒲团</h1>
+    <p class="subtitle">—击打验物识物主</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">在物权纠纷中，观察物品本身比听信口供更有效。使用痕迹是最好的身份证明——物品会"记住"它的主人。最简单的物理手段（杖击）往往能暴露最隐蔽的真相。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>古代两起物权纠纷案：一案中，背柴人与背盐人同在树荫下休息，起身时争夺一张羊皮，各自声称是自己用来垫背的物品。另一案中，一家银店丢失了一个蒲团（坐垫），后来在邻居家认出，但邻居拒不承认。两案均无直接物证，需要巧妙的方法来识别真正的物主。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>羊皮和蒲团都是常见物品，没有独特的标记。背柴人和背盐人都声称羊皮是自己的，银店和邻居都声称蒲团是自己的。在"各执一词"的情况下，如何通过物品本身的物理特性来判断归属？</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>两位官员的目标都是通过客观方法识别物品的真正物主。背柴人的动机是贪图小利（冒认羊皮），邻居的动机是贪图财物（拒不归还蒲团）。两位官员的智慧在于他们意识到：物品在使用过程中会留下使用者的"物理痕迹"，这些痕迹可以成为判断归属的关键证据。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>两位官员都采用"物理痕迹检验法"——他们不纠缠于口供，而是通过物理手段（杖击）使物品中残留的物质暴露出来。羊皮杖击后露出盐屑，说明它长期被用来垫背盐；蒲团杖击后露出银星（银粉），说明它长期在银店使用。这种方法利用了"使用痕迹"作为物证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>背柴人在杖击羊皮、盐屑露出时"乃服罪"——他知道自己无法解释羊皮中为何有盐屑。银店案中，邻居在蒲团被杖击、银星露出时同样无法辩驳。两位官员则冷静而自信，因为他们知道物理痕迹不会说谎。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>羊皮案的策略：将羊皮放在席上，用杖击打，观察是否有异物从羊皮中掉落。盐屑从羊皮中掉落，证明它长期被用来垫背盐，背柴者服罪。蒲团案的策略：对蒲团杖击七十下，观察是否有异物从蒲团中掉落。银星（银粉）从蒲团中掉落，证明它长期在银店使用，邻居获罪。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"使用痕迹即身份证明"——任何物品在使用过程中都会积累使用者的"物理痕迹"，这些痕迹是不可伪造的"身份证明"。另一个模型是"物理刺激暴露隐藏证据"——通过杖击等物理手段，可以将物品内部隐藏的证据暴露出来，使其成为可见的物证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>羊皮的毛纤维结构会吸附和保留细小颗粒（如盐屑），蒲团的织物结构同样会嵌入银粉。这些"隐藏证据"在日常观察中不可见，但通过杖击等物理手段可以暴露出来。两位官员对物品物理特性的了解，使他们能够想到这一巧妙的方法。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>冒认者的盲区在于他们只关注物品的外观，忽略了物品内部可能隐藏的"使用痕迹"。他们以为"没有标记就无法证明"，没想到物品本身就是最好的证据。银店案中，邻居的盲区在于他没有考虑到蒲团中可能嵌有银粉——这是他在日常使用中无法察觉的。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>羊皮案中，盐屑的暴露使背柴者服罪。蒲团案中，银星的暴露使邻居获罪。两案都展示了"物理痕迹检验"在物权纠纷中的决定性价值，也为后世的"物证鉴定"提供了早期范例。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>一个看似"死无对证"的物权纠纷，被一次简单的杖击轻松破解——这种"以暴力求真相"的反直觉策略极具戏剧性。盐屑和银星的暴露，就像物品自己"开口说话"，揭示了它的真正主人。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若羊皮已经被清洗过，盐屑可能已经被去除，杖击法将失效。若蒲团已经被彻底清洁，银星可能不会暴露。若冒认者提前考虑到这一可能性，可能会先清洁物品再冒认。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于：物品在使用过程中会积累可检测的物理痕迹的场景。在物品已经过彻底清洁、或使用过程中不会积累物理痕迹的情况下，此方法不适用。现代场景中，类似的"物理痕迹检验"已发展为"物证鉴定"学科，广泛应用于司法实践。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>"杖击"看似粗暴，却是最直接有效的取证方式——这种"以简破繁"的智慧令人钦佩。物品中的盐屑和银星，就像无声的证人，为真正的物主辩护。故事告诉我们：在利益冲突中，物理证据比语言更诚实。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"使用即留痕"——任何物品在使用过程中都会积累使用者的物理痕迹，这些痕迹是不可伪造的身份证明。延伸到现代：司法鉴定中的"微量物证分析"、考古学中的"使用痕迹分析"、数字取证中的"元数据分析"，都遵循同一逻辑——通过物品的使用痕迹来推断其历史和归属。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-07-05.html">← 上一个故事</a>
+    <a href="stage-07-07.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

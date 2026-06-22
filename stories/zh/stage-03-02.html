@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="张楚金 — 来自冯梦龙《智囊》的智慧故事，找到啦第3关·初入人海">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>张楚金 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAC8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-03.html" class="back-btn">← 第3关 · 初入人海</a>
+<a href="../en/zhang-chujin-light-test-forgery.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第3关 · 初入人海</div>
+    <h1>张楚金</h1>
+    <p class="subtitle">—透光验伪书</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">当一个维度的验证失效时，跳到另一个维度去检验。最精密的谎言也有物理上的破绽。持续思考问题的人，连阳光都会成为盟友。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>唐代，湖州佐史江琛精心伪造谋反书信，取刺史裴光的亲笔书信，剪裁拼接成具有谋反内容的文理。此案若坐实，裴光将被灭族。张楚金奉命审理此案，面对一份看似天衣无缝的"反书"，需要找出伪造的证据。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>江琛的伪造手段极为高明——他不是临摹笔迹，而是直接剪取真迹拼贴，因此笔迹鉴定无法识别真伪。面对一份笔迹完全真实的"反书"，传统验证方法全部失效。如何在不依赖笔迹比对的情况下证明文书记载的"内容"是伪造的，成为关键难题。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>张楚金的目标是证明"反书"系伪造，从而拯救裴光及其家族的性命与名誉。江琛的动机可能是陷害上司以谋取其职位，或受人指使进行政治陷害。张楚金必须在朝廷压力下尽快查明真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>张楚金采用了"物理验证"的认知框架——当逻辑和文字层面无法识别真伪时，转向物理层面寻找证据。他认识到拼贴文书的本质缺陷：剪裁拼接的纸张在物理结构上与一气呵成的书写必然不同。透光和浸水两种方法分别从光学和化学角度验证了这一假设。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>张楚金面对"铁证"时没有轻易下结论，而是陷入深思（"忧懑"），反复思考验证方法。这种不急于定案、坚持寻找真相的态度体现了优秀法官的素养。江琛则自恃手段高明，以为无法被识破。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>张楚金先在西窗仰卧时偶然发现日光可以穿透纸张，从而观察到拼贴的接缝痕迹。随后他又用水浸泡的方法进一步验证：让江琛亲手将"反书"投入水中，字迹因拼贴胶合处溶解而逐字散开。两种独立验证方法相互印证，江琛当场认罪。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"多维度验证"——当单一维度（文字内容、笔迹）无法区分真伪时，从物理维度（光学透视、水浸溶解）进行交叉验证。另一个模型是"偶然发现的系统化"：张楚金将偶然的光线穿透观察转化为系统性的水浸实验，使证据更加确凿。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>阳光角度、纸张厚薄、胶合材料的特性——这些看似微不足道的物理条件，成为破解案件的关键。古代文书用的浆糊在水中会溶解，这是江琛没有预料到的材料学弱点。张楚金对物理世界的直觉理解弥补了传统司法方法的不足。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>江琛的盲区在于他只关注了"内容层面"的完美伪造，忽略了"物理层面"的不可控因素。他假设审案者只会从文字和笔迹角度验证，这是一种"维度锁定"的认知偏差。张楚金的突破恰恰在于跳出了文字维度。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>江琛当场叩头认罪，裴光得以洗清冤屈。此案展示了物理证据在司法鉴定中的独特价值，远早于现代法证科学的出现。张楚金"以水验纸"的方法成为后世文鉴的先驱。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>张楚金发现线索的方式极具戏剧性——他是在"忧懑仰卧"时偶然看到西窗日光穿透纸张。这种"偶然中的必然"反映了：持续深入思考问题的人，更容易在日常生活中获得灵感。让他亲手将伪造文书投入水中的做法，更增添了戏剧张力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若张楚金仅依赖传统笔迹鉴定，裴光将被冤杀。若江琛使用了更高级的胶合材料（不易溶于水），水浸法也可能失效。但透光法作为第一道验证已经足以发现拼贴痕迹，两种方法互为备份增加了可靠性。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于剪裁拼贴类伪造文书的鉴定，不适用于完全临摹或印刷伪造。现代场景中，类似的物理验证思路已发展为红外光谱分析、纸张纤维检测等法证技术。核心原则"物理层面的真伪比内容层面更难伪造"具有普适性。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>一个忧心忡忡的法官在西窗阳光下灵光乍现——这个画面既诗意又令人振奋。面对看似无解的难题，张楚金没有放弃，而是持续思考直到突破。江琛亲手将"证据"投入水中、看着字迹散开的那一刻，正义的满足感溢出纸面。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"物理约束不可伪造"：无论多么精巧的内容伪造，都无法逃脱物理世界的客观规律。延伸到现代：区块链的不可篡改性、数字水印技术、材料科学鉴定，都遵循同样的原则——在更高维度上设置验证机制。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-03-01.html">← 上一个故事</a>
+    <a href="stage-03-03.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

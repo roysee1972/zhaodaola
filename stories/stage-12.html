@@ -1,192 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="10 historical wisdom stories from Zhi Nang (Wisdom Treasury) related to Legacy & Farewell - Found It!">
+<meta name="description" content="第12关·终篇·传承 — 10个来自《智囊》的历史智慧故事 — 找到啦">
 <link rel="icon" href="../favicon.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../enhance.css">
-<title>Stage 12 · Legacy & Farewell — Historical Stories — Found It!</title>
+<title>第12关 · 终篇·传承 — 历史故事 — 找到啦</title>
 <style>
-  :root {
-    --bg: #f5e6c8; --bg2: #eed9a4;
-    --text-dark: #5a3e1b; --text-mid: #7d6030; --text-light: #987845;
-    --gold: #c9a84c; --gold-light: #e8c870;
-    --border: rgba(139,90,43,0.18); --shadow: rgba(90,60,20,0.12);
-    --radius: 8px; --font: 'Noto Serif SC', 'Georgia', serif;
-    --stage-color: #1A1A2E;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); font-family:var(--font); color:var(--text-dark); min-height:100vh; overflow-x:hidden; }
-  .page { position:relative; z-index:1; max-width:780px; margin:0 auto; padding:60px 24px 80px; }
-  .back-btn { position:fixed; top:16px; left:16px; z-index:100; display:inline-flex; align-items:center; gap:6px; padding:8px 18px; background:rgba(255,252,240,0.85); border:1.5px solid var(--border); border-radius:24px; color:var(--text-mid); font-family:var(--font); font-size:13px; text-decoration:none; backdrop-filter:blur(6px); transition:all 0.25s; box-shadow:0 2px 8px var(--shadow); }
-  .back-btn:hover { transform:translateY(-1px); box-shadow:0 4px 16px var(--shadow); color:var(--gold); border-color:var(--gold); }
-  .header { text-align:center; margin-bottom:40px; }
-  .header .level-tag { display:inline-block; padding:4px 16px; background:linear-gradient(135deg, var(--gold), var(--gold-light)); color:var(--text-dark); font-size:12px; font-weight:600; letter-spacing:3px; border-radius:20px; margin-bottom:16px; }
-  .header h1 { font-size:28px; font-weight:700; letter-spacing:2px; margin-bottom:8px; }
-  .header .subtitle { font-size:15px; color:var(--text-mid); }
-  .gold-line { width:120px; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); margin:0 auto 32px; }
-  .story-card { display:flex; align-items:center; gap:16px; padding:18px 22px; background:rgba(255,252,240,0.6); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:12px; text-decoration:none; color:var(--text-dark); transition:all 0.25s cubic-bezier(0.4,0,0.2,1); animation:fadeIn 0.6s ease both; }
-  .story-card:hover { transform:translateY(-2px); box-shadow:0 6px 24px var(--shadow); border-color:var(--gold); }
-  .card-num { flex-shrink:0; width:32px; height:32px; background:var(--stage-color); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; }
-  .card-content { flex:1; min-width:0; }
-  .card-title { font-size:16px; font-weight:600; margin-bottom:2px; }
-  .card-subtitle { font-size:14px; color:var(--text-mid); margin-bottom:4px; }
-  .card-principle { font-size:12px; color:var(--text-light); line-height:1.5; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .card-arrow { flex-shrink:0; color:var(--gold); font-size:18px; transition:transform 0.2s; }
-  .story-card:hover .card-arrow { transform:translateX(4px); }
-  footer { text-align:center; padding:24px 20px 40px; font-size:12px; color:var(--text-light); line-height:1.8; position:relative; z-index:1; }
-  footer a { color:var(--gold); text-decoration:none; }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-  @media (max-width:600px) { .page { padding:48px 16px 60px; } .header h1 { font-size:22px; } .back-btn { top:10px; left:10px; font-size:12px; padding:6px 14px; } }
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia',serif;--stage-color:#D4C8A8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.header{text-align:center;margin-bottom:40px;}
+.header .level-tag{display:inline-block;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;margin-bottom:16px;}
+.header h1{font-size:28px;font-weight:700;letter-spacing:2px;margin-bottom:8px;}
+.header .subtitle{font-size:15px;color:var(--text-mid);}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.story-card{display:flex;align-items:center;gap:16px;padding:18px 22px;background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;text-decoration:none;color:var(--text-dark);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);animation:fadeIn 0.6s ease both;}
+.story-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--shadow);border-color:var(--gold);}
+.card-num{flex-shrink:0;width:32px;height:32px;background:var(--stage-color);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;}
+.card-content{flex:1;min-width:0;}
+.card-title{font-size:16px;font-weight:600;margin-bottom:2px;}
+.card-subtitle{font-size:14px;color:var(--text-mid);margin-bottom:4px;}
+.card-principle{font-size:12px;color:var(--text-light);line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.card-arrow{flex-shrink:0;color:var(--gold);font-size:18px;transition:transform 0.2s;}
+.story-card:hover .card-arrow{transform:translateX(4px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.header h1{font-size:22px;}.back-btn{top:10px;left:10px;font-size:12px;padding:6px 14px;}.lang-switch{top:10px;right:10px;font-size:12px;padding:6px 14px;}}
 </style>
 </head>
 <body>
-
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<a href="../stage-12-legacy.html" class="back-btn">← Back to Stage 12</a>
-
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-12-legacy-transmission.html" class="back-btn">← 第12关 · 终篇·传承</a>
+<a href="en/stage-12.html" class="lang-switch">English ▸</a>
 <main id="main-content">
 <div class="page">
-
   <header class="header">
-    <div class="level-tag">STAGE 12 · LEGACY & FAREWELL</div>
-    <h1>📜 Historical Stories</h1>
-    <p class="subtitle">See how the ancients passed this stage — wisdom from <em>Zhi Nang</em> (智囊) by Feng Menglong</p>
+    <div class="level-tag">第12关 · 终篇·传承</div>
+    <h1>📜 历史故事</h1>
+    <p class="subtitle">看看古人如何渡过这一关 — 来自冯梦龙《智囊》</p>
   </header>
-
   <div class="gold-line"></div>
-
-
-    <a href="en/郑钦说-破译古铭识墓期.html" class="story-card" style="animation-delay:0.0s">
+    <a href="zh/stage-12-01.html" class="story-card" style="animation-delay:0.00s">
       <div class="card-num">1</div>
       <div class="card-content">
-        <div class="card-title">郑钦说</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">有些问题需要特定的知识才能解决；传承问题和寻找专家，有时候比自己硬解更明智。...</div>
+        <div class="card-title">404 郑钦说</div>
+        <div class="card-subtitle">破译古铭识墓期</div>
+        <div class="card-principle">有些问题需要特定的知识才能解决；传承问题和寻找专家，有时候比自己硬解更明智。</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/案例-宋太祖曹彬-拒贿全名论.html" class="story-card" style="animation-delay:0.08s">
+    <a href="zh/stage-12-02.html" class="story-card" style="animation-delay:0.08s">
       <div class="card-num">2</div>
       <div class="card-content">
         <div class="card-title">案例：宋太祖曹彬-拒贿全名论</div>
         <div class="card-subtitle"></div>
-        <div class="card-principle">...</div>
+        <div class="card-principle"></div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/案例-廉希宪礼儒轻武臣-开国气象-文化传承的担当.html" class="story-card" style="animation-delay:0.16s">
+    <a href="zh/stage-12-03.html" class="story-card" style="animation-delay:0.16s">
       <div class="card-num">3</div>
       <div class="card-content">
         <div class="card-title">案例：廉希宪礼儒轻武臣</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">...</div>
+        <div class="card-subtitle">开国气象，文化传承的担当</div>
+        <div class="card-principle"></div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/漂母-饭信不望报的千古大义.html" class="story-card" style="animation-delay:0.24s">
+    <a href="zh/stage-12-04.html" class="story-card" style="animation-delay:0.24s">
       <div class="card-num">4</div>
       <div class="card-content">
-        <div class="card-title">漂母</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">施恩不望报是善的最高境界；帮助他人是出于同情，而非投资；真正的善意不需要回报来证明；朴素的善行比华丽的施舍更有价值。...</div>
+        <div class="card-title">602 漂母</div>
+        <div class="card-subtitle">饭信不望报的千古大义</div>
+        <div class="card-principle">施恩不望报是善的最高境界；帮助他人是出于同情，而非投资；真正的善意不需要回报来证明；朴素的善行比华丽...</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/杨荣-预荐阁臣之虑.html" class="story-card" style="animation-delay:0.32s">
+    <a href="zh/stage-12-05.html" class="story-card" style="animation-delay:0.32s">
       <div class="card-num">5</div>
       <div class="card-content">
         <div class="card-title">杨荣</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">在还有话语权的时候布局未来，不要等到失去权力后才后悔。主动推荐比被动接受更有尊严，也更有效。...</div>
+        <div class="card-subtitle">预荐阁臣之虑</div>
+        <div class="card-principle">在还有话语权的时候布局未来，不要等到失去权力后才后悔。主动推荐比被动接受更有尊严，也更有效。</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/曾国藩的多维人生-自知与他知的智慧.html" class="story-card" style="animation-delay:0.4s">
+    <a href="zh/stage-12-06.html" class="story-card" style="animation-delay:0.40s">
       <div class="card-num">6</div>
       <div class="card-content">
-        <div class="card-title">曾国藩的多维人生</div>
-        <div class="card-subtitle"></div>
+        <div class="card-title">0009 曾国藩的多维人生</div>
+        <div class="card-subtitle">自知与他知的智慧</div>
         <div class="card-principle">1. 知道自己不擅长什么，比知道自己擅长什么更重要
-2. 真正的高手不是什么都自己做，而是让比自己更有才能的人心甘情愿地为你工作
-3. 每天反思自己，比每天被别人提醒更有用
-4. 成功之后主动退让，是...</div>
+2. 真正的高手不是什么都自己做，而是让比自己更...</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/狄仁杰-一语点破继承困局.html" class="story-card" style="animation-delay:0.48s">
+    <a href="zh/stage-12-07.html" class="story-card" style="animation-delay:0.48s">
       <div class="card-num">7</div>
       <div class="card-content">
-        <div class="card-title">狄仁杰</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">解决复杂问题时，回到最基本的人伦常识。有时候，最朴素的问题比最精妙的论证更有效。不要被权力的幻觉蒙蔽——在生死面前，所有人都是平等的。...</div>
+        <div class="card-title">440 狄仁杰</div>
+        <div class="card-subtitle">一语点破继承困局</div>
+        <div class="card-principle">解决复杂问题时，回到最基本的人伦常识。有时候，最朴素的问题比最精妙的论证更有效。不要被权力的幻觉蒙蔽...</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/庸芮-以子之矛攻子之盾.html" class="story-card" style="animation-delay:0.56s">
+    <a href="zh/stage-12-08.html" class="story-card" style="animation-delay:0.56s">
       <div class="card-num">8</div>
       <div class="card-content">
-        <div class="card-title">庸芮</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">面对强者的任性决定，不要正面对抗，而要找到其逻辑漏洞。用对方自己的前提推出相反的结论，是最优雅也最有效的反驳。智慧比力量更能改变命运。...</div>
+        <div class="card-title">439 庸芮</div>
+        <div class="card-subtitle">以子之矛攻子之盾</div>
+        <div class="card-principle">面对强者的任性决定，不要正面对抗，而要找到其逻辑漏洞。用对方自己的前提推出相反的结论，是最优雅也最有...</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/韩琦-隐藏帝王遗迹的深意.html" class="story-card" style="animation-delay:0.64s">
+    <a href="zh/stage-12-09.html" class="story-card" style="animation-delay:0.64s">
       <div class="card-num">9</div>
       <div class="card-content">
         <div class="card-title">韩琦</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">有些东西的价值不在于它本身，而在于它会被如何解读。在传播任何信息之前，先想想它会被如何理解、会产生什么影响。...</div>
+        <div class="card-subtitle">隐藏帝王遗迹的深意</div>
+        <div class="card-principle">有些东西的价值不在于它本身，而在于它会被如何解读。在传播任何信息之前，先想想它会被如何理解、会产生什...</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="en/陶侃母-卖发待客还鲊训子.html" class="story-card" style="animation-delay:0.72s">
+    <a href="zh/stage-12-10.html" class="story-card" style="animation-delay:0.72s">
       <div class="card-num">10</div>
       <div class="card-content">
-        <div class="card-title">陶侃母</div>
-        <div class="card-subtitle"></div>
-        <div class="card-principle">廉洁奉公是为官之本，不因亲情而违背原则。深明大义，不因贫困而放弃道德底线。以理服人比直接批评更有效，教育子女要注重方式方法。无私奉献，为了子女的成长不惜牺牲自己。...</div>
+        <div class="card-title">587 陶侃母</div>
+        <div class="card-subtitle">卖发待客还鲊训子</div>
+        <div class="card-principle">廉洁奉公是为官之本，不因亲情而违背原则。深明大义，不因贫困而放弃道德底线。以理服人比直接批评更有效，...</div>
       </div>
       <div class="card-arrow">→</div>
     </a>
-
-
-  <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:48px auto 24px;opacity:0.4;">
-    <span style="width:4px;height:4px;border-radius:50%;background:var(--gold);"></span>
-    <span style="width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);"></span>
-    <span style="width:4px;height:4px;border-radius:50%;background:var(--gold);"></span>
-  </div>
 
 </div>
 </main>
-
 <footer>
-  <p>© 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
-  <p>Wisdom stories from <em>Zhi Nang</em> (《智囊》) by Feng Menglong, translated for the modern seeker.</p>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
 </footer>
-
-<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4a16f45f2bf34076856761562e78ccfe"}'></script>
-<script>
-(function(){
-  var btn=document.querySelector('.back-to-top');
-  window.addEventListener('scroll',function(){ if(window.scrollY>300)btn.classList.add('show'); else btn.classList.remove('show'); });
-})();
-</script>
-
 </body>
 </html>

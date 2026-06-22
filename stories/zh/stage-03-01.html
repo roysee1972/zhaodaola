@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="唐御史 — 来自冯梦龙《智囊》的智慧故事，找到啦第3关·初入人海">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>唐御史 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8EAC8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-03.html" class="back-btn">← 第3关 · 初入人海</a>
+<a href="../en/censor-handwriting-forgery.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第3关 · 初入人海</div>
+    <h1>唐御史</h1>
+    <p class="subtitle">—借笔迹验诬案</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">真相经得起独立验证，谎言则需要持续的"脚手架"支撑。让造假者在失去参照物的条件下重复其叙事，是揭露谎言最优雅的方式。智慧不在于正面冲突，而在于设计让真相自然浮现的情境。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>唐朝初年，李靖任岐州刺史，功勋卓著，有人告发其谋反。朝廷派遣御史前往调查，御史深知此案多为诬告，但必须拿出确凿证据才能还李靖清白。唐代对谋反罪极为重视，诬告者亦当反坐，因此查清真相关乎两条人命。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>御史明知李靖被诬告，但告事者提供了详细"反状"作为证据，若不能证伪，李靖将陷入死罪。直接审讯告事者难以攻破其心理防线，因为他已精心准备了完整的告发材料。如何在不打草惊蛇的情况下，让诬告者自露马脚，是核心难题。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>御史的目标是查明真相、还李靖清白、惩治诬告者。告事者的动机可能是政治陷害或私人恩怨，意图借朝廷之手除掉李靖。御史既需要维护司法公正，也需要保护忠臣免遭冤屈。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>御史采用"以退为进"的认知策略：不直接反驳告状内容，而是制造一个意外情境，让告事者在不知不觉中暴露出原始证据与新证词之间的矛盾。核心判断是：一个人不可能两次写出完全相同的告状内容，除非他有原件在手。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>御史沉着冷静，深谙人性弱点，知道告事者精心准备的"原状"不可复制。他在整个过程中表现得若无其事，甚至故意制造慌乱来麻痹对方。告事者则自恃证据在手、胜券在握，不知已落入圈套。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>御史与告事者同行，途中假装遗失了原状，表现得极为惊恐，鞭打随行人员以示焦急。随后恳求告事者凭记忆重新写一份告状。告事者在无原件参照的情况下重写，内容必然与原状不同。御史将两份状纸对比，发现重大差异，当日回朝复命，诬告者被处死。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"唯一性验证"——同一事件的两次独立叙述不可能完全一致，除非有原始材料作为参照。这类似于现代法证学中的"已知样本比对"原理。御史将原本无法验证的"真假之争"转化为可量化的"一致性比对"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>告事者手中保有原始文稿，但御史通过"丢失原状"的障眼法，迫使对方在没有参照物的情况下独立重写。旅途中的疲劳、紧张和意外状况也会影响告事者的记忆准确性，进一步放大两份文稿之间的差异。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>告事者的盲区在于：他以为御史只是在走过场，没有意识到"丢失原状"本身就是一个精心设计的陷阱。他的过度自信让他放松了警惕，认为配合重写反而能显示自己的坦诚。这是一种典型的"控制错觉"。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>两份状纸内容明显不同，御史当日即回朝奏报。告事者以诬告谋反罪被处死，李靖得以洗清冤屈。此案成为唐代司法实践中以智取证的经典范例。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>"丢失原状"这一计策的成功依赖于告事者确实没有随身携带副本——如果他恰好另抄一份，此计便不成立。御史精准判断对方不会有多份备份，这一判断本身就是基于对人性的深刻洞察。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若御史选择直接审讯告事者，对方可能坚称内容无误，案件将陷入僵局。若御史选择公开质疑告状内容，告事者可能提前销毁或修改证据。唯有制造"自然意外"，才能让对方在毫无防备的状态下暴露真相。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此策略适用于：一方提供了书面证据、且该证据为一次性精心伪造的场景。不适用于：对方可能有多个版本备份、或对方本身就是集体造假的情况。现代场景中，类似思路可用于验证合同、遗嘱等文书的真伪。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>一个忠臣无辜被诬，御史以智慧而非暴力还其清白——这种"以智胜奸"的叙事令人畅快。御史在旅途中假装慌张、鞭打下属的表演，也增添了故事的戏剧张力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"信息不对称的反转"：告事者以为自己掌握主动权（持有证据），御史通过制造情境反转了信息优势。延伸到现代：在谈判、调查、审计等领域，"已知样本比对"和"压力测试"都是验证信息真实性的核心方法。</p>
+  </section>
+
+  <div class="story-nav">
+    <span></span>
+    <a href="stage-03-02.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="440 狄仁杰 — 来自冯梦龙《智囊》的智慧故事，找到啦第12关·终篇·传承">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>440 狄仁杰 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#D4C8A8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-12.html" class="back-btn">← 第12关 · 终篇·传承</a>
+<a href="../en/di-renjie-inheritance-breakthrough.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第12关 · 终篇·传承</div>
+    <h1>440 狄仁杰</h1>
+    <p class="subtitle">—一语点破继承困局</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">解决复杂问题时，回到最基本的人伦常识。有时候，最朴素的问题比最精妙的论证更有效。不要被权力的幻觉蒙蔽——在生死面前，所有人都是平等的。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>武则天称帝建立周朝后，继承人问题成为最大的政治难题。武承嗣、武三思等武氏族人觊觎太子之位，试图让武周政权延续武氏血脉。而李唐旧臣则希望恢复李氏继承权。这个选择不仅关乎个人命运，更关乎天下归属和历史定论。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>武则天面临两难：立儿子为太子则武周政权实际回归李唐，她一生的革命将被"否定"；立侄子为太子则武氏延续，但姑侄关系天然疏远于母子关系。更深层的困境是：她死后能否被祭祀？这个问题触及了她最深层的恐惧——被遗忘。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>狄仁杰的直接目标是说服武则天立李氏为太子。深层目标是恢复李唐正统，为天下苍生避免武氏暴政的可能。他的动机既有忠于李唐的政治立场，也有对国家长治久安的深谋远虑。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>狄仁杰的认知框架是"血缘本位"——不谈政治正确，不谈道德伦理，只从最基本的人伦关系出发：姑侄与子母孰亲？这个问题的答案不言自明。然后推导出实际后果：立子则配食太庙，立侄则无人祭祀。这是最朴素也最有力的逻辑。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>狄仁杰用"从容"二字形容——他没有慷慨陈词，没有以死相逼，只是平平淡淡地问了一个问题。这种从容来自于他对人性的深刻理解：武则天再强势，也逃不过"死后被祭祀"的本能需求。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>狄仁杰只用了一句话的核心逻辑："姑侄与子母孰亲？立子则千秋万岁后配食太庙，立侄则未闻侄为天子而祔姑于庙者也。"没有长篇大论，没有引经据典，只是最直白的人伦常识。这种"一句话解决问题"的策略，比任何雄辩都更有力量。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"回归本源"——当问题变得复杂时，回到最基本的人伦关系。另一个模型是"后果导向"——不讨论"应该怎样"，只讨论"结果会怎样"。武则天不需要被告知"应该"立谁，只需要被提醒"立错"的后果。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>狄仁杰的成功不仅在于他的逻辑，更在于他的身份和时机。他是武则天信任的重臣，他的话有分量。而且他选择在"从容"的氛围中提出，而不是在朝堂争论中——这避免了政治对抗的色彩，让武则天能从纯粹的人伦角度思考。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>武则天的盲区是"权力幻觉"——她以为权力可以改变一切，包括人伦关系。武承嗣等人的盲区是"利益蒙蔽"——他们只看到太子之位的权力，没想到姑侄关系的天然疏远。狄仁杰用最朴素的常识打破了这些幻觉。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>武则天"乃寤"（于是醒悟），决定立李显为太子。这个决定最终导致武周政权回归李唐，中国历史避免了武氏王朝延续的可能。狄仁杰一句话改变了王朝走向，堪称最高效的劝谏。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>最戏剧性的是"未闻侄为天子而祔姑于庙者也"这句话——它揭示了一个所有人都忽视了的事实：历史上从来没有侄子当了皇帝后把姑姑供进太庙的。这个简单的事实，比任何政治论证都更有说服力。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>如果武则天立武承嗣为太子，武周政权可能延续，但武则天死后必然面临李唐旧臣的反攻，天下将陷入更大的动荡。如果狄仁杰用政治论证而非人伦论证，可能反而激起武则天的逆反心理。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>这种"一语点破"式的劝谏适用于：问题的核心在于一个被忽视的基本事实、对方有理性思考的能力、劝谏者有恰当的身份和时机。不适用于对方已完全丧失理性或问题过于复杂的场景。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>一个母亲对"死后被祭祀"的渴望，超越了她对权力的执着。武则天再强势，也逃不过人伦本能。这种"强者的脆弱"令人动容——在生死面前，帝王与凡人并无不同。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"人伦大于政治"——再复杂的政治问题，最终都要回归最基本的人伦关系。这在现代家族企业继承、遗产分配、组织权力交接中都有体现。延伸思考：在所有利益计算之上，总有一些更基本的东西——血缘、记忆、归属感——是无法被权力改变的。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-12-06.html">← 上一个故事</a>
+    <a href="stage-12-08.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

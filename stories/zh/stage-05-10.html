@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="344 刘备 — 来自冯梦龙《智囊》的智慧故事，找到啦第5关·婚恋家庭">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>344 刘备 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#EAA8C8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-05.html" class="back-btn">← 第5关 · 婚恋家庭</a>
+<a href="../en/liu-bei-thunder-chopsticks.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第5关 · 婚恋家庭</div>
+    <h1>344 刘备</h1>
+    <p class="subtitle">—闻雷失箸掩雄心</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">在强者面前，有时候"示弱"比"示强"更安全。当你还没有足够的力量时，隐藏真实意图是明智的选择。但"示弱"不是真的弱，而是"让对手认为你弱"。关键在于：要让"示弱"看起来真实自然，不能有表演痕迹。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>东汉末年，曹操挟天子以令诸侯，势力日益壮大。刘备当时寄居曹操篱下，韬光养晦，暗中与董承等人密谋诛杀曹操（衣带诏事件）。曹操素来忌惮刘备，曾对刘备说"天下英雄，唯使君与操耳"，试探刘备的反应。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>曹操的试探极为精准——他说"天下英雄唯使君与操耳"，实际上是在暗示"我知道你是英雄，也知道你有野心"。如果刘备表现得从容不迫，就等于承认自己确实有争霸天下的雄心；如果他表现得惊慌失措，又显得心虚。他需要在"从容"和"惊慌"之间找到一个合理的中间点。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>刘备的目标是隐藏自己的真实野心，让曹操放松警惕。他的动机是保命——如果曹操确认他有争霸之心，必然会除掉他。在衣带诏密谋尚未成熟的阶段，他必须继续韬光养晦。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>刘备的认知框架是"借势转嫁"——他没有直接回应曹操的试探（那是一个陷阱），而是利用一个外部事件（雷声）来解释自己的失态。"闻雷失箸"不是简单的害怕，而是一个精心设计的"自我矮化"表演。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>刘备在被曹操点破"英雄"身份时，内心必然震惊。但他没有让这种震惊表现为"冷静的自信"（那会暴露野心），而是把它表现为"雷声引起的恐惧"（那显得胆小）。这种"把真实情绪嫁接到虚假原因上"的能力，是顶级政治家的标志。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>刘备的策略分为两步：第一步，"失匕箸"——在曹操说出"天下英雄唯使君与操耳"时，故意让筷子掉落，制造一个"被吓到"的假象；第二步，借雷声自圆其说——"圣人云迅雷风烈必变，良有以也，一震之威乃至于此！"这句话把自己塑造成一个"连打雷都害怕的胆小鬼"，彻底消除了曹操的警惕。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>"自我矮化"——通过展示自己的"弱点"来消除对方的戒心。刘备的"弱点"是"害怕打雷"，这个弱点在曹操看来是"无伤大雅的胆小"，正好符合一个"寄人篱下、胸无大志"的形象。曹操从"刘备是英雄"的判断，转向了"刘备不过是胆小鬼"的误判。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>刘备选择"失箸"而非其他反应，是因为筷子掉落是一个"自然的惊吓反应"，不像故意的行为。此外，"雷声"是一个不可控的外部事件，用它来解释失态显得自然合理。如果刘备找其他借口（如身体不适），可能显得刻意。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>曹操犯了"以貌取人"的偏差——他看到刘备被雷声吓到，就推断刘备胆小无能。他没有考虑到刘备可能在演戏。曹操的自负也起了作用——他倾向于相信"天下英雄唯我一人"，刘备的"胆怯"正好满足了他的这种心理预期。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>曹操被刘备的表演骗过，放松了对他的警惕。刘备后来借机离开曹操，最终建立了蜀汉政权。"闻雷失箸"成为中国历史上最经典的"韬光养晦"案例之一，展示了如何在强权面前隐藏真实意图。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>故事的戏剧性在于"雷声"这个巧合——如果当时没有打雷，刘备的"失箸"就无法自圆其说。雷声恰好在关键时刻响起，给了刘备一个完美的借口。这种"天助我也"的巧合，让人不禁感叹命运的奇妙。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若刘备没有"失箸"，曹操可能会继续试探，甚至直接动手。若他"失箸"后没有找到合理的解释，可能会显得心虚。唯有"失箸+闻雷解释"的组合，才能让曹操彻底放松警惕。雷声的巧合虽然偶然，但刘备的应变却是必然。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此计适用于"被强者试探且需要隐藏真实意图"的场景。核心要素是"自我矮化"的程度要足够——必须让对方相信你确实"不行"。在现代政治和商业中，"韬光养晦"的策略仍然有效，但需要谨慎使用——过度表演可能适得其反。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>刘备在曹操面前的"闻雷失箸"，表面上是一个胆小鬼的反应，实际上是一个英雄的隐忍。这种"卧薪尝胆"的精神，让人想起无数在逆境中隐忍不发、最终成就大业的历史人物。刘备的"失箸"不是软弱，而是最深沉的力量。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>核心是"信号伪装"——通过发送虚假信号来掩盖真实意图。刘备的"失箸"是一个"我胆小"的虚假信号，掩盖了"我有野心"的真实信号。现代博弈论中的"信号干扰"理论与此相通：当你不想让对手了解你的真实类型时，可以通过发送噪声信号来干扰他的判断。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-05-09.html">← 上一个故事</a>
+    <span></span>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

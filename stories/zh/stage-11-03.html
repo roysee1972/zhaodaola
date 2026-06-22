@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="韩亿 — 来自冯梦龙《智囊》的智慧故事，找到啦第11关·健康与衰老">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../enhance.css">
+<title>韩亿 — 找到啦</title>
+<style>
+:root{--bg:#f5e6c8;--bg2:#eed9a4;--text-dark:#5a3e1b;--text-mid:#7d6030;--text-light:#987845;--gold:#c9a84c;--gold-light:#e8c870;--border:rgba(139,90,43,0.18);--shadow:rgba(90,60,20,0.12);--radius:8px;--font:'Noto Serif SC','Georgia','Times New Roman',serif;--stage-color:#A8C8C8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:var(--font);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.8;font-size:16px;}
+.back-btn{position:fixed;top:16px;left:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.back-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,252,240,0.85);border:1.5px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;backdrop-filter:blur(6px);transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.lang-switch:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow);color:var(--gold);border-color:var(--gold);}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+.story-header{text-align:center;margin-bottom:40px;animation:fadeIn 0.8s ease;}
+.story-header h1{font-size:28px;font-weight:700;color:var(--text-dark);letter-spacing:2px;margin-bottom:8px;line-height:1.4;}
+.story-header .subtitle{font-size:15px;color:var(--text-mid);letter-spacing:1px;}
+.story-header .level-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text-dark);font-size:12px;font-weight:600;letter-spacing:3px;border-radius:20px;}
+.gold-line{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.principle-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,200,112,0.06));border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin-bottom:36px;position:relative;}
+.principle-box::before{content:'✦';position:absolute;top:-10px;left:20px;background:var(--bg);padding:0 8px;color:var(--gold);font-size:14px;}
+.principle-box .label{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:3px;margin-bottom:8px;}
+.principle-box .text{font-size:17px;font-weight:600;color:var(--text-dark);line-height:1.7;font-style:italic;}
+.story-section{background:rgba(255,252,240,0.6);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);transition:box-shadow 0.3s,transform 0.3s;}
+.story-section:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.story-section h2{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:14px;letter-spacing:1px;}
+.story-section h2 .icon{margin-right:8px;}
+.story-section p{font-size:15px;color:#6a4e28;line-height:1.9;}
+.story-section p+p{margin-top:12px;}
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);}
+.story-nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,252,240,0.7);border:1px solid var(--border);border-radius:24px;color:var(--text-mid);font-family:var(--font);font-size:13px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 8px var(--shadow);}
+.story-nav a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-1px);}
+footer{text-align:center;padding:24px 20px 40px;font-size:12px;color:var(--text-light);line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;z-index:99;box-shadow:0 2px 8px var(--shadow);}
+.back-to-top.show{opacity:0.8;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:600px){.page{padding:48px 16px 60px;}.story-header h1{font-size:22px;}.story-section{padding:20px 18px;}.back-btn,.lang-switch{top:10px;font-size:12px;padding:6px 14px;}.back-btn{left:10px;}.lang-switch{right:10px;}.story-nav{flex-direction:column;gap:12px;}.story-nav a{width:100%;justify-content:center;}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<a href="../stage-11.html" class="back-btn">← 第11关 · 健康与衰老</a>
+<a href="../en/han-yi-midwife-identity-test.html" class="lang-switch">English ▸</a>
+<main id="main-content">
+<div class="page">
+  <header class="story-header">
+    <div class="level-tag">第11关 · 健康与衰老</div>
+    <h1>韩亿</h1>
+    <p class="subtitle">—乳医验亲辨诬</p>
+  </header>
+  <div class="gold-line"></div>
+
+  <div class="principle-box">
+    <div class="label">人生原则</div>
+    <div class="text">不要因为"历史无法改变"就放弃追寻真相。仔细审阅历史记录，往往能找到被忽略的关键证据。财势可以压制一时，但无法压制真相。保护弱者的权益是司法的核心使命。</div>
+  </div>
+
+
+  <section class="story-section">
+    <h2><span class="icon">⏳</span> 时代背景</h2>
+    <p>大校李甲以财富称霸乡里，兄长死后，他诬陷兄长的儿子是外姓人（非亲生），又灌醉嫂子后将她改嫁，从而霸占了兄长全部家产。嫂子和侄儿向州府申诉，历经十余年竟无人能为他们洗清冤屈。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚖</span> 困境</h2>
+    <p>李甲财雄势大，十余年间通过各种手段压制嫂侄的申诉。前任官员可能被李甲收买或畏惧其势力，始终未能查清真相。核心难题在于：如何证明侄儿是兄长的亲生儿子？在没有DNA检测的古代，这似乎无法验证。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎯</span> 目标与动机</h2>
+    <p>韩亿的目标是为嫂侄洗清十余年的冤屈。李甲的动机是霸占兄长家产——通过诬陷侄儿"非亲生"来否定其继承权，又通过灌醉嫂子改嫁来消除她作为证人的可能。嫂侄的动机是夺回属于自己的合法财产和名誉。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧩</span> 认知框架</h2>
+    <p>韩亿采用"证据链补全"的认知框架。他仔细审阅了十余年的案卷，发现所有前任官员都没有想到一个关键证据——乳医（接生婆）。如果能找到当年为嫂子接生的乳医，就能证明侄儿确实是兄长的亲生儿子。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🧠</span> 人物心态</h2>
+    <p>韩亿心思缜密，善于从堆积如山的案卷中发现被忽略的关键证据。他没有被李甲的财势所吓倒，也没有被"十余年未决"的历史所困扰，而是从头梳理案卷，找到了突破口。李甲则自以为十余年的压制已经让案件无法翻盘。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💡</span> 策略与行动</h2>
+    <p>韩亿取出前后所有案卷仔细审阅，发现所有前任官员都没有传唤乳医作证。他随即找到了当年的乳医，在乳医的证词面前，众人皆服罪。侄儿的亲生身份得到确认，李甲的诬陷和霸产行为被揭露。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔮</span> 心智模型</h2>
+    <p>核心模型是"关键证人发掘"——在看似无法突破的案件中，找到被忽略的关键证人。另一个模型是"案卷审查法"——通过仔细审阅历史案卷，发现前任官员的疏漏，从而找到突破口。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔍</span> 非显性因素</h2>
+    <p>乳医（接生婆）是古代最可靠的"亲子证明"——她亲眼见证了孩子的出生，能够确认母亲的身份。十余年间所有前任官员都忽略了这一关键证人，可能是因为他们没有仔细审阅案卷，或者没有想到"接生婆可以作证"。李甲可能通过各种手段阻止嫂侄找到乳医。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">⚠</span> 认知盲区</h2>
+    <p>前任官员的盲区在于他们可能被李甲的财势所影响，或者认为"十余年未决"的案件无法翻案。他们没有仔细审阅案卷，遗漏了"乳医"这一关键证人。李甲的偏差则是以为"没有DNA检测就无法证明亲子关系"，忽略了接生婆的证人价值。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📊</span> 结果与影响</h2>
+    <p>乳医出庭作证，确认了侄儿的亲生身份。李甲的诬陷和霸产行为被揭露，嫂侄十余年的冤屈得以昭雪。此案展示了"关键证人发掘"在突破陈年积案中的决定性价值。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🎭</span> 偶然与戏剧性</h2>
+    <p>十余年无人能解的案件，在韩亿的案卷审查下找到了突破口——乳医这一证人一直存在，只是从未被传唤。李甲费尽心机压制了十余年，最终败给了一个"接生婆"的证词。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔄</span> 反事实推演</h2>
+    <p>若乳医已经去世或无法找到，韩亿的方法可能失效。若李甲提前找到乳医并收买或灭口，案件可能继续无法突破。若前任官员中有任何一人想到了传唤乳医，案件不会拖延十余年。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">📏</span> 适用边界</h2>
+    <p>此方法适用于亲子关系争议中存在接生记录或接生证人的场景。在证人已经去世或记录缺失的情况下不适用。现代DNA检测已经基本解决了亲子鉴定问题，但"关键证人发掘"的思路在其他类型的案件中仍有广泛应用。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">💗</span> 情感共鸣</h2>
+    <p>嫂子和侄儿十余年申诉无门，承受着失去亲人、失去财产、失去名誉的三重打击——弱者面对强权的无助令人心酸。韩亿没有被"十余年未决"的历史所吓倒，而是从案卷中找到了突破口，为弱者讨回公道。正义也许会迟到，但不会缺席。</p>
+  </section>
+
+  <section class="story-section">
+    <h2><span class="icon">🔗</span> 底层逻辑</h2>
+    <p>底层逻辑是"被忽略的证据往往就在身边"——乳医一直存在，只是从未被传唤。延伸到现代：冷案重启中的"新证据发掘"、冤案平反中的"旧证人重新询问"，都遵循这一"从历史中找突破口"的逻辑。</p>
+  </section>
+
+  <div class="story-nav">
+    <a href="stage-11-02.html">← 上一个故事</a>
+    <a href="stage-11-04.html">下一个故事 →</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>&copy; 2025 <a href="https://zhaodaola.top">找到啦 · Found It</a></p>
+  <p>智慧故事来自冯梦龙《智囊》，为现代求索者整理。</p>
+</footer>
+<button class="back-to-top" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>(function(){var b=document.querySelector('.back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');});})();</script>
+</body>
+</html>

@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极盐·老酒铺 | 社区轻量化门店落地策划案</title>
+    <!-- 字体方案：优先使用系统自带中文字体，确保书法效果 -->
+    <style>
+        :root {
+            /* 红木色系 */
+            --color-wood-deep: #3d1c0f;
+            --color-wood-dark: #5a2d1a;
+            --color-wood-mid: #7a3e24;
+            --color-wood-light: #965434;
+            --color-wood-pale: #b87a52;
+            
+            /* 背景色 */
+            --color-bg: #f5efe6;
+            --color-bg-warm: #f0e6d6;
+            --color-bg-card: #fffdf8;
+            --color-bg-section: #faf5ed;
+            
+            /* 金色系 */
+            --color-gold: #b8860b;
+            --color-gold-light: #d4a843;
+            --color-gold-dark: #8b6914;
+            
+            /* 文字色 */
+            --color-text: #3d2b1f;
+            --color-text-muted: #6b5344;
+            --color-text-light: #8b7355;
+            
+            /* 点缀色 */
+            --color-accent: #c41e3a;
+            --color-accent-light: #e8384f;
+            
+            /* 边框 */
+            --color-border: rgba(122, 62, 36, 0.2);
+            --color-border-gold: rgba(184, 134, 11, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* ===== 木纹纹理背景 ===== */
+        .wood-texture {
+            background: 
+                linear-gradient(90deg, 
+                    transparent 0%, 
+                    rgba(90, 45, 26, 0.03) 20%, 
+                    transparent 40%, 
+                    rgba(90, 45, 26, 0.02) 60%, 
+                    transparent 80%, 
+                    rgba(90, 45, 26, 0.03) 100%
+                ),
+                linear-gradient(180deg,
+                    var(--color-wood-dark) 0%,
+                    var(--color-wood-mid) 50%,
+                    var(--color-wood-dark) 100%
+                );
+            background-size: 200px 100%, 100% 100%;
+        }
+        
+        /* ===== 全局装饰 ===== */
+        .section-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--color-gold) 20%, 
+                var(--color-gold-light) 50%, 
+                var(--color-gold) 80%, 
+                transparent
+            );
+            margin: 0;
+        }
+        
+        .gold-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .gold-ornament::before,
+        .gold-ornament::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: var(--color-gold);
+        }
+        
+        .gold-ornament-icon {
+            color: var(--color-gold);
+            font-size: 1rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--color-gold);
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            background: rgba(184, 134, 11, 0.05);
+        }
+        
+        /* ===== 标题字体：新中式书法风格 ===== */
+        .heading-chinese {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', 'SimSun', '宋体', serif;
+            font-weight: normal;
+        }
+        
+        /* ===== Hero Section ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6) saturate(1.1);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(61, 28, 15, 0.4) 0%,
+                rgba(61, 28, 15, 0.6) 40%,
+                rgba(61, 28, 15, 0.85) 80%,
+                rgba(61, 28, 15, 0.95) 100%
+            );
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+        
+        .hero-logo {
+            width: 300px;
+            max-width: 80vw;
+            margin: 0 auto 2.5rem;
+            filter: drop-shadow(0 0 40px rgba(184, 134, 11, 0.4));
+        }
+        
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .hero-tagline {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 400;
+            color: var(--color-gold-light);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.15em;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.2em;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(184, 134, 11, 0.4);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 400;
+            color: var(--color-gold-light);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--color-gold-light);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* ===== 核心概念 Section ===== */
+        .concept {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg);
+        }
+        
+        .concept-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .concept-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .concept-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .concept-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .concept-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(90, 45, 26, 0.15);
+        }
+        
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-gold), var(--color-gold-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .concept-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .concept-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .concept-card-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .concept-card-text {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        /* ===== 空间展示 Section ===== */
+        .showcase {
+            background: var(--color-bg-warm);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(122, 62, 36, 0.02) 100px,
+                    rgba(122, 62, 36, 0.02) 101px
+                );
+            pointer-events: none;
+        }
+        
+        .showcase-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .showcase-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .showcase-image-wrapper {
+            position: relative;
+            margin-bottom: 4rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+        
+        .showcase-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .showcase-image-wrapper:hover img {
+            transform: scale(1.02);
+        }
+        
+        .showcase-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(61, 28, 15, 0.9));
+            color: var(--color-gold-light);
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .zones-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .zone-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .zone-card:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 10px 40px rgba(90, 45, 26, 0.1);
+        }
+        
+        .zone-number {
+            position: absolute;
+            top: -1px;
+            right: 2rem;
+            background: var(--color-wood-mid);
+            color: var(--color-gold-light);
+            padding: 0.5rem 1.5rem;
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+        
+        .zone-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 1rem;
+            padding-right: 5rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .zone-desc {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .zone-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .zone-tag {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--color-border-gold);
+            font-size: 0.75rem;
+            color: var(--color-gold-dark);
+            background: rgba(184, 134, 11, 0.05);
+        }
+        
+        /* ===== 产品矩阵 Section ===== */
+        .matrix {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg);
+        }
+        
+        .matrix-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .matrix-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .matrix-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .matrix-layer {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .matrix-layer:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 10px 40px rgba(90, 45, 26, 0.1);
+        }
+        
+        .matrix-layer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+        
+        .matrix-layer:nth-child(1)::after { background: var(--color-gold); }
+        .matrix-layer:nth-child(2)::after { background: var(--color-accent); }
+        .matrix-layer:nth-child(3)::after { background: var(--color-wood-light); }
+        
+        .layer-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: rgba(184, 134, 11, 0.08);
+            border: 1px solid var(--color-border-gold);
+        }
+        
+        .layer-content {
+            flex: 1;
+        }
+        
+        .layer-label {
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .layer-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .layer-desc {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        /* ===== 商业模式 Section ===== */
+        .business {
+            background: var(--color-bg-warm);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .business::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(122, 62, 36, 0.02) 100px,
+                    rgba(122, 62, 36, 0.02) 101px
+                );
+            pointer-events: none;
+        }
+        
+        .business-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .business-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .business-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .business-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .compare-card {
+            padding: 2.5rem;
+            border: 1px solid var(--color-border);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .compare-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .compare-card.old {
+            background: linear-gradient(135deg, #f5efe6, #ece3d3);
+            opacity: 0.8;
+        }
+        
+        .compare-card.new {
+            background: linear-gradient(135deg, #f0ead6, #e8dfc8);
+            border-color: var(--color-wood-light);
+        }
+        
+        .compare-card.new:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 10px 40px rgba(90, 45, 26, 0.15);
+        }
+        
+        .compare-label {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .compare-card.old .compare-label {
+            background: rgba(107, 83, 68, 0.1);
+            color: var(--color-text-muted);
+        }
+        
+        .compare-card.new .compare-label {
+            background: rgba(184, 134, 11, 0.15);
+            color: var(--color-gold-dark);
+        }
+        
+        .compare-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .compare-card.old .compare-title { color: var(--color-text-muted); }
+        .compare-card.new .compare-title { color: var(--color-wood-dark); }
+        
+        .compare-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .compare-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        
+        .compare-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+        }
+        
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .advantage-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-gold);
+            box-shadow: 0 10px 40px rgba(90, 45, 26, 0.1);
+        }
+        
+        .advantage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .advantage-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .advantage-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        
+        /* ===== 运营体系 Section ===== */
+        .operation {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg);
+        }
+        
+        .operation-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .operation-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .operation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .operation-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .operation-card:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 10px 40px rgba(90, 45, 26, 0.1);
+            transform: translateY(-4px);
+        }
+        
+        .operation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-gold), var(--color-gold-dark));
+        }
+        
+        .operation-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .operation-card-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--color-wood-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .operation-card-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .operation-card-list li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        
+        .operation-card-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+        }
+        
+        /* ===== CTA Section ===== */
+        .cta {
+            background: 
+                linear-gradient(135deg, 
+                    var(--color-wood-deep) 0%, 
+                    var(--color-wood-dark) 50%, 
+                    var(--color-wood-deep) 100%
+                );
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+        }
+        
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            color: var(--color-gold-light);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+        }
+        
+        .cta-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+        
+        .cta-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: var(--color-gold);
+            color: var(--color-wood-deep);
+            font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', 'STFangsong', '仿宋', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.1em;
+        }
+        
+        .cta-contact:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(184, 134, 11, 0.4);
+        }
+        
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--color-bg-warm);
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 120px;
+            margin: 0 auto 1rem;
+            opacity: 0.7;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .footer-text {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+        
+        /* ===== 动画 ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== 响应式 ===== */
+        @media (max-width: 1024px) {
+            .concept-grid,
+            .zones-grid,
+            .business-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .advantages-grid,
+            .operation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-stats {
+                gap: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .matrix-layer {
+                grid-template-columns: 1fr;
+            }
+            
+            .layer-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .advantages-grid,
+            .operation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-contact {
+                display: flex;
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .concept,
+            .showcase,
+            .matrix,
+            .business,
+            .operation,
+            .cta {
+                padding: 4rem 1.2rem;
+            }
+            
+            .concept-card,
+            .zone-card,
+            .matrix-layer,
+            .compare-card,
+            .advantage-card,
+            .operation-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ===== Hero Section ===== -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="01.jpg" alt="极盐老酒铺门店实景">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="02.png" alt="极盐·老酒铺">
+            </div>
+            <h1 class="hero-tagline heading-chinese">社区老酒新零售</h1>
+            <p class="hero-subtitle">轻量化门店 · 低门槛落地 · 高复购邻里生意</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number heading-chinese">10-30㎡</div>
+                    <div class="stat-label">灵活面积</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number heading-chinese">4大</div>
+                    <div class="stat-label">功能分区</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number heading-chinese">3层</div>
+                    <div class="stat-label">产品矩阵</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">向下滚动 ↓</div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- ===== 核心概念 Section ===== -->
+    <section class="concept">
+        <div class="concept-header fade-in">
+            <div class="section-badge">品牌理念</div>
+            <div class="gold-ornament"><span class="gold-ornament-icon">◆</span></div>
+            <h2 class="concept-title heading-chinese">重新定义社区酒水消费</h2>
+            <p class="concept-desc">极盐·老酒铺以"老酒勾调"为核心技术壁垒，打造社区专属的高端酒文化体验空间，让好酒不再遥远。</p>
+        </div>
+        
+        <div class="concept-grid">
+            <div class="concept-card fade-in">
+                <div class="concept-card-icon">🏮</div>
+                <h3 class="concept-card-title heading-chinese">新中式美学空间</h3>
+                <p class="concept-card-text">原木古风木匾门头，浅木色柜体搭配哑光浅灰墙面，暖白光柔光射灯重点打亮展柜与品鉴区。区别传统烟酒杂货铺，打造高端老酒文化体验小店辨识度。</p>
+            </div>
+            
+            <div class="concept-card fade-in">
+                <div class="concept-card-icon">🍶</div>
+                <h3 class="concept-card-title heading-chinese">极盐独家调酒工艺</h3>
+                <p class="concept-card-text">依托极盐独家调味酒资源，以成熟的老酒勾调、风味升级工艺，实现"低价酒提质、高价酒增值"，让客户为技术、口感、定制服务付费。</p>
+            </div>
+            
+            <div class="concept-card fade-in">
+                <div class="concept-card-icon">🏘️</div>
+                <h3 class="concept-card-title heading-chinese">社区邻里商业模式</h3>
+                <p class="concept-card-text">主打社区底商、成熟街区沿街小店，轻量化开店、低租金成本、低门槛落地。覆盖居民日常自饮、商务宴饮、高端调酒定制，做稳邻里基础客流。</p>
+            </div>
+            
+            <div class="concept-card fade-in">
+                <div class="concept-card-icon">🔄</div>
+                <h3 class="concept-card-title heading-chinese">名酒一杯起卖</h3>
+                <p class="concept-card-text">茅台、五粮液、国窖1573等高端名酒支持按杯品鉴、按杯售卖。零库存运营，零成本推动客户对比体验，引导接受店推调酒组合方案。</p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- ===== 空间展示 Section ===== -->
+    <section class="showcase">
+        <div class="showcase-inner">
+            <div class="showcase-header fade-in">
+                <div class="section-badge">空间规划</div>
+                <div class="gold-ornament"><span class="gold-ornament-icon">◆</span></div>
+                <h2 class="showcase-title heading-chinese">四大核心功能区</h2>
+            </div>
+            
+            <div class="showcase-image-wrapper fade-in">
+                <img src="01.jpg" alt="极盐老酒铺空间布局">
+                <div class="showcase-image-caption">新中式极简古风 · 暖木色质感 · 柔光氛围</div>
+            </div>
+            
+            <div class="zones-grid">
+                <div class="zone-card fade-in">
+                    <div class="zone-number">01</div>
+                    <h3 class="zone-title heading-chinese">长条操作台 · 散酒零售区</h3>
+                    <p class="zone-desc">2m实木操作台，3-4台50斤装扫码自动取酒坛，配套标准量筒、调酒器具。提供免费试饮，支持100ml-1000ml多规格零售，增强线下互动体验。</p>
+                    <div class="zone-tags">
+                        <span class="zone-tag">自动取酒坛</span>
+                        <span class="zone-tag">免费试饮</span>
+                        <span class="zone-tag">现场调酒</span>
+                    </div>
+                </div>
+                
+                <div class="zone-card fade-in">
+                    <div class="zone-number">02</div>
+                    <h3 class="zone-title heading-chinese">正面主展柜 · 走量核心区</h3>
+                    <p class="zone-desc">集中陈列自有爆款流通酒：晋原特曲、绵竹老酒、牛栏山二锅头等。超低售价覆盖20-600元价位段浓、清、酱三大香型，满足自饮、送礼、家宴全场景。</p>
+                    <div class="zone-tags">
+                        <span class="zone-tag">密集陈列</span>
+                        <span class="zone-tag">全价位段</span>
+                        <span class="zone-tag">核心收入</span>
+                    </div>
+                </div>
+                
+                <div class="zone-card fade-in">
+                    <div class="zone-number">03</div>
+                    <h3 class="zone-title heading-chinese">口粮酒样品区 · 对标体验</h3>
+                    <p class="zone-desc">陈列沱牌T68、泸州老窖六龄窖、黄盖玻汾等国民口粮酒样品。只摆样品零库存，支持客户自带酒试调极盐，直观对比凸显性价比优势。</p>
+                    <div class="zone-tags">
+                        <span class="zone-tag">对标种草</span>
+                        <span class="zone-tag">个性调酒</span>
+                        <span class="zone-tag">零库存</span>
+                    </div>
+                </div>
+                
+                <div class="zone-card fade-in">
+                    <div class="zone-number">04</div>
+                    <h3 class="zone-title heading-chinese">休闲品鉴区 · 社交空间</h3>
+                    <p class="zone-desc">新中式茶桌+休闲座椅，预留2-4人静坐空间。供邻里品酒、闲谈、交流酒文化，打造社区专属老酒品鉴社交空间，提升客户停留时长与复购粘性。</p>
+                    <div class="zone-tags">
+                        <span class="zone-tag">品鉴社交</span>
+                        <span class="zone-tag">茶酒一体</span>
+                        <span class="zone-tag">邻里粘性</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- ===== 产品矩阵 Section ===== -->
+    <section class="matrix">
+        <div class="matrix-header fade-in">
+            <div class="section-badge">产品策略</div>
+            <div class="gold-ornament"><span class="gold-ornament-icon">◆</span></div>
+            <h2 class="matrix-title heading-chinese">三层分层产品矩阵</h2>
+        </div>
+        
+        <div class="matrix-layers">
+            <div class="matrix-layer fade-in">
+                <div class="layer-icon">🥂</div>
+                <div class="layer-content">
+                    <div class="layer-label">基础层 · FUNDAMENTAL</div>
+                    <h3 class="layer-title heading-chinese">亲民刚需层</h3>
+                    <p class="layer-desc">50/100元酱香散装酒、主力浓香型瓶装酒和推荐组合预调酒。满足日常自饮和轻型宴饮高频刚需，做稳邻里基础客流。所有产品均设免费试饮选项，零门槛体验极盐调酒核心效果。</p>
+                </div>
+            </div>
+            
+            <div class="matrix-layer fade-in">
+                <div class="layer-icon">🎯</div>
+                <div class="layer-content">
+                    <div class="layer-label">体验层 · EXPERIENCE</div>
+                    <h3 class="layer-title heading-chinese">对标体验层</h3>
+                    <p class="layer-desc">市面主流口粮酒样品与极盐的搭配组合，用于口感对标、个性化调酒、客户个人体验。支持客户自带偏好的口粮酒，按参考配方试调不同比例极盐，丰富体验场景。</p>
+                </div>
+            </div>
+            
+            <div class="matrix-layer fade-in">
+                <div class="layer-icon">👑</div>
+                <div class="layer-content">
+                    <div class="layer-label">高端层 · PREMIUM</div>
+                    <h3 class="layer-title heading-chinese">高端定制层</h3>
+                    <p class="layer-desc">全品类高端名酒分杯体验+极盐超高端调酒定制。以茅台、五粮液、国窖1573等为基底，推荐超高端质感年份酒调酒菜单，覆盖高端商务小聚和个性化送礼高阶需求。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- ===== 商业模式 Section ===== -->
+    <section class="business">
+        <div class="business-inner">
+            <div class="business-header fade-in">
+                <div class="section-badge">盈利逻辑</div>
+                <div class="gold-ornament"><span class="gold-ornament-icon">◆</span></div>
+                <h2 class="business-title heading-chinese">核心差异化盈利模式</h2>
+            </div>
+            
+            <div class="business-comparison">
+                <div class="compare-card old fade-in">
+                    <span class="compare-label">传统模式</span>
+                    <h3 class="compare-title heading-chinese">烟酒铺差价模式</h3>
+                    <ul class="compare-list">
+                        <li>赚货品差价，利润空间有限</li>
+                        <li>囤货压资金，库存风险高</li>
+                        <li>同质化竞争激烈</li>
+                        <li>客户粘性低，易流失</li>
+                        <li>依赖地段，租金压力大</li>
+                    </ul>
+                </div>
+                
+                <div class="compare-card new fade-in">
+                    <span class="compare-label">极盐模式</span>
+                    <h3 class="compare-title heading-chinese">技术服务驱动模式</h3>
+                    <ul class="compare-list">
+                        <li>核心技术壁垒：独家老酒勾调工艺</li>
+                        <li>轻库存运营：名酒零库存、散酒按需</li>
+                        <li>差异化竞争：调酒服务无可替代</li>
+                        <li>高粘性复购：个性化定制锁定客户</li>
+                        <li>低租金选址：社区店也能高毛利</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">💰</div>
+                    <h4 class="advantage-title heading-chinese">更高毛利</h4>
+                    <p class="advantage-desc">为技术、口感、定制服务付费，而非单纯为酒水商品付费，毛利空间远超传统差价模式</p>
+                </div>
+                
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">🛡️</div>
+                    <h4 class="advantage-title heading-chinese">竞争壁垒</h4>
+                    <p class="advantage-desc">极盐独家老酒酒体资源，无可替代性更强，竞品无法复制的核心技术优势</p>
+                </div>
+                
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">📈</div>
+                    <h4 class="advantage-title heading-chinese">持续增长</h4>
+                    <p class="advantage-desc">邻里转介绍裂变获客，社区专属口碑积累，老客户复购率高、生命周期价值大</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- ===== 运营体系 Section ===== -->
+    <section class="operation">
+        <div class="operation-header fade-in">
+            <div class="section-badge">运营支持</div>
+            <div class="gold-ornament"><span class="gold-ornament-icon">◆</span></div>
+            <h2 class="operation-title heading-chinese">低成本引流 & 运营体系</h2>
+        </div>
+        
+        <div class="operation-grid">
+            <div class="operation-card fade-in">
+                <div class="operation-card-icon">🎁</div>
+                <h3 class="operation-card-title heading-chinese">开业引爆</h3>
+                <ul class="operation-card-list">
+                    <li>社区居民到店免费品酒品茶</li>
+                    <li>新客首次打酒购酒立减</li>
+                    <li>快速打响社区知名度</li>
+                </ul>
+            </div>
+            
+            <div class="operation-card fade-in">
+                <div class="operation-card-icon">👥</div>
+                <h3 class="operation-card-title heading-chinese">邻里锁客</h3>
+                <ul class="operation-card-list">
+                    <li>小区住户专属调酒优惠</li>
+                    <li>周边商户熟人福利</li>
+                    <li>泡酒长期定制服务</li>
+                </ul>
+            </div>
+            
+            <div class="operation-card fade-in">
+                <div class="operation-card-icon">📅</div>
+                <h3 class="operation-card-title heading-chinese">节日营销</h3>
+                <ul class="operation-card-list">
+                    <li>端午中秋春节专属套餐</li>
+                    <li>年终家宴酒水配套</li>
+                    <li>送礼套餐场景化推荐</li>
+                </ul>
+            </div>
+            
+            <div class="operation-card fade-in">
+                <div class="operation-card-icon">💬</div>
+                <h3 class="operation-card-title heading-chinese">私域运营</h3>
+                <ul class="operation-card-list">
+                    <li>社区客户微信群日常维护</li>
+                    <li>老酒知识与调酒技巧分享</li>
+                    <li>限时福利与新品预告</li>
+                </ul>
+            </div>
+            
+            <div class="operation-card fade-in">
+                <div class="operation-card-icon">🚗</div>
+                <h3 class="operation-card-title heading-chinese">便民服务</h3>
+                <ul class="operation-card-list">
+                    <li>预约调酒、预留酒体</li>
+                    <li>上门送酒便民配送</li>
+                    <li>家用酒水长期订购</li>
+                </ul>
+            </div>
+            
+            <div class="operation-card fade-in">
+                <div class="operation-card-icon">🔮</div>
+                <h3 class="operation-card-title heading-chinese">增值服务</h3>
+                <ul class="operation-card-list">
+                    <li>居民泡酒定制</li>
+                    <li>小型宴席酒水配套</li>
+                    <li>私人专属风味调酒</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- ===== CTA Section ===== -->
+    <section class="cta">
+        <div class="cta-content fade-in">
+            <h2 class="cta-title heading-chinese">携手极盐 共创社区老酒新零售</h2>
+            <p class="cta-desc">轻量化投入 · 标准化复制 · 高毛利回报<br>极盐·老酒铺社区店招商合作，诚邀您的加入</p>
+            <a href="tel:4001234567" class="cta-contact">
+                📞 立即咨询合作详情
+            </a>
+        </div>
+    </section>
+    
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="02.png" alt="极盐·老酒铺">
+        </div>
+    </footer>
+    
+    <!-- ===== 滚动动画脚本 ===== -->
+    <script>
+        // 滚动动画观察器
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // 观察所有 fade-in 元素
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

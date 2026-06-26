@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>追忆 李自申先生八十七周年母难日茶话</title>
+    <style>
+        :root {
+            --bg: #f5efe6;
+            --bg-card: #fffdf8;
+            --text: #3d2b1f;
+            --text-muted: #6b5344;
+            --accent: #8b4513;
+            --gold: #b8860b;
+            --border: rgba(139, 69, 19, 0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        /* 封面 */
+        .cover {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            border: 3px double var(--accent);
+            margin-bottom: 3rem;
+            background: var(--bg-card);
+        }
+        .cover h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        .cover h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .cover .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+            letter-spacing: 0.15em;
+        }
+        /* 金线分隔 */
+        .gold-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 2rem 0;
+        }
+        /* 章节标题 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            letter-spacing: 0.2em;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+        /* 正文段落 */
+        .content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--gold), var(--accent));
+        }
+        .content p {
+            text-indent: 2em;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        .content .no-indent {
+            text-indent: 0;
+        }
+        .content .quote {
+            padding: 1rem 1.5rem;
+            background: rgba(184, 134, 11, 0.06);
+            border-left: 3px solid var(--gold);
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .content .chorus {
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(139, 69, 19, 0.05);
+            border: 1px dashed var(--border);
+        }
+        /* 诗歌格式 */
+        .poem {
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .poem .poem-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+        }
+        .poem .poem-author {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .poem p {
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+        /* 宗旨卡片 */
+        .宗旨 {
+            background: linear-gradient(135deg, #f5efe6, #ece3d3);
+            border: 2px solid var(--gold);
+            padding: 2.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .宗旨 h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            letter-spacing: 0.3em;
+            margin-bottom: 1.5rem;
+        }
+        .宗旨 p {
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+        }
+        /* 守则列表 */
+        .rules {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .rules h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-align: center;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+        }
+        .rules .rule-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(139, 69, 19, 0.1);
+            font-size: 1rem;
+        }
+        .rules .rule-item:last-child { border-bottom: none; }
+        /* 注释 */
+        .note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px dotted var(--border);
+        }
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            .cover { padding: 2rem 1rem; min-height: 40vh; }
+            .cover h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .poem { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 封面 -->
+    <div class="cover">
+        <h1>追忆</h1>
+        <h2>李自申先生八十七周年母难日茶话</h2>
+        <div class="subtitle">维摩精舍 · 袁翁焕仙夫子传承</div>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 天下为公 -->
+    <div class="section-title">天下为公</div>
+    <div class="section-subtitle">《礼记·礼运》篇</div>
+
+    <div class="content">
+        <p>大道之行也，天下为公。选贤与能，讲信修睦。故人不独亲其亲，不独子其子，使老有所终，壮有所用，幼有所长，矜寡孤独废疾者，皆有所养。男有分，女有归。货恶其弃于地也，不必藏于己；力恶其不出于身也，不必为己。是故谋闭而不兴，盗窃乱贼而不作。故外户而不闭，是谓大同。</p>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 毕业歌 -->
+    <div class="poem">
+        <div class="poem-title">毕业歌</div>
+        <div class="poem-author">田汉 曲</div>
+        <p>听吧！满耳是大众的嗟伤。</p>
+        <p>看吧！一年年国土的沦丧。</p>
+        <p>我们是要选择「战」？还是「降」？</p>
+        <p>我们要做主人去拼死在疆场！</p>
+        <p>我们不愿做奴隶而青云直上！</p>
+        <p>我们今天是弦歌在一堂</p>
+        <p>明天要掀起民族自救的巨浪！</p>
+        <p style="margin-top:1rem">巨浪！巨浪！</p>
+        <p>不断地增涨！</p>
+        <p>同学们！同学们！快拿出力量，</p>
+        <p>担负起天下的兴亡！</p>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 新编毕业歌 -->
+    <div class="section-title">新编《毕业歌》</div>
+    <div class="section-subtitle">李自申先生 著</div>
+
+    <!-- 一、立志 -->
+    <h3 class="section-title" style="font-size:1.3rem">一、立志（怀大圆小以志于道）</h3>
+
+    <div class="content">
+        <p>同学们！大家精进起来！真正的读《维摩精舍丛书》！而且要抑扬顿挫、一气呵成地高声朗诵，把文义、文理、文气、文韵表达出来，要能巧妙地运气、换气、贯气地读，要使听者如沐春风。</p>
+        <div class="quote">
+            看吧！古道阳斜行人少。听吧！谈说横流盲师多。<br>
+            我们要打开慧眼、站稳脚跟、挺直胸膛，当仁不让，铁肩承当！
+        </div>
+        <p>我们不要遁迹山林，幽隐白云深处，闭目静坐，象三家村的土地样！</p>
+        <p>我们要远肥膏、杂尘习，要化淤泥为营养，濯清涟而不妖的荷渠香！</p>
+        <p>我们不要犯东西学者役物囿理的偏滞见。役于物（即唯物论）、囿于理（即唯心论）左右偏滞。役于物者，起用而未明体，则科学发达，物质文明，物欲横流，弱肉强食，生存竞争，残杀攻伐的毁灭战相。囿于理者，明体而未起用，则柔懦不振，义鲜奋进，居虚罔隅，求私欲净尽，春来摘枝有伤天地好生之德的迂夫子样！</p>
+        <p>我们要明白「本自一元」、「天地一体」，要证得忘我任天，齐生死，一有无，泯是非，类万物之情，体太和之至的本分样！</p>
+        <p>我们要褒奖鲲鹏之远大志向，亦要圆成蜩鸠之力小志向，这就是怀大圆小以志于道！</p>
+        <p>我们以如来家业、孔老薪传，立己立人而及国家天下十方为志向！</p>
+        <div class="chorus">（众）同学们！同学们！快拿出力量，认真地朗读《维摩精舍丛书》！</div>
+    </div>
+
+    <!-- 二、音闻 -->
+    <h3 class="section-title" style="font-size:1.3rem">二、音闻（此方真教体 清净在音闻）</h3>
+
+    <div class="content">
+        <p>我们要大声疾呼，忘情高唱。</p>
+        <p>我们要秉成先师焕公遗志，当仁不让，随感赴机，因材鸣铸。时孔则孔，宜禅曰禅，有时以佛入孔、以老入禅，有时以禅入老、以孔入佛，有时以佛老人孔，有时孔老佛俱入而俱不入，有时孔老佛俱不入而俱入。</p>
+        <div class="quote">
+            音翻海浪，浪浪透法尔；语吐珠圆，圆圆澈胜行。
+        </div>
+        <p>我们要信，如日丽天，明无不周；如月映海，水虽殊月岂殊的空幻道场。</p>
+        <p>我们要学先师对魔外如父母之于爱子，严而不刻的无缘大慈、同体大悲的心肠。</p>
+        <p>如此真教体精神，非维摩诘、阿弥陀佛、观音、势至、文殊、普贤、孔老耶回之大人君子不足以承当！而此大雄风、大智慧、大般若，又是人人具足、个个圆成，不从人得，不因师授，不需己求，当体即是！把柄就在自己手上，也就是六祖一口气说出的五个何期之实相。</p>
+        <p>我们要如《大般若经》所示：以无性为自性，无所得而为方便行化，打开「大而无外，小而无内」真教体音闻相。</p>
+        <div class="chorus">（众）同学们！同学们！快拿出力量，认真地朗读《维摩精舍丛书》！</div>
+    </div>
+
+    <!-- 三、致学 -->
+    <h3 class="section-title" style="font-size:1.3rem">三、致学（深入经藏，智慧如海）</h3>
+
+    <div class="content">
+        <p>深入经藏，智慧如海。于初机入德之无从也，应读《黄叶开谈》找到阶梯；惧半途而摇心歧路者，应读《榴窗随判》给予启迪；惧偏滞而执胜义之可循也，精读《中庸胜唱》以汇通之。</p>
+        <p>他如《灵岩语屑》中，诗歌联偈、剧曲杂章，无不高提祖印，醒赴来机；至于《酬语》，则世法佛法、胜法劣法、是法非法、世出世间等一切种法，靡不悉具，而要归于第一义谛以统摄之。</p>
+        <p>无一而非孔老释氏之名言，无一而是孔老释氏之成言，以水入水，因言遣言，此千圣立教之通径，非夫子一己之私言也。</p>
+        <div class="chorus">（众）同学们！同学们！快拿出力量，认真地朗读《维摩精舍丛书》！</div>
+    </div>
+
+    <!-- 四、显用 -->
+    <h3 class="section-title" style="font-size:1.3rem">四、显用（明明德于宇宙大千）</h3>
+
+    <div class="content">
+        <div class="quote">先必内圣而后外王。内不圣而外王，王亦盗也；内圣而外不王，盗亦王也。</div>
+        <p>同学们！大家精进起来——真正的读《维摩精舍丛书》！而且要抑扬顿挫、一气呵成地高声朗诵，把文义、文理、文气、文韵表达出来，要能巧妙地运气、换气、贯气地读，要使听者如沐春风。</p>
+        <div class="quote">
+            看吧！古道阳斜行人少。听吧！跛说横流盲师多。<br>
+            我们要打开慧眼、站稳脚跟、挺直胸膛，当仁不让，铁肩承当！
+        </div>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 中庸九经 -->
+    <div class="section-title">为天下国家有九经</div>
+    <div class="section-subtitle">修身乃至怀诸侯也 · 出自《中庸》</div>
+
+    <div class="content">
+        <p>凡为天下国家有九经：五伦（君臣、父子、夫妇、昆弟、朋友）是达道；智仁勇是达德。子曰：好学近乎智，力行近乎仁，知耻近乎勇；知斯三者，则知所以修身，知所以修身，则知所以治人，知所以治人，则知所以治天下国家矣。</p>
+        <p><strong>一者修身也。</strong>云何修身？修身则道立。何云道立？齐民盛服，非礼不动。（礼者何？礼者亲亲之杀，尊贤之等，礼所生也）。所以修身也。</p>
+        <p><strong>二者尊贤也。</strong>云何尊贤？尊贤则不惑。何云不惑？去谗远色，贱货而贵德。所以劝贤也。</p>
+        <p><strong>三者亲亲也。</strong>云何亲亲？亲亲则诸父昆弟不怨。何云不怨？尊其位，重其禄，同其好恶，所以劝亲亲也。</p>
+        <p><strong>四者敬大臣也。</strong>云何敬大臣？敬大臣则不眩。何云则不眩？官盛任使，所以劝大臣也。</p>
+        <p><strong>五者体群臣也。</strong>云何体群臣？体群臣则士之报礼重。何云报礼重？忠信重禄，所以劝仕也。</p>
+        <p><strong>六者子庶民也。</strong>云何子庶民？子庶民则百姓劝。何云百姓劝？时使薄敛，所以劝百姓也。</p>
+        <p><strong>七者来百工也。</strong>云何来百工？来百工则财用足。何云财用足？日省月试，既禀称事，所以劝百工也。</p>
+        <p><strong>八者柔远人也。</strong>云何柔远人？柔远人则四方归之。何云四方归之？送往迎来，嘉善而矜不能，所以柔远人也。</p>
+        <p><strong>九者怀诸侯也。</strong>云何怀诸侯？怀诸侯则天下畏之。何云天下畏之？继绝世，举废国，治乱持危，朝聘以时，厚往而薄来，所以怀诸侯也。</p>
+        <p>凡为天下国家有九经，所以行之者一也。（一者何也？一者心也。什么心？内「圣」之心。）人一能之己百之，人十能之己千之。果能此道矣，虽愚必明，虽柔必强！</p>
+    </div>
+
+    <!-- 王天下有三重 -->
+    <div class="section-title">王天下有三重焉</div>
+
+    <div class="content">
+        <p>王天下有三重焉。其寡过也乎。</p>
+        <p>（一）上焉者，虽善无征，无征不信，不信民弗从。</p>
+        <p>（二）下焉者，虽善不尊，不尊不信，不信民弗从。</p>
+        <p>（三）故君子之道本诸身（故：古也；古君子之道本诸身），征诸庶民，考诸三王而不谬，建诸天地而不悖，质诸鬼神而无疑，知天也。百世以俟圣人而不惑，知人也。是故君子动而式为天下道，行而式为天下法，言而式为天下则。远之则有望，近之则不厌。诗曰：在彼无恶，在此无射，庶几夙夜，以永终誉。君子未有不如此，而蚤有誉于天下者也。</p>
+    </div>
+
+    <!-- 治天下如观掌果 -->
+    <div class="section-title">治天下如观掌果</div>
+
+    <div class="content">
+        <p>春秋修其祖庙，陈其宗器，设其裳衣，荐其时食。宗庙之礼，所以序昭穆也；序爵，所以辨贵贱也；序事，所以辨贤也；旅酬下为上，所以逮贱也；燕毛，所以序齿也。践其位，行其礼，奏其乐；敬其所尊，爱其所亲；事死如事生，事亡如事存，孝之至也。郊社之礼，所以事上帝也；宗庙之礼，所以祀乎其先也。明乎郊社之礼、禘尝之义，治国其如示诸掌乎？（见《中庸胜唱》）</p>
+        <p>何以知其说治天下如掌？先儒但于禘之典礼纷纷聚讼，而于治天下如掌之义多未之释，此不明天地万物一体之征也。圣人明庶物，察人伦，立政教，皆从一体之义建立。心包天地，与天地同其德，立爱自亲而有等杀，亲亲尊尊，摄政教之根本，一体同源，尽报本反始之微意。</p>
+        <p>后儒不知祭义，妄解神道设教一语，以为藉神以自尊，挟天以欺世，采异域琐谈，以一神多神测孔教，以人事鬼事疑圣经，迁拘荒诞，宜其不能修一身治一国也。如达一体之义，则知人类本无亲疏，而势不能不立亲疏；本无等杀，而势不能不立等杀，以纲维人类；立七庙五庙，以慎终追远；立七祀五祀，以崇德报功；立天神地祇，以报本反始；探本垂迹，其道一也。明则礼乐，幽则鬼神，由根本而差别，由差别而根本，共贯共条，曲尽一心之妙。治国事天无一道，故知其说即能治天下。（见《维摩精舍丛书》二函「先生行状」）</p>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 维摩精舍宗旨 -->
+    <div class="宗旨">
+        <h3>维摩精舍宗旨</h3>
+        <p>燃诸圣之心灯</p>
+        <p>续众生之慧命</p>
+        <p>揭宇宙之至理</p>
+        <p>轨万有之一行</p>
+    </div>
+
+    <div class="content">
+        <p class="no-indent" style="text-align:center; color:var(--accent); font-weight:600;">本自清净。</p>
+        <p>结语：始以天命之谓性始，天命即是达天德者，即是法身、本性；终以上天之载，无声无臭，至矣！即一物也无。</p>
+        <div class="chorus">（众）同学们！同学们！快拿出力量，认真地朗读《维摩精舍丛书》！</div>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 袁翁焕仙夫子嘉言节选 -->
+    <div class="section-title">袁翁焕仙夫子嘉言节选</div>
+
+    <!-- 一切 -->
+    <div class="poem">
+        <div class="poem-title">—— 切 ——</div>
+        <p>一切境因心有，心亡一切境亡；</p>
+        <p>警尔情生一念，著之便起祸殃；</p>
+        <p>虽然理事如是，行解相应为强；</p>
+        <p>宣尼七十从心，香林卅年道场；</p>
+        <p>圆悟云：熏风自南来，殿阁生微凉。</p>
+        <p style="margin-top:1rem">明明心如幻化，何收何放何狂？</p>
+        <p>凡圣皆缘妄计，佛道魔道非良；</p>
+        <p>苦我下根愚钝，说食终未充肠；</p>
+        <p>悯余牛马小走，敢不日夜相将？</p>
+        <p style="margin-top:1rem">其体本虚无碍，明净遍澈十方；</p>
+        <p>了达性自空寂，当人何用不臧？</p>
+        <p>行时转生过患，波波度日堪伤；</p>
+        <p>何时冰河焰发，十方殊土齐光。</p>
+    </div>
+
+    <!-- 径 -->
+    <div class="poem">
+        <div class="poem-title">—— 径 ——</div>
+        <p>功德烦恼铸成，如何欲断烦恼。</p>
+        <p>愚人处处颠倒，不假方便修造。</p>
+        <p>自性本空具足，远比释迦为早。</p>
+        <p style="margin-top:1rem">诸佛都具二严，拈一放一自扰。</p>
+        <p>若除烦恼法药，菩提何处寻讨。</p>
+        <p>随缘任性风流，一切无剩无少。</p>
+        <p>坦然一径平成，昧者规规自小。</p>
+        <p style="margin-top:1rem">况彼祸福皆空，于空何恶何好。</p>
+        <p>烦恼即是菩提，亦无二边中道。</p>
+        <p>透得这个关楔，卓焉吾门种草。</p>
+    </div>
+
+    <!-- 线 -->
+    <div class="poem">
+        <div class="poem-title">—— 线（唱诵） ——</div>
+        <p>万古夫妇如幻，菩提宛然无绊。</p>
+        <p>如何赤绳系足，历劫修因无间。</p>
+        <p style="margin-top:1rem">如如亦妇妇好合，子子孙孙衍蔓。</p>
+        <p>处处显现假有，堂堂观露真面。</p>
+        <p style="margin-top:1rem">更有二乘圣者，恶色又如涂炭。</p>
+        <p>讵知诸法空寂，实际何恶何善。</p>
+        <p style="margin-top:1rem">夫夫妇妇好合，子子孙孙衍蔓。</p>
+        <p>处处显现假有，堂堂观露真面。</p>
+        <p style="margin-top:1rem">这是无上法船，为君少通一线。</p>
+        <p style="margin-top:1rem">幻人依幻演法。这个无上方便。</p>
+        <p>今时缘会非虚，琴瑟自应调办。</p>
+        <p>既为人天开眼，复志般若发焰。</p>
+        <p style="margin-top:1rem">堪笑凡愚颠倒，好色恣情迷乱。</p>
+        <p>似此好恶俨然，何时得达彼岸。</p>
+        <p style="margin-top:1rem">但能任运天然，大圆镜智常现。</p>
+        <p>这是无上法船，为君少通一线。</p>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 诗歌联偈 -->
+    <div class="section-title">诗歌联偈</div>
+
+    <div class="poem">
+        <div class="poem-title">随唱</div>
+        <p>南山人在北山阿，错把平原认险岘；</p>
+        <p>忘情片刻非关少，作业三祇一念多；</p>
+        <p>色色穷源空有我，心心相印本无他；</p>
+        <p>个个栖门通大道，凌风鹄子过新罗。</p>
+    </div>
+
+    <div class="poem">
+        <div class="poem-title">颂断无明</div>
+        <p>嗟君何事断无明，断却无明断又生；</p>
+        <p>心空万法非关静，足遍千山不是行；</p>
+        <p>了体明明无彼我，缘行处处有亏盈。</p>
+        <p>为报痴狂门外客，从来谁败复谁成。</p>
+    </div>
+
+    <div class="poem">
+        <div class="poem-title">咏根器优劣（唱诵）</div>
+        <p>梅开谁自问春先，小草无端计后前；</p>
+        <p>一派随心谈五位，几回肆口说三玄；</p>
+        <p>风回花送窥帘月，雪过云开带笑天；</p>
+        <p>凡圣由来非二法，言愚已妄况言贤。</p>
+    </div>
+
+    <div class="poem">
+        <div class="poem-title">孔释（唱诵）</div>
+        <p>是非心尽，孰住孰行？曰释曰孔，其义皆心；</p>
+        <p>尊孔非释，自背其明；尊释非孔，见亦失真；</p>
+        <p>此心非二，一亦不存；枝虽千异，根则同根；</p>
+        <p>途有万殊，到家皆亲；我语能仁，我见云云；</p>
+        <p>见亦非见，谁俗谁僧？无相光中，万相以形；</p>
+        <p>入此法门，不立见闻；离见即见，立闻不闻；</p>
+        <p>得无所得，释兮孔兮何分？</p>
+    </div>
+
+    <div class="poem">
+        <div class="poem-title">施食偈（唱诵）</div>
+        <p>如来一粒米，大如须弥山，百味皆具足，供养诸圣凡。</p>
+        <p>食者离诸苦，见者开欢颜，细咀此中味，鲜美妙难诠。</p>
+        <p>既不在内外，复不在中间，更不在不在，更不在不在！</p>
+        <p>的的香积厨，的大涅槃，的大法船，诸尊齐来格！</p>
+        <p>菩提道道圆，下尘嚼不尽，渊渊其如渊。</p>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- 修学旨趣 -->
+    <div class="section-title">修学旨趣</div>
+
+    <div class="content">
+        <p class="no-indent" style="text-align:center; font-weight:600; letter-spacing:0.15em;">以心为宗，无门为门，人成智成，不论宗派；有教无类，宁阙勿滥，堂生青草，不就人情。</p>
+    </div>
+
+    <!-- 同参共住修学心念 -->
+    <div class="section-title">同参共住修学心念</div>
+
+    <div class="content">
+        <p>同参道友，共住修学，是累劫善缘，实难遭遇，要极珍惜，慎勿轻忽，当辗转相视彼是我真善知识，是我大导师。与我为伴，同乘一船，同行一道，同一所趣，同一事业。学同时，修同处，教同师。及所学法皆为净佛国土，成就有情，同一无异。</p>
+        <p>若彼住杂作意，远离一切智智相应作意。我于当中：不同彼学，不同彼修，不同彼行，不同彼言。然不应生嫌弃心念；当悲慈愍哀，引令开发：远离杂作意，不离一切智智相应作意。我仍于中，同彼学，同彼修，同彼行，同彼切磋，同彼求证，同彼共智共力，净佛国土，成就有情。</p>
+        <p class="no-indent" style="text-align:center; font-weight:600; color:var(--accent);">作此念者是为正念，非此念者是为邪念，当即远离。</p>
+    </div>
+
+    <!-- 修学理念 -->
+    <div class="宗旨">
+        <h3>修学理念</h3>
+        <p>修德尚智 · 慈悲喜舍 · 谦恭谨慎 · 和衷共济</p>
+        <p>习经诵典 · 精进正信 · 弘道扬善 · 福慧大众</p>
+    </div>
+
+    <!-- 道德规范 -->
+    <div class="宗旨" style="border-color: var(--accent);">
+        <h3>道德规范</h3>
+        <p>爱国守法 · 明礼诚信 · 团结友善 · 勤俭自强 · 敬业奉献</p>
+    </div>
+
+    <!-- 修学守则 -->
+    <div class="rules">
+        <h3>修学守则</h3>
+        <div class="rule-item">团体以和睦为兴盛</div>
+        <div class="rule-item">待人以至诚为基石</div>
+        <div class="rule-item">处众以谦恭为有理</div>
+        <div class="rule-item">学问以勤习为入门</div>
+        <div class="rule-item">凡事以预立而不劳</div>
+        <div class="rule-item">接物以谨慎为根本</div>
+        <div class="rule-item">精进以持恒为准则</div>
+        <div class="rule-item">健康以慎食为良药</div>
+        <div class="rule-item">长幼以慈爱为进德</div>
+        <div class="rule-item">诤议以宽恕为旨要</div>
+    </div>
+
+    <!-- 原文扫描件 -->
+    <div class="section-title">原文扫描件</div>
+    <div class="section-subtitle">以下为PDF原文图片（竖排繁体，从右到左阅读）</div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;margin-bottom:2rem;">
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 1 页</p>
+            <img src="page-01.png" alt="原文第1页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 2 页</p>
+            <img src="page-02.png" alt="原文第2页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 3 页</p>
+            <img src="page-03.png" alt="原文第3页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 4 页</p>
+            <img src="page-04.png" alt="原文第4页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 5 页</p>
+            <img src="page-05.png" alt="原文第5页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 6 页</p>
+            <img src="page-06.png" alt="原文第6页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 7 页</p>
+            <img src="page-07.png" alt="原文第7页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 8 页</p>
+            <img src="page-08.png" alt="原文第8页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 9 页</p>
+            <img src="page-09.png" alt="原文第9页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="width:100%;text-align:center;">
+            <p style="color:var(--text-muted);margin-bottom:0.5rem;font-size:0.9rem;">第 10 页</p>
+            <img src="page-10.png" alt="原文第10页" style="max-width:100%;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>追忆 李自申先生八十七周年母难日茶话</p>
+        <p>原文为竖排繁体扫描件 · 由AI辅助转录为简体中文横排版</p>
+        <p>如有疏漏，以原文为准</p>
+    </div>
+
+</div>
+
+</body>
+</html>

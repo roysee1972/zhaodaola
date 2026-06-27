@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生困境网络图 - 智囊掌中宝</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0c1445 0%, #1a0a2e 50%, #0d1b2a 100%);
+            color: #e0e0e0;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        /* 头部 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 30, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 180, 255, 0.2);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            font-size: 20px;
+            background: linear-gradient(90deg, #64b5f6, #ce93d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        .header .subtitle {
+            font-size: 13px;
+            color: #888;
+        }
+        .header .breadcrumb {
+            font-size: 13px;
+            color: #64b5f6;
+        }
+        .header .breadcrumb span {
+            cursor: pointer;
+        }
+        .header .breadcrumb span:hover {
+            text-decoration: underline;
+        }
+        
+        /* 3D容器 */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 信息面板 */
+        .info-panel {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            width: 380px;
+            max-height: calc(100vh - 80px);
+            background: rgba(15, 20, 50, 0.95);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+        .info-panel::-webkit-scrollbar { width: 6px; }
+        .info-panel::-webkit-scrollbar-track { background: transparent; }
+        .info-panel::-webkit-scrollbar-thumb { background: rgba(100, 180, 255, 0.3); border-radius: 3px; }
+        
+        .info-panel .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .info-panel .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .info-panel h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            padding-right: 30px;
+        }
+        .info-panel .dim-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        .info-panel .desc {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .info-panel .case-count {
+            font-size: 13px;
+            color: #64b5f6;
+            margin-bottom: 16px;
+        }
+        
+        /* 关联标签 */
+        .connections {
+            margin-bottom: 20px;
+        }
+        .connections h3 {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .conn-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .conn-tag {
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid;
+            transition: all 0.2s;
+        }
+        .conn-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 案例列表 */
+        .case-list h3 {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .case-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .case-item:hover {
+            background: rgba(100, 180, 255, 0.1);
+            border-color: rgba(100, 180, 255, 0.3);
+        }
+        .case-item .case-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .case-item .case-keyword {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+        }
+        
+        /* 案例详情弹窗 */
+        .case-detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .case-detail-content {
+            background: #1a1a3a;
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+        }
+        .case-detail-content::-webkit-scrollbar { width: 6px; }
+        .case-detail-content::-webkit-scrollbar-track { background: transparent; }
+        .case-detail-content::-webkit-scrollbar-thumb { background: rgba(100, 180, 255, 0.3); border-radius: 3px; }
+        
+        .case-detail-content .modal-close {
+            float: right;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .case-detail-content h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            padding-right: 40px;
+        }
+        .case-detail-content .meta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .case-detail-content .meta span {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            background: rgba(100, 180, 255, 0.15);
+            color: #64b5f6;
+        }
+        .case-detail-content .section {
+            margin-bottom: 20px;
+        }
+        .case-detail-content .section h3 {
+            font-size: 15px;
+            color: #ce93d8;
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 3px solid #ce93d8;
+        }
+        .case-detail-content .section p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        /* 搜索框 */
+        .search-box {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 90;
+            width: 400px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            background: rgba(15, 20, 50, 0.9);
+            color: #e0e0e0;
+            font-size: 14px;
+            outline: none;
+            backdrop-filter: blur(10px);
+        }
+        .search-box input:focus {
+            border-color: #64b5f6;
+        }
+        .search-box input::placeholder {
+            color: #666;
+        }
+        
+        /* 搜索结果 */
+        .search-results {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 90;
+            width: 400px;
+            max-height: 400px;
+            background: rgba(15, 20, 50, 0.95);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            border-radius: 12px;
+            overflow-y: auto;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+        .search-results .result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-results .result-item:hover {
+            background: rgba(100, 180, 255, 0.1);
+        }
+        .search-results .result-item:last-child {
+            border-bottom: none;
+        }
+        .search-results .result-item .result-title {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .search-results .result-item .result-keyword {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* 维度图例 */
+        .dim-legend {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 80;
+            background: rgba(15, 20, 50, 0.9);
+            border: 1px solid rgba(100, 180, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .dim-legend h3 {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+        }
+        .dim-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .dim-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .dim-item:last-child {
+            margin-bottom: 0;
+        }
+        .dim-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dim-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .dim-desc {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* 提示 */
+        .hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 50;
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .header h1 {
+                font-size: 17px;
+            }
+            .header .subtitle {
+                font-size: 11px;
+            }
+            .header .breadcrumb {
+                font-size: 11px;
+            }
+            .search-box {
+                width: calc(100% - 32px);
+                top: 55px;
+            }
+            .search-box input {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+            .search-results {
+                width: calc(100% - 32px);
+                top: 95px;
+                max-height: 50vh;
+            }
+            .info-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-height: 60vh;
+                border-radius: 16px 16px 0 0;
+                border-bottom: none;
+            }
+            .info-panel h2 {
+                font-size: 18px;
+            }
+            .case-detail-content {
+                max-width: 100%;
+                max-height: 90vh;
+                border-radius: 16px 16px 0 0;
+            }
+            .dim-legend {
+                bottom: auto;
+                top: 100px;
+                left: 10px;
+                padding: 12px;
+            }
+            .dim-legend h3 {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+            .dim-item {
+                gap: 6px;
+                margin-bottom: 6px;
+            }
+            .dim-name {
+                font-size: 12px;
+            }
+            .dim-desc {
+                font-size: 10px;
+            }
+            .hint {
+                bottom: 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <div>
+            <h1>人生困境网络图</h1>
+            <div class="subtitle">860个中国古代智慧案例 · 16种困境类型 · 4个维度</div>
+        </div>
+        <div class="breadcrumb" id="breadcrumb">
+            <span onclick="resetView()">全部维度</span>
+        </div>
+    </div>
+    
+    <!-- 搜索框 -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索困境关键词、案例名称...">
+    </div>
+    
+    <!-- 搜索结果 -->
+    <div class="search-results" id="searchResults"></div>
+    
+    <!-- 3D容器 -->
+    <div id="canvas-container"></div>
+    
+    <!-- 信息面板 -->
+    <div class="info-panel" id="infoPanel">
+        <button class="close-btn" onclick="closePanel()">×</button>
+        <h2 id="panelTitle"></h2>
+        <div class="dim-badge" id="panelDim"></div>
+        <div class="desc" id="panelDesc"></div>
+        <div class="case-count" id="panelCount"></div>
+        
+        <div class="connections" id="panelConnections">
+            <h3>关联类型</h3>
+            <div class="conn-tags" id="panelConns"></div>
+        </div>
+        
+        <div class="case-list">
+            <h3>典型案例</h3>
+            <div id="panelCases"></div>
+        </div>
+    </div>
+    
+    <!-- 案例详情弹窗 -->
+    <div class="case-detail-modal" id="caseModal">
+        <div class="case-detail-content" id="caseContent">
+            <button class="modal-close" onclick="closeCaseModal()">×</button>
+            <div id="caseDetail"></div>
+        </div>
+    </div>
+    
+    <!-- 维度图例 -->
+    <div class="dim-legend">
+        <h3>四个维度</h3>
+        <div class="dim-item" onclick="showAllSubtypes()" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 8px;">
+            <div class="dim-dot" style="background: linear-gradient(135deg, #4FC3F7, #BA68C8, #EF5350, #FFA726)"></div>
+            <div>
+                <div class="dim-name" style="color: #fff">全部</div>
+                <div class="dim-desc">人生困境全境图</div>
+            </div>
+        </div>
+        <div class="dim-item" onclick="focusDimension('认知')">
+            <div class="dim-dot" style="background: #4FC3F7"></div>
+            <div>
+                <div class="dim-name" style="color: #4FC3F7">认知</div>
+                <div class="dim-desc">我看不清</div>
+            </div>
+        </div>
+        <div class="dim-item" onclick="focusDimension('心理')">
+            <div class="dim-dot" style="background: #BA68C8"></div>
+            <div>
+                <div class="dim-name" style="color: #BA68C8">心理</div>
+                <div class="dim-desc">我做不到</div>
+            </div>
+        </div>
+        <div class="dim-item" onclick="focusDimension('关系')">
+            <div class="dim-dot" style="background: #EF5350"></div>
+            <div>
+                <div class="dim-name" style="color: #EF5350">关系</div>
+                <div class="dim-desc">我搞不定</div>
+            </div>
+        </div>
+        <div class="dim-item" onclick="focusDimension('生存')">
+            <div class="dim-dot" style="background: #FFA726"></div>
+            <div>
+                <div class="dim-name" style="color: #FFA726">生存</div>
+                <div class="dim-desc">我活不了</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 提示 -->
+    <div class="hint">点击维度展开子类型 · 点击子类型查看案例 · 拖拽旋转 · 滚轮缩放</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // 全局数据
+        let hierarchyData = {};
+        let casesData = [];
+        let networkData = { connections: [] };
+        
+        // Three.js 变量
+        let scene, camera, renderer, controls;
+        let dimensionNodes = {};
+        let subtypeNodes = {};
+        let currentEdges = [];
+        let raycaster, mouse;
+        let hoveredNode = null;
+        let selectedNode = null;
+        let currentDimension = null;
+        
+        // 维度颜色
+        const dimColors = {
+            '认知': '#4FC3F7',
+            '心理': '#BA68C8',
+            '关系': '#EF5350',
+            '生存': '#FFA726'
+        };
+        
+        // 加载数据
+        async function loadData() {
+            try {
+                console.log('开始加载数据...');
+                
+                console.log('加载hierarchy.json...');
+                const hierarchyRes = await fetch('data/hierarchy.json');
+                console.log('hierarchy.json响应:', hierarchyRes.status);
+                
+                console.log('加载cases_with_subtypes.json...');
+                const casesRes = await fetch('data/cases_with_subtypes.json');
+                console.log('cases_with_subtypes.json响应:', casesRes.status);
+                
+                console.log('加载subtype_network.json...');
+                const networkRes = await fetch('data/subtype_network.json');
+                console.log('subtype_network.json响应:', networkRes.status);
+                
+                const hierarchyJson = await hierarchyRes.json();
+                hierarchyData = hierarchyJson.dimensions;
+                console.log('hierarchyData:', hierarchyData);
+                
+                casesData = await casesRes.json();
+                console.log('casesData长度:', casesData.length);
+                
+                networkData = await networkRes.json();
+                console.log('networkData:', networkData);
+                
+                console.log('数据加载完成:', {
+                    dimensions: Object.keys(hierarchyData).length,
+                    cases: casesData.length,
+                    connections: networkData.connections.length
+                });
+                
+                console.log('初始化Three.js场景...');
+                initScene();
+                
+                console.log('创建维度节点...');
+                createDimensionNodes();
+                
+                console.log('开始动画...');
+                animate();
+                
+                console.log('初始化完成!');
+            } catch (error) {
+                console.error('数据加载失败:', error);
+                console.error('错误堆栈:', error.stack);
+            }
+        }
+        
+        // 初始化场景
+        function initScene() {
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x0c1445, 0.0008);
+            
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 5000);
+            camera.position.set(0, 200, 600);
+            
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+            
+            // 环境光
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+            scene.add(ambientLight);
+            
+            // 点光源
+            const pointLight1 = new THREE.PointLight(0x64b5f6, 1, 1000);
+            pointLight1.position.set(300, 300, 300);
+            scene.add(pointLight1);
+            
+            const pointLight2 = new THREE.PointLight(0xce93d8, 0.8, 1000);
+            pointLight2.position.set(-300, -200, 200);
+            scene.add(pointLight2);
+            
+            // 轨道控制
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enablePan = false;
+            controls.minDistance = 200;
+            controls.maxDistance = 1200;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.5;
+            
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+            
+            window.addEventListener('resize', onResize);
+            renderer.domElement.addEventListener('click', onClick);
+            renderer.domElement.addEventListener('mousemove', onMouseMove);
+            
+            // 搜索功能
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', onSearch);
+            searchInput.addEventListener('focus', () => { controls.autoRotate = false; });
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    document.getElementById('searchResults').style.display = 'none';
+                    controls.autoRotate = true;
+                }, 200);
+            });
+        }
+        
+        // 创建维度节点
+        function createDimensionNodes() {
+            const dimNames = Object.keys(hierarchyData);
+            const radius = 200;
+            
+            dimNames.forEach((dimName, i) => {
+                const dimInfo = hierarchyData[dimName];
+                const angle = (i / dimNames.length) * Math.PI * 2 - Math.PI / 2;
+                const x = Math.cos(angle) * radius;
+                const z = Math.sin(angle) * radius;
+                
+                // 计算维度总案例数
+                let totalCount = 0;
+                Object.values(dimInfo.subtypes).forEach(st => totalCount += st.count);
+                
+                // 节点大小
+                const size = Math.max(40, Math.min(60, totalCount / 10));
+                
+                // 创建球体
+                const geometry = new THREE.SphereGeometry(size, 32, 32);
+                const material = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color(dimInfo.color),
+                    emissive: new THREE.Color(dimInfo.color),
+                    emissiveIntensity: 0.3,
+                    shininess: 80,
+                    transparent: true,
+                    opacity: 0.9,
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.set(x, 0, z);
+                mesh.userData = { type: 'dimension', name: dimName, info: dimInfo };
+                scene.add(mesh);
+                
+                // 光晕
+                const glowGeometry = new THREE.SphereGeometry(size * 1.3, 32, 32);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color(dimInfo.color),
+                    transparent: true,
+                    opacity: 0.1,
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                glow.raycast = () => {};
+                mesh.add(glow);
+                
+                // 标签
+                const canvas = document.createElement('canvas');
+                canvas.width = 256;
+                canvas.height = 128;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 32px PingFang SC, Microsoft YaHei';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(dimName, 128, 40);
+                ctx.font = '22px PingFang SC, Microsoft YaHei';
+                ctx.fillStyle = '#aaa';
+                ctx.fillText(dimInfo.desc, 128, 80);
+                
+                const texture = new THREE.CanvasTexture(canvas);
+                const spriteMaterial = new THREE.SpriteMaterial({ map: texture, transparent: true });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.raycast = () => {};
+                sprite.position.set(0, size + 25, 0);
+                sprite.scale.set(140, 70, 1);
+                mesh.add(sprite);
+                
+                dimensionNodes[dimName] = mesh;
+            });
+            
+            // 创建维度之间的连线（虚线）
+            const dimConnections = [
+                ['认知', '心理'], ['认知', '关系'], ['认知', '生存'],
+                ['心理', '关系'], ['心理', '生存'], ['关系', '生存']
+            ];
+            
+            dimConnections.forEach(([d1, d2]) => {
+                const node1 = dimensionNodes[d1];
+                const node2 = dimensionNodes[d2];
+                if (!node1 || !node2) return;
+                
+                const points = [node1.position.clone(), node2.position.clone()];
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                const material = new THREE.LineBasicMaterial({
+                    color: 0x64b5f6,
+                    transparent: true,
+                    opacity: 0.1,
+                });
+                const line = new THREE.Line(geometry, material);
+                line.userData = { type: 'dim-edge' };
+                scene.add(line);
+            });
+        }
+        
+        // 展开维度
+        function expandDimension(dimName) {
+            // 清除之前的子类型
+            clearSubtypes();
+            
+            currentDimension = dimName;
+            const dimInfo = hierarchyData[dimName];
+            const dimNode = dimensionNodes[dimName];
+            const subtypes = Object.keys(dimInfo.subtypes);
+            
+            // 更新面包屑
+            document.getElementById('breadcrumb').innerHTML = `
+                <span onclick="resetView()">全部维度</span> > ${dimName}
+            `;
+            
+            // 隐藏其他维度
+            Object.entries(dimensionNodes).forEach(([name, node]) => {
+                if (name !== dimName) {
+                    node.visible = false;
+                }
+            });
+            
+            // 隐藏维度之间的连线
+            scene.traverse(obj => {
+                if (obj.userData && obj.userData.type === 'dim-edge') {
+                    obj.visible = false;
+                }
+            });
+            
+            // 创建子类型节点
+            const radius = 150;
+            subtypes.forEach((subtypeName, i) => {
+                const subtypeInfo = dimInfo.subtypes[subtypeName];
+                const angle = (i / subtypes.length) * Math.PI * 2 - Math.PI / 2;
+                const x = dimNode.position.x + Math.cos(angle) * radius;
+                const z = dimNode.position.z + Math.sin(angle) * radius;
+                
+                const size = Math.max(20, Math.min(40, subtypeInfo.count / 5));
+                
+                const geometry = new THREE.SphereGeometry(size, 32, 32);
+                const material = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color(subtypeInfo.color),
+                    emissive: new THREE.Color(subtypeInfo.color),
+                    emissiveIntensity: 0.3,
+                    shininess: 80,
+                    transparent: true,
+                    opacity: 0.9,
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.set(x, 0, z);
+                mesh.userData = { type: 'subtype', name: subtypeName, dim: dimName, info: subtypeInfo };
+                scene.add(mesh);
+                
+                // 光晕
+                const glowGeometry = new THREE.SphereGeometry(size * 1.3, 32, 32);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color(subtypeInfo.color),
+                    transparent: true,
+                    opacity: 0.1,
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                glow.raycast = () => {};
+                mesh.add(glow);
+                
+                // 标签
+                const canvas = document.createElement('canvas');
+                canvas.width = 256;
+                canvas.height = 128;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 28px PingFang SC, Microsoft YaHei';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(subtypeName, 128, 40);
+                ctx.font = '20px PingFang SC, Microsoft YaHei';
+                ctx.fillStyle = '#aaa';
+                ctx.fillText(`${subtypeInfo.count}个案例`, 128, 80);
+                
+                const texture = new THREE.CanvasTexture(canvas);
+                const spriteMaterial = new THREE.SpriteMaterial({ map: texture, transparent: true });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.raycast = () => {};
+                sprite.position.set(0, size + 20, 0);
+                sprite.scale.set(120, 60, 1);
+                mesh.add(sprite);
+                
+                subtypeNodes[subtypeName] = mesh;
+                
+                // 从维度到子类型的连线
+                const points = [dimNode.position.clone(), mesh.position.clone()];
+                const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                const lineMaterial = new THREE.LineBasicMaterial({
+                    color: new THREE.Color(subtypeInfo.color),
+                    transparent: true,
+                    opacity: 0.3,
+                });
+                const line = new THREE.Line(lineGeometry, lineMaterial);
+                line.userData = { type: 'dim-subtype-edge' };
+                scene.add(line);
+                currentEdges.push(line);
+            });
+            
+            // 创建子类型之间的关联连线
+            networkData.connections.forEach(conn => {
+                const sourceNode = subtypeNodes[conn.source];
+                const targetNode = subtypeNodes[conn.target];
+                if (!sourceNode || !targetNode) return;
+                
+                const points = [];
+                points.push(sourceNode.position.clone());
+                const mid = new THREE.Vector3().addVectors(
+                    sourceNode.position,
+                    targetNode.position
+                ).multiplyScalar(0.5);
+                mid.y += 30;
+                points.push(mid);
+                points.push(targetNode.position.clone());
+                
+                const curve = new THREE.QuadraticBezierCurve3(...points);
+                const tubeGeometry = new THREE.TubeGeometry(curve, 20, 1, 8, false);
+                const tubeMaterial = new THREE.MeshBasicMaterial({
+                    color: 0x64b5f6,
+                    transparent: true,
+                    opacity: 0.15,
+                });
+                const tube = new THREE.Mesh(tubeGeometry, tubeMaterial);
+                tube.userData = { type: 'subtype-edge', ...conn };
+                scene.add(tube);
+                currentEdges.push(tube);
+            });
+            
+            // 聚焦到维度
+            focusOnNode(dimNode);
+        }
+        
+        // 清除子类型
+        function clearSubtypes() {
+            Object.values(subtypeNodes).forEach(node => {
+                scene.remove(node);
+            });
+            subtypeNodes = {};
+            
+            currentEdges.forEach(edge => {
+                scene.remove(edge);
+            });
+            currentEdges = [];
+            
+            // 清除所有子类型相关的对象
+            const toRemove = [];
+            scene.traverse(obj => {
+                if (obj.userData && (obj.userData.type === 'subtype' || 
+                    obj.userData.type === 'dim-subtype-edge' || 
+                    obj.userData.type === 'subtype-edge')) {
+                    toRemove.push(obj);
+                }
+            });
+            toRemove.forEach(obj => scene.remove(obj));
+        }
+        
+        // 显示全部子类型
+        function showAllSubtypes() {
+            // 清除之前的子类型
+            clearSubtypes();
+            
+            currentDimension = 'all';
+            
+            // 更新面包屑
+            document.getElementById('breadcrumb').innerHTML = `
+                <span onclick="resetView()">全部维度</span> > 人生困境全境图
+            `;
+            
+            // 隐藏维度节点
+            Object.values(dimensionNodes).forEach(node => {
+                node.visible = false;
+            });
+            
+            // 隐藏维度之间的连线
+            scene.traverse(obj => {
+                if (obj.userData && obj.userData.type === 'dim-edge') {
+                    obj.visible = false;
+                }
+            });
+            
+            // 创建所有子类型节点
+            const allSubtypes = [];
+            Object.entries(hierarchyData).forEach(([dimName, dimInfo]) => {
+                Object.entries(dimInfo.subtypes).forEach(([subtypeName, subtypeInfo]) => {
+                    allSubtypes.push({
+                        name: subtypeName,
+                        dim: dimName,
+                        ...subtypeInfo
+                    });
+                });
+            });
+            
+            // 环形布局
+            const radius = 250;
+            allSubtypes.forEach((subtype, i) => {
+                const angle = (i / allSubtypes.length) * Math.PI * 2 - Math.PI / 2;
+                const x = Math.cos(angle) * radius;
+                const z = Math.sin(angle) * radius;
+                
+                const size = Math.max(20, Math.min(40, subtype.count / 5));
+                
+                const geometry = new THREE.SphereGeometry(size, 32, 32);
+                const material = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color(subtype.color),
+                    emissive: new THREE.Color(subtype.color),
+                    emissiveIntensity: 0.3,
+                    shininess: 80,
+                    transparent: true,
+                    opacity: 0.9,
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.set(x, 0, z);
+                mesh.userData = { type: 'subtype', name: subtype.name, dim: subtype.dim, info: subtype };
+                scene.add(mesh);
+                
+                // 光晕
+                const glowGeometry = new THREE.SphereGeometry(size * 1.3, 32, 32);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color(subtype.color),
+                    transparent: true,
+                    opacity: 0.1,
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                glow.raycast = () => {};
+                mesh.add(glow);
+                
+                // 标签
+                const canvas = document.createElement('canvas');
+                canvas.width = 256;
+                canvas.height = 128;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 24px PingFang SC, Microsoft YaHei';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(subtype.name, 128, 35);
+                ctx.font = '18px PingFang SC, Microsoft YaHei';
+                ctx.fillStyle = '#aaa';
+                ctx.fillText(`${subtype.count}个案例`, 128, 65);
+                ctx.font = '16px PingFang SC, Microsoft YaHei';
+                ctx.fillStyle = dimColors[subtype.dim];
+                ctx.fillText(`[${subtype.dim}]`, 128, 95);
+                
+                const texture = new THREE.CanvasTexture(canvas);
+                const spriteMaterial = new THREE.SpriteMaterial({ map: texture, transparent: true });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.raycast = () => {};
+                sprite.position.set(0, size + 20, 0);
+                sprite.scale.set(120, 60, 1);
+                mesh.add(sprite);
+                
+                subtypeNodes[subtype.name] = mesh;
+            });
+            
+            // 创建子类型之间的关联连线
+            networkData.connections.forEach(conn => {
+                const sourceNode = subtypeNodes[conn.source];
+                const targetNode = subtypeNodes[conn.target];
+                if (!sourceNode || !targetNode) return;
+                
+                const points = [];
+                points.push(sourceNode.position.clone());
+                const mid = new THREE.Vector3().addVectors(
+                    sourceNode.position,
+                    targetNode.position
+                ).multiplyScalar(0.5);
+                mid.y += 30;
+                points.push(mid);
+                points.push(targetNode.position.clone());
+                
+                const curve = new THREE.QuadraticBezierCurve3(...points);
+                const tubeGeometry = new THREE.TubeGeometry(curve, 20, 1, 8, false);
+                const tubeMaterial = new THREE.MeshBasicMaterial({
+                    color: 0x64b5f6,
+                    transparent: true,
+                    opacity: 0.15,
+                });
+                const tube = new THREE.Mesh(tubeGeometry, tubeMaterial);
+                tube.userData = { type: 'subtype-edge', ...conn };
+                scene.add(tube);
+                currentEdges.push(tube);
+            });
+            
+            // 关闭面板
+            closePanel();
+            
+            // 恢复自动旋转
+            controls.autoRotate = true;
+            
+            // 调整相机位置
+            camera.position.set(0, 400, 500);
+            controls.target.set(0, 0, 0);
+        }
+        
+        // 重置视图
+        function resetView() {
+            clearSubtypes();
+            currentDimension = null;
+            
+            // 显示所有维度
+            Object.values(dimensionNodes).forEach(node => {
+                node.visible = true;
+            });
+            
+            // 显示维度之间的连线
+            scene.traverse(obj => {
+                if (obj.userData && obj.userData.type === 'dim-edge') {
+                    obj.visible = true;
+                }
+            });
+            
+            // 更新面包屑
+            document.getElementById('breadcrumb').innerHTML = '<span onclick="resetView()">全部维度</span>';
+            
+            // 关闭面板
+            closePanel();
+            
+            // 恢复自动旋转
+            controls.autoRotate = true;
+            
+            // 重置相机
+            camera.position.set(0, 200, 600);
+            controls.target.set(0, 0, 0);
+        }
+        
+        // 聚焦到维度
+        function focusDimension(dimName) {
+            expandDimension(dimName);
+        }
+        
+        // 聚焦到节点
+        function focusOnNode(node) {
+            const targetPos = node.position.clone();
+            const cameraOffset = new THREE.Vector3(100, 150, 200);
+            const newCameraPos = targetPos.clone().add(cameraOffset);
+            
+            // 动画移动相机
+            const startPos = camera.position.clone();
+            const startTarget = controls.target.clone();
+            const duration = 1000;
+            const startTime = Date.now();
+            
+            function animateCamera() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                
+                camera.position.lerpVectors(startPos, newCameraPos, easeProgress);
+                controls.target.lerpVectors(startTarget, targetPos, easeProgress);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateCamera);
+                }
+            }
+            
+            controls.autoRotate = false;
+            animateCamera();
+        }
+        
+        // 点击事件
+        function onClick(event) {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            
+            raycaster.setFromCamera(mouse, camera);
+            
+            // 检测维度节点
+            const dimIntersects = raycaster.intersectObjects(Object.values(dimensionNodes));
+            if (dimIntersects.length > 0 && !currentDimension) {
+                const node = dimIntersects[0].object;
+                expandDimension(node.userData.name);
+                return;
+            }
+            
+            // 检测子类型节点
+            const subtypeIntersects = raycaster.intersectObjects(Object.values(subtypeNodes));
+            if (subtypeIntersects.length > 0) {
+                const node = subtypeIntersects[0].object;
+                selectSubtype(node.userData.name, node.userData.dim);
+                return;
+            }
+            
+            // 点击空白处
+            if (currentDimension) {
+                // 在子类型视图中，点击空白处不重置
+            } else {
+                closePanel();
+            }
+        }
+        
+        // 鼠标移动
+        function onMouseMove(event) {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            
+            raycaster.setFromCamera(mouse, camera);
+            
+            const dimIntersects = raycaster.intersectObjects(Object.values(dimensionNodes));
+            const subtypeIntersects = raycaster.intersectObjects(Object.values(subtypeNodes));
+            
+            document.body.style.cursor = (dimIntersects.length > 0 || subtypeIntersects.length > 0) ? 'pointer' : 'default';
+            
+            // 高亮悬停节点
+            if (hoveredNode) {
+                hoveredNode.material.emissiveIntensity = 0.3;
+            }
+            
+            if (dimIntersects.length > 0 && !currentDimension) {
+                hoveredNode = dimIntersects[0].object;
+                hoveredNode.material.emissiveIntensity = 0.6;
+            } else if (subtypeIntersects.length > 0) {
+                hoveredNode = subtypeIntersects[0].object;
+                hoveredNode.material.emissiveIntensity = 0.6;
+            } else {
+                hoveredNode = null;
+            }
+            
+            // 高亮关联连线
+            if (currentDimension) {
+                const selectedName = selectedNode || (hoveredNode ? hoveredNode.userData.name : null);
+                scene.traverse(obj => {
+                    if (obj.userData && obj.userData.type === 'subtype-edge') {
+                        if (selectedName) {
+                            const isRelated = obj.userData.source === selectedName || obj.userData.target === selectedName;
+                            obj.material.opacity = isRelated ? 0.5 : 0.05;
+                        } else {
+                            obj.material.opacity = 0.15;
+                        }
+                    }
+                });
+            }
+        }
+        
+        // 选择子类型
+        function selectSubtype(subtypeName, dimName) {
+            selectedNode = subtypeName;
+            const dimInfo = hierarchyData[dimName];
+            const subtypeInfo = dimInfo.subtypes[subtypeName];
+            
+            // 设置面板
+            document.getElementById('panelTitle').textContent = subtypeName;
+            document.getElementById('panelTitle').style.color = subtypeInfo.color;
+            
+            const dimBadge = document.getElementById('panelDim');
+            dimBadge.textContent = dimName;
+            dimBadge.style.background = dimColors[dimName] + '30';
+            dimBadge.style.color = dimColors[dimName];
+            
+            document.getElementById('panelDesc').textContent = subtypeInfo.desc;
+            document.getElementById('panelCount').textContent = `共 ${subtypeInfo.count} 个案例`;
+            
+            // 关联标签
+            const conns = getSubtypeConnections(subtypeName);
+            document.getElementById('panelConns').innerHTML = conns.map(conn => {
+                const connDim = getSubtypeDim(conn);
+                const connInfo = hierarchyData[connDim].subtypes[conn];
+                return `<span class="conn-tag" style="border-color:${connInfo.color};color:${connInfo.color}" onclick="jumpToSubtype('${conn}', '${connDim}')">${conn}</span>`;
+            }).join('');
+            
+            // 案例列表
+            const cases = casesData.filter(c => c.subtype === subtypeName).slice(0, 10);
+            document.getElementById('panelCases').innerHTML = cases.map(c => `
+                <div class="case-item" onclick="showCaseDetail('${c.filename}')">
+                    <div class="case-title">${c.title}</div>
+                    <div class="case-keyword">${c.dilemma_keyword}</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('infoPanel').style.display = 'block';
+            
+            // 高亮选中节点
+            Object.values(subtypeNodes).forEach(node => {
+                if (node.userData.name === subtypeName) {
+                    node.material.emissiveIntensity = 0.8;
+                } else {
+                    node.material.emissiveIntensity = 0.15;
+                }
+            });
+        }
+        
+        // 获取子类型关联
+        function getSubtypeConnections(subtypeName) {
+            const conns = [];
+            networkData.connections.forEach(conn => {
+                if (conn.source === subtypeName) conns.push(conn.target);
+                if (conn.target === subtypeName) conns.push(conn.source);
+            });
+            return [...new Set(conns)];
+        }
+        
+        // 获取子类型所属维度
+        function getSubtypeDim(subtypeName) {
+            for (const [dimName, dimInfo] of Object.entries(hierarchyData)) {
+                if (dimInfo.subtypes[subtypeName]) return dimName;
+            }
+            return null;
+        }
+        
+        // 跳转到子类型
+        function jumpToSubtype(subtypeName, dimName) {
+            if (dimName !== currentDimension) {
+                expandDimension(dimName);
+            }
+            setTimeout(() => selectSubtype(subtypeName, dimName), 100);
+        }
+        
+        // 关闭面板
+        function closePanel() {
+            document.getElementById('infoPanel').style.display = 'none';
+            selectedNode = null;
+            
+            // 恢复所有节点
+            Object.values(subtypeNodes).forEach(node => {
+                node.material.emissiveIntensity = 0.3;
+            });
+        }
+        
+        // 搜索
+        function onSearch(e) {
+            const query = e.target.value.trim();
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query) {
+                resultsDiv.style.display = 'none';
+                return;
+            }
+            
+            const results = casesData.filter(c => 
+                c.title.includes(query) ||
+                c.dilemma_keyword.includes(query) ||
+                c.subtype.includes(query) ||
+                (c.era && c.era.includes(query)) ||
+                (c.problem && c.problem.includes(query))
+            ).slice(0, 20);
+            
+            if (results.length === 0) {
+                resultsDiv.style.display = 'none';
+                return;
+            }
+            
+            resultsDiv.innerHTML = results.map(c => `
+                <div class="result-item" onclick="showCaseDetail('${c.filename}')">
+                    <div class="result-title">${c.title}</div>
+                    <div class="result-keyword">${c.dilemma_keyword}</div>
+                </div>
+            `).join('');
+            resultsDiv.style.display = 'block';
+        }
+        
+        // 显示案例详情
+        async function showCaseDetail(filename) {
+            const caseData = casesData.find(c => c.filename === filename);
+            if (!caseData) return;
+            
+            try {
+                const response = await fetch(`cases/${filename}`);
+                const content = await response.text();
+                const sections = parseMarkdown(content);
+                
+                const subtypeInfo = hierarchyData[getSubtypeDim(caseData.subtype)]?.subtypes[caseData.subtype];
+                
+                document.getElementById('caseDetail').innerHTML = `
+                    <h2>${caseData.title}</h2>
+                    <div class="meta">
+                        <span style="background:${subtypeInfo?.color || '#666'}30;color:${subtypeInfo?.color || '#666'}">${caseData.subtype}</span>
+                        ${caseData.level ? `<span>${caseData.level}</span>` : ''}
+                    </div>
+                    ${sections.era ? `<div class="section"><h3>时代背景</h3><p>${sections.era}</p></div>` : ''}
+                    ${sections.problem ? `<div class="section"><h3>问题与困境</h3><p>${sections.problem}</p></div>` : ''}
+                    ${sections.keyword ? `<div class="section"><h3>人生困境关键词</h3><p style="color:#FFCA28;font-weight:500">${sections.keyword}</p></div>` : ''}
+                    ${sections.solution ? `<div class="section"><h3>应对策略</h3><p>${sections.solution}</p></div>` : ''}
+                    ${sections.model ? `<div class="section"><h3>思维模型</h3><p>${sections.model}</p></div>` : ''}
+                `;
+                
+                document.getElementById('caseModal').style.display = 'flex';
+            } catch (err) {
+                console.error('加载案例失败:', err);
+            }
+        }
+        
+        // 解析Markdown
+        function parseMarkdown(content) {
+            const sections = {};
+            
+            const eraMatch = content.match(/## (?:时代背景|2\. 时代背景)\s*\n([\s\S]*?)(?=\n## |\n---|\Z)/);
+            if (eraMatch) sections.era = eraMatch[1].trim();
+            
+            const problemMatch = content.match(/## (?:(?:主要人物面临的问题和困境|问题或困境|3\. 主要人物面临的问题和困境))\s*\n([\s\S]*?)(?=\n## |\n---|\Z)/);
+            if (problemMatch) sections.problem = problemMatch[1].trim().replace(/人生困境关键词：.*/, '').trim();
+            
+            const keywordMatch = content.match(/人生困境关键词[：:]\s*(.+)/);
+            if (keywordMatch) sections.keyword = keywordMatch[1].trim();
+            
+            const solutionMatch = content.match(/## (?:(?:主要人物采取的应对方式|策略和行动|4\. 主要人物采取的应对方式))\s*\n([\s\S]*?)(?=\n## |\n---|\Z)/);
+            if (solutionMatch) sections.solution = solutionMatch[1].trim();
+            
+            const modelMatch = content.match(/## (?:(?:案例延伸的思考与可提炼的思维模型|心智模型|思维模型))\s*\n([\s\S]*?)(?=\n## |\n---|\Z)/);
+            if (modelMatch) sections.model = modelMatch[1].trim();
+            
+            return sections;
+        }
+        
+        // 关闭案例弹窗
+        function closeCaseModal() {
+            document.getElementById('caseModal').style.display = 'none';
+        }
+        
+        // 窗口调整
+        function onResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // 动画循环
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            
+            // 节点浮动动画
+            Object.values(dimensionNodes).forEach((node, i) => {
+                if (node.visible) {
+                    node.position.y += Math.sin(Date.now() * 0.001 + i) * 0.1;
+                }
+            });
+            Object.values(subtypeNodes).forEach((node, i) => {
+                node.position.y += Math.sin(Date.now() * 0.001 + i + 100) * 0.1;
+            });
+            
+            renderer.render(scene, camera);
+        }
+        
+        // 初始化
+        loadData();
+    </script>
+</body>
+</html>

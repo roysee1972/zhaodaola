@@ -1,0 +1,108 @@
+{
+  "dimensions": {
+    "认知": {
+      "desc": "我看不清",
+      "color": "#4FC3F7",
+      "subtypes": {
+        "识人洞察": {
+          "desc": "看人的本质",
+          "color": "#81D4FA",
+          "count": 39
+        },
+        "预见远见": {
+          "desc": "看未来的趋势",
+          "color": "#4FC3F7",
+          "count": 38
+        },
+        "司法真相": {
+          "desc": "看事的真相",
+          "color": "#29B6F6",
+          "count": 122
+        },
+        "解梦拆字": {
+          "desc": "看符号的含义",
+          "color": "#03A9F4",
+          "count": 14
+        }
+      }
+    },
+    "心理": {
+      "desc": "我做不到",
+      "color": "#BA68C8",
+      "subtypes": {
+        "心理博弈": {
+          "desc": "洞察人性",
+          "color": "#CE93D8",
+          "count": 43
+        },
+        "隐忍退让": {
+          "desc": "控制情绪",
+          "color": "#BA68C8",
+          "count": 28
+        },
+        "品格操守": {
+          "desc": "坚守底线",
+          "color": "#AB47BC",
+          "count": 15
+        },
+        "道德困境": {
+          "desc": "价值选择",
+          "color": "#9C27B0",
+          "count": 12
+        }
+      }
+    },
+    "关系": {
+      "desc": "我搞不定",
+      "color": "#EF5350",
+      "subtypes": {
+        "权力政治": {
+          "desc": "上下关系",
+          "color": "#EF9A9A",
+          "count": 133
+        },
+        "沟通说服": {
+          "desc": "平行关系",
+          "color": "#EF5350",
+          "count": 73
+        },
+        "家族伦理": {
+          "desc": "亲密关系",
+          "color": "#E53935",
+          "count": 36
+        },
+        "制度治理": {
+          "desc": "规则关系",
+          "color": "#D32F2F",
+          "count": 51
+        }
+      }
+    },
+    "生存": {
+      "desc": "我活不了",
+      "color": "#FFA726",
+      "subtypes": {
+        "军事攻守": {
+          "desc": "对抗威胁",
+          "color": "#FFB74D",
+          "count": 115
+        },
+        "危机应对": {
+          "desc": "突发威胁",
+          "color": "#FFA726",
+          "count": 57
+        },
+        "经济资源": {
+          "desc": "资源匮乏",
+          "color": "#FF9800",
+          "count": 43
+        },
+        "策略创新": {
+          "desc": "破局之道",
+          "color": "#FB8C00",
+          "count": 42
+        }
+      }
+    }
+  }
+}

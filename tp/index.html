@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="里仁家传承 — 深度家族访谈与家风电子出版。用口述历史的方法，记录每个家庭的记忆与智慧。">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>里仁家传承 · 可行性分析 — 找到啦</title>
+<style>
+:root {
+  --bg: #f5e6c8;
+  --bg2: #eed9a4;
+  --text-dark: #5a3e1b;
+  --text-mid: #9a7a4a;
+  --text-light: #b89a6a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --red: #8b3a2a;
+  --border: rgba(139,90,43,0.18);
+  --shadow: rgba(90,60,20,0.12);
+  --radius: 8px;
+  --font: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.back-home-btn {
+  position: fixed; top: 16px; left: 16px; z-index: 200;
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 16px;
+  background: rgba(245,230,200,0.88);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: var(--font); font-size: 12px;
+  color: var(--text-mid); letter-spacing: 2px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.back-home-btn:hover {
+  background: rgba(245,230,200,0.98);
+  border-color: var(--gold);
+  color: var(--text-dark);
+}
+.container {
+  position: relative; z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.page-badge {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.page-title {
+  font-size: 28px;
+  letter-spacing: 6px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-mid);
+  letter-spacing: 3px;
+}
+.gold-line {
+  width: 120px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 24px auto 36px;
+}
+
+/* ===== 卡片区块 ===== */
+.section-card {
+  background: rgba(255,252,240,0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.section-card:hover { box-shadow: 0 4px 20px var(--shadow); }
+.section-card h2 {
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  letter-spacing: 3px;
+  text-align: center;
+  position: relative;
+}
+.section-card h2::before {
+  content: '';
+  display: block;
+  width: 40px; height: 2px;
+  background: linear-gradient(to right, var(--gold), var(--gold-light));
+  margin: 0 auto 10px;
+  border-radius: 1px;
+}
+.section-card p {
+  font-size: 15px;
+  color: #6a4e28;
+  line-height: 2.1;
+  margin-bottom: 14px;
+  text-indent: 2em;
+}
+.section-card p:last-child { margin-bottom: 0; }
+.section-card .no-indent { text-indent: 0; }
+.section-card .highlight {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+.section-card .quote {
+  text-align: center;
+  font-size: 16px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 20px 0;
+  text-indent: 0;
+  line-height: 2;
+}
+.section-card .tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 10px;
+  background: rgba(201,168,76,0.12);
+  color: var(--gold);
+  border-radius: 4px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+/* ===== 表格 ===== */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  -webkit-overflow-scrolling: touch;
+}
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: #6a4e28;
+}
+.styled-table th {
+  background: rgba(201,168,76,0.15);
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--gold);
+  white-space: nowrap;
+}
+.styled-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.8;
+}
+.styled-table tr:last-child td { border-bottom: none; }
+.styled-table tr:hover td { background: rgba(201,168,76,0.05); }
+
+/* ===== 列表 ===== */
+.styled-list {
+  list-style: none;
+  padding: 0;
+}
+.styled-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #6a4e28;
+  line-height: 2;
+}
+.styled-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.styled-list li strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* ===== 行动建议框 ===== */
+.action-box {
+  background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(232,200,112,0.08));
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 24px 0;
+  text-align: center;
+}
+.action-box h3 {
+  font-size: 16px;
+  color: var(--text-dark);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+.action-box p {
+  text-indent: 0 !important;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 2;
+}
+
+/* ===== 阶段步骤 ===== */
+.phase-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border);
+}
+.phase-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.phase-num {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--text-dark);
+}
+.phase-text {
+  flex: 1;
+  font-size: 15px;
+  color: #6a4e28;
+  line-height: 2;
+}
+.phase-text strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* ===== 底部 ===== */
+.footer-link {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.footer-link a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.footer-link a:hover {
+  color: var(--text-dark);
+  border-color: var(--gold);
+}
+.doc-meta {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  margin-top: 16px;
+}
+
+/* ===== 回到顶部 ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px; height: 40px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+}
+.back-to-top.show { opacity: 1; }
+.back-to-top:hover { background: rgba(201,168,76,0.3); }
+
+@media (max-width: 600px) {
+  .container { padding: 50px 16px 60px; }
+  .page-title { font-size: 22px; letter-spacing: 4px; }
+  .section-card { padding: 20px 18px; }
+  .section-card p { font-size: 14px; }
+  .styled-table { font-size: 12px; }
+  .styled-table th, .styled-table td { padding: 8px 8px; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+
+<button class="back-home-btn" onclick="window.location.href='../index.html'" title="返回主页">
+  <span style="color:var(--gold);">←</span> <span>返回主页</span>
+</button>
+
+<div class="container" id="main-content">
+
+  <div class="page-header">
+    <div class="page-badge">里仁家传承</div>
+    <h1 class="page-title">可行性分析</h1>
+    <div class="page-subtitle">里仁家传承电子出版工作室</div>
+    <div class="gold-line"></div>
+  </div>
+
+  <!-- 一、项目概述 -->
+  <div class="section-card">
+    <h2>一、项目概述</h2>
+    <p class="no-indent"><strong>定位：</strong>以深度家族访谈为核心方法，采集家族历史文化记忆，通过电子出版形式（网站+小程序）交付家风、家训、家族故事的系统化传承成果。</p>
+    <p class="no-indent"><strong>核心理念：</strong>"慎终追远，民德归厚"——每个家庭都值得拥有一部属于自己的电子家史。</p>
+  </div>
+
+  <!-- 二、市场分析 -->
+  <div class="section-card">
+    <h2>二、市场分析</h2>
+    <p class="no-indent"><strong>有利因素：</strong></p>
+    <ul class="styled-list">
+      <li><strong>老龄化窗口期。</strong>中国60岁以上人口超3亿，大量老人有讲述意愿但缺乏专业渠道。80-90后子女有孝心付费意愿，但不知道去哪里找专业服务。</li>
+      <li><strong>家族企业传承潮。</strong>中国第一代民营企业家集中进入交班期，高净值家族对"家族精神传承"的需求远超"财富传承"。</li>
+      <li><strong>文化政策红利。</strong>国家层面推动中华优秀传统文化传承发展，口述历史、家谱编修有政策支持。</li>
+      <li><strong>"断亲"焦虑。</strong>年轻人普遍面临与家族关系疏离的困境，反而激发对"根"的渴望。</li>
+      <li><strong>市场已验证付费意愿。</strong>浙江某回忆录品牌产品线：入门级5888元→城市中产12888元→高端家族传记21888元→家族全景纪录片48888元→文化工程108888元起。</li>
+    </ul>
+    <p style="margin-top:16px;"><strong>挑战因素：</strong></p>
+    <ul class="styled-list">
+      <li><strong>概念认知不足。</strong>大多数人不知道"口述历史+电子出版"可以做成商业服务。</li>
+      <li><strong>信任门槛高。</strong>涉及家族私密信息，客户需要建立深度信任才能开口。</li>
+      <li><strong>非刚需。</strong>属于情感消费，决策周期长，复购率低。</li>
+    </ul>
+    <p class="quote">天花板可观，但获客成本极高，适合做精品小工作室模式而非规模化平台</p>
+  </div>
+
+  <!-- 三、市场定位 -->
+  <div class="section-card">
+    <h2>三、市场定位建议</h2>
+    <p class="no-indent"><strong>不做：</strong>传统家谱编修（已有大谱师等成熟SaaS）、简单回忆录撰写（竞争激烈）</p>
+    <p class="no-indent"><strong>要做：</strong>"家风传承型"深度访谈 + 结构化电子出版</p>
+    <p class="no-indent" style="margin-top:16px;"><strong>独特卖点：</strong></p>
+    <ul class="styled-list">
+      <li><strong>方法论差异化</strong>——基于12关卡框架设计结构化访谈体系</li>
+      <li><strong>产品形态差异化</strong>——不是纸质书或简单视频，而是网站+小程序的数字传承资产</li>
+      <li><strong>内容深度差异化</strong>——把家族故事放在时代大背景下，让个体记忆具有历史价值</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>命名建议：</strong>对外使用<strong>"里仁家传承"</strong>为主品牌，"电子出版"偏技术描述，客户感知不到价值。</p>
+  </div>
+
+  <!-- 四、目标客户分层 -->
+  <div class="section-card">
+    <h2>四、目标客户分层</h2>
+    <div class="table-wrap">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>层级</th>
+            <th>客户画像</th>
+            <th>客单价</th>
+            <th>核心需求</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>L1 大众层</td>
+            <td>普通中产家庭，有老人健在</td>
+            <td>3,000-8,000元</td>
+            <td>为长辈做一份有仪式感的生命记录</td>
+          </tr>
+          <tr>
+            <td>L2 核心层</td>
+            <td>重视家风教育的家庭</td>
+            <td>8,000-30,000元</td>
+            <td>系统整理家族故事，形成家风档案</td>
+          </tr>
+          <tr>
+            <td>L3 高端层</td>
+            <td>家族企业主、文化名人</td>
+            <td>30,000-100,000元</td>
+            <td>家族精神传承+品牌化呈现</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 五、产品与服务 -->
+  <div class="section-card">
+    <h2>五、产品与服务设计</h2>
+    <p class="no-indent"><strong>A. 家族记忆采集服务（收入主力）</strong></p>
+    <ul class="styled-list">
+      <li><strong>前期调研</strong>（1周）— 收集家族基本信息、照片、老物件清单</li>
+      <li><strong>访谈提纲定制</strong>（3天）— 根据12关卡框架设计个性化问题</li>
+      <li><strong>深度访谈</strong>（2-4次，每次2-3小时）— 每次聚焦一个主题</li>
+      <li><strong>素材整理与编辑</strong>（1-2周）— 文字转录、照片数字化、音频剪辑</li>
+      <li><strong>初稿交付</strong>（1周）— 电子家史初版</li>
+      <li><strong>修订确认</strong>（1周）— 家族成员共同审阅</li>
+      <li><strong>成品交付</strong>（3天）— 网站+小程序上线</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>B. 电子出版产品形态</strong></p>
+    <ul class="styled-list">
+      <li>家族记忆网站 — 响应式设计，手机优先</li>
+      <li>微信小程序 — 方便家族成员日常访问和分享</li>
+      <li>数字纪念册 — PDF/EPUB格式，可打印</li>
+      <li>短视频系列 — 每次访谈剪辑成3-5分钟短视频</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>C. 定价策略</strong></p>
+    <div class="table-wrap">
+      <table class="styled-table">
+        <thead>
+          <tr><th>套餐</th><th>内容</th><th>价格区间</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>入门版</td><td>1位老人 × 2次访谈 + 基础网站</td><td>5,888元</td></tr>
+          <tr><td>标准版</td><td>3位成员 × 各2次访谈 + 网站+小程序</td><td>19,800元</td></tr>
+          <tr><td>尊享版</td><td>全家族多代访谈 + 完整电子出版 + 短视频</td><td>49,800元</td></tr>
+          <tr><td>定制版</td><td>按需协商</td><td>100,000元+</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 六、营销策划 -->
+  <div class="section-card">
+    <h2>六、营销策划</h2>
+    <p class="no-indent"><strong>冷启动三步走：</strong></p>
+    <ul class="styled-list">
+      <li><strong>第一步：自己做第一个案例（免费/低价）</strong>——选择自己的家族（父母、祖辈）作为首个完整案例，制作作品集</li>
+      <li><strong>第二步：公众号内容种草（持续输出）</strong>——围绕"家风""家族记忆""口述历史"写文章</li>
+      <li><strong>第三步：口碑裂变</strong>——每个交付案例邀请客户写推荐语，老客户推荐新客户给佣金</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>关键营销话术：</strong></p>
+    <p class="quote">"你家的故事，值得被记住"<br>"趁他们还在，把家族的记忆留下来"<br>"每个家庭都是一部微缩的中国史"</p>
+  </div>
+
+  <!-- 七、质量评估 -->
+  <div class="section-card">
+    <h2>七、质量评估体系</h2>
+    <p class="no-indent"><strong>访谈质量标准：</strong></p>
+    <ul class="styled-list">
+      <li><strong>真实性</strong>——不虚构、不美化，保留叙述者的原始表达风格</li>
+      <li><strong>完整性</strong>——覆盖人生关键节点（出生、成长、婚恋、事业、重大历史事件亲历）</li>
+      <li><strong>深度性</strong>——不止于事实陈述，要挖掘情感、价值观、人生智慧</li>
+      <li><strong>系统性</strong>——按12关卡框架组织，避免碎片化</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>交付物质量标准：</strong></p>
+    <ul class="styled-list">
+      <li><strong>文字稿</strong>——逐字转录+精编，保留口语特色但去除冗余</li>
+      <li><strong>多媒体</strong>——高清照片扫描、音频/视频剪辑达到广播级</li>
+      <li><strong>排版设计</strong>——手机优先、微信公众号风格（16px正文、2.0行高、卡片式布局）</li>
+    </ul>
+  </div>
+
+  <!-- 八、客户关系管理 -->
+  <div class="section-card">
+    <h2>八、客户关系管理</h2>
+    <p class="no-indent"><strong>客户旅程：</strong></p>
+    <p class="quote">认知 → 兴趣 → 咨询 → 签约 → 访谈 → 编辑 → 交付 → 分享 → 复购/转介绍</p>
+    <p class="no-indent"><strong>关键触点对策：</strong></p>
+    <ul class="styled-list">
+      <li><strong>首次接触</strong>——30分钟内响应，提供免费家族记忆评估（15分钟电话）</li>
+      <li><strong>签约前</strong>——发送案例作品集+FAQ文档，消除疑虑</li>
+      <li><strong>交付时</strong>——举办线上"家族记忆发布仪式"，邀请全体家族成员参加</li>
+      <li><strong>交付后</strong>——30天/90天/180天三次回访，推送家族纪念日提醒</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>长期关系维护：</strong></p>
+    <ul class="styled-list">
+      <li>家族档案库 — 为每个客户建立独立档案</li>
+      <li>年度更新提醒 — 每年生日、清明、中秋自动提醒</li>
+      <li>家族社群 — 建立客户群，定期分享家族故事</li>
+      <li>转介绍激励 — 老客户推荐新客户，双方各得一次免费访谈</li>
+    </ul>
+  </div>
+
+  <!-- 九、财务测算 -->
+  <div class="section-card">
+    <h2>九、财务测算（首年）</h2>
+    <p class="no-indent"><strong>成本结构：</strong></p>
+    <ul class="styled-list">
+      <li>设备（录音笔、相机、电脑）：一次性约5,000元</li>
+      <li>网站服务器+域名：约2,400元/年</li>
+      <li>小程序开发维护：约3,600元/年</li>
+      <li>营销推广+差旅+杂项：约20,400元/年</li>
+      <li><strong>合计年成本：约3万元（不含人工）</strong></li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>收入预测（保守估计）：</strong></p>
+    <div class="table-wrap">
+      <table class="styled-table">
+        <thead>
+          <tr><th>月份</th><th>订单数</th><th>平均客单</th><th>月收入</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1-3月</td><td>1单/月</td><td>15,000</td><td>45,000</td></tr>
+          <tr><td>4-6月</td><td>2单/月</td><td>18,000</td><td>108,000</td></tr>
+          <tr><td>7-9月</td><td>3单/月</td><td>20,000</td><td>180,000</td></tr>
+          <tr><td>10-12月</td><td>3-4单/月</td><td>22,000</td><td>264,000</td></tr>
+          <tr><td><strong>全年</strong></td><td><strong>约28单</strong></td><td><strong>加权19,000</strong></td><td><strong>约60万</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 十、风险评估 -->
+  <div class="section-card">
+    <h2>十、风险评估与应对</h2>
+    <div class="table-wrap">
+      <table class="styled-table">
+        <thead>
+          <tr><th>风险</th><th>概率</th><th>影响</th><th>应对措施</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>获客困难</td><td>高</td><td>高</td><td>先用自家案例做标杆，公众号持续输出内容</td></tr>
+          <tr><td>交付周期长</td><td>中</td><td>中</td><td>标准化流程，总周期不超过6周</td></tr>
+          <tr><td>客户期望过高</td><td>中</td><td>中</td><td>签约前明确交付范围和标准</td></tr>
+          <tr><td>隐私泄露</td><td>低</td><td>极高</td><td>签署保密协议，数据存储加密</td></tr>
+          <tr><td>个人精力瓶颈</td><td>高</td><td>中</td><td>前12个月亲自做，积累后考虑招募兼职</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 十一、协同关系 -->
+  <div class="section-card">
+    <h2>十一、与"找到啦"项目的协同</h2>
+    <p class="no-indent">这个项目与你已有的"找到啦"12关卡体系天然契合：</p>
+    <ul class="styled-list">
+      <li><strong>方法论复用</strong>——12关卡框架可以直接转化为访谈提纲</li>
+      <li><strong>内容互通</strong>——家族访谈中的典型案例可以匿名化后用于找到啦的内容</li>
+      <li><strong>流量互导</strong>——找到啦的用户可以转化为里仁家传承的客户</li>
+      <li><strong>技术复用</strong>——网站和小程序的技术栈可以共享</li>
+    </ul>
+    <p class="no-indent" style="margin-top:16px;"><strong>建议：</strong>两个项目并行推进，资源分配比例7:3（找到啦为主，里仁家传承为辅）。</p>
+  </div>
+
+  <!-- 十二、结论与建议 -->
+  <div class="section-card">
+    <h2>十二、结论与建议</h2>
+    <p class="quote">总体评价：可行，但需谨慎</p>
+    <p class="no-indent"><strong>优势：</strong>市场需求真实存在且在增长；与你现有知识储备高度匹配；启动成本低，适合个人工作室模式；社会价值高。</p>
+    <p class="no-indent"><strong>劣势：</strong>市场教育成本高，获客困难；非标准化服务，难以规模化；个人精力有限。</p>
+  </div>
+
+  <!-- 行动建议 -->
+  <div class="section-card">
+    <h2>行动建议（分阶段）</h2>
+    <div class="phase-step">
+      <div class="phase-num">1</div>
+      <div class="phase-text"><strong>第一阶段（1-3个月）：验证期</strong><br>用自家案例做第一个完整项目（免费），产出作品集，验证流程和方法论。公众号开始持续输出相关内容。</div>
+    </div>
+    <div class="phase-step">
+      <div class="phase-num">2</div>
+      <div class="phase-text"><strong>第二阶段（4-6个月）：试水期</strong><br>接1-2个低价订单（成本价），积累真实案例。完善标准化流程文档，测试不同定价和套餐组合。</div>
+    </div>
+    <div class="phase-step">
+      <div class="phase-num">3</div>
+      <div class="phase-text"><strong>第三阶段（7-12个月）：正式运营</strong><br>按正常定价接单，建立转介绍机制，评估是否值得全职投入。</div>
+    </div>
+    <div class="action-box">
+      <h3>底线原则</h3>
+      <p>前6个月不要辞职全职做，保持副业身份验证商业模式。<br>如果12个月后月均收入能稳定超过1.5万，再考虑全职。</p>
+    </div>
+  </div>
+
+  <div class="footer-link">
+    <a href="../index.html">← 返回首页</a>
+  </div>
+  <div class="doc-meta">文档版本 v1.0 · 2026年7月12日</div>
+
+</div>
+
+<script src="../lang-toggle-v2.js"></script>
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.fade-in');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+</body>
+</html>

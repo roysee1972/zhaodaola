@@ -3,663 +3,499 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>里仁工作室 — 小红书宣传图文</title>
+<meta name="description" content="里仁家传承 — 以深度家族访谈为核心，采集家族历史文化记忆，通过电子出版形式（网站+微信小程序）交付家风、家训、家族故事的系统化传承成果。">
+<title>里仁家传承 — 家传承电子出版服务</title>
 <style>
 :root {
-  --pink: #ff2442;
-  --pink-light: #fff0f0;
-  --orange: #ff6b35;
-  --gold: #c9a84c;
-  --dark: #1a1a2e;
-  --text: #333333;
-  --text-light: #777777;
-  --bg: #fafafa;
-  --radius: 16px;
+  --bg: #faf8f4;
+  --bg-warm: #f5f0e8;
+  --paper: #fefdf9;
+  --text: #3d352b;
+  --text-light: #8a7d6b;
+  --text-muted: #b8a996;
+  --gold: #b8965c;
+  --gold-light: #d4b87a;
+  --gold-pale: #f0e6d0;
+  --ink: #2c2620;
+  --ink-light: #4a4238;
+  --border: rgba(184,150,92,0.18);
+  --shadow: rgba(60,48,32,0.06);
+  --shadow-hover: rgba(60,48,32,0.1);
+  --radius: 10px;
+  --font-serif: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-sans: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-serif);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.8;
+  line-height: 1.9;
   font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+ul, ol { list-style: none; }
+
+/* ===== Layout ===== */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
 }
 
 /* ===== Back Button ===== */
 .back-btn {
-  position: fixed; top: 12px; left: 12px; z-index: 200;
-  width: 36px; height: 36px;
-  background: rgba(255,255,255,0.95);
-  border: none; border-radius: 50%;
-  font-size: 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  color: var(--dark);
+  position: fixed; top: 16px; left: 16px; z-index: 200;
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  background: rgba(250,248,244,0.92);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  font-family: var(--font-sans); font-size: 13px;
+  color: var(--text-light);
+  cursor: pointer; text-decoration: none;
+  box-shadow: 0 2px 12px var(--shadow);
+  transition: all 0.2s;
 }
+.back-btn:hover { background: var(--paper); border-color: var(--gold); color: var(--ink); }
 
-/* ===== Container ===== */
-.container {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 12px 14px 40px;
-}
-
-/* ===== Cover Card ===== */
-.cover-card {
-  background: linear-gradient(135deg, #ff2442 0%, #ff6b35 100%);
-  border-radius: var(--radius);
-  padding: 36px 24px 28px;
+/* ===== Header ===== */
+.page-header {
   text-align: center;
-  color: #fff;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
 }
-.cover-card::before {
-  content: "";
-  position: absolute;
-  top: -30px; right: -30px;
-  width: 120px; height: 120px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-}
-.cover-card::after {
-  content: "";
-  position: absolute;
-  bottom: -20px; left: -20px;
-  width: 80px; height: 80px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 50%;
-}
-.cover-badge {
+.brand-badge {
   display: inline-block;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(4px);
-  padding: 4px 16px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 6px 18px;
   border-radius: 20px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
-.cover-title {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.cover-sub {
-  font-size: 14px;
-  opacity: 0.9;
-  line-height: 1.8;
-}
-.cover-tags {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.cover-tag {
-  background: rgba(255,255,255,0.2);
-  padding: 3px 12px;
-  border-radius: 12px;
-  font-size: 11px;
-  backdrop-filter: blur(4px);
-}
-
-/* ===== Section ===== */
-.section {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 20px 18px;
-  margin-bottom: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--pink-light);
-  color: var(--pink);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-.section-title {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--dark);
-  margin-bottom: 12px;
-  line-height: 1.5;
-}
-.section-title .emoji {
-  margin-right: 4px;
-}
-.section-text {
-  font-size: 14px;
-  color: #555;
-  line-height: 2;
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 8px;
+  color: var(--ink);
   margin-bottom: 10px;
+  line-height: 1.4;
 }
-
-/* ===== Pain Point Cards ===== */
-.pain-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 14px 0;
-}
-.pain-item {
-  background: #fff5f5;
-  border-radius: 12px;
-  padding: 14px 12px;
-  text-align: center;
-  border: 1px solid #ffe0e0;
-}
-.pain-icon {
-  font-size: 24px;
-  margin-bottom: 6px;
-}
-.pain-text {
-  font-size: 12px;
-  color: #888;
-  line-height: 1.6;
-}
-
-/* ===== Solution Highlight ===== */
-.solution-box {
-  background: linear-gradient(135deg, #fff8e1, #fff3cd);
-  border: 1px solid #ffe082;
-  border-radius: 12px;
-  padding: 16px;
-  margin: 14px 0;
-  text-align: center;
-}
-.solution-box .big-text {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--orange);
-  margin-bottom: 4px;
-}
-.solution-box .sub-text {
-  font-size: 13px;
-  color: #888;
-}
-
-/* ===== Comparison ===== */
-.compare-row {
-  display: flex;
-  align-items: stretch;
-  gap: 10px;
-  margin: 14px 0;
-}
-.compare-col {
-  flex: 1;
-  border-radius: 12px;
-  padding: 14px 12px;
-  text-align: center;
-}
-.compare-col.bad {
-  background: #fff5f5;
-  border: 1px solid #ffe0e0;
-}
-.compare-col.good {
-  background: #f0fff4;
-  border: 1px solid #c6f6d5;
-}
-.compare-label {
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.compare-col.bad .compare-label { color: var(--pink); }
-.compare-col.good .compare-label { color: var(--green, #38a169); }
-.compare-num {
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-.compare-desc {
-  font-size: 11px;
-  color: #888;
-}
-
-/* ===== Feature List ===== */
-.feature-list {
-  list-style: none;
-  padding: 0;
-}
-.feature-list li {
-  padding: 10px 0;
-  border-bottom: 1px dashed #eee;
+.page-subtitle {
+  font-family: var(--font-sans);
   font-size: 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.7;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  font-weight: 400;
 }
-.feature-list li:last-child { border-bottom: none; }
-.feature-dot {
-  width: 6px; height: 6px;
-  background: var(--pink);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 9px;
+.gold-line {
+  width: 80px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 28px auto 0;
 }
+
+/* ===== Section Card ===== */
+.section-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 16px var(--shadow);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.section-card:hover { box-shadow: 0 8px 32px var(--shadow-hover); transform: translateY(-2px); }
+.section-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  text-align: center;
+  position: relative;
+}
+.section-card h2::before {
+  content: ''; display: block; width: 48px; height: 2px;
+  background: linear-gradient(to right, var(--gold), var(--gold-light));
+  margin: 0 auto 14px; border-radius: 1px;
+}
+.section-card p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 2.1;
+  margin-bottom: 16px;
+  text-indent: 2em;
+}
+.section-card p:last-child { margin-bottom: 0; }
+.section-card .no-indent { text-indent: 0; }
+.section-card .highlight { color: var(--ink); font-weight: 600; }
+.section-card .quote {
+  text-align: center; font-size: 16px; color: var(--gold);
+  font-weight: 500; letter-spacing: 2px; padding: 20px 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  margin: 20px 0; text-indent: 0; line-height: 2;
+}
+
+/* ===== Feature Grid ===== */
+.feature-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 20px 0;
+}
+.feature-item {
+  background: var(--bg-warm); border-radius: 8px; padding: 20px 16px;
+  text-align: center; border: 1px solid var(--border); transition: all 0.2s;
+}
+.feature-item:hover { background: var(--gold-pale); border-color: var(--gold); }
+.feature-icon { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+.feature-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; letter-spacing: 1px; }
+.feature-desc { font-family: var(--font-sans); font-size: 12px; color: var(--text-light); line-height: 1.7; }
 
 /* ===== Service Cards ===== */
 .service-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 14px 0;
+  display: grid; grid-template-columns: 1fr; gap: 16px; margin: 20px 0;
 }
 .service-card {
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid #eee;
-  position: relative;
-  overflow: hidden;
+  background: var(--paper); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 20px; position: relative;
 }
 .service-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px;
-  height: 100%;
+  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  background: linear-gradient(to bottom, var(--gold), var(--gold-light));
 }
-.service-card.s1 { background: #fafafa; }
-.service-card.s1::before { background: var(--pink); }
-.service-card.s2 { background: #f0f7ff; }
-.service-card.s2::before { background: #4299e1; }
-.service-card.s3 { background: #faf5ff; }
-.service-card.s3::before { background: #9f7aea; }
-.sc-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+.service-card h3 {
+  font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 12px; letter-spacing: 2px;
 }
-.sc-icon {
-  font-size: 20px;
+.service-card ul { list-style: none; padding: 0; }
+.service-card li {
+  position: relative; padding-left: 18px; margin-bottom: 10px;
+  font-size: 14px; color: var(--text); line-height: 1.9;
 }
-.sc-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--dark);
-}
-.sc-desc {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.8;
+.service-card li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
 }
 
-/* ===== Price Tags ===== */
-.price-row {
-  display: flex;
-  gap: 10px;
-  margin: 14px 0;
+/* ===== Process Steps ===== */
+.process-step {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border);
 }
-.price-tag {
-  flex: 1;
-  background: #fff;
-  border: 2px solid var(--pink);
-  border-radius: 12px;
-  padding: 14px 10px;
+.process-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.step-num {
+  flex-shrink: 0; width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; color: var(--ink); font-family: var(--font-sans);
+}
+.step-text { flex: 1; font-size: 14px; color: var(--text); line-height: 2; }
+.step-text strong { color: var(--ink); font-weight: 600; }
+
+/* ===== Price Table ===== */
+.price-table { overflow-x: auto; margin: 20px -4px; }
+.price-table table { width: 100%; border-collapse: collapse; font-size: 13px; color: var(--text); }
+.price-table th {
+  background: var(--gold-pale); color: var(--ink); font-weight: 600;
+  padding: 14px 12px; text-align: center; border-bottom: 2px solid var(--gold);
+}
+.price-table td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.8; }
+.price-table tr:last-child td { border-bottom: none; }
+.price-table tr:hover td { background: var(--bg-warm); }
+.price-table td:first-child { font-weight: 600; color: var(--ink); text-align: center; }
+
+/* ===== Philosophy Box ===== */
+.philosophy-box {
+  background: linear-gradient(135deg, var(--gold-pale), #ebe3d6);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 24px 0;
   text-align: center;
-  position: relative;
 }
-.price-tag.hot {
-  background: linear-gradient(135deg, #fff5f5, #fff0f0);
+.philosophy-box .main-text {
+  font-size: 20px; font-weight: 600; color: var(--ink); letter-spacing: 2px; margin-bottom: 10px;
 }
-.price-tag.hot::after {
-  content: "🔥热门";
-  position: absolute;
-  top: -8px; right: 8px;
-  background: var(--pink);
-  color: #fff;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 8px;
-}
-.price-type {
-  font-size: 12px;
-  color: var(--pink);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.price-value {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--dark);
-}
-.price-value span {
-  font-size: 12px;
-  font-weight: 400;
-  color: #999;
-}
-.price-note {
-  font-size: 11px;
-  color: #aaa;
-  margin-top: 4px;
+.philosophy-box .sub-text {
+  font-size: 14px; color: var(--text-light); line-height: 2;
 }
 
 /* ===== CTA ===== */
-.cta-card {
-  background: linear-gradient(135deg, var(--pink), var(--orange));
-  border-radius: var(--radius);
-  padding: 28px 20px;
-  text-align: center;
-  color: #fff;
-  margin-top: 16px;
+.cta-section {
+  text-align: center; padding: 40px 24px; margin-top: 16px;
 }
-.cta-title {
-  font-size: 20px;
-  font-weight: 800;
-  margin-bottom: 8px;
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--ink); font-family: var(--font-sans);
+  font-size: 16px; font-weight: 600; letter-spacing: 3px;
+  padding: 16px 48px; border-radius: 30px;
+  box-shadow: 0 4px 24px rgba(184,150,92,0.3);
+  margin-bottom: 24px; transition: transform 0.2s, box-shadow 0.2s;
 }
-.cta-desc {
-  font-size: 13px;
-  opacity: 0.9;
-  margin-bottom: 16px;
-  line-height: 1.8;
-}
-.cta-info {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.cta-item {
-  font-size: 13px;
-  opacity: 0.95;
-}
-.cta-item strong {
-  display: block;
-  font-size: 15px;
-  margin-bottom: 2px;
-}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,150,92,0.4); }
+.cta-info { font-family: var(--font-sans); font-size: 13px; color: var(--text-light); line-height: 2.2; }
+.cta-info strong { display: inline-block; width: 56px; text-align: right; color: var(--text); margin-right: 8px; font-family: var(--font-sans); }
 
 /* ===== Footer ===== */
 .footer {
-  text-align: center;
-  padding: 24px 0 12px;
-  font-size: 11px;
-  color: #ccc;
+  text-align: center; padding-top: 32px; margin-top: 24px;
+  border-top: 1px solid var(--border);
 }
-.footer .brand {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--pink);
-  margin-bottom: 4px;
+.footer .brand-name {
+  font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: 3px; margin-bottom: 8px;
 }
+.footer .slogan { font-size: 13px; color: var(--text-light); letter-spacing: 1px; margin-bottom: 16px; }
+.footer .meta { font-family: var(--font-sans); font-size: 11px; color: var(--text-muted); }
 
-/* ===== Engagement Bar ===== */
-.engagement-bar {
-  display: flex;
-  justify-content: space-around;
-  background: #fff;
-  border-radius: 12px;
-  padding: 12px 0;
-  margin: 14px 0;
-  border: 1px solid #f0f0f0;
+/* ===== Back to Top ===== */
+.back-to-top {
+  position: fixed; bottom: 24px; right: 24px; z-index: 100;
+  width: 44px; height: 44px;
+  background: var(--paper); border: 1px solid var(--border);
+  border-radius: 50%; color: var(--gold); font-size: 18px;
+  cursor: pointer; opacity: 0; visibility: hidden;
+  transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px var(--shadow);
 }
-.eng-item {
-  text-align: center;
-  font-size: 12px;
-  color: #999;
-}
-.eng-item .eng-num {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--dark);
-}
-.eng-item .eng-label {
-  font-size: 11px;
-}
+.back-to-top.show { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--gold-pale); border-color: var(--gold); }
 
-/* ===== Hashtags ===== */
-.hashtags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 14px 0;
-}
-.hash-tag {
-  background: var(--pink-light);
-  color: var(--pink);
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 14px;
-  font-weight: 500;
-}
+/* ===== Animations ===== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.page-header { animation: fadeInUp 0.6s ease-out; }
+.section-card { animation: fadeInUp 0.6s ease-out; animation-fill-mode: both; }
+.section-card:nth-child(1) { animation-delay: 0.1s; }
+.section-card:nth-child(2) { animation-delay: 0.2s; }
+.section-card:nth-child(3) { animation-delay: 0.3s; }
+.section-card:nth-child(4) { animation-delay: 0.4s; }
+.section-card:nth-child(5) { animation-delay: 0.5s; }
+.section-card:nth-child(6) { animation-delay: 0.6s; }
 
-/* ===== Divider ===== */
-.divider {
-  text-align: center;
-  margin: 16px 0;
-  color: #ddd;
-  font-size: 12px;
-  letter-spacing: 4px;
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .container { padding: 30px 16px 50px; }
+  .page-title { font-size: 24px; letter-spacing: 5px; }
+  .section-card { padding: 24px 18px; }
+  .section-card h2 { font-size: 18px; }
+  .section-card p { font-size: 14px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .philosophy-box .main-text { font-size: 17px; }
+  .cta-btn { padding: 14px 40px; font-size: 15px; }
 }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<a href="../index.html" class="back-btn">←</a>
+<a href="../index.html" class="back-btn">← 返回首页</a>
 
 <div class="container">
 
-<!-- ===== Cover ===== -->
-<div class="cover-card">
-  <div class="cover-badge">里仁工作室 · 专业服务</div>
-  <div class="cover-title">把纸上的智慧<br>变成数字资产</div>
-  <div class="cover-sub">AI自动化录入 · 知识库搭建<br>让专业的事交给专业的人</div>
-  <div class="cover-tags">
-    <span class="cover-tag">📄 资料数字化</span>
-    <span class="cover-tag">🤖 AI自动录入</span>
-    <span class="cover-tag">🗄️ 知识库搭建</span>
-  </div>
+<!-- ===== Header ===== -->
+<header class="page-header">
+  <div class="brand-badge">里仁家传承</div>
+  <h1 class="page-title">家传承电子出版</h1>
+  <p class="page-subtitle">以深度家族访谈为核心，交付家风·家训·家族故事的系统化传承成果</p>
+  <div class="gold-line"></div>
+</header>
+
+<!-- ===== Philosophy ===== -->
+<div class="philosophy-box">
+  <div class="main-text">慎终追远，民德归厚</div>
+  <div class="sub-text">每个家庭，都值得拥有一部属于自己的电子家史</div>
 </div>
 
-<!-- ===== Pain Points ===== -->
-<div class="section">
-  <div class="section-label">💡 痛点</div>
-  <div class="section-title">你有没有这些烦恼？</div>
-  <div class="pain-grid">
-    <div class="pain-item">
-      <div class="pain-icon">📚</div>
-      <div class="pain-text">堆积如山的纸质文件<br>想电子化没人手</div>
+<!-- ===== Core Service ===== -->
+<div class="section-card">
+  <h2>核心服务</h2>
+  <p class="no-indent"><span class="highlight">家传承电子出版</span>，是以“深度家族访谈”为核心方法，采集家族历史文化记忆，通过电子出版形式（网站+微信小程序）交付家风、家训、家族故事的系统化传承成果。</p>
+  <p>我们不做简单的回忆录撰写，也不做传统家谱编修。我们做的是——<strong>把家族的记忆，变成可交互、可分享、可迭代的数字传承资产</strong>。</p>
+  
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="feature-icon">📖</div>
+      <div class="feature-name">个人传记</div>
+      <div class="feature-desc">为长辈撰写有深度的生命史，覆盖人生关键节点</div>
     </div>
-    <div class="pain-item">
-      <div class="pain-icon">😰</div>
-      <div class="pain-text">招文员月薪五千<br>干两个月还出错</div>
+    <div class="feature-item">
+      <div class="feature-icon">🏠</div>
+      <div class="feature-name">家族史</div>
+      <div class="feature-desc">多代际视角，将家族故事置于时代大背景中</div>
     </div>
-    <div class="pain-item">
-      <div class="pain-icon">💸</div>
-      <div class="pain-text">外包报价几万起步<br>做完就不管了</div>
+    <div class="feature-item">
+      <div class="feature-icon">🏺</div>
+      <div class="feature-name">家族文物</div>
+      <div class="feature-desc">老照片、手札、器物数字化，建立家族数字博物馆</div>
     </div>
-    <div class="pain-item">
-      <div class="pain-icon">🔍</div>
-      <div class="pain-text">自己用Excel管<br>找份资料翻半天</div>
-    </div>
-  </div>
-  <div class="solution-box">
-    <div class="big-text">✨ 现在可以解决了！</div>
-    <div class="sub-text">里仁工作室 · AI数据服务</div>
-  </div>
-</div>
-
-<!-- ===== Comparison ===== -->
-<div class="section">
-  <div class="section-label">⚡ 对比</div>
-  <div class="section-title">算笔账给你看</div>
-  <div class="section-text">1万份资料，每份3分钟 → 人工需要约3个月</div>
-  <div class="compare-row">
-    <div class="compare-col bad">
-      <div class="compare-label">传统人工</div>
-      <div class="compare-num" style="color:var(--pink)">3人×3月</div>
-      <div class="compare-desc">¥15,000+<br>错误率5-10%</div>
-    </div>
-    <div class="compare-col good">
-      <div class="compare-label">AI自动化</div>
-      <div class="compare-num" style="color:#38a169">7天搞定</div>
-      <div class="compare-desc">¥1,500起<br>准确率&gt;99%</div>
-    </div>
-  </div>
-  <div class="solution-box">
-    <div class="big-text">省90%成本 · 提速10倍</div>
-    <div class="sub-text">这就是AI的力量</div>
-  </div>
-</div>
-
-<!-- ===== Services ===== -->
-<div class="section">
-  <div class="section-label">🎯 服务</div>
-  <div class="section-title">我们能做什么</div>
-
-  <div class="service-grid">
-    <div class="service-card s1">
-      <div class="sc-header">
-        <span class="sc-icon">⚡</span>
-        <span class="sc-name">AI自动化数据录入</span>
-      </div>
-      <div class="sc-desc">
-        纸质资料→电子数据库<br>
-        PDF/Word→分类整理+标签标注<br>
-        批量上传到现有系统<br>
-        7×24小时无人值守运行
-      </div>
-    </div>
-    <div class="service-card s2">
-      <div class="sc-header">
-        <span class="sc-icon">🗄️</span>
-        <span class="sc-name">B/S架构知识库搭建</span>
-      </div>
-      <div class="sc-desc">
-        浏览器就是客户端，无需安装软件<br>
-        手机/平板/电脑都能访问<br>
-        全文检索、分类筛选、标签搜索<br>
-        数据安全，存您自己的服务器
-      </div>
-    </div>
-    <div class="service-card s3">
-      <div class="sc-header">
-        <span class="sc-icon">🧠</span>
-        <span class="sc-name">专家知识提取+AI进化</span>
-      </div>
-      <div class="sc-desc">
-        把老专家的智慧提取出来<br>
-        喂给AI模型不断学习<br>
-        越用越聪明，越用越好用<br>
-        形成可传承的知识资产
-      </div>
+    <div class="feature-item">
+      <div class="feature-icon">🎭</div>
+      <div class="feature-name">非遗传承</div>
+      <div class="feature-desc">家族手艺、技艺、口述传统的系统性记录与传承</div>
     </div>
   </div>
 </div>
 
-<!-- ===== Use Cases ===== -->
-<div class="section">
-  <div class="section-label">📋 场景</div>
-  <div class="section-title">适用这些场景</div>
-  <ul class="feature-list">
-    <li><span class="feature-dot"></span>🏢 <strong>企业档案</strong> — 合同·发票·凭证电子化归档</li>
-    <li><span class="feature-dot"></span>🏛️ <strong>政府事业单位</strong> — 政策文件·历史档案数字化</li>
-    <li><span class="feature-dot"></span>🏥 <strong>医院诊所</strong> — 医案·处方·病历整理</li>
-    <li><span class="feature-dot"></span>⚖️ <strong>律师事务所</strong> — 案件卷宗快速录入建库</li>
-    <li><span class="feature-dot"></span>🎓 <strong>学校机构</strong> — 论文·课件·教材管理</li>
-    <li><span class="feature-dot"></span>👨‍🏫 <strong>个人学者</strong> — 手稿·笔记·参考文献数字化</li>
+<!-- ===== Methodology ===== -->
+<div class="section-card">
+  <h2>方法论差异</h2>
+  <p class="no-indent"><strong>结构化访谈体系</strong> — 基于“找到啦”12关卡框架（原生家庭→求知求学→初入人海→独立谋生→婚恋家庭→人到中年→金钱关系→人际迷宫→兴趣爱好→心灵信仰→健康与衰老→传承），设计个性化访谈提纲，避免碎片化聊天。</p>
+  <p class="no-indent"><strong>数字化交付形态</strong> — 不是纸质书、不是简单视频，而是：</p>
+  <ul class="styled-list" style="padding:0;list-style:none;">
+    <li style="position:relative;padding-left:18px;margin-bottom:10px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>家族记忆网站</strong> — 响应式设计，手机优先，类似找到啦网站风格</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:10px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>微信小程序</strong> — 方便家族成员日常访问、分享、传承</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:10px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>数字纪念册</strong> — PDF/EPUB格式，可打印装帧</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:10px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>短视频系列</strong> — 每次访谈剪辑成3-5分钟短视频，适合朋友圈传播</li>
   </ul>
 </div>
 
-<!-- ===== Pricing ===== -->
-<div class="section">
-  <div class="section-label">💰 价格</div>
-  <div class="section-title">透明收费，没有隐藏费用</div>
-  <div class="price-row">
-    <div class="price-tag">
-      <div class="price-type">按量计费</div>
-      <div class="price-value">¥0.1<span>-0.2/份</span></div>
-      <div class="price-note">量大从优</div>
-    </div>
-    <div class="price-tag hot">
-      <div class="price-type">月包服务</div>
-      <div class="price-value">¥2K<span>-5K/月</span></div>
-      <div class="price-note">持续录入首选</div>
-    </div>
+<!-- ===== Process ===== -->
+<div class="section-card">
+  <h2>服务流程</h2>
+  <div class="process-step">
+    <div class="step-num">1</div>
+    <div class="step-text"><strong>前期调研（1周）</strong> — 收集家族基本信息、照片、老物件清单，了解家族脉络</div>
   </div>
-  <div style="text-align:center;margin-top:10px;">
-    <span style="background:#fff5f5;color:var(--pink);font-size:13px;font-weight:700;padding:6px 16px;border-radius:20px;">🎁 首单优惠 · 第一次合作打8折</span>
+  <div class="process-step">
+    <div class="step-num">2</div>
+    <div class="step-text"><strong>访谈提纲定制（3天）</strong> — 根据12关卡框架设计个性化问题，每户专属提纲</div>
+  </div>
+  <div class="process-step">
+    <div class="step-num">3</div>
+    <div class="step-text"><strong>深度访谈（2-4次，每次2-3小时）</strong> — 每次聚焦一个主题，录音录像同步进行</div>
+  </div>
+  <div class="process-step">
+    <div class="step-num">4</div>
+    <div class="step-text"><strong>素材整理与编辑（1-2周）</strong> — 文字转录、照片高清扫描、音频视频剪辑，达到广播级水准</div>
+  </div>
+  <div class="process-step">
+    <div class="step-num">5</div>
+    <div class="step-text"><strong>初稿交付（1周）</strong> — 电子家史初版，家族成员共同审阅</div>
+  </div>
+  <div class="process-step">
+    <div class="step-num">6</div>
+    <div class="step-text"><strong>修订确认（1周）</strong> — 反馈修改，版本定稿</div>
+  </div>
+  <div class="process-step">
+    <div class="step-num">7</div>
+    <div class="step-text"><strong>成品上线（3天）</strong> — 网站+小程序同步上线，举办“家族记忆发布仪式”</div>
   </div>
 </div>
 
-<!-- ===== Why Us ===== -->
-<div class="section">
-  <div class="section-label">⭐ 信任</div>
-  <div class="section-title">为什么选择里仁工作室</div>
-  <ul class="feature-list">
-    <li><span class="feature-dot"></span>✅ <strong>真实案例</strong> — 独立完成2000+册图书数字化全流程交付</li>
-    <li><span class="feature-dot"></span>✅ <strong>懂业务也懂代码</strong> — 原OA系统基础上优化开发</li>
-    <li><span class="feature-dot"></span>✅ <strong>数据安全</strong> — 资料只存您的服务器，不留备份</li>
-    <li><span class="feature-dot"></span>✅ <strong>先试再做</strong> — 免费评估，满意再下单</li>
+<!-- ===== Packages ===== -->
+<div class="section-card">
+  <h2>套餐与定价</h2>
+  <p class="no-indent" style="margin-bottom:16px;">四档产品，满足不同家族规模与深度需求：</p>
+  <div class="price-table">
+    <table>
+      <thead>
+        <tr><th>套餐</th><th>服务内容</th><th>价格</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>入门版</td>
+          <td>1位老人 × 2次访谈 + 基础家族记忆网站</td>
+          <td>5,888元</td>
+        </tr>
+        <tr>
+          <td>标准版</td>
+          <td>3位成员 × 各2次访谈 + 网站+小程序 + 数字纪念册</td>
+          <td>19,800元</td>
+        </tr>
+        <tr>
+          <td>尊享版</td>
+          <td>全家族多代访谈 + 完整电子出版 + 短视频系列 + 家风家训设计</td>
+          <td>49,800元</td>
+        </tr>
+        <tr>
+          <td>定制版</td>
+          <td>按需协商：企业家族史、非遗传承工程、文化工程类项目</td>
+          <td>100,000元+</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="quote">不是回忆录，是家族的传世之作</p>
+</div>
+
+<!-- ===== Quality ===== -->
+<div class="section-card">
+  <h2>质量标准</h2>
+  <p class="no-indent"><strong>访谈质量：</strong>真实性（不虚构不美化，保留原始表达）、完整性（覆盖人生关键节点）、深度性（挖掘情感价值观人生智慧）、系统性（按12关卡框架组织）。</p>
+  <p class="no-indent" style="margin-top:16px;"><strong>交付质量：</strong>文字稿逐字转录精编、多媒体广播级剪辑、排版遵循手机优先/微信公众号风格（16px正文、2.0行高、卡片式布局）、网站加载<3秒、小程序全机型兼容。</p>
+  <p class="quote">你家的故事，值得被记住</p>
+</div>
+
+<!-- ===== Why Choose ===== -->
+<div class="section-card">
+  <h2>为什么选择里仁家传承</h2>
+  <ul class="styled-list" style="padding:0;list-style:none;">
+    <li style="position:relative;padding-left:18px;margin-bottom:12px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>方法论独家</strong> — 12关卡框架转化为访谈体系，国内首创“结构化家族访谈法”</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:12px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>产品形态差异化</strong> — 网站+小程序+纪念册+短视频，全形态交付，而非单一载体</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:12px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>内容有历史厚度</strong> — 把家族故事放在时代背景下，个体记忆具有历史价值</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:12px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>创始人亲自操刀</strong> — 54岁文科生，前记者/编辑，深度访谈与叙事写作是核心竞争力</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:12px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>技术自主可控</strong> — 网站/小程序自研，数据私有部署，家族拥有完全控制权</li>
+    <li style="position:relative;padding-left:18px;margin-bottom:12px;font-size:14px;color:var(--text);line-height:1.9;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--gold);border-radius:50%;"></span><strong>隐私绝对安全</strong> — 签署保密协议，数据加密存储，不上传公有云，客户完全拥有数据主权</li>
   </ul>
-</div>
-
-<!-- ===== Engagement ===== -->
-<div class="engagement-bar">
-  <div class="eng-item">
-    <div class="eng-num">2000+</div>
-    <div class="eng-label">册图书经验</div>
-  </div>
-  <div class="eng-item">
-    <div class="eng-num">90%</div>
-    <div class="eng-label">成本节省</div>
-  </div>
-  <div class="eng-item">
-    <div class="eng-num">10x</div>
-    <div class="eng-label">效率提升</div>
-  </div>
-  <div class="eng-item">
-    <div class="eng-num">99%</div>
-    <div class="eng-label">准确率</div>
-  </div>
-</div>
-
-<!-- ===== Hashtags ===== -->
-<div class="hashtags">
-  <span class="hash-tag">#AI数据录入</span>
-  <span class="hash-tag">#资料数字化</span>
-  <span class="hash-tag">#知识库搭建</span>
-  <span class="hash-tag">#档案管理</span>
-  <span class="hash-tag">#企业效率</span>
-  <span class="hash-tag">#里仁工作室</span>
-  <span class="hash-tag">#AI自动化</span>
-  <span class="hash-tag">#降本增效</span>
 </div>
 
 <!-- ===== CTA ===== -->
-<div class="cta-card">
-  <div class="cta-title">📩 欢迎咨询</div>
-  <div class="cta-desc">免费评估您的项目需求<br>先试再做，满意再付款</div>
+<div class="cta-section">
+  <a href="#" class="cta-btn">免费家族记忆评估 · 预约咨询</a>
   <div class="cta-info">
-    <div class="cta-item"><strong>微信</strong>liren1972</div>
-    <div class="cta-item"><strong>闲鱼</strong>liren1972</div>
-    <div class="cta-item"><strong>邮箱</strong>roysee@163.com</div>
+    <div><strong>微信：</strong>liren1972</div>
+    <div><strong>邮箱：</strong>roysee@163.com</div>
+    <div><strong>网站：</strong>zhaodaola.top</div>
   </div>
 </div>
 
 <!-- ===== Footer ===== -->
-<div class="footer">
-  <div class="brand">里仁工作室</div>
-  <div>把纸上的智慧，变成数字时代的资产</div>
-</div>
+<footer class="footer">
+  <div class="brand-name">里仁家传承</div>
+  <div class="slogan">把家族的记忆，变成传世的数字资产</div>
+  <div class="meta">© 2026 里仁工作室 · 版本 v1.0</div>
+</footer>
 
 </div><!-- /container -->
 
+<button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+// 回到顶部
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+
+// 滚动渐入动画
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.section-card');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.style.animationPlayState = 'running'; obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ 
+    el.style.animationPlayState = 'paused';
+    obs.observe(el); 
+  });
+})();
+</script>
 </body>
 </html>

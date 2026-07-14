@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI数据录入 · 知识库搭建 — 喝墨汁儿</title>
+<style>
+:root {
+  --bg: #f7f4ee;
+  --card: #ffffff;
+  --gold: #c9a84c;
+  --gold-light: #f5e6c8;
+  --text: #2c2c2c;
+  --text-light: #666666;
+  --accent: #8b4513;
+  --green: #2e7d32;
+  --red: #c62828;
+  --radius: 12px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 2.0;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #2c2c2c 0%, #4a3728 100%);
+  color: #fff;
+  padding: 48px 20px 40px;
+  text-align: center;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 24px;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.2);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 13px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+.hero h1 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.hero h1 span { color: var(--gold); }
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+}
+.hero-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 20px auto;
+}
+
+/* ===== SECTION ===== */
+.section {
+  margin-bottom: 24px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.section-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--gold), #a08030);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.section-title h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.section-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.8;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+.card p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.comparison {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+}
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.comparison-table thead th {
+  background: #2c2c2c;
+  color: #fff;
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+.comparison-table thead th:first-child {
+  text-align: left;
+  padding-left: 12px;
+}
+.comparison-table tbody td {
+  padding: 10px 8px;
+  font-size: 13px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+.comparison-table tbody td:first-child {
+  text-align: left;
+  padding-left: 12px;
+  color: var(--text-light);
+  font-size: 13px;
+}
+.comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.comparison-table .col-ai {
+  background: rgba(201,168,76,0.08);
+  font-weight: 600;
+  color: var(--accent);
+}
+.comparison-table .col-manual {
+  color: var(--text);
+}
+.comparison-table .highlight-green {
+  color: var(--green);
+  font-weight: 700;
+}
+.comparison-table .highlight-red {
+  color: var(--red);
+  font-weight: 700;
+}
+.comparison-footer {
+  background: linear-gradient(135deg, var(--gold-light), #ede0c0);
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ===== CHECK LIST ===== */
+.check-list {
+  list-style: none;
+  padding: 0;
+}
+.check-list li {
+  padding: 8px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.check-list li::before {
+  content: "✓";
+  color: var(--green);
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: rgba(46,125,50,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* ===== PRICE TAG ===== */
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.price-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid #e8e0d0;
+  position: relative;
+  overflow: hidden;
+}
+.price-card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.2);
+}
+.price-card.featured::before {
+  content: "推荐";
+  position: absolute;
+  top: 8px;
+  right: -20px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 24px;
+  transform: rotate(45deg);
+}
+.price-label {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+.price-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.price-value span {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-light);
+}
+.price-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ===== FEATURES GRID ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.feature-item {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+.feature-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.feature-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.feature-desc {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+/* ===== STORY CARD ===== */
+.story-card {
+  background: linear-gradient(135deg, #3a2a1a, #4a3728);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.story-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.story-card .story-role {
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.story-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.story-card p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.85);
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  text-align: center;
+  padding: 32px 20px;
+  margin-bottom: 24px;
+}
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #a08030);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+  margin-bottom: 16px;
+}
+.cta-info {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 2;
+}
+.cta-info strong {
+  color: var(--accent);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 12px;
+  color: #999;
+  border-top: 1px solid #e8e0d0;
+  margin-bottom: 20px;
+}
+.footer .tagline {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero { animation: fadeInUp 0.6s ease-out; }
+.section { animation: fadeInUp 0.6s ease-out; animation-fill-mode: both; }
+.section:nth-child(2) { animation-delay: 0.1s; }
+.section:nth-child(3) { animation-delay: 0.2s; }
+.section:nth-child(4) { animation-delay: 0.3s; }
+
+/* ===== PAIN POINTS ===== */
+.pain-points {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+.pain-points li {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background: #fff5f5;
+  border-left: 3px solid #e53e3e;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+.solution-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-light), #ede0c0);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+/* ===== AI EVOLUTION ===== */
+.evolution-steps {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+.evolution-steps::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.ev-step {
+  position: relative;
+  padding: 10px 0 10px 16px;
+  margin-bottom: 8px;
+}
+.ev-step::before {
+  content: attr(data-num);
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  background: var(--gold);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.ev-step p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.ev-step .ev-title {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .container { max-width: 600px; }
+  .hero h1 { font-size: 32px; }
+  .comparison-table thead th,
+  .comparison-table tbody td { padding: 14px 12px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-badge">专业 · 高效 · 安全</div>
+  <h1>把纸上的智慧<br>变成<span>数字资产</span></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">AI自动化数据录入 · B/S架构知识库搭建</p>
+</div>
+
+<div class="container">
+
+<!-- ===== PAIN POINTS ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-icon">?</div>
+    <h2>您是否有这些烦恼？</h2>
+  </div>
+  <ul class="pain-points">
+    <li>单位里堆积如山的纸质文件，想电子化却找不到人手</li>
+    <li>招个文员月薪四五千，干两个月才录完一半，还老出错</li>
+    <li>外包公司报价几万起步，做完就不管了</li>
+    <li>自己用Excel管吧，找一份资料要翻半天</li>
+  </ul>
+  <div style="text-align:center;">
+    <span class="solution-tag">这些问题，现在都可以解决了</span>
+  </div>
+</div>
+
+<!-- ===== SERVICE 1: AI DATA ENTRY ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-icon">⚡</div>
+    <h2>服务一：AI自动化数据录入</h2>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="comparison">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>对比项</th>
+          <th>传统人工</th>
+          <th>AI自动化</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>每份耗时</td>
+          <td class="col-manual">3分钟</td>
+          <td class="col-ai highlight-green">1分钟</td>
+        </tr>
+        <tr>
+          <td>1万份总工时</td>
+          <td class="col-manual">500小时</td>
+          <td class="col-ai highlight-green">100小时</td>
+        </tr>
+        <tr>
+          <td>所需人数</td>
+          <td class="col-manual">3人全职</td>
+          <td class="col-ai highlight-green">无人值守</td>
+        </tr>
+        <tr>
+          <td>完成时间</td>
+          <td class="col-manual">约1个月</td>
+          <td class="col-ai highlight-green">仅7天</td>
+        </tr>
+        <tr>
+          <td>人力成本</td>
+          <td class="col-manual highlight-red">¥15,000+</td>
+          <td class="col-ai highlight-green">¥1,500</td>
+        </tr>
+        <tr>
+          <td>错误率</td>
+          <td class="col-manual highlight-red">5-10%</td>
+          <td class="col-ai highlight-green">&lt;1%</td>
+        </tr>
+        <tr>
+          <td>后期纠错</td>
+          <td class="col-manual highlight-red">大量</td>
+          <td class="col-ai highlight-green">几乎无需</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="comparison-footer">
+      💡 AI方案节省 90% 成本 · 提速 10 倍 · 准确率大幅提升
+    </div>
+  </div>
+
+  <!-- What I can do -->
+  <div class="card">
+    <h3>我能做什么</h3>
+    <ul class="check-list">
+      <li>纸质资料 → 电子数据库（扫描+OCR+结构化录入）</li>
+      <li>PDF / Word / TXT → 分类整理 + 标签标注</li>
+      <li>批量上传到现有系统（浏览器自动化操作，7×24小时不间断）</li>
+      <li>资料分类、检索系统搭建</li>
+      <li>持续数据维护（月包制，适合长期需求）</li>
+    </ul>
+  </div>
+
+  <!-- Use Cases -->
+  <div class="card">
+    <h3>适用场景</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🏢</div>
+        <div class="feature-name">企业档案</div>
+        <div class="feature-desc">合同·发票·凭证</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏛️</div>
+        <div class="feature-name">政府事业单位</div>
+        <div class="feature-desc">政策文件·历史档案</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏥</div>
+        <div class="feature-name">医院诊所</div>
+        <div class="feature-desc">医案·处方·病历</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚖️</div>
+        <div class="feature-name">律师事务所</div>
+        <div class="feature-desc">案件卷宗整理</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🎓</div>
+        <div class="feature-name">学校机构</div>
+        <div class="feature-desc">论文·课件·教材</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📚</div>
+        <div class="feature-name">个人知识库</div>
+        <div class="feature-desc">读书笔记·研究资料</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="card">
+    <h3>收费方式</h3>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-label">按量计费</div>
+        <div class="price-value">¥0.1<span>-0.2/份</span></div>
+        <div class="price-desc">量大从优</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-label">月包服务</div>
+        <div class="price-value">¥2K<span>-5K/月</span></div>
+        <div class="price-desc">持续录入首选</div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--green);font-weight:600;margin-top:8px;">
+      🎁 首单优惠：第一次合作打8折
+    </p>
+  </div>
+</div>
+
+<!-- ===== SERVICE 2: KNOWLEDGE BASE ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-icon">🗄️</div>
+    <h2>服务二：专业知识库搭建</h2>
+  </div>
+
+  <div class="section-desc">
+    传统知识管理系统需要装客户端、每台电脑都要部署，换设备就找不到了。我的方案：<strong>浏览器就是客户端</strong>，打开就能用。
+  </div>
+
+  <!-- Features -->
+  <div class="card">
+    <h3>B/S架构 — 浏览器即客户端</h3>
+    <ul class="check-list">
+      <li>无需安装任何软件，打开浏览器就能用</li>
+      <li>手机、平板、电脑都能访问</li>
+      <li>一台普通电脑作服务器，所有用户通过浏览器访问</li>
+      <li>数据集中存储，自动备份，不怕硬盘损坏</li>
+      <li>软件维护由我负责，升级更新无需操心</li>
+    </ul>
+  </div>
+
+  <!-- Tech Specs -->
+  <div class="card">
+    <h3>技术特点</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-name">数据安全</div>
+        <div class="feature-desc">数据在您自己的服务器上</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👤</div>
+        <div class="feature-name">权限管理</div>
+        <div class="feature-desc">部门/角色分级控制</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-name">全文检索</div>
+        <div class="feature-desc">分类筛选+标签搜索</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <div class="feature-name">多端访问</div>
+        <div class="feature-desc">手机平板电脑均可</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What can be stored -->
+  <div class="card">
+    <h3>知识库能装什么</h3>
+    <ul class="check-list">
+      <li>机构文献资料（论文、报告、政策文件）</li>
+      <li>专家经验库 — 把老专家的智慧提取出来，形成可传承的知识资产</li>
+      <li>产品资料库（规格参数、案例、FAQ）</li>
+      <li>培训课件库（视频、文档、试题）</li>
+      <li>个人知识库（读书笔记、研究资料、手稿）</li>
+    </ul>
+  </div>
+
+  <!-- AI Evolution -->
+  <div class="card">
+    <h3>增值服务：AI + 专业知识持续进化</h3>
+    <p style="font-size:14px;color:var(--text-light);margin-bottom:14px;">
+      这不是一个静态的系统，而是越用越聪明的智能知识库：
+    </p>
+    <div class="evolution-steps">
+      <div class="ev-step" data-num="1">
+        <p><span class="ev-title">注入领域知识</span><br>把您的专业知识和经验喂给AI模型</p>
+      </div>
+      <div class="ev-step" data-num="2">
+        <p><span class="ev-title">自动分类打标</span><br>AI帮您自动整理资料，省去人工分类的麻烦</p>
+      </div>
+      <div class="ev-step" data-num="3">
+        <p><span class="ev-title">智能摘要生成</span><br>长篇资料一键生成摘要，快速了解核心内容</p>
+      </div>
+      <div class="ev-step" data-num="4">
+        <p><span class="ev-title">越用越聪明</span><br>随着使用不断积累，AI越来越懂您的业务</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHY CHOOSE ME ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-icon">★</div>
+    <h2>为什么选择我</h2>
+  </div>
+
+  <!-- Real Case -->
+  <div class="card">
+    <h3>真实案例，不是空话</h3>
+    <ul class="check-list">
+      <li>独立完成<strong>2000+册图书</strong>数字化项目全流程交付</li>
+      <li>扫描 → OCR → 三格式转换 → 数据库上线，一步到位</li>
+      <li>浏览器+B/S架构，用户可随时查看、检索、下载</li>
+      <li>原OA系统基础上优化开发，既懂业务也懂代码</li>
+    </ul>
+  </div>
+
+  <!-- Story -->
+  <div class="story-card">
+    <div class="story-role">关于我</div>
+    <h3>54岁文科生的AI创业路</h3>
+    <p>
+      我不是程序员出身。做过公务员、教师、记者、编辑，两次离开体制，创过业，离过婚。<br><br>
+      54岁开始自学AI和建站，从零到完成2000+册图书的数字化项目。<br><br>
+      正因为是文科生，我更理解<strong style="color:var(--gold)">知识的价值</strong>和<strong style="color:var(--gold)">人的需求</strong>。我用AI做的事情，就是用技术手段帮机构和个人，把散落在纸上的智慧，变成可搜索、可传承的数字资产。
+    </p>
+  </div>
+
+  <!-- Trust -->
+  <div class="card">
+    <h3>价格透明，没有隐藏费用</h3>
+    <ul class="check-list">
+      <li>按量计费或月包，您说了算</li>
+      <li>首单优惠，先试再做</li>
+      <li>数据安全承诺：资料只存您的服务器，不留备份</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cta-section">
+  <a href="#" class="cta-btn">立即咨询 · 免费评估</a>
+  <div class="cta-info">
+    <strong>微信：</strong>liren1972<br>
+    <strong>闲鱼：</strong>liren1972<br>
+    <strong>邮箱：</strong>roysee@163.com
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <div class="tagline">把纸上的智慧，变成数字时代的资产</div>
+  <div>© 2026 喝墨汁儿 · AI数据服务工作室</div>
+</div>
+
+</div><!-- /container -->
+
+</body>
+</html>
